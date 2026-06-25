@@ -1,0 +1,588 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is OLSP Academy? An Independent Review of Wayne Crowe's Affiliate Marketing Platform</title>
+<meta name="description" content="An independent, research-based review of OLSP Academy: what it is, what it costs, how the commission system works, and whether it fits your goals.">
+<style>
+  :root{
+    --ink:#1e293b;
+    --ink-light:#475569;
+    --bg:#ffffff;
+    --bg-soft:#f8fafc;
+    --line:#e2e8f0;
+    --accent:#2563eb;
+    --accent-soft:#eff6ff;
+    --warn:#92400e;
+    --warn-bg:#fef3c7;
+    --warn-border:#fcd34d;
+    --good:#166534;
+    --good-bg:#f0fdf4;
+    --bad:#991b1b;
+    --bad-bg:#fef2f2;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:17px;
+  }
+  h1,h2,h3{line-height:1.25; color:var(--ink);}
+  h1{font-size:1.9rem; margin:0 0 .5rem;}
+  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
+  h3{font-size:1.15rem; color:var(--accent);}
+  p{margin:0 0 1rem;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
+  li{margin-bottom:.4rem;}
+
+  .layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  .toc-wrap{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+    background:var(--bg-soft);
+    padding:1.5rem 1rem;
+  }
+  .toc-wrap h4{
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-light);
+    margin:0 0 .75rem;
+  }
+  .toc-wrap nav a{
+    display:block;
+    font-size:.9rem;
+    color:var(--ink-light);
+    padding:.45rem .6rem;
+    border-radius:6px;
+    margin-bottom:.15rem;
+  }
+  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
+  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+
+  main{padding:2.5rem 3rem 5rem; max-width:880px;}
+  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+
+  .hero-tag{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-size:.8rem;
+    font-weight:600;
+    padding:.3rem .7rem;
+    border-radius:99px;
+    margin-bottom:.8rem;
+  }
+  .verdict-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    margin:1.2rem 0 1.5rem;
+  }
+  .verdict-box p{margin-bottom:.4rem;}
+  .verdict-box p:last-child{margin-bottom:0;}
+
+  .callout{
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    margin:1.2rem 0;
+    border:1px solid var(--line);
+  }
+  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
+  .callout.warn strong{color:#78350f;}
+  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
+  .callout.info strong{color:#1e3a8a;}
+
+  .methodology{
+    background:#fff;
+    border:1px dashed #94a3b8;
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    font-size:.95rem;
+    color:var(--ink-light);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0 1.5rem;
+    font-size:.93rem;
+  }
+  th,td{
+    text-align:left;
+    padding:.6rem .7rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
+  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
+  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
+  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
+  .pc-card h3{margin-top:0;}
+  .pc-card.good h3{color:var(--good);}
+  .pc-card.bad h3{color:var(--bad);}
+  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+
+  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
+  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
+  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
+  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
+  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+
+  .quiz-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.3rem 1.4rem;
+  }
+  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
+  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
+  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
+  .quiz-box button{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:.6rem 1.2rem;
+    border-radius:8px;
+    font-size:.95rem;
+    cursor:pointer;
+  }
+  .quiz-box button:hover{background:#1d4ed8;}
+  #quiz-result{
+    margin-top:1rem;
+    padding:.9rem 1rem;
+    border-radius:8px;
+    background:#fff;
+    border:1px solid var(--line);
+    font-size:.93rem;
+    display:none;
+  }
+
+  .video-frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:.6rem;
+  }
+  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
+  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
+
+  details{
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:.6rem;
+    padding:.7rem 1rem;
+  }
+  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
+  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
+
+  figure{margin:1rem 0 1.6rem;}
+  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
+  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
+
+  .mobile-toc-btn{display:none;}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc-wrap{
+      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+      border-right:none; border-bottom:1px solid var(--line);
+      z-index:50;
+    }
+    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
+    .mobile-toc-btn{
+      display:block; position:sticky; top:0; z-index:60;
+      width:100%; text-align:left; background:var(--ink); color:#fff;
+      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
+    }
+    main{padding:1.5rem 1.2rem 3rem;}
+    .two-col{grid-template-columns:1fr;}
+    .score-label{flex:0 0 130px; font-size:.82rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
+  <aside class="toc-wrap" id="tocWrap">
+    <h4>On This Page</h4>
+    <nav id="tocNav">
+      <a href="#intro">1. First Impressions</a>
+      <a href="#overview">2. Overview &amp; Pricing</a>
+      <a href="#design">3. Platform &amp; Build Quality</a>
+      <a href="#performance">4. Performance Analysis</a>
+      <a href="#ux">5. User Experience</a>
+      <a href="#comparison">6. How It Compares</a>
+      <a href="#proscons">7. Pros &amp; Cons</a>
+      <a href="#history">8. History &amp; Updates</a>
+      <a href="#recommend">9. Who Should Join</a>
+      <a href="#buy">10. Where to Sign Up</a>
+      <a href="#verdict">11. Final Verdict</a>
+      <a href="#faq">FAQ</a>
+      <a href="#sources">12. Evidence &amp; Sources</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section id="intro">
+      <span class="hero-tag">Independent Review · Updated June 2026</span>
+      <h1>What Is OLSP Academy? An Independent, Research-Based Review</h1>
+
+      <p><strong>OLSP Academy</strong> is an online affiliate-marketing training and commission system built around sharing a single tracking link, known as the "Mega Link." Based on publicly available marketing pages and third-party commentary, our short take is this: OLSP Academy can work as a low-cost entry point into affiliate marketing for people willing to put in consistent traffic-driving effort, but it relies heavily on recruiting new members into paid upgrades, and the income examples circulating online are self-reported and unverified — not a guarantee of typical results.</p>
+
+      <div class="verdict-box">
+        <p><strong>Best for:</strong> people who are curious about affiliate marketing, comfortable with a "promote and recruit" business model, and willing to treat it as a long-term project rather than a quick payout.</p>
+        <p><strong>Not ideal for:</strong> anyone looking for a passive, hands-off income stream, or anyone uncomfortable with upsell-driven business models.</p>
+      </div>
+
+      <h3>What Is It, and Who Is It For?</h3>
+      <p>OLSP stands for "One Lead System Pixel" according to most sources we found, though a few pages use slightly different expansions of the acronym (more on that inconsistency in Section 8). It is marketed as a beginner-friendly affiliate system: members get a single link to share, training on how to drive traffic to it, and a commission when referrals buy add-ons inside the OLSP ecosystem. It is aimed at people with little or no marketing experience who want to try building an online income on the side.</p>
+
+      <h3>Author Background &amp; Review Methodology</h3>
+      <div class="methodology">
+        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business, marketing, and digital-education products, with attention to consumer-protection norms around income claims and recruitment-based commission models.</p>
+        <p><strong>How this review was built:</strong> We did not purchase, join, or personally test OLSP Academy. This article is based entirely on independent desk research: the program's own public marketing pages, publicly available third-party reviews and videos, and general consumer-protection context for affiliate and income-opportunity programs. Where a claim could not be independently verified — including most income figures — we say so explicitly rather than presenting it as fact.</p>
+      </div>
+    </section>
+
+    <section id="overview">
+      <h2>OLSP Academy Overview &amp; Pricing</h2>
+      <p>OLSP Academy sits inside the wider "OLSP System," created by online marketer Wayne Crowe, who has been publicly associated with the brand since around 2020. The Academy is the training and onboarding layer: short video lessons, live calls, and a community space, paired with done-for-you marketing pages members can promote.</p>
+
+      <h3>What's Included</h3>
+      <ul>
+        <li><strong>Mega Link:</strong> a single trackable referral link members share instead of building their own website or sales page.</li>
+        <li><strong>Mega Funnel:</strong> a pre-built, automated funnel that follows up with leads who click the Mega Link.</li>
+        <li><strong>Bootcamp training modules:</strong> beginner lessons covering account setup, link sharing, and basic traffic methods.</li>
+        <li><strong>Live webinars and Facebook group:</strong> recurring training sessions and a community space for members.</li>
+        <li><strong>Optional add-ons:</strong> "Accelerator" coaching, "TD Pages" for building landing pages, and a paid "VIP" tier with extended training and higher commission rates.</li>
+      </ul>
+
+      <h3>Reported Pricing</h3>
+      <div class="callout warn">
+        <strong>Pricing caution:</strong> Public sources disagree on current pricing, and "make money online" funnels frequently change their offers and limited-time discounts. Treat the figures below as a general guide drawn from publicly available pages, not a confirmed current price list.
+      </div>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Tier</th><th>Reported Cost</th><th>What It Reportedly Adds</th></tr>
+        <tr><td>Foundation / Free</td><td>$0</td><td>Basic dashboard, Mega Link, entry-level training, modest commission rate (often cited around 10% on some products)</td></tr>
+        <tr><td>Entry / launch offer</td><td>Reported as low as $7 in some promotions</td><td>Used as a low-friction first purchase in some marketing pages</td></tr>
+        <tr><td>VIP / Accelerator</td><td>Reported around $97/month in one third-party review, with one-time VIP commission payouts cited as $150–$300</td><td>Extended coaching, higher commission tiers, additional done-for-you assets</td></tr>
+        <tr><td>Other upsells (TD Pages, traffic packages)</td><td>Varies; not consistently reported</td><td>Landing-page builder, paid traffic packages such as solo ads</td></tr>
+      </table>
+      </div>
+      <p><strong>Target audience:</strong> Marketing copy positions OLSP Academy at total beginners with "zero tech skills." In practice, anyone evaluating it should be comfortable with the idea that most of the realistic earning paths involve getting other people to join and upgrade — not selling a tangible product to a one-time customer.</p>
+    </section>
+
+    <section id="design">
+      <h2>Platform &amp; Build Quality</h2>
+      <p>We did not get hands-on access to the member dashboard, so we cannot describe its interface first-hand. Based on third-party walkthroughs, the public description is consistent: a single dashboard houses training modules, the Mega Link, performance tracking, and links to community channels.</p>
+
+      <h3>Visual Appeal &amp; Trust Signals</h3>
+      <p>One promotional landing page we checked (theolspacademy.com) still carried default placeholder metadata from the website-building tool used to create it, rather than fully customized branding. That is not proof of anything sinister on its own, but it is the kind of detail a careful buyer should notice — it suggests at least one OLSP-branded page online may be a quickly assembled or unofficial copy rather than a fully maintained corporate site.</p>
+
+      <h3>Long-Term Considerations</h3>
+      <p>Done-for-you funnel systems like this one depend on the parent company continuing to maintain the funnel, the community, and the commission structure. If OLSP changes its compensation plan, retires a tool, or shuts down, members lose the system they were trained to depend on — a structural risk shared by most single-vendor "earn inside our ecosystem" platforms.</p>
+    </section>
+
+    <section id="performance">
+      <h2>Performance Analysis</h2>
+
+      <h3>4.1 Core Functionality: How the Mega Link Actually Earns Money</h3>
+      <p>The core mechanic is simple to describe: a member shares their Mega Link, interested people click it and enter the OLSP funnel, and OLSP's own emails, webinars, and Facebook Lives do the selling. The referring member earns a commission when that person buys an add-on — not necessarily when they simply join for free.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Mega Link referral flow">
+          <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
+          <rect x="20" y="80" width="130" height="60" rx="8" fill="#2563eb"/>
+          <text x="85" y="115" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Member shares</text>
+          <text x="85" y="130" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Mega Link</text>
+          <line x1="150" y1="110" x2="240" y2="110" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="240,104 252,110 240,116" fill="#94a3b8"/>
+          <rect x="255" y="80" width="130" height="60" rx="8" fill="#0f172a"/>
+          <text x="320" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">OLSP funnel</text>
+          <text x="320" y="124" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">(email + webinars)</text>
+          <line x1="385" y1="110" x2="475" y2="110" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="475,104 487,110 475,116" fill="#94a3b8"/>
+          <rect x="490" y="80" width="130" height="60" rx="8" fill="#166534"/>
+          <text x="555" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Referral upgrades</text>
+          <text x="555" y="124" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">→ commission paid</text>
+        </svg>
+        <figcaption>Original illustration based on publicly described mechanics — not an actual screenshot of the OLSP dashboard.</figcaption>
+      </figure>
+
+      <h3>4.2 Key Performance Categories</h3>
+
+      <h4>Training Quality</h4>
+      <p>Independent reviewers generally describe the Bootcamp training as beginner-appropriate, covering account setup and basic traffic methods rather than advanced strategy. We could not verify the depth or production quality first-hand.</p>
+
+      <h4>Commission Structure &amp; Payouts</h4>
+      <p>The structure rewards recruitment and upsells more than one-off retail sales. Several third-party sources cite specific payout numbers (for example, 10% recurring on a landing-page add-on, or flat $150–$300 payouts on VIP upgrades). These figures come from sources with a financial interest in promoting sign-ups through their own referral links, so we present them as reported claims, not confirmed facts.</p>
+
+      <h4>Community &amp; Support</h4>
+      <p>A Facebook-based community and live webinars are consistently mentioned across sources as the main support channel, rather than formal one-on-one customer service.</p>
+
+      <h4>Income Realism</h4>
+      <div class="callout warn">
+        <strong>Why we are cautious here:</strong> We found individual, self-published "income update" videos reporting specific cumulative earnings over time. These are self-reported by individual marketers, cannot be independently verified, and — as with any income-opportunity program — likely reflect a small, vocal subset of members rather than typical results. No legitimate review can responsibly state what a typical member earns, because that data is not publicly audited.
+      </div>
+    </section>
+
+    <section id="ux">
+      <h2>User Experience</h2>
+      <h3>Setup Process</h3>
+      <p>Public walkthroughs describe a short sign-up flow: create a free account, complete the initial Bootcamp modules, then receive your personal Mega Link.</p>
+      <h3>Daily Usage</h3>
+      <p>Ongoing activity centers on driving traffic to the Mega Link — through social media posts, content, or paid ads — and attending or rewatching live training sessions.</p>
+      <h3>Learning Curve</h3>
+      <p>Sources consistently describe the system as low-friction for people with no technical background, since OLSP supplies the funnel and follow-up sequences. The trade-off is less customization and more dependence on OLSP's own sales process.</p>
+      <h3>Interface &amp; Usability</h3>
+      <p>We could not verify interface usability first-hand. Several independent reviewers describe the dashboard as straightforward, but none of these are neutral, fully independent sources — most are themselves promoting their own referral link.</p>
+    </section>
+
+    <section id="comparison">
+      <h2>How OLSP Academy Compares to Other Affiliate Options</h2>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Option</th><th>Cost to Start</th><th>Earning Model</th><th>Best For</th></tr>
+        <tr><td>OLSP Academy</td><td>Free–low cost entry, paid upsells</td><td>Commission mainly on referrals' upgrades; "done-for-you" funnel</td><td>Beginners wanting a guided, single-link system</td></tr>
+        <tr><td>Established affiliate networks (e.g., Amazon Associates)</td><td>Free</td><td>Commission on actual product sales, no recruitment required</td><td>People who want to promote real products without a recruitment layer</td></tr>
+        <tr><td>Self-built niche site/blog</td><td>Low (hosting/domain)</td><td>Ad revenue, affiliate links, own audience</td><td>People willing to build long-term, owned traffic assets</td></tr>
+        <tr><td>Paid "done-for-you" marketing courses generally</td><td>Often $100s–$1,000s</td><td>Varies; some are legitimate education, others rely on reselling the same course</td><td>People who have already vetted the specific course independently</td></tr>
+      </table>
+      </div>
+      <p><strong>Unique selling point:</strong> OLSP's main differentiator is the single "Mega Link" concept, which removes the need to build a website or funnel from scratch. <strong>Trade-off:</strong> that simplicity comes from funneling new members into OLSP's own paid tiers, rather than from selling outside products directly.</p>
+    </section>
+
+    <section id="proscons">
+      <h2>Pros &amp; Cons</h2>
+      <div class="two-col">
+        <div class="pc-card good">
+          <h3>What We Liked, Based on Research</h3>
+          <ul>
+            <li>Low barrier to entry — multiple sources describe a free tier with no website-building required.</li>
+            <li>Structured beginner training (Bootcamp modules) rather than just "figure it out yourself."</li>
+            <li>An active community and recurring live sessions, which several independent reviewers note as genuinely useful for newcomers.</li>
+            <li>The single-link concept simplifies what is normally a technically demanding setup process.</li>
+          </ul>
+        </div>
+        <div class="pc-card bad">
+          <h3>Areas for Caution</h3>
+          <ul>
+            <li>Most realistic income paths depend on other people upgrading inside the OLSP ecosystem, a structure that shares characteristics with recruitment-driven income opportunities.</li>
+            <li>Public income claims found online are self-reported and unverifiable; we found no independently audited earnings data.</li>
+            <li>Branding and even the OLSP acronym itself are inconsistent across sources, and at least one official-looking landing page showed signs of being a hastily built page rather than a fully maintained site.</li>
+            <li>Most online "reviews" of OLSP are written by people promoting their own referral link, so independent, disinterested commentary is hard to find.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>History &amp; Updates</h2>
+      <p>Most sources place the launch of the OLSP System around 2020, created and fronted by Wayne Crowe, who describes himself as having worked in online marketing for roughly 15 years. A handful of pages attribute the system's origin to a different individual, which we could not reconcile — a discrepancy worth knowing about if you're trying to verify who you'd actually be learning from.</p>
+      <p>Marketing pages found in 2026 reference an "OLSP System Relaunch" and a separate "OLSP Academy" branded offer positioned as a 2026 launch with "limited spots," a common urgency tactic in this type of marketing. We could not confirm whether this represents a genuine platform update, a rebrand, or a separate promotional campaign layered on top of the original system.</p>
+      <div class="callout info">
+        <strong>Due-diligence tip:</strong> When a program's name, founder story, or core mechanics are described differently across its own marketing pages, treat that as a signal to dig deeper before paying for anything.
+      </div>
+    </section>
+
+    <section id="recommend">
+      <h2>Who Should Join OLSP Academy?</h2>
+      <h3>Best For</h3>
+      <ul>
+        <li>People who want structured, beginner-level exposure to affiliate marketing concepts.</li>
+        <li>People comfortable with a model where most income comes from others upgrading, not from one-off retail sales.</li>
+        <li>People who plan to treat any "make money online" program as a multi-month learning project, not a fast payout.</li>
+      </ul>
+      <h3>Skip If</h3>
+      <ul>
+        <li>You want guaranteed or passive income — no legitimate program can promise that.</li>
+        <li>You're not comfortable promoting a recruitment-style commission structure to friends, family, or your audience.</li>
+        <li>You want full ownership of your own website, audience, and brand rather than depending on someone else's funnel.</li>
+      </ul>
+      <h3>Alternatives Worth Comparing</h3>
+      <p>Anyone considering OLSP Academy should also research free affiliate networks (where you promote real, established products without recruitment), or building a simple owned website/content channel, before paying for any upsell tier.</p>
+    </section>
+
+    <section id="buy">
+      <h2>Where to Sign Up &amp; Pricing</h2>
+      <p>Sign-up is reported to happen through the program's own official domains rather than third-party retailers — there is no marketplace or trusted-retailer version of this product, since it is a direct-to-member training system. Multiple OLSP-branded URLs exist online; we could not confirm a single canonical "official" site versus affiliate-branded mirror pages, so we recommend independently verifying any link before entering payment details, and being skeptical of "limited spots" or "today only" pricing pressure common in this niche.</p>
+    </section>
+
+    <section id="verdict">
+      <h2>Final Verdict</h2>
+      <div class="score-row"><div class="score-label">Beginner Accessibility</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+      <div class="score-row"><div class="score-label">Training Structure</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+      <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
+      <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
+      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
+
+      <p>OLSP Academy offers a genuinely low-friction entry point into affiliate marketing, with structured training and an active community. The honest caveat is that it is, at its core, a recruitment-driven commission system: most realistic earnings come from referrals upgrading inside the ecosystem, not from selling outside products. Treat any income figures you see — including the ones cited in this article — as unverified self-reports, not evidence of typical results. If you join, do so as a low-cost experiment in learning affiliate marketing, not as a guaranteed income source.</p>
+
+      <div class="quiz-box" id="quizBox">
+        <h3 style="margin-top:0;">Quick Self-Check: Is This Worth Exploring for You?</h3>
+        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+        <fieldset>
+          <legend>Are you comfortable earning primarily when others you refer choose to upgrade?</legend>
+          <label><input type="radio" name="q1" value="2"> Yes, that's fine with me</label>
+          <label><input type="radio" name="q1" value="0"> No, I'd rather sell a product directly</label>
+        </fieldset>
+        <fieldset>
+          <legend>Can you treat this as a multi-month project, with no guaranteed payoff?</legend>
+          <label><input type="radio" name="q2" value="2"> Yes</label>
+          <label><input type="radio" name="q2" value="0"> No, I need fast or guaranteed results</label>
+        </fieldset>
+        <fieldset>
+          <legend>Are you willing to research current pricing and terms independently before paying anything?</legend>
+          <label><input type="radio" name="q3" value="2"> Yes</label>
+          <label><input type="radio" name="q3" value="0"> No, I'll just trust the sales page</label>
+        </fieldset>
+        <button type="button" onclick="evaluateQuiz()">See My Result</button>
+        <div id="quiz-result"></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>Is OLSP Academy a scam?</summary>
+        <p>We found no evidence in our research that OLSP Academy is fraudulent or illegal. It is best understood as a recruitment-driven affiliate marketing program — a legitimate but high-promotion business model where results depend heavily on referring new paying members. That is different from being a scam, but it carries different risks than selling a standalone product directly.</p>
+      </details>
+      <details>
+        <summary>Is it really free to join?</summary>
+        <p>Multiple sources describe a free entry tier, with paid upsells for VIP coaching, landing pages, and traffic packages. We could not independently confirm current pricing at the time of writing — verify directly on the official sign-up page before assuming any price.</p>
+      </details>
+      <details>
+        <summary>Who is Wayne Crowe?</summary>
+        <p>Wayne Crowe is the individual most consistently credited as the creator of the OLSP System, describing himself publicly as having worked in online marketing for around 15 years. One source attributed the system to a different person, which we could not reconcile.</p>
+      </details>
+      <details>
+        <summary>Can a complete beginner realistically earn money with this?</summary>
+        <p>It's possible, but we have no independently verified data on what a typical beginner actually earns. Self-reported progress videos exist publicly, but they are not audited and likely overrepresent successful members, which is common across this category of program.</p>
+      </details>
+    </section>
+
+    <section id="sources">
+      <h2>Evidence &amp; Sources</h2>
+
+      <h3>Video Content</h3>
+      <p>The video below is third-party content from an independent YouTube channel discussing OLSP Academy. It is not an official company channel, and it represents that creator's own commentary — not the experience of the author of this article.</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLI5432erPv2Hb84wh6JSuQ3hTiG8mjVDA" title="Third-party YouTube playlist discussing OLSP Academy" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Playlist source: independent channel "No BS Affiliate Marketer," not affiliated with this article.</p>
+
+      <p>For content directly from the program's founder, Wayne Crowe maintains a public YouTube channel: <a href="https://www.youtube.com/channel/UCBkFbJjVDyI-JB_6SbQG8EA" target="_blank" rel="noopener">youtube.com/channel/UCBkFbJjVDyI-JB_6SbQG8EA</a>. We link to it rather than embed a specific video, since we could not confirm with certainty which individual uploads on OLSP came directly from his own channel versus affiliate-run channels using his name.</p>
+
+      <h3>Sources &amp; References</h3>
+      <ul>
+        <li><a href="https://olspsystem.com/" target="_blank" rel="noopener">olspsystem.com</a> — official OLSP System marketing page</li>
+        <li><a href="https://academy.olspsystem.com/" target="_blank" rel="noopener">academy.olspsystem.com</a> — OLSP Academy login/landing page</li>
+        <li><a href="https://theolspacademy.com/" target="_blank" rel="noopener">theolspacademy.com</a> — "OLSP Academy by Wayne Crowe" 2026 landing page</li>
+        <li><a href="https://legitebusiness.com/m/the-olsp-system-review-legit-or-scam/" target="_blank" rel="noopener">LegitEBusiness — OLSP System review</a></li>
+        <li><a href="https://seomaven.ai/olsp-system-review/" target="_blank" rel="noopener">SEOMaven.ai — OLSP System review</a></li>
+        <li><a href="https://eliteaffiliatehacks.com/olsp-system-review/" target="_blank" rel="noopener">Elite Affiliate Hacks — OLSP System review</a></li>
+        <li><a href="https://vocal.media/education/one-link-success-platform" target="_blank" rel="noopener">Vocal Media — One Link Success Platform overview</a></li>
+        <li><a href="https://www.facebook.com/OLSPAcademy/" target="_blank" rel="noopener">OLSP Academy Facebook page</a></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-light);">Most third-party sources listed above are affiliate marketing sites with a financial incentive to promote sign-ups through their own referral links. We cite them only to show what claims are publicly circulating, not as independently verified fact. Information in this article reflects publicly available pages as of June 2026 and may no longer be current — verify directly with the official source before making any purchase decision.</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Mobile TOC toggle
+  const tocToggle = document.getElementById('tocToggle');
+  const tocWrap = document.getElementById('tocWrap');
+  if (tocToggle) {
+    tocToggle.addEventListener('click', () => {
+      tocWrap.classList.toggle('open');
+    });
+  }
+
+  // Scroll-spy active link highlighting
+  const sections = document.querySelectorAll('main section');
+  const tocLinks = document.querySelectorAll('#tocNav a');
+  const linkMap = {};
+  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = linkMap[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close mobile TOC after clicking a link
+  tocLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
+    });
+  });
+
+  // Quick self-check quiz
+  function evaluateQuiz(){
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const q3 = document.querySelector('input[name="q3"]:checked');
+    const result = document.getElementById('quiz-result');
+
+    if(!q1 || !q2 || !q3){
+      result.style.display = 'block';
+      result.textContent = 'Please answer all three questions first.';
+      return;
+    }
+
+    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
+    let message = '';
+    if(score >= 5){
+      message = "Based on your answers, the OLSP Academy model — and recruitment-driven affiliate programs in general — may align with your expectations. Still, verify current pricing and terms independently before paying anything.";
+    } else if(score >= 3){
+      message = "Your answers suggest mixed fit. Read the 'Areas for Caution' section above closely before deciding, and consider starting with the free tier only.";
+    } else {
+      message = "Based on your answers, this type of recruitment-driven affiliate model may not match what you're looking for. Consider exploring direct-sale affiliate networks instead.";
+    }
+    result.style.display = 'block';
+    result.textContent = message;
+  }
+</script>
+
+</body>
+</html>

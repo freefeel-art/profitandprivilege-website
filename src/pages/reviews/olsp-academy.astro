@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import fs from 'node:fs';
+
+const html = fs.readFileSync(
+  './src/content/reviews/olsp-academy-review-2026.html',
+  'utf8'
+);
+---
+
+<Layout title="OLSP Academy Review">
+  <Fragment set:html={html} />
+</Layout>
