@@ -86,7 +86,7 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 - First line of frontmatter: `export const prerender = true;`
 - Declare `const pageTitle` and `const pageDescription` in frontmatter, but hardcode the actual `<title>` and `<meta name="description">` in `<head>`.
 - Copy the entire `<style>` block verbatim from the Gold Master. Do not change any CSS token value, any class name, or any selector. Only the HTML content changes.
-- Copy the entire `<script>` block verbatim from the Gold Master. The JS is structural. Do not modify it.
+- Copy the entire `<script is:inline>` block verbatim from the Gold Master, **including the `is:inline` directive**. The JS is structural. Do not modify it and do not drop `is:inline`. Without it, Astro bundles the script as an ES module, removing `evaluateQuiz` from global scope and silently breaking the quiz button's `onclick` handler.
 
 **Layout and IDs**
 - The `.layout` grid, `<aside>`, `<main>`, and the mobile TOC `<button>` must be present with identical attributes and IDs to the Gold Master.
@@ -206,7 +206,7 @@ Before outputting the file, verify each item. If any item fails, fix it before d
 - [ ] `<title>` and `<meta name="description">` are hardcoded strings in `<head>`, not interpolated
 - [ ] No imports of any kind appear in the frontmatter
 - [ ] The `<style>` block is copied verbatim from the Gold Master
-- [ ] The `<script>` block is copied verbatim from the Gold Master
+- [ ] The `<script is:inline>` block is copied verbatim from the Gold Master, with the `is:inline` directive present
 
 **Structure**
 - [ ] All 13 sections are present in the correct order
