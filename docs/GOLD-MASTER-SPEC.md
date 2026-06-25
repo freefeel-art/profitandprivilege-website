@@ -284,7 +284,9 @@ The mobile TOC button (`#tocToggle`) is hidden at desktop widths via `display: n
 
 ## 10. JavaScript Functionality
 
-All JavaScript is inline in a single `<script>` tag at the bottom of `<body>`. It is vanilla JS with no dependencies.
+All JavaScript is inline in a single `<script is:inline>` tag at the bottom of `<body>`. It is vanilla JS with no dependencies.
+
+> **Why `is:inline` is required:** Astro processes `<script>` tags as ES modules by default, scoping all declarations to the module rather than the global `window` object. The quiz button uses `onclick="evaluateQuiz()"`, which requires `evaluateQuiz` to be accessible as a global function. Without `is:inline`, Astro bundles the script as a module and the `onclick` handler throws `evaluateQuiz is not defined` at runtime. The `is:inline` directive instructs Astro to emit the script exactly as written, preserving global scope. Do not remove it.
 
 ### Three behaviours:
 
@@ -423,6 +425,8 @@ The following elements are **per-review variables** — everything else is struc
 2. **`prerender = true` is mandatory.** Every review page must be statically generated.
 
 3. **Do not change the CSS token values.** Copy the entire `<style>` block verbatim. Customise only the content inside sections.
+
+   Also copy the `<script is:inline>` tag verbatim — including the `is:inline` directive. Omitting `is:inline` breaks the quiz: Astro will bundle the script as an ES module, removing `evaluateQuiz` from global scope and silently breaking the `onclick` handler. See Section 10 for the full explanation.
 
 4. **The section order is fixed.** `intro → overview → design → performance → ux → comparison → proscons → history → recommend → buy → verdict → faq → sources`. Do not reorder, skip, or rename these sections.
 
