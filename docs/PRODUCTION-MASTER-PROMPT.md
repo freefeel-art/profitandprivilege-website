@@ -235,3 +235,10 @@ Before outputting the file, verify each item. If any item fails, fix it before d
 - [ ] No income or earnings figures are presented as verified or typical results
 - [ ] No first-hand testing is claimed unless the research package documents it
 - [ ] No Open Graph tags, JSON-LD, `<header>`, `<footer>`, or site navigation are present
+
+## Research Source Policy
+
+- Secondary sources (blogs, reviews, and AI-generated summaries) may be used to discover products, claims, and original references.
+- Whenever practical, verify information using the original source before publication.
+- Prefer citing official documentation, reputable third-party sources, and primary sources instead of another review article.
+- Do not cite another review when the same information is available from an original or official source.
