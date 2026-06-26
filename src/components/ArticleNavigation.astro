@@ -1,0 +1,96 @@
+---
+import { olspReviews } from "../data/olsp-reviews";
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+
+const currentIndex = olspReviews.findIndex(r => r.slug === current);
+
+const previous =
+  currentIndex > 0 ? olspReviews[currentIndex - 1] : null;
+
+const next =
+  currentIndex < olspReviews.length - 1
+    ? olspReviews[currentIndex + 1]
+    : null;
+---
+
+<section class="article-navigation">
+
+  <h2>Continue Exploring OLSP</h2>
+
+  <div class="nav-grid">
+
+    <a class="nav-card" href={previous ? `/reviews/${previous.slug}/` : "#"}>
+      <small>← Previous</small>
+      <strong>{previous?.title ?? "First Review"}</strong>
+      <span>{previous?.badge ?? ""}</span>
+    </a>
+
+    <a class="nav-card" href="/reviews/">
+      <small>Related Reviews</small>
+      <strong>OLSP Review Library</strong>
+      <span>{olspReviews.length} Products</span>
+    </a>
+
+    <a class="nav-card" href={next ? `/reviews/${next.slug}/` : "#"}>
+      <small>Next →</small>
+      <strong>{next?.title ?? "More Reviews Coming"}</strong>
+      <span>{next?.badge ?? ""}</span>
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+.article-navigation{
+  margin:4rem 0;
+  padding-top:2rem;
+  border-top:1px solid #e5e7eb;
+}
+
+.nav-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+}
+
+.nav-card{
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+  padding:1.2rem;
+  border:1px solid #d1d5db;
+  border-radius:14px;
+  text-decoration:none;
+  transition:.25s;
+  background:#fff;
+}
+
+.nav-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 24px rgba(0,0,0,.08);
+}
+
+.nav-card small{
+  color:#64748b;
+}
+
+.nav-card strong{
+  color:#0f172a;
+}
+
+.nav-card span{
+  display:inline-block;
+  width:max-content;
+  padding:.25rem .65rem;
+  border-radius:999px;
+  background:#eef2ff;
+  color:#4338ca;
+  font-size:.82rem;
+}
+</style>
