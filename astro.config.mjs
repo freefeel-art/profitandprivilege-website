@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://profitandprivilege.com',
+  site: 'https://olsp.profitandprivilege.com',
   integrations: [
     sitemap(),
   ],
