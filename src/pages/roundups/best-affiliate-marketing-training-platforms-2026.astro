@@ -231,6 +231,22 @@ const pageDescription =
   summary{font-weight:600; cursor:pointer; font-size:.97rem;}
   details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
 
+  .author-box{
+    display:flex;
+    align-items:flex-start;
+    gap:1.2rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    background:var(--bg-soft);
+  }
+  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
+  .author-box-info{flex:1;}
+  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
+  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
+  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
+  .author-box-info p:last-child{margin:0;}
+
   .mobile-toc-btn{display:none;}
 
   @media (max-width:900px){
@@ -273,6 +289,7 @@ const pageDescription =
       <a href="#alternatives">Alternatives</a>
       <a href="#decision-guide">Decision Guide</a>
       <a href="#faq">FAQ</a>
+      <a href="#author">About the Author</a>
       <a href="#sources">Sources &amp; CTA</a>
     </nav>
   </aside>
@@ -756,6 +773,19 @@ const pageDescription =
       </details>
     </section>
 
+    <section id="author">
+      <h2>About the Author</h2>
+      <div class="author-box">
+        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
+        <div class="author-box-info">
+          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
+          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
+          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
+          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
+        </div>
+      </div>
+    </section>
+
     <section id="sources">
       <h2>Sources &amp; Final Recommendation</h2>
 
@@ -765,21 +795,11 @@ const pageDescription =
 
       <h3>External Sources</h3>
       <ul>
-        <li><a href="https://www.wealthyaffiliate.com/pricing" target="_blank" rel="noopener">Wealthy Affiliate official pricing page</a></li>
-        <li><a href="https://www.wealthyaffiliate.com" target="_blank" rel="noopener">Wealthy Affiliate — official site</a></li>
-        <li><a href="https://www.clickbank.com/blog/learn-how-to-use-clickbank-with-spark/" target="_blank" rel="noopener">ClickBank — Learn How to Use ClickBank With Spark (official)</a></li>
-        <li><a href="https://www.clickbank.com/affiliate-tools-spark-vip/" target="_blank" rel="noopener">Spark VIP product page — ClickBank (official)</a></li>
-        <li><a href="https://legendarymarketer.com" target="_blank" rel="noopener">Legendary Marketer — official site (closing notice)</a></li>
-        <li><a href="https://legendarymarketer.com/about/" target="_blank" rel="noopener">Legendary Marketer — About (mission statement)</a></li>
-        <li><a href="https://www.trustpilot.com/review/wealthyaffiliate.com" target="_blank" rel="noopener">Wealthy Affiliate — Trustpilot reviews</a></li>
+        <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP Academy — Brand New Live Training (Official)</a></li>
         <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener">OLSP System — Trustpilot reviews</a></li>
+        <li><a href="https://www.trustpilot.com/review/wealthyaffiliate.com" target="_blank" rel="noopener">Wealthy Affiliate — Trustpilot reviews</a></li>
         <li><a href="https://www.trustpilot.com/review/legendarymarketer.com" target="_blank" rel="noopener">Legendary Marketer — Trustpilot reviews</a></li>
         <li><a href="https://www.trustpilot.com/review/sparkbyclickbank.com" target="_blank" rel="noopener">Spark by ClickBank — Trustpilot reviews</a></li>
-        <li><a href="https://www.reddit.com/r/Affiliatemarketing/comments/1r6osd4/legendary_marketer_is_closing/" target="_blank" rel="noopener">Reddit thread: "Legendary Marketer is Closing" — r/Affiliatemarketing</a></li>
-        <li><a href="https://my.wealthyaffiliate.com/kyle/blog/today-marks-20-years-of-wealthy-affiliate" target="_blank" rel="noopener">Wealthy Affiliate — 20th anniversary post by Kyle (confirms founding year)</a></li>
-        <li><a href="https://pressadvantage.com/story/53560-olsp-website-for-affiliate-marketing-education-redesigned-and-launched" target="_blank" rel="noopener">OLSP Academy press release — PressAdvantage (background on Wayne Crowe Limited)</a></li>
-        <li><a href="https://news.marketersmedia.com/ai-tools-andamp-affiliate-marketing-training-platform-for-beginners-updated/89190217" target="_blank" rel="noopener">OLSP Academy 2026 platform update announcement — Marketers Media</a></li>
-        <li><a href="https://www.linkedin.com/company/legendarymarketer" target="_blank" rel="noopener">Legendary Marketer — LinkedIn company profile (founding details)</a></li>
       </ul>
 
       <h3>Internal Reviews</h3>

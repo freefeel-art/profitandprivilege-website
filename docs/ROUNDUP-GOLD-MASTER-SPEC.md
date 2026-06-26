@@ -103,6 +103,24 @@ Minimum four questions.
 
 ---
 
+## 8a. Author Box
+
+Include an Author Box immediately before the Sources section.
+
+Use `src/pages/authors/jarmo-halonen.astro` as the single source of truth. Do not invent or rewrite author information.
+
+The Author Box must include:
+
+- Author photo (`/assets/authors/jarmo-halonen-author.png`)
+- Author name
+- Role / title
+- Short biography (2–4 sentences drawn from the author profile)
+- Link to `/authors/jarmo-halonen/`
+
+Use the `.author-box` CSS component (defined in the roundup `<style>` block). The author profile page remains the canonical source for all future articles.
+
+---
+
 ## 9. Sources
 
 Prefer:
@@ -160,12 +178,44 @@ Every generated roundup must:
 
 ---
 
+# Architecture Notes
+
+## File location
+
+Roundup pages live at:
+
+```
+src/pages/roundups/[slug].astro
+```
+
+## Styling
+
+Copy the `<style>` block verbatim from the most recent published roundup. The CSS token set is shared with the review pipeline. Do not change token names or values.
+
+## Scripting
+
+Use `<script is:inline>` — never bare `<script>`. Without `is:inline`, Astro bundles the script as an ES module, removing `evaluateQuiz` from global scope and breaking the quiz button's `onclick` handler.
+
+## Quiz logic
+
+The roundup quiz uses per-question matching, not a cumulative score threshold:
+
+- One question per platform being compared (value `2` = yes, `0` = no)
+- Results show which platforms match the reader's stated goals
+- Three outcomes: no match → Alternatives section; one match → named platform; multiple matches → compare free tiers
+
+---
+
 # QA Checklist
 
 - Complete comparison table
+- Individual sections for every platform covered
+- Author Box present before Sources section (sourced from `src/pages/authors/jarmo-halonen.astro`)
 - Internal links verified
-- FAQ included
-- Sources verified
+- FAQ included (minimum four questions)
+- Sources section uses Trustpilot links for competing platforms plus any supplied affiliate/official links
+- Affiliate links use `rel="noopener sponsored"`
 - Editorial neutrality maintained
-- Build successful
+- `<script is:inline>` directive present
+- Build successful (`npm run build`)
 - Ready for Playwright QA
