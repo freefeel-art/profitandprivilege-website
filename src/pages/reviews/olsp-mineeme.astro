@@ -1,0 +1,675 @@
+---
+export const prerender = true;
+
+const pageTitle = "OLSP MineeMe Review: AI Facebook Engagement Chrome Extension — Independent Analysis";
+const pageDescription =
+  "An independent, research-based review of OLSP MineeMe: what the $27/month Chrome extension does, how it uses your OpenAI API key to automate Facebook engagement, and who it actually benefits.";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLSP MineeMe Review: AI Facebook Engagement Chrome Extension — Is the $27/Month Tool Worth It?</title>
+<meta name="description" content="An independent, research-based review of OLSP MineeMe: what the $27/month Chrome extension does, how it uses your OpenAI API key to automate Facebook engagement, and who it actually benefits.">
+<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/olsp-mineeme/" />
+<style>
+  :root{
+    --ink:#1e293b;
+    --ink-light:#475569;
+    --bg:#ffffff;
+    --bg-soft:#f8fafc;
+    --line:#e2e8f0;
+    --accent:#2563eb;
+    --accent-soft:#eff6ff;
+    --warn:#92400e;
+    --warn-bg:#fef3c7;
+    --warn-border:#fcd34d;
+    --good:#166534;
+    --good-bg:#f0fdf4;
+    --bad:#991b1b;
+    --bad-bg:#fef2f2;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:17px;
+  }
+  h1,h2,h3{line-height:1.25; color:var(--ink);}
+  h1{font-size:1.9rem; margin:0 0 .5rem;}
+  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
+  h3{font-size:1.15rem; color:var(--accent);}
+  p{margin:0 0 1rem;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
+  li{margin-bottom:.4rem;}
+
+  .layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  .toc-wrap{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+    background:var(--bg-soft);
+    padding:1.5rem 1rem;
+  }
+  .toc-wrap h4{
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-light);
+    margin:0 0 .75rem;
+  }
+  .toc-wrap nav a{
+    display:block;
+    font-size:.9rem;
+    color:var(--ink-light);
+    padding:.45rem .6rem;
+    border-radius:6px;
+    margin-bottom:.15rem;
+  }
+  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
+  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+
+  main{padding:2.5rem 3rem 5rem; max-width:880px;}
+  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+
+  .hero-tag{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-size:.8rem;
+    font-weight:600;
+    padding:.3rem .7rem;
+    border-radius:99px;
+    margin-bottom:.8rem;
+  }
+  .verdict-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    margin:1.2rem 0 1.5rem;
+  }
+  .verdict-box p{margin-bottom:.4rem;}
+  .verdict-box p:last-child{margin-bottom:0;}
+
+  .callout{
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    margin:1.2rem 0;
+    border:1px solid var(--line);
+  }
+  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
+  .callout.warn strong{color:#78350f;}
+  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
+  .callout.info strong{color:#1e3a8a;}
+
+  .methodology{
+    background:#fff;
+    border:1px dashed #94a3b8;
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    font-size:.95rem;
+    color:var(--ink-light);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0 1.5rem;
+    font-size:.93rem;
+  }
+  th,td{
+    text-align:left;
+    padding:.6rem .7rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
+  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
+  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
+  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
+  .pc-card h3{margin-top:0;}
+  .pc-card.good h3{color:var(--good);}
+  .pc-card.bad h3{color:var(--bad);}
+  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+
+  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
+  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
+  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
+  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
+  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+
+  .quiz-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.3rem 1.4rem;
+  }
+  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
+  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
+  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
+  .quiz-box button{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:.6rem 1.2rem;
+    border-radius:8px;
+    font-size:.95rem;
+    cursor:pointer;
+  }
+  .quiz-box button:hover{background:#1d4ed8;}
+  #quiz-result{
+    margin-top:1rem;
+    padding:.9rem 1rem;
+    border-radius:8px;
+    background:#fff;
+    border:1px solid var(--line);
+    font-size:.93rem;
+    display:none;
+  }
+
+  .video-frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:.6rem;
+  }
+  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
+  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
+
+  details{
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:.6rem;
+    padding:.7rem 1rem;
+  }
+  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
+  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
+
+  figure{margin:1rem 0 1.6rem;}
+  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
+  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
+
+  .author-box{
+    display:flex;
+    align-items:flex-start;
+    gap:1.2rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    background:var(--bg-soft);
+  }
+  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
+  .author-box-info{flex:1;}
+  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
+  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
+  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
+  .author-box-info p:last-child{margin:0;}
+
+  .mobile-toc-btn{display:none;}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc-wrap{
+      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+      border-right:none; border-bottom:1px solid var(--line);
+      z-index:50;
+    }
+    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
+    .mobile-toc-btn{
+      display:block; position:sticky; top:0; z-index:60;
+      width:100%; text-align:left; background:var(--ink); color:#fff;
+      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
+    }
+    main{padding:1.5rem 1.2rem 3rem;}
+    .two-col{grid-template-columns:1fr;}
+    .score-label{flex:0 0 130px; font-size:.82rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
+  <aside class="toc-wrap" id="tocWrap">
+    <h4>On This Page</h4>
+    <nav id="tocNav">
+      <a href="#intro">1. First Impressions</a>
+      <a href="#overview">2. Overview &amp; Pricing</a>
+      <a href="#design">3. Platform &amp; Build Quality</a>
+      <a href="#performance">4. Performance Analysis</a>
+      <a href="#ux">5. User Experience</a>
+      <a href="#comparison">6. How It Compares</a>
+      <a href="#proscons">7. Pros &amp; Cons</a>
+      <a href="#history">8. History &amp; Updates</a>
+      <a href="#recommend">9. Who Should Use It</a>
+      <a href="#buy">10. Where to Get It</a>
+      <a href="#verdict">11. Final Verdict</a>
+      <a href="#faq">FAQ</a>
+      <a href="#author">About the Author</a>
+      <a href="#sources">12. Evidence &amp; Sources</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section id="intro">
+      <span class="hero-tag">Facebook Automation Tool · Updated June 2026</span>
+      <h1>OLSP MineeMe: An Independent, Research-Based Review</h1>
+
+      <p><strong>OLSP MineeMe</strong> is an AI-powered Chrome extension from the OLSP/GPT TOOLS 2 U ecosystem that automates Facebook comments and reactions using the user's own OpenAI API key. At a reported promotional price of $27/month (down from a stated regular price of $97/month), it installs in Chrome, connects to Facebook and an OpenAI key, and then runs in the background generating 2–4 line contextual comments and reactions on Facebook posts according to the user's preferred tone and custom prompts. Our short take: MineeMe does what it says on the label — it automates Facebook engagement — but every safety claim about how Facebook treats this kind of automation comes exclusively from the vendor, and no independent technical audit of account risk exists in the public domain. Buyers should weigh that gap carefully before subscribing.</p>
+
+      <div class="verdict-box">
+        <p><strong>Best for:</strong> Facebook-focused affiliate marketers and online business owners who are already active on the platform, have content worth surfacing, and want to reduce the manual time burden of daily engagement without outsourcing their voice entirely.</p>
+        <p><strong>Not ideal for:</strong> anyone looking for a passive income tool, people who primarily use SEO or non-Facebook traffic strategies, or anyone unwilling to accept unverified vendor safety claims about Facebook account risk.</p>
+      </div>
+
+      <h3>What Is It and Who Is It For?</h3>
+      <p>MineeMe sits within Wayne Crowe's OLSP ecosystem as one of several optional "power tools" listed on the GPT TOOLS 2 U product hub, alongside tools like Leads Miner. The vendor markets it at Facebook content creators, affiliate marketers, coaches, and online business owners who are getting some traction on the platform but find it hard to maintain the daily engagement pace that Facebook's algorithm reportedly rewards. The core proposition is delegating the repetitive work of commenting and reacting to an AI layer — fed by the user's own OpenAI API key — so the profile stays active even when the user is offline.</p>
+
+      <h3>Author Background &amp; Review Methodology</h3>
+      <div class="methodology">
+        <p><strong>Who wrote this:</strong> This review was prepared by Profit and Privilege's editorial research team, which evaluates online business, marketing, and digital tools with particular attention to vendor claims that cannot be independently verified — including platform safety assurances, algorithm impact claims, and income projections.</p>
+        <p><strong>How this review was built:</strong> We did not purchase, install, or personally test MineeMe. This article is based entirely on independent desk research: the product's official sales page (mineeme.com and products.olspsystem.com), GPT TOOLS 2 U product listings, a publicly available independent PDF review, third-party collection pages, JVZoo affiliate records, and social media promotional posts. Where a claim could not be independently verified — including all safety and reach claims — we say so explicitly.</p>
+      </div>
+    </section>
+
+    <section id="overview">
+      <h2>MineeMe Overview &amp; Pricing</h2>
+      <p>MineeMe is positioned within the OLSP ecosystem as an optional engagement tool — not a core tier requirement — designed to handle the daily Facebook activity that keeps a profile visible in the algorithm. An OLSP upgrade guidance article explicitly suggests members "pick one" between MineeMe and Leads Miner depending on whether they need engagement automation or lead prospecting more urgently, framing them as complementary options rather than sequential upgrades.</p>
+
+      <h3>What's Included (Vendor Claims)</h3>
+      <ul>
+        <li><strong>AI Comment Engine:</strong> generates naturally written 2–4 line comments on Facebook posts based on the user's defined tone, voice, prompts, and style — powered by the user's own OpenAI API key.</li>
+        <li><strong>Automated reactions:</strong> alongside commenting, MineeMe reacts to posts to maintain consistent engagement signals across the profile's feed.</li>
+        <li><strong>Safe activity controls:</strong> warm-up and cool-down cycles that pace actions to stay within what the vendor describes as "Facebook's natural boundaries," with one-click pause and resume.</li>
+        <li><strong>Custom prompt templates:</strong> users can define and adjust prompts to shape the tone and content of generated comments.</li>
+        <li><strong>Consistent daily presence:</strong> keeps the profile active while the user is sleeping, working, or away — described as "alive 24/7" in vendor copy.</li>
+        <li><strong>Step-by-step training:</strong> gated training content included with purchase to guide setup and usage.</li>
+        <li><strong>Ongoing updates and support</strong> from the OLSP ecosystem.</li>
+      </ul>
+
+      <div class="callout warn">
+        <strong>Claims caution:</strong> All feature descriptions above come from the vendor sales page. We could not test the extension, verify the quality or naturalness of AI-generated comments, or independently confirm that the warm-up/cool-down cycles prevent Facebook account penalties. No independent technical audit of these safety claims exists in public sources.
+      </div>
+
+      <h3>Reported Pricing</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Offer</th><th>Price</th><th>Notes</th></tr>
+        <tr><td>Promotional / "today's" price</td><td>$27/month</td><td>Listed on the official sales page as a limited-time price; confirmed by an independent OLSP upgrade guide as the active price as of 2026</td></tr>
+        <tr><td>Regular / full price (vendor-stated)</td><td>$97/month</td><td>Stated on the sales page as the standard rate; the promotional discount is presented as ongoing but unspecified in duration</td></tr>
+        <tr><td>JVZoo funnel pricing (late 2025)</td><td>~$26.24 average</td><td>JVZoo affiliate record shows 500+ sales at this average price; whether this was a one-time license or subscription introductory price cannot be confirmed</td></tr>
+        <tr><td>Refund policy</td><td>14-day money-back guarantee</td><td>Stated on vendor sales page; "cancel anytime" for subscription; independent verification of refund practices is not available</td></tr>
+      </table>
+      </div>
+
+      <div class="callout warn">
+        <strong>Pricing caution:</strong> The $27/month figure is the most consistently reported price across the official sales page and independent OLSP guides. The $97/month "regular price" is a vendor-stated comparison figure used to frame the discount; whether it reflects a real price that has ever been charged is not independently verifiable. Confirm current pricing directly on the official product page before subscribing.
+      </div>
+    </section>
+
+    <section id="design">
+      <h2>Platform &amp; Build Quality</h2>
+      <p>We did not install or interact with MineeMe directly, so the following is based on vendor descriptions, sales page materials, and social media demo footage referenced in the research brief.</p>
+
+      <h3>Chrome Extension Format</h3>
+      <p>MineeMe is distributed as a Chrome browser extension, which means it runs locally in the user's browser rather than as a cloud-based SaaS product. This architecture has practical implications: it requires Chrome to be open and running on a machine where the extension is active. It does not run autonomously in the background on a server, meaning engagement pauses if Chrome is closed. The vendor describes a three-step setup — install, connect, start — marketed as completable in approximately three minutes with no technical skills required.</p>
+
+      <h3>OpenAI API Integration</h3>
+      <p>A key design choice that distinguishes MineeMe from simpler comment-spinning tools is the use of the user's own OpenAI API key. This means comment generation is powered by OpenAI's language models directly, rather than a proprietary comment database or template library. It also means OpenAI API usage costs fall to the user separately from the MineeMe subscription — a cost factor the vendor sales page does not prominently address. At typical OpenAI API rates for GPT-4o-mini or similar models, comment generation at light daily volumes would likely represent a modest additional expense, but this depends entirely on usage volume and the model selected.</p>
+
+      <div class="callout info">
+        <strong>Cost note:</strong> No ChatGPT Plus subscription is required — only a standard OpenAI API key. API usage is billed separately by OpenAI based on tokens consumed. For light daily engagement at $27/month for MineeMe, total monthly cost may exceed the subscription price depending on comment volume and chosen AI model. Verify current OpenAI API pricing independently.
+      </div>
+
+      <h3>Safety Controls and the Facebook Risk Question</h3>
+      <p>The vendor prominently addresses Facebook safety concerns in the sales copy, describing warm-up and cool-down cycles, natural pause patterns, and behavior that "mimics real human behaviour." The marketing explicitly states it is "not a bot… not a spammer… not random actions… not a risky automation." These are vendor assurances. Facebook's Terms of Service prohibit automated activity on the platform, including automated likes, follows, and comments generated by software rather than human action. Whether warm-up/cool-down pacing is sufficient to avoid detection, or how Facebook's systems would classify AI-generated comments at scale, cannot be confirmed from any independent public source. All safety assurances come solely from the vendor.</p>
+
+      <h3>GPT TOOLS 2 U Ecosystem Placement</h3>
+      <p>MineeMe is listed on the GPT TOOLS 2 U product hub alongside other OLSP-affiliated tools including Leads Miner. The product hub frames MineeMe as part of a suite "for regular people" who want to generate commissions online, positioning it as an engagement support tool rather than a standalone business system. The independent OLSP upgrade guidance article explicitly categorizes MineeMe at $27/month as an optional add-on with the note to "pick one" between it and Leads Miner based on individual workflow priorities.</p>
+    </section>
+
+    <section id="performance">
+      <h2>Performance Analysis</h2>
+
+      <h3>How MineeMe Generates Engagement</h3>
+
+      <figure>
+        <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the MineeMe three-step workflow: install and connect OpenAI API key, MineeMe auto-comments and reacts on Facebook, resulting in more reach and warm conversations">
+          <rect x="0" y="0" width="640" height="230" fill="#f8fafc"/>
+          <!-- Step 1 -->
+          <rect x="20" y="75" width="130" height="80" rx="8" fill="#2563eb"/>
+          <text x="85" y="107" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Install extension</text>
+          <text x="85" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">+ connect your</text>
+          <text x="85" y="137" fill="#d1d5db" font-size="11" text-anchor="middle" font-family="Arial">OpenAI API key</text>
+          <!-- Arrow 1 -->
+          <line x1="150" y1="115" x2="240" y2="115" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="240,109 252,115 240,121" fill="#94a3b8"/>
+          <!-- Step 2 -->
+          <rect x="255" y="75" width="130" height="80" rx="8" fill="#0f172a"/>
+          <text x="320" y="107" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">MineeMe auto-</text>
+          <text x="320" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">comments &amp; reacts</text>
+          <text x="320" y="137" fill="#d1d5db" font-size="11" text-anchor="middle" font-family="Arial">on Facebook 24/7</text>
+          <!-- Arrow 2 -->
+          <line x1="385" y1="115" x2="475" y2="115" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="475,109 487,115 475,121" fill="#94a3b8"/>
+          <!-- Step 3 -->
+          <rect x="490" y="75" width="130" height="80" rx="8" fill="#166534"/>
+          <text x="555" y="104" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">More reach,</text>
+          <text x="555" y="119" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">profile visits &amp;</text>
+          <text x="555" y="134" fill="#d1fae5" font-size="11" text-anchor="middle" font-family="Arial">warm conversations</text>
+          <!-- Step labels -->
+          <text x="85" y="172" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Arial">Step 1</text>
+          <text x="320" y="172" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Arial">Step 2</text>
+          <text x="555" y="172" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Arial">Vendor-claimed outcome</text>
+          <!-- Footer -->
+          <text x="10" y="215" fill="#94a3b8" font-size="10" font-family="Arial" font-style="italic">Workflow described by vendor — outcomes are vendor and anecdotal claims, not independently verified results.</text>
+        </svg>
+        <figcaption>Original illustration of the MineeMe workflow as described on the vendor sales page — not a screenshot of the extension interface.</figcaption>
+      </figure>
+
+      <h3>Comment Generation Mechanics</h3>
+      <p>Once active, MineeMe uses the user's OpenAI API key to generate comments on Facebook posts appearing in the user's feed or defined targets. Comments are described as 2–4 lines and shaped by the user's custom prompts, tone settings, and style preferences — the intent being that output reads like the user wrote it rather than a generic template. The warm-up and cool-down cycles regulate the pace of actions, with the vendor claiming this keeps activity within patterns that resemble organic human behavior. The user can pause, resume, and adjust prompts at any time.</p>
+
+      <h3>Reach and Visibility Claims</h3>
+      <p>Vendor marketing states that MineeMe users will see "more reach on every post," "more profile visits," "more algorithm love," and "more warm conversations." These claims are based on the premise that Facebook's algorithm rewards accounts that engage consistently and daily, and that MineeMe maintains that signal even during offline periods. These are <strong>vendor claims</strong>. Facebook's algorithm behavior is not publicly documented in sufficient detail to confirm or deny these specific outcomes, and no independent study of MineeMe's actual effect on organic reach has been published.</p>
+
+      <h3>Independent Reviewer Report (Lead-Gen Platform Version)</h3>
+      <p>A publicly available PDF review describes a version of MineeMe as an AI-driven lead generation and outreach platform with dynamic data mining, verified contact information, smart segmentation, and personalized automated follow-ups. That reviewer reported campaign setup time dropping from approximately six hours to under one hour, and cited outreach open rates of 71% and reply rates of 21% in a local business context. These figures are self-reported by a single reviewer and could not be independently verified. Additionally, the lead-generation platform described in that review may refer to a broader or different version of MineeMe rather than the Facebook Chrome extension sold via OLSP — the research brief notes this ambiguity explicitly.</p>
+
+      <div class="callout warn">
+        <strong>Account risk warning:</strong> Facebook's Terms of Service prohibit automated engagement generated by software. No independent technical audit of MineeMe's safety controls exists in any public source — all safety assurances come from the vendor. The risk of account restriction, reduced reach, or suspension from automated engagement cannot be assessed independently and should be treated as a real, unquantified risk before subscribing.
+      </div>
+    </section>
+
+    <section id="ux">
+      <h2>User Experience</h2>
+
+      <h3>Setup Process</h3>
+      <p>According to vendor descriptions and social media demo footage, setup involves three steps: install the MineeMe Chrome extension, connect it to a Facebook account and an OpenAI API key, then click "Start Engagement." The vendor markets this as a three-minute process requiring no technical skills. An OpenAI API key requires creating a free OpenAI account and adding billing information — a step not highlighted in the primary vendor copy but necessary before the extension can generate comments. Users without an existing OpenAI account should factor in this preliminary setup.</p>
+
+      <h3>Daily Usage</h3>
+      <p>Once running, MineeMe operates within the Chrome browser, generating comments and reactions on Facebook content as the user's browser session progresses. Because it is a browser extension rather than a server-side tool, it requires an active Chrome session to function — it does not run autonomously on a server while the computer is off. Users adjust prompts, pause the tool, or modify tone settings through the extension's interface. The vendor positions the ongoing experience as largely passive: set the parameters, start the extension, and let it maintain the engagement cadence.</p>
+
+      <h3>Customization and Control</h3>
+      <p>Custom prompt templates allow users to define what the AI should sound like — formal, casual, enthusiastic, question-asking, value-adding — and adjust these over time as their promotional goals shift. The one-click pause and resume give users control over when the tool runs, which is relevant for managing activity around sensitive periods or when the user wants to engage manually. Training content included with purchase walks through this configuration, though the content itself is gated and cannot be assessed pre-purchase.</p>
+
+      <h3>Learning Curve</h3>
+      <p>Setting up an OpenAI API key and understanding how to write effective prompts may require a short learning investment for users with no prior experience with AI APIs. For the intended audience of active Facebook marketers, this is unlikely to be a significant barrier. The bigger learning investment is in calibrating prompts to produce comments that genuinely sound like the user's voice rather than generic AI output — a quality control task that requires ongoing attention rather than a one-time setup.</p>
+    </section>
+
+    <section id="comparison">
+      <h2>How MineeMe Compares to Alternatives</h2>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Tool</th><th>Type</th><th>Primary Function</th><th>Price (approx.)</th><th>Key Difference vs MineeMe</th></tr>
+        <tr><td><strong>OLSP MineeMe</strong></td><td>Chrome extension</td><td>AI comments + reactions on Facebook using OpenAI API</td><td><strong>$27/month</strong></td><td>—</td></tr>
+        <tr><td>Engagement Monster</td><td>Chrome extension</td><td>Reactions and engagement on friends' posts; scheduled engagement automation</td><td>Freemium</td><td>Less AI personalization; not integrated with OLSP ecosystem</td></tr>
+        <tr><td>Content Engage AI / Comment Engager Pro</td><td>Chrome extension</td><td>Automates replies to comments using preset randomized message groups</td><td>Paid</td><td>Template-based rather than AI-generated; focuses on incoming replies rather than outbound commenting</td></tr>
+        <tr><td>Member Grabber</td><td>Chrome extension</td><td>Facebook group lead capture</td><td>Paid</td><td>Lead collection tool, not engagement automation; different use case</td></tr>
+        <tr><td>MessAI</td><td>Chrome extension</td><td>AI-powered Messenger response generation using Gemini, GPT, or Claude</td><td>Paid</td><td>Focused on Messenger conversations rather than feed commenting</td></tr>
+        <tr><td>Facebook Prospecting AI</td><td>Browser tool</td><td>Automates friend requests, comments, likes, and messaging based on rules</td><td>Paid</td><td>Broader action scope; rules-based rather than AI-generated; not OLSP-integrated</td></tr>
+      </table>
+      </div>
+      <div class="callout info">
+        <strong>Category context:</strong> All Facebook engagement automation tools — including those listed above — operate in a space where Facebook's Terms of Service prohibit automated activity. The risks associated with automated engagement are not unique to MineeMe; they apply across this product category. The vendor claims for each tool, including safety assurances, should be evaluated with this in mind.
+      </div>
+    </section>
+
+    <section id="proscons">
+      <h2>Pros &amp; Cons</h2>
+      <div class="two-col">
+        <div class="pc-card good">
+          <h3>What We Found, Based on Research</h3>
+          <ul>
+            <li>Uses OpenAI's language models directly via the user's own API key, which is a meaningfully different approach from template-based comment spinners — quality of output depends on the model rather than a fixed word bank.</li>
+            <li>Warm-up and cool-down pacing controls show awareness of platform risk, even if the safety of these controls cannot be independently verified.</li>
+            <li>At $27/month, the promotional price is low relative to the stated $97/month regular price and competitive with comparable niche Facebook automation tools.</li>
+            <li>14-day money-back guarantee and cancel-anytime subscription reduce financial commitment risk for trying the product.</li>
+            <li>Custom prompt templates give users meaningful control over the tone and content of generated comments rather than fully generic output.</li>
+            <li>One independent PDF reviewer reported significant time savings (from ~6 hours to under 1 hour per campaign) and strong outreach metrics — though these may refer to a different or extended version of the platform.</li>
+          </ul>
+        </div>
+        <div class="pc-card bad">
+          <h3>Areas for Caution</h3>
+          <ul>
+            <li>Facebook ToS risk: Facebook prohibits automated engagement. No independent technical audit of MineeMe's safety controls exists; all safety claims come from the vendor. Account restriction or suspension is a real, unquantified risk.</li>
+            <li>OpenAI API costs are not included in the subscription and add a variable monthly expense on top of the $27/month fee — not disclosed prominently in vendor copy.</li>
+            <li>Requires Chrome to be open and running; not a server-side tool. Engagement pauses when the browser is closed, limiting the "24/7" claim to periods when the machine and browser are active.</li>
+            <li>No dedicated mobile app; no advanced CRM integrations — limitations noted by independent reviewers as areas for improvement.</li>
+            <li>No Reddit or mainstream independent review community discussion found for this specific product; most public coverage is from OLSP affiliates with promotional incentives.</li>
+            <li>Not a guaranteed income solution: independent reviewers explicitly state that results depend on user effort, strategy, and existing audience, not on the tool alone.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>History &amp; Updates</h2>
+      <p>MineeMe was launched via JVZoo in late 2025, accumulating more than 500 sales at an average price of approximately $26.24 according to the JVZoo affiliate record. The JVZoo product was listed under the vendor alias "Batman (Verified)" rather than Wayne Crowe's name or a formal company entity — a detail worth noting for buyers attempting to verify the product's ownership chain. Based on the available evidence, MineeMe can be attributed to the OLSP/Traffic Domination ecosystem led by Wayne Crowe, with the JVZoo alias functioning as a distribution channel identity.</p>
+
+      <p>The product is listed on the GPT TOOLS 2 U hub — an OLSP-aligned product collection — alongside Leads Miner and other affiliate marketing tools. The identical copy appearing on both mineeme.com and the OLSP product page (products.olspsystem.com) confirms these are the same product rather than separate tools sharing a name. The JVZoo record does not clarify whether early sales were one-time licenses or the subscription model now active; the current offering is clearly presented as a $27/month recurring subscription.</p>
+
+      <div class="callout info">
+        <strong>Verification note:</strong> The research brief notes that an independent PDF review describes a broader MineeMe "lead generation and outreach platform" with data mining, verified contact details, and CRM features that go significantly beyond the Facebook Chrome extension described on the official sales page. Whether this refers to an earlier version, a separate product using the same name, or planned features not yet reflected in the public sales page could not be confirmed. This review covers the Facebook Chrome extension as sold via the OLSP product page.
+      </div>
+    </section>
+
+    <section id="recommend">
+      <h2>Who Should Use OLSP MineeMe?</h2>
+
+      <h3>Best For</h3>
+      <ul>
+        <li>Active Facebook marketers who already post consistently and have an established profile, and whose main constraint is the time required to manually comment, react, and maintain daily engagement across their feed.</li>
+        <li>OLSP affiliates and members who are already using the ecosystem's training and funnels and want a tool that complements their existing Facebook-first promotional workflow.</li>
+        <li>Affiliate marketers and coaches comfortable accepting the account risk that comes with any Facebook automation tool, with realistic expectations that safety claims are vendor-asserted rather than independently verified.</li>
+        <li>People willing to invest setup time in crafting effective custom prompts to ensure AI-generated comments reflect their actual voice and add genuine value to conversations rather than producing generic responses.</li>
+      </ul>
+
+      <h3>Skip If</h3>
+      <ul>
+        <li>You are not already active on Facebook as a content creator or marketer. MineeMe automates engagement on an existing active presence — it does not build an audience or create content from scratch.</li>
+        <li>Your Facebook account is your primary business asset and you are not comfortable with any level of unverified automation risk. The absence of independent safety audits is a meaningful gap for anyone with a high-stakes account.</li>
+        <li>You prefer SEO, YouTube, email, or non-Facebook traffic strategies. MineeMe is entirely Facebook-specific and provides no value outside that platform.</li>
+        <li>You expect a push-button income outcome. Independent reviewers explicitly state that results depend on user strategy, existing audience, and effort — not on the tool alone.</li>
+      </ul>
+
+      <h3>Alternatives Worth Comparing</h3>
+      <p>If your priority is Facebook lead generation rather than engagement, the independent OLSP upgrade guide suggests considering Leads Miner ($27/month) as an alternative in the same price bracket — the two tools address different bottlenecks rather than being stacked upgrades. If your engagement needs extend beyond Facebook or you want Messenger-specific AI assistance, MessAI covers a different slice of the same platform. For general affiliate marketing without Facebook-specific tools, focusing investment on the core OLSP tier structure (Megalink, Live Profit Builders) may be a better starting point than optional engagement add-ons.</p>
+    </section>
+
+    <section id="buy">
+      <h2>Where to Get It &amp; Pricing</h2>
+      <p>MineeMe is available directly through the OLSP product page and the standalone mineeme.com domain, which share identical sales copy. It is also distributed via JVZoo affiliate funnels. The official OLSP ecosystem entry point for the product is the product page below, which includes the current promotional pricing and the 14-day guarantee terms.</p>
+
+      <div class="callout warn">
+        <strong>Before you subscribe:</strong> Verify the current price on the live checkout page — the $27/month promotional figure may change. Confirm what OpenAI API costs will be on top of the subscription fee based on your expected usage volume. Read the cancellation and refund terms before entering payment details. No independent review of MineeMe's refund practices is available; the 14-day guarantee appears in vendor copy only.
+      </div>
+
+      <p>If you're ready to subscribe to MineeMe directly:</p>
+      <p><a href="https://products.olspsystem.com/mineeme-268398?olsp=1006001" target="_blank" rel="noopener sponsored">Get OLSP MineeMe — official product page →</a></p>
+      <p>Or explore the OLSP ecosystem through the free live training before committing to any paid tool:</p>
+      <p><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP New Live Training — free entry point →</a></p>
+    </section>
+
+    <section id="verdict">
+      <h2>Final Verdict</h2>
+      <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+      <div class="score-row"><div class="score-label">AI Comment Quality</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+      <div class="score-row"><div class="score-label">Platform Safety Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
+      <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
+      <div class="score-row"><div class="score-label">Value at $27/Month</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
+
+      <p>OLSP MineeMe occupies a legitimate niche: Facebook-focused marketers who want automated engagement without living on the platform all day are a real audience with a real problem. Using the user's own OpenAI API key rather than pre-written templates is a meaningful technical choice that raises the ceiling on comment quality. At $27/month it sits at an accessible price point for the category. The honest limitation is the one the vendor cannot resolve through marketing copy: Facebook does not approve of automated engagement, and no independent party has tested whether MineeMe's warm-up/cool-down approach reliably avoids account action. That risk is unverified and unquantified. If you use Facebook for business and understand that any automation tool in this category carries that risk, MineeMe is worth evaluating on its own merits. If account safety is a non-negotiable, no automation tool in this category — MineeMe or otherwise — can credibly offer that assurance.</p>
+
+      <div class="quiz-box" id="quizBox">
+        <h3 style="margin-top:0;">Quick Self-Check: Is MineeMe the Right Tool for You?</h3>
+        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+        <fieldset>
+          <legend>Is Facebook organic engagement a current, active part of your marketing strategy — not something you're planning to start from scratch?</legend>
+          <label><input type="radio" name="q1" value="2"> Yes — I'm already active on Facebook and posting regularly</label>
+          <label><input type="radio" name="q1" value="0"> No — I'm not yet established on Facebook as a marketer</label>
+        </fieldset>
+        <fieldset>
+          <legend>Are you comfortable accepting that no independent safety audit exists for this tool's interaction with Facebook's Terms of Service?</legend>
+          <label><input type="radio" name="q2" value="2"> Yes — I understand the risk and can manage it</label>
+          <label><input type="radio" name="q2" value="0"> No — I need verified safety assurances before automating anything on my account</label>
+        </fieldset>
+        <fieldset>
+          <legend>Do you have realistic expectations — understanding that the tool automates engagement activity but does not guarantee reach, leads, or income on its own?</legend>
+          <label><input type="radio" name="q3" value="2"> Yes — I treat it as a time-saving tool, not an income guarantee</label>
+          <label><input type="radio" name="q3" value="0"> I'm hoping it will generate significant results passively on its own</label>
+        </fieldset>
+        <button type="button" onclick="evaluateQuiz()">See My Result</button>
+        <div id="quiz-result"></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>Does MineeMe risk getting my Facebook account restricted or banned?</summary>
+        <p>This is the most important question for any prospective buyer and the one with the least satisfying answer: we don't know, and neither does any independent reviewer. Facebook's Terms of Service prohibit automated engagement — comments, reactions, and other actions generated by software rather than a human. MineeMe's vendor addresses this by describing warm-up and cool-down pacing cycles designed to mimic natural human behavior, and explicitly states the tool is "not a bot" and "not a risky automation." These are vendor assurances only. No independent technical audit has been published testing whether these controls prevent Facebook from flagging or actioning accounts. Anyone using MineeMe — or any Facebook automation tool — should treat account risk as real and unverified, not resolved by vendor marketing language.</p>
+      </details>
+      <details>
+        <summary>Do I need a ChatGPT Plus subscription to use MineeMe?</summary>
+        <p>No — the vendor explicitly states that no ChatGPT Plus subscription is required. MineeMe uses a standard OpenAI API key, which is created through an OpenAI account with billing enabled. This is different from a ChatGPT Plus subscription. API usage is billed separately by OpenAI based on the number of tokens processed; for light daily engagement volumes this cost is likely modest, but it is an additional ongoing expense on top of the $27/month MineeMe subscription. Check current OpenAI API pricing before setting up to understand total monthly costs.</p>
+      </details>
+      <details>
+        <summary>Is MineeMe a Facebook bot?</summary>
+        <p>The vendor explicitly says it is not: "It's not a bot… not a spammer… not random actions." From a technical standpoint, MineeMe is a Chrome extension that triggers AI-generated actions on Facebook based on user-defined prompts and timing controls. Whether Facebook's systems would classify it as automated activity — which its Terms of Service prohibit — is a separate question from how the vendor characterizes it. The distinction between "a tool that automates Facebook actions" and "a bot" may matter more for marketing purposes than for how Facebook's detection systems categorize the behavior.</p>
+      </details>
+      <details>
+        <summary>What is the real monthly cost including the OpenAI API?</summary>
+        <p>The MineeMe subscription is $27/month at the promotional price. OpenAI API costs are additional and variable, based on the volume of comments generated and the AI model selected. For moderate daily engagement — say, 50–100 comments per day — OpenAI API costs at GPT-4o-mini rates would typically be a few dollars per month at current pricing, making total monthly cost approximately $30–$35. At higher volumes or with more capable (and expensive) models, costs increase proportionally. Verify current OpenAI API pricing independently, as rates change and depend on usage patterns.</p>
+      </details>
+    </section>
+
+    <section id="author">
+      <h2>About the Author</h2>
+      <div class="author-box">
+        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
+        <div class="author-box-info">
+          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
+          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
+          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
+          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2>Evidence &amp; Sources</h2>
+
+      <h3>Video Content</h3>
+      <p>The video below is a short promotional clip published under the hashtag #olsp and #affiliatemarketing explaining the motivation behind the MineeMe tool. It is not a neutral independent review — it is promotional content aligned with the OLSP ecosystem.</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/nGtmfQZ9Fwg" title="Promotional YouTube Short: Why MineeMe exists — OLSP affiliate marketing tool" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Promotional short video explaining the MineeMe concept. This is OLSP-aligned content, not an independent review. The creator may earn commissions from referral links.</p>
+
+      <h3>Sources &amp; References</h3>
+      <ul>
+        <li><a href="https://products.olspsystem.com/mineeme-268398?olsp=1006001" target="_blank" rel="noopener sponsored">OLSP MineeMe — official product page</a></li>
+        <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP New Live Training — official live training entry point</a></li>
+        <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener">Trustpilot — OLSP System community reviews</a></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
+    </section>
+
+  </main>
+</div>
+
+<script is:inline>
+  // Mobile TOC toggle
+  const tocToggle = document.getElementById('tocToggle');
+  const tocWrap = document.getElementById('tocWrap');
+  if (tocToggle) {
+    tocToggle.addEventListener('click', () => {
+      tocWrap.classList.toggle('open');
+    });
+  }
+
+  // Scroll-spy active link highlighting
+  const sections = document.querySelectorAll('main section');
+  const tocLinks = document.querySelectorAll('#tocNav a');
+  const linkMap = {};
+  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = linkMap[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close mobile TOC after clicking a link
+  tocLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
+    });
+  });
+
+  // Quick self-check quiz
+  function evaluateQuiz(){
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const q3 = document.querySelector('input[name="q3"]:checked');
+    const result = document.getElementById('quiz-result');
+
+    if(!q1 || !q2 || !q3){
+      result.style.display = 'block';
+      result.textContent = 'Please answer all three questions first.';
+      return;
+    }
+
+    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
+    let message = '';
+    if(score >= 5){
+      message = "Based on your answers, MineeMe appears to align with your current situation — you're already active on Facebook, understand the unverified safety risk, and have realistic expectations about what the tool does. Verify current pricing and OpenAI API costs before subscribing.";
+    } else if(score >= 3){
+      message = "Your answers suggest a mixed fit. At least one important condition isn't fully in place — review the 'Skip If' section and the Facebook account risk warning above before committing to a monthly subscription.";
+    } else {
+      message = "Based on your answers, MineeMe likely isn't the right tool for your current situation. Building an active Facebook presence first, or exploring non-automation strategies, may be a better starting point.";
+    }
+    result.style.display = 'block';
+    result.textContent = message;
+  }
+</script>
+
+</body>
+</html>
