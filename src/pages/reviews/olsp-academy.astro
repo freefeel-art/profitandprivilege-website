@@ -214,6 +214,22 @@ const pageDescription =
   figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
   figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
 
+  .author-box{
+    display:flex;
+    align-items:flex-start;
+    gap:1.2rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    background:var(--bg-soft);
+  }
+  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
+  .author-box-info{flex:1;}
+  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
+  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
+  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
+  .author-box-info p:last-child{margin:0;}
+
   .mobile-toc-btn{display:none;}
 
   @media (max-width:900px){
@@ -256,6 +272,7 @@ const pageDescription =
       <a href="#buy">10. Where to Sign Up</a>
       <a href="#verdict">11. Final Verdict</a>
       <a href="#faq">FAQ</a>
+      <a href="#author">About the Author</a>
       <a href="#sources">12. Evidence &amp; Sources</a>
     </nav>
   </aside>
@@ -499,6 +516,19 @@ const pageDescription =
         <summary>Can a complete beginner realistically earn money with this?</summary>
         <p>It's possible, but we have no independently verified data on what a typical beginner actually earns. Self-reported progress videos exist publicly, but they are not audited and likely overrepresent successful members, which is common across this category of program.</p>
       </details>
+    </section>
+
+    <section id="author">
+      <h2>About the Author</h2>
+      <div class="author-box">
+        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
+        <div class="author-box-info">
+          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
+          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
+          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
+          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
+        </div>
+      </div>
     </section>
 
     <section id="sources">
