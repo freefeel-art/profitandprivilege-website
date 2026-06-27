@@ -1,0 +1,642 @@
+---
+export const prerender = true;
+
+const pageTitle = "TD Pages & Magick Link Special Offer Review — Independent Analysis";
+const pageDescription =
+  "An independent, research-based review of the TD Pages & Magick Link Special Offer: what you get, how the per-click earning model works, real costs after trial, and whether it fits your goals.";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD Pages &amp; Magick Link Special Offer Review — Independent Analysis</title>
+<meta name="description" content="An independent, research-based review of the TD Pages &amp; Magick Link Special Offer: what you get, how the per-click earning model works, real costs after trial, and whether it fits your goals.">
+<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/td-pages-magick-link-review/" />
+<style>
+  :root{
+    --ink:#1e293b;
+    --ink-light:#475569;
+    --bg:#ffffff;
+    --bg-soft:#f8fafc;
+    --line:#e2e8f0;
+    --accent:#2563eb;
+    --accent-soft:#eff6ff;
+    --warn:#92400e;
+    --warn-bg:#fef3c7;
+    --warn-border:#fcd34d;
+    --good:#166534;
+    --good-bg:#f0fdf4;
+    --bad:#991b1b;
+    --bad-bg:#fef2f2;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:17px;
+  }
+  h1,h2,h3{line-height:1.25; color:var(--ink);}
+  h1{font-size:1.9rem; margin:0 0 .5rem;}
+  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
+  h3{font-size:1.15rem; color:var(--accent);}
+  p{margin:0 0 1rem;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
+  li{margin-bottom:.4rem;}
+
+  .layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  .toc-wrap{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+    background:var(--bg-soft);
+    padding:1.5rem 1rem;
+  }
+  .toc-wrap h4{
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-light);
+    margin:0 0 .75rem;
+  }
+  .toc-wrap nav a{
+    display:block;
+    font-size:.9rem;
+    color:var(--ink-light);
+    padding:.45rem .6rem;
+    border-radius:6px;
+    margin-bottom:.15rem;
+  }
+  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
+  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+
+  main{padding:2.5rem 3rem 5rem; max-width:880px;}
+  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+
+  .hero-tag{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-size:.8rem;
+    font-weight:600;
+    padding:.3rem .7rem;
+    border-radius:99px;
+    margin-bottom:.8rem;
+  }
+  .verdict-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    margin:1.2rem 0 1.5rem;
+  }
+  .verdict-box p{margin-bottom:.4rem;}
+  .verdict-box p:last-child{margin-bottom:0;}
+
+  .callout{
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    margin:1.2rem 0;
+    border:1px solid var(--line);
+  }
+  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
+  .callout.warn strong{color:#78350f;}
+  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
+  .callout.info strong{color:#1e3a8a;}
+
+  .methodology{
+    background:#fff;
+    border:1px dashed #94a3b8;
+    border-radius:var(--radius);
+    padding:1rem 1.2rem;
+    font-size:.95rem;
+    color:var(--ink-light);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0 1.5rem;
+    font-size:.93rem;
+  }
+  th,td{
+    text-align:left;
+    padding:.6rem .7rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
+  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
+  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
+  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
+  .pc-card h3{margin-top:0;}
+  .pc-card.good h3{color:var(--good);}
+  .pc-card.bad h3{color:var(--bad);}
+  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+
+  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
+  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
+  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
+  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
+  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+
+  .quiz-box{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.3rem 1.4rem;
+  }
+  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
+  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
+  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
+  .quiz-box button{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:.6rem 1.2rem;
+    border-radius:8px;
+    font-size:.95rem;
+    cursor:pointer;
+  }
+  .quiz-box button:hover{background:#1d4ed8;}
+  #quiz-result{
+    margin-top:1rem;
+    padding:.9rem 1rem;
+    border-radius:8px;
+    background:#fff;
+    border:1px solid var(--line);
+    font-size:.93rem;
+    display:none;
+  }
+
+  .video-frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:.6rem;
+  }
+  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
+  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
+
+  details{
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:.6rem;
+    padding:.7rem 1rem;
+  }
+  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
+  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
+
+  figure{margin:1rem 0 1.6rem;}
+  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
+  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
+
+  .author-box{
+    display:flex;
+    align-items:flex-start;
+    gap:1.2rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.2rem 1.4rem;
+    background:var(--bg-soft);
+  }
+  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
+  .author-box-info{flex:1;}
+  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
+  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
+  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
+  .author-box-info p:last-child{margin:0;}
+
+  .mobile-toc-btn{display:none;}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc-wrap{
+      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+      border-right:none; border-bottom:1px solid var(--line);
+      z-index:50;
+    }
+    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
+    .mobile-toc-btn{
+      display:block; position:sticky; top:0; z-index:60;
+      width:100%; text-align:left; background:var(--ink); color:#fff;
+      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
+    }
+    main{padding:1.5rem 1.2rem 3rem;}
+    .two-col{grid-template-columns:1fr;}
+    .score-label{flex:0 0 130px; font-size:.82rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
+  <aside class="toc-wrap" id="tocWrap">
+    <h4>On This Page</h4>
+    <nav id="tocNav">
+      <a href="#intro">1. First Impressions</a>
+      <a href="#overview">2. Overview &amp; Pricing</a>
+      <a href="#design">3. Platform &amp; Build Quality</a>
+      <a href="#performance">4. Performance Analysis</a>
+      <a href="#ux">5. User Experience</a>
+      <a href="#comparison">6. How It Compares</a>
+      <a href="#proscons">7. Pros &amp; Cons</a>
+      <a href="#history">8. History &amp; Updates</a>
+      <a href="#recommend">9. Who Should Buy</a>
+      <a href="#buy">10. Where to Buy</a>
+      <a href="#verdict">11. Final Verdict</a>
+      <a href="#faq">FAQ</a>
+      <a href="#author">About the Author</a>
+      <a href="#sources">12. Evidence &amp; Sources</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section id="intro">
+      <span class="hero-tag">Independent Review · Updated June 2026</span>
+      <h1>What Is the TD Pages &amp; Magick Link Special Offer? An Independent, Research-Based Review</h1>
+
+      <p>The <strong>TD Pages &amp; Magick Link Special Offer</strong> is a bundled entry point into Wayne Crowe's OLSP System that pairs a $7 rotator affiliate link — the Magick Link — with a 14-day free trial of TD Pages, a landing-page builder priced at $47 per month after the trial. The central marketing claim is that every qualified click sent through your Magick Link earns $0.30, on top of standard affiliate commissions. Based on publicly available marketing pages and third-party commentary, our short take is this: the $7 entry price is genuinely low-risk and the TD Pages trial is a fair way to test a real software tool. However, the $0.30-per-click headline applies only to traffic purchased from OLSP's own in-house provider — not organic or independently sourced paid traffic — and the ongoing costs once both trials lapse can reach $70–$100 per month before any traffic spend. All earnings figures cited in promotional content are self-reported and unverified.</p>
+
+      <div class="verdict-box">
+        <p><strong>Best for:</strong> people who want a low-cost way to test a list-building workflow, are comfortable with a per-click earning model that requires buying traffic from OLSP's recommended provider, and intend to evaluate the TD Pages trial before committing to any ongoing monthly subscription.</p>
+        <p><strong>Not ideal for:</strong> anyone looking for a passive or guaranteed income stream, people who want transparent and independently audited earnings data before buying, or anyone uncomfortable with recurring subscription costs that start automatically after the trial period ends.</p>
+      </div>
+
+      <h3>What Is It, and Who Is It For?</h3>
+      <p>The TD Pages &amp; Magick Link Special Offer is positioned as a complete beginner's list-building system: use TD Pages to build squeeze pages that capture email opt-ins, then direct that list to your Magick Link rotator, which cycles through curated OLSP affiliate offers and earns you per-click payouts plus commissions on any upgrades. It is aimed at people with little or no email marketing experience who want a structured, pre-built entry into list-based affiliate income without building a funnel from scratch. The offer sits within the broader <a href="https://olsp.profitandprivilege.com/reviews/olsp-academy/">OLSP Academy ecosystem</a> and is designed to feed new users into the same commission system as the Mega Link training.</p>
+
+      <h3>Author Background &amp; Review Methodology</h3>
+      <div class="methodology">
+        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business, marketing, and digital-education products, with attention to consumer-protection norms around income claims, conditional earning structures, and subscription cost disclosure.</p>
+        <p><strong>How this review was built:</strong> We did not purchase, install, or personally test the TD Pages &amp; Magick Link offer. This article is based entirely on independent desk research: the official TD Pages and Magick Link sales pages, third-party review sites, and publicly documented pricing and terms. Where a claim could not be independently verified — including all earnings figures — we say so explicitly rather than presenting it as fact.</p>
+      </div>
+    </section>
+
+    <section id="overview">
+      <h2>TD Pages &amp; Magick Link: Overview &amp; Pricing</h2>
+      <p>The offer bundles two products from within the OLSP ecosystem, both created under Wayne Crowe's brand. The Magick Link is the affiliate link component; TD Pages is the page-builder software that helps members build the squeeze pages and landing pages those links need to convert traffic into opt-ins and clicks.</p>
+
+      <h3>What's Included</h3>
+      <ul>
+        <li><strong>Magick Link ($7 one-time):</strong> a personal rotator affiliate link that cycles clicks through a library of curated OLSP offers. Owners earn a reported $0.30 per qualifying click and 100% commission ($7) on each new Magick Link resale. Also includes 100 free clicks as a bonus — see the pricing caution below for the conditions attached.</li>
+        <li><strong>TD Pages (14-day free trial, then $47/month):</strong> a landing-page and squeeze-page builder with a library of pre-built, high-converting templates. Includes unlimited campaigns, monthly new template additions, 10,000 impressions per month on the entry plan, a 2-hour list-building training video, and access to "Traffic Nemesis" training content.</li>
+        <li><strong>Earn-As-You-Learn training:</strong> step-by-step onboarding covering how to build a landing page in TD Pages, connect it to a recommended autoresponder, and drive the initial clicks through your Magick Link.</li>
+        <li><strong>Live coaching sessions:</strong> access to recurring OLSP live sessions (reported as three per week — Tuesday, Thursday, Saturday) with Wayne Crowe covering traffic and list-building strategy.</li>
+        <li><strong>OLSP community access:</strong> entry to the broader OLSP member community alongside users of other OLSP products including <a href="https://olsp.profitandprivilege.com/reviews/olsp-community-builders/">OLSP Community Builders</a>.</li>
+        <li><strong>Optional upsells:</strong> advanced roadmap training, AI tools, and a "live commission system" are described in marketing as optional paid upgrades beyond the core $7 entry.</li>
+      </ul>
+
+      <h3>Reported Pricing</h3>
+      <div class="callout warn">
+        <strong>Pricing and conditions caution:</strong> The $0.30-per-click earning applies only to traffic purchased from OLSP's own in-house solo ad provider — not organic social traffic or independently sourced paid traffic. The 100 free clicks bonus requires that you use TD Pages and OLSP's recommended autoresponder; using alternative tools disqualifies you from this bonus. TD Pages pricing found across public sources ranges from $47 to $97 per month depending on the plan tier, with a separate lifetime Pro option reported at $497. Treat all figures below as a general guide drawn from publicly available pages, not a confirmed current price list — verify directly on the official sales pages before purchasing anything.
+      </div>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Component</th><th>Reported Cost</th><th>What It Includes</th></tr>
+        <tr><td>Magick Link</td><td>$7 one-time</td><td>Rotator affiliate link, 100% commission on resales, 100 free clicks (conditional), 14-day TD Pages trial, Earn-As-You-Learn training, live coaching access, OLSP community</td></tr>
+        <tr><td>TD Pages (entry plan)</td><td>$47/month after 14-day trial</td><td>Unlimited campaigns, monthly new templates, 10,000 impressions/month, 2-hour list-building training, Traffic Nemesis access, 30-day money-back guarantee</td></tr>
+        <tr><td>TD Pages Pro (monthly)</td><td>$97/month</td><td>250,000 impressions/month, unlimited credits, unlimited domains, all entry features</td></tr>
+        <tr><td>TD Pages Pro (lifetime)</td><td>$497 one-time</td><td>All Pro features, no recurring charge</td></tr>
+        <tr><td>Recommended autoresponder</td><td>~$15–$30/month (third-party)</td><td>Required to qualify for 100 free clicks and the full workflow; not included in the $7 purchase</td></tr>
+      </table>
+      </div>
+      <p><strong>Target audience:</strong> Marketing copy positions the offer at complete beginners who want a done-for-you list-building setup without building a funnel from scratch. In practice, anyone evaluating it should be aware that the headline "$0.30 per click" earning requires purchasing specific traffic, not simply sharing the Magick Link freely — and that the combined monthly cost of TD Pages plus an autoresponder is a recurring financial commitment, not a one-time fee.</p>
+    </section>
+
+    <section id="design">
+      <h2>Platform &amp; Build Quality</h2>
+      <p>TD Pages is a web-based software-as-a-service (SaaS) landing-page builder, accessible through a browser rather than downloaded to a local machine. Based on publicly available documentation and third-party descriptions, the platform provides a drag-and-drop or template-selection interface for building squeeze pages, pop-ups, and full-screen call-to-action pages. One third-party source describes TD Pages as a white-label version of Wishloop, an established page-building platform — we could not independently verify this at the time of writing, but it is consistent with the feature set described.</p>
+
+      <h3>Template Library and Landing Page Quality</h3>
+      <p>Marketing materials for TD Pages cite "conversion rates of up to 70%," though this figure is heavily caveated on the official page itself ("depends on a number of factors — every campaign is different"). The template library is described as growing monthly, with new designs added on a rolling basis. The offer at offers.tdpages.com/magick/ positions the templates as pre-optimized specifically for OLSP-style affiliate list-building campaigns, rather than general-purpose business landing pages.</p>
+
+      <h3>Trust Signals and Platform Risk</h3>
+      <p>TD Pages offers a 30-day money-back guarantee, which provides a meaningful safety net beyond the initial 14-day trial. The Magick Link has a separate "Show Me It Works" 30-day money-back guarantee on the $7 purchase. Both guarantees are self-reported — we could not verify the refund process first-hand.</p>
+
+      <h3>Long-Term Considerations</h3>
+      <p>Both tools are tied to the OLSP ecosystem. If TD Pages changes its pricing structure, retires templates, or is discontinued, any pages you have built within the platform may become inaccessible. The Magick Link's per-click payout model depends on OLSP maintaining its current rotator and commission structure. Unlike owning your own domain and hosting independently built pages, using a SaaS tool like TD Pages means the underlying infrastructure is outside your control. This is a standard risk for all subscription page builders, not unique to TD Pages.</p>
+    </section>
+
+    <section id="performance">
+      <h2>Performance Analysis</h2>
+
+      <h3>4.1 Core Functionality: How the TD Pages &amp; Magick Link System Earns Money</h3>
+      <p>The workflow is designed as a three-stage list-building funnel: build a landing page in TD Pages, drive traffic to it, capture email opt-ins, and then direct those subscribers to your Magick Link — which rotates them through curated OLSP affiliate offers while earning $0.30 per qualifying click and commissions on any upgrades they purchase.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the TD Pages and Magick Link earn-as-you-learn workflow">
+          <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
+          <rect x="10" y="75" width="130" height="70" rx="8" fill="#2563eb"/>
+          <text x="75" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Build squeeze</text>
+          <text x="75" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">page (TD Pages)</text>
+          <line x1="140" y1="110" x2="168" y2="110" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="168,104 180,110 168,116" fill="#94a3b8"/>
+          <rect x="183" y="75" width="130" height="70" rx="8" fill="#0f172a"/>
+          <text x="248" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Drive traffic</text>
+          <text x="248" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(solo ads / organic)</text>
+          <line x1="313" y1="110" x2="341" y2="110" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="341,104 353,110 341,116" fill="#94a3b8"/>
+          <rect x="356" y="75" width="130" height="70" rx="8" fill="#1d4ed8"/>
+          <text x="421" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Opt-in captured</text>
+          <text x="421" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">→ Magick Link sent</text>
+          <line x1="486" y1="110" x2="514" y2="110" stroke="#94a3b8" stroke-width="2"/>
+          <polygon points="514,104 526,110 514,116" fill="#94a3b8"/>
+          <rect x="529" y="75" width="102" height="70" rx="8" fill="#166534"/>
+          <text x="580" y="103" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">$0.30/click</text>
+          <text x="580" y="119" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">+ commissions</text>
+          <text x="580" y="135" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">on upgrades</text>
+        </svg>
+        <figcaption>Original illustration based on publicly described mechanics — not an actual screenshot of the TD Pages or Magick Link dashboards.</figcaption>
+      </figure>
+
+      <h3>4.2 Key Performance Categories</h3>
+
+      <h4>The $0.30-Per-Click Earning Claim</h4>
+      <div class="callout warn">
+        <strong>This is the headline claim that requires the most scrutiny:</strong> The $0.30-per-click payout does not apply to any traffic you send to your Magick Link. Based on training materials and third-party commentary, the per-click earning is specifically tied to traffic purchased from OLSP's own in-house solo ad provider — referred to as "Way" in the training. Organic social media traffic, traffic from independent paid ad campaigns, and traffic from other solo ad vendors do not qualify for the per-click payout under the described model. Before treating this as a primary income mechanism, verify the exact qualification criteria directly on the current official page.
+      </div>
+
+      <h4>Landing Page Conversion Performance</h4>
+      <p>TD Pages cites "conversion rates of up to 70%" in some marketing materials, which is at the high end of published squeeze-page benchmarks. The caveat language on the official page ("depends on a number of factors — every campaign is different") accurately reflects the reality that conversion rates are driven by traffic quality, offer alignment, and headline copy as much as by template design. No independently audited conversion data for TD Pages templates exists in publicly available sources.</p>
+
+      <h4>Income and Results Claims</h4>
+      <div class="callout warn">
+        <strong>Why we are cautious here:</strong> The offer's marketing pages reference a student named Beverly who reportedly earned "$16,000 from a single two-hour live session," a figure that is explicitly marked "not typical" on the official page. Other income references describe members earning "a few hundred" to "a few thousand" per month using free social media — again, self-reported and unaudited. No independently verified data on what a typical TD Pages &amp; Magick Link user earns — or whether they recover monthly subscription costs — exists in publicly available sources.
+      </div>
+
+      <h4>Community and Support</h4>
+      <p>Support is described as live coaching sessions with Wayne Crowe three times per week, combined with the OLSP member community. The TD Pages platform separately offers "FREE Lifetime support and updates" as part of its subscription, though the scope of that support is not independently verified. There is no indication of a dedicated one-on-one support channel beyond community and group training resources.</p>
+    </section>
+
+    <section id="ux">
+      <h2>User Experience</h2>
+      <h3>Setup Process</h3>
+      <p>The marketed setup flow is described as a "10-minute orientation": purchase the $7 Magick Link, receive your personal rotator link, activate the 14-day TD Pages trial, connect TD Pages to a recommended autoresponder, and build your first squeeze page using a provided template. Third-party walkthroughs describe the process as beginner-friendly, though the autoresponder connection step adds an additional account and configuration requirement not mentioned in the headline entry price.</p>
+      <h3>Daily Usage</h3>
+      <p>Ongoing use centres on driving traffic to TD Pages squeeze pages, managing email subscribers through the connected autoresponder, and sending Magick Link promotions to the list. The Magick Link itself is passive once set up — it rotates automatically through the curated offer library. However, driving traffic consistently, especially the specific solo ad traffic that qualifies for per-click earnings, requires ongoing spend and attention. The system is not passive in the sense of running without continued effort and financial input.</p>
+      <h3>Learning Curve</h3>
+      <p>Marketing positions this as zero-tech-skills-required, and the template-based TD Pages builder does reduce the technical barrier to creating a landing page. However, understanding which traffic sources qualify for per-click earnings, writing effective follow-up emails for the autoresponder, and interpreting conversion data from the page builder require skills beyond clicking through a template library. The live coaching sessions are positioned as the primary learning resource for closing these gaps.</p>
+      <h3>Interface and Usability</h3>
+      <p>We could not access the TD Pages builder first-hand. Based on public descriptions and the platform's stated feature set, the interface offers template selection, basic drag-and-drop editing, and campaign analytics. The 10,000-impressions-per-month limit on the entry plan is worth noting: at typical squeeze-page visitor volumes, this represents roughly 333 visitors per day — a ceiling that active marketers may approach quickly, prompting an upgrade to the $97/month Pro plan.</p>
+    </section>
+
+    <section id="comparison">
+      <h2>How the TD Pages &amp; Magick Link Offer Compares to Other Options</h2>
+      <div class="table-scroll">
+      <table>
+        <tr><th>Option</th><th>Entry Cost</th><th>Ongoing Cost</th><th>Earning Model</th><th>Platform Risk</th></tr>
+        <tr><td><strong>TD Pages &amp; Magick Link</strong></td><td>$7</td><td>$47–$97/month (TD Pages) + autoresponder ~$15–30/month</td><td>$0.30/qualifying click + commissions on upgrades; requires OLSP-sourced traffic for per-click earnings</td><td>Moderate — tied to OLSP ecosystem and TD Pages subscription continuity</td></tr>
+        <tr><td><a href="https://olsp.profitandprivilege.com/reviews/olsp-academy/">OLSP Academy (Mega Link)</a></td><td>Free–$7</td><td>Varies; paid upsells for coaching, tools, VIP</td><td>Commissions on referral upgrades inside the OLSP ecosystem; no per-click payout structure</td><td>Low-moderate — same ecosystem dependency, no separate page-builder subscription</td></tr>
+        <tr><td><a href="https://olsp.profitandprivilege.com/reviews/leadsminer-pro-review/">LeadsMiner Pro</a></td><td>$47 front-end</td><td>No recurring subscription (front-end); OTOs separate</td><td>Facebook audience building — not a per-click rotator model; requires separate monetisation strategy</td><td>High — non-Meta-authorized automation; Facebook account restriction risk</td></tr>
+        <tr><td>Standalone page builder (e.g., Leadpages, Carrd)</td><td>$37+/month or free tier</td><td>$37–$99/month</td><td>No built-in affiliate earning; you choose your own offers</td><td>Low — no dependence on a single affiliate ecosystem</td></tr>
+        <tr><td><a href="https://olsp.profitandprivilege.com/reviews/olsp-solo-ads/">OLSP Solo Ads</a></td><td>Variable (cost per click)</td><td>Per-campaign spend</td><td>Not a commission product — this is the traffic source; can be combined with the Magick Link</td><td>Low — standard paid traffic model</td></tr>
+      </table>
+      </div>
+      <p><strong>Key distinction:</strong> The TD Pages &amp; Magick Link offer's differentiation is the combination of a low-cost entry, a ready-built page builder, and a per-click earning structure from day one. The trade-off is that the per-click earnings are conditional on using OLSP's own traffic source — making the system more of an OLSP-ecosystem funnel than a standalone, traffic-agnostic list-building tool. See our <a href="https://olsp.profitandprivilege.com/blog/what-is-lead-generation/">guide to lead generation</a> for context on how these tools fit into a broader marketing strategy.</p>
+    </section>
+
+    <section id="proscons">
+      <h2>Pros &amp; Cons</h2>
+      <div class="two-col">
+        <div class="pc-card good">
+          <h3>What We Noted as Strengths, Based on Research</h3>
+          <ul>
+            <li>At $7, the Magick Link entry price is low enough that a test purchase carries minimal financial risk — if the system is not a fit, the cost of finding out is negligible.</li>
+            <li>The 14-day TD Pages trial gives a meaningful window to test a real, functional page-builder without committing to the $47/month fee — a genuine trial rather than just a demo.</li>
+            <li>The Earn-As-You-Learn model is a sensible structural improvement over "learn everything, then maybe earn" — the Magick Link can technically generate commissions from day one of the $7 purchase.</li>
+            <li>Live coaching sessions three times per week from the product creator address a real gap for beginners who struggle with the "what do I actually do today?" problem of most passive income courses.</li>
+            <li>The 30-day money-back guarantees on both products (Magick Link and TD Pages separately) provide a backstop if the system proves to be a poor fit after initial use.</li>
+          </ul>
+        </div>
+        <div class="pc-card bad">
+          <h3>Areas for Caution</h3>
+          <ul>
+            <li>The headline $0.30-per-click earning is conditional on buying OLSP-recommended solo ad traffic — not freely applicable to organic social media traffic or other paid traffic sources. This condition is not prominently disclosed in headline marketing copy.</li>
+            <li>True cost after trials: $47–$97/month for TD Pages plus $15–$30/month for a recommended autoresponder equals $62–$127/month in tool costs, before any traffic spend. This is a significant ongoing commitment relative to the $7 entry price.</li>
+            <li>All income and conversion claims — including the "$16,000 from one session" case study and the "up to 70% conversion rates" for TD Pages — are self-reported and unverified by any independent auditor.</li>
+            <li>Virtually every publicly available "review" of the Magick Link and TD Pages is written by someone promoting their own OLSP referral link. Genuinely disinterested commentary is difficult to find.</li>
+            <li>The 10,000 impressions/month ceiling on the entry TD Pages plan may constrain active marketers, forcing an upgrade to the $97/month tier to maintain meaningful traffic volumes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>History &amp; Updates</h2>
+      <p>TD Pages was developed within the OLSP ecosystem created by Wayne Crowe — publicly described as a UK-based online marketer with approximately 20 years of experience in affiliate marketing and list-building, and the creator of the broader OLSP System. The Magick Link appears to be a distinct product from the earlier OLSP "Mega Link" — while both are rotator-style affiliate links within the OLSP ecosystem, the Magick Link adds the per-click earning structure and is bundled specifically with the TD Pages page-builder trial. The exact launch date of the Magick Link in its current form could not be independently confirmed, but references to it in third-party sources date to 2024.</p>
+      <p>TD Pages itself is positioned as a proprietary tool within the OLSP system, though at least one third-party source describes it as a white-label version of Wishloop, a landing-page builder with a separate commercial existence. We could not confirm this independently. The <a href="https://olsp.profitandprivilege.com/reviews/megalink-traffic-rotator-review/">MegaLink Traffic Rotator</a> is a separate OLSP product that occupies a different part of the same ecosystem — traffic distribution rather than the list-building funnel the Magick Link is designed around.</p>
+      <div class="callout info">
+        <strong>Due-diligence tip:</strong> When evaluating whether the underlying page-builder software is proprietary or a rebadged third-party tool, check whether your pages and data can be exported if you cancel your subscription. Portability protects you if the platform changes its pricing or terms.
+      </div>
+    </section>
+
+    <section id="recommend">
+      <h2>Who Should Buy the TD Pages &amp; Magick Link Offer?</h2>
+      <h3>Best For</h3>
+      <ul>
+        <li>People who want to test a complete list-building workflow — page builder, opt-in capture, and affiliate link monetisation — at minimal upfront cost, using the 14-day trial to evaluate TD Pages before committing to the monthly fee.</li>
+        <li>People already buying or planning to buy OLSP solo ad traffic, who can qualify for the $0.30-per-click earning by directing that specific traffic through the Magick Link.</li>
+        <li>People who have reviewed the total ongoing cost ($62–$127/month after trials) and are comfortable with that as a business investment relative to their expected earnings.</li>
+      </ul>
+      <h3>Skip If</h3>
+      <ul>
+        <li>You are not planning to buy traffic from OLSP's recommended provider — in that case, the headline per-click earning does not apply to your traffic sources, and the offer's core income claim loses its relevance.</li>
+        <li>You need a landing-page builder that works independently of a single affiliate ecosystem — there are standalone alternatives (Carrd, Leadpages, ConvertKit landing pages) that give you full portability and are not tied to one vendor's commission structure.</li>
+        <li>You want to verify independently audited income results before committing to a monthly subscription — that data does not currently exist for this offer in publicly available sources.</li>
+      </ul>
+      <h3>Alternatives Worth Comparing</h3>
+      <p>Anyone considering this offer should also evaluate: the broader <a href="https://olsp.profitandprivilege.com/reviews/olsp-academy/">OLSP Academy</a> system if the goal is learning affiliate marketing with a done-for-you funnel; <a href="https://olsp.profitandprivilege.com/reviews/olsp-live-profit-builders/">OLSP Live Profit Builders</a> for a live-training-led approach within the same ecosystem; and standalone landing-page builders if your goal is tool ownership without an affiliate earning layer baked in. The <a href="https://olsp.profitandprivilege.com/roundups/best-affiliate-marketing-training-platforms-2026/">best affiliate marketing training platforms roundup</a> covers a broader range of options for comparison.</p>
+    </section>
+
+    <section id="buy">
+      <h2>Where to Buy &amp; Pricing</h2>
+      <p>The TD Pages &amp; Magick Link Special Offer is sold through OLSP's own funnel pages — the Magick Link entry is accessed via the OLSP system's megafunnels domain, and the TD Pages subscription is managed through offers.tdpages.com. Neither product is available through independent software marketplaces or established retailers. Multiple third-party affiliate pages link to the same underlying funnel with referral tracking appended to the URL — purchasing through any of them funds the referring affiliate's commission but does not affect what you receive.</p>
+      <p>After purchasing the $7 Magick Link entry, expect the TD Pages 14-day trial activation and the recommended autoresponder setup to be part of the immediate post-purchase onboarding. The trial start date determines when billing begins — confirm this date and set a calendar reminder before the trial activates if you want to evaluate before being charged. Be sceptical of countdown timers and urgency language common to this style of launch funnel; verify current pricing independently on the official sales pages rather than relying on figures from third-party review sites with referral links in their content.</p>
+    </section>
+
+    <section id="verdict">
+      <h2>Final Verdict</h2>
+      <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:76%"></div></div><div class="score-num">3.8/5</div></div>
+      <div class="score-row"><div class="score-label">Landing Page Quality</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+      <div class="score-row"><div class="score-label">Earnings Transparency</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
+      <div class="score-row"><div class="score-label">Value vs. Total Cost</div><div class="score-track"><div class="score-fill" style="width:50%"></div></div><div class="score-num">2.5/5</div></div>
+      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
+
+      <p>The TD Pages &amp; Magick Link Special Offer is a well-structured entry point for people wanting to test a list-building workflow within the OLSP ecosystem. The $7 entry price is low, the TD Pages trial is a genuine software trial rather than a demo, and the Earn-As-You-Learn model is a reasonable alternative to front-loading all learning before any earning begins. The honest caveats: the headline $0.30-per-click earning requires specific traffic conditions that are not prominently disclosed upfront; the true monthly cost after trials is meaningfully higher than the entry price suggests; and all income figures associated with this offer are self-reported and unverified. Treat the $7 as the cost of a structured experiment in list-building, evaluate TD Pages seriously during the 14-day trial, and make the subscription decision based on what you observe — not on income projections from promotional content.</p>
+
+      <div class="quiz-box" id="quizBox">
+        <h3 style="margin-top:0;">Quick Self-Check: Is This Offer Worth Exploring for You?</h3>
+        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalised recommendation.</p>
+        <fieldset>
+          <legend>Are you comfortable with a per-click earning model that requires purchasing traffic from OLSP's recommended provider specifically — not organic or independently sourced paid traffic?</legend>
+          <label><input type="radio" name="q1" value="2"> Yes, I understand the traffic requirement and plan to use OLSP's recommended provider</label>
+          <label><input type="radio" name="q1" value="0"> No, I want a per-click earning that applies to any traffic I send</label>
+        </fieldset>
+        <fieldset>
+          <legend>Are you willing to evaluate the TD Pages trial and the Magick Link workflow independently during the 14-day window — and cancel before billing begins if the system doesn't fit?</legend>
+          <label><input type="radio" name="q2" value="2"> Yes, I'll actively test and decide during the trial period</label>
+          <label><input type="radio" name="q2" value="0"> No, I tend to forget trial end dates and would prefer a one-time purchase</label>
+        </fieldset>
+        <fieldset>
+          <legend>Have you reviewed the total ongoing cost — $47–$97/month for TD Pages plus a recommended autoresponder — and are comfortable with that as a monthly business expense?</legend>
+          <label><input type="radio" name="q3" value="2"> Yes, I've factored in the full monthly cost and it fits my budget</label>
+          <label><input type="radio" name="q3" value="0"> No, I was expecting the $7 to cover most of the cost</label>
+        </fieldset>
+        <button type="button" onclick="evaluateQuiz()">See My Result</button>
+        <div id="quiz-result"></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>What exactly is the Magick Link and how does it differ from the OLSP Mega Link?</summary>
+        <p>The Magick Link is a rotator affiliate link within the OLSP ecosystem that cycles clicks through a library of curated OLSP offers. Its distinguishing feature is the $0.30-per-qualifying-click payout structure and the bundled TD Pages trial. The Mega Link — associated with the broader OLSP Academy system — is an older rotator link within the same ecosystem, focused on commission earnings from referral upgrades rather than a per-click payout model. The two products overlap in their affiliate link mechanics but are targeted at slightly different entry scenarios within the OLSP funnel.</p>
+      </details>
+      <details>
+        <summary>Does the $0.30 per click apply to any traffic I send to my Magick Link?</summary>
+        <p>No. Based on training materials and third-party commentary, the $0.30-per-click earning applies specifically to traffic purchased from OLSP's own in-house solo ad provider. Organic social media traffic and traffic from independent paid ad platforms or other solo ad vendors do not qualify for the per-click payout under the described model. Verify the exact current qualification criteria on the official sales page before making a purchase decision based on this claim.</p>
+      </details>
+      <details>
+        <summary>What happens to my landing pages if I cancel TD Pages after the trial?</summary>
+        <p>This is a critical question we could not answer definitively from publicly available information. SaaS page builders typically suspend or delete hosted pages when a subscription lapses, meaning any traffic sent to those URLs after cancellation would reach a broken or non-existent page. Before starting the trial, confirm the data portability policy — specifically whether you can export your page designs or redirect your traffic — so you are not locked in by the cost of rebuilding pages elsewhere.</p>
+      </details>
+      <details>
+        <summary>Is the TD Pages &amp; Magick Link offer separate from OLSP Academy?</summary>
+        <p>Yes — they are distinct products within the same ecosystem. OLSP Academy provides the Mega Link training and commission structure. The TD Pages &amp; Magick Link Special Offer is a specific bundle focused on list-building with a page builder trial and per-click earning structure. Purchasing one does not include the other. Some users combine both — using TD Pages to build landing pages, the Magick Link for per-click earnings, and <a href="https://olsp.profitandprivilege.com/reviews/olsp-academy/">OLSP Academy's Mega Link</a> for affiliate commission income — but each is a separate purchase decision.</p>
+      </details>
+      <details>
+        <summary>What are the realistic total monthly costs after the trial period ends?</summary>
+        <p>Based on publicly reported pricing: TD Pages entry plan at $47/month plus a recommended autoresponder (GetResponse, AWeber, or similar) at approximately $15–$30/month equals $62–$77/month in baseline tool costs. Upgrading to TD Pages Pro raises this to $112–$127/month. Any solo ad traffic spend to qualify for per-click earnings adds further cost on top of this. The $7 Magick Link entry price should not be treated as representative of the ongoing financial commitment the system requires.</p>
+      </details>
+    </section>
+
+    <section id="author">
+      <h2>About the Author</h2>
+      <div class="author-box">
+        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
+        <div class="author-box-info">
+          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
+          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
+          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
+          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2>Evidence &amp; Sources</h2>
+
+      <h3>Video Content</h3>
+      <p>The video below is from an independent YouTube channel discussing the OLSP Magick Link and the $0.30-per-click earning claim. It is not an official OLSP or Wayne Crowe channel, and it represents that creator's own commentary — not the view of this article's authors. As with all third-party reviews of OLSP products found during research, the channel may be promoting an affiliate referral link in the video description.</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/HC1TEJWrmJg" title="Third-party YouTube review discussing the OLSP Magick Link and per-click earning claim" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Third-party YouTube review of the OLSP Magick Link. Not an official product channel; represents the reviewer's own perspective.</p>
+
+      <h3>Sources &amp; References</h3>
+      <ul>
+        <li><a href="https://offers.tdpages.com/magick/" target="_blank" rel="noopener sponsored">Official TD Pages &amp; Magick Link Special Offer page</a></li>
+        <li><a href="https://offers.tdpages.com/choose-plan/" target="_blank" rel="noopener sponsored">TD Pages pricing plans</a></li>
+        <li><a href="https://olspfunnels.com/magick-link-offer" target="_blank" rel="noopener sponsored">Official Magick Link offer page</a></li>
+        <li><a href="https://behindmlm.com/mlm-reviews/olsp-system-review-marketing-suite-with-25000-upsells/" target="_blank" rel="noopener">BehindMLM — OLSP System Review (critical independent analysis)</a></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-light);">Most third-party sources encountered during research are affiliate marketing sites with a financial incentive to promote sign-ups through their own referral links. We cite them only to show what claims are publicly circulating, not as independently verified fact. Information in this article reflects publicly available pages as of June 2026 and may no longer be current — verify directly with the official source before making any purchase decision.</p>
+    </section>
+
+  </main>
+</div>
+
+<script is:inline>
+  // Mobile TOC toggle
+  const tocToggle = document.getElementById('tocToggle');
+  const tocWrap = document.getElementById('tocWrap');
+  if (tocToggle) {
+    tocToggle.addEventListener('click', () => {
+      tocWrap.classList.toggle('open');
+    });
+  }
+
+  // Scroll-spy active link highlighting
+  const sections = document.querySelectorAll('main section');
+  const tocLinks = document.querySelectorAll('#tocNav a');
+  const linkMap = {};
+  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = linkMap[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close mobile TOC after clicking a link
+  tocLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
+    });
+  });
+
+  // Quick self-check quiz
+  function evaluateQuiz(){
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const q3 = document.querySelector('input[name="q3"]:checked');
+    const result = document.getElementById('quiz-result');
+
+    if(!q1 || !q2 || !q3){
+      result.style.display = 'block';
+      result.textContent = 'Please answer all three questions first.';
+      return;
+    }
+
+    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
+    let message = '';
+    if(score >= 5){
+      message = "Based on your answers, the TD Pages & Magick Link offer may be worth exploring as a structured test of the OLSP list-building workflow — particularly if you plan to use OLSP's recommended traffic source. Verify current pricing and trial conditions independently before activating the subscription.";
+    } else if(score >= 3){
+      message = "Your answers suggest a mixed fit. Review the 'Areas for Caution' section closely — particularly the traffic qualification requirement and the total ongoing monthly cost — before deciding. Consider starting with the $7 entry only and evaluating the trial actively.";
+    } else {
+      message = "Based on your answers, this offer may not match what you are looking for. If your goal is a per-click earning on any traffic, or a one-time purchase without recurring fees, consider exploring standalone landing-page builders or other approaches within the OLSP ecosystem that better fit your traffic model.";
+    }
+    result.style.display = 'block';
+    result.textContent = message;
+  }
+</script>
+
+</body>
+</html>
