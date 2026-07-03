@@ -3,8 +3,8 @@
 **Single source of truth for all published content and future content planning.**
 
 Last updated: 2026-07-03  
-Total pages built: 17  
-Editorial article pages: 15  
+Total pages built: 18  
+Editorial article pages: 16  
 Infrastructure pages: 2
 
 ---
@@ -13,12 +13,12 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 17 |
+| Total published pages | 18 |
 | Reviews | 8 |
-| Blog articles | 6 |
+| Blog articles | 7 |
 | Roundups | 1 |
 | Infrastructure (home, author) | 2 |
-| Gold Master V1 compliant | 15 of 15 editorial pages |
+| Gold Master V1 compliant | 16 of 16 editorial pages |
 
 ---
 
@@ -29,7 +29,7 @@ Infrastructure pages: 2
 | 1. OLSP Ecosystem | 6 | Reviews of OLSP products + affiliate training roundup |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 4 | Informational authority cluster |
-| 4. Online Income for Beginners | 2 | Informational / commercial investigation |
+| 4. Online Income for Beginners | 3 | Informational / commercial investigation |
 | Infrastructure | 2 | Navigation and author credibility |
 
 ---
@@ -53,7 +53,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/part-time-jobs-near-me-no-experience/`, `/blog/lead-generation-for-beginners/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/part-time-jobs-near-me-no-experience/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
 | **Publication Status** | Live |
 
 ---
@@ -143,7 +143,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/megalink-traffic-rotator-review/` |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
 
 ---
@@ -233,7 +233,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
 
 ---
@@ -251,7 +251,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
 
 ---
@@ -269,7 +269,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
 
 ---
@@ -287,18 +287,19 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-solo-ads/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
-| **Internal Links In** | None identified |
+| **Internal Links In** | `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
 
 ---
 
 ## Pillar 4 — Online Income for Beginners
 
-Primary subject: Earning money online with no experience or qualifications. This is the highest-traffic-potential pillar and the closest to the OLSP Academy audience. Both pages use the OLSP Academy Megalink as the primary CTA and serve as the site's strongest commercial bridge content.
+Primary subject: Earning money online with no experience or qualifications. This is the highest-traffic-potential pillar and the closest to the OLSP Academy audience. All pages use the OLSP Academy Megalink as the primary CTA and serve as the site's strongest commercial bridge content.
 
 **Cluster structure:**
-- `no-experience-online-income` — the most internally-linked page on the site; acts as a hub
-- `part-time-jobs-near-me-no-experience` — Gold Master reference article; approved production standard
+- `make-money-online-for-beginners` — high-volume anchor article; honest method comparison + selection framework + 30-day plan
+- `no-experience-online-income` — broad hub (8 methods); most internally-linked page on the site
+- `part-time-jobs-near-me-no-experience` — Gold Master reference article; offline-inclusive practical guide
 
 ---
 
@@ -315,7 +316,25 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/olsp-community-builders/`, `/reviews/olsp-live-profit-builders/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
-| **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/` |
+| **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/`, `/blog/make-money-online-for-beginners/` |
+| **Publication Status** | Live |
+
+---
+
+### Make Money Online for Beginners
+
+| Field | Value |
+|---|---|
+| **Title** | Make Money Online for Beginners: What Actually Works in 2026 (And What to Skip) |
+| **URL** | https://olsp.profitandprivilege.com/blog/make-money-online-for-beginners/ |
+| **Article Type** | Blog — Authority Guide |
+| **Primary Keyword** | make money online for beginners |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-03 |
+| **Last Modified** | 2026-07-03 |
+| **Internal Links Out** | `/reviews/olsp-academy/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/` |
+| **Internal Links In** | None identified |
 | **Publication Status** | Live |
 
 ---
@@ -385,6 +404,12 @@ Pages that support site credibility and navigation but are not editorial article
 Summary of internal link relationships across all editorial pages.
 
 ```
+make-money-online-for-beginners  ──→  olsp-academy
+                                 ──→  best-affiliate-marketing-training-platforms-2026
+                                 ──→  no-experience-online-income
+                                 ──→  lead-generation-for-beginners
+                                 ──→  what-is-lead-generation
+
 no-experience-online-income      ──→  olsp-academy
                                  ──→  olsp-community-builders
                                  ──→  olsp-live-profit-builders
@@ -417,7 +442,7 @@ best-affiliate-marketing         ──→  olsp-academy
 |---|---|
 | `/reviews/td-pages-magick-link-review/` | No inbound links |
 | `/blog/part-time-jobs-near-me-no-experience/` | No inbound links |
-| `/blog/lead-generation-for-beginners/` | No inbound links (new — needs incoming links) |
+| `/blog/make-money-online-for-beginners/` | No inbound links (new — needs incoming links) |
 | `/blog/what-is-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
 | `/blog/b2b-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
 | `/blog/sales-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
@@ -427,7 +452,8 @@ Previously orphaned — now receiving inbound links:
 | Page | Now linked from |
 |---|---|
 | `/reviews/leadsminer-pro-review/` | `/blog/lead-generation-for-beginners/` |
-| `/reviews/olsp-solo-ads/` | `/blog/lead-generation-for-beginners/` (in addition to `no-experience-online-income`) |
+| `/reviews/olsp-solo-ads/` | `/blog/lead-generation-for-beginners/`, `no-experience-online-income` |
+| `/blog/lead-generation-for-beginners/` | `/blog/make-money-online-for-beginners/` |
 
 ---
 
@@ -435,8 +461,8 @@ Previously orphaned — now receiving inbound links:
 
 Observations derived from this registry — for use in future Opportunity Brief research.
 
-**1. Outbound-only hub with no inbound authority**
-`no-experience-online-income` links to 10 other pages but receives only one inbound link. It functions as the site's primary hub but has no authority flowing into it from the review cluster. `lead-generation-for-beginners` is similarly outbound-heavy — it links to 7 pages and receives none.
+**1. Outbound-only hubs with growing but thin inbound authority**
+`no-experience-online-income` links to 10 pages and now receives 2 inbound links (`part-time-jobs-near-me`, `make-money-online-for-beginners`). `make-money-online-for-beginners` links to 5 pages and receives none yet. `lead-generation-for-beginners` links to 7 pages and now receives 1 inbound link. The review cluster still sends no inbound links to any blog page.
 
 **2. Review cluster is isolated**
 None of the 8 review pages link to each other or to any blog page. The review cluster is a dead end for readers — they cannot navigate laterally or deeper. Adding even one or two cross-links between review pages would significantly improve crawlability and reader flow.
@@ -450,6 +476,6 @@ Eight OLSP-related pages exist but there is no "hub" article (e.g. "Complete gui
 **5. Lead Generation cluster is strong but receiving no links from review cluster**
 The Lead Generation cluster (4 articles) receives inbound links from `no-experience-online-income` and `lead-generation-for-beginners`, but no OLSP review page links into it despite lead generation being the core skill OLSP Academy teaches.
 
-**6. Approved pipeline keywords**
-- `make-money-online-for-beginners` — ORA brief complete, score 70/100, editorial decision: WRITE NOW. Will extend Pillar 4.
+**6. Published from ORA pipeline**
 - `lead-generation-for-beginners` — published 2026-07-03. ✓
+- `make-money-online-for-beginners` — published 2026-07-03. ✓ (ORA brief score 70/100, WRITE NOW)
