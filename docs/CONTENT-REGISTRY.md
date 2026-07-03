@@ -3,8 +3,8 @@
 **Single source of truth for all published content and future content planning.**
 
 Last updated: 2026-07-03  
-Total pages built: 21  
-Editorial article pages: 19  
+Total pages built: 22  
+Editorial article pages: 20  
 Infrastructure pages: 2
 
 ---
@@ -13,12 +13,12 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 21 |
+| Total published pages | 22 |
 | Reviews | 8 |
-| Blog articles | 10 |
+| Blog articles | 11 |
 | Roundups | 1 |
 | Infrastructure (home, author) | 2 |
-| Gold Master V1 compliant | 19 of 19 editorial pages |
+| Gold Master V1 compliant | 20 of 20 editorial pages |
 
 ---
 
@@ -28,7 +28,7 @@ Infrastructure pages: 2
 |---|---|---|
 | 1. OLSP Ecosystem | 6 | Reviews of OLSP products + affiliate training roundup |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
-| 3. Lead Generation | 7 | Informational + commercial investigation + strategies cluster |
+| 3. Lead Generation | 8 | Informational + commercial investigation + strategies cluster |
 | 4. Online Income for Beginners | 3 | Informational / commercial investigation |
 | Infrastructure | 2 | Navigation and author credibility |
 
@@ -210,7 +210,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 
 ## Pillar 3 — Lead Generation
 
-Primary subject: Lead generation as a discipline — definitions, channels, tactics, practical how-to guidance, tool comparisons, and strategy frameworks. This is a seven-article topic cluster targeting informational and commercial keywords in the lead generation space, with OLSP Academy positioned as the recommended training platform.
+Primary subject: Lead generation as a discipline — definitions, channels, tactics, practical how-to guidance, tool comparisons, and strategy frameworks. This is an eight-article topic cluster targeting informational and commercial keywords in the lead generation space, with OLSP Academy positioned as the recommended training platform.
 
 **Cluster structure:**
 - `what-is-lead-generation` — pillar page (definitions, history, funnel model, channels, data)
@@ -220,6 +220,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 - `lead-generation-software` — commercial investigation (three software categories, OLSP tool reviews, tool selection matrix)
 - `best-lead-generation-tools` — curated picks (top pick per use case, two beginner stacks, free vs. paid table)
 - `lead-generation-strategies` — channel-by-channel playbook (7 strategies with effort/cost/time stats, selection matrix, stacking framework)
+- `local-business-lead-generation` — local/geographic sub-topic (GBP, local SEO, Facebook communities, review generation, referral, SMS/email, partnerships)
 
 ---
 
@@ -344,6 +345,24 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-software/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
+| **Internal Links In** | `/blog/local-business-lead-generation/` |
+| **Publication Status** | Live |
+
+---
+
+### Local Business Lead Generation
+
+| Field | Value |
+|---|---|
+| **Title** | Local Business Lead Generation: 7 Methods That Actually Work [2026] |
+| **URL** | https://olsp.profitandprivilege.com/blog/local-business-lead-generation/ |
+| **Article Type** | Blog — Sub-topic Guide |
+| **Primary Keyword** | local business lead generation |
+| **Content Pillar** | Lead Generation |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-03 |
+| **Last Modified** | 2026-07-03 |
+| **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-strategies/`, `/blog/lead-generation-software/` |
 | **Internal Links In** | None identified |
 | **Publication Status** | Live |
 
@@ -520,6 +539,10 @@ lead-generation-strategies       ──→  what-is-lead-generation
                                  ──→  olsp-solo-ads
                                  ──→  megalink-traffic-rotator-review
                                  ──→  best-affiliate-marketing-training-platforms-2026
+
+local-business-lead-generation   ──→  what-is-lead-generation
+                                 ──→  lead-generation-strategies
+                                 ──→  lead-generation-software
 ```
 
 **Orphaned pages** (no inbound internal links from other editorial pages):
@@ -528,7 +551,7 @@ lead-generation-strategies       ──→  what-is-lead-generation
 |---|---|
 | `/blog/part-time-jobs-near-me-no-experience/` | No inbound links |
 | `/blog/make-money-online-for-beginners/` | No inbound links (needs incoming links from future articles) |
-| `/blog/lead-generation-strategies/` | No inbound links (newest article — no older page links to it yet) |
+| `/blog/local-business-lead-generation/` | No inbound links (newest article — no older page links to it yet) |
 
 Previously orphaned — now receiving inbound links:
 
@@ -542,6 +565,7 @@ Previously orphaned — now receiving inbound links:
 | `/blog/lead-generation-for-beginners/` | `make-money-online-for-beginners`, `lead-generation-software`, `best-lead-generation-tools` |
 | `/blog/lead-generation-software/` | `best-lead-generation-tools`, `lead-generation-strategies` ✓ |
 | `/blog/best-lead-generation-tools/` | `lead-generation-strategies` ✓ (newly published → resolved same day) |
+| `/blog/lead-generation-strategies/` | `local-business-lead-generation` ✓ (newly published → resolved same day) |
 
 ---
 
@@ -561,8 +585,8 @@ None of the 8 review pages link to each other or to any blog page. The review cl
 **4. No pillar page for the OLSP Ecosystem**
 Eight OLSP-related pages exist but there is no "hub" article (e.g. "Complete guide to OLSP products") that links to all of them and receives authority from each.
 
-**5. Lead Generation cluster now 7 articles — comprehensive coverage**
-The cluster spans every major intent type: definitional (`what-is-lead-generation`), audience-specific (`b2b-lead-generation`, `sales-lead-generation`), practical how-to (`lead-generation-for-beginners`), strategic framework (`lead-generation-strategies`), tool framework (`lead-generation-software`), and curated picks (`best-lead-generation-tools`). Next logical extension: a Pillar 3 sub-topic on a specific high-volume channel (e.g. "email marketing for affiliate marketers" or "Facebook lead generation").
+**5. Lead Generation cluster now 8 articles — comprehensive coverage**
+The cluster spans every major intent type: definitional (`what-is-lead-generation`), audience-specific (`b2b-lead-generation`, `sales-lead-generation`, `local-business-lead-generation`), practical how-to (`lead-generation-for-beginners`), strategic framework (`lead-generation-strategies`), tool framework (`lead-generation-software`), and curated picks (`best-lead-generation-tools`). Next logical extension: a Pillar 3 sub-topic on a specific high-volume channel (e.g. "email marketing for affiliate marketers" or "Facebook lead generation").
 
 **6. Published from ORA pipeline**
 - `lead-generation-for-beginners` — published 2026-07-03. ✓
@@ -570,3 +594,4 @@ The cluster spans every major intent type: definitional (`what-is-lead-generatio
 - `lead-generation-software` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `best-lead-generation-tools` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `lead-generation-strategies` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
+- `local-business-lead-generation` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
