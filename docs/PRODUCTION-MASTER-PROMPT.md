@@ -39,7 +39,7 @@ The file must be ready to build and deploy without any manual structural edits. 
 The following inputs must be supplied before you begin. Do not start generating until all of them are present. If any are missing, list what is absent and wait.
 
 | Input | Format | Notes |
-|---|---|---|---|
+|---|---|---|
 | **Article type** | `reviews`, `blog`, or `roundups` | Determines the output directory and section structure. |
 | **Gold Master file** | Full file contents of `src/pages/reviews/olsp-academy.astro` | The structural template. Copy its layout, CSS, and JS exactly. |
 | **Gold Master Specification** | Full contents of `docs/GOLD-MASTER-SPEC.md` | The authoritative rule set. Read it before generating. |

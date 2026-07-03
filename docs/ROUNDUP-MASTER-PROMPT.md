@@ -124,8 +124,13 @@ Before completion confirm:
 - Gold Master architecture preserved
 - Three `.cta-card` components present (post-intro, mid-article, before Sources) — all identical
 - Sources section uses `<ul class="pill-list">`
+- Author Box present immediately before Sources section (sourced from `src/pages/authors/jarmo-halonen.astro`)
 - `<footer class="site-footer">` present inside `<main>` after Sources
-- `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS included in `<style>` block
+- `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer`, `.author-box` CSS included in `<style>` block
+- All external links include `target="_blank"`
+- Affiliate links use `target="_blank" rel="noopener noreferrer sponsored"`
+- Non-affiliate external links use `target="_blank" rel="noopener noreferrer"`
+- External link audit completed (every outbound link checked against the standard above)
 - Editorial rules followed
 - Internal links verified
 - Sources verified

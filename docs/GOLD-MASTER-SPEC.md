@@ -444,14 +444,18 @@ Always absolute URL. Always trailing slash. Always the production domain.
 ### `prerender = true`
 Every article page must declare this. It ensures static generation and maximum crawlability.
 
-### No structured data (as of Gold Master)
+### No structured data (as of Gold Master) — reviews only
 The Gold Master does not include `FAQPage`, `Article`, or `Review` JSON-LD schema. Future reviews may add it, but it is not currently part of the standard and should not be added without deliberate intent.
+
+This applies to the **review** article type only. **Blog articles follow a separate, already-established standard** that requires `FAQPage` JSON-LD schema — see `docs/BLOG-MASTER-SPEC.md`. Do not use this section to justify removing JSON-LD from blog articles.
 
 ---
 
 ## 12. Open Graph / Metadata
 
-The Gold Master contains **no Open Graph tags** (`og:title`, `og:description`, `og:image`, etc.) and **no Twitter Card tags**. This is the current production state. Future reviews should match this unless OG tags are deliberately added as a feature across all reviews at once.
+The Gold Master contains **no Open Graph tags** (`og:title`, `og:description`, `og:image`, etc.) and **no Twitter Card tags**. This is the current production state for the **review** article type. Future reviews should match this unless OG tags are deliberately added as a feature across all reviews at once.
+
+**Blog articles are exempt from this rule.** Blog articles require Open Graph tags and Twitter Card tags for search appearance and social sharing — this has been the consistent, already-established standard across every published blog article. See `docs/BLOG-MASTER-SPEC.md` for the blog metadata standard. This section governs reviews only.
 
 ---
 
@@ -587,7 +591,7 @@ The following elements are **per-article variables** — everything else is stru
 
 17. **No site navigation or header.** Do not add a `<header>` or `<nav>` unless a deliberate site-wide navigation upgrade is applied to all pages simultaneously. A `<footer class="site-footer">` (as specified in Section 8.14) is required on every production article.
 
-18. **No Open Graph tags** unless added to all articles as a deliberate upgrade. Do not add OG tags to individual articles only.
+18. **Reviews: no Open Graph tags** unless added to all reviews as a deliberate upgrade. Do not add OG tags to individual reviews only. **Blog articles are exempt** — OG tags and JSON-LD `FAQPage` schema are part of the established blog standard (see Section 12 and `docs/BLOG-MASTER-SPEC.md`).
 
 19. **The mobile TOC button label must be `☰ Table of Contents`** to maintain a consistent affordance.
 

@@ -1,46 +1,52 @@
-# Astro Starter Kit: Basics
+# Profit and Privilege — olsp.profitandprivilege.com
 
-```sh
-npm create astro@latest -- --template basics
-```
+An Astro static site publishing independent, research-based reviews and informational content in the affiliate marketing / online income niche. Primary monetization is the OLSP Academy affiliate program via the OLSP Megalink funnel.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Every article page is a fully self-contained `.astro` file (`prerender = true`, no shared layouts) built to the **Gold Master V1** standard. See `PROJECT-STATUS.md` for current site status and `docs/CONTENT-REGISTRY.md` for the full published content inventory.
 
-## 🚀 Project Structure
+## Key Documentation
 
-Inside of your Astro project, you'll see the following folders and files:
+Before making changes, read the relevant standard:
+
+| Task | Read first |
+|---|---|
+| Editing or building a review article | `docs/GOLD-MASTER-SPEC.md`, `docs/PRODUCTION-MASTER-PROMPT.md` |
+| Editing or building a roundup article | `docs/ROUNDUP-GOLD-MASTER-SPEC.md`, `docs/ROUNDUP-MASTER-PROMPT.md` |
+| Editing or building a blog article | `docs/BLOG-MASTER-SPEC.md`, `docs/BLOG-MASTER-PROMPT.md` |
+| Adding/updating internal links or new content | `docs/CONTENT-REGISTRY.md` |
+| Running the Opportunity Research Agent | `agents/opportunity-research-agent/` |
+| General working rules for AI agents on this repo | `AGENTS.md` |
+
+## Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── docs/                        Production specs and builder prompts
+├── agents/                      AI editorial pipeline (ORA + placeholder stages)
 ├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── pages
+│   │   ├── reviews/              Review articles
+│   │   ├── blog/                 Blog / informational articles
+│   │   ├── roundups/             Roundup articles
+│   │   └── authors/               Author profile page(s)
+│   └── assets
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command | Action |
+|---|---|
+| `npm install` | Installs dependencies |
+| `npm run dev` | Starts local dev server at `localhost:4321` |
+| `npm run build` | Build the production site to `./dist/` |
+| `npm run preview` | Preview the build locally, before deploying |
+| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
 
-## 👀 Want to learn more?
+For AI-agent sessions, prefer `astro dev --background` and manage it with `astro dev stop` / `astro dev status` / `astro dev logs` — see `CLAUDE.md`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Documentation
+
+Full Astro documentation: https://docs.astro.build

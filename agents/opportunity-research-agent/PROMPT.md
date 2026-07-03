@@ -1,6 +1,5 @@
 # Opportunity Research Agent — Prompt Design
 
-**Version:** 1.0  
 **Version:** 1.1
 **Status:** Production
 
@@ -246,7 +245,7 @@ When you finish, report:
 - The keyword researched
 - The Opportunity Score
 - The Priority Label (HIGH / MEDIUM / LOW)
-- The Recommendation (PUBLISH / REVIEW / DEPRIORITIZE / SKIP)
+- The Editorial Decision (WRITE NOW / WAIT / DO NOT WRITE)
 - The file path where the brief was saved
 - Any data gaps or fallbacks used
 ```
