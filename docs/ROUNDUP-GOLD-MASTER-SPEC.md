@@ -147,7 +147,7 @@ Include three identical `.cta-card` components (see Gold Master Spec Section 8.1
 2. Mid-article (before the comparison / decision guide area)
 3. Immediately before the Sources section
 
-The CTA card promotes the recommended product from the roundup with a heading, body copy, button link (`rel="noopener sponsored"`), and affiliate disclosure. All three cards are identical. Include the `.cta-card` and `.cta-btn` CSS in the article's `<style>` block.
+The CTA card promotes the recommended product from the roundup with a heading, body copy, button link (`target="_blank" rel="noopener noreferrer sponsored"` pointing to `https://olspacademy.com/megalive/1006001`), and affiliate disclosure. All three cards are identical. Include the `.cta-card` and `.cta-btn` CSS in the article's `<style>` block.
 
 ---
 
@@ -221,14 +221,14 @@ The roundup quiz uses per-question matching, not a cumulative score threshold:
 - Individual sections for every platform covered
 - Author Box present before Sources section (sourced from `src/pages/authors/jarmo-halonen.astro`)
 - Three `.cta-card` components present: post-intro, mid-article, before Sources — all identical
-- CTA card uses `.cta-btn` with `rel="noopener sponsored"` and affiliate disclosure
+- CTA card uses `.cta-btn` with `target="_blank" rel="noopener noreferrer sponsored"` pointing to `https://olspacademy.com/megalive/1006001` and affiliate disclosure
 - Sources section uses `<ul class="pill-list">` with pill-shaped source links
 - Site footer (`<footer class="site-footer">`) present inside `<main>` after Sources
 - `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS included in `<style>` block
 - Internal links verified
 - FAQ included (minimum four questions)
 - Sources section uses Trustpilot links for competing platforms plus any supplied affiliate/official links
-- Affiliate links use `rel="noopener sponsored"`
+- All external links include `target="_blank"`; affiliate links use `target="_blank" rel="noopener noreferrer sponsored"`; non-affiliate external links use `target="_blank" rel="noopener noreferrer"`
 - Editorial neutrality maintained
 - `<script is:inline>` directive present
 - Build successful (`npm run build`)

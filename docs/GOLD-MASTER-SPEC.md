@@ -306,7 +306,7 @@ The `<section id="sources">` contains:
 .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
 ```
 
-Affiliate or sponsored links must use `rel="noopener sponsored"`. Non-affiliate external links use `rel="noopener noreferrer"`.
+Every external link (any `href` that does not begin with `/`) must include `target="_blank"`. Affiliate or sponsored links must use `target="_blank" rel="noopener noreferrer sponsored"`. Non-affiliate external links must use `target="_blank" rel="noopener noreferrer"`. Internal links (href starting with `/`) must NOT carry a `target` or `rel` attribute.
 
 ### 8.13 CTA Card Component
 A call-to-action card is placed three times in every production article:
@@ -317,11 +317,9 @@ A call-to-action card is placed three times in every production article:
 **CTA Card HTML:**
 ```html
 <div class="cta-card">
-  <h3>Start earning today — join OLSP for just $7</h3>
-  <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-  <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-  <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
-  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+  <h3>New to online income? Start with the $7 Megalink</h3>
+  <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
+  <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
 </div>
 ```
 
@@ -540,7 +538,8 @@ The following elements are **per-article variables** — everything else is stru
 | `.verdict-box` placement (after intro paragraph, before first `<h3>`) | Editorial structure |
 | `.methodology` block in `#intro` | Credibility signal; required on every article |
 | `.video-frame` aspect-ratio padding (56.25%) | Responsive 16:9 |
-| `rel="noopener sponsored"` on affiliate links | Compliance |
+| `target="_blank" rel="noopener noreferrer sponsored"` on affiliate/CTA links | Compliance + security; opens in new tab |
+| `target="_blank" rel="noopener noreferrer"` on non-affiliate external links | Security; opens in new tab |
 | Sources disclaimer paragraph at end of `#sources` | Transparency requirement |
 | `.cta-card` structure and CSS (Section 8.13) | Consistent CTA placement and visual identity across articles |
 | Three CTA card placements (post-intro, mid-article, before Sources) | Content marketing pattern; all three cards must be identical |
@@ -570,7 +569,7 @@ The following elements are **per-article variables** — everything else is stru
 
 8. **The canonical URL must be absolute, with a trailing slash,** using the production domain: `https://olsp.profitandprivilege.com/{type}/{slug}/`.
 
-9. **Affiliate and sponsored links must use `rel="noopener sponsored"`.** Links in the Sources section that carry referral tracking fall into this category.
+9. **All external links must include `target="_blank"`** so they open in a new browser tab. Affiliate and sponsored links must use `target="_blank" rel="noopener noreferrer sponsored"`. Non-affiliate external links must use `target="_blank" rel="noopener noreferrer"`. The active CTA destination is `https://olspacademy.com/megalive/1006001`.
 
 10. **The sources section must end with a disclaimer paragraph** in small print (`font-size:.82rem; color:var(--ink-light)`) disclosing the financial interests of cited sources and the date the information was gathered.
 

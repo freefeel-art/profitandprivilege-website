@@ -121,9 +121,11 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 - The `<footer class="site-footer">` must be placed inside `<main>`, **after** the `sources` section and **before** `</main>`.
 
 **Links**
-- Affiliate or tracking links must use `rel="noopener sponsored"`.
-- External non-affiliate links must use `rel="noopener"`.
-- Internal links (if supplied) may be woven into body copy without a `rel` attribute.
+- Every external link (any `href` not starting with `/`) must include `target="_blank"`.
+- Affiliate or tracking links must use `target="_blank" rel="noopener noreferrer sponsored"`.
+- External non-affiliate links must use `target="_blank" rel="noopener noreferrer"`.
+- Internal links (href starting with `/`) must NOT have a `target` or `rel` attribute.
+- The active CTA destination is `https://olspacademy.com/megalive/1006001`.
 
 ---
 
@@ -185,7 +187,7 @@ Apply these rules when populating each component.
 
 **Video embed:** Use the YouTube URL from the research package. If none is supplied, omit the video embed and the "Video Content" subsection heading, but retain the sources `<ul>` and disclaimer paragraph.
 
-**Sources section:** Every external link cited in the body copy must appear in the sources list. Affiliate links go in this section with `rel="noopener sponsored"`. The disclaimer paragraph must reference the current month and year and note that information may not be current.
+**Sources section:** Every external link cited in the body copy must appear in the sources list. Affiliate links go in this section with `target="_blank" rel="noopener noreferrer sponsored"`. Non-affiliate source links use `target="_blank" rel="noopener noreferrer"`. The disclaimer paragraph must reference the current month and year and note that information may not be current.
 
 **Internal links:** If internal links are supplied in the inputs, weave them naturally into relevant body copy sections. Do not create a separate "related articles" block.
 
@@ -247,14 +249,16 @@ Before outputting the file, verify each item. If any item fails, fix it before d
 - [ ] SVG diagram has `role="img"` and `aria-label`
 - [ ] SVG `<figcaption>` states it is an original illustration
 - [ ] `<iframe>` has a `title` attribute
-- [ ] Affiliate links use `rel="noopener sponsored"`
+- [ ] All external links include `target="_blank"`
+- [ ] Affiliate links use `target="_blank" rel="noopener noreferrer sponsored"`
+- [ ] Non-affiliate external links use `target="_blank" rel="noopener noreferrer"`
 - [ ] Sources section ends with the disclaimer paragraph in small print
 - [ ] No income or earnings figures are presented as verified or typical results
 - [ ] No first-hand testing is claimed unless the research package documents it
 - [ ] No Open Graph tags, JSON-LD, `<header>`, or site navigation are present (per Gold Master standard)
 - [ ] `<footer class="site-footer">` is present inside `<main>`, after `#sources`, with brand tagline and domain link
 - [ ] Three `.cta-card` components are present: after `#intro`, mid-article, and before `#sources` — all identical
-- [ ] `.cta-card` includes heading, body copy, `.cta-btn` link with `rel="noopener sponsored"`, and affiliate disclosure paragraph
+- [ ] `.cta-card` includes heading, body copy, `.cta-btn` link pointing to `https://olspacademy.com/megalive/1006001` with `target="_blank" rel="noopener noreferrer sponsored"`, and affiliate disclosure paragraph
 - [ ] Sources section uses `<ul class="pill-list">` with pill-shaped source links
 - [ ] `.cta-card`, `.cta-btn`, `.pill-list`, and `.site-footer` CSS are included in the `<style>` block
 
