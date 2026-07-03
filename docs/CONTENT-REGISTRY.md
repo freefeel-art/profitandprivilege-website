@@ -3,8 +3,8 @@
 **Single source of truth for all published content and future content planning.**
 
 Last updated: 2026-07-03  
-Total pages built: 18  
-Editorial article pages: 16  
+Total pages built: 19  
+Editorial article pages: 17  
 Infrastructure pages: 2
 
 ---
@@ -13,9 +13,9 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 18 |
+| Total published pages | 19 |
 | Reviews | 8 |
-| Blog articles | 7 |
+| Blog articles | 8 |
 | Roundups | 1 |
 | Infrastructure (home, author) | 2 |
 | Gold Master V1 compliant | 16 of 16 editorial pages |
@@ -28,7 +28,7 @@ Infrastructure pages: 2
 |---|---|---|
 | 1. OLSP Ecosystem | 6 | Reviews of OLSP products + affiliate training roundup |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
-| 3. Lead Generation | 4 | Informational authority cluster |
+| 3. Lead Generation | 5 | Informational + commercial investigation cluster |
 | 4. Online Income for Beginners | 3 | Informational / commercial investigation |
 | Infrastructure | 2 | Navigation and author credibility |
 
@@ -107,7 +107,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -125,7 +125,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -167,7 +167,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/lead-generation-for-beginners/` |
+| **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -185,7 +185,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -203,7 +203,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | None identified |
+| **Internal Links In** | `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -217,6 +217,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 - `b2b-lead-generation` — sub-topic (B2B-specific channels, ABM, qualification)
 - `sales-lead-generation` — sub-topic (SDR workflows, outbound, sales-team focus)
 - `lead-generation-for-beginners` — practical entry point (step-by-step system, beginner channel selection, nurture sequence setup)
+- `lead-generation-software` — commercial investigation (three software categories, OLSP tool reviews, tool selection matrix)
 
 ---
 
@@ -233,7 +234,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -251,7 +252,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
 | **Publication Status** | Live |
 
 ---
@@ -287,7 +288,25 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-solo-ads/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
-| **Internal Links In** | `/blog/make-money-online-for-beginners/` |
+| **Internal Links In** | `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
+| **Publication Status** | Live |
+
+---
+
+### Lead Generation Software
+
+| Field | Value |
+|---|---|
+| **Title** | Lead Generation Software: What Actually Works for Building Your List [2026] |
+| **URL** | https://olsp.profitandprivilege.com/blog/lead-generation-software/ |
+| **Article Type** | Blog — Commercial Investigation Guide |
+| **Primary Keyword** | lead generation software |
+| **Content Pillar** | Lead Generation |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-03 |
+| **Last Modified** | 2026-07-03 |
+| **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/reviews/td-pages-magick-link-review/`, `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/b2b-lead-generation/` |
+| **Internal Links In** | None identified |
 | **Publication Status** | Live |
 
 ---
@@ -434,26 +453,35 @@ lead-generation-for-beginners    ──→  what-is-lead-generation
 
 best-affiliate-marketing         ──→  olsp-academy
                                  ──→  megalink-traffic-rotator-review
+
+lead-generation-software         ──→  leadsminer-pro-review
+                                 ──→  olsp-mineeme
+                                 ──→  olsp-solo-ads
+                                 ──→  megalink-traffic-rotator-review
+                                 ──→  td-pages-magick-link-review
+                                 ──→  what-is-lead-generation
+                                 ──→  lead-generation-for-beginners
+                                 ──→  b2b-lead-generation
 ```
 
 **Orphaned pages** (no inbound internal links from other editorial pages):
 
 | Page | Status |
 |---|---|
-| `/reviews/td-pages-magick-link-review/` | No inbound links |
 | `/blog/part-time-jobs-near-me-no-experience/` | No inbound links |
-| `/blog/make-money-online-for-beginners/` | No inbound links (new — needs incoming links) |
-| `/blog/what-is-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
-| `/blog/b2b-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
-| `/blog/sales-lead-generation/` | Linked from `no-experience-online-income` + `lead-generation-for-beginners` |
+| `/blog/make-money-online-for-beginners/` | No inbound links (needs incoming links from future articles) |
+| `/blog/lead-generation-software/` | No inbound links (newest article — no older page links to it yet) |
 
 Previously orphaned — now receiving inbound links:
 
 | Page | Now linked from |
 |---|---|
-| `/reviews/leadsminer-pro-review/` | `/blog/lead-generation-for-beginners/` |
-| `/reviews/olsp-solo-ads/` | `/blog/lead-generation-for-beginners/`, `no-experience-online-income` |
-| `/blog/lead-generation-for-beginners/` | `/blog/make-money-online-for-beginners/` |
+| `/reviews/leadsminer-pro-review/` | `lead-generation-for-beginners`, `lead-generation-software` |
+| `/reviews/olsp-solo-ads/` | `lead-generation-for-beginners`, `no-experience-online-income`, `lead-generation-software` |
+| `/reviews/olsp-mineeme/` | `no-experience-online-income`, `lead-generation-software` |
+| `/reviews/megalink-traffic-rotator-review/` | `no-experience-online-income`, `best-affiliate-marketing`, `lead-generation-software` |
+| `/reviews/td-pages-magick-link-review/` | `lead-generation-software` ✓ (fully orphaned → resolved) |
+| `/blog/lead-generation-for-beginners/` | `make-money-online-for-beginners`, `lead-generation-software` |
 
 ---
 
@@ -467,15 +495,16 @@ Observations derived from this registry — for use in future Opportunity Brief 
 **2. Review cluster is isolated**
 None of the 8 review pages link to each other or to any blog page. The review cluster is a dead end for readers — they cannot navigate laterally or deeper. Adding even one or two cross-links between review pages would significantly improve crawlability and reader flow.
 
-**3. TD Pages is fully orphaned**
-`/reviews/td-pages-magick-link-review/` has no inbound links from any editorial page. It exists as a standalone endpoint.
+**3. TD Pages orphan resolved**
+`/reviews/td-pages-magick-link-review/` is now linked from `/blog/lead-generation-software/` in the OLSP capture tools section. No longer fully orphaned.
 
 **4. No pillar page for the OLSP Ecosystem**
 Eight OLSP-related pages exist but there is no "hub" article (e.g. "Complete guide to OLSP products") that links to all of them and receives authority from each.
 
-**5. Lead Generation cluster is strong but receiving no links from review cluster**
-The Lead Generation cluster (4 articles) receives inbound links from `no-experience-online-income` and `lead-generation-for-beginners`, but no OLSP review page links into it despite lead generation being the core skill OLSP Academy teaches.
+**5. Lead Generation cluster now 5 articles — strong internal cohesion**
+`lead-generation-software` (published 2026-07-03) links back into the cluster from a commercial-investigation angle. The cluster now spans: pillar page, B2B sub-topic, sales sub-topic, beginner practical guide, and tool comparison. Next logical extension: a cluster hub article ("lead generation strategies") or deeper tool-specific articles.
 
 **6. Published from ORA pipeline**
 - `lead-generation-for-beginners` — published 2026-07-03. ✓
 - `make-money-online-for-beginners` — published 2026-07-03. ✓ (ORA brief score 70/100, WRITE NOW)
+- `lead-generation-software` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
