@@ -107,7 +107,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -125,7 +125,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -167,7 +167,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -185,7 +185,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -203,14 +203,14 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
 
 ## Pillar 3 — Lead Generation
 
-Primary subject: Lead generation as a discipline — definitions, channels, tactics, and practical how-to guidance. This is a four-article topic cluster targeting informational and commercial keywords in the lead generation space, with OLSP Academy positioned as the recommended training platform.
+Primary subject: Lead generation as a discipline — definitions, channels, tactics, practical how-to guidance, and tool comparisons. This is a six-article topic cluster targeting informational and commercial keywords in the lead generation space, with OLSP Academy positioned as the recommended training platform.
 
 **Cluster structure:**
 - `what-is-lead-generation` — pillar page (definitions, history, funnel model, channels, data)
@@ -235,7 +235,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -289,7 +289,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-solo-ads/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
-| **Internal Links In** | `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
 ---
@@ -518,8 +518,8 @@ Previously orphaned — now receiving inbound links:
 
 Observations derived from this registry — for use in future Opportunity Brief research.
 
-**1. Outbound-only hubs with growing but thin inbound authority**
-`no-experience-online-income` links to 10 pages and now receives 2 inbound links (`part-time-jobs-near-me`, `make-money-online-for-beginners`). `make-money-online-for-beginners` links to 5 pages and receives none yet. `lead-generation-for-beginners` links to 7 pages and now receives 1 inbound link. The review cluster still sends no inbound links to any blog page.
+**1. Outbound-only hubs with growing inbound authority**
+`no-experience-online-income` links to 10 pages and receives 2 inbound links (`part-time-jobs-near-me`, `make-money-online-for-beginners`). `make-money-online-for-beginners` links to 5 pages and receives no inbound links yet. `lead-generation-for-beginners` links to 7 pages and now receives 3 inbound links (`make-money-online-for-beginners`, `lead-generation-software`, `best-lead-generation-tools`). The review cluster still sends no inbound links to any blog page.
 
 **2. Review cluster is isolated**
 None of the 8 review pages link to each other or to any blog page. The review cluster is a dead end for readers — they cannot navigate laterally or deeper. Adding even one or two cross-links between review pages would significantly improve crawlability and reader flow.
