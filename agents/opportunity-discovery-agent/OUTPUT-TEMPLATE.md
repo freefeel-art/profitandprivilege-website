@@ -1,21 +1,27 @@
 # Opportunity Queue — [PILLAR or "All Pillars"]
 
-**Schema version:** 0.1
+**Schema version:** 0.4
 **Last updated:** [YYYY-MM-DD]
 **Last run:** [pillar(s) run, e.g. "Online Income for Beginners"]
 
 This file is the live, ranked backlog produced by the Opportunity Discovery Agent. It is updated, not replaced, on every run — new candidates are appended, existing rows have their `status` updated in place. Every field is required; unavailable data is recorded explicitly as `Unavailable`, never left blank.
 
+Every candidate carries **two separate scores** — they are never averaged or collapsed into one:
+- **Opportunity Score (preliminary)** — is this a good opportunity, on its own merits? (Trend / Community / Gap, rescaled to 0–100 — Demand/DataForSEO is optional and never scored; see Evidence below)
+- **Priority Score** — should it be produced *now*, given the rest of the portfolio? (Opportunity Quality / Pillar Coverage & Balance / Authority Cluster & Internal-Linking Fit / Strategic Priority Fit)
+
+The summary table below is sorted by **Priority Score**, not Opportunity Score — a high-quality opportunity in a saturated pillar can rank below a moderate one that resolves a documented structural gap.
+
 ---
 
 ## Summary Table
 
-Sorted by Discovery Score descending, grouped by pillar. This table is the 30-second scan — use the detail blocks below for evidence before promoting anything.
+Sorted by Priority Score descending, grouped by pillar. Use the detail blocks below for evidence before promoting anything.
 
-| Rank | Candidate ID | Pillar | Discovery Score | Priority | Status | Date Discovered |
-|---|---|---|---|---|---|---|
-| 1 | [kebab-case-slug] | [pillar name] | [0–100] | [High / Medium / Low] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
-| 2 | [kebab-case-slug] | [pillar name] | [0–100] | [High / Medium / Low] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
+| Rank | Candidate ID | Pillar | Priority Score | Priority Label | Opportunity Score | Status | Date Discovered |
+|---|---|---|---|---|---|---|---|
+| 1 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
+| 2 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
 
 ---
 
@@ -30,29 +36,39 @@ One block per candidate in the summary table above, in the same rank order. `can
 | Pillar | [OLSP Ecosystem / Affiliate Traffic & List Building / Lead Generation / Online Income for Beginners] |
 | Opportunity summary | [1–2 sentence description of the angle/gap/question — not just a keyword] |
 | Candidate keyword | [the exact keyword/phrase to hand to ORA if promoted] |
-| Discovery Score | [0–100] |
-| Priority | [High / Medium / Low] |
 | Status | [unclaimed / promoted / rejected / stale] |
 | Date discovered | [YYYY-MM-DD] |
 | Date status changed | [YYYY-MM-DD] |
 | Promoted brief path | [path to Opportunity Brief, once promoted / N/A] |
 
-#### Score breakdown
+#### Opportunity Score (preliminary) — is this a good opportunity?
 
-| Dimension | Score | Rationale |
+| Dimension | Raw score (0–25) | Rationale |
 |---|---|---|
-| Demand | [0–25] | [one-line rationale citing the SEARCH_DEMAND signal] |
 | Trend | [0–25] | [one-line rationale citing the TREND_INTELLIGENCE signal] |
 | Community | [0–25] | [one-line rationale citing the COMMUNITY_INTELLIGENCE signal] |
 | Gap | [0–25] | [one-line rationale citing the COMPETITOR_GAP signal] |
-| **Total** | **[0–100]** | |
+| Raw total (max 75) | [0–75] | Sum of the three rows above |
+| **Opportunity Score** | **[0–100]** | Raw total × 4/3, rounded. Preliminary — not ORA's Opportunity Score; superseded once promoted and researched. DataForSEO/Demand plays no part in this score even when available (see Evidence). |
+
+#### Priority Score — should this be produced now?
+
+| Dimension | Score | Rationale |
+|---|---|---|
+| Opportunity Quality | [0–25] | [derived directly from the Opportunity Score above] |
+| Pillar Coverage & Balance | [0–25] | [one-line rationale citing CONTENT-REGISTRY.md § Content Pillars] |
+| Authority Cluster & Internal-Linking Fit | [0–25] | [one-line rationale citing CONTENT-REGISTRY.md § Internal Link Map / § Content Gaps & Planning Notes] |
+| Strategic / Business Priority Fit | [0–25] | [one-line rationale — cite the matched strategic_priorities entry, or "not stated — neutral default (15)"] |
+| **Priority Score** | **[0–100]** | |
+| **Priority Label** | **[Produce soon / Hold — reasonable, not urgent / Defer]** | |
 
 #### Evidence
 
-- **Search demand:** [what SEARCH_DEMAND returned — demand tier, related terms — or "Unavailable — [reason]"]
+- **Demand (optional enrichment, not scored):** [what SEARCH_DEMAND/DataForSEO returned, if configured — demand tier, related terms — or "Not configured this run — optional source, no impact on scoring"]
 - **Trend:** [what TREND_INTELLIGENCE returned — direction, rising topics — or "Unavailable — [reason]"]
 - **Community:** [what COMMUNITY_INTELLIGENCE returned — which provider, what it found — or "Unavailable — [reason]"]
 - **Competitor gap:** [what COMPETITOR_GAP confirmed — the specific angle missing from ranking pages — or "Unavailable — unconfirmed, capped at 5 pts"]
+- **Portfolio context:** [what PORTFOLIO_CONTEXT found — pillar page count/balance, any documented gap this candidate resolves, whether strategic_priorities were supplied for this run]
 
 #### Coverage check
 
@@ -70,6 +86,6 @@ One block per candidate in the summary table above, in the same rank order. `can
 
 Appended after every Discovery run — a running history, oldest first, not replaced.
 
-| Date | Pillar(s) run | Surfaced | Queued | Dropped (duplicate) | Flagged (ambiguous) |
-|---|---|---|---|---|---|
-| [YYYY-MM-DD] | [pillar(s)] | [count] | [count] | [count] | [count] |
+| Date | Pillar(s) run | Surfaced | Queued | Dropped (duplicate) | Flagged (ambiguous) | Strategic priorities supplied |
+|---|---|---|---|---|---|---|
+| [YYYY-MM-DD] | [pillar(s)] | [count] | [count] | [count] | [count] | [Yes — summary / No] |
