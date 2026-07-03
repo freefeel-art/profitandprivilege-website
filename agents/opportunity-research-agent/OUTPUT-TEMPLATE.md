@@ -1,44 +1,44 @@
 # Opportunity Brief — [KEYWORD]
 
-**Schema version:** 1.0  
-**Generated:** [YYYY-MM-DD]  
-**Status:** [HIGH PRIORITY / MEDIUM PRIORITY / LOW PRIORITY / INCOMPLETE]  
-**Opportunity Score:** [0–100]  
-**Recommendation:** [PUBLISH / REVIEW / DEPRIORITIZE / SKIP]
+**Schema version:** 1.1
+**Generated:** [YYYY-MM-DD]
+**Opportunity Score:** [0–100] / 100
+**Data Confidence:** [High / Medium / Low]
+**Editorial Decision:** [WRITE NOW / WAIT / DO NOT WRITE]
 
 ---
 
 ## 1. Keyword Intelligence
 
-| Field | Value |
-|---|---|
-| Primary keyword | [keyword] |
-| Monthly search volume | [number or DATA_UNAVAILABLE] |
-| CPC | [$X.XX or DATA_UNAVAILABLE] |
-| Keyword difficulty | [0–100 or DATA_UNAVAILABLE] |
-| Search intent | [Informational / Commercial / Transactional / Navigational / DATA_UNAVAILABLE] |
+| Field | Value | Source |
+|---|---|---|
+| Primary keyword | [keyword] | — |
+| Monthly search volume | [number / Estimated / Unavailable] | [DataForSEO Live / Estimated via proxy / Unavailable] |
+| CPC | [$X.XX / Unavailable] | [DataForSEO Live / Unavailable] |
+| Keyword difficulty | [0–100 / Estimated / Unavailable] | [DataForSEO Live / Estimated via SERP proxy / Unavailable] |
+| Search intent | [Informational / Commercial Investigation / Transactional / Navigational] | [DataForSEO / Inferred from SERP] |
 
 ### Long-tail variants
 
-- [variant 1] — [volume or N/A]
-- [variant 2] — [volume or N/A]
-- [variant 3] — [volume or N/A]
-- [variant 4] — [volume or N/A]
-- [variant 5] — [volume or N/A]
+- [variant 1] — [volume or Estimated or Unavailable]
+- [variant 2] — [volume or Estimated or Unavailable]
+- [variant 3] — [volume or Estimated or Unavailable]
+- [variant 4] — [volume or Estimated or Unavailable]
+- [variant 5] — [volume or Estimated or Unavailable]
 
 ### Related keywords
 
-| Keyword | Volume | KD | CPC |
-|---|---|---|---|
-| [related keyword 1] | [vol] | [KD] | [$CPC] |
-| [related keyword 2] | [vol] | [KD] | [$CPC] |
-| [related keyword 3] | [vol] | [KD] | [$CPC] |
-| [related keyword 4] | [vol] | [KD] | [$CPC] |
-| [related keyword 5] | [vol] | [KD] | [$CPC] |
+| Keyword | Volume | KD | CPC | Source |
+|---|---|---|---|---|
+| [keyword 1] | [vol] | [KD] | [$CPC] | [Live / Estimated / Unavailable] |
+| [keyword 2] | [vol] | [KD] | [$CPC] | [Live / Estimated / Unavailable] |
+| [keyword 3] | [vol] | [KD] | [$CPC] | [Live / Estimated / Unavailable] |
+| [keyword 4] | [vol] | [KD] | [$CPC] | [Live / Estimated / Unavailable] |
+| [keyword 5] | [vol] | [KD] | [$CPC] | [Live / Estimated / Unavailable] |
 
 ### Semantic / LSI terms
 
-[Comma-separated list of supporting terms and phrases that should appear naturally in the article]
+[Comma-separated list of supporting terms]
 
 ---
 
@@ -46,21 +46,20 @@
 
 | Field | Value |
 |---|---|
-| Trend direction | [Rising / Stable / Declining / Volatile / DATA_UNAVAILABLE] |
-| Classification | [Evergreen / Trending / Seasonal / Declining / DATA_UNAVAILABLE] |
-| Peak period | [Month or quarter, or N/A] |
-| Seasonality | [Yes — [description] / No / DATA_UNAVAILABLE] |
+| Trend direction | [Rising / Stable / Declining / Volatile / Unavailable] |
+| Classification | [Evergreen / Trending / Seasonal / Declining / Unavailable] |
+| Peak period | [Month or quarter / N/A] |
+| Seasonality | [Yes — description / No / Unavailable] |
 
 ### 12-month interest summary
 
-[2–4 sentence narrative describing what the Google Trends data shows. Include the high point, low point, and current trajectory. If DATA_UNAVAILABLE, state that here.]
+[2–4 sentence narrative. Include high point, low point, and current trajectory. If unavailable, say so explicitly.]
 
 ### Rising related topics
 
-- [topic 1] — [breakout % or qualitative signal]
-- [topic 2] — [breakout % or qualitative signal]
-- [topic 3] — [breakout % or qualitative signal]
-- [N/A if no rising topics found]
+- [topic 1] — [signal]
+- [topic 2] — [signal]
+- [Unavailable if timed out or no data]
 
 ---
 
@@ -68,11 +67,11 @@
 
 | Field | Value |
 |---|---|
-| Primary source | [Reddit / Google Discussions / Quora / YouTube / Other: specify] |
-| Fallback triggered | [Yes — reason: [reason] / No] |
-| Subreddits researched | [r/sub1, r/sub2, ... / N/A if fallback used] |
-| Engagement level | [High / Medium / Low / DATA_UNAVAILABLE] |
-| Sentiment | [Positive / Mixed / Negative / Neutral / DATA_UNAVAILABLE] |
+| Primary source used | [Reddit / Quora / Google Discussions / YouTube / Google News / Unavailable] |
+| Providers attempted | [list all tried in order] |
+| Subreddits researched | [r/sub1, r/sub2 / N/A] |
+| Engagement level | [High / Medium / Low / Unavailable] |
+| Sentiment | [Positive / Mixed / Negative / Neutral / Unavailable] |
 
 ### Top pain points
 
@@ -92,17 +91,15 @@
 
 ### Community content gaps
 
-[Topics or questions the community asks that have no satisfying answers in existing threads. These are editorial opportunities.]
-
 - [gap 1]
 - [gap 2]
 - [gap 3]
 
 ### Notable threads / sources
 
-- [URL 1] — [brief description of why this thread is notable]
-- [URL 2] — [brief description]
-- [N/A if no notable threads found]
+- [URL 1] — [description]
+- [URL 2] — [description]
+- [N/A if none found]
 
 ---
 
@@ -110,9 +107,9 @@
 
 | Field | Value |
 |---|---|
-| Featured snippet | [Yes — "[snippet text]" / No / DATA_UNAVAILABLE] |
-| Authority level of top 10 | [High — major brands dominate / Medium — mixed / Low — thin or affiliate-heavy / DATA_UNAVAILABLE] |
-| Content type mix | [X reviews, Y roundups, Z blog posts, W product pages, V Reddit threads] |
+| Featured snippet | [Yes — "[text]" / No / Unavailable] |
+| Authority level of top 10 | [Very High / High / Medium / Low / Unavailable] |
+| Content type mix | [X reviews, Y listicles, Z blog posts, etc.] |
 
 ### People Also Ask
 
@@ -121,34 +118,32 @@
 - [PAA question 3]
 - [PAA question 4]
 - [PAA question 5]
-- [N/A if no PAA box found]
+- [N/A if no PAA box]
 
 ### Top 10 competitors
 
 | # | Domain | Content type | Authority | Notes |
 |---|---|---|---|---|
-| 1 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 2 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 3 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 4 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 5 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 6 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 7 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 8 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 9 | [domain] | [type] | [High / Med / Low] | [brief note] |
-| 10 | [domain] | [type] | [High / Med / Low] | [brief note] |
+| 1 | [domain] | [type] | [High / Med / Low] | [note] |
+| 2 | [domain] | [type] | [High / Med / Low] | [note] |
+| 3 | [domain] | [type] | [High / Med / Low] | [note] |
+| 4 | [domain] | [type] | [High / Med / Low] | [note] |
+| 5 | [domain] | [type] | [High / Med / Low] | [note] |
+| 6 | [domain] | [type] | [High / Med / Low] | [note] |
+| 7 | [domain] | [type] | [High / Med / Low] | [note] |
+| 8 | [domain] | [type] | [High / Med / Low] | [note] |
+| 9 | [domain] | [type] | [High / Med / Low] | [note] |
+| 10 | [domain] | [type] | [High / Med / Low] | [note] |
 
 ### Content weaknesses in top 10
 
-- [weakness 1 — e.g. "Most results are 2022 or older — no recent updates"]
-- [weakness 2 — e.g. "Top 3 results are vendor-produced with no independent analysis"]
-- [weakness 3 — e.g. "No results include a methodology or author disclosure"]
+- [weakness 1]
+- [weakness 2]
+- [weakness 3]
 - [weakness 4]
 - [weakness 5]
 
 ### Content gaps in top 10
-
-[Topics, angles, or questions that are absent from or underserved by the current top 10 results. These are the editorial windows Profit and Privilege can target.]
 
 - [gap 1]
 - [gap 2]
@@ -157,99 +152,149 @@
 
 ### Our angle
 
-[1–2 sentences describing the specific position Profit and Privilege can own in this SERP that the current top 10 does not occupy. Be specific — "independent review with methodology" is better than "better content".]
+[1–2 sentences: the specific position P&P can own that the current top 10 does not occupy.]
 
 ---
 
 ## 5. Opportunity Scoring
 
-| Dimension | Score | Rationale |
-|---|---|---|
-| Volume | [0–25] | [one-line rationale referencing the actual volume number] |
-| Competition | [0–25] | [one-line rationale referencing KD score] |
-| Gap | [0–25] | [one-line rationale referencing SERP weakness and gap size] |
-| Alignment | [0–25] | [one-line rationale referencing affiliate fit and editorial path] |
-| **Total** | **[0–100]** | |
+| Dimension | Score | Data source | Rationale |
+|---|---|---|---|
+| Volume | [0–25] | [Live / Estimated / Unavailable] | [one-line rationale citing the data] |
+| Competition | [0–25] | [Live / Estimated / Unavailable] | [one-line rationale citing the data] |
+| Gap | [0–25] | Live (SERP analysis) | [one-line rationale] |
+| Alignment | [0–25] | Live (editorial judgement) | [one-line rationale] |
+| **Total** | **[0–100]** | | |
 
-**Priority label:** [HIGH PRIORITY / MEDIUM PRIORITY / LOW PRIORITY]
-
-**Score narrative:** [2–3 sentences explaining what the score means in plain language. Why this number? What would need to change to increase or decrease it?]
+**Score narrative:** [2–3 sentences. What does this number mean in plain language? What would raise or lower it?]
 
 ---
 
 ## 6. Editorial Recommendation
 
-| Field | Value |
-|---|---|
-| Recommendation | [PUBLISH / REVIEW / DEPRIORITIZE / SKIP] |
-| Content type | [Review / Blog / Roundup] |
-| CTA product | [OLSP Academy / other] |
-| Topic cluster fit | [Existing cluster: [name] / New cluster / Standalone] |
+### Editorial Decision
+
+**[WRITE NOW / WAIT / DO NOT WRITE]**
+
+### Reasoning
+
+[2–3 sentences explaining the decision. Reference the score, confidence level, biggest opportunity, and biggest risk.]
+
+### Recommended Content Type
+
+**[Review / Tutorial / Comparison / Roundup / Blog / Other]**
+
+[1 sentence explaining why this content type fits the keyword and intent.]
+
+### Recommended Search Intent
+
+**[Informational / Commercial Investigation / Transactional / Navigational]**
+
+### Recommended Target Length
+
+**[e.g. 2,000–3,000 words]**
+
+[1 sentence rationale — based on competitor depth and content gap size.]
+
+### Priority
+
+**[High / Medium / Low]**
 
 ### Recommended angle
 
-[1–2 sentences. The specific editorial positioning for this article. What makes it different from what already exists? Why would a reader choose this over the current top results?]
+[1–2 sentences: the specific editorial positioning. What makes this different from what already exists?]
 
 ### Suggested title tag
 
 ```
-[Draft <title> — SEO-optimised, includes primary keyword, ~60 characters]
+[Draft <title> — ~60 characters, includes primary keyword]
 ```
 
 ### Suggested H1
 
 ```
-[Draft <h1> — human-facing article title, may differ from title tag]
+[Draft <h1> — human-facing, may differ from title tag]
 ```
 
 ### Suggested meta description
 
 ```
-[Draft meta description — ~155 characters, includes primary keyword, neutral editorial tone]
+[Draft meta description — ~155 characters]
 ```
+
+### CTA product
+
+**[OLSP Academy / other]**
+
+### Topic cluster fit
+
+**[Existing cluster: [name] / New cluster: [name] / Standalone]**
 
 ### Internal link targets
 
 **Link to this article from:**
-- [existing page URL] — [reason]
-- [existing page URL] — [reason]
+- [existing page] — [reason]
+- [existing page] — [reason]
 
 **Link from this article to:**
-- [existing page URL] — [reason]
-- [existing page URL] — [reason]
-
-### Priority rationale
-
-[2–3 sentences. Why is this the recommendation? Reference the score, the gap, and the affiliate alignment. If DEPRIORITIZE or SKIP, explain what would need to change for this to become worth publishing.]
+- [existing page] — [reason]
+- [existing page] — [reason]
 
 ---
 
-## 7. Data Quality
+## 7. Data Confidence
 
-| Field | Value |
+### Capability status
+
+| Capability | Status | Detail |
+|---|---|---|
+| Keyword Intelligence | [✓ Live / ⚠ Estimated / ✗ Unavailable] | [provider used or failure reason] |
+| Trend Intelligence | [✓ Live / ⚠ Partial / ✗ Unavailable] | [provider used or failure reason] |
+| Community Intelligence | [✓ Live / ⚠ Fallback / ✗ Unavailable] | [provider(s) used] |
+| SERP Intelligence | [✓ Live / ⚠ Partial / ✗ Unavailable] | [provider used or failure reason] |
+
+### Provider cascade log
+
+| Capability | Provider tried | Result |
+|---|---|---|
+| Keyword Intelligence | DataForSEO V1 | [Success / Auth failure / No data / Timeout] |
+| Keyword Intelligence | SERP + Trends Proxy V1 | [Applied / Not needed] |
+| Trend Intelligence | Google Trends V1 | [Success / Partial / Timeout / No data] |
+| Community Intelligence | Reddit V1 | [Success / 403 / Rate limit / No results] |
+| Community Intelligence | Quora V1 | [Success / 403 / Not tried] |
+| Community Intelligence | Google Discussions V1 | [Success / Not tried] |
+| Community Intelligence | YouTube V1 | [Success / Not tried] |
+| Community Intelligence | Google News V1 | [Success / Not tried] |
+| SERP Intelligence | WebSearch V1 | [Success / Partial / Unavailable] |
+
+### Overall confidence
+
+**[High / Medium / Low]**
+
+| Level | Criteria |
 |---|---|
-| Confidence level | [High — all stages complete / Medium — 1–2 gaps / Low — major gaps] |
-| Schema version | 1.0 |
+| High | 3–4 capabilities ✓ Live; no scoring dimensions estimated |
+| Medium | 1–2 capabilities ⚠ Estimated or ⚠ Fallback; proxy scoring applied to ≤ 2 dimensions |
+| Low | Any capability ✗ Unavailable with direct score impact; or 3+ dimensions estimated |
 
-### Data gaps
+### Notes
 
-[List any fields recorded as DATA_UNAVAILABLE, and the reason if known.]
+[Any caveats about data reliability, provider issues, or conditions that would improve confidence on a re-run.]
 
-- [gap 1 — e.g. "DataForSEO returned no results for this keyword"]
-- [gap 2 — e.g. "Google Trends shows no data — keyword may be too niche"]
-- [N/A if all data was retrieved]
+---
 
-### Fallbacks used
+## 8. Executive Summary
 
-[List any fallback sources that were triggered, and why.]
+> **This section is the 30-second decision view. Everything needed to decide whether this topic advances to Research Brief stage.**
 
-- [e.g. "Community intelligence: Reddit returned 403 → used Quora instead"]
-- [N/A if no fallbacks were triggered]
-
-### Manual review flags
-
-[Anything the operator should verify before using this brief to make a publishing decision.]
-
-- [flag 1 — e.g. "Search volume could not be verified — treat as estimate"]
-- [flag 2 — e.g. "SERP is volatile — re-check before commissioning article"]
-- [N/A if no flags]
+| | |
+|---|---|
+| **Keyword** | [primary keyword] |
+| **Opportunity Score** | [0–100] / 100 |
+| **Data Confidence** | [High / Medium / Low] |
+| **Editorial Decision** | [WRITE NOW / WAIT / DO NOT WRITE] |
+| **Recommended Article Type** | [Review / Tutorial / Comparison / Roundup / Blog] |
+| **Estimated Difficulty** | [High / Medium / Low] |
+| **Biggest Opportunity** | [One sentence: the single strongest reason to publish] |
+| **Biggest Risk** | [One sentence: the single biggest obstacle or uncertainty] |
+| **Recommended Next Action** | [One specific, actionable sentence] |

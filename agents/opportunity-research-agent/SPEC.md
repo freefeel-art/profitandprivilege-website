@@ -1,7 +1,7 @@
 # Opportunity Research Agent — Full Specification
 
-**Version:** 1.0  
-**Status:** Architecture approved — implementing
+**Version:** 1.1
+**Status:** Production
 
 ---
 
@@ -221,6 +221,17 @@ Alignment scoring guidance:
 - **Moderate fit (15):** can be connected to affiliate offer but requires editorial stretch; adjacent topic
 - **Weak fit (5):** no clear path to monetization; purely informational with no product tie-in
 
+**Proxy scoring rules (when KEYWORD_INTELLIGENCE primary provider fails):**
+
+When DataForSEO returns no data, derive Volume and Competition scores from the data already collected in Stages 2 and 4. CPC remains `DATA_UNAVAILABLE`. Mark proxy-derived scores with `(proxy)` in the brief.
+
+| Sub-score | Proxy source | Signal → Score |
+|---|---|---|
+| **Volume** | Google Trends peak interest score (Stage 2) | ≥ 60 → 25 · 30–59 → 15 · < 30 → 5 |
+| **Competition** | SERP authority level (Stage 4) | Very High (major brands, DA 70+) → 5 · High (DA 50–70) → 10 · Medium (DA 30–50) → 15 · Low (DA < 30) → 25 |
+
+Proxy scores are noted in the brief's scoring rationale and Data Quality section. They are treated as directionally accurate but not confirmed — flag for re-run once a primary KEYWORD_INTELLIGENCE provider is available.
+
 **Score thresholds:**
 
 | Score | Label | Recommendation |
@@ -255,8 +266,8 @@ The agent is built against **capability interfaces**, not tool implementations. 
 ```
 Capability               Contract (what the agent needs)       Current Provider
 ─────────────────────────────────────────────────────────────────────────────────
-KEYWORD_INTELLIGENCE     volume, CPC, KD, intent,              DataForSEO V1
-                         related keywords, long-tail variants,
+KEYWORD_INTELLIGENCE     volume, CPC, KD, intent,              DataForSEO V1            ← primary
+                         related keywords, long-tail variants,  SERP + Trends Proxy V1   ← fallback
                          semantic/LSI terms
 
 TREND_INTELLIGENCE       trend direction, classification,       Google Trends V1
@@ -333,6 +344,7 @@ Required outputs:
 | Capability | Provider | Version | Tool / Skill |
 |---|---|---|---|
 | KEYWORD_INTELLIGENCE | DataForSEO | V1 | `dataforseo-keyword-research` skill |
+| KEYWORD_INTELLIGENCE fallback | SERP + Trends Proxy | V1 | Synthesized at Stage 5 from Stage 2 + Stage 4 data — see Proxy Scoring Rules |
 | TREND_INTELLIGENCE | Google Trends | V1 | `mcp__claude_ai_G_Trends__*` MCP tools |
 | COMMUNITY_INTELLIGENCE | Reddit | V1 | `reddit-public-fetch` skill |
 | COMMUNITY_INTELLIGENCE fallback 1 | Quora | V1 | `WebSearch` + `WebFetch` |
@@ -357,7 +369,7 @@ Failures are handled at the capability level, not the provider level. The agent 
 
 | Capability failure | Response |
 |---|---|
-| KEYWORD_INTELLIGENCE — provider returns no data | Record `DATA_UNAVAILABLE` for all keyword fields. Continue. |
+| KEYWORD_INTELLIGENCE — primary provider fails | Mark volume, KD, CPC, and variant volumes as `PROXY_PENDING`. Record failure reason. Continue — proxy values are derived at Stage 5 from Stage 2 and Stage 4 data. Do not default to `DATA_UNAVAILABLE` unless the proxy also fails. |
 | TREND_INTELLIGENCE — provider returns no data | Retry with simplified keyword variant. If still empty, record `DATA_UNAVAILABLE`. Continue. |
 | COMMUNITY_INTELLIGENCE — primary provider fails | Cascade through fallback providers in registry order (Quora → Google Discussions → YouTube → Google News). Record which provider actually delivered data as `community_source`. |
 | COMMUNITY_INTELLIGENCE — all providers fail | Record `DATA_UNAVAILABLE`. Note in scoring rationale. Continue. |
@@ -381,12 +393,16 @@ The agent is framed as an editorial research analyst, not a content writer. Its 
 ### Capability-first language
 The prompt instructs the agent in terms of capabilities, not tools. The agent is told to "invoke KEYWORD_INTELLIGENCE" and consults the provider registry to know which tool to call. This means the prompt does not need to change when providers are swapped — only the registry changes.
 
+### Data source transparency
+Every metric in the brief must be labelled with its source type: **Live**, **Estimated**, or **Unavailable**. The agent never hides missing data and never conflates proxy-derived values with confirmed figures. A provider being unavailable is a normal operational state, not an error — the brief documents it clearly and continues.
+
 ### Constraint enforcement
 The prompt explicitly prohibits:
 - Invented data
-- Estimated search volumes without a successful KEYWORD_INTELLIGENCE response
+- Unlabelled estimated values (all estimates must be marked as such)
 - Fabricated community sentiment
 - Unsourced SERP claims
+- Stopping the workflow because one provider is unavailable
 
 ### Stage discipline
 Each stage is treated as a discrete tool call sequence. The agent completes each stage before moving to the next. It does not interleave stages.
@@ -403,94 +419,140 @@ See `PROMPT.md` for the full system prompt and user prompt template.
 
 ## 10. Opportunity Brief Schema
 
-The Opportunity Brief is a structured markdown document. Every field is required. If data is unavailable, the field value is `DATA_UNAVAILABLE` or `N/A` (not blank).
+**Schema version:** 1.1
+
+The Opportunity Brief is a structured markdown document. Every field is required. If data is unavailable, the field value is `Unavailable` with the reason noted. Never leave a field blank.
+
+Data source transparency is mandatory: every scored field must state whether its value is **Live**, **Estimated** (proxy), or **Unavailable**.
 
 ### Top-level header fields
 ```
-keyword:           [primary keyword]
-slug:              [kebab-case slug]
-date_generated:    [ISO 8601 date]
-status:            [HIGH PRIORITY / MEDIUM PRIORITY / LOW PRIORITY / INCOMPLETE]
-opportunity_score: [0–100]
-recommendation:    [PUBLISH / REVIEW / DEPRIORITIZE / SKIP]
+opportunity_score:    [0–100]
+data_confidence:      [High / Medium / Low]
+editorial_decision:   [WRITE NOW / WAIT / DO NOT WRITE]
+date_generated:       [YYYY-MM-DD]
+schema_version:       1.1
 ```
 
 ### Section 1: Keyword Intelligence
 ```
-search_volume:      [monthly searches]
-cpc:                [USD]
-keyword_difficulty: [0–100]
-search_intent:      [Informational / Commercial / Transactional / Navigational]
-long_tail_variants: [list]
-related_keywords:   [list with volumes]
+search_volume:      [number / Estimated / Unavailable] + source
+cpc:                [USD / Unavailable] + source
+keyword_difficulty: [0–100 / Estimated / Unavailable] + source
+search_intent:      [Informational / Commercial Investigation / Transactional / Navigational] + source
+long_tail_variants: [list with volumes or Estimated or Unavailable per variant]
+related_keywords:   [list with volume, KD, CPC, and source per keyword]
 semantic_terms:     [LSI / supporting terms]
 ```
 
 ### Section 2: Trend Intelligence
 ```
-trend_direction:       [Rising / Stable / Declining / Volatile]
-trend_classification:  [Evergreen / Trending / Seasonal / Declining]
-peak_period:           [month or quarter, or N/A]
-seasonality_notes:     [description or N/A]
-rising_related_topics: [list or N/A]
-12_month_summary:      [narrative description of the trend line]
+trend_direction:       [Rising / Stable / Declining / Volatile / Unavailable]
+trend_classification:  [Evergreen / Trending / Seasonal / Declining / Unavailable]
+peak_period:           [month or quarter / N/A]
+seasonality:           [description or N/A]
+rising_related_topics: [list or Unavailable]
+12_month_summary:      [narrative or "Unavailable — [reason]"]
 ```
 
 ### Section 3: Community Intelligence
 ```
-community_source:      [Reddit / Google Discussions / Quora / YouTube / etc.]
-subreddits_researched: [list or N/A]
-engagement_level:      [High / Medium / Low / DATA_UNAVAILABLE]
+primary_source_used:   [provider name]
+providers_attempted:   [ordered list of all providers tried]
+engagement_level:      [High / Medium / Low / Unavailable]
 top_pain_points:       [bulleted list]
 common_questions:      [bulleted list]
-sentiment:             [Positive / Mixed / Negative / Neutral / DATA_UNAVAILABLE]
-community_gaps:        [topics the community asks about with no good answers]
-notable_threads:       [URLs to 2–3 highest-signal threads, or N/A]
+sentiment:             [Positive / Mixed / Negative / Neutral / Unavailable]
+community_gaps:        [topics asked with no satisfying answers]
+notable_threads:       [URLs with descriptions, or N/A]
 ```
 
 ### Section 4: SERP Intelligence
 ```
-featured_snippet:      [Yes — [text] / No]
-people_also_ask:       [bulleted list of PAA questions]
-top_10_domains:        [list with authority assessment per domain]
-content_type_mix:      [breakdown: X reviews, Y roundups, Z blog posts, etc.]
-authority_level:       [High — major brands dominate / Medium / Low — thin or affiliate-heavy]
-content_weaknesses:    [bulleted list of weaknesses found in top 10]
-content_gaps:          [bulleted list of angles / topics missing from top 10]
-our_angle:             [the specific positioning Profit and Privilege can own]
+featured_snippet:   [Yes — [text] / No / Unavailable]
+people_also_ask:    [bulleted list]
+top_10_domains:     [list with domain, type, authority, notes]
+content_type_mix:   [breakdown by type]
+authority_level:    [Very High / High / Medium / Low / Unavailable]
+content_weaknesses: [bulleted list]
+content_gaps:       [bulleted list]
+our_angle:          [1–2 sentence positioning statement]
 ```
 
 ### Section 5: Opportunity Scoring
 ```
-volume_score:      [0–25] — [rationale]
-competition_score: [0–25] — [rationale]
-gap_score:         [0–25] — [rationale]
-alignment_score:   [0–25] — [rationale]
+volume_score:      [0–25] — data_source: [Live / Estimated / Unavailable] — rationale
+competition_score: [0–25] — data_source: [Live / Estimated / Unavailable] — rationale
+gap_score:         [0–25] — data_source: Live (SERP analysis) — rationale
+alignment_score:   [0–25] — data_source: Live (editorial judgement) — rationale
 total_score:       [0–100]
-priority_label:    [HIGH / MEDIUM / LOW]
+score_narrative:   [2–3 sentences]
 ```
 
 ### Section 6: Editorial Recommendation
 ```
-recommendation:          [PUBLISH / REVIEW / DEPRIORITIZE / SKIP]
-recommended_type:        [Review / Blog / Roundup]
-recommended_angle:       [1–2 sentence positioning statement]
-recommended_cta_product: [affiliate product to feature]
-suggested_title:         [draft <title> tag]
-suggested_h1:            [draft <h1>]
-suggested_meta:          [draft meta description, ~155 chars]
-topic_cluster_fit:       [existing cluster / new cluster / standalone]
-internal_link_targets:   [existing pages to link from/to]
-priority_rationale:      [2–3 sentences explaining the recommendation]
+editorial_decision:        [WRITE NOW / WAIT / DO NOT WRITE]
+reasoning:                 [2–3 sentences]
+recommended_content_type:  [Review / Tutorial / Comparison / Roundup / Blog / Other]
+recommended_search_intent: [Informational / Commercial Investigation / Transactional / Navigational]
+recommended_target_length: [e.g. 2,000–3,000 words]
+priority:                  [High / Medium / Low]
+recommended_angle:         [1–2 sentence positioning statement]
+suggested_title:           [draft <title>]
+suggested_h1:              [draft <h1>]
+suggested_meta:            [draft meta description, ~155 chars]
+cta_product:               [affiliate product to feature]
+topic_cluster_fit:         [existing / new / standalone]
+internal_link_targets:     [pages to link from/to]
 ```
 
-### Section 7: Data Quality Notes
+### Section 7: Data Confidence
 ```
-data_gaps:         [fields where data was unavailable]
-fallbacks_used:    [list of fallback sources triggered]
-confidence_level:  [High / Medium / Low — based on data completeness]
-manual_review_flags: [anything the operator should verify before publishing]
+capability_status:
+  keyword_intelligence:    [✓ Live / ⚠ Estimated / ✗ Unavailable] + detail
+  trend_intelligence:      [✓ Live / ⚠ Partial / ✗ Unavailable] + detail
+  community_intelligence:  [✓ Live / ⚠ Fallback / ✗ Unavailable] + provider used
+  serp_intelligence:       [✓ Live / ⚠ Partial / ✗ Unavailable] + detail
+
+provider_cascade_log:      [full table of providers tried and results]
+overall_confidence:        [High / Medium / Low]
+notes:                     [caveats or conditions for improvement on re-run]
 ```
+
+### Section 8: Executive Summary
+```
+keyword:                [primary keyword]
+opportunity_score:      [0–100] / 100
+data_confidence:        [High / Medium / Low]
+editorial_decision:     [WRITE NOW / WAIT / DO NOT WRITE]
+recommended_type:       [content type]
+estimated_difficulty:   [High / Medium / Low]
+biggest_opportunity:    [one sentence]
+biggest_risk:           [one sentence]
+recommended_next_action:[one actionable sentence]
+```
+
+### Editorial Decision logic
+
+| Condition | Decision |
+|---|---|
+| Score ≥ 70 AND Confidence ≥ Medium | WRITE NOW |
+| Score ≥ 70 AND Confidence = Low | WAIT — improve data confidence first |
+| Score 40–69 AND Confidence ≥ Medium | WAIT — borderline; monitor or improve |
+| Score 40–69 AND Confidence = Low | DO NOT WRITE — insufficient basis |
+| Score < 40 | DO NOT WRITE |
+
+### Confidence scoring methodology
+
+| Level | Criteria |
+|---|---|
+| High | 3–4 capabilities ✓ Live; no scoring dimensions estimated |
+| Medium | 1–2 capabilities ⚠ Estimated or ⚠ Fallback; proxy scoring applied to ≤ 2 dimensions |
+| Low | Any capability ✗ Unavailable with direct score impact; or 3+ dimensions estimated |
+
+### Data source transparency rule
+
+Every metric in the brief must state whether it is **Live** (from a primary provider), **Estimated** (from a proxy or fallback), or **Unavailable** (no provider returned data). DataForSEO unavailability is not an error — it triggers the SERP + Trends Proxy V1 provider and the brief continues. The brief states: *"Keyword metrics estimated (DataForSEO unavailable)"* — never *"DataForSEO error"* or similar language that implies the agent failed.
 
 ---
 
