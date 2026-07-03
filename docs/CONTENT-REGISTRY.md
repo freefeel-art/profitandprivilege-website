@@ -626,3 +626,6 @@ The cluster spans every major intent type: definitional (`what-is-lead-generatio
 - `lead-generation-strategies` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `local-business-lead-generation` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `social-media-lead-generation` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
+
+**7. Opportunity Discovery Agent — design pending, not yet implemented**
+A new agent, `agents/opportunity-discovery-agent/`, has been designed to sit upstream of ORA: input is a content pillar (not a keyword), output is a ranked `OPPORTUNITY-QUEUE.md` of candidate opportunities with evidence, a Discovery Score, and a content-coverage check against this registry, `src/pages/**`, ORA's `briefs/`, and `docs/research/`. Its coverage check reads this registry the same way ORA's Stage 0 does. ORA itself, and everything downstream of the Opportunity Brief, is unchanged by this design. `README.md`, `SPEC.md`, `PROMPT.md`, and `OUTPUT-TEMPLATE.md` are written; no queue file exists yet and no code has been implemented.
