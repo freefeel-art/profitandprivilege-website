@@ -1,6 +1,6 @@
 # Opportunity Research Agent — Full Specification
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Production
 
 ---
@@ -17,7 +17,8 @@ The agent produces evidence, not opinions. Every claim in its output is traceabl
 
 ### In scope
 - Accepting a keyword as input
-- Running the six-stage intelligence workflow
+- Running a pre-flight duplicate check before any research begins
+- Running the six-stage intelligence workflow (only if the pre-flight check passes)
 - Producing a completed Opportunity Brief
 - Saving the brief to `agents/opportunity-research-agent/briefs/[slug].md`
 
@@ -27,18 +28,20 @@ The agent produces evidence, not opinions. Every claim in its output is traceabl
 - Generating Astro pages
 - Modifying the repository outside the `briefs/` directory
 - Making final publishing decisions (the brief recommends; the operator decides)
+- Researching a keyword that the pre-flight check identifies as already covered (see Stage 0)
 
 ---
 
 ## 3. Responsibilities
 
 1. Accept a keyword input
-2. Run Keyword Intelligence (DataForSEO)
-3. Run Trend Intelligence (Google Trends)
-4. Run Community Intelligence (Reddit, with fallbacks)
-5. Run SERP Intelligence (web search + page fetching)
-6. Score the opportunity using the defined scoring model
-7. Produce and save an Opportunity Brief
+2. Run a pre-flight duplicate check against existing coverage; skip the keyword if already covered
+3. Run Keyword Intelligence (DataForSEO)
+4. Run Trend Intelligence (Google Trends)
+5. Run Community Intelligence (Reddit, with fallbacks)
+6. Run SERP Intelligence (web search + page fetching)
+7. Score the opportunity using the defined scoring model
+8. Produce and save an Opportunity Brief
 
 ---
 
@@ -70,11 +73,13 @@ The brief is the canonical record of the research. It becomes the input for the 
 
 ## 6. Workflow
 
-The agent executes six stages in sequence. No stage is skipped. If a stage fails, the agent records the failure in the brief and continues with available data.
+The agent executes a pre-flight check, then six research stages in sequence. No stage is skipped. If a stage fails, the agent records the failure in the brief and continues with available data. If the pre-flight check finds existing coverage, the agent stops before Stage 1 — none of the six research stages run.
 
 ```
 Keyword
     ↓
+Stage 0: Pre-Flight Duplicate Check ──── match found ──→ SKIP (report, no brief written)
+    ↓ no match
 Stage 1: Keyword Intelligence
     ↓
 Stage 2: Trend Intelligence
@@ -87,6 +92,31 @@ Stage 5: Opportunity Scoring
     ↓
 Stage 6: Opportunity Brief
 ```
+
+### Stage 0 — Pre-Flight Duplicate Check
+
+**Tools:** `Grep`/`Read` over repository files — no external API call required
+
+**Objective:** Never spend research effort on a keyword that is already published, already in production, already manually authored, or already has a brief on file. This is the first thing the agent does for every keyword, before any capability is invoked.
+
+**Checks performed, in order:**
+
+1. **Published content** — search `docs/CONTENT-REGISTRY.md` for a matching or clearly overlapping primary keyword, title, or URL slug.
+2. **In-production / drafted pages** — search `src/pages/{reviews,blog,roundups}/**/*.astro` for a filename slug matching the candidate keyword's kebab-case slug, in case a page exists but the registry hasn't been updated yet.
+3. **Existing Opportunity Brief** — search `agents/opportunity-research-agent/briefs/` for a file whose slug or `Primary keyword` field matches or clearly overlaps the candidate keyword.
+4. **Existing Research Brief** — search `docs/research/` for a file covering the same or clearly overlapping topic.
+
+A match does not need to be an exact string match — a keyword that is a trivial variant of existing coverage (singular/plural, reordered words, "best X" vs "top X" for the same topic) counts as already covered. Judgement is required; when genuinely uncertain whether a candidate is a new angle or a duplicate, treat it as **uncertain** rather than silently proceeding (see below).
+
+**Outcomes:**
+
+| Result | Action |
+|---|---|
+| No match found | Proceed to Stage 1. Record the check as passed in the brief (Section 0). |
+| Clear match found | Do not run Stages 1–6. Do not write an Opportunity Brief. Report the match (keyword, matched artifact, path) to the operator. If researching a batch/list of candidate keywords, skip this one and continue automatically with the next candidate. If researching a single keyword, stop and report — this is an operator decision point (pick a different keyword, or confirm the existing coverage is stale/insufficient and should be re-researched deliberately). |
+| Uncertain / partial overlap | Do not silently proceed and do not silently skip. Report the ambiguous overlap to the operator and wait for a decision before invoking any capability. |
+
+**Output fields populated:** Section 0 of the Opportunity Brief (only when the check passes and research proceeds — a skip produces no brief file, only a report to the operator).
 
 ### Stage 1 — Keyword Intelligence
 
@@ -369,6 +399,8 @@ Failures are handled at the capability level, not the provider level. The agent 
 
 | Capability failure | Response |
 |---|---|
+| Pre-flight check (Stage 0) finds a clear match | Do not invoke any capability. Do not write a brief. Report the match to the operator. In batch mode, skip and continue with the next candidate keyword automatically. |
+| Pre-flight check (Stage 0) finds an ambiguous/partial match | Do not invoke any capability. Report the ambiguity to the operator and wait for a decision. Do not guess. |
 | KEYWORD_INTELLIGENCE — primary provider fails | Mark volume, KD, CPC, and variant volumes as `PROXY_PENDING`. Record failure reason. Continue — proxy values are derived at Stage 5 from Stage 2 and Stage 4 data. Do not default to `DATA_UNAVAILABLE` unless the proxy also fails. |
 | TREND_INTELLIGENCE — provider returns no data | Retry with simplified keyword variant. If still empty, record `DATA_UNAVAILABLE`. Continue. |
 | COMMUNITY_INTELLIGENCE — primary provider fails | Cascade through fallback providers in registry order (Quora → Google Discussions → YouTube → Google News). Record which provider actually delivered data as `community_source`. |
@@ -419,11 +451,20 @@ See `PROMPT.md` for the full system prompt and user prompt template.
 
 ## 10. Opportunity Brief Schema
 
-**Schema version:** 1.1
+**Schema version:** 1.2
 
 The Opportunity Brief is a structured markdown document. Every field is required. If data is unavailable, the field value is `Unavailable` with the reason noted. Never leave a field blank.
 
 Data source transparency is mandatory: every scored field must state whether its value is **Live**, **Estimated** (proxy), or **Unavailable**.
+
+A brief is only produced when Stage 0 passes. A Stage 0 skip does not produce a brief file — see Section 6.
+
+### Section 0: Pre-Flight Check
+```
+sources_checked:    [docs/CONTENT-REGISTRY.md, agents/opportunity-research-agent/briefs/, docs/research/, src/pages/**]
+match_found:        [None / Clear match — see reasoning / Ambiguous — see reasoning]
+result:             [PASSED — proceeded to Stage 1]
+```
 
 ### Top-level header fields
 ```
