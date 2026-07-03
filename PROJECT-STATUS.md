@@ -40,11 +40,20 @@ A 5-agent pipeline is planned for content production. Current status:
 | 4 | Editorial QA | Placeholder — `agents/editorial-qa/PLACEHOLDER.md` |
 | 5 | Publisher | Placeholder — requires operator approval, `agents/publisher/PLACEHOLDER.md` |
 
-Article generation currently runs manually against `docs/PRODUCTION-MASTER-PROMPT.md` (reviews), `docs/ROUNDUP-MASTER-PROMPT.md` (roundups), and `docs/BLOG-MASTER-PROMPT.md` (blog articles), using ORA briefs as the research input where available.
+Article generation currently runs manually against `docs/PRODUCTION-MASTER-PROMPT.md` (reviews), `docs/ROUNDUP-MASTER-PROMPT.md` (roundups), and `docs/BLOG-MASTER-PROMPT.md` (blog articles), using a Research Brief as the research package input where available.
+
+**Two distinct brief types — do not conflate them:**
+
+| Type | Produced by | Canonical location | Content |
+|---|---|---|---|
+| **Opportunity Brief** | Opportunity Research Agent (stage 1, operational) | `agents/opportunity-research-agent/briefs/` | Keyword scoring + editorial decision (WRITE NOW / WAIT / DO NOT WRITE) — decides *whether* to write |
+| **Research Brief** | Research Compiler (stage 2, placeholder — currently produced manually) | `docs/research/` | Compiled product research: primary sources, mechanics, competitive analysis — the "research package" input the builder prompts consume |
+
+ORA's own spec explicitly excludes creating Research Briefs and forbids it from touching files outside its own `briefs/` directory (`agents/opportunity-research-agent/SPEC.md`, `README.md`). Keep these two artifact types and locations separate.
 
 ## Pipeline Queue
 
-- ORA briefs are saved to `agents/opportunity-research-agent/briefs/`
+- Opportunity Briefs are saved to `agents/opportunity-research-agent/briefs/`
 - Current brief: `make-money-online-for-beginners` — scored 70, WRITE NOW — already produced as a published blog article
 
 ## Known Gaps
@@ -63,4 +72,5 @@ Article generation currently runs manually against `docs/PRODUCTION-MASTER-PROMP
 | `docs/ROUNDUP-GOLD-MASTER-SPEC.md` / `docs/ROUNDUP-MASTER-PROMPT.md` | Standard and builder prompt for roundup articles |
 | `docs/BLOG-MASTER-SPEC.md` / `docs/BLOG-MASTER-PROMPT.md` | Standard and builder prompt for blog/informational articles |
 | `docs/CONTENT-REGISTRY.md` | Published page inventory and internal link map |
-| `agents/opportunity-research-agent/` | ORA spec, prompt design, and briefs |
+| `docs/research/` | Canonical location for Research Briefs (compiled product research; Research Compiler's output) |
+| `agents/opportunity-research-agent/` | ORA spec, prompt design, and Opportunity Briefs (`briefs/`) |

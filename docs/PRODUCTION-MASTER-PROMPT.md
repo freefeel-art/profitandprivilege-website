@@ -43,7 +43,7 @@ The following inputs must be supplied before you begin. Do not start generating 
 | **Article type** | `reviews`, `blog`, or `roundups` | Determines the output directory and section structure. |
 | **Gold Master file** | Full file contents of `src/pages/reviews/olsp-academy.astro` | The structural template. Copy its layout, CSS, and JS exactly. |
 | **Gold Master Specification** | Full contents of `docs/GOLD-MASTER-SPEC.md` | The authoritative rule set. Read it before generating. |
-| **Research package** | Freeform text, notes, or pasted source material | Your primary content source. Everything you write must be grounded in this. |
+| **Research package** | Freeform text, notes, or pasted source material — typically a Research Brief from `docs/research/` | Your primary content source. Everything you write must be grounded in this. |
 | **Target keyword** | Plain text, e.g. `what is [product name]` | Used in `<title>`, `<h1>`, and `<meta name="description">`. |
 | **Canonical URL** | Full absolute URL with trailing slash, e.g. `https://olsp.profitandprivilege.com/{type}/[slug]/` | Hardcoded into `<link rel="canonical">`. |
 | **Internal links** | List of anchor text + URL pairs, or "none" | Links to other pages on olsp.profitandprivilege.com to weave naturally into the content. |

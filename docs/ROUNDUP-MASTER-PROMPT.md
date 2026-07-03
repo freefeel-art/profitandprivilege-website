@@ -22,7 +22,7 @@ The objective is to help readers choose the best option based on their specific 
 
 You will receive:
 
-- Research Brief
+- Research Brief (see `docs/research/` — the canonical location for Research Briefs)
 - Target keyword
 - Canonical URL
 - Author

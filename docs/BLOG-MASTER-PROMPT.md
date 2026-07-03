@@ -40,7 +40,7 @@ The following inputs must be supplied before you begin. Do not start generating 
 |---|---|---|
 | **Blog structural reference** | Full file contents of `src/pages/blog/part-time-jobs-near-me-no-experience.astro` | Layout, CSS, JS, and content-pattern template. |
 | **Blog Master Specification** | Full contents of `docs/BLOG-MASTER-SPEC.md` | The authoritative rule set. Read it before generating. |
-| **Research package** | Freeform text, notes, or pasted source material | Your primary content source. Everything you write must be grounded in this. |
+| **Research package** | Freeform text, notes, or pasted source material — typically a Research Brief from `docs/research/` | Your primary content source. Everything you write must be grounded in this. |
 | **Target keyword** | Plain text, e.g. `how to [do thing]` | Used in `<title>`, `<h1>`, and `<meta name="description">`. |
 | **Canonical URL** | Full absolute URL with trailing slash, e.g. `https://olsp.profitandprivilege.com/blog/[slug]/` | Hardcoded into `<link rel="canonical">` and the OG/JSON-LD `url` fields. |
 | **Publish date** | `YYYY-MM-DD` | Used in `.hero-tag` and JSON-LD `datePublished`/`dateModified`. |
