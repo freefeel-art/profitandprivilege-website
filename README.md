@@ -47,6 +47,21 @@ All commands are run from the root of the project, from a terminal:
 
 For AI-agent sessions, prefer `astro dev --background` and manage it with `astro dev stop` / `astro dev status` / `astro dev logs` — see `CLAUDE.md`.
 
+## Repository Scope
+
+This repository is a static content site only. The following are intentionally **out of scope** — there is no code for any of these here, and none should be added without a deliberate architectural decision:
+
+- **AI generation at runtime** — no LLM/API calls happen when the site serves a page. Article content is authored offline (via the builder prompts in `docs/`) and committed as static HTML/Astro; nothing is generated on request.
+- **Image generation** — no image-generation APIs or pipelines. Images (e.g. author photo) are static assets checked into `src/assets` / `public`.
+- **Backend APIs / server routes** — no `/api` directory, no serverless functions, no server-side request handling. Every page has `prerender = true` and ships as static HTML.
+- **Authentication / user accounts** — no login, sessions, or user data of any kind.
+- **Database / persistent storage** — no database, ORM, or data layer. Content lives in version-controlled files.
+- **Environment variables / secrets** — no `.env` files or runtime secrets. There is nothing to configure at deploy time beyond the static build.
+- **Payment processing / checkout** — monetization is affiliate links only (OLSP Megalink); no payment or checkout flow is handled by this site.
+- **Analytics / tracking scripts** — no analytics integration is currently wired in, despite some article content discussing analytics/marketing tools editorially.
+
+If a task assumes any of the above exists (e.g. an API integration, an `.env` variable, a generation pipeline), treat that as a sign the task targets a different repository, or as a deliberate new feature that needs explicit scoping before implementation.
+
 ## Documentation
 
 Full Astro documentation: https://docs.astro.build
