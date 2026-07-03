@@ -43,12 +43,14 @@ It does nothing else.
 
 ## Inputs
 
-A single keyword or keyword phrase, supplied as plain text.
+**Required:** a single keyword or keyword phrase, supplied as plain text. This becomes the brief's Primary SEO Target.
 
 Examples:
 - `best affiliate marketing training`
 - `how to make money online with no experience`
 - `leadsminer pro review`
+
+**Optional:** an `opportunity_name` — an internal identifier for the opportunity (e.g. a candidate_id promoted from `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`). If omitted, the agent derives one from its own research. See `PROMPT.md` for the full input list (`intent_hint`, `affiliate_product`, `opportunity_name`).
 
 ---
 
@@ -60,7 +62,9 @@ A single **Opportunity Brief** — a structured markdown document saved to:
 agents/opportunity-research-agent/briefs/[slug].md
 ```
 
-The brief contains: keyword intelligence, trend data, community insights, SERP analysis, opportunity scoring, and an editorial recommendation.
+The slug is derived from the brief's **Opportunity Name** (an internal identifier describing the opportunity), not from the keyword researched — the brief keeps those two deliberately separate. The keyword becomes the brief's **Primary SEO Target**.
+
+The brief contains (schema v1.3): an Evidence Summary panel (why the opportunity exists, at a glance), keyword intelligence, trend data, community insights, SERP analysis, opportunity scoring, **Business Value** (commercial value assessed independently of search opportunity), **Strategic Fit** (target pillar, authority cluster, internal-linking and portfolio impact), an editorial recommendation, data confidence, and an Executive Summary sized for a 30-second decision by the Editorial Commander.
 
 See `OUTPUT-TEMPLATE.md` for the full schema.
 
@@ -74,7 +78,7 @@ See `OUTPUT-TEMPLATE.md` for the full schema.
 | `SPEC.md` | Full specification: mission, workflow, data sources, failure handling, schema |
 | `PROMPT.md` | The agent system prompt and user prompt template |
 | `OUTPUT-TEMPLATE.md` | The Opportunity Brief schema the agent fills in |
-| `briefs/` | Output directory — one `.md` file per keyword researched |
+| `briefs/` | Output directory — one `.md` file per opportunity researched |
 
 ---
 
@@ -98,3 +102,5 @@ See `OUTPUT-TEMPLATE.md` for the full schema.
 - Generate Astro pages
 - Modify any file outside `agents/opportunity-research-agent/briefs/`
 - Make publishing decisions (it recommends; humans decide)
+- Blend Business Value into the Opportunity Score, or vice versa — they answer different questions and are never collapsed into one number
+- Re-rank this candidate against other candidates on the site — Strategic Fit is context for one opportunity; portfolio-wide ranking remains the Opportunity Discovery Agent's job

@@ -1,10 +1,36 @@
-# Opportunity Brief — [KEYWORD]
+# Opportunity Brief — [OPPORTUNITY NAME]
 
-**Schema version:** 1.1
+**Schema version:** 1.3
 **Generated:** [YYYY-MM-DD]
+**Opportunity Name:** [internal identifier — describes the opportunity itself, e.g. "OLSP Ecosystem Complete Guide Hub". Not a search query.]
+**Primary SEO Target:** [the actual search query/topic — how real users search, e.g. "olsp academy complete guide to all products and upgrades"]
 **Opportunity Score:** [0–100] / 100
+**Business Value:** [Low / Medium / High]
 **Data Confidence:** [High / Medium / Low]
 **Editorial Decision:** [WRITE NOW / WAIT / DO NOT WRITE]
+
+---
+
+## Evidence Summary
+
+*Why this opportunity exists, at a glance. Each line is a one-sentence pointer into the full detail in Sections 1–4 and 7 — this panel does not introduce new evidence of its own.*
+
+- **Google Trends:** [one-line trend signal — direction + strength, or "Unavailable — reason"]
+- **Community discussions:** [one-line community signal + which provider delivered it, or "Unavailable — reason"]
+- **SERP gap:** [one-line description of the competitive gap found in the top 10]
+- **Existing content gap:** [one-line — confirms no Profit and Privilege page already covers this, per Section 0]
+- **Internal linking opportunity:** [one-line — which existing pages this would link to/from; see Section 7 for detail]
+- **Portfolio priority:** [one-line — resolves a gap named in docs/CONTENT-REGISTRY.md? matches a Priority Score from agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md if this candidate originated there? or "N/A — researched directly, not sourced from the Opportunity Queue"]
+
+---
+
+## 0. Pre-Flight Check
+
+```
+sources_checked:    [docs/CONTENT-REGISTRY.md, agents/opportunity-research-agent/briefs/, docs/research/, src/pages/**]
+match_found:        [None / Clear match — see reasoning / Ambiguous — see reasoning]
+result:             [PASSED — proceeded to Stage 1]
+```
 
 ---
 
@@ -12,7 +38,7 @@
 
 | Field | Value | Source |
 |---|---|---|
-| Primary keyword | [keyword] | — |
+| Primary SEO Target | [same value as header — the actual search query] | — |
 | Monthly search volume | [number / Estimated / Unavailable] | [DataForSEO Live / Estimated via proxy / Unavailable] |
 | CPC | [$X.XX / Unavailable] | [DataForSEO Live / Unavailable] |
 | Keyword difficulty | [0–100 / Estimated / Unavailable] | [DataForSEO Live / Estimated via SERP proxy / Unavailable] |
@@ -158,6 +184,8 @@
 
 ## 5. Opportunity Scoring
 
+*Search/content opportunity only. Commercial value is assessed independently in Section 6 — the two are never blended into one number.*
+
 | Dimension | Score | Data source | Rationale |
 |---|---|---|---|
 | Volume | [0–25] | [Live / Estimated / Unavailable] | [one-line rationale citing the data] |
@@ -170,7 +198,42 @@
 
 ---
 
-## 6. Editorial Recommendation
+## 6. Business Value
+
+*Commercial value of this opportunity, assessed independently of the search/content opportunity scored in Section 5. A topic can score high above and still have a weak monetization path, or vice versa — this section exists so the two are never conflated.*
+
+| Field | Value |
+|---|---|
+| Business Value | [Low / Medium / High] |
+| Monetization path | [1 sentence — how a reader on this page becomes a referral/commission] |
+| Primary CTA | [the affiliate product/link this page leads with] |
+| Secondary CTA | [a secondary affiliate product or internal page this page can also point to, or "None"] |
+| Internal products supported | [P&P's own reviews/pages this content promotes, cross-sells, or drives traffic toward] |
+
+**Business Value rationale:** [1–2 sentences — why Low/Medium/High. Reference how direct the path from this content to a CTA click is, and whether it required editorial stretch to connect the two.]
+
+Business Value guidance:
+- **High** — a direct, single-step path to the Primary CTA; the reader is already comparing or deciding, and the content leads straight to a recommendation.
+- **Medium** — a real but indirect path; requires an editorial bridge, or the content leans more on secondary CTAs / cross-sell than the primary one.
+- **Low** — no clear monetization path; the content is purely informational with no natural CTA insertion point.
+
+---
+
+## 7. Strategic Fit
+
+*How this opportunity strengthens the site as a whole, informed by `docs/CONTENT-REGISTRY.md`. This is contextual judgement about one candidate — it does not re-rank this candidate against every other candidate on the site. That comparison remains the Opportunity Discovery Agent's job (see `agents/opportunity-discovery-agent/SPEC.md` § 5); this section does not duplicate or override it.*
+
+| Field | Value |
+|---|---|
+| Target pillar | [OLSP Ecosystem / Affiliate Traffic & List Building / Lead Generation / Online Income for Beginners / New pillar / Cross-pillar] |
+| Authority cluster | [which existing cluster this joins, and in what role — e.g. "becomes the pillar/hub page of the OLSP Ecosystem cluster"] |
+| Internal linking impact | [1–2 sentences — net effect on the site's link graph: orphaned pages resolved, isolated clusters connected, etc.] |
+| Portfolio impact | [1–2 sentences — how this affects the target pillar's coverage/balance per `docs/CONTENT-REGISTRY.md` § Content Pillars: thin, balanced, or saturated] |
+| Priority rationale | [1–2 sentences. If this keyword came from a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, cite its Priority Score and label here. Otherwise: "No Opportunity Queue record — researched directly, not portfolio-ranked against other candidates."] |
+
+---
+
+## 8. Editorial Recommendation
 
 ### Editorial Decision
 
@@ -207,7 +270,7 @@
 ### Suggested title tag
 
 ```
-[Draft <title> — ~60 characters, includes primary keyword]
+[Draft <title> — ~60 characters, includes the Primary SEO Target]
 ```
 
 ### Suggested H1
@@ -224,13 +287,11 @@
 
 ### CTA product
 
-**[OLSP Academy / other]**
-
-### Topic cluster fit
-
-**[Existing cluster: [name] / New cluster: [name] / Standalone]**
+**[OLSP Academy / other — should match Section 6's Primary CTA]**
 
 ### Internal link targets
+
+*The literal, actionable list for the Editorial Builder. For the higher-level verdict on why these links matter, see Section 7's Internal linking impact.*
 
 **Link to this article from:**
 - [existing page] — [reason]
@@ -242,7 +303,7 @@
 
 ---
 
-## 7. Data Confidence
+## 9. Data Confidence
 
 ### Capability status
 
@@ -283,18 +344,21 @@
 
 ---
 
-## 8. Executive Summary
+## 10. Executive Summary
 
-> **This section is the 30-second decision view. Everything needed to decide whether this topic advances to Research Brief stage.**
+> **This section is the 30-second decision view for the Editorial Commander. Everything needed to decide whether this topic advances to Research Brief stage.**
 
 | | |
 |---|---|
-| **Keyword** | [primary keyword] |
+| **Opportunity Name** | [internal identifier] |
+| **Primary SEO Target** | [actual search query] |
 | **Opportunity Score** | [0–100] / 100 |
+| **Business Value** | [Low / Medium / High] |
 | **Data Confidence** | [High / Medium / Low] |
 | **Editorial Decision** | [WRITE NOW / WAIT / DO NOT WRITE] |
 | **Recommended Article Type** | [Review / Tutorial / Comparison / Roundup / Blog] |
 | **Estimated Difficulty** | [High / Medium / Low] |
+| **Strategic Fit** | [target pillar — one-line priority rationale] |
 | **Biggest Opportunity** | [One sentence: the single strongest reason to publish] |
 | **Biggest Risk** | [One sentence: the single biggest obstacle or uncertainty] |
 | **Recommended Next Action** | [One specific, actionable sentence] |

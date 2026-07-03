@@ -1,6 +1,6 @@
 # Opportunity Research Agent — Full Specification
 
-**Version:** 1.2
+**Version:** 1.3
 **Status:** Production
 
 ---
@@ -48,11 +48,12 @@ The agent produces evidence, not opinions. Every claim in its output is traceabl
 ## 4. Inputs
 
 **Required:**
-- `keyword` (string) — the primary keyword or phrase to research
+- `keyword` (string) — the primary keyword or phrase to research. This becomes the brief's **Primary SEO Target** — it is a search query, not a name for the opportunity (see Section 10 for why these are now kept separate).
 
 **Optional context:**
 - `intent_hint` (string) — caller's hypothesis about search intent (e.g. "review", "how-to", "comparison")
 - `affiliate_product` (string) — the affiliate product to evaluate for fit (defaults to OLSP Academy if not specified)
+- `opportunity_name` (string) — an internal identifier describing the opportunity itself (e.g. "OLSP Ecosystem Complete Guide Hub"), as distinct from the keyword. If the keyword originated from a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, the caller may pass that row's `candidate_id` here. If omitted, the agent derives one at Stage 6 from its own research findings — describing the angle of the opportunity, never simply restating the keyword.
 
 The keyword is the only hard requirement. All other inputs are advisory.
 
@@ -62,8 +63,12 @@ The keyword is the only hard requirement. All other inputs are advisory.
 
 **Primary output:** A completed Opportunity Brief saved as:
 ```
-agents/opportunity-research-agent/briefs/[kebab-case-slug].md
+agents/opportunity-research-agent/briefs/[kebab-case-slug-of-the-opportunity-name].md
 ```
+
+The slug is derived from the **Opportunity Name** (internal identifier), not from the Primary SEO Target — see Section 6, Stage 6, and Section 10.
+
+The brief separates three concerns that were previously blended into a single "keyword" field and a single score: what the opportunity is called internally (Opportunity Name), what people actually search for (Primary SEO Target), whether it's a good search/content opportunity (Section 5, Opportunity Scoring), and whether it's commercially worth pursuing (Section 6, Business Value) — the last two are deliberately never collapsed into one number. An Evidence Summary panel and a Strategic Fit section (Section 7) make the brief's reasoning and site-wide context scannable without requiring a full read of Sections 1–4.
 
 The brief is the canonical record of the research. It becomes the input for the Content Research Agent (next pipeline stage, not yet built).
 
@@ -103,7 +108,7 @@ Stage 6: Opportunity Brief
 
 1. **Published content** — search `docs/CONTENT-REGISTRY.md` for a matching or clearly overlapping primary keyword, title, or URL slug.
 2. **In-production / drafted pages** — search `src/pages/{reviews,blog,roundups}/**/*.astro` for a filename slug matching the candidate keyword's kebab-case slug, in case a page exists but the registry hasn't been updated yet.
-3. **Existing Opportunity Brief** — search `agents/opportunity-research-agent/briefs/` for a file whose slug or `Primary keyword` field matches or clearly overlaps the candidate keyword.
+3. **Existing Opportunity Brief** — search `agents/opportunity-research-agent/briefs/` for a file whose slug, `Opportunity Name`, or `Primary SEO Target` field matches or clearly overlaps the candidate keyword.
 4. **Existing Research Brief** — search `docs/research/` for a file covering the same or clearly overlapping topic.
 
 A match does not need to be an exact string match — a keyword that is a trivial variant of existing coverage (singular/plural, reordered words, "best X" vs "top X" for the same topic) counts as already covered. Judgement is required; when genuinely uncertain whether a candidate is a new angle or a duplicate, treat it as **uncertain** rather than silently proceeding (see below).
@@ -276,16 +281,24 @@ Proxy scores are noted in the brief's scoring rationale and Data Quality section
 
 ### Stage 6 — Opportunity Brief
 
-The agent compiles all data from Stages 1–5 into the standardized Opportunity Brief template (see `OUTPUT-TEMPLATE.md`), fills every field, and saves the file to:
+Before compiling the brief, the agent performs two additional pieces of internal reasoning — neither requires a new capability or external tool; both read `docs/CONTENT-REGISTRY.md`, which the agent already reads for Alignment scoring (Stage 5) and Internal Link Targets:
+
+1. **Business Value assessment** (Section 6 of the brief) — evaluates monetization path, Primary/Secondary CTA, and internal products supported, independently of the Stage 5 Opportunity Score. Never added into the 0–100 total.
+2. **Strategic Fit assessment** (Section 7 of the brief) — reads `docs/CONTENT-REGISTRY.md` § Content Pillars, § Internal Link Map, and § Content Gaps & Planning Notes to determine target pillar, authority cluster fit, internal-linking impact, and portfolio impact. If the `opportunity_name` input traces to a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, cite that row's Priority Score in the Priority Rationale field. This section provides context for one candidate; it does not re-rank candidates against each other — that remains the Opportunity Discovery Agent's job (see `agents/opportunity-discovery-agent/SPEC.md` § 5).
+
+If `opportunity_name` was not supplied as an input, the agent derives one now — a short, descriptive internal identifier for the opportunity's angle (not a restatement of the keyword) — informed by everything gathered in Stages 1–5.
+
+The agent then compiles all data from Stages 1–5 plus the two assessments above into the standardized Opportunity Brief template (see `OUTPUT-TEMPLATE.md`), including the Evidence Summary panel (synthesized one-liners pointing back into Sections 1–4 and 7 — it introduces no new evidence of its own), fills every field, and saves the file to:
 
 ```
 agents/opportunity-research-agent/briefs/[slug].md
 ```
 
-The slug is derived from the primary keyword in kebab-case. Example:
-- Keyword: `best affiliate marketing training 2026`
-- Slug: `best-affiliate-marketing-training-2026`
-- File: `agents/opportunity-research-agent/briefs/best-affiliate-marketing-training-2026.md`
+The slug is derived from the **Opportunity Name** in kebab-case (not from the Primary SEO Target keyword — the two are deliberately different namespaces, see Section 10). Example:
+- Keyword (Primary SEO Target): `best affiliate marketing training 2026`
+- Opportunity Name: `Best Affiliate Marketing Training Platforms Comparison`
+- Slug: `best-affiliate-marketing-training-platforms-comparison`
+- File: `agents/opportunity-research-agent/briefs/best-affiliate-marketing-training-platforms-comparison.md`
 
 ---
 
@@ -451,13 +464,21 @@ See `PROMPT.md` for the full system prompt and user prompt template.
 
 ## 10. Opportunity Brief Schema
 
-**Schema version:** 1.2
+**Schema version:** 1.3
 
 The Opportunity Brief is a structured markdown document. Every field is required. If data is unavailable, the field value is `Unavailable` with the reason noted. Never leave a field blank.
 
 Data source transparency is mandatory: every scored field must state whether its value is **Live**, **Estimated** (proxy), or **Unavailable**.
 
 A brief is only produced when Stage 0 passes. A Stage 0 skip does not produce a brief file — see Section 6.
+
+**v1.3 change summary** (see `OUTPUT-TEMPLATE.md` for the full structure):
+- `Primary keyword` is replaced by two distinct fields: **Opportunity Name** (internal identifier — describes the opportunity) and **Primary SEO Target** (the actual search query — how real users search). The file slug now derives from Opportunity Name, not from the search query (Section 6, Stage 6).
+- A new unnumbered **Evidence Summary** panel sits directly under the header — six one-line pointers (Google Trends, Community discussions, SERP gap, Existing content gap, Internal linking opportunity, Portfolio priority) into the detail already present in Sections 1–4 and 7.
+- A new **Section 6: Business Value** evaluates commercial value (monetization path, Primary/Secondary CTA, internal products supported) independently of the Section 5 Opportunity Score — the two are never blended into one number.
+- A new **Section 7: Strategic Fit** evaluates target pillar, authority cluster fit, internal-linking impact, portfolio impact, and priority rationale, read from `docs/CONTENT-REGISTRY.md` (and, where applicable, the Opportunity Discovery Agent's queue).
+- Editorial Recommendation, Data Confidence, and Executive Summary shift from Sections 6/7/8 to **Sections 8/9/10** to make room. The Executive Summary (Section 10) gains **Business Value** and **Strategic Fit** rows so the 30-second decision view stays complete without growing the document's overall length.
+- Editorial Recommendation's old `Topic cluster fit` field is removed — Section 7's `Target pillar` and `Authority cluster` fields now cover that ground without duplication.
 
 ### Section 0: Pre-Flight Check
 ```
@@ -468,15 +489,29 @@ result:             [PASSED — proceeded to Stage 1]
 
 ### Top-level header fields
 ```
-opportunity_score:    [0–100]
-data_confidence:      [High / Medium / Low]
-editorial_decision:   [WRITE NOW / WAIT / DO NOT WRITE]
-date_generated:       [YYYY-MM-DD]
-schema_version:       1.1
+opportunity_name:      [internal identifier — describes the opportunity, not a search query]
+primary_seo_target:    [the actual search query/topic]
+opportunity_score:     [0–100]
+business_value:        [Low / Medium / High]
+data_confidence:       [High / Medium / Low]
+editorial_decision:    [WRITE NOW / WAIT / DO NOT WRITE]
+date_generated:        [YYYY-MM-DD]
+schema_version:        1.3
+```
+
+### Evidence Summary (unnumbered panel, immediately below the header)
+```
+google_trends:                  [one-line trend signal, or Unavailable — reason]
+community_discussions:          [one-line community signal + provider, or Unavailable — reason]
+serp_gap:                       [one-line competitive gap found in the top 10]
+existing_content_gap:           [one-line — confirms no P&P page already covers this, per Section 0]
+internal_linking_opportunity:   [one-line — pages this would link to/from]
+portfolio_priority:             [one-line — resolves a named registry gap? matches an Opportunity Queue Priority Score? or N/A]
 ```
 
 ### Section 1: Keyword Intelligence
 ```
+primary_seo_target: [the actual search query — same value as the header field]
 search_volume:      [number / Estimated / Unavailable] + source
 cpc:                [USD / Unavailable] + source
 keyword_difficulty: [0–100 / Estimated / Unavailable] + source
@@ -530,7 +565,30 @@ total_score:       [0–100]
 score_narrative:   [2–3 sentences]
 ```
 
-### Section 6: Editorial Recommendation
+### Section 6: Business Value
+
+*Independent of Section 5's Opportunity Score — never blended into that total.*
+```
+business_value:               [Low / Medium / High]
+monetization_path:             [1 sentence]
+primary_cta:                   [affiliate product/link]
+secondary_cta:                 [secondary product/page, or None]
+internal_products_supported:   [P&P pages/reviews this promotes or cross-sells]
+business_value_rationale:      [1–2 sentences]
+```
+
+### Section 7: Strategic Fit
+
+*Context for this one candidate — does not re-rank it against others; that remains the Opportunity Discovery Agent's job (see `agents/opportunity-discovery-agent/SPEC.md` § 5).*
+```
+target_pillar:              [one of the 4 CONTENT-REGISTRY.md pillars / New pillar / Cross-pillar]
+authority_cluster:          [which cluster this joins, and in what role]
+internal_linking_impact:    [1–2 sentences]
+portfolio_impact:           [1–2 sentences — thin / balanced / saturated pillar]
+priority_rationale:         [1–2 sentences — cite Opportunity Queue Priority Score if applicable, else "No Opportunity Queue record"]
+```
+
+### Section 8: Editorial Recommendation
 ```
 editorial_decision:        [WRITE NOW / WAIT / DO NOT WRITE]
 reasoning:                 [2–3 sentences]
@@ -542,12 +600,13 @@ recommended_angle:         [1–2 sentence positioning statement]
 suggested_title:           [draft <title>]
 suggested_h1:              [draft <h1>]
 suggested_meta:            [draft meta description, ~155 chars]
-cta_product:               [affiliate product to feature]
-topic_cluster_fit:         [existing / new / standalone]
+cta_product:               [affiliate product to feature — should match Section 6's primary_cta]
 internal_link_targets:     [pages to link from/to]
 ```
 
-### Section 7: Data Confidence
+Note: the pre-v1.3 `topic_cluster_fit` field is removed from this section — Section 7's `target_pillar` and `authority_cluster` fields now cover that ground.
+
+### Section 9: Data Confidence
 ```
 capability_status:
   keyword_intelligence:    [✓ Live / ⚠ Estimated / ✗ Unavailable] + detail
@@ -560,14 +619,17 @@ overall_confidence:        [High / Medium / Low]
 notes:                     [caveats or conditions for improvement on re-run]
 ```
 
-### Section 8: Executive Summary
+### Section 10: Executive Summary
 ```
-keyword:                [primary keyword]
+opportunity_name:       [internal identifier]
+primary_seo_target:     [actual search query]
 opportunity_score:      [0–100] / 100
+business_value:         [Low / Medium / High]
 data_confidence:        [High / Medium / Low]
 editorial_decision:     [WRITE NOW / WAIT / DO NOT WRITE]
 recommended_type:       [content type]
 estimated_difficulty:   [High / Medium / Low]
+strategic_fit:          [target pillar — one-line priority rationale]
 biggest_opportunity:    [one sentence]
 biggest_risk:           [one sentence]
 recommended_next_action:[one actionable sentence]
@@ -607,7 +669,7 @@ agents/
     PROMPT.md              ← system prompt and user prompt template
     OUTPUT-TEMPLATE.md     ← Opportunity Brief blank template
     briefs/
-      [slug].md            ← one file per keyword researched
+      [slug].md            ← one file per opportunity researched, slug from Opportunity Name
       [slug].md
       ...
 ```
@@ -640,4 +702,4 @@ The Opportunity Research Agent is designed to slot cleanly into a larger pipelin
 **Niche-specific scoring weights:** Allow alignment score weighting to be adjusted per affiliate product. Currently defaults to OLSP Academy fit; future products may have different alignment profiles.
 
 ### Schema versioning
-The Opportunity Brief schema is versioned. The current schema is `v1.0`. If fields are added or removed, the schema version increments and the `SPEC.md` is updated. Existing briefs retain their original schema version header.
+The Opportunity Brief schema is versioned. The current schema is `v1.3`. If fields are added or removed, the schema version increments and the `SPEC.md` is updated. Existing briefs retain their original schema version header — briefs generated under `v1.1`/`v1.2` are not retroactively rewritten when the schema changes.
