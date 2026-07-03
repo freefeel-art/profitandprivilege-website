@@ -1,18 +1,25 @@
-# Gold Master Specification — Review Pages
+# Gold Master Specification
 
-**Source file:** `src/pages/reviews/olsp-academy.astro`
-**Purpose:** This document defines the production standard that every future review page must match. Treat the OLSP Academy review as the canonical reference implementation. Do not modify it.
+**Source file (structural template):** `src/pages/reviews/olsp-academy.astro`
+**Approved production reference article:** `src/pages/blog/part-time-jobs-near-me-no-experience.astro`
+**Purpose:** This document defines the production standard for every future article on this site — reviews, blog posts, and roundups. Treat the approved production reference article as the canonical reference implementation for editorial content, CTAs, sources formatting, and the site footer. The OLSP Academy review remains the structural template for layout, CSS tokens, and JavaScript. Do not modify either file.
 
 ---
 
 ## 1. Page Architecture
 
-Each review page is a **standalone `.astro` file** inside `src/pages/reviews/`. There are no shared layout imports, no component imports, and no framework components. The file is entirely self-contained: CSS, HTML, and JavaScript all live in the same file.
+Every article is a **standalone `.astro` file** placed in the appropriate subdirectory of `src/pages/`. There are no shared layout imports, no component imports, and no framework components. The file is entirely self-contained: CSS, HTML, and JavaScript all live in the same file. The Gold Master layout, CSS token set, and JavaScript behavior apply identically to all article types.
 
 ```
 src/pages/reviews/
-  olsp-academy.astro   ← Gold Master
-  [next-product].astro ← copies this structure
+  olsp-academy.astro   ← Gold Master (canonical reference)
+  [slug].astro         ← copies this structure
+
+src/pages/blog/
+  [slug].astro          ← copies this structure
+
+src/pages/roundups/
+  [slug].astro          ← copies this structure
 ```
 
 The Astro frontmatter contains exactly two variables:
@@ -40,12 +47,12 @@ The file renders a complete HTML5 document:
     <div class="layout">
       <button class="mobile-toc-btn">  — mobile TOC toggle
       <aside class="toc-wrap">         — sticky Table of Contents
-      <main>                           — all review content in <section> blocks
+      <main>                           — all article content in <section> blocks
     </div>
     <script>                           — inline vanilla JS
 ```
 
-No `<header>`, `<footer>`, or site-wide navigation is present. Each review is a standalone editorial document.
+A `<footer class="site-footer">` is present at the bottom of `<main>`, after the `sources` section. No `<header>` or site-wide navigation is present. Each article is a standalone editorial document that also functions as a page within the website.
 
 ---
 
@@ -262,12 +269,130 @@ The `.video-frame` wrapper uses `padding-top: 56.25%` to create a responsive 16:
 ```
 Native `<details>`/`<summary>` — no JavaScript required. Each question is a `<summary>`, each answer is one `<p>` inside the element.
 
-### 8.12 Sources Section
-Split into two subsections:
-1. **Video Content** — introduces the video embed with a third-party disclosure paragraph
-2. **Sources & References** — a `<ul>` of external links
+### 8.12 Sources Section (Pill-List Format)
+The `<section id="sources">` contains:
 
-Affiliate or sponsored links must use `rel="noopener sponsored"`. The section ends with a small-print disclaimer paragraph (`font-size: .82rem; color: var(--ink-light)`) disclosing the financial interests of cited sources and the information cutoff date.
+1. **(Optional) Video Content** — introduces the video embed with a third-party disclosure paragraph, if a video is included.
+2. **Sources heading** — `<h2>Sources &amp; References</h2>`.
+3. **Pill-list** — a `<ul class="pill-list">` containing source links as individual `<li><a>` items. Each source link is rendered as a pill-shaped tag using the `.pill-list` CSS class.
+4. **Disclaimer paragraph** — a small-print paragraph (`font-size:.82rem; color:var(--ink-light)`) disclosing the financial interests of cited sources and the information cutoff date.
+
+**Pill-list HTML:**
+```html
+<section id="sources">
+  <h2>Sources &amp; References</h2>
+  <ul class="pill-list">
+    <li><a href="..." target="_blank" rel="noopener noreferrer">Source Name</a></li>
+    ...
+  </ul>
+  <p style="font-size:.82rem;color:var(--ink-light);">Disclaimer text.</p>
+</section>
+```
+
+**Pill-list CSS (embedded in the article `<style>` block):**
+```css
+.pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
+.pill-list li{margin:0;}
+.pill-list a{
+  display:inline-block;
+  font-size:.78rem;
+  background:var(--bg-soft);
+  color:var(--ink-light);
+  border:1px solid var(--line);
+  border-radius:99px;
+  padding:.25rem .7rem;
+  white-space:nowrap;
+}
+.pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
+```
+
+Affiliate or sponsored links must use `rel="noopener sponsored"`. Non-affiliate external links use `rel="noopener noreferrer"`.
+
+### 8.13 CTA Card Component
+A call-to-action card is placed three times in every production article:
+1. **After the `intro` section** (immediately before the first content section)
+2. **Mid-article** (after approximately the fifth content section, before the comparison/pros-cons area)
+3. **Before the Sources section** (final CTA before the reader leaves the article)
+
+**CTA Card HTML:**
+```html
+<div class="cta-card">
+  <h3>Start earning today — join OLSP for just $7</h3>
+  <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+  <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+  <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+</div>
+```
+
+**CTA Card CSS:**
+```css
+.cta-card{
+  border-radius:var(--radius);
+  padding:1.1rem 1.3rem;
+  border:1px solid var(--line);
+  background:var(--accent-soft);
+  border-left:4px solid var(--accent);
+  margin:3rem 0;
+}
+.cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
+.cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
+.cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
+.cta-card .cta-btn::after{content:" →";}
+
+.cta-btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  font-weight:600;
+  border-radius:8px;
+}
+.cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
+```
+
+**Per-article variables:**
+- `h3` heading text (product name, price)
+- Body copy paragraphs (what the product offers, value proposition)
+- `href` on the `.cta-btn` link
+- Button label text
+- Affiliate disclosure paragraph
+
+All three CTA cards on the page are **identical** — same heading, same body, same link, same disclosure. The component appears three times for placement convenience, not with different content.
+
+---
+
+### 8.14 Site Footer Component
+Every production article ends with `<footer class="site-footer">` inside `<main>`, **after** the `sources` section and **before** `</main>`.
+
+**Site Footer HTML:**
+```html
+<footer class="site-footer">
+  <span>Profit and Privilege — independent research since 2025</span>
+  <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
+</footer>
+```
+
+**Site Footer CSS:**
+```css
+.site-footer{
+  border-top:1px solid var(--line);
+  padding:1.2rem 0 0;
+  margin-top:2rem;
+  font-size:.8rem;
+  color:var(--ink-light);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.4rem;
+}
+.site-footer a{color:var(--ink-light);}
+.site-footer a:hover{color:var(--accent); text-decoration:underline;}
+```
+
+**Per-article variables:**
+- The left-hand `<span>` text (brand tagline — may stay constant across articles)
+- The right-hand `<a>` link text and `href` (normally points to the main domain)
 
 ---
 
@@ -314,12 +439,12 @@ Should match `pageDescription` in frontmatter (even though currently not interpo
 
 ### Canonical URL
 ```html
-<link rel="canonical" href="https://profitandprivilege.com/reviews/{slug}/" />
+<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/{slug}/" />
 ```
 Always absolute URL. Always trailing slash. Always the production domain.
 
 ### `prerender = true`
-Every review page must declare this. It ensures static generation and maximum crawlability.
+Every article page must declare this. It ensures static generation and maximum crawlability.
 
 ### No structured data (as of Gold Master)
 The Gold Master does not include `FAQPage`, `Article`, or `Review` JSON-LD schema. Future reviews may add it, but it is not currently part of the standard and should not be added without deliberate intent.
@@ -334,7 +459,7 @@ The Gold Master contains **no Open Graph tags** (`og:title`, `og:description`, `
 
 ## 13. Canonical URL Strategy
 
-- Pattern: `https://profitandprivilege.com/reviews/{slug}/`
+- Pattern: `https://olsp.profitandprivilege.com/{type}/{slug}/` where `{type}` is `reviews`, `blog`, or `roundups`
 - The slug matches the `.astro` filename (e.g. `olsp-academy.astro` → `/reviews/olsp-academy/`)
 - Trailing slash is present on the canonical but the slug itself is lowercase-kebab-case
 - The canonical is hardcoded, not generated from a variable
@@ -343,9 +468,9 @@ The Gold Master contains **no Open Graph tags** (`og:title`, `og:description`, `
 
 ## 14. Internal Linking Strategy
 
-The Gold Master contains **no site navigation, no header, no footer, and no internal links to other pages on profitandprivilege.com**. Each review is a self-contained document. The TOC links only scroll within the current page.
+The Gold Master contains **no site navigation and no header**. Each article includes a `<footer class="site-footer">` (see Section 8.14) as part of its editorial page structure. The TOC links only scroll within the current page.
 
-This is intentional for the current production state. Future reviews should match this isolation unless a site-wide navigation is added as a deliberate upgrade.
+Internal links to other articles on the site **are permitted** within body copy where contextually relevant (e.g. linking from a blog post to a related review, or from a roundup to individual reviews). These must not include `rel="sponsored"` and should be woven naturally into the prose. Do not create a separate "related articles" block.
 
 ---
 
@@ -366,15 +491,15 @@ This is intentional for the current production state. Future reviews should matc
 
 ---
 
-## 16. What Changes Between Reviews
+## 16. What Changes Between Articles
 
-The following elements are **per-review variables** — everything else is structural and must remain consistent:
+The following elements are **per-article variables** — everything else is structural and must remain consistent:
 
 | Element | Notes |
 |---|---|
 | `pageTitle` / `pageDescription` | Frontmatter declarations |
 | `<title>` tag | SEO-optimised; includes product and creator name |
-| `<meta name="description">` | Review-specific summary |
+| `<meta name="description">` | Article-specific summary |
 | `<link rel="canonical">` | New slug |
 | `.hero-tag` text | Product category label + updated date |
 | `<h1>` text | Human-facing article title |
@@ -393,10 +518,13 @@ The following elements are **per-review variables** — everything else is struc
 | Sources disclaimer paragraph | Date reference and affiliate disclosure updated |
 | Section headings | `<h2>` text customised to the product (e.g. "OLSP Academy Overview" → "[Product] Overview") |
 | Callout body text | Warn/info callout messages are product-specific |
+| CTA card heading, body, link, and disclosure | Per-article product name, price, value proposition, affiliate link, and disclosure text |
+| Pill-list source items | Links and anchor text specific to the article's research sources |
+| Site footer right-side link | Text and `href` (normally points to the main domain) |
 
 ---
 
-## 17. What Must Not Change Between Reviews
+## 17. What Must Not Change Between Articles
 
 | Element | Why |
 |---|---|
@@ -410,39 +538,43 @@ The following elements are **per-review variables** — everything else is struc
 | Section order | Consistent reader expectation across all reviews |
 | `.hero-tag` placement (before `<h1>`, inside `#intro`) | Visual pattern |
 | `.verdict-box` placement (after intro paragraph, before first `<h3>`) | Editorial structure |
-| `.methodology` block in `#intro` | Credibility signal; required on every review |
+| `.methodology` block in `#intro` | Credibility signal; required on every article |
 | `.video-frame` aspect-ratio padding (56.25%) | Responsive 16:9 |
 | `rel="noopener sponsored"` on affiliate links | Compliance |
 | Sources disclaimer paragraph at end of `#sources` | Transparency requirement |
+| `.cta-card` structure and CSS (Section 8.13) | Consistent CTA placement and visual identity across articles |
+| Three CTA card placements (post-intro, mid-article, before Sources) | Content marketing pattern; all three cards must be identical |
+| `.pill-list` structure and CSS (Section 8.12) | Consistent sources formatting across articles |
+| `.site-footer` structure and CSS (Section 8.14) | Global brand presence on every production page |
 | `prerender = true` | Static generation |
 
 ---
 
 ## 18. Production Rules
 
-1. **One file, self-contained.** Every review is a single `.astro` file in `src/pages/reviews/`. No layout imports, no component imports, no shared CSS files.
+1. **One file, self-contained.** Every article is a single `.astro` file in the appropriate `src/pages/{type}/` directory. No layout imports, no component imports, no shared CSS files.
 
-2. **`prerender = true` is mandatory.** Every review page must be statically generated.
+2. **`prerender = true` is mandatory.** Every article page must be statically generated.
 
 3. **Do not change the CSS token values.** Copy the entire `<style>` block verbatim. Customise only the content inside sections.
 
    Also copy the `<script is:inline>` tag verbatim — including the `is:inline` directive. Omitting `is:inline` breaks the quiz: Astro will bundle the script as an ES module, removing `evaluateQuiz` from global scope and silently breaking the `onclick` handler. See Section 10 for the full explanation.
 
-4. **The section order is fixed.** `intro → overview → design → performance → ux → comparison → proscons → history → recommend → buy → verdict → faq → sources`. Do not reorder, skip, or rename these sections.
+4. **The section order is fixed for reviews.** Reviews must follow: `intro → overview → design → performance → ux → comparison → proscons → history → recommend → buy → verdict → faq → sources`. Do not reorder, skip, or rename these sections. Other article types (roundups, blog posts) define their own section order and `id` values, but must use the same layout grid, CSS tokens, and `<script is:inline>` block.
 
-5. **Section `id` values are fixed.** The TOC, scroll-spy JS, and `<link>` anchors all depend on them. Do not rename them.
+5. **Section `id` values are fixed for each article type.** The TOC, scroll-spy JS, and `<link>` anchors all depend on them. Do not rename them within the same article type.
 
 6. **The `intro` section must contain four elements in order:** `.hero-tag` pill, `<h1>`, opening paragraph, `.verdict-box`, then the first `<h3>`, then `.methodology`.
 
 7. **The `<title>` and `<h1>` must be different.** `<title>` is for search engines; `<h1>` is for readers. Both must target the same primary keyword.
 
-8. **The canonical URL must be absolute, with a trailing slash,** using the production domain: `https://profitandprivilege.com/reviews/{slug}/`.
+8. **The canonical URL must be absolute, with a trailing slash,** using the production domain: `https://olsp.profitandprivilege.com/{type}/{slug}/`.
 
 9. **Affiliate and sponsored links must use `rel="noopener sponsored"`.** Links in the Sources section that carry referral tracking fall into this category.
 
 10. **The sources section must end with a disclaimer paragraph** in small print (`font-size:.82rem; color:var(--ink-light)`) disclosing the financial interests of cited sources and the date the information was gathered.
 
-11. **The methodology block is not optional.** Every review must include a `<div class="methodology">` in the `intro` section disclosing who wrote it and how the research was conducted.
+11. **The methodology block is not optional.** Every article must include a `<div class="methodology">` in the `intro` section disclosing who wrote it and how the research was conducted.
 
 12. **Income claims and self-reported figures must be labelled as unverified.** Use `.callout.warn` or explicit inline language ("self-reported," "could not be independently verified") whenever citing any earnings figure.
 
@@ -454,10 +586,10 @@ The following elements are **per-review variables** — everything else is struc
 
 16. **Score bar percentages must match the displayed fraction.** 5/5 = 100%, 4/5 = 80%, 3/5 = 60%, 2/5 = 40%, 1.5/5 = 30%, 1/5 = 20%.
 
-17. **No site navigation or footer.** Each review is an isolated document. Do not add a `<header>`, `<nav>`, or `<footer>` unless a deliberate site-wide navigation upgrade is applied to all pages simultaneously.
+17. **No site navigation or header.** Do not add a `<header>` or `<nav>` unless a deliberate site-wide navigation upgrade is applied to all pages simultaneously. A `<footer class="site-footer">` (as specified in Section 8.14) is required on every production article.
 
-18. **No Open Graph tags** unless added to all review pages as a deliberate upgrade. Do not add OG tags to individual reviews only.
+18. **No Open Graph tags** unless added to all articles as a deliberate upgrade. Do not add OG tags to individual articles only.
 
 19. **The mobile TOC button label must be `☰ Table of Contents`** to maintain a consistent affordance.
 
-20. **Do not modify `src/pages/reviews/olsp-academy.astro`.** It is the canonical reference. Future changes to the standard are made by updating this spec, then applying the change to all review pages together.
+20. **Do not modify `src/pages/reviews/olsp-academy.astro`.** It is the canonical reference. Future changes to the standard are made by updating this spec, then applying the change to all article pages together.

@@ -1,15 +1,16 @@
-# Production Master Prompt — Review Page Generator
+# Production Master Prompt — Article Generator
 
-**Version:** 1.0  
-**Applies to:** `src/pages/reviews/[slug].astro`  
-**Gold Master:** `src/pages/reviews/olsp-academy.astro`  
+**Version:** 2.0  
+**Applies to:** `src/pages/{type}/[slug].astro` — where `{type}` is `reviews`, `blog`, or `roundups`  
+**Gold Master (structural template):** `src/pages/reviews/olsp-academy.astro`  
+**Approved production reference article:** `src/pages/blog/part-time-jobs-near-me-no-experience.astro`  
 **Specification:** `docs/GOLD-MASTER-SPEC.md`
 
 ---
 
 ## How to Use This Document
 
-Copy everything inside the horizontal rule below (from "## Task" to the end of the checklist) into a new conversation with Claude. Supply all required inputs listed in the Inputs section before asking for output. Do not modify the prompt between reviews — if the standard needs to change, update `GOLD-MASTER-SPEC.md` first, then revise this document.
+Copy everything inside the horizontal rule below (from "## Task" to the end of the checklist) into a new conversation with Claude. Supply all required inputs listed in the Inputs section before asking for output. Do not modify this prompt between articles — if the standard needs to change, update `docs/GOLD-MASTER-SPEC.md` first, then revise this document.
 
 ---
 
@@ -17,13 +18,17 @@ Copy everything inside the horizontal rule below (from "## Task" to the end of t
 
 ## Task
 
-You are generating a production-ready Astro review page for the website **Profit & Privilege** (`profitandprivilege.com`). This site publishes independent, research-based reviews of online business, affiliate marketing, and digital education products.
+You are generating a production-ready Astro article page for the website **Profit & Privilege** (`olsp.profitandprivilege.com`). This site publishes independent, research-based reviews, blog posts, and roundups about online business, affiliate marketing, and digital education products.
 
 Your output is exactly one complete file:
 
 ```
-src/pages/reviews/[slug].astro
+src/pages/{type}/[slug].astro
 ```
+
+Where `{type}` is `reviews`, `blog`, or `roundups` depending on the article type specified in the inputs.
+
+**The Gold Master layout is mandatory for every article type.** Copy the layout architecture, CSS token set, two-column grid, sticky TOC, scroll-spy JS, and `<script is:inline>` block from `src/pages/reviews/olsp-academy.astro`. Only the section content and section IDs change per article type. The visual identity (typography, spacing, tokens, breakpoint) must remain identical to the Gold Master. For the editorial content pattern (CTA cards, pill-list sources, site footer), follow the approved production reference article at `src/pages/blog/part-time-jobs-near-me-no-experience.astro`.
 
 The file must be ready to build and deploy without any manual structural edits. It must pass `astro build` on first attempt.
 
@@ -34,13 +39,14 @@ The file must be ready to build and deploy without any manual structural edits. 
 The following inputs must be supplied before you begin. Do not start generating until all of them are present. If any are missing, list what is absent and wait.
 
 | Input | Format | Notes |
-|---|---|---|
-| **Gold Master file** | Full file contents of `src/pages/reviews/olsp-academy.astro` | The structural template. Copy its architecture exactly. |
+|---|---|---|---|
+| **Article type** | `reviews`, `blog`, or `roundups` | Determines the output directory and section structure. |
+| **Gold Master file** | Full file contents of `src/pages/reviews/olsp-academy.astro` | The structural template. Copy its layout, CSS, and JS exactly. |
 | **Gold Master Specification** | Full contents of `docs/GOLD-MASTER-SPEC.md` | The authoritative rule set. Read it before generating. |
 | **Research package** | Freeform text, notes, or pasted source material | Your primary content source. Everything you write must be grounded in this. |
 | **Target keyword** | Plain text, e.g. `what is [product name]` | Used in `<title>`, `<h1>`, and `<meta name="description">`. |
-| **Canonical URL** | Full absolute URL with trailing slash, e.g. `https://profitandprivilege.com/reviews/[slug]/` | Hardcoded into `<link rel="canonical">`. |
-| **Internal links** | List of anchor text + URL pairs, or "none" | Links to other pages on profitandprivilege.com to weave naturally into the content. |
+| **Canonical URL** | Full absolute URL with trailing slash, e.g. `https://olsp.profitandprivilege.com/{type}/[slug]/` | Hardcoded into `<link rel="canonical">`. |
+| **Internal links** | List of anchor text + URL pairs, or "none" | Links to other pages on olsp.profitandprivilege.com to weave naturally into the content. |
 | **Author bio** | 1–3 sentences describing the editorial team or author | Used in the methodology block. |
 | **Affiliate links** | List of anchor text + URL pairs with tracking parameters, or "none" | Placed only in the Sources section with `rel="noopener sponsored"`. |
 
@@ -53,7 +59,7 @@ The following inputs must be supplied before you begin. Do not start generating 
 Before producing any output, read the Gold Master file and the Gold Master Specification in full. Confirm you understand:
 
 - Which elements are structural (must be copied verbatim)
-- Which elements are per-review content (must be rewritten for this product)
+- Which elements are per-article content (must be rewritten for the specific topic)
 - The complete section order and fixed `id` values
 - The JavaScript dependencies on specific `id` attributes
 
@@ -110,8 +116,9 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 **SEO**
 - `<title>` and `<h1>` must be different strings. Both must contain the target keyword.
 - `<link rel="canonical">` must be the exact canonical URL supplied in the inputs — absolute, with trailing slash.
-- Do not add JSON-LD, Open Graph tags, or Twitter Card tags. They are not part of the current standard.
-- Do not add a `<header>`, `<footer>`, or site navigation.
+- Do not add JSON-LD, Open Graph tags, or Twitter Card tags. They are not part of the Gold Master standard.
+- Do not add a `<header>` or site navigation. A `<footer class="site-footer">` is required on every production article (see CTA card, pill-list sources, and site footer instructions below).
+- The `<footer class="site-footer">` must be placed inside `<main>`, **after** the `sources` section and **before** `</main>`.
 
 **Links**
 - Affiliate or tracking links must use `rel="noopener sponsored"`.
@@ -182,11 +189,21 @@ Apply these rules when populating each component.
 
 **Internal links:** If internal links are supplied in the inputs, weave them naturally into relevant body copy sections. Do not create a separate "related articles" block.
 
+**CTA cards:** Insert three identical `.cta-card` components (see Gold Master Spec Section 8.13) in the article:
+1. Immediately after the `intro` section, before the first content section.
+2. Mid-article, after approximately the fifth content section (before comparison/pros-cons).
+3. Immediately before the Sources section.
+All three cards must be identical in content. Customise the heading, body paragraphs, link, and disclosure for the product being promoted. Include the `.cta-card` and `.cta-btn` CSS in the article's `<style>` block (see approved reference article).
+
+**Pill-list sources:** Format the Sources & References section as a `<ul class="pill-list">` with each source as a pill-shaped `<li><a>` tag. Include the `.pill-list` CSS in the article's `<style>` block. Follow the approved reference article for structure and styling.
+
+**Site footer:** End every article with `<footer class="site-footer">` inside `<main>`, after the Sources section. Include the `.site-footer` CSS in the article's `<style>` block. The left span reads "Profit and Privilege — independent research since 2025". The right link points to `https://olsp.profitandprivilege.com`.
+
 ---
 
 ## Output Specification
 
-Produce exactly one output: the complete, finished content of the file `src/pages/reviews/[slug].astro`.
+Produce exactly one output: the complete, finished content of the file `src/pages/{type}/[slug].astro`.
 
 - Output the raw file content only.
 - Do not add explanatory prose, section commentary, or notes before or after the file.
@@ -234,7 +251,12 @@ Before outputting the file, verify each item. If any item fails, fix it before d
 - [ ] Sources section ends with the disclaimer paragraph in small print
 - [ ] No income or earnings figures are presented as verified or typical results
 - [ ] No first-hand testing is claimed unless the research package documents it
-- [ ] No Open Graph tags, JSON-LD, `<header>`, `<footer>`, or site navigation are present
+- [ ] No Open Graph tags, JSON-LD, `<header>`, or site navigation are present (per Gold Master standard)
+- [ ] `<footer class="site-footer">` is present inside `<main>`, after `#sources`, with brand tagline and domain link
+- [ ] Three `.cta-card` components are present: after `#intro`, mid-article, and before `#sources` — all identical
+- [ ] `.cta-card` includes heading, body copy, `.cta-btn` link with `rel="noopener sponsored"`, and affiliate disclosure paragraph
+- [ ] Sources section uses `<ul class="pill-list">` with pill-shaped source links
+- [ ] `.cta-card`, `.cta-btn`, `.pill-list`, and `.site-footer` CSS are included in the `<style>` block
 
 ## Research Source Policy
 

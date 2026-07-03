@@ -1,12 +1,12 @@
-# ROUNDUP MASTER PROMPT
+# Roundup Master Prompt
 
 ## How to Use This Document
 
-Generate a production-ready Astro roundup article by following the accompanying ROUNDUP-GOLD-MASTER-SPEC.md exactly.
+Generate a production-ready Astro roundup article. The layout, CSS, and JavaScript follow the **universal Gold Master standard** defined in `docs/GOLD-MASTER-SPEC.md` and `docs/PRODUCTION-MASTER-PROMPT.md`. The editorial content pattern (CTA cards, pill-list sources, site footer) follows the approved production reference article at `src/pages/blog/part-time-jobs-near-me-no-experience.astro`. This document describes only the roundup-specific content structure.
+
+Generate roundups using the universal builder (`docs/PRODUCTION-MASTER-PROMPT.md`) with Article Type set to `roundups`. Use this document as the content-structure guide within the research package.
 
 Do not redesign the architecture.
-
-Only improve the structure if a genuine production issue is discovered.
 
 ---
 
@@ -97,7 +97,11 @@ Link naturally where relevant.
 
 Produce a production-ready Astro page.
 
-Preserve the Gold Master structure.
+Preserve the Gold Master structure. Include:
+- Three identical `.cta-card` components (post-intro, mid-article, before Sources) — see Gold Master Spec Section 8.13
+- Sources section as `<ul class="pill-list">` — see Gold Master Spec Section 8.12
+- `<footer class="site-footer">` inside `<main>` after Sources — see Gold Master Spec Section 8.14
+- `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS in the `<style>` block
 
 ---
 
@@ -118,6 +122,10 @@ The article must:
 Before completion confirm:
 
 - Gold Master architecture preserved
+- Three `.cta-card` components present (post-intro, mid-article, before Sources) — all identical
+- Sources section uses `<ul class="pill-list">`
+- `<footer class="site-footer">` present inside `<main>` after Sources
+- `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS included in `<style>` block
 - Editorial rules followed
 - Internal links verified
 - Sources verified

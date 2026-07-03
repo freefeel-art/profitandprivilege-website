@@ -232,6 +232,57 @@ const pageDescription =
 
   .mobile-toc-btn{display:none;}
 
+  .cta-card{
+    border-radius:var(--radius);
+    padding:1.1rem 1.3rem;
+    border:1px solid var(--line);
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    margin:3rem 0;
+  }
+  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
+  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
+  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
+  .cta-card .cta-btn::after{content:" \2192";}
+
+  .cta-btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
+    border-radius:8px;
+  }
+  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
+
+  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
+  .pill-list li{margin:0;}
+  .pill-list a{
+    display:inline-block;
+    font-size:.78rem;
+    background:var(--bg-soft);
+    color:var(--ink-light);
+    border:1px solid var(--line);
+    border-radius:99px;
+    padding:.25rem .7rem;
+    white-space:nowrap;
+  }
+  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
+
+  .site-footer{
+    border-top:1px solid var(--line);
+    padding:1.2rem 0 0;
+    margin-top:2rem;
+    font-size:.8rem;
+    color:var(--ink-light);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.4rem;
+  }
+  .site-footer a{color:var(--ink-light);}
+  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
+
   @media (max-width:900px){
     .layout{grid-template-columns:1fr;}
     .toc-wrap{
@@ -273,7 +324,7 @@ const pageDescription =
       <a href="#verdict">11. Final Verdict</a>
       <a href="#faq">FAQ</a>
       <a href="#author">About the Author</a>
-      <a href="#sources">12. Evidence &amp; Sources</a>
+      <a href="#sources">Sources</a>
     </nav>
   </aside>
 
@@ -299,6 +350,14 @@ const pageDescription =
         <p><strong>How this review was built:</strong> We did not purchase solo ad clicks or conduct our own traffic test. This article is based entirely on independent desk research: the vendor's official sales pages (soloads.olspsystem.com and products.olspsystem.com), OLSP support documentation, Traffic Dominators YouTube content, multiple independent affiliate reviews, Reddit community discussions in r/OLSPSystems and r/Affiliatemarketing, and third-party solo ad provider comparison posts. Where a claim could not be independently verified — including all Tier-1 traffic quality and conversion rate claims — we say so explicitly. We note that most positive independent reviews of OLSP Solo Ads are written by affiliates who earn commissions from solo ad sales, and this financial relationship is disclosed where relevant.</p>
       </div>
     </section>
+
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
     <section id="overview">
       <h2>OLSP Solo Ads Overview &amp; Pricing</h2>
@@ -422,6 +481,14 @@ const pageDescription =
       <h3>Training and Support</h3>
       <p>Buyers gain access to a members area with training content covering solo ad strategy, funnel alignment, and traffic best practices. Live sessions and YouTube content from the Traffic Dominators channel supplement this with ongoing guidance on how to use traffic effectively within the OLSP system. OLSP also provides a support portal covering general platform questions, including solo ad mechanics and traffic tracking.</p>
     </section>
+
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
     <section id="comparison">
       <h2>How OLSP Solo Ads Compares to Alternatives</h2>
@@ -581,8 +648,16 @@ const pageDescription =
       </div>
     </section>
 
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
+
     <section id="sources">
-      <h2>Evidence &amp; Sources</h2>
+      <h2>Sources &amp; References</h2>
 
       <h3>Video Content</h3>
       <p>The video below is from the Traffic Dominators / OLSP channel and presents Wayne Crowe's own perspective on solo ad quality, vendor selection, and why he positions his traffic service as more reliable than alternatives. It is promotional content — not a neutral third-party review — and should be evaluated with that in mind.</p>
@@ -592,13 +667,18 @@ const pageDescription =
       <p class="video-caption">"The Truth About Solo ads — Wayne Crowe Best Solo Ads Traffic Review" from the Traffic Dominators channel. This is vendor-aligned promotional content. The presenter has a direct financial interest in selling solo ad services through OLSP. It is included here as a primary source, not an independent evaluation.</p>
 
       <h3>Sources &amp; References</h3>
-      <ul>
+      <ul class="pill-list">
         <li><a href="https://products.olspsystem.com/solo-ad-service-3643?olsp=1006001" target="_blank" rel="noopener sponsored">OLSP Solo Ads — official product page</a></li>
         <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP New Live Training — official live training entry point</a></li>
         <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener">Trustpilot — OLSP System community reviews</a></li>
       </ul>
       <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, package sizes, and delivery terms directly with OLSP before ordering. Most independent reviews of OLSP Solo Ads in the public domain are written by affiliates with a financial interest in the service; this financial relationship is noted throughout this article where relevant.</p>
     </section>
+
+    <footer class="site-footer">
+      <span>Profit and Privilege — independent research since 2025</span>
+      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
+    </footer>
 
   </main>
 </div>

@@ -1,4 +1,4 @@
-# ROUNDUP PRODUCTION WORKFLOW
+# Roundup Production Workflow
 
 ## Pipeline
 
@@ -6,9 +6,10 @@ Product Category
         ↓
 Perplexity Comparison Research Brief
         ↓
-Claude Code
+Universal Article Builder (`docs/PRODUCTION-MASTER-PROMPT.md`)
+        (Article Type: roundups)
         ↓
-Astro Roundup Article
+Astro Roundup Article → `src/pages/roundups/[slug].astro`
         ↓
 npm run build
         ↓
@@ -28,15 +29,17 @@ Google Search Console
 
 ## Required Documents
 
-- ROUNDUP-GOLD-MASTER-SPEC.md
-- ROUNDUP-MASTER-PROMPT.md
+- `docs/GOLD-MASTER-SPEC.md` — Universal layout, CSS, and JS standard
+- `docs/PRODUCTION-MASTER-PROMPT.md` — Universal article builder
+- `docs/ROUNDUP-GOLD-MASTER-SPEC.md` — Roundup-specific content structure
+- `docs/ROUNDUP-MASTER-PROMPT.md` — Roundup-specific generation instructions
 - Comparison Research Brief
 
 ---
 
 ## Editorial Rules
 
-- Preserve the Gold Master architecture.
+- Preserve the Gold Master architecture (layout, CSS tokens, JS, breakpoint).
 - Never invent testing or personal experience.
 - Distinguish verified facts, vendor claims, independent opinions, and editorial analysis.
 - Prefer original sources whenever practical.

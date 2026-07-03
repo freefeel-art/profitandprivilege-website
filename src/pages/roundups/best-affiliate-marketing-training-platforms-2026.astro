@@ -249,6 +249,57 @@ const pageDescription =
 
   .mobile-toc-btn{display:none;}
 
+  .cta-card{
+    border-radius:var(--radius);
+    padding:1.1rem 1.3rem;
+    border:1px solid var(--line);
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    margin:3rem 0;
+  }
+  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
+  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
+  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
+  .cta-card .cta-btn::after{content:" \2192";}
+
+  .cta-btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
+    border-radius:8px;
+  }
+  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
+
+  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
+  .pill-list li{margin:0;}
+  .pill-list a{
+    display:inline-block;
+    font-size:.78rem;
+    background:var(--bg-soft);
+    color:var(--ink-light);
+    border:1px solid var(--line);
+    border-radius:99px;
+    padding:.25rem .7rem;
+    white-space:nowrap;
+  }
+  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
+
+  .site-footer{
+    border-top:1px solid var(--line);
+    padding:1.2rem 0 0;
+    margin-top:2rem;
+    font-size:.8rem;
+    color:var(--ink-light);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.4rem;
+  }
+  .site-footer a{color:var(--ink-light);}
+  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
+
   @media (max-width:900px){
     .layout{grid-template-columns:1fr;}
     .toc-wrap{
@@ -318,6 +369,14 @@ const pageDescription =
         <p><strong>Epistemic labelling:</strong> Throughout this guide, statements are labelled as verified facts, vendor claims, or independent opinions. Marketing language on official pages is attributed as such and not presented as confirmed outcomes. Income figures and success claims are not cited as typical results.</p>
       </div>
     </section>
+
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
     <section id="comparison-table">
       <h2>Quick Comparison: The Four Platforms at a Glance</h2>
@@ -672,6 +731,14 @@ const pageDescription =
       </div>
     </section>
 
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
+
     <section id="best-for">
       <h2>Best Choice By Scenario</h2>
       <p>The recommendations below are editorial conclusions drawn from the research. They are not guarantees of results and should be read alongside the full platform sections above.</p>
@@ -786,24 +853,32 @@ const pageDescription =
       </div>
     </section>
 
-    <section id="sources">
-      <h2>Evidence &amp; Sources</h2>
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
-      <h3>Sources &amp; References</h3>
-      <ul>
+    <section id="sources">
+      <h2>Sources &amp; References</h2>
+      <ul class="pill-list">
         <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP Academy — Brand New Live Training (Official)</a></li>
-        <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener">OLSP System — Trustpilot reviews</a></li>
-        <li><a href="https://www.trustpilot.com/review/wealthyaffiliate.com" target="_blank" rel="noopener">Wealthy Affiliate — Trustpilot reviews</a></li>
-        <li><a href="https://www.trustpilot.com/review/legendarymarketer.com" target="_blank" rel="noopener">Legendary Marketer — Trustpilot reviews</a></li>
-        <li><a href="https://www.trustpilot.com/review/sparkbyclickbank.com" target="_blank" rel="noopener">Spark by ClickBank — Trustpilot reviews</a></li>
+        <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener noreferrer">OLSP System — Trustpilot reviews</a></li>
+        <li><a href="https://www.trustpilot.com/review/wealthyaffiliate.com" target="_blank" rel="noopener noreferrer">Wealthy Affiliate — Trustpilot reviews</a></li>
+        <li><a href="https://www.trustpilot.com/review/legendarymarketer.com" target="_blank" rel="noopener noreferrer">Legendary Marketer — Trustpilot reviews</a></li>
+        <li><a href="https://www.trustpilot.com/review/sparkbyclickbank.com" target="_blank" rel="noopener noreferrer">Spark by ClickBank — Trustpilot reviews</a></li>
         <li><a href="/reviews/olsp-academy/">OLSP Academy — full independent review</a></li>
         <li><a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator — full independent review</a></li>
       </ul>
-
-      <div class="methodology">
-        <p style="margin:0; font-size:.82rem; color:var(--ink-light);">This guide was prepared through independent desk research. No platform was purchased or personally tested by the editorial team. Trustpilot scores and pricing reflect data at the time of writing (June 2026) and are subject to change — verify directly with each platform before making a purchase decision. Links to Trustpilot, Reddit, and independent review sites are provided for transparency; those sources may themselves contain affiliate links or promotional content from their authors. Legendary Marketer's closure status is based on the official site message and a corroborating Reddit thread; readers should confirm the current status directly before relying on this information.</p>
-      </div>
+      <p style="font-size:.82rem;color:var(--ink-light);">This guide was prepared through independent desk research. No platform was purchased or personally tested by the editorial team. Trustpilot scores and pricing reflect data at the time of writing (June 2026) and are subject to change — verify directly with each platform before making a purchase decision. Links to Trustpilot, Reddit, and independent review sites are provided for transparency; those sources may themselves contain affiliate links or promotional content from their authors. Legendary Marketer's closure status is based on the official site message and a corroborating Reddit thread; readers should confirm the current status directly before relying on this information. The OLSP Academy link is an affiliate link — we may earn a commission if you sign up.</p>
     </section>
+
+    <footer class="site-footer">
+      <span>Profit and Privilege — independent research since 2025</span>
+      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
+    </footer>
 
   </main>
 </div>

@@ -232,6 +232,57 @@ const pageDescription =
 
   .mobile-toc-btn{display:none;}
 
+  .cta-card{
+    border-radius:var(--radius);
+    padding:1.1rem 1.3rem;
+    border:1px solid var(--line);
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    margin:3rem 0;
+  }
+  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
+  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
+  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
+  .cta-card .cta-btn::after{content:" \2192";}
+
+  .cta-btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
+    border-radius:8px;
+  }
+  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
+
+  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
+  .pill-list li{margin:0;}
+  .pill-list a{
+    display:inline-block;
+    font-size:.78rem;
+    background:var(--bg-soft);
+    color:var(--ink-light);
+    border:1px solid var(--line);
+    border-radius:99px;
+    padding:.25rem .7rem;
+    white-space:nowrap;
+  }
+  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
+
+  .site-footer{
+    border-top:1px solid var(--line);
+    padding:1.2rem 0 0;
+    margin-top:2rem;
+    font-size:.8rem;
+    color:var(--ink-light);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.4rem;
+  }
+  .site-footer a{color:var(--ink-light);}
+  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
+
   @media (max-width:900px){
     .layout{grid-template-columns:1fr;}
     .toc-wrap{
@@ -273,7 +324,7 @@ const pageDescription =
       <a href="#verdict">11. Final Verdict</a>
       <a href="#faq">FAQ</a>
       <a href="#author">About the Author</a>
-      <a href="#sources">12. Evidence &amp; Sources</a>
+      <a href="#sources">Sources</a>
     </nav>
   </aside>
 
@@ -299,6 +350,14 @@ const pageDescription =
         <p><strong>How this review was built:</strong> We did not purchase, install, or personally test MineeMe. This article is based entirely on independent desk research: the product's official sales page (mineeme.com and products.olspsystem.com), GPT TOOLS 2 U product listings, a publicly available independent PDF review, third-party collection pages, JVZoo affiliate records, and social media promotional posts. Where a claim could not be independently verified — including all safety and reach claims — we say so explicitly.</p>
       </div>
     </section>
+
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
     <section id="overview">
       <h2>MineeMe Overview &amp; Pricing</h2>
@@ -424,6 +483,14 @@ const pageDescription =
       <h3>Learning Curve</h3>
       <p>Setting up an OpenAI API key and understanding how to write effective prompts may require a short learning investment for users with no prior experience with AI APIs. For the intended audience of active Facebook marketers, this is unlikely to be a significant barrier. The bigger learning investment is in calibrating prompts to produce comments that genuinely sound like the user's voice rather than generic AI output — a quality control task that requires ongoing attention rather than a one-time setup.</p>
     </section>
+
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
 
     <section id="comparison">
       <h2>How MineeMe Compares to Alternatives</h2>
@@ -586,8 +653,16 @@ const pageDescription =
       </div>
     </section>
 
+    <div class="cta-card">
+      <h3>Start earning today — join OLSP for just $7</h3>
+      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" rel="noopener sponsored">Try OLSP Academy for $7 →</a></p>
+      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    </div>
+
     <section id="sources">
-      <h2>Evidence &amp; Sources</h2>
+      <h2>Sources &amp; References</h2>
 
       <h3>Video Content</h3>
       <p>The video below is a short promotional clip published under the hashtag #olsp and #affiliatemarketing explaining the motivation behind the MineeMe tool. It is not a neutral independent review — it is promotional content aligned with the OLSP ecosystem.</p>
@@ -597,13 +672,18 @@ const pageDescription =
       <p class="video-caption">Promotional short video explaining the MineeMe concept. This is OLSP-aligned content, not an independent review. The creator may earn commissions from referral links.</p>
 
       <h3>Sources &amp; References</h3>
-      <ul>
+      <ul class="pill-list">
         <li><a href="https://products.olspsystem.com/mineeme-268398?olsp=1006001" target="_blank" rel="noopener sponsored">OLSP MineeMe — official product page</a></li>
         <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener sponsored">OLSP New Live Training — official live training entry point</a></li>
         <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener">Trustpilot — OLSP System community reviews</a></li>
       </ul>
       <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
     </section>
+
+    <footer class="site-footer">
+      <span>Profit and Privilege — independent research since 2025</span>
+      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
+    </footer>
 
   </main>
 </div>
