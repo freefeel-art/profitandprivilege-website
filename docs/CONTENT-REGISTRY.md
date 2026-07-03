@@ -107,7 +107,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -125,7 +125,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -167,7 +167,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -238,7 +238,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -256,7 +256,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -310,7 +310,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/reviews/td-pages-magick-link-review/`, `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/b2b-lead-generation/` |
-| **Internal Links In** | `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -328,7 +328,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/reviews/td-pages-magick-link-review/`, `/blog/lead-generation-software/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/` |
-| **Internal Links In** | `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
@@ -346,7 +346,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-software/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
-| **Internal Links In** | `/blog/local-business-lead-generation/` |
+| **Internal Links In** | `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
 
 ---
