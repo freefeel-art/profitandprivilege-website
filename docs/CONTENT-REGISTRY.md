@@ -222,9 +222,9 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
 | **Internal Links In** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. This pillar's first blog/informational page. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `build-email-list-affiliate-marketing-no-website`, Priority Score 80) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/build-email-list-affiliate-marketing-no-website.md`, Score 70, WRITE NOW) → Writer → QA. Resolves this pillar's zero-outbound-link gap — LeadsMiner Pro and TD Pages & Magick Link reviews were each given a small reciprocal link to this article.
 
@@ -536,9 +536,9 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/make-money-online-for-beginners/`, `/reviews/olsp-academy/` |
 | **Internal Links In** | `/blog/make-money-online-for-beginners/` |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `make-money-online-no-money-to-start`, Priority Score 90, rank 1 of 23) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/make-money-online-no-money-to-start.md`, Score 75, WRITE NOW) → Writer → QA. Resolves the pillar anchor's (`make-money-online-for-beginners`) orphan status with a reciprocal inbound link.
 
@@ -558,9 +558,9 @@ Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agen
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/make-money-online-for-beginners/` |
 | **Internal Links In** | `/blog/make-money-online-for-beginners/` |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `how-much-can-beginners-realistically-earn-online`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA.
 
@@ -580,9 +580,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `how-much-can-begin
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/part-time-jobs-near-me-no-experience/` |
 | **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/` |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `side-hustles-stay-at-home-moms`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `part-time-jobs-near-me-no-experience`'s orphan status.
 
@@ -602,9 +602,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `side-hustles-stay-
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/no-experience-online-income/` |
 | **Internal Links In** | `/blog/no-experience-online-income/` |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `make-money-online-from-your-phone`, Priority Score 80 → Light Research (Score 70, WRITE NOW) → Writer → QA.
 
@@ -624,9 +624,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `make-money-online-
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/reviews/megalink-traffic-rotator-review/` |
 | **Internal Links In** | `/reviews/megalink-traffic-rotator-review/` |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `best-free-traffic-sources-affiliate-marketing`, Priority Score 80 → Light Research (Score 50, Medium Priority — WRITE NOW justified by Strategic Fit/internal-linking value, not content-gap strength; see brief for explicit caveat) → Writer → QA. Resolves Megalink Traffic Rotator's zero-outbound-link status.
 
@@ -646,9 +646,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `best-free-traffic-
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/social-media-lead-generation/` |
 | **Internal Links In** | `/blog/social-media-lead-generation/` |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `email-lead-generation-for-affiliate-marketers`, Priority Score 70 → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `social-media-lead-generation`'s orphan status — the pillar's own explicitly named next extension.
 
@@ -668,9 +668,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `email-lead-generat
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Internal Links In** | `/blog/lead-generation-software/` |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `ai-chatbots-for-lead-generation`, Priority Score 60 → Light Research (Score 70, WRITE NOW) → Writer → QA. Only candidate in this pipeline with a complete, confirmed zero-coverage gap on-site.
 
@@ -690,9 +690,9 @@ Produced via the Light Pipeline: Opportunity Queue candidate `ai-chatbots-for-le
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | `/blog/social-media-lead-generation/` |
 | **Internal Links In** | None yet (natural insertion point in `social-media-lead-generation.astro` was inside a data table, not prose — skipped rather than forcing an awkward edit) |
-| **Publication Status** | Built — QA passed, not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | High |
+| **Publication Status** | Published — committed and pushed (`11714d9`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `lead-generation-for-coaches-and-consultants`, Priority Score 50 → Light Research (Score 65, WRITE NOW — justified by better Gap/Competition fundamentals than two other candidates researched and rejected in this run, plus extending this site's proven audience-specific pattern) → Writer → QA. Fourth audience-specific guide in the pillar (after b2b, sales, local-business).
 
@@ -738,9 +738,9 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | Critical |
+| **Publication Status** | Published — committed and pushed (`55795cf`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.1, `docs/research/fastbots-ai-research.md`). Snapshot-based research (35-page PDF FireShot capture). No hands-on testing. |
 
 ---
@@ -759,9 +759,9 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | Critical |
+| **Publication Status** | Published — committed and pushed (`7f7025f`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/seo-writing-ai-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -780,9 +780,9 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | Critical |
+| **Publication Status** | Published — committed and pushed (`1f4acaf`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/canva-ai-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -843,9 +843,9 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | FastBots.ai (comparison in competition section) |
 | **Internal Links In** | None identified |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
-| **Workflow Status** | Ready to Publish |
-| **Editorial Priority** | Critical |
+| **Publication Status** | Published — committed and pushed (`2b2aa41`). |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/chatbase-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
