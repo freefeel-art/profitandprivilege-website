@@ -26,7 +26,7 @@ Your output is exactly one complete file:
 src/pages/blog/[slug].astro
 ```
 
-**The Gold Master layout is mandatory.** Copy the layout architecture, CSS token set, two-column grid, sticky TOC, scroll-spy JS, and `<script is:inline>` block from `src/pages/reviews/olsp-academy.astro` (via the blog structural reference below). Only the section content and section IDs change per article. For the exact blog content pattern (CTA cards, verdict box, FAQ, author box, pill-list sources, site footer), follow `src/pages/blog/part-time-jobs-near-me-no-experience.astro`. For the metadata block (Open Graph, Twitter Card, JSON-LD), follow `src/pages/blog/make-money-online-for-beginners.astro`.
+**The Gold Master layout is mandatory.** Copy the layout architecture, CSS token set, two-column grid, sticky TOC, scroll-spy JS, and `<script is:inline>` block from `src/pages/reviews/olsp-academy.astro` (via the blog structural reference below). Only the section content and section IDs change per article. For the exact blog content pattern (verdict box, FAQ, author box, pill-list sources, site footer), follow `src/pages/blog/part-time-jobs-near-me-no-experience.astro` — **except its CTA cards, which are superseded by QuoteBanner (`docs/BLOG-MASTER-SPEC.md` § 3a) as of 2026-07-04.** For the metadata block (Open Graph, Twitter Card, JSON-LD), follow `src/pages/blog/make-money-online-for-beginners.astro`.
 
 The file must be ready to build and deploy without any manual structural edits. It must pass `astro build` on first attempt.
 
@@ -45,7 +45,8 @@ The following inputs must be supplied before you begin. Do not start generating 
 | **Canonical URL** | Full absolute URL with trailing slash, e.g. `https://olsp.profitandprivilege.com/blog/[slug]/` | Hardcoded into `<link rel="canonical">` and the OG/JSON-LD `url` fields. |
 | **Publish date** | `YYYY-MM-DD` | Used in `.hero-tag` and JSON-LD `datePublished`/`dateModified`. |
 | **Internal links** | List of anchor text + URL pairs, or "none" | Links to other pages on olsp.profitandprivilege.com to weave naturally into the content. Should include at least one link to a review. |
-| **Affiliate links** | List of anchor text + URL pairs with tracking parameters, or "none" | Used in the three CTA cards. |
+
+QuoteBanner does not take an affiliate-links input — its link and quote text are fixed and universal (`docs/BLOG-MASTER-SPEC.md` § 3a), unlike the old CTA card system.
 
 ---
 
@@ -56,9 +57,10 @@ The following inputs must be supplied before you begin. Do not start generating 
 Before producing any output, read the blog structural reference and `docs/BLOG-MASTER-SPEC.md` in full. Confirm you understand:
 
 - Which elements are structural (must be copied verbatim from the Gold Master CSS/JS)
-- Which components blog articles use vs. omit (no Methodology Block, Score Bars, Quiz, SVG Diagram, or Video Embed)
+- Which components blog articles use vs. omit (no Methodology Block, Score Bars, Quiz, SVG Diagram, or Video Embed; no repeated `.cta-card` — see below)
 - The required OG + JSON-LD metadata block
-- The three-CTA-card placement rule
+- The three-QuoteBanner placement rule (`docs/BLOG-MASTER-SPEC.md` § 3a) — post-intro, mid-article, pre-FAQ, borderless brand-signature styling
+- The single Standard CTA placement rule (`docs/BLOG-MASTER-SPEC.md` § 3b) — post-FAQ, pre-author
 
 ### Step 2 — Plan the content sections
 
@@ -68,6 +70,8 @@ Using the research package, plan 3–7 numbered body sections that answer the ta
 - Whether a data table or pros/cons grid is warranted by the content (both optional — use only if the research supports it)
 - 6–8 FAQ questions drawn from the research
 - At least one internal link to a review and, where relevant, to sibling blog articles
+- The three QuoteBanner placements (fixed content — no planning needed, see `docs/BLOG-MASTER-SPEC.md` § 3a)
+- The single Standard CTA (`docs/BLOG-MASTER-SPEC.md` § 3b) — fixed button text and link, but adapt the heading to this article's topic (a heading literally about "email list" would not make sense on an unrelated topic)
 
 ### Step 3 — Generate the file
 
@@ -96,6 +100,7 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 
 **Components to omit**
 - Do not add a Methodology Block, Score Bars, Self-Check Quiz, SVG Diagram, or Video Embed. These are review-only components (`docs/BLOG-MASTER-SPEC.md` Section 4).
+- Do not add three `.cta-card` instances with sales copy. Blog articles use QuoteBanner three times (`docs/BLOG-MASTER-SPEC.md` § 3a) plus exactly one Standard CTA (§ 3b), as of 2026-07-04.
 
 **SEO and metadata**
 - `<title>` and `<meta name="description">` are hardcoded, not interpolated. Both must contain the target keyword.
@@ -107,7 +112,7 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 - Every external link (any `href` not starting with `/`) must include `target="_blank" rel="noopener noreferrer"`.
 - Affiliate or CTA links must use `target="_blank" rel="noopener noreferrer sponsored"`.
 - Internal links (href starting with `/`) must NOT have a `target` or `rel` attribute.
-- The active CTA destination is `https://olspacademy.com/megalive/1006001`.
+- The QuoteBanner destination is fixed: `https://olspacademy.com/c/profitandprivilege` (`docs/BLOG-MASTER-SPEC.md` § 3a) — identical in every blog article, not per-article input.
 
 ---
 
@@ -137,11 +142,20 @@ Same source-fidelity, epistemic-labelling, income-claims, no-first-hand-testing,
 
 **Author Box:** Use the same markup and source as `docs/ROUNDUP-GOLD-MASTER-SPEC.md` Section 8a — sourced from `src/pages/authors/jarmo-halonen.astro`, includes photo, name, role, bio, and profile link.
 
-**CTA cards:** Insert three identical `.cta-card` components:
+**QuoteBanner:** Insert three identical `.quote-banner` components (`docs/BLOG-MASTER-SPEC.md` § 3a):
 1. Immediately after the `intro` section.
 2. Mid-article, roughly at the midpoint of the numbered body sections.
-3. After the FAQ section, immediately before the Author Box.
-All three must be identical in content. Include `.cta-card` and `.cta-btn` CSS in the article's `<style>` block (already present if copied verbatim from the structural reference).
+3. Immediately before the `#faq` section (not after it).
+All three are byte-for-byte identical — fixed quote text, fixed link, borderless brand-signature styling (bold italic, brand blue, no box), no per-article customization. Include `.quote-banner` CSS in the article's `<style>` block alongside the `.cta-card`/`.cta-btn` rules copied from the structural reference (reused by Standard CTA below — per § 4, unused CSS is never trimmed).
+
+**Standard CTA:** Insert exactly one `.cta-card.standard-cta` component (`docs/BLOG-MASTER-SPEC.md` § 3b), immediately after `#faq` and immediately before `#author`:
+```html
+<div class="cta-card standard-cta">
+  <h3>{Short heading tailored to this article's topic}</h3>
+  <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
+</div>
+```
+Heading only — no `<p>` sales paragraph. Button text and link are fixed; the heading should read as the logical next step after this specific article's topic, kept to one short line.
 
 **Pill-list sources:** Format Sources & References as `<ul class="pill-list">`, each source a pill-shaped `<li><a>`. End with the disclaimer paragraph in small print, referencing the current month/year.
 
