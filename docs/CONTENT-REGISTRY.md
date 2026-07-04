@@ -56,6 +56,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/part-time-jobs-near-me-no-experience/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-strategies/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -74,6 +75,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -92,6 +94,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -110,6 +113,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -128,6 +132,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -146,6 +151,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/megalink-traffic-rotator-review/` |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-strategies/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -164,6 +170,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/olsp-live-profit-builders/`, `/reviews/olsp-community-builders/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/authors/jarmo-halonen/` |
 | **Internal Links In** | None identified |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 | **Source pipeline** | Opportunity Discovery Agent (`olsp-ecosystem-complete-guide-hub`, Priority 80, Authority Value ⭐⭐⭐⭐⭐) → Opportunity Brief (`agents/opportunity-research-agent/briefs/olsp-ecosystem-complete-guide-hub.md`, Score 90/100, WRITE NOW) → Research Brief (`docs/research/olsp-ecosystem-complete-guide-hub.md`) |
 
 ---
@@ -189,6 +196,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Internal Links Out** | `/blog/build-email-list-affiliate-marketing-no-website/` |
 | **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -207,6 +215,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
 | **Internal Links In** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. This pillar's first blog/informational page. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `build-email-list-affiliate-marketing-no-website`, Priority Score 80) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/build-email-list-affiliate-marketing-no-website.md`, Score 70, WRITE NOW) → Writer → QA. Resolves this pillar's zero-outbound-link gap — LeadsMiner Pro and TD Pages & Magick Link reviews were each given a small reciprocal link to this article.
 
@@ -231,6 +240,7 @@ Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agen
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -249,6 +259,7 @@ Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agen
 | **Internal Links Out** | `/blog/build-email-list-affiliate-marketing-no-website/` |
 | **Internal Links In** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -284,6 +295,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -302,6 +314,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -320,6 +333,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -338,6 +352,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-solo-ads/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
 | **Internal Links In** | `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -356,6 +371,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/reviews/td-pages-magick-link-review/`, `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/b2b-lead-generation/` |
 | **Internal Links In** | `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -374,6 +390,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/reviews/td-pages-magick-link-review/`, `/blog/lead-generation-software/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/` |
 | **Internal Links In** | `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -392,6 +409,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-for-beginners/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-software/`, `/reviews/olsp-academy/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
 | **Internal Links In** | `/blog/local-business-lead-generation/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -410,6 +428,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-strategies/`, `/blog/lead-generation-software/` |
 | **Internal Links In** | `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -428,6 +447,7 @@ Primary subject: Lead generation as a discipline — definitions, channels, tact
 | **Internal Links Out** | `/blog/what-is-lead-generation/`, `/blog/lead-generation-strategies/`, `/blog/local-business-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/reviews/leadsminer-pro-review/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/` |
 | **Internal Links In** | None identified |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -457,6 +477,7 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/olsp-community-builders/`, `/reviews/olsp-live-profit-builders/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/blog/what-is-lead-generation/`, `/blog/b2b-lead-generation/`, `/blog/sales-lead-generation/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
 | **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/`, `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -475,6 +496,7 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/`, `/blog/build-email-list-affiliate-marketing-no-website/`, `/blog/make-money-online-no-money-to-start/` |
 | **Internal Links In** | `/blog/make-money-online-no-money-to-start/` |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -493,6 +515,7 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Internal Links Out** | `/blog/make-money-online-for-beginners/`, `/reviews/olsp-academy/` |
 | **Internal Links In** | `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `make-money-online-no-money-to-start`, Priority Score 90, rank 1 of 23) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/make-money-online-no-money-to-start.md`, Score 75, WRITE NOW) → Writer → QA. Resolves the pillar anchor's (`make-money-online-for-beginners`) orphan status with a reciprocal inbound link.
 
@@ -513,6 +536,7 @@ Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agen
 | **Internal Links Out** | `/blog/make-money-online-for-beginners/` |
 | **Internal Links In** | `/blog/make-money-online-for-beginners/` |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `how-much-can-beginners-realistically-earn-online`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA.
 
@@ -533,6 +557,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `how-much-can-begin
 | **Internal Links Out** | `/blog/part-time-jobs-near-me-no-experience/` |
 | **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/` |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `side-hustles-stay-at-home-moms`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `part-time-jobs-near-me-no-experience`'s orphan status.
 
@@ -553,6 +578,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `side-hustles-stay-
 | **Internal Links Out** | `/blog/no-experience-online-income/` |
 | **Internal Links In** | `/blog/no-experience-online-income/` |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `make-money-online-from-your-phone`, Priority Score 80 → Light Research (Score 70, WRITE NOW) → Writer → QA.
 
@@ -573,6 +599,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `make-money-online-
 | **Internal Links Out** | `/reviews/megalink-traffic-rotator-review/` |
 | **Internal Links In** | `/reviews/megalink-traffic-rotator-review/` |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `best-free-traffic-sources-affiliate-marketing`, Priority Score 80 → Light Research (Score 50, Medium Priority — WRITE NOW justified by Strategic Fit/internal-linking value, not content-gap strength; see brief for explicit caveat) → Writer → QA. Resolves Megalink Traffic Rotator's zero-outbound-link status.
 
@@ -593,6 +620,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `best-free-traffic-
 | **Internal Links Out** | `/blog/social-media-lead-generation/` |
 | **Internal Links In** | `/blog/social-media-lead-generation/` |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `email-lead-generation-for-affiliate-marketers`, Priority Score 70 → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `social-media-lead-generation`'s orphan status — the pillar's own explicitly named next extension.
 
@@ -613,6 +641,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `email-lead-generat
 | **Internal Links Out** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Internal Links In** | `/blog/lead-generation-software/` |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `ai-chatbots-for-lead-generation`, Priority Score 60 → Light Research (Score 70, WRITE NOW) → Writer → QA. Only candidate in this pipeline with a complete, confirmed zero-coverage gap on-site.
 
@@ -633,6 +662,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `ai-chatbots-for-le
 | **Internal Links Out** | `/blog/social-media-lead-generation/` |
 | **Internal Links In** | None yet (natural insertion point in `social-media-lead-generation.astro` was inside a data table, not prose — skipped rather than forcing an awkward edit) |
 | **Publication Status** | Built — QA passed, not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 
 Produced via the Light Pipeline: Opportunity Queue candidate `lead-generation-for-coaches-and-consultants`, Priority Score 50 → Light Research (Score 65, WRITE NOW — justified by better Gap/Competition fundamentals than two other candidates researched and rejected in this run, plus extending this site's proven audience-specific pattern) → Writer → QA. Fourth audience-specific guide in the pillar (after b2b, sales, local-business).
 
@@ -653,6 +683,7 @@ Produced via the Light Pipeline: Opportunity Queue candidate `lead-generation-fo
 | **Internal Links Out** | `/blog/no-experience-online-income/`, `/reviews/olsp-academy/` |
 | **Internal Links In** | None identified |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -677,6 +708,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.1, `docs/research/fastbots-ai-research.md`). Snapshot-based research (35-page PDF FireShot capture). No hands-on testing. |
 
 ---
@@ -696,6 +728,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/seo-writing-ai-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -715,6 +748,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/canva-ai-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -734,6 +768,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
 | **Publication Status** | Published — committed and pushed (`da9e1da`). |
+| **Workflow Status** | Published |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/surfer-seo-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -753,6 +788,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
 | **Publication Status** | Published — committed and pushed (`e771b67`). |
+| **Workflow Status** | Published |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/heygen-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -772,6 +808,7 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Internal Links Out** | FastBots.ai (comparison in competition section) |
 | **Internal Links In** | None identified |
 | **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Workflow Status** | Ready to Publish |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/chatbase-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
@@ -797,6 +834,7 @@ Pages that support site credibility and navigation but are not editorial article
 | **Internal Links Out** | — |
 | **Internal Links In** | — |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
@@ -815,6 +853,7 @@ Pages that support site credibility and navigation but are not editorial article
 | **Internal Links Out** | — |
 | **Internal Links In** | Roundup author box links here; all blog posts reference this page |
 | **Publication Status** | Live |
+| **Workflow Status** | Published |
 
 ---
 
