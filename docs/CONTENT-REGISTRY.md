@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-03  
-Total pages built: 23  
-Editorial article pages: 21  
+Last updated: 2026-07-04  
+Total pages built: 24  
+Editorial article pages: 22  
 Infrastructure pages: 2
 
 ---
@@ -13,12 +13,12 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 23 |
+| Total published pages | 24 |
 | Reviews | 8 |
-| Blog articles | 12 |
+| Blog articles | 13 |
 | Roundups | 1 |
 | Infrastructure (home, author) | 2 |
-| Gold Master V1 compliant | 21 of 21 editorial pages |
+| Gold Master V1 compliant | 22 of 22 editorial pages |
 
 ---
 
@@ -26,7 +26,7 @@ Infrastructure pages: 2
 
 | Pillar | Pages | Primary intent |
 |---|---|---|
-| 1. OLSP Ecosystem | 6 | Reviews of OLSP products + affiliate training roundup |
+| 1. OLSP Ecosystem | 7 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
 | 4. Online Income for Beginners | 3 | Informational / commercial investigation |
@@ -71,7 +71,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
 
 ---
@@ -89,7 +89,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
 
 ---
@@ -107,7 +107,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
 
 ---
@@ -125,7 +125,7 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
 
 ---
@@ -143,8 +143,27 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Published** | 2026-06-26 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/megalink-traffic-rotator-review/` |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/blog/lead-generation-strategies/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
+
+---
+
+### OLSP Academy Complete Guide
+
+| Field | Value |
+|---|---|
+| **Title** | OLSP Academy: Complete Guide to Every Product & Upgrade |
+| **URL** | https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/ |
+| **Article Type** | Blog — Pillar / Authority Guide (Hub) |
+| **Primary Keyword** | olsp academy complete guide to all products and upgrades |
+| **Content Pillar** | OLSP Ecosystem |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec) |
+| **Published** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/reviews/olsp-academy/`, `/reviews/olsp-live-profit-builders/`, `/reviews/olsp-community-builders/`, `/reviews/olsp-mineeme/`, `/reviews/olsp-solo-ads/`, `/reviews/megalink-traffic-rotator-review/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/authors/jarmo-halonen/` |
+| **Internal Links In** | None identified |
+| **Publication Status** | Live |
+| **Source pipeline** | Opportunity Discovery Agent (`olsp-ecosystem-complete-guide-hub`, Priority 80, Authority Value ⭐⭐⭐⭐⭐) → Opportunity Brief (`agents/opportunity-research-agent/briefs/olsp-ecosystem-complete-guide-hub.md`, Score 90/100, WRITE NOW) → Research Brief (`docs/research/olsp-ecosystem-complete-guide-hub.md`) |
 
 ---
 
@@ -166,9 +185,33 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Gold Master Status** | ✓ Gold Master V1 |
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
-| **Internal Links Out** | None in body copy |
+| **Internal Links Out** | `/blog/build-email-list-affiliate-marketing-no-website/` |
 | **Internal Links In** | `/blog/lead-generation-for-beginners/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/social-media-lead-generation/` |
 | **Publication Status** | Live |
+
+---
+
+### Build an Email List for Affiliate Marketing Without a Website
+
+| Field | Value |
+|---|---|
+| **Title** | How to Build an Email List for Affiliate Marketing Without a Website |
+| **URL** | https://olsp.profitandprivilege.com/blog/build-email-list-affiliate-marketing-no-website/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | how to build an email list for affiliate marketing without a website |
+| **Content Pillar** | Affiliate Traffic & List Building |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
+| **Internal Links In** | `/reviews/leadsminer-pro-review/`, `/reviews/td-pages-magick-link-review/` |
+| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. This pillar's first blog/informational page. |
+
+Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `build-email-list-affiliate-marketing-no-website`, Priority Score 80) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/build-email-list-affiliate-marketing-no-website.md`, Score 70, WRITE NOW) → Writer → QA. Resolves this pillar's zero-outbound-link gap — LeadsMiner Pro and TD Pages & Magick Link reviews were each given a small reciprocal link to this article.
+
+**Revised 2026-07-04:** rebuilt to use the new QuoteBanner component (`docs/BLOG-MASTER-SPEC.md` § 3a) instead of `.cta-card` — this is now the first article on the new template, and the standard for all future Light Pipeline articles going forward. No editorial content changed, only the three promotional touchpoints.
+
+**Revised again 2026-07-04:** QuoteBanner restyled to a borderless brand-signature line (no box, bold italic, brand blue, § 3a), and a single Standard CTA (§ 3b) added after FAQ, before Author. Confirmed via build: 3 QuoteBanners, 1 Standard CTA, 0 legacy `.cta-card` sales blocks, HTTP 200.
 
 ---
 
@@ -185,7 +228,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Published** | 2026-06-25 |
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
-| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/` |
+| **Internal Links In** | `/blog/no-experience-online-income/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/`, `/blog/lead-generation-strategies/`, `/blog/olsp-academy-complete-guide/` |
 | **Publication Status** | Live |
 
 ---
@@ -202,7 +245,7 @@ Primary subject: Third-party tools used alongside OLSP Academy to build email li
 | **Gold Master Status** | ✓ Gold Master V1 |
 | **Published** | 2026-06-27 |
 | **Last Modified** | 2026-07-03 |
-| **Internal Links Out** | None in body copy |
+| **Internal Links Out** | `/blog/build-email-list-affiliate-marketing-no-website/` |
 | **Internal Links In** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 
@@ -428,9 +471,169 @@ Primary subject: Earning money online with no experience or qualifications. This
 | **Gold Master Status** | ✓ Gold Master V1 |
 | **Published** | 2026-07-03 |
 | **Last Modified** | 2026-07-03 |
-| **Internal Links Out** | `/reviews/olsp-academy/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/` |
-| **Internal Links In** | None identified |
+| **Internal Links Out** | `/reviews/olsp-academy/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/no-experience-online-income/`, `/blog/lead-generation-for-beginners/`, `/blog/what-is-lead-generation/`, `/blog/build-email-list-affiliate-marketing-no-website/`, `/blog/make-money-online-no-money-to-start/` |
+| **Internal Links In** | `/blog/make-money-online-no-money-to-start/` |
 | **Publication Status** | Live |
+
+---
+
+### Make Money Online With No Money to Start
+
+| Field | Value |
+|---|---|
+| **Title** | Make Money Online With No Money to Start (2026 Guide) |
+| **URL** | https://olsp.profitandprivilege.com/blog/make-money-online-no-money-to-start/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | make money online with no money to start |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/make-money-online-for-beginners/`, `/reviews/olsp-academy/` |
+| **Internal Links In** | `/blog/make-money-online-for-beginners/` |
+| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` candidate `make-money-online-no-money-to-start`, Priority Score 90, rank 1 of 23) → Light Research (Opportunity Brief, `agents/opportunity-research-agent/briefs/make-money-online-no-money-to-start.md`, Score 75, WRITE NOW) → Writer → QA. Resolves the pillar anchor's (`make-money-online-for-beginners`) orphan status with a reciprocal inbound link.
+
+---
+
+### How Much Can Beginners Realistically Earn Online
+
+| Field | Value |
+|---|---|
+| **Title** | How Much Can Beginners Realistically Earn Online in 2026? |
+| **URL** | https://olsp.profitandprivilege.com/blog/how-much-can-beginners-realistically-earn-online/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | how much can beginners realistically make online |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/make-money-online-for-beginners/` |
+| **Internal Links In** | `/blog/make-money-online-for-beginners/` |
+| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `how-much-can-beginners-realistically-earn-online`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA.
+
+---
+
+### Side Hustles for Stay-at-Home Moms
+
+| Field | Value |
+|---|---|
+| **Title** | Side Hustles for Stay-at-Home Moms: Flexible Options That Work Around Naptime |
+| **URL** | https://olsp.profitandprivilege.com/blog/side-hustles-stay-at-home-moms/ |
+| **Article Type** | Blog — Practical Guide (audience-specific) |
+| **Primary Keyword** | side hustles for stay-at-home moms |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/part-time-jobs-near-me-no-experience/` |
+| **Internal Links In** | `/blog/part-time-jobs-near-me-no-experience/` |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `side-hustles-stay-at-home-moms`, Priority Score 90 (tied rank 2/3) → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `part-time-jobs-near-me-no-experience`'s orphan status.
+
+---
+
+### Make Money Online From Your Phone
+
+| Field | Value |
+|---|---|
+| **Title** | How to Make Money Online From Your Phone (No Computer Needed) |
+| **URL** | https://olsp.profitandprivilege.com/blog/make-money-online-from-your-phone/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | make money online from your phone |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/no-experience-online-income/` |
+| **Internal Links In** | `/blog/no-experience-online-income/` |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `make-money-online-from-your-phone`, Priority Score 80 → Light Research (Score 70, WRITE NOW) → Writer → QA.
+
+---
+
+### Best Free Traffic Sources for Affiliate Marketing
+
+| Field | Value |
+|---|---|
+| **Title** | Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid) |
+| **URL** | https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | best free traffic sources for affiliate marketing |
+| **Content Pillar** | Affiliate Traffic & List Building |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/reviews/megalink-traffic-rotator-review/` |
+| **Internal Links In** | `/reviews/megalink-traffic-rotator-review/` |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `best-free-traffic-sources-affiliate-marketing`, Priority Score 80 → Light Research (Score 50, Medium Priority — WRITE NOW justified by Strategic Fit/internal-linking value, not content-gap strength; see brief for explicit caveat) → Writer → QA. Resolves Megalink Traffic Rotator's zero-outbound-link status.
+
+---
+
+### Email Lead Generation for Affiliate Marketers
+
+| Field | Value |
+|---|---|
+| **Title** | Email Lead Generation for Affiliate Marketers: A Practical Guide |
+| **URL** | https://olsp.profitandprivilege.com/blog/email-lead-generation-for-affiliate-marketers/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | email lead generation for affiliate marketers |
+| **Content Pillar** | Lead Generation |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/social-media-lead-generation/` |
+| **Internal Links In** | `/blog/social-media-lead-generation/` |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `email-lead-generation-for-affiliate-marketers`, Priority Score 70 → Light Research (Score 75, WRITE NOW) → Writer → QA. Resolves `social-media-lead-generation`'s orphan status — the pillar's own explicitly named next extension.
+
+---
+
+### AI Chatbots for Lead Generation
+
+| Field | Value |
+|---|---|
+| **Title** | AI Chatbots for Lead Generation: When They're Worth It |
+| **URL** | https://olsp.profitandprivilege.com/blog/ai-chatbots-for-lead-generation/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | AI chatbots for lead generation |
+| **Content Pillar** | Lead Generation |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
+| **Internal Links In** | `/blog/lead-generation-software/` |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `ai-chatbots-for-lead-generation`, Priority Score 60 → Light Research (Score 70, WRITE NOW) → Writer → QA. Only candidate in this pipeline with a complete, confirmed zero-coverage gap on-site.
+
+---
+
+### Lead Generation for Coaches and Consultants
+
+| Field | Value |
+|---|---|
+| **Title** | Lead Generation for Coaches and Consultants: A Practical Guide |
+| **URL** | https://olsp.profitandprivilege.com/blog/lead-generation-for-coaches-and-consultants/ |
+| **Article Type** | Blog — Practical Guide (audience-specific) |
+| **Primary Keyword** | lead generation for coaches and consultants |
+| **Content Pillar** | Lead Generation |
+| **Gold Master Status** | ✓ Gold Master V1 (Blog spec, QuoteBanner + Standard CTA template) |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | `/blog/social-media-lead-generation/` |
+| **Internal Links In** | None yet (natural insertion point in `social-media-lead-generation.astro` was inside a data table, not prose — skipped rather than forcing an awkward edit) |
+| **Publication Status** | Built — QA passed, not yet committed/pushed. |
+
+Produced via the Light Pipeline: Opportunity Queue candidate `lead-generation-for-coaches-and-consultants`, Priority Score 50 → Light Research (Score 65, WRITE NOW — justified by better Gap/Competition fundamentals than two other candidates researched and rejected in this run, plus extending this site's proven audience-specific pattern) → Writer → QA. Fourth audience-specific guide in the pillar (after b2b, sales, local-business).
 
 ---
 
@@ -572,6 +775,14 @@ social-media-lead-generation     ──→  what-is-lead-generation
                                  ──→  leadsminer-pro-review
                                  ──→  olsp-mineeme
                                  ──→  olsp-solo-ads
+
+olsp-academy-complete-guide       ──→  olsp-academy
+                                 ──→  olsp-live-profit-builders
+                                 ──→  olsp-community-builders
+                                 ──→  olsp-mineeme
+                                 ──→  olsp-solo-ads
+                                 ──→  megalink-traffic-rotator-review
+                                 ──→  best-affiliate-marketing-training-platforms-2026
 ```
 
 **Orphaned pages** (no inbound internal links from other editorial pages):
@@ -581,21 +792,26 @@ social-media-lead-generation     ──→  what-is-lead-generation
 | `/blog/part-time-jobs-near-me-no-experience/` | No inbound links |
 | `/blog/make-money-online-for-beginners/` | No inbound links (needs incoming links from future articles) |
 | `/blog/social-media-lead-generation/` | No inbound links (newest article — no older page links to it yet) |
+| `/blog/olsp-academy-complete-guide/` | No inbound links yet (newest article — sends 7 outbound links, receives none yet) |
 
 Previously orphaned — now receiving inbound links:
 
 | Page | Now linked from |
 |---|---|
 | `/reviews/leadsminer-pro-review/` | `lead-generation-for-beginners`, `lead-generation-software`, `best-lead-generation-tools` |
-| `/reviews/olsp-solo-ads/` | `lead-generation-for-beginners`, `no-experience-online-income`, `lead-generation-software`, `best-lead-generation-tools` |
-| `/reviews/olsp-mineeme/` | `no-experience-online-income`, `lead-generation-software`, `best-lead-generation-tools` |
-| `/reviews/megalink-traffic-rotator-review/` | `no-experience-online-income`, `best-affiliate-marketing`, `lead-generation-software`, `best-lead-generation-tools` |
+| `/reviews/olsp-solo-ads/` | `lead-generation-for-beginners`, `no-experience-online-income`, `lead-generation-software`, `best-lead-generation-tools`, `olsp-academy-complete-guide` |
+| `/reviews/olsp-mineeme/` | `no-experience-online-income`, `lead-generation-software`, `best-lead-generation-tools`, `olsp-academy-complete-guide` |
+| `/reviews/megalink-traffic-rotator-review/` | `no-experience-online-income`, `best-affiliate-marketing`, `lead-generation-software`, `best-lead-generation-tools`, `olsp-academy-complete-guide` |
 | `/reviews/td-pages-magick-link-review/` | `lead-generation-software`, `best-lead-generation-tools` ✓ (fully orphaned → resolved) |
+| `/reviews/olsp-academy/` | `no-experience-online-income`, `part-time-jobs-near-me`, `lead-generation-for-beginners`, `make-money-online-for-beginners`, `lead-generation-strategies`, `best-affiliate-marketing-training-platforms-2026`, `olsp-academy-complete-guide` |
+| `/reviews/olsp-community-builders/` | `no-experience-online-income`, `olsp-academy-complete-guide` |
+| `/reviews/olsp-live-profit-builders/` | `no-experience-online-income`, `olsp-academy-complete-guide` |
 | `/blog/lead-generation-for-beginners/` | `make-money-online-for-beginners`, `lead-generation-software`, `best-lead-generation-tools` |
 | `/blog/lead-generation-software/` | `best-lead-generation-tools`, `lead-generation-strategies` ✓ |
 | `/blog/best-lead-generation-tools/` | `lead-generation-strategies` ✓ (newly published → resolved same day) |
 | `/blog/lead-generation-strategies/` | `local-business-lead-generation` ✓ (newly published → resolved same day) |
 | `/blog/local-business-lead-generation/` | `social-media-lead-generation` ✓ (newly published → resolved same day) |
+| `/roundups/best-affiliate-marketing-training-platforms-2026/` | `no-experience-online-income`, `lead-generation-for-beginners`, `make-money-online-for-beginners`, `lead-generation-strategies`, `olsp-academy-complete-guide` |
 
 ---
 
@@ -604,15 +820,16 @@ Previously orphaned — now receiving inbound links:
 Observations derived from this registry — for use in future Opportunity Brief research.
 
 **1. Outbound-only hubs with growing inbound authority**
-`no-experience-online-income` links to 10 pages and receives 2 inbound links (`part-time-jobs-near-me`, `make-money-online-for-beginners`). `make-money-online-for-beginners` links to 5 pages and receives no inbound links yet. `lead-generation-for-beginners` links to 7 pages and now receives 3 inbound links (`make-money-online-for-beginners`, `lead-generation-software`, `best-lead-generation-tools`). The review cluster still sends no inbound links to any blog page.
+`no-experience-online-income` links to 10 pages and receives 2 inbound links (`part-time-jobs-near-me`, `make-money-online-for-beginners`). `make-money-online-for-beginners` links to 5 pages and receives no inbound links yet. `lead-generation-for-beginners` links to 7 pages and now receives 3 inbound links (`make-money-online-for-beginners`, `lead-generation-software`, `best-lead-generation-tools`). The review cluster still sends no inbound links to any blog page, though as of 2026-07-04 it now receives inbound links from the new OLSP Ecosystem hub (see item 2 and item 4).
 
-**2. Review cluster is isolated**
-None of the 8 review pages link to each other or to any blog page. The review cluster is a dead end for readers — they cannot navigate laterally or deeper. Adding even one or two cross-links between review pages would significantly improve crawlability and reader flow.
+**2. Review cluster isolation — partially resolved 2026-07-04**
+Previously, none of the 8 review pages linked to each other or to any blog page. `/blog/olsp-academy-complete-guide/` now sends outbound links to 6 of the 8 review/roundup pages (all except `td-pages-magick-link-review`, which remains outside this pillar), giving each of those 6 pages its first inbound link from within the review cluster's own ecosystem. The reviews still do not link to each other directly — only the new hub connects them — so full lateral cross-linking between individual reviews remains a future opportunity.
 
 **3. TD Pages orphan resolved**
 `/reviews/td-pages-magick-link-review/` is now linked from `/blog/lead-generation-software/` in the OLSP capture tools section. No longer fully orphaned.
 
-**4. No pillar page for the OLSP Ecosystem**
+**4. No pillar page for the OLSP Ecosystem — resolved 2026-07-04**
+`/blog/olsp-academy-complete-guide/` now serves as this hub, synthesizing all 6 OLSP Ecosystem pages (5 product reviews + the training roundup) into one decision framework, per Opportunity Brief `agents/opportunity-research-agent/briefs/olsp-ecosystem-complete-guide-hub.md`. The hub itself does not yet receive any inbound links — see the Orphaned pages table above.
 Eight OLSP-related pages exist but there is no "hub" article (e.g. "Complete guide to OLSP products") that links to all of them and receives authority from each.
 
 **5. Lead Generation cluster now 9 articles — comprehensive coverage**
@@ -626,6 +843,10 @@ The cluster spans every major intent type: definitional (`what-is-lead-generatio
 - `lead-generation-strategies` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `local-business-lead-generation` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
 - `social-media-lead-generation` — published 2026-07-03. ✓ (no ORA brief; keyword assigned editorially)
+- `olsp-academy-complete-guide` — published 2026-07-04. ✓ (first end-to-end run through the full pipeline: Opportunity Discovery Agent → ORA brief score 90/100, WRITE NOW → Research Brief → Blog Master build)
 
 **7. Opportunity Discovery Agent — implemented, first full-site run complete**
-`agents/opportunity-discovery-agent/` sits upstream of ORA: input is a content pillar (not a keyword), output is a ranked `OPPORTUNITY-QUEUE.md` of candidate opportunities with evidence, a dual Opportunity/Priority Score, and a content-coverage check against this registry, `src/pages/**`, ORA's `briefs/`, and `docs/research/`. Its coverage check reads this registry the same way ORA's Stage 0 does. ORA itself, and everything downstream of the Opportunity Brief, is unchanged by this design. As of 2026-07-03, all 4 production pillars have been run: 23 candidates queued (6 Online Income for Beginners, 7 OLSP Ecosystem, 5 Affiliate Traffic & List Building, 5 Lead Generation), all `unclaimed`, none yet promoted to ORA. See `OPPORTUNITY-QUEUE.md` for full detail and the consolidated Top-10 planning dashboard delivered alongside this run.
+`agents/opportunity-discovery-agent/` sits upstream of ORA: input is a content pillar (not a keyword), output is a ranked `OPPORTUNITY-QUEUE.md` of candidate opportunities with evidence, a dual Opportunity/Priority Score, an editorial-only Authority Value rating (v0.5, § 5a — never scored), a Pipeline Type classification (v0.6, § 5b — Heavy/Light, never scored; see item 8 below), and a content-coverage check against this registry, `src/pages/**`, ORA's `briefs/`, and `docs/research/`. Its coverage check reads this registry the same way ORA's Stage 0 does. ORA itself, and everything downstream of the Opportunity Brief, is unchanged by this design. As of 2026-07-03, all 4 production pillars have been run: 23 candidates queued (6 Online Income for Beginners, 7 OLSP Ecosystem, 5 Affiliate Traffic & List Building, 5 Lead Generation). As of 2026-07-04: `olsp-ecosystem-complete-guide-hub` is `published` (this pillar's first completed end-to-end production run) and `build-email-list-affiliate-marketing-no-website` is `promoted` (Opportunity Brief in progress); the remaining 21 candidates are still `unclaimed`. See `OPPORTUNITY-QUEUE.md` for full detail and the consolidated Top-10 planning dashboard delivered alongside this run.
+
+**8. Heavy / Light Pipeline split — architecture refactor, 2026-07-04**
+Production now splits into two independent tracks after Discovery, per `docs/PIPELINE-ARCHITECTURE.md`. **Heavy** (Companies, Products, Platforms, Services, Founders, Tools, Pillar Pages, Major Comparisons) routes to the newly formalized Research Compiler (`agents/research-compiler/`), producing a Research Brief cataloged as a reusable Knowledge Asset in `docs/HEAVY-ASSET-LIBRARY.md`. **Light** (Information Articles, How-To, FAQ, Beginner Guides, Problem-Solving, General Opportunity Articles) routes to ORA, now scoped as the Light Pipeline's research stage only (`agents/opportunity-research-agent/SPEC.md` § 1a). The 3 existing Research Briefs in `docs/research/` were cataloged as-is into the Heavy Asset Library — none were rewritten. This is a documentation/architecture refactor only: no page in this registry changed, and no new research was produced.
