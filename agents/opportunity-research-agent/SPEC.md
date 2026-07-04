@@ -1,7 +1,7 @@
 # Opportunity Research Agent — Full Specification
 
-**Version:** 1.3
-**Status:** Production
+**Version:** 1.4
+**Status:** Production — scoped to the Light Pipeline (see § 1a)
 
 ---
 
@@ -10,6 +10,16 @@
 Determine whether a keyword represents a worthwhile publishing opportunity for Profit and Privilege and produce a standardized Opportunity Brief that can be passed to the next stage of the editorial pipeline.
 
 The agent produces evidence, not opinions. Every claim in its output is traceable to a data source.
+
+---
+
+## 1a. Scope: Light Pipeline only (added v1.4)
+
+Production now splits into a Heavy and a Light pipeline after Discovery, classified by the Opportunity Discovery Agent's `pipeline_type` field (`agents/opportunity-discovery-agent/SPEC.md` § 5b). **ORA is the Light Pipeline's research stage.** It researches candidates whose core subject is a general topic, audience-scoped guide, how-to, FAQ, or beginner guide — not a specific named Company, Product, Platform, Service, Founder, or Tool.
+
+**Guard:** if a candidate arrives tagged `pipeline_type: Heavy`, do not run ORA on it. Route it to the Research Compiler (`agents/research-compiler/`) instead, which produces a Research Brief cataloged in `docs/HEAVY-ASSET-LIBRARY.md` rather than an Opportunity Brief. See `docs/PIPELINE-ARCHITECTURE.md` for the full two-pipeline diagram.
+
+Nothing else in this specification changes as a result of this scoping. ORA's six-stage workflow, scoring model, and Opportunity Brief schema (Sections 2–10 below) are unchanged — this section only narrows *which* candidates ORA should be invoked on going forward. An operator can still invoke ORA directly on any manually chosen keyword, exactly as before; the guard applies to Discovery-sourced candidates carrying an explicit Heavy classification.
 
 ---
 

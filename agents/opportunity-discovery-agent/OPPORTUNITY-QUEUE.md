@@ -1,14 +1,16 @@
 # Opportunity Queue — All Pillars
 
-**Schema version:** 0.4
-**Last updated:** 2026-07-03
-**Last run:** All 4 production pillars (Online Income for Beginners, OLSP Ecosystem, Affiliate Traffic & List Building, Lead Generation) — first full-site Discovery pass under v0.4 scoring
+**Schema version:** 0.6
+**Last updated:** 2026-07-04
+**Last run:** All 4 production pillars (Online Income for Beginners, OLSP Ecosystem, Affiliate Traffic & List Building, Lead Generation) — first full-site Discovery pass under v0.4 scoring. v0.5 (2026-07-04) added the Authority Value column and backfilled it for all 23 existing candidates from evidence already on file — no candidate was re-scored or re-discovered. v0.6 (2026-07-04) added the Pipeline Type column (Heavy / Light, SPEC.md § 5b) and backfilled it for all 23 existing candidates from each candidate's already-recorded subject matter — again, no candidate was re-scored or re-discovered. See `docs/PIPELINE-ARCHITECTURE.md` for what Heavy/Light routing means downstream.
 
 This file is the live, ranked backlog produced by the Opportunity Discovery Agent. It is updated, not replaced, on every run — new candidates are appended, existing rows have their `status` updated in place. Every field is required; unavailable data is recorded explicitly as `Unavailable`, never left blank.
 
-Every candidate carries **two separate scores** — they are never averaged or collapsed into one:
+Every candidate carries **four separate fields** — they are never averaged or collapsed into one another:
 - **Opportunity Score (preliminary)** — is this a good opportunity, on its own merits? (Trend / Community / Gap, rescaled to 0–100 — DataForSEO/Demand is optional and never scored)
 - **Priority Score** — should it be produced *now*, given the rest of the portfolio? (Opportunity Quality / Pillar Coverage & Balance / Authority Cluster & Internal-Linking Fit / Strategic Priority Fit)
+- **Authority Value** *(added v0.5, SPEC.md § 5a)* — editorial planning field only: if produced, how much would it strengthen the site's long-term topical authority and internal-linking structure (⭐ to ⭐⭐⭐⭐⭐)? Derived from the same Authority Cluster & Internal-Linking Fit evidence already gathered for the Priority Score, but never itself a scored input to the Opportunity Score or Priority Score — it does not change either number and does not change the table's sort order.
+- **Pipeline Type** *(added v0.6, SPEC.md § 5b)* — editorial routing field only: Heavy or Light, determining which downstream production pipeline (`docs/PIPELINE-ARCHITECTURE.md`) this candidate enters if promoted. Heavy = core subject is a specific named Company/Product/Platform/Service/Founder/Tool/Pillar Page/Major Comparison; Light = general topic or audience-scoped guide with no single named entity at its center. Never a scored input, never changes the table's sort order.
 
 The summary table below is sorted by **Priority Score**, not Opportunity Score.
 
@@ -18,31 +20,31 @@ The summary table below is sorted by **Priority Score**, not Opportunity Score.
 
 ## Summary Table
 
-| Rank | Candidate ID | Pillar | Priority Score | Priority Label | Opportunity Score | Status | Date Discovered |
-|---|---|---|---|---|---|---|---|
-| 1 | make-money-online-no-money-to-start | Online Income for Beginners | 90 | Produce soon | 87 | unclaimed | 2026-07-03 |
-| 2 | how-much-can-beginners-realistically-earn-online | Online Income for Beginners | 90 | Produce soon | 73 | unclaimed | 2026-07-03 |
-| 3 | side-hustles-stay-at-home-moms | Online Income for Beginners | 90 | Produce soon | 73 | unclaimed | 2026-07-03 |
-| 4 | make-money-online-from-your-phone | Online Income for Beginners | 80 | Produce soon | 73 | unclaimed | 2026-07-03 |
-| 5 | make-money-online-without-social-media | Online Income for Beginners | 60 | Hold — reasonable, not urgent | 33 | unclaimed | 2026-07-03 |
-| 6 | online-income-scams-to-avoid | Online Income for Beginners | 60 | Hold — reasonable, not urgent | 33 | unclaimed | 2026-07-03 |
-| 7 | olsp-ecosystem-complete-guide-hub | OLSP Ecosystem | 80 | Produce soon | 87 | unclaimed | 2026-07-03 |
-| 8 | wayne-crowe-founder-background | OLSP Ecosystem | 70 | Produce soon | 73 | unclaimed | 2026-07-03 |
-| 9 | olsp-academy-total-cost-across-upsells | OLSP Ecosystem | 70 | Produce soon | 60 | unclaimed | 2026-07-03 |
-| 10 | which-olsp-upgrade-to-buy-first | OLSP Ecosystem | 70 | Produce soon | 60 | unclaimed | 2026-07-03 |
-| 11 | olsp-academy-legit-scam-complaints-review | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 60 | unclaimed | 2026-07-03 |
-| 12 | olsp-academy-refund-policy-explained | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 60 | unclaimed | 2026-07-03 |
-| 13 | olsp-academy-income-proof-realistic-earnings | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 47 | unclaimed | 2026-07-03 |
-| 14 | build-email-list-affiliate-marketing-no-website | Affiliate Traffic & List Building | 80 | Produce soon | 60 | unclaimed | 2026-07-03 |
-| 15 | best-free-traffic-sources-affiliate-marketing | Affiliate Traffic & List Building | 80 | Produce soon | 47 | unclaimed | 2026-07-03 |
-| 16 | megalink-traffic-rotator-alternatives-comparison | Affiliate Traffic & List Building | 80 | Produce soon | 47 | unclaimed | 2026-07-03 |
-| 17 | leadsminer-pro-alternatives-facebook-lead-tools | Affiliate Traffic & List Building | 70 | Produce soon | 33 | unclaimed | 2026-07-03 |
-| 18 | affiliate-link-cloaking-safety-guide | Affiliate Traffic & List Building | 60 | Hold — reasonable, not urgent | 33 | unclaimed | 2026-07-03 |
-| 19 | email-lead-generation-for-affiliate-marketers | Lead Generation | 70 | Produce soon | 73 | unclaimed | 2026-07-03 |
-| 20 | ai-chatbots-for-lead-generation | Lead Generation | 60 | Hold — reasonable, not urgent | 87 | unclaimed | 2026-07-03 |
-| 21 | real-estate-lead-generation | Lead Generation | 60 | Hold — reasonable, not urgent | 73 | unclaimed | 2026-07-03 |
-| 22 | cold-email-outreach-for-lead-generation | Lead Generation | 50 | Hold — reasonable, not urgent | 60 | unclaimed | 2026-07-03 |
-| 23 | lead-generation-for-coaches-and-consultants | Lead Generation | 50 | Hold — reasonable, not urgent | 60 | unclaimed | 2026-07-03 |
+| Rank | Candidate ID | Pillar | Priority Score | Priority Label | Opportunity Score | Authority Value | Pipeline Type | Status | Date Discovered |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | make-money-online-no-money-to-start | Online Income for Beginners | 90 | Produce soon | 87 | ⭐⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 2 | how-much-can-beginners-realistically-earn-online | Online Income for Beginners | 90 | Produce soon | 73 | ⭐⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 3 | side-hustles-stay-at-home-moms | Online Income for Beginners | 90 | Produce soon | 73 | ⭐⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 4 | make-money-online-from-your-phone | Online Income for Beginners | 80 | Produce soon | 73 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 5 | make-money-online-without-social-media | Online Income for Beginners | 60 | Hold — reasonable, not urgent | 33 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 6 | online-income-scams-to-avoid | Online Income for Beginners | 60 | Hold — reasonable, not urgent | 33 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 7 | olsp-ecosystem-complete-guide-hub | OLSP Ecosystem | 80 | Produce soon | 87 | ⭐⭐⭐⭐⭐ | Heavy | published | 2026-07-03 |
+| 8 | wayne-crowe-founder-background | OLSP Ecosystem | 70 | Produce soon | 73 | ⭐⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 9 | olsp-academy-total-cost-across-upsells | OLSP Ecosystem | 70 | Produce soon | 60 | ⭐⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 10 | which-olsp-upgrade-to-buy-first | OLSP Ecosystem | 70 | Produce soon | 60 | ⭐⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 11 | olsp-academy-legit-scam-complaints-review | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 60 | ⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 12 | olsp-academy-refund-policy-explained | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 60 | ⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 13 | olsp-academy-income-proof-realistic-earnings | OLSP Ecosystem | 60 | Hold — reasonable, not urgent | 47 | ⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 14 | build-email-list-affiliate-marketing-no-website | Affiliate Traffic & List Building | 80 | Produce soon | 60 | ⭐⭐⭐⭐ | Light | promoted | 2026-07-04 |
+| 15 | best-free-traffic-sources-affiliate-marketing | Affiliate Traffic & List Building | 80 | Produce soon | 47 | ⭐⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 16 | megalink-traffic-rotator-alternatives-comparison | Affiliate Traffic & List Building | 80 | Produce soon | 47 | ⭐⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 17 | leadsminer-pro-alternatives-facebook-lead-tools | Affiliate Traffic & List Building | 70 | Produce soon | 33 | ⭐⭐⭐⭐ | Heavy | unclaimed | 2026-07-03 |
+| 18 | affiliate-link-cloaking-safety-guide | Affiliate Traffic & List Building | 60 | Hold — reasonable, not urgent | 33 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 19 | email-lead-generation-for-affiliate-marketers | Lead Generation | 70 | Produce soon | 73 | ⭐⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 20 | ai-chatbots-for-lead-generation | Lead Generation | 60 | Hold — reasonable, not urgent | 87 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 21 | real-estate-lead-generation | Lead Generation | 60 | Hold — reasonable, not urgent | 73 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 22 | cold-email-outreach-for-lead-generation | Lead Generation | 50 | Hold — reasonable, not urgent | 60 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
+| 23 | lead-generation-for-coaches-and-consultants | Lead Generation | 50 | Hold — reasonable, not urgent | 60 | ⭐⭐⭐ | Light | unclaimed | 2026-07-03 |
 
 Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending, then alphabetically by candidate ID (candidates 2 and 3 are also tied on Opportunity Score). Ranks 5/6 are tied on both scores; ordered alphabetically by candidate ID.
 
@@ -51,6 +53,10 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 **Affiliate Traffic & List Building group (ranks 14–18):** Ranks 14/15/16 are tied on Priority Score (80); ordered by Opportunity Score descending (rank 14 at 60), then alphabetically by candidate ID for the remaining tie between ranks 15 and 16 (both Opportunity Score 47 — "best-free-traffic-sources-affiliate-marketing" precedes "megalink-traffic-rotator-alternatives-comparison"). Rank 17 (Priority 70) and rank 18 (Priority 60) are each tied on both scores with no other candidate in their tier, so no further tie-break is needed.
 
 **Lead Generation group (ranks 19–23):** Rank 19 (Priority 70) has no tie. Ranks 20/21 are tied on Priority Score (60); ordered by Opportunity Score descending — rank 20 ("ai-chatbots-for-lead-generation", Opportunity 87) precedes rank 21 ("real-estate-lead-generation", Opportunity 73). Ranks 22/23 are tied on both Priority (50) and Opportunity Score (60); ordered alphabetically by candidate ID ("cold-email-outreach-for-lead-generation" precedes "lead-generation-for-coaches-and-consultants"). This pillar shows the lowest Priority Score ceiling and the lowest average Pillar Coverage & Balance sub-score (5/25 for every candidate this run) of any pillar run today, consistent with Lead Generation being the site's most comprehensively covered cluster (9 pages, per CONTENT-REGISTRY.md) rather than a thin or under-served one.
+
+**Authority Value methodology note (v0.5 backfill, 2026-07-04):** Ratings below were derived directly from each candidate's already-recorded Authority Cluster & Internal-Linking Fit sub-score (see each candidate's Priority Score breakdown) — no new discovery source or re-scoring occurred. A sub-score of 25 (directly resolves a documented structural gap: an orphaned page or an isolated review cluster) maps to ⭐⭐⭐⭐; a sub-score of 15 (neutral cluster fit) maps to ⭐⭐⭐. `olsp-ecosystem-complete-guide-hub` is elevated to ⭐⭐⭐⭐⭐ because it is, by design, the pillar/cluster hub itself — the one candidate this run whose entire purpose is synthesizing an existing cluster rather than joining one. `wayne-crowe-founder-background` is elevated one tier above its sub-score (15 → ⭐⭐⭐⭐, not ⭐⭐⭐) because its evidence describes a page that would plausibly link to/from all 5 OLSP product reviews plus the training roundup — broader cross-cluster reach than a "neutral fit" sub-score alone conveys, even though it doesn't resolve one specific named gap. No candidate this run scored a 5 (isolated, no linking path) on the underlying sub-score, so ⭐⭐ and ⭐ are unused in this backfill — the scale remains available for future candidates that do.
+
+**Pipeline Type methodology note (v0.6 backfill, 2026-07-04, SPEC.md § 5b):** Classified directly from each candidate's already-recorded `opportunity_summary` and `candidate_keyword` — no new discovery source, re-scoring, or re-research occurred. **Heavy** (9 candidates): all 6 OLSP Ecosystem candidates whose core subject is OLSP Academy or its founder (`olsp-ecosystem-complete-guide-hub` — Pillar Page; `wayne-crowe-founder-background` — Founder; `olsp-academy-total-cost-across-upsells`, `which-olsp-upgrade-to-buy-first`, `olsp-academy-legit-scam-complaints-review`, `olsp-academy-refund-policy-explained`, `olsp-academy-income-proof-realistic-earnings` — all Product-centric), plus the 2 Affiliate Traffic & List Building candidates structured as a Major Comparison anchored to one named, already-reviewed product (`megalink-traffic-rotator-alternatives-comparison`, `leadsminer-pro-alternatives-facebook-lead-tools`). **Light** (14 candidates): all 6 Online Income for Beginners candidates and all 5 Lead Generation candidates (general topic or audience-scoped guides — no single named company/product/platform/founder at their center), plus 3 Affiliate Traffic & List Building candidates that are general how-to/safety guides (`build-email-list-affiliate-marketing-no-website`, `best-free-traffic-sources-affiliate-marketing`, `affiliate-link-cloaking-safety-guide`) — each of these cites a reviewed product (LeadsMiner Pro, Megalink Traffic Rotator, TD Pages & Magick Link respectively) only as a supporting tactic or companion mention, not as the candidate's actual subject, so the "mention vs. subject" test in SPEC.md § 5b keeps them Light despite the topical adjacency.
 
 ---
 
@@ -63,6 +69,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | Zero-budget constraint is the single most recurring framing across Quora's "make money online" questions — beginners specifically want confirmation that no upfront investment is required, and warnings about scams that ask for payment. |
 | Candidate keyword | make money online with no money to start |
+| Authority Value | ⭐⭐⭐⭐ — resolves the anchor article's orphan status; direct link path to/from `make-money-online-for-beginners` |
+| Pipeline Type | Light — general zero-budget beginner guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -116,6 +124,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | Beginners consistently ask for a concrete, honest income range before committing time to any method — an expectation-setting angle distinct from "how to start." |
 | Candidate keyword | how much can beginners realistically make online |
+| Authority Value | ⭐⭐⭐⭐ — direct companion to the anchor's "what works / what to skip" framing; resolves the same orphan |
+| Pipeline Type | Light — general expectation-setting guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -169,6 +179,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | A named-audience angle (stay-at-home parents needing childcare-compatible flexibility) that the pillar's existing general-audience pages don't address directly. |
 | Candidate keyword | side hustles for stay-at-home moms |
+| Authority Value | ⭐⭐⭐⭐ — resolves a second documented orphan (`part-time-jobs-near-me-no-experience`) |
+| Pipeline Type | Light — audience-specific beginner guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -222,6 +234,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | A device-constraint angle (mobile-only, no computer) distinct from the pillar's existing method-comparison and audience-based framings. |
 | Candidate keyword | make money online from your phone |
+| Authority Value | ⭐⭐⭐ — extends the `no-experience-online-income` hub as a device-specific angle, but resolves no named orphan |
+| Pipeline Type | Light — device-constraint how-to guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -275,6 +289,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | An angle explicitly avoiding social-media/audience-building requirements — already directly addressed by several dedicated competitor articles. |
 | Candidate keyword | make money online without social media |
+| Authority Value | ⭐⭐⭐ — neutral cluster fit; no orphan resolved |
+| Pipeline Type | Light — general topic guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -328,6 +344,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Online Income for Beginners |
 | Opportunity summary | A trust/safety angle warning beginners away from common online-income scams — high community concern, but the SERP is dominated by an unbeatable institutional incumbent. |
 | Candidate keyword | online income scams to avoid |
+| Authority Value | ⭐⭐⭐ — plausible companion to all 3 pillar pages, but no orphan resolved |
+| Pipeline Type | Light — trust/safety topic guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -381,10 +399,12 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | No page on the site currently ties together all 6 OLSP Ecosystem pages (5 product reviews + the training roundup) into one synthesized overview; third-party blogs publish single bundled "OLSP System Review" pieces, but none function as a true hub linking discrete, already-published product reviews together. |
 | Candidate keyword | olsp academy complete guide to all products and upgrades |
-| Status | unclaimed |
+| Authority Value | ⭐⭐⭐⭐⭐ — this candidate IS the pillar/cluster hub: synthesizes and cross-links all 6 OLSP Ecosystem pages |
+| Pipeline Type | Heavy — Pillar Page synthesizing the entire OLSP Academy product suite; already produced a Research Brief cataloged in `docs/HEAVY-ASSET-LIBRARY.md` |
+| Status | published |
 | Date discovered | 2026-07-03 |
-| Date status changed | 2026-07-03 |
-| Promoted brief path | N/A |
+| Date status changed | 2026-07-04 |
+| Promoted brief path | `agents/opportunity-research-agent/briefs/olsp-ecosystem-complete-guide-hub.md` |
 
 #### Opportunity Score (preliminary) — is this a good opportunity?
 
@@ -434,6 +454,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | An independent profile of Wayne Crowe (OLSP's founder) — background, track record, and credibility — distinct from the existing product-focused reviews; coincides with a recent, corroborated search-interest spike in both "Wayne Crowe" and "OLSP" as bare brand terms. |
 | Candidate keyword | who is wayne crowe olsp academy founder |
+| Authority Value | ⭐⭐⭐⭐ — plausible link source to/from all 5 product reviews plus the training roundup, broader cross-cluster reach than its "neutral" Priority sub-score alone implies |
+| Pipeline Type | Heavy — Founder profile; core subject is Wayne Crowe himself, a named individual, not a general topic |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -487,6 +509,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | Beginners and skeptics want a single, honest breakdown of what OLSP Academy actually costs once every upsell tier is counted (reported range: $7 entry to $25,000 "Elite Plus"), distinct from any one product's own review-page pricing section. |
 | Candidate keyword | how much does olsp academy actually cost with all upsells |
+| Authority Value | ⭐⭐⭐⭐ — inherently cross-product; must cite and link all 5 reviewed OLSP products, resolving the isolated-review-cluster gap |
+| Pipeline Type | Heavy — Product-centric cost breakdown; core subject is OLSP Academy's pricing structure across its named upsell tiers |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -540,6 +564,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | Beginners repeatedly ask which OLSP upgrade to purchase first (or whether to upgrade at all) — a cross-product decision-guide angle distinct from any single product review. |
 | Candidate keyword | which olsp academy upgrade should i buy first |
+| Authority Value | ⭐⭐⭐⭐ — same cross-product linking requirement as the cost-breakdown candidate; must reference all 5 reviewed products |
+| Pipeline Type | Heavy — Major Comparison across the named OLSP Academy upgrade tiers |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -593,6 +619,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | A dedicated trust/legitimacy angle — "is OLSP Academy legit or a scam" merged with the closely related "complaints" angle at clustering, since both surfaced the same underlying Quora/Trustpilot evidence — distinct from the existing product-by-product reviews. |
 | Candidate keyword | is olsp academy legit or a scam |
+| Authority Value | ⭐⭐⭐ — neutral fit; links naturally to the OLSP Academy review only, no cross-product requirement |
+| Pipeline Type | Heavy — Product-centric trust/legitimacy investigation; core subject is OLSP Academy specifically |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -646,6 +674,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | Recurring uncertainty about whether OLSP Academy offers refunds, and under what terms across its many upsell tiers — no single page directly and neutrally answers this. |
 | Candidate keyword | does olsp academy have a refund policy |
+| Authority Value | ⭐⭐⭐ — neutral fit; single-product focus, not cross-cluster |
+| Pipeline Type | Heavy — Product-centric policy explainer; core subject is OLSP Academy's refund terms specifically |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -699,6 +729,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | OLSP Ecosystem |
 | Opportunity summary | An OLSP-specific realistic-earnings angle ("what do members actually make") distinct from the site's general Online Income for Beginners pillar — moderate signal, and the angle is already partly covered by existing personal-experience blog posts elsewhere. |
 | Candidate keyword | how much can you realistically earn with olsp academy |
+| Authority Value | ⭐⭐⭐ — neutral fit; single-product focus, not cross-cluster |
+| Pipeline Type | Heavy — Product-centric earnings investigation; core subject is OLSP Academy specifically |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -752,10 +784,12 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Affiliate Traffic & List Building |
 | Opportunity summary | Beginners repeatedly ask how to start building an email list for affiliate marketing when they have no website — a recurring, specific constraint distinct from general list-building advice; this pillar currently has zero blog/informational pages to answer it. |
 | Candidate keyword | how to build an email list for affiliate marketing without a website |
-| Status | unclaimed |
+| Authority Value | ⭐⭐⭐⭐ — gives LeadsMiner Pro its first outbound-linked companion piece, resolving the pillar's zero-outbound-link gap |
+| Pipeline Type | Light — general list-building how-to guide; cites LeadsMiner Pro as a supporting tactic, not as the subject |
+| Status | promoted |
 | Date discovered | 2026-07-03 |
-| Date status changed | 2026-07-03 |
-| Promoted brief path | N/A |
+| Date status changed | 2026-07-04 |
+| Promoted brief path | `agents/opportunity-research-agent/briefs/build-email-list-affiliate-marketing-no-website.md` |
 
 #### Opportunity Score (preliminary) — is this a good opportunity?
 
@@ -805,6 +839,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Affiliate Traffic & List Building |
 | Opportunity summary | A recurring Quora question cluster asks specifically for free (non-paid) traffic channels for affiliate offers — distinct from Megalink Traffic Rotator's paid-traffic positioning and from Pillar 3's broader, lead-gen-framed strategy content. |
 | Candidate keyword | best free traffic sources for affiliate marketing |
+| Authority Value | ⭐⭐⭐⭐ — gives Megalink Traffic Rotator its first outbound link, positioned as the paid-traffic counterpart |
+| Pipeline Type | Light — general free-channel roundup; cites Megalink Traffic Rotator as a companion contrast, not as the subject |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -858,6 +894,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Affiliate Traffic & List Building |
 | Opportunity summary | No page on the site compares the already-reviewed Megalink Traffic Rotator against the broader link-rotator/traffic-routing tool market (ClickMagick, GeniusLink, LinkSplit, Pixelfy, RotatorLinks) — third-party roundups of this tool category exist but never mention Megalink or connect to this site's own review. |
 | Candidate keyword | megalink traffic rotator alternatives compared |
+| Authority Value | ⭐⭐⭐⭐ — direct fix for Megalink Traffic Rotator's zero-outbound-link status |
+| Pipeline Type | Heavy — Major Comparison anchored to the named Product Megalink Traffic Rotator |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -911,6 +949,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Affiliate Traffic & List Building |
 | Opportunity summary | No page compares the already-reviewed LeadsMiner Pro against the broader Facebook-lead-capture tool market (Groupboss, Chatfuel, native Facebook Lead Ads) — general category roundups exist but never mention LeadsMiner Pro or this site's own review. |
 | Candidate keyword | leadsminer pro alternatives for facebook lead generation |
+| Authority Value | ⭐⭐⭐⭐ — direct fix for LeadsMiner Pro's zero-outbound-link status |
+| Pipeline Type | Heavy — Major Comparison anchored to the named Product LeadsMiner Pro |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -964,6 +1004,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Affiliate Traffic & List Building |
 | Opportunity summary | A recurring "how to cloak affiliate links / is it safe" question cluster on Quora, but the topic is already thoroughly and authoritatively covered by established WordPress/marketing-tool sites — the weakest opportunity surfaced this run. |
 | Candidate keyword | how to cloak affiliate links safely |
+| Authority Value | ⭐⭐⭐ — neutral fit; only an indirect, plausible reference to TD Pages & Magick Link |
+| Pipeline Type | Light — general safety/how-to guide; only an indirect, plausible mention of TD Pages & Magick Link, not the subject |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -1017,6 +1059,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Lead Generation |
 | Opportunity summary | Beginners and affiliate marketers routinely ask how to turn email specifically into a lead-generation channel for promoting affiliate offers; `CONTENT-REGISTRY.md` § Content Gaps & Planning Notes (item 5) explicitly names this as the pillar's next logical extension, and no existing page treats it as its own dedicated, standalone topic — the closest content treats email only as a supporting mechanism inside a broader beginner framework or paid-traffic strategy. |
 | Candidate keyword | email lead generation for affiliate marketers |
+| Authority Value | ⭐⭐⭐⭐ — resolves `social-media-lead-generation`'s orphan status; the pillar's own explicitly named next extension |
+| Pipeline Type | Light — general channel-specific lead-gen guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -1070,6 +1114,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Lead Generation |
 | Opportunity summary | A breakout, previously-absent-on-Trends search pattern for AI-chatbot-driven lead capture, with strong dedicated Quora demand and zero existing coverage anywhere on this site — the newest, least-covered channel in the pillar. |
 | Candidate keyword | AI chatbots for lead generation |
+| Authority Value | ⭐⭐⭐ — plausible but not required fit with existing tool/software pages |
+| Pipeline Type | Light — general emerging-channel guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -1123,6 +1169,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Lead Generation |
 | Opportunity summary | A high-volume, sustained-interest vertical-specific angle with strong community demand, but externally dominated by dedicated real-estate-technology incumbents rather than general affiliate/marketing sites. |
 | Candidate keyword | real estate lead generation |
+| Authority Value | ⭐⭐⭐ — a new vertical with no existing cluster around it; neutral fit |
+| Pipeline Type | Light — general vertical-specific guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -1176,6 +1224,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Lead Generation |
 | Opportunity summary | Strong, concentrated community demand for cold-email tactics, but the topic is both partially covered on-site already (as one tactic within several existing frameworks) and heavily saturated externally by cold-email-tool vendors who dominate the SERP with their own content marketing. |
 | Candidate keyword | cold email outreach for lead generation |
+| Authority Value | ⭐⭐⭐ — plausible companion to 4 existing pages, but resolves no named orphan |
+| Pipeline Type | Light — general tactic guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |
@@ -1229,6 +1279,8 @@ Ranks 1/2/3 are tied on Priority Score; ordered by Opportunity Score descending,
 | Pillar | Lead Generation |
 | Opportunity summary | An audience-specific angle (coaches and consultants selling their own expertise) that fits the pillar's established audience-specific pattern (paralleling `b2b-lead-generation`, `sales-lead-generation`, `local-business-lead-generation`) but is not yet covered, with a plausible cross-sell fit to OLSP Academy's own coach/consultant-adjacent customer base. |
 | Candidate keyword | lead generation for coaches and consultants |
+| Authority Value | ⭐⭐⭐ — extends the pillar's existing audience-specific pattern, but resolves no named orphan |
+| Pipeline Type | Light — general audience-specific guide; no named company/product/platform/founder at its center |
 | Status | unclaimed |
 | Date discovered | 2026-07-03 |
 | Date status changed | 2026-07-03 |

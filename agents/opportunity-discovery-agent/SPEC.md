@@ -1,7 +1,7 @@
 # Opportunity Discovery Agent — Functional Specification
 
-**Version:** 0.4
-**Status:** Approved — implemented; DataForSEO demoted to optional enrichment (see § 3, § 5)
+**Version:** 0.6
+**Status:** Approved — implemented; DataForSEO demoted to optional enrichment (see § 3, § 5); Authority Value editorial field added (see § 5a); Pipeline Type classification added (see § 5b)
 
 ---
 
@@ -174,6 +174,63 @@ This keeps the guarantee absolute: a discovery run's behavior, output shape, and
 
 ---
 
+## 5a. Authority Value (editorial planning field — never scored)
+
+**Added in v0.5.** A third, deliberately separate concept, sitting alongside Opportunity Score and Priority Score without feeding either:
+
+| Concept | Question it answers | Computed at | Feeds into a 0–100 score? |
+|---|---|---|---|
+| Opportunity Score | Is this a good opportunity, on its own merits? | Stage D3 | Yes |
+| Priority Score | Should this be produced *now*, relative to everything else? | Stage D4 | Yes |
+| **Authority Value** | **If produced, how much does it strengthen the site's long-term topical authority and internal-linking structure?** | **Stage D4, alongside Priority Scoring** | **No — qualitative only** |
+
+Authority Value is a **long-horizon, architectural** judgement — "what kind of page would this become" — distinct from the Priority Score's **Authority Cluster & Internal-Linking Fit** sub-score, which asks the narrower, tactical question "does this resolve a specific documented gap right now." A candidate can score moderately on that tactical sub-score while still being the kind of page (a hub, a cross-cluster synthesis) that matters more once written than its Priority Score alone implies — Authority Value exists to carry that judgement forward without distorting either 0–100 score.
+
+**Scale (qualitative, not numeric):**
+
+| Rating | Meaning |
+|---|---|
+| ⭐⭐⭐⭐⭐ | Foundational / Pillar / Cluster Hub — would function as the hub tying together an existing cluster of already-published pages |
+| ⭐⭐⭐⭐ | Strong supporting page — directly resolves a documented structural gap (orphaned page, isolated cluster) |
+| ⭐⭐⭐ | Useful supporting content — neutral cluster fit; links in and out but resolves no documented gap |
+| ⭐⭐ | Standalone article — would be published with a weak or no clear internal-linking path |
+| ⭐ | Limited authority impact — isolated, no meaningful linking path in or out |
+
+**Rules:**
+- Authority Value **never** modifies the Opportunity Score (Stage D3) or the Priority Score (Stage D4). It is recorded alongside them, never averaged or combined into either.
+- It is assigned using the same evidence already gathered for the Priority Score's Authority Cluster & Internal-Linking Fit sub-score (`PORTFOLIO_CONTEXT`, source 6) — no new discovery source or tool call is required.
+- It is an editorial planning signal only: it informs which `unclaimed` row an operator chooses to promote next when Priority Scores are tied or close, and it informs future internal-linking strategy once a candidate is written. It is never used to reorder the summary table (which remains sorted by Priority Score) and never substitutes for either score in Stage D5's queue write.
+
+---
+
+## 5b. Pipeline Type (editorial routing field — never scored)
+
+**Added in v0.6.** A fourth field, sitting alongside Opportunity Score, Priority Score, and Authority Value without feeding any of them. Where those three answer "is this good," "is this urgent," and "how much authority would it build," Pipeline Type answers a different question entirely: **which downstream production pipeline should this candidate enter if promoted?**
+
+Production now splits into two independent tracks after Discovery:
+
+- **Heavy Pipeline** — Opportunity → Research Compiler → Research Brief (cataloged as a reusable Knowledge Asset in `docs/HEAVY-ASSET-LIBRARY.md`) → (optional) Editorial Builder. For candidates whose core subject is a reusable, long-lived editorial asset.
+- **Light Pipeline** — Opportunity → ORA (Light Research) → Writer → QA → Publish. For candidates that are single-article-scoped and don't need a standing research asset.
+
+See `docs/PIPELINE-ARCHITECTURE.md` for the full end-to-end diagram of both tracks.
+
+**Classification rule** (assigned at Stage D4, from the candidate's own subject — no new discovery source or tool call required):
+
+| Pipeline Type | Applies to |
+|---|---|
+| **Heavy** | Companies, Products, Platforms, Services, Founders, Tools, Pillar Pages, Major Comparisons — i.e. the candidate's core subject *is* a specific named entity (e.g. "OLSP Academy," "Wayne Crowe," "Megalink Traffic Rotator") or a synthesis/comparison across several such entities |
+| **Light** | Information Articles, How-To Articles, FAQ, Beginner Guides, Problem-Solving, General Opportunity Articles — i.e. the candidate is a general topic or audience-scoped guide that does not center on one specific named entity |
+
+**Worked examples from the current queue:** `wayne-crowe-founder-background` (Founder) and `megalink-traffic-rotator-alternatives-comparison` (Major Comparison anchored to a named Product) are Heavy. `make-money-online-no-money-to-start` and `real-estate-lead-generation` (general audience/topic guides, no single named product at their center) are Light. A candidate that merely *mentions* a reviewed product in passing (e.g. `build-email-list-affiliate-marketing-no-website`, which cites LeadsMiner Pro as a supporting tactic) stays Light — the test is whether the product/company/founder/platform is the subject, not whether it's cited.
+
+**Rules:**
+- Pipeline Type **never** modifies the Opportunity Score, Priority Score, or Authority Value, and none of those ever modify it. It is recorded alongside them, never averaged or combined into any of them.
+- It never changes the summary table's sort order (which remains sorted by Priority Score).
+- It is assigned once, at Stage D4, and does not change after promotion — if research later reveals a Light candidate is actually product-centric, that is a Research Compiler / ORA judgement call to escalate, not a retroactive edit to this field.
+- Heavy-classified candidates route to the Research Compiler (`agents/research-compiler/`) when promoted, **not** to ORA. Light-classified candidates route to ORA (`agents/opportunity-research-agent/`), now scoped as the Light Pipeline's research stage. See `docs/PIPELINE-ARCHITECTURE.md`.
+
+---
+
 ## 6. Duplicate Prevention
 
 The agent must never suggest, and never queue, a topic that is already published, already in production, already covered by manually written content, already the subject of an existing Opportunity Brief, or already the subject of an existing Research Brief. This runs as Stage D2, once per candidate, before either scoring stage — a duplicate is never allowed to consume Stage D3, D4, or D5 effort.
@@ -185,7 +242,7 @@ The agent must never suggest, and never queue, a topic that is already published
 | **Already covered by manually written content** | Same check as "published" — the check is content-based, not authorship-based. A manually written page is caught exactly the same way an AI-produced one is, because both live in the same registry and page tree. No separate "manual content" path exists or is needed. | `docs/CONTENT-REGISTRY.md` + `src/pages/**` |
 | **Duplicate Opportunity Brief** | Match against slug or `Primary keyword` field | `agents/opportunity-research-agent/briefs/` |
 | **Duplicate Research Brief** | Match against topic | `docs/research/` |
-| **Already in the Opportunity Queue** *(new — no ORA equivalent, since the queue is new)* | Match against existing `unclaimed`/`promoted` rows; `rejected`/`stale` rows do not block a re-surface | `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` |
+| **Already in the Opportunity Queue** *(new — no ORA equivalent, since the queue is new)* | Match against existing `unclaimed`/`promoted`/`published` rows; `rejected`/`stale` rows do not block a re-surface | `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` |
 
 **Judgement standard:** a trivial variant — singular/plural, reordered words, "best X" vs. "top X" for the same topic — counts as already covered. This is the same standard already defined and approved in ORA's Stage 0. When genuinely uncertain whether a candidate is a new angle or a duplicate, the candidate is neither dropped nor queued — it is reported separately as needing human judgement.
 
@@ -214,9 +271,19 @@ priority_label:            [Produce soon / Hold — reasonable, not urgent / Def
 priority_breakdown:        [opportunity-quality / pillar-coverage / authority-cluster / strategic-fit
                              sub-scores, each with rationale + source]
 
+authority_value:           [⭐ / ⭐⭐ / ⭐⭐⭐ / ⭐⭐⭐⭐ / ⭐⭐⭐⭐⭐ — editorial planning field, see Section 5a.
+                             Never scored, never feeds opportunity_score or priority_score.]
+authority_value_rationale: [1 line — why this rating, citing the same Authority Cluster & Internal-
+                             Linking Fit evidence used in priority_breakdown]
+
+pipeline_type:             [Heavy / Light — editorial routing field, see Section 5b. Never scored,
+                             never feeds opportunity_score or priority_score, never changes sort order.]
+pipeline_type_rationale:   [1 line — why this candidate's core subject does or doesn't center on a
+                             specific named company/product/platform/service/founder/tool]
+
 evidence:                  [what each discovery source returned, or "Unavailable — reason"]
 coverage_check:            [match_status: None, confirmed at Stage D2, with date and sources checked]
-status:                    [unclaimed / promoted / rejected / stale]
+status:                    [unclaimed / promoted / rejected / stale / published]
 promoted_brief_path:       [path to the Opportunity Brief once promoted / N/A]
 date_discovered:           [YYYY-MM-DD]
 date_status_changed:       [YYYY-MM-DD]
@@ -313,4 +380,4 @@ One follow-up noted but explicitly not actioned in this spec: the duplicate-chec
 
 ## Approval
 
-This document defines the complete functional specification for the Opportunity Discovery Agent, including portfolio-aware Priority Scoring as a distinct responsibility from Opportunity Scoring, and DataForSEO as a strictly optional enrichment source that can never block or degrade a run. **Approved.** `README.md`, `PROMPT.md`, and `OUTPUT-TEMPLATE.md` have been implemented to match this specification (version 0.4, six-stage D0–D5 workflow, dual Opportunity/Priority scoring computed from mandatory sources only). A first dry run was executed against the Online Income for Beginners pillar under the prior (v0.3, DataForSEO-dependent) model and has been re-run under this version to confirm identical stage behavior with DataForSEO absent by design rather than by failure.
+This document defines the complete functional specification for the Opportunity Discovery Agent, including portfolio-aware Priority Scoring as a distinct responsibility from Opportunity Scoring, DataForSEO as a strictly optional enrichment source that can never block or degrade a run, Authority Value (§ 5a) as a third, editorial-only planning field that never feeds either 0–100 score, and Pipeline Type (§ 5b) as a fourth, editorial-only routing field that determines whether a promoted candidate enters the Heavy or Light production pipeline. **Approved.** `README.md`, `PROMPT.md`, and `OUTPUT-TEMPLATE.md` have been implemented to match this specification (version 0.6, six-stage D0–D5 workflow, dual Opportunity/Priority scoring computed from mandatory sources only, plus the Authority Value and Pipeline Type fields). A first dry run was executed against the Online Income for Beginners pillar under the prior (v0.3, DataForSEO-dependent) model and has been re-run under this version to confirm identical stage behavior with DataForSEO absent by design rather than by failure. Pipeline Type was backfilled for all 23 existing queue candidates from their already-recorded subject matter — no candidate was re-scored or re-discovered (see `OPPORTUNITY-QUEUE.md`).

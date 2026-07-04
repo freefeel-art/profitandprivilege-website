@@ -1,9 +1,13 @@
 # Editorial QA Agent — Placeholder
 
-**Pipeline position:** Stage 4 of the AI Editorial Operating System  
+**Pipeline position:** Stage 4 of the AI Editorial Operating System — shared by both pipelines
 **Status:** Not yet designed — awaiting Editorial Builder design
 
 ---
+
+## Pipeline awareness (added with the Heavy/Light split, see `docs/PIPELINE-ARCHITECTURE.md`)
+
+Pages arriving here may have originated from either pipeline (a Light Opportunity Brief, or a Heavy Knowledge Asset citation) — QA scope (Gold Master compliance, sourcing, no fabricated claims) is identical either way, since both converge on the same Editorial Builder output before reaching this stage.
 
 ## Role
 

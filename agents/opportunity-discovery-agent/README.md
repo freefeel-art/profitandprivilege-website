@@ -19,22 +19,22 @@ It does not research any single keyword in depth, and it does not decide what ge
 [YOU] → Content Pillar
            ↓
   0. Opportunity Discovery Agent   ← YOU ARE HERE
+     (also assigns Pipeline Type: Heavy / Light — see SPEC.md § 5b)
            ↓
      Opportunity Queue
            ↓
      (operator selects a top-ranked, unclaimed candidate)
            ↓
-     Candidate keyword/topic
-           ↓
-  1. Opportunity Research Agent    (existing — unchanged)
-           ↓
-     Opportunity Brief
-           ↓
-  2. Research Compiler             ← placeholder
-           ↓
-     Research Brief
-           ↓
-  3. Editorial Builder             ← placeholder (Builder V1 will migrate here)
+     Candidate keyword/topic ──────┬─── Pipeline Type: Heavy ───────────────┐
+           │                       │                                        │
+     Pipeline Type: Light          │                                        │
+           ↓                       │                                        ↓
+  1. Opportunity Research Agent    │                          2. Research Compiler   ← placeholder
+     (Light Pipeline research)    │                             Research Brief, cataloged as a
+           ↓                       │                             Knowledge Asset in
+     Opportunity Brief             │                             docs/HEAVY-ASSET-LIBRARY.md
+           ↓                       │                                        │
+  3. Editorial Builder ← placeholder (Writer) ─────────────────────────────┘
            ↓
      Built Astro page
            ↓
@@ -47,7 +47,7 @@ It does not research any single keyword in depth, and it does not decide what ge
      Published page
 ```
 
-Everything from stage 1 onward is the existing production pipeline. This agent only changes what feeds stage 1 — a queued, evidence-backed candidate instead of a manually typed keyword.
+Everything from stage 1 onward is the existing production pipeline, now split into two tracks by Pipeline Type — see `docs/PIPELINE-ARCHITECTURE.md` for the full diagram. This agent only changes what feeds the next stage — a queued, evidence-backed, pipeline-classified candidate instead of a manually typed keyword.
 
 ---
 
@@ -74,7 +74,7 @@ A single **Opportunity Queue**, updated (not replaced) on every run:
 agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md
 ```
 
-Each queued candidate carries: a topic/summary, a candidate keyword (the exact string to hand to ORA if promoted), supporting evidence from every source that surfaced or confirmed it, and **two separate scores** — an **Opportunity Score (preliminary)** measuring the candidate's quality in isolation (Trend/Community/Gap — DataForSEO/Demand is never part of this score; see below), and a **Priority Score** measuring whether it should be produced now relative to the rest of the portfolio (Opportunity Quality/Pillar Coverage & Balance/Authority Cluster & Internal-Linking Fit/Strategic Priority Fit) — plus the result of its content-coverage check and a status (`unclaimed` / `promoted` / `rejected` / `stale`). The two scores are never averaged or collapsed into one number.
+Each queued candidate carries: a topic/summary, a candidate keyword (the exact string to hand downstream if promoted), supporting evidence from every source that surfaced or confirmed it, and **two separate scores** — an **Opportunity Score (preliminary)** measuring the candidate's quality in isolation (Trend/Community/Gap — DataForSEO/Demand is never part of this score; see below), and a **Priority Score** measuring whether it should be produced now relative to the rest of the portfolio (Opportunity Quality/Pillar Coverage & Balance/Authority Cluster & Internal-Linking Fit/Strategic Priority Fit) — plus a third, editorial-only **Authority Value** rating (⭐ to ⭐⭐⭐⭐⭐, SPEC.md § 5a) estimating how much publishing the page would strengthen the site's long-term topical authority and internal-linking structure, and a fourth, editorial-only **Pipeline Type** field (Heavy / Light, SPEC.md § 5b) determining which of the two downstream production pipelines the candidate enters if promoted (see `docs/PIPELINE-ARCHITECTURE.md`), and the result of its content-coverage check and a status (`unclaimed` / `promoted` / `rejected` / `stale` / `published`). None of these four are ever averaged or collapsed into one another — Authority Value and Pipeline Type in particular never feed the Opportunity Score or Priority Score formulas.
 
 See `OUTPUT-TEMPLATE.md` for the full structure.
 
@@ -120,7 +120,9 @@ Every source here is one ORA already uses. This agent adds no new provider — o
 - Run ORA's six-stage deep-research workflow on any candidate
 - Write articles, outlines, or Astro pages
 - Make the final "write this now" call — Priority Score informs; ORA and the operator still decide
-- Collapse Opportunity Score and Priority Score into a single number
+- Collapse Opportunity Score, Priority Score, Authority Value, and Pipeline Type into a single number
+- Let Authority Value or Pipeline Type change the summary table's sort order (it stays sorted by Priority Score) or either score's formula
+- Route a Heavy-classified candidate to ORA, or a Light-classified candidate to the Research Compiler — Pipeline Type is assigned here but acted on downstream (see `docs/PIPELINE-ARCHITECTURE.md`)
 - Treat an unstated `strategic_priorities` input as a penalty
 - Require DataForSEO credentials, or treat their absence/failure as a run failure
 - Score Demand as a weighted dimension, even when DataForSEO happens to be available

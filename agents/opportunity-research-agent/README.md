@@ -1,7 +1,7 @@
-# Opportunity Research Agent
+# Opportunity Research Agent (ORA)
 
-**Pipeline position:** Stage 1 of the AI Editorial Operating System  
-**Status:** Architecture approved — implementing
+**Pipeline position:** Stage 1 of the AI Editorial Operating System — the **Light Pipeline's** research stage
+**Status:** Production — scoped to `pipeline_type: Light` candidates (SPEC.md § 1a)
 
 ---
 
@@ -11,22 +11,20 @@ The Opportunity Research Agent takes a keyword as input and determines whether i
 
 It does nothing else.
 
+**Scope note (added v1.4):** ORA now serves the **Light Pipeline** only — general topic, audience-scoped, how-to, FAQ, and beginner-guide candidates. Candidates tagged `pipeline_type: Heavy` in the Opportunity Discovery Agent's queue (a specific named Company, Product, Platform, Service, Founder, or Tool) route to the Research Compiler instead. See `docs/PIPELINE-ARCHITECTURE.md`.
+
 ---
 
-## Where it fits
+## Where it fits (Light Pipeline)
 
 ```
-[YOU] → Keyword
+[YOU] → Keyword (pipeline_type: Light)
            ↓
-  1. Opportunity Research Agent   ← YOU ARE HERE
+  1. Opportunity Research Agent (Light Research)   ← YOU ARE HERE
            ↓
      Opportunity Brief
            ↓
-  2. Research Compiler            ← placeholder
-           ↓
-     Research Brief
-           ↓
-  3. Editorial Builder            ← placeholder (Builder V1 will migrate here)
+  3. Editorial Builder (Writer)   ← placeholder
            ↓
      Built Astro page
            ↓
@@ -38,6 +36,8 @@ It does nothing else.
            ↓
      Published page
 ```
+
+Heavy-classified candidates skip this agent entirely and follow the separate Heavy Pipeline instead — see `docs/PIPELINE-ARCHITECTURE.md` and `agents/research-compiler/README.md`.
 
 ---
 
@@ -104,3 +104,4 @@ See `OUTPUT-TEMPLATE.md` for the full schema.
 - Make publishing decisions (it recommends; humans decide)
 - Blend Business Value into the Opportunity Score, or vice versa — they answer different questions and are never collapsed into one number
 - Re-rank this candidate against other candidates on the site — Strategic Fit is context for one opportunity; portfolio-wide ranking remains the Opportunity Discovery Agent's job
+- Research a candidate tagged `pipeline_type: Heavy` — that routes to the Research Compiler instead (SPEC.md § 1a)

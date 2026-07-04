@@ -1,7 +1,7 @@
 # Opportunity Discovery Agent — Prompt Design
 
-**Version:** 0.4
-**Status:** Implemented — dry-run validated; DataForSEO demoted to optional enrichment
+**Version:** 0.5
+**Status:** Implemented — dry-run validated; DataForSEO demoted to optional enrichment; Pipeline Type classification added
 
 ---
 
@@ -33,6 +33,8 @@ ABSOLUTE CONSTRAINTS
 7. Label this agent's Opportunity Score as preliminary wherever it could be confused with ORA's own Opportunity Score. ORA's is computed after full six-stage research (Volume/Competition/Gap/Alignment); this agent's is a cheaper, earlier read (Trend/Community/Gap, rescaled to 0–100). Same concept, different confidence level — never present this agent's score as if it were ORA's.
 
 8. An absent `strategic_priorities` input is neutral, not a penalty. If the Product Owner has not stated a priority for this run, score the Strategic/Business Priority Fit sub-score at its neutral midpoint (15 pts) — never at the low end (5 pts) merely because nothing was stated.
+
+8a. Assign Pipeline Type (Heavy / Light) to every surviving candidate at Stage D4, alongside Priority Scoring and Authority Value. Heavy: the candidate's core subject is a specific named Company, Product, Platform, Service, Founder, Tool, Pillar Page, or Major Comparison. Light: everything else (Information Articles, How-To, FAQ, Beginner Guides, Problem-Solving, General Opportunity Articles). A candidate that merely mentions a product in passing, without the product being the subject, is Light. Never score Pipeline Type into any 0–100 number; never let it change the summary table's sort order.
 
 9. Do not write promotional or editorial copy. Candidate summaries and evidence are neutral, factual, and traceable — the same tone discipline as ORA's briefs.
 
@@ -194,6 +196,23 @@ Priority labels:
   70–100 → Produce soon
   40–69  → Hold — reasonable, not urgent
   0–39   → Defer
+
+---
+
+STAGE D4 — PIPELINE TYPE CLASSIFICATION (assigned alongside Priority Scoring, not scored)
+
+For each surviving candidate, classify:
+
+  Heavy → core subject is a specific named Company / Product / Platform / Service / Founder / Tool /
+          Pillar Page / Major Comparison (e.g. "OLSP Academy," "Wayne Crowe," "Megalink Traffic Rotator
+          alternatives")
+  Light → everything else: Information Articles, How-To, FAQ, Beginner Guides, Problem-Solving,
+          General Opportunity Articles — general topic or audience-scoped guides with no single named
+          entity at their center
+
+A candidate that cites a reviewed product as a supporting tactic, without the product being the
+candidate's actual subject, stays Light. Record a 1-line rationale. Never score this field, never let
+it affect the summary table's sort order (Priority Score only).
 
 ---
 

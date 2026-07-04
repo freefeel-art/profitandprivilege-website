@@ -1,9 +1,18 @@
 # Editorial Builder Agent — Placeholder
 
-**Pipeline position:** Stage 3 of the AI Editorial Operating System  
+**Pipeline position:** Stage 3 of the AI Editorial Operating System — the "Writer" step for both pipelines
 **Status:** Not yet designed — current Builder V1 (manual workflow) will migrate here
 
 ---
+
+## Pipeline awareness (added with the Heavy/Light split, see `docs/PIPELINE-ARCHITECTURE.md`)
+
+This stage now receives input from two possible upstream paths, not one:
+
+- **Light Pipeline:** an Opportunity Brief from `agents/opportunity-research-agent/` (ORA).
+- **Heavy Pipeline (optional):** a Knowledge Asset citation — a Research Brief registered in `docs/HEAVY-ASSET-LIBRARY.md` by the Research Compiler. Building an article from a Knowledge Asset is optional; the asset can exist and be reused without a dedicated article ever being built from it.
+
+This does not change this stage's design status — it remains undesigned until Builder V1 migrates here — but any future design should account for both entry points rather than assuming a single upstream shape.
 
 ## Role
 

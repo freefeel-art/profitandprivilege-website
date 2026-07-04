@@ -1,9 +1,13 @@
 # Publisher Agent — Placeholder
 
-**Pipeline position:** Stage 5 of the AI Editorial Operating System  
+**Pipeline position:** Stage 5 of the AI Editorial Operating System — shared by both pipelines
 **Status:** Not yet designed — final stage
 
 ---
+
+## Pipeline awareness (added with the Heavy/Light split, see `docs/PIPELINE-ARCHITECTURE.md`)
+
+Publication mechanics (commit, push, verify) are identical regardless of which pipeline produced the page. The one distinction worth carrying into a future design: for a Heavy-sourced article, the publication log should also note which Knowledge Asset(s) it cites, so `docs/HEAVY-ASSET-LIBRARY.md`'s "Reused By" column can be kept current.
 
 ## Role
 

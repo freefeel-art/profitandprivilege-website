@@ -1,14 +1,16 @@
 # Opportunity Queue — [PILLAR or "All Pillars"]
 
-**Schema version:** 0.4
+**Schema version:** 0.6
 **Last updated:** [YYYY-MM-DD]
 **Last run:** [pillar(s) run, e.g. "Online Income for Beginners"]
 
 This file is the live, ranked backlog produced by the Opportunity Discovery Agent. It is updated, not replaced, on every run — new candidates are appended, existing rows have their `status` updated in place. Every field is required; unavailable data is recorded explicitly as `Unavailable`, never left blank.
 
-Every candidate carries **two separate scores** — they are never averaged or collapsed into one:
+Every candidate carries **four separate fields** — they are never averaged or collapsed into one another:
 - **Opportunity Score (preliminary)** — is this a good opportunity, on its own merits? (Trend / Community / Gap, rescaled to 0–100 — Demand/DataForSEO is optional and never scored; see Evidence below)
 - **Priority Score** — should it be produced *now*, given the rest of the portfolio? (Opportunity Quality / Pillar Coverage & Balance / Authority Cluster & Internal-Linking Fit / Strategic Priority Fit)
+- **Authority Value** — *editorial planning only, see SPEC.md § 5a* — if produced, how much would it strengthen the site's long-term topical authority and internal-linking structure (⭐ to ⭐⭐⭐⭐⭐)? Never a scored input to either number above.
+- **Pipeline Type** — *editorial routing only, see SPEC.md § 5b* — Heavy or Light: which downstream production pipeline (see `docs/PIPELINE-ARCHITECTURE.md`) does this candidate enter if promoted? Never a scored input, never changes sort order.
 
 The summary table below is sorted by **Priority Score**, not Opportunity Score — a high-quality opportunity in a saturated pillar can rank below a moderate one that resolves a documented structural gap.
 
@@ -18,10 +20,10 @@ The summary table below is sorted by **Priority Score**, not Opportunity Score �
 
 Sorted by Priority Score descending, grouped by pillar. Use the detail blocks below for evidence before promoting anything.
 
-| Rank | Candidate ID | Pillar | Priority Score | Priority Label | Opportunity Score | Status | Date Discovered |
-|---|---|---|---|---|---|---|---|
-| 1 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
-| 2 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [unclaimed / promoted / rejected / stale] | [YYYY-MM-DD] |
+| Rank | Candidate ID | Pillar | Priority Score | Priority Label | Opportunity Score | Authority Value | Pipeline Type | Status | Date Discovered |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [⭐–⭐⭐⭐⭐⭐] | [Heavy / Light] | [unclaimed / promoted / rejected / stale / published] | [YYYY-MM-DD] |
+| 2 | [kebab-case-slug] | [pillar name] | [0–100] | [Produce soon / Hold — reasonable, not urgent / Defer] | [0–100] | [⭐–⭐⭐⭐⭐⭐] | [Heavy / Light] | [unclaimed / promoted / rejected / stale / published] | [YYYY-MM-DD] |
 
 ---
 
@@ -36,7 +38,9 @@ One block per candidate in the summary table above, in the same rank order. `can
 | Pillar | [OLSP Ecosystem / Affiliate Traffic & List Building / Lead Generation / Online Income for Beginners] |
 | Opportunity summary | [1–2 sentence description of the angle/gap/question — not just a keyword] |
 | Candidate keyword | [the exact keyword/phrase to hand to ORA if promoted] |
-| Status | [unclaimed / promoted / rejected / stale] |
+| Authority Value | [⭐ / ⭐⭐ / ⭐⭐⭐ / ⭐⭐⭐⭐ / ⭐⭐⭐⭐⭐ — [1-line rationale, see SPEC.md § 5a; never affects Opportunity or Priority Score] |
+| Pipeline Type | [Heavy / Light — 1-line rationale, see SPEC.md § 5b; never affects Opportunity or Priority Score] |
+| Status | [unclaimed / promoted / rejected / stale / published] |
 | Date discovered | [YYYY-MM-DD] |
 | Date status changed | [YYYY-MM-DD] |
 | Promoted brief path | [path to Opportunity Brief, once promoted / N/A] |
