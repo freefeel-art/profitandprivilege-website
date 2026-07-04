@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-04 (added Surfer SEO)  
-Total pages built: 28  
-Editorial article pages: 26  
+Last updated: 2026-07-04 (added HeyGen)  
+Total pages built: 29  
+Editorial article pages: 27  
 Infrastructure pages: 2
 
 ---
@@ -13,12 +13,12 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 28 |
-| Reviews | 12 |
+| Total published pages | 29 |
+| Reviews | 13 |
 | Blog articles | 13 |
 | Roundups | 1 |
 | Infrastructure (home, author) | 2 |
-| Gold Master V1 compliant | 26 of 26 editorial pages |
+| Gold Master V1 compliant | 27 of 27 editorial pages |
 
 ---
 
@@ -30,7 +30,7 @@ Infrastructure pages: 2
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
 | 4. Online Income for Beginners | 3 | Informational / commercial investigation |
-| 5. AI Tools | 4 | Independent reviews of AI software platforms and SaaS tools |
+| 5. AI Tools | 5 | Independent reviews of AI software platforms and SaaS tools |
 | Infrastructure | 2 | Navigation and author credibility |
 
 ---
@@ -733,8 +733,27 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Last Modified** | 2026-07-04 |
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | None identified |
-| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Publication Status** | Published — committed and pushed (`da9e1da`). |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/surfer-seo-research.md`). Snapshot-based research. No hands-on testing. |
+
+---
+
+### HeyGen
+
+| Field | Value |
+|---|---|
+| **Title** | HeyGen Review: An Independent, Research-Based Analysis of the AI Video Platform |
+| **URL** | https://olsp.profitandprivilege.com/reviews/heygen-review/ |
+| **Article Type** | Review |
+| **Primary Keyword** | HeyGen review |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Built** | 2026-07-04 |
+| **Last Modified** | 2026-07-04 |
+| **Internal Links Out** | None in body copy |
+| **Internal Links In** | None identified |
+| **Publication Status** | Built — QA passed (`astro build` clean, HTTP 200 verified locally), not yet committed/pushed. |
+| **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/heygen-research.md`). Snapshot-based research. No hands-on testing. |
 
 ---
 
