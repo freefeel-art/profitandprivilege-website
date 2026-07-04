@@ -86,7 +86,7 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 
 ---
 
-## 3b. Standard CTA Component (added 2026-07-04)
+## 3b. Standard CTA Component (added 2026-07-04, destination updated 2026-07-04)
 
 **Why:** With QuoteBanner now carrying no button and appearing three times as a brand signature, articles need exactly one real, unambiguous call-to-action — placed once, near the end, after the reader has finished the content and the FAQ. This is intentionally short: a heading and a button, nothing else. No sales paragraph.
 
@@ -95,7 +95,7 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 ```html
 <div class="cta-card standard-cta">
   <h3>Ready to Build More Than Just an Email List?</h3>
-  <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
+  <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
 </div>
 ```
 
@@ -108,7 +108,9 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 .standard-cta{margin-bottom:0;}
 ```
 
-**Important — this heading and button text are placeholders reflecting the site's current example, not literally fixed for every topic the way QuoteBanner's text is.** Unlike QuoteBanner (whose text never changes), the Standard CTA's heading should read naturally as "the logical next step after reading *this* article" — keep it just as short (one heading line, one button), but adapt the heading's wording to the article's topic rather than reusing "Ready to Build More Than Just an Email List?" verbatim on unrelated topics. The button text and destination URL (`https://olspacademy.com/megalive/1006001`, the standard Megalink CTA link) stay fixed across articles.
+**Important — this heading and button text are placeholders reflecting the site's current example, not literally fixed for every topic the way QuoteBanner's text is.** Unlike QuoteBanner (whose text never changes), the Standard CTA's heading should read naturally as "the logical next step after reading *this* article" — keep it just as short (one heading line, one button), but adapt the heading's wording to the article's topic rather than reusing "Ready to Build More Than Just an Email List?" verbatim on unrelated topics. The button text ("Start with the $7 Megalink →") and destination URL stay fixed across articles.
+
+**Destination URL history:** originally `https://olspacademy.com/megalive/1006001`; updated 2026-07-04 to `https://olspfunnels.com/megalink-2-front-end?olsp=1006001` — this is the current global default. If it changes again, update this file and every existing blog article's Standard CTA in the same pass (do not let articles drift onto stale destinations).
 
 ---
 
@@ -213,7 +215,22 @@ Blog articles are the primary internal-linking hub type on the site (see `docs/C
 
 ## 8. External Links
 
-Same standard as the rest of the site: every external link uses `target="_blank" rel="noopener noreferrer"`; affiliate/CTA links use `target="_blank" rel="noopener noreferrer sponsored"`. Internal links (`/...`) get no target/rel changes.
+Same standard as the rest of the site: every external link uses `target="_blank" rel="noopener noreferrer"`; affiliate/CTA links use `target="_blank" rel="noopener noreferrer sponsored"`. Internal links (`/...`) get no target/rel changes. This applies consistently to every external link a blog article contains: the QuoteBanner link, the Standard CTA button, the footer brand link (§ 8a below), and every citation in `#sources`. There should be no inconsistent external-link behavior anywhere in the template.
+
+### 8a. Footer Brand Link — Temporary Override (added 2026-07-04)
+
+The Site Footer itself is unchanged and still copied verbatim from the Gold Master structural reference (`docs/GOLD-MASTER-SPEC.md` § 8.14) — same two `<span>` layout, same CSS. The only change is the right-hand link's `href` and its link attributes:
+
+```html
+<footer class="site-footer">
+  <span>Profit and Privilege — independent research since 2025</span>
+  <span><a href="https://olspacademy.com/get-megalink?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">olsp.profitandprivilege.com</a></span>
+</footer>
+```
+
+- **Temporary, until the new homepage is ready.** The link previously pointed to `https://olsp.profitandprivilege.com` (same-site, no `target`/`rel` needed). It now points to an external, monetized redirect, so it requires `target="_blank" rel="noopener noreferrer sponsored"` like any other external/affiliate link — this is the one footer element that changed behavior along with its destination.
+- The visible link *text* stays `olsp.profitandprivilege.com` — only the `href` and link attributes changed. Don't rewrite the visible text to match the temporary destination.
+- **Revert when the homepage is ready:** restore `href="https://olsp.profitandprivilege.com"` and remove `target`/`rel` (same-site link, no attributes needed) in this file and every existing blog article in the same pass.
 
 ---
 
@@ -233,8 +250,8 @@ Before delivering a blog article, verify:
 - [ ] FAQ has at least four `<details>` items (typically 6–8)
 - [ ] Author Box present in `#author`, sourced from the author profile page
 - [ ] Sources section uses `<ul class="pill-list">` with the disclaimer paragraph
-- [ ] `<footer class="site-footer">` present inside `<main>` after Sources
+- [ ] `<footer class="site-footer">` present inside `<main>` after Sources, brand link pointing to the current temporary destination (§ 8a) with `target="_blank" rel="noopener noreferrer sponsored"`
 - [ ] No Methodology Block, Score Bars, Quiz, SVG Diagram, or Video Embed (review-only components)
-- [ ] All external links use `target="_blank" rel="noopener noreferrer"` (or `...sponsored` for affiliate/CTA links)
+- [ ] All external links use `target="_blank" rel="noopener noreferrer"` (or `...sponsored` for affiliate/CTA links) — check QuoteBanner, Standard CTA, footer link, and every source citation individually; no exceptions
 - [ ] TOC has a link for every section, anchors match section `id`s exactly
 - [ ] `astro build` passes on first attempt

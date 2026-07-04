@@ -109,10 +109,12 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 - Do not add a `<header>` or site navigation.
 
 **Links**
-- Every external link (any `href` not starting with `/`) must include `target="_blank" rel="noopener noreferrer"`.
+- Every external link (any `href` not starting with `/`) must include `target="_blank" rel="noopener noreferrer"`. This includes the footer brand link (§ 8a below) and every source citation, with no exceptions.
 - Affiliate or CTA links must use `target="_blank" rel="noopener noreferrer sponsored"`.
 - Internal links (href starting with `/`) must NOT have a `target` or `rel` attribute.
 - The QuoteBanner destination is fixed: `https://olspacademy.com/c/profitandprivilege` (`docs/BLOG-MASTER-SPEC.md` § 3a) — identical in every blog article, not per-article input.
+- The Standard CTA destination is fixed: `https://olspfunnels.com/megalink-2-front-end?olsp=1006001` (`docs/BLOG-MASTER-SPEC.md` § 3b, updated 2026-07-04).
+- The footer brand link is temporarily `https://olspacademy.com/get-megalink?olsp=1006001` with `target="_blank" rel="noopener noreferrer sponsored"`, until the new homepage is ready (`docs/BLOG-MASTER-SPEC.md` § 8a).
 
 ---
 
@@ -152,14 +154,14 @@ All three are byte-for-byte identical — fixed quote text, fixed link, borderle
 ```html
 <div class="cta-card standard-cta">
   <h3>{Short heading tailored to this article's topic}</h3>
-  <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
+  <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
 </div>
 ```
-Heading only — no `<p>` sales paragraph. Button text and link are fixed; the heading should read as the logical next step after this specific article's topic, kept to one short line.
+Heading only — no `<p>` sales paragraph. Button text and link are fixed (current global default destination: `https://olspfunnels.com/megalink-2-front-end?olsp=1006001`, updated 2026-07-04); the heading should read as the logical next step after this specific article's topic, kept to one short line.
 
-**Pill-list sources:** Format Sources & References as `<ul class="pill-list">`, each source a pill-shaped `<li><a>`. End with the disclaimer paragraph in small print, referencing the current month/year.
+**Pill-list sources:** Format Sources & References as `<ul class="pill-list">`, each source a pill-shaped `<li><a>` with `target="_blank" rel="noopener noreferrer"`. End with the disclaimer paragraph in small print, referencing the current month/year.
 
-**Site footer:** End every article with `<footer class="site-footer">` inside `<main>`, after Sources. Left span reads "Profit and Privilege — independent research since 2025". Right link points to `https://olsp.profitandprivilege.com`.
+**Site footer:** End every article with `<footer class="site-footer">` inside `<main>`, after Sources. Left span reads "Profit and Privilege — independent research since 2025". Right link text reads `olsp.profitandprivilege.com` but currently points to a temporary external destination (`docs/BLOG-MASTER-SPEC.md` § 8a) — `https://olspacademy.com/get-megalink?olsp=1006001`, with `target="_blank" rel="noopener noreferrer sponsored"` — until the new homepage is ready. Do not point it back to `https://olsp.profitandprivilege.com` without checking § 8a first.
 
 **Internal links:** Weave supplied internal links naturally into body copy. Include at least one link to a review page. Do not create a separate "related articles" block.
 
