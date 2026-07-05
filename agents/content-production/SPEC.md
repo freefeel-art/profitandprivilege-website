@@ -18,7 +18,7 @@ docs/AI-EDITORIAL-OPERATING-SYSTEM.md
 docs/AGENT-CONTRACT.md
 docs/EDITORIAL-OBJECT-MODEL.md
     ↓
-docs/GOLD-MASTER-SPEC.md                  (for review-type articles)
+docs/GOLD-MASTER-SPEC.md                  (all article types — layout, CSS tokens, JS, components)
 docs/ROUNDUP-GOLD-MASTER-SPEC.md           (for roundup-type articles)
     ↓
 agents/content-production/SPEC.md          ← this document
@@ -41,8 +41,8 @@ The Content Production Agent requires the following inputs before it may begin w
 | Research Brief | Markdown document | Yes | The complete research package: evidence library, source list, fact summary, knowledge gap log, vendor claims, editorial notes |
 | Opportunity Brief | Markdown document | Yes | The article's working title, primary question, root problem, target audience, section structure, related questions |
 | Content type | Enum | Yes | Review, Roundup, Evidence-based_resolution, Educational, Guide, Comparison, Troubleshooting |
-| Gold Master (for reviews) | GOLD-MASTER-SPEC.md | Conditional | Required only for review-type articles |
-| Roundup Gold Master (for roundups) | ROUNDUP-GOLD-MASTER-SPEC.md | Conditional | Required only for roundup-type articles |
+| Gold Master (all types) | GOLD-MASTER-SPEC.md | Required | Layout, CSS tokens, JS, components — required for every article. Non-review types define own sections but use identical CSS/JS/component set. |
+| Roundup Gold Master (for roundups) | ROUNDUP-GOLD-MASTER-SPEC.md | Conditional | Required only for roundup-specific structural rules |
 | Editorial Intelligence Report | Markdown document | Recommended | Narrative analysis, community language, thematic context |
 | Community Intelligence Report | Markdown document | Recommended | Raw community signals, verbatim quotes, emotional context |
 
@@ -110,8 +110,10 @@ Use community language, verbatim quotes (from CI report), and emotional framing 
 For standalone `.astro` files:
 
 - Add Astro frontmatter with `export const prerender = true`
-- Include the complete CSS (copied verbatim from the appropriate template or written fresh for new article types)
-- Structure the HTML with a sticky TOC, main content sections, and inline JavaScript
+- Copy the entire `<style>` block verbatim from the Gold Master reference article (`src/pages/reviews/olsp-academy.astro`). Do not add new CSS classes, remove existing ones, or change token values.
+- Copy the entire `<script is:inline>` tag verbatim from the Gold Master reference article. Do not add new JS functions or modify existing ones.
+- Include all required Gold Master components: `.hero-tag`, `.verdict-box`, `.methodology`, `.cta-card` (×3), `.site-footer`, `.pill-list` for sources
+- Structure the HTML with: `.mobile-toc-btn`, `<aside class="toc-wrap">` (sticky TOC), `<main>` with sequential `<section>` elements
 - No layout imports, no component imports, no shared CSS
 
 ### Step 7: Self-review
@@ -156,22 +158,50 @@ If a single claim has sources with different reliability labels, present the hig
 
 ## 8. Structural Requirements (all article types)
 
-Every article page must include:
+The Gold Master (`docs/GOLD-MASTER-SPEC.md`) is the single source of truth for all non-content elements. Every article page must match the Gold Master on layout, CSS tokens, components, and JavaScript. Only section content and section IDs change.
 
-| Element | Requirement |
-|---|---|
-| Astro frontmatter | `export const prerender = true`, `pageTitle`, `pageDescription` |
-| HTML5 doctype | `<!DOCTYPE html>` |
-| Language | `lang="en"` |
-| Title tag | SEO-optimised, different from `<h1>` |
-| Meta description | Under 160 characters |
-| Canonical URL | Absolute, trailing slash |
-| Open Graph | None (per Gold Master standard, unless added site-wide) |
-| Sticky Table of Contents | Desktop sticky sidebar; mobile collapsible drawer |
-| Main content | Sequential `<section>` elements with unique `id` attributes |
-| Scroll-spy | IntersectionObserver for TOC active state |
-| Sources section | All cited sources in `<ul>`, disclaimer paragraph, third-party video disclosure |
-| JavaScript | Inline `<script is:inline>`, vanilla JS, no dependencies |
+Every article page must include the following components. These are defined in the Gold Master and must be copied verbatim — do not create new variants:
+
+| Element | Gold Master Reference | Requirement |
+|---|---|---|
+| Astro frontmatter | §1 | `export const prerender = true`, `pageTitle`, `pageDescription` |
+| HTML5 doctype | §2 | `<!DOCTYPE html>` |
+| Language | §15 | `lang="en"` |
+| Title tag | §11 | SEO-optimised, different from `<h1>` |
+| Meta description | §11 | Under 160 characters |
+| Canonical URL | §13 | Absolute, trailing slash. Use `https://olsp.profitandprivilege.com/{slug}/` — never hardcode a different domain |
+| Open Graph | §12 | None (per Gold Master standard, unless added site-wide) |
+| CSS tokens | §4 | Copy `:root{}` block verbatim from Gold Master. Do not add new tokens. Do not remove any. |
+| Sticky Table of Contents | §6 | Desktop sticky sidebar; mobile collapsible drawer. IDs: `tocWrap`, `tocNav`, `tocToggle` |
+| `.hero-tag` | §8.1 | Pill-shaped label, before `<h1>` inside `#intro` |
+| `.verdict-box` | §8.2 | After opening paragraph in `#intro`, before first `<h3>`. Replaced with `.metadata-box` only if OPP brief specifies a different format |
+| `.methodology` | §8.3 | Dashed border box at end of `#intro` |
+| `.callout` (`.warn`, `.info`) | §8.4 | Standard callout variants only. Do not create new variants (e.g. no `.callout.key`). |
+| Tables | §8.5 | Wrapped in `.table-scroll` for mobile |
+| Score bars | §8.7 | Required for review-type articles only |
+| Quiz | §8.8 | Required for review-type articles only |
+| FAQ accordion | §8.11 | Native `<details>`/`<summary>`, no JS required |
+| Sources `.pill-list` | §8.12 | `<ul class="pill-list">` with pill-shaped source links |
+| `.cta-card` (×3) | §8.13 | Post-intro, mid-article, before Sources. All three identical. |
+| `.site-footer` | §8.14 | After Sources section, inside `<main>` |
+| JavaScript | §10 | Inline `<script is:inline>`, vanilla JS, no dependencies. Three behaviours: TOC toggle, scroll-spy, close TOC on link click |
+| External link `rel` | §8.12 | Non-affiliate: `target="_blank" rel="noopener noreferrer"`. Affiliate: `target="_blank" rel="noopener noreferrer sponsored"`. Internal (`/`): no `target` or `rel`. |
+
+### CSS copying rule
+
+Copy the entire `<style>` block verbatim from the Gold Master reference article (`src/pages/reviews/olsp-academy.astro`). Do not:
+- Add new CSS classes
+- Remove existing CSS classes
+- Change token values
+- Change layout dimensions or breakpoints
+- Add new callout variants (no `.callout.key`, no `border-left:4px` variant)
+
+### JavaScript copying rule
+
+Copy the entire `<script is:inline>` tag verbatim from the Gold Master reference article. Do not:
+- Add new JS functions
+- Remove existing JS functions (unless article type does not require quiz, then `evaluateQuiz` may be omitted)
+- Change TOC, scroll-spy, or quiz logic
 
 ---
 

@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-04 (added Chatbase)  
-Total pages built: 30  
-Editorial article pages: 28  
+Last updated: 2026-07-05 (added Is OLSP Academy an MLM investigation)  
+Total pages built: 31  
+Editorial article pages: 29  
 Infrastructure pages: 2
 
 ---
@@ -17,6 +17,7 @@ Infrastructure pages: 2
 | Reviews | 14 |
 | Blog articles | 13 |
 | Roundups | 1 |
+| Investigations | 1 |
 | Infrastructure (home, author) | 2 |
 | Gold Master V1 compliant | 28 of 28 editorial pages |
 
@@ -26,7 +27,7 @@ Infrastructure pages: 2
 
 | Pillar | Pages | Primary intent |
 |---|---|---|
-| 1. OLSP Ecosystem | 7 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide |
+| 1. OLSP Ecosystem | 8 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide + MLM investigation |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
 | 4. Online Income for Beginners | 3 | Informational / commercial investigation |
@@ -55,6 +56,26 @@ Primary subject: OLSP Academy and its product suite (Wayne Crowe). All reviews t
 | **Last Modified** | 2026-07-03 |
 | **Internal Links Out** | None in body copy |
 | **Internal Links In** | `/blog/no-experience-online-income/`, `/blog/part-time-jobs-near-me-no-experience/`, `/blog/lead-generation-for-beginners/`, `/blog/make-money-online-for-beginners/`, `/roundups/best-affiliate-marketing-training-platforms-2026/`, `/blog/lead-generation-strategies/` |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
+
+---
+
+### Is OLSP Academy an MLM?
+
+| Field | Value |
+|---|---|
+| **Title** | Is OLSP Academy an MLM? An Evidence-Based Investigation of Wayne Crowe's Platform |
+| **URL** | https://olsp.profitandprivilege.com/is-olsp-academy-an-mlm/ |
+| **Article Type** | Investigation |
+| **Primary Keyword** | is OLSP Academy an MLM |
+| **Content Pillar** | OLSP Ecosystem |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-05 |
+| **Last Modified** | 2026-07-05 |
+| **Internal Links Out** | `/reviews/olsp-academy/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
+| **Internal Links In** | None identified |
 | **Publication Status** | Live |
 | **Workflow Status** | Published |
 | **Editorial Priority** | Low |
