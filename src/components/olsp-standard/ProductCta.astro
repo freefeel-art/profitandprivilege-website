@@ -1,0 +1,18 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  buttonText: string;
+  href: string;
+}
+
+const { title, buttonText, href } = Astro.props;
+const description = Astro.props.description ?? "Visit the official product page to see current pricing, features, updates, and purchase options.";
+---
+
+<div class="cta-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a href={href} class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">{buttonText} &rarr;</a>
+  <p style="font-size:.82rem; color:var(--ink-light); margin-top:.6rem;">If you choose to purchase through this link, we may earn a commission at no extra cost to you.</p>
+</div>

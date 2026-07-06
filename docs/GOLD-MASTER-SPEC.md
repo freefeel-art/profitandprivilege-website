@@ -1,87 +1,141 @@
-# Gold Master Specification
+# Gold Master Specification — OLSP Standard
 
-**Source file (structural template):** `src/pages/reviews/olsp-academy.astro`
-**Approved production reference article:** `src/pages/blog/part-time-jobs-near-me-no-experience.astro`
-**Purpose:** This document defines the production standard for every future article on this site — reviews, blog posts, and roundups. Treat the approved production reference article as the canonical reference implementation for editorial content, CTAs, sources formatting, and the site footer. The OLSP Academy review remains the structural template for layout, CSS tokens, and JavaScript. Do not modify either file.
+**Version:** 2.0 — Component Architecture  
+**Validated by:** `src/pages/reviews/olsp-mineeme.astro`, `src/pages/reviews/seo-writing-ai-review.astro`  
+**Components directory:** `src/components/olsp-standard/`  
+**Purpose:** This document defines the production standard for every OLSP review article on this site. The Gold Master is a reusable component system — not a single file to copy. Structure, CSS tokens, JS behavior, and CTA architecture are shared across all articles through OlspLayout and 11 Gold Master components. Editorial content, product metadata (CTA props, sources, pricing tables), and section body text vary per article.
 
 ---
 
-## 1. Page Architecture
+## 1. Architecture Overview
 
-Every article is a **standalone `.astro` file** placed in the appropriate subdirectory of `src/pages/`. There are no shared layout imports, no component imports, and no framework components. The file is entirely self-contained: CSS, HTML, and JavaScript all live in the same file. The Gold Master layout, CSS token set, and JavaScript behavior apply identically to all article types.
+Every review article is an `.astro` file that imports OlspLayout and 11 Gold Master components. The layout, CSS tokens, TOC, and JavaScript live in OlspLayout, not in the article file. The article file contains only frontmatter metadata and editorial content wrapped in `<OlspLayout>` tags.
 
 ```
 src/pages/reviews/
-  olsp-academy.astro   ← Gold Master (canonical reference)
-  [slug].astro         ← copies this structure
+  olsp-mineeme.astro                 ← Validated reference article (MineeMe)
+  seo-writing-ai-review.astro        ← Validated reference article (SEO Writing AI)
+  [slug].astro                       ← future articles copy this pattern
 
-src/pages/blog/
-  [slug].astro          ← copies this structure
-
-src/pages/roundups/
-  [slug].astro          ← copies this structure
+src/components/olsp-standard/
+  OlspLayout.astro                   ← layout, CSS tokens, TOC, JS
+  HeroTag.astro                      ← pill-shaped category label
+  VerdictBox.astro                   ← best-for / not-ideal-for box
+  Methodology.astro                  ← research methodology disclosure
+  Callout.astro                      ← warn/info callout blocks
+  ProductCta.astro                   ← product-specific CTA (props-driven)
+  GoldMasterQuote.astro              ← fixed editorial trust quote
+  FaqItem.astro                      ← accordion FAQ item
+  PillList.astro                     ← source link pills
+  AuthorBox.astro                    ← author bio
+  SiteFooter.astro                   ← brand footer
 ```
 
-The Astro frontmatter contains exactly two variables:
+The same component system renders every review article. Only editorial content and product metadata change between articles.
+
+---
+
+## 2. Article File Structure
+
+Every review article follows this pattern:
 
 ```astro
+---
 export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
 
 const pageTitle = "...";
 const pageDescription = "...";
-```
 
-`prerender = true` ensures Astro generates a static HTML file at build time. The `pageTitle` and `pageDescription` variables are declared in frontmatter for documentation purposes, but the actual `<title>` and `<meta name="description">` tags are written directly in the `<head>` with their final strings — they are not interpolated from these variables.
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  // ... all section links
+];
+---
+
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/{slug}/" tocLinks={tocLinks}>
+
+  <section id="intro">
+    <HeroTag text="..." />
+    <h1>...</h1>
+    <p>...</p>
+    <VerdictBox>...</VerdictBox>
+    <h3>...</h3>
+    <Methodology>...</Methodology>
+  </section>
+
+  <GoldMasterQuote />
+
+  <ProductCta title="..." description="..." buttonText="..." href="..." />
+
+  <!-- Body sections: overview, design, performance, ux, comparison, proscons, history, recommend, buy, verdict -->
+
+  <ProductCta title="..." buttonText="..." href="..." />
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="..." answer="..." />
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <GoldMasterQuote />
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <PillList items={[...]} />
+    <p class="disclaimer">...</p>
+    <SiteFooter />
+  </section>
+
+</OlspLayout>
+```
 
 ---
 
-## 2. HTML Document Structure
+## 3. Frontmatter
 
-The file renders a complete HTML5 document:
+The Astro frontmatter contains:
 
-```
-<!DOCTYPE html>
-<html lang="en">
-  <head>      — meta, canonical, inline <style>
-  <body>
-    <div class="layout">
-      <button class="mobile-toc-btn">  — mobile TOC toggle
-      <aside class="toc-wrap">         — sticky Table of Contents
-      <main>                           — all article content in <section> blocks
-    </div>
-    <script>                           — inline vanilla JS
-```
-
-A `<footer class="site-footer">` is present at the bottom of `<main>`, after the `sources` section. No `<header>` or site-wide navigation is present. Each article is a standalone editorial document that also functions as a page within the website.
+| Variable | Type | Required | Description |
+|----------|------|----------|-------------|
+| `prerender` | `true` | Always | Ensures static HTML generation at build time |
+| `pageTitle` | string | Always | Used in `<title>` tag via OlspLayout |
+| `pageDescription` | string | Always | Used in `<meta name="description">` via OlspLayout |
+| `tocLinks` | `{href, label}[]` | Always | Array of section links rendered by OlspLayout's TOC |
 
 ---
 
-## 3. Layout & Grid
+## 4. OlspLayout — Responsibilities
 
-The two-column grid is defined on `.layout`:
+`OlspLayout.astro` provides everything that does not change between articles:
 
-```css
-.layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-```
+### 4.1 Document Shell
+- `<!DOCTYPE html>` and `<html lang="en">`
+- `<head>` with charset, viewport, `<title>`, `<meta description>`, canonical link
+- Inline `<style>` block with all CSS tokens and classes
+- `<body>` with the two-column layout grid
+- Inline `<script is:inline>` with mobile TOC toggle, scroll-spy, and quiz evaluation
 
-- **Left column (280px):** sticky Table of Contents (`<aside class="toc-wrap">`)
-- **Right column (1fr):** `<main>` content area, capped at `max-width: 880px`, padded `2.5rem 3rem 5rem`
-
-At `≤ 900px`, the grid collapses to a single column and the TOC becomes a collapsible drawer.
-
----
-
-## 4. CSS Design Tokens
-
-All colour and shape values are defined as custom properties on `:root`. These must not change between reviews.
+### 4.2 CSS Design Tokens
+All colour and shape values are defined as custom properties on `:root`. These must not change.
 
 | Token | Value | Purpose |
-|---|---|---|
+|-------|-------|---------|
 | `--ink` | `#1e293b` | Primary text |
 | `--ink-light` | `#475569` | Secondary/muted text |
 | `--bg` | `#ffffff` | Page background |
@@ -98,12 +152,16 @@ All colour and shape values are defined as custom properties on `:root`. These m
 | `--bad-bg` | `#fef2f2` | Cons card background |
 | `--radius` | `10px` | Standard border radius |
 
----
+### 4.3 Layout Grid
+Two-column grid on `.layout`:
+- Left column (280px): sticky Table of Contents (`<aside class="toc-wrap">`)
+- Right column (1fr): `<main>` content area, capped at `max-width: 880px`
 
-## 5. Typography
+At `≤ 900px` the grid collapses to a single column and the TOC becomes a collapsible drawer.
 
+### 4.4 Typography
 | Element | Size | Notes |
-|---|---|---|
+|---------|------|-------|
 | `body` | 17px | System font stack; `line-height: 1.65` |
 | `h1` | 1.9rem | `line-height: 1.25` |
 | `h2` | 1.5rem | Bottom border: `3px solid var(--accent-soft)` |
@@ -111,114 +169,214 @@ All colour and shape values are defined as custom properties on `:root`. These m
 
 Font stack: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
 
+### 4.5 JavaScript
+All JavaScript is inline in a single `<script is:inline>` tag. Functions:
+1. **Mobile TOC toggle** — toggles `.open` on `#tocWrap`
+2. **Scroll-spy** — `IntersectionObserver` watches `<section>` elements, highlights active TOC link
+3. **Close TOC on link click** — closes mobile drawer after navigation
+4. **Quiz evaluation** — `evaluateQuiz()` reads three radio groups and renders outcome
+
+### 4.6 TOC Rendering
+The TOC is rendered from the `tocLinks` prop using `.map()`. Each link maps to a `<section id="...">` in `<main>`. Non-numbered entries appear at the end without a number prefix.
+
 ---
 
-## 6. Sticky Table of Contents
+## 5. Gold Master Components
 
-### Desktop behaviour
-The `<aside class="toc-wrap">` is `position: sticky; top: 0; height: 100vh; overflow-y: auto`. It stays fixed to the viewport left edge as the user scrolls through the article.
-
-### Mobile behaviour (`≤ 900px`)
-- The aside collapses: `max-height: 0; overflow: hidden`
-- A full-width `<button class="mobile-toc-btn">` appears above it, styled `background: var(--ink); color: #fff`
-- Clicking the button toggles `.open` on the aside, expanding it to `max-height: 70vh`
-- Clicking any TOC link inside the drawer removes `.open`, closing the drawer
-
-### TOC link structure
-```html
-<aside class="toc-wrap" id="tocWrap">
-  <h4>On This Page</h4>
-  <nav id="tocNav">
-    <a href="#section-id">N. Section Title</a>
-    ...
-  </nav>
-</aside>
+### 5.1 HeroTag
+```astro
+<HeroTag text="Independent Review · Updated July 2026" />
 ```
+Pill-shaped label. Colour: `--accent` on `--accent-soft`. Placed immediately before `<h1>`.
 
-Each link maps to a `<section id="...">` in `<main>`. Non-numbered entries (FAQ, Sources) appear at the end without a number prefix.
-
-### Scroll-spy active state
-An `IntersectionObserver` watches all `<section>` elements in `<main>`. When a section enters the viewport (rootMargin: `'-20% 0px -70% 0px'`), its corresponding TOC link receives `.active` (white text on `--accent` background). All other links lose `.active`.
-
----
-
-## 7. Section Structure
-
-`<main>` contains a sequence of `<section>` elements, each with a unique `id` and `scroll-margin-top: 1rem`. The standard section order is:
-
-| # | `id` | Heading |
-|---|---|---|
-| 1 | `intro` | First Impressions *(contains h1, hero-tag, verdict-box, methodology)* |
-| 2 | `overview` | Overview & Pricing |
-| 3 | `design` | Platform & Build Quality |
-| 4 | `performance` | Performance Analysis |
-| 5 | `ux` | User Experience |
-| 6 | `comparison` | How It Compares |
-| 7 | `proscons` | Pros & Cons |
-| 8 | `history` | History & Updates |
-| 9 | `recommend` | Who Should Join |
-| 10 | `buy` | Where to Sign Up & Pricing |
-| 11 | `verdict` | Final Verdict *(contains score bars and quiz)* |
-| — | `faq` | Frequently Asked Questions |
-| 12 | `sources` | Evidence & Sources *(contains video embed and sources list)* |
-
-The `intro` section never has an `<h2>` — it opens directly with the `.hero-tag` span and the `<h1>`. Every other section opens with an `<h2>`.
-
----
-
-## 8. Component Inventory
-
-### 8.1 Hero Tag
-```html
-<span class="hero-tag">Independent Review · Updated [Month Year]</span>
-```
-Pill-shaped label (`border-radius: 99px`). Colour: `--accent` on `--accent-soft`. Placed immediately before `<h1>`.
-
-### 8.2 Verdict Box
-```html
-<div class="verdict-box">
+### 5.2 VerdictBox
+```astro
+<VerdictBox>
   <p><strong>Best for:</strong> ...</p>
   <p><strong>Not ideal for:</strong> ...</p>
-</div>
+</VerdictBox>
 ```
 `border-left: 5px solid var(--accent)`. Placed in the `intro` section, after the opening paragraph and before the first `<h3>`.
 
-### 8.3 Methodology Block
-```html
-<div class="methodology">
+### 5.3 Methodology
+```astro
+<Methodology>
   <p><strong>Who wrote this:</strong> ...</p>
   <p><strong>How this review was built:</strong> ...</p>
-</div>
+</Methodology>
 ```
-Dashed border (`border: 1px dashed #94a3b8`), `--bg` background, `font-size: .95rem`. Placed at the end of the `intro` section.
+Dashed border, `--bg` background. Placed at the end of the `intro` section.
 
-### 8.4 Callouts
-Two variants:
-```html
-<div class="callout warn">...</div>   <!-- amber -->
-<div class="callout info">...</div>   <!-- blue -->
+### 5.4 Callout
+```astro
+<Callout type="warn">...</Callout>
+<Callout type="info">...</Callout>
 ```
-Used inline within sections to surface cautions and tips. `warn` uses `--warn-bg`/`--warn-border`. `info` uses `--accent-soft`/`#bfdbfe`.
+Used inline within sections. `warn` uses amber tokens. `info` uses blue tokens.
 
-### 8.5 Tables
-All tables are wrapped in `.table-scroll` for horizontal scroll on mobile:
-```html
-<div class="table-scroll">
-  <table>...</table>
-</div>
+### 5.5 ProductCta (Props-Driven)
+```astro
+<ProductCta title="..." description="..." buttonText="..." href="..." />
 ```
-`<th>` cells: small-caps, uppercase, `--ink-light`, `--bg-soft` background.
+**Props:**
 
-### 8.6 Pros & Cons Grid
-```html
-<div class="two-col">
-  <div class="pc-card good"><h3>...</h3><ul>...</ul></div>
-  <div class="pc-card bad"><h3>...</h3><ul>...</ul></div>
-</div>
+| Prop | Type | Required | Default |
+|------|------|----------|---------|
+| `title` | string | Yes | — |
+| `description` | string | No | "Visit the official product page to see current pricing, features, updates, and purchase options." |
+| `buttonText` | string | Yes | — |
+| `href` | string | Yes | — |
+
+The component renders an editorial CTA card with heading, description, button, and affiliate disclosure. The button uses `target="_blank" rel="noopener noreferrer sponsored"`.
+
+**Placement rules:**
+- **First placement:** After the intro section, after the first `GoldMasterQuote`
+- **Second placement (long-form reviews):** Near the Final Verdict, before the FAQ section
+- The second placement may omit `description` to use the default editorial line
+
+### 5.6 GoldMasterQuote (Fixed)
+```astro
+<GoldMasterQuote />
 ```
-Two-column `1fr 1fr` grid, collapses to single column at `≤ 900px`. `.good` uses green tokens, `.bad` uses red tokens.
+A lightweight editorial pull-quote with fixed text and URL across all articles. No props. Renders a hyperlinked quote with no card, no button, no sales copy. Uses `target="_blank" rel="noopener noreferrer"`.
 
-### 8.7 Score Bars
+**Placement rules (exactly 3, same order every article):**
+1. After the intro section, before the first ProductCta
+2. After the UX section, before the comparison section
+3. After the author section, before the sources section
+
+### 5.7 FaqItem
+```astro
+<FaqItem question="..." answer="..." />
+```
+Native `<details>`/`<summary>` accordion — no JavaScript required.
+
+### 5.8 PillList
+```astro
+<PillList items={[
+  { label: "Source Name", url: "https://...", sponsored: true },
+  { label: "Source Name", url: "https://..." },
+]} />
+```
+Each item is rendered as a pill-shaped `<a>` tag. When `sponsored: true`, the link uses `target="_blank" rel="noopener noreferrer sponsored"`. Non-sponsored external links use `target="_blank" rel="noopener noreferrer"`. Internal links (href starting with `/`) get no target/rel.
+
+### 5.9 AuthorBox
+```astro
+<AuthorBox />
+```
+Renders the author bio with photo, name, role, and profile link.
+
+### 5.10 SiteFooter
+```astro
+<SiteFooter />
+```
+Renders the brand footer with "Profit and Privilege — independent research since 2025" and the site domain link.
+
+---
+
+## 6. Section Structure
+
+`<main>` contains a sequence of `<section>` elements in this fixed order:
+
+| Position | `id` | Heading | Notes |
+|----------|------|---------|-------|
+| 1 | `intro` | *(no h2)* | Contains HeroTag, h1, opening paragraph, VerdictBox, h3, Methodology |
+| — | *(GoldMasterQuote)* | — | First trust quote placement |
+| — | *(ProductCta)* | — | First product CTA placement |
+| 2 | `overview` | Overview & Pricing | Pricing tables, feature lists, Callout blocks |
+| 3 | `design` | Platform & Build Quality | Technology architecture, data flow |
+| 4 | `performance` | Features & Performance | SVG diagram, key features, hands-on validation notes |
+| 5 | `ux` | User Experience | Setup, daily usage, learning curve |
+| — | *(GoldMasterQuote)* | — | Second trust quote placement |
+| 6 | `comparison` | How It Compares | Comparison table with 4-6 rows |
+| 7 | `proscons` | Pros & Cons | Two-column grid with good/bad cards |
+| 8 | `history` | History & Updates | Company background, market presence |
+| 9 | `recommend` | Who Should Use It | Best For / Skip If / Alternatives |
+| 10 | `buy` | Where to Get It | Sign-up links, pricing verification |
+| 11 | `verdict` | Final Assessment | Score bars, editorial summary |
+| — | *(ProductCta)* | — | Second product CTA placement (may omit description) |
+| — | `faq` | Frequently Asked Questions | FaqItem accordions |
+| — | `author` | About the Author | AuthorBox |
+| — | *(GoldMasterQuote)* | — | Third trust quote placement |
+| 12 | `sources` | Sources & References | PillList, disclaimer, SiteFooter |
+
+The `intro` section never has an `<h2>` — it opens directly with `<HeroTag>` and the `<h1>`. Every other section opens with an `<h2>`.
+
+---
+
+## 7. What Changes Between Articles (Product Metadata)
+
+| Element | Where | How |
+|---------|-------|-----|
+| `pageTitle`, `pageDescription` | Frontmatter | String values |
+| `tocLinks` | Frontmatter | Section label array (section numbers may differ slightly) |
+| `canonical` | OlspLayout prop | URL with new slug |
+| `HeroTag` text | Component prop | Product category + date |
+| `<h1>` | In section | Human-facing title |
+| All body copy | Inside sections | Every section rewrites entirely |
+| Pricing tables | `#overview` | Product-specific tiers and costs |
+| Comparison table | `#comparison` | Products being compared change |
+| Pros/cons lists | `#proscons` | Product-specific findings |
+| Score bar widths/labels | `#verdict` | Per-category scores |
+| Quiz questions | `#verdict` | Product-specific decision factors |
+| FAQ items | `#faq` | Product-specific questions |
+| SVG diagram | `#performance` | Illustrates the specific product's mechanics |
+| Video embed | (optional) | Third-party video |
+| `ProductCta props` | Component | `title`, `description`, `buttonText`, `href` — product-specific |
+| `PillList items` | `#sources` | Product-specific source links |
+
+---
+
+## 8. What Must Not Change Between Articles
+
+| Element | Why |
+|---------|-----|
+| CSS custom properties (all `--*` tokens) | Shared visual identity |
+| `.layout` grid dimensions (280px / 1fr / 1280px max) | Consistent layout |
+| `main` max-width (880px) and padding values | Reading width and rhythm |
+| The 900px breakpoint | Single responsive breakpoint |
+| TOC `id` values: `tocWrap`, `tocNav`, `tocToggle` | JS relies on these |
+| `quiz-result` div id | JS relies on this |
+| Section `id` names | TOC href anchors must match |
+| Section order | Consistent reader expectation |
+| `HeroTag` placement (before `<h1>`, inside `#intro`) | Visual pattern |
+| `VerdictBox` placement (after intro paragraph, before first `<h3>`) | Editorial structure |
+| `Methodology` block in `#intro` | Credibility signal |
+| Three `GoldMasterQuote` placements | Brand signature pattern; same component, same position |
+| First `ProductCta` placement (after intro, after first GoldMasterQuote) | Product conversion point |
+| Second `ProductCta` placement (near verdict, before FAQ) | Second conversion point |
+| `GoldMasterQuote` fixed text and URL | Fixed — never customized per article |
+| `ProductCta` uses `sponsored` rel | Compliance |
+| `GoldMasterQuote` uses plain `noopener noreferrer` | Editorial — not sponsored |
+| Component imports (all 11) | Every article uses the same component set |
+| `SiteFooter` at end of `#sources` | Brand presence on every page |
+| `prerender = true` | Static generation |
+
+---
+
+## 9. SEO Structure
+
+- `<title>` and `<h1>` must be different strings. `<title>` is optimised for search result snippets; `<h1>` is the human-facing title.
+- `<meta name="description">` summarises the review's scope and independent stance.
+- Canonical URL: absolute, trailing slash, production domain.
+- `prerender = true` is mandatory on every article.
+- No JSON-LD schema on reviews (FAQPage schema is for blog articles only — see `docs/BLOG-MASTER-SPEC.md`).
+- No Open Graph tags on reviews (blog articles require them — see `docs/BLOG-MASTER-SPEC.md`).
+
+---
+
+## 10. Link Rules
+
+| Link type | Attributes |
+|-----------|------------|
+| Affiliate / sponsored | `target="_blank" rel="noopener noreferrer sponsored"` |
+| Non-affiliate external | `target="_blank" rel="noopener noreferrer"` |
+| Internal (starts with `/`) | No target or rel attributes |
+
+---
+
+## 11. Score Bars
+
 ```html
 <div class="score-row">
   <div class="score-label">Category Name</div>
@@ -226,373 +384,102 @@ Two-column `1fr 1fr` grid, collapses to single column at `≤ 900px`. `.good` us
   <div class="score-num">4/5</div>
 </div>
 ```
-The `width` percentage and the display label must match (e.g. 4/5 = 80%, 3/5 = 60%, 1.5/5 = 30%). A small italic disclaimer follows the score block.
+Width percentage and display fraction must match: 5/5 = 100%, 4/5 = 80%, 3/5 = 60%, 2/5 = 40%, 1.5/5 = 30%, 1/5 = 20%.
 
-### 8.8 Self-Check Quiz
-```html
-<div class="quiz-box" id="quizBox">
-  <h3 style="margin-top:0;">...</h3>
-  <p style="font-size:.85rem;color:var(--ink-light);">...</p>
-  <fieldset>
-    <legend>Question text</legend>
-    <label><input type="radio" name="qN" value="2"> Yes answer</label>
-    <label><input type="radio" name="qN" value="0"> No answer</label>
-  </fieldset>
-  ...
-  <button type="button" onclick="evaluateQuiz()">See My Result</button>
-  <div id="quiz-result"></div>
-</div>
-```
-Exactly three questions. Values are `2` (yes/aligned) or `0` (no/misaligned). Score thresholds: `≥ 5` = good fit, `≥ 3` = mixed fit, `< 3` = poor fit.
+---
 
-### 8.9 SVG Diagram
-Original inline SVG diagrams are used to illustrate mechanics. They must:
+## 12. Self-Check Quiz
+
+Exactly three questions using radio groups `q1`, `q2`, `q3`. Values: `2` (aligned) or `0` (misaligned). Score thresholds: `≥ 5` = good fit, `≥ 3` = mixed fit, `< 3` = poor fit. The `evaluateQuiz()` function lives in OlspLayout.
+
+---
+
+## 13. SVG Diagrams
+
+Inline SVG diagrams must:
 - Have `role="img"` and `aria-label`
-- Carry a `<figcaption>` explicitly stating the diagram is an original illustration, not a screenshot
+- Carry a `<figcaption>` stating it is an original illustration, not a screenshot
 - Use `viewBox` and `width:100%; max-width:640px`
 
-### 8.10 Video Embed
+---
+
+## 14. Video Embeds
+
 ```html
 <div class="video-frame">
   <iframe src="..." title="..." allowfullscreen></iframe>
 </div>
 <p class="video-caption">...</p>
 ```
-The `.video-frame` wrapper uses `padding-top: 56.25%` to create a responsive 16:9 container. The `title` attribute is required for accessibility. The caption must clarify that the video is third-party content, not an official company channel or the author's own production.
-
-### 8.11 FAQ Accordion
-```html
-<details>
-  <summary>Question text</summary>
-  <p>Answer text</p>
-</details>
-```
-Native `<details>`/`<summary>` — no JavaScript required. Each question is a `<summary>`, each answer is one `<p>` inside the element.
-
-### 8.12 Sources Section (Pill-List Format)
-The `<section id="sources">` contains:
-
-1. **(Optional) Video Content** — introduces the video embed with a third-party disclosure paragraph, if a video is included.
-2. **Sources heading** — `<h2>Sources &amp; References</h2>`.
-3. **Pill-list** — a `<ul class="pill-list">` containing source links as individual `<li><a>` items. Each source link is rendered as a pill-shaped tag using the `.pill-list` CSS class.
-4. **Disclaimer paragraph** — a small-print paragraph (`font-size:.82rem; color:var(--ink-light)`) disclosing the financial interests of cited sources and the information cutoff date.
-
-**Pill-list HTML:**
-```html
-<section id="sources">
-  <h2>Sources &amp; References</h2>
-  <ul class="pill-list">
-    <li><a href="..." target="_blank" rel="noopener noreferrer">Source Name</a></li>
-    ...
-  </ul>
-  <p style="font-size:.82rem;color:var(--ink-light);">Disclaimer text.</p>
-</section>
-```
-
-**Pill-list CSS (embedded in the article `<style>` block):**
-```css
-.pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-.pill-list li{margin:0;}
-.pill-list a{
-  display:inline-block;
-  font-size:.78rem;
-  background:var(--bg-soft);
-  color:var(--ink-light);
-  border:1px solid var(--line);
-  border-radius:99px;
-  padding:.25rem .7rem;
-  white-space:nowrap;
-}
-.pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-```
-
-Every external link (any `href` that does not begin with `/`) must include `target="_blank"`. Affiliate or sponsored links must use `target="_blank" rel="noopener noreferrer sponsored"`. Non-affiliate external links must use `target="_blank" rel="noopener noreferrer"`. Internal links (href starting with `/`) must NOT carry a `target` or `rel` attribute.
-
-### 8.13 CTA Card Component
-A call-to-action card is placed three times in every production article:
-1. **After the `intro` section** (immediately before the first content section)
-2. **Mid-article** (after approximately the fifth content section, before the comparison/pros-cons area)
-3. **Before the Sources section** (final CTA before the reader leaves the article)
-
-**CTA Card HTML:**
-```html
-<div class="cta-card">
-  <h3>New to online income? Start with the $7 Megalink</h3>
-  <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
-  <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
-</div>
-```
-
-**CTA Card CSS:**
-```css
-.cta-card{
-  border-radius:var(--radius);
-  padding:1.1rem 1.3rem;
-  border:1px solid var(--line);
-  background:var(--accent-soft);
-  border-left:4px solid var(--accent);
-  margin:3rem 0;
-}
-.cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-.cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-.cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-.cta-card .cta-btn::after{content:" →";}
-
-.cta-btn{
-  display:inline-block;
-  background:var(--accent);
-  color:#fff;
-  font-weight:600;
-  border-radius:8px;
-}
-.cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-```
-
-**Per-article variables:**
-- `h3` heading text (product name, price)
-- Body copy paragraphs (what the product offers, value proposition)
-- `href` on the `.cta-btn` link
-- Button label text
-- Affiliate disclosure paragraph
-
-All three CTA cards on the page are **identical** — same heading, same body, same link, same disclosure. The component appears three times for placement convenience, not with different content.
+The `.video-frame` wrapper uses `padding-top: 56.25%` for 16:9 responsive container. The `title` attribute is required for accessibility. The caption must clarify that the video is third-party content.
 
 ---
 
-### 8.14 Site Footer Component
-Every production article ends with `<footer class="site-footer">` inside `<main>`, **after** the `sources` section and **before** `</main>`.
-
-**Site Footer HTML:**
-```html
-<footer class="site-footer">
-  <span>Profit and Privilege — independent research since 2025</span>
-  <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-</footer>
-```
-
-**Site Footer CSS:**
-```css
-.site-footer{
-  border-top:1px solid var(--line);
-  padding:1.2rem 0 0;
-  margin-top:2rem;
-  font-size:.8rem;
-  color:var(--ink-light);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:.4rem;
-}
-.site-footer a{color:var(--ink-light);}
-.site-footer a:hover{color:var(--accent); text-decoration:underline;}
-```
-
-**Per-article variables:**
-- The left-hand `<span>` text (brand tagline — may stay constant across articles)
-- The right-hand `<a>` link text and `href` (normally points to the main domain)
-
----
-
-## 9. Responsive Behaviour
+## 15. Responsive Behaviour
 
 | Breakpoint | Change |
-|---|---|
+|------------|--------|
 | `> 900px` | Two-column grid; full sidebar TOC; `main` padded `2.5rem 3rem 5rem` |
-| `≤ 900px` | Single column; TOC becomes collapsible drawer; mobile TOC button shown; `main` padded `1.5rem 1.2rem 3rem`; `.two-col` collapses to single column; `.score-label` shrinks to `130px` width |
-
-The mobile TOC button (`#tocToggle`) is hidden at desktop widths via `display: none` and shown via `display: block` inside the media query.
+| `≤ 900px` | Single column; TOC becomes collapsible drawer; `main` padded `1.5rem 1.2rem 3rem`; `.two-col` collapses; `.score-label` shrinks |
 
 ---
 
-## 10. JavaScript Functionality
+## 16. Production Rules
 
-All JavaScript is inline in a single `<script is:inline>` tag at the bottom of `<body>`. It is vanilla JS with no dependencies.
-
-> **Why `is:inline` is required:** Astro processes `<script>` tags as ES modules by default, scoping all declarations to the module rather than the global `window` object. The quiz button uses `onclick="evaluateQuiz()"`, which requires `evaluateQuiz` to be accessible as a global function. Without `is:inline`, Astro bundles the script as a module and the `onclick` handler throws `evaluateQuiz is not defined` at runtime. The `is:inline` directive instructs Astro to emit the script exactly as written, preserving global scope. Do not remove it.
-
-### Three behaviours:
-
-**1. Mobile TOC toggle**
-Attaches a `click` listener to `#tocToggle`. Toggles `.open` on `#tocWrap`.
-
-**2. Scroll-spy**
-Builds a `linkMap` dictionary keyed by section `id`. An `IntersectionObserver` watches all `main section` elements with `rootMargin: '-20% 0px -70% 0px'`. On intersection, removes `.active` from all TOC links and adds it to the matching link.
-
-**3. Close TOC on link click (mobile)**
-Each TOC `<a>` has a listener that removes `.open` from `#tocWrap` when `window.innerWidth <= 900`.
-
-**4. Quiz evaluation (`evaluateQuiz`)**
-Global function called by the quiz button's `onclick`. Reads three radio groups (`q1`, `q2`, `q3`). If any is unanswered, shows a prompt. Otherwise sums the values and renders one of three outcome messages into `#quiz-result`.
-
----
-
-## 11. SEO Structure
-
-### `<title>` vs `<h1>`
-These are intentionally different. The `<title>` is optimised for search result snippets and can include the product creator's name or longer descriptive terms. The `<h1>` is the human-facing article title. Both must target the same primary keyword.
-
-### `<meta name="description">`
-Should match `pageDescription` in frontmatter (even though currently not interpolated). One sentence, under ~160 characters, summarising the review's scope and independent stance.
-
-### Canonical URL
-```html
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/{slug}/" />
-```
-Always absolute URL. Always trailing slash. Always the production domain.
-
-### `prerender = true`
-Every article page must declare this. It ensures static generation and maximum crawlability.
-
-### No structured data (as of Gold Master) — reviews only
-The Gold Master does not include `FAQPage`, `Article`, or `Review` JSON-LD schema. Future reviews may add it, but it is not currently part of the standard and should not be added without deliberate intent.
-
-This applies to the **review** article type only. **Blog articles follow a separate, already-established standard** that requires `FAQPage` JSON-LD schema — see `docs/BLOG-MASTER-SPEC.md`. Do not use this section to justify removing JSON-LD from blog articles.
-
----
-
-## 12. Open Graph / Metadata
-
-The Gold Master contains **no Open Graph tags** (`og:title`, `og:description`, `og:image`, etc.) and **no Twitter Card tags**. This is the current production state for the **review** article type. Future reviews should match this unless OG tags are deliberately added as a feature across all reviews at once.
-
-**Blog articles are exempt from this rule.** Blog articles require Open Graph tags and Twitter Card tags for search appearance and social sharing — this has been the consistent, already-established standard across every published blog article. See `docs/BLOG-MASTER-SPEC.md` for the blog metadata standard. This section governs reviews only.
-
----
-
-## 13. Canonical URL Strategy
-
-- Pattern: `https://olsp.profitandprivilege.com/{type}/{slug}/` where `{type}` is `reviews`, `blog`, or `roundups`
-- The slug matches the `.astro` filename (e.g. `olsp-academy.astro` → `/reviews/olsp-academy/`)
-- Trailing slash is present on the canonical but the slug itself is lowercase-kebab-case
-- The canonical is hardcoded, not generated from a variable
-
----
-
-## 14. Internal Linking Strategy
-
-The Gold Master contains **no site navigation and no header**. Each article includes a `<footer class="site-footer">` (see Section 8.14) as part of its editorial page structure. The TOC links only scroll within the current page.
-
-Internal links to other articles on the site **are permitted** within body copy where contextually relevant (e.g. linking from a blog post to a related review, or from a roundup to individual reviews). These must not include `rel="sponsored"` and should be woven naturally into the prose. Do not create a separate "related articles" block.
-
----
-
-## 15. Accessibility Considerations
-
-| Element | Requirement |
-|---|---|
-| `<html>` | Must have `lang="en"` |
-| `<aside>` | Used for the TOC — correct semantic landmark |
-| `<main>` | Single `<main>` per page |
-| `<nav>` | Wraps TOC links inside `<aside>` |
-| `<figure>` / `<figcaption>` | Wraps all SVG diagrams |
-| SVG | Must have `role="img"` and a descriptive `aria-label` |
-| `<iframe>` | Must have a `title` attribute describing the content |
-| `<details>` / `<summary>` | Native accessible accordion — no ARIA overrides needed |
-| Colour contrast | `--ink` on `--bg` and `--bg-soft` must pass WCAG AA; do not change token values |
-| `scroll-behavior: smooth` | Set globally on `html`; respects OS reduced-motion preference at the browser level |
-
----
-
-## 16. What Changes Between Articles
-
-The following elements are **per-article variables** — everything else is structural and must remain consistent:
-
-| Element | Notes |
-|---|---|
-| `pageTitle` / `pageDescription` | Frontmatter declarations |
-| `<title>` tag | SEO-optimised; includes product and creator name |
-| `<meta name="description">` | Article-specific summary |
-| `<link rel="canonical">` | New slug |
-| `.hero-tag` text | Product category label + updated date |
-| `<h1>` text | Human-facing article title |
-| All body copy | Every section rewrites entirely for the product |
-| Pricing table rows | Product-specific tiers, costs, what's included |
-| Comparison table rows | Products being compared change; OLSP row is removed |
-| Pros/cons list items | Product-specific findings |
-| Score bar widths and labels | Per-category scores for the specific product |
-| Score category names | Can be renamed to fit the product |
-| Quiz questions, values, and outcome messages | Must be logical for the specific product's decision factors |
-| FAQ questions and answers | Product-specific questions |
-| SVG diagram content | Illustrates the specific product's mechanics |
-| Video embed URL | Third-party video discussing the specific product |
-| Video caption | Reflects the actual video content |
-| Sources list `<li>` items | Links and anchor text for the specific product |
-| Sources disclaimer paragraph | Date reference and affiliate disclosure updated |
-| Section headings | `<h2>` text customised to the product (e.g. "OLSP Academy Overview" → "[Product] Overview") |
-| Callout body text | Warn/info callout messages are product-specific |
-| CTA card heading, body, link, and disclosure | Per-article product name, price, value proposition, affiliate link, and disclosure text |
-| Pill-list source items | Links and anchor text specific to the article's research sources |
-| Site footer right-side link | Text and `href` (normally points to the main domain) |
-
----
-
-## 17. What Must Not Change Between Articles
-
-| Element | Why |
-|---|---|
-| CSS custom properties (all `--*` tokens) | Shared visual identity |
-| `.layout` grid dimensions (280px / 1fr / 1280px max) | Consistent layout |
-| `main` max-width (880px) and padding values | Reading width and rhythm |
-| The 900px breakpoint | Single responsive breakpoint for the entire system |
-| TOC `id` values: `tocWrap`, `tocNav`, `tocToggle` | JS relies on these |
-| `quiz-result` div id | JS relies on this |
-| Section `id` names (`intro`, `overview`, `design`, `performance`, `ux`, `comparison`, `proscons`, `history`, `recommend`, `buy`, `verdict`, `faq`, `sources`) | TOC href anchors must match |
-| Section order | Consistent reader expectation across all reviews |
-| `.hero-tag` placement (before `<h1>`, inside `#intro`) | Visual pattern |
-| `.verdict-box` placement (after intro paragraph, before first `<h3>`) | Editorial structure |
-| `.methodology` block in `#intro` | Credibility signal; required on every article |
-| `.video-frame` aspect-ratio padding (56.25%) | Responsive 16:9 |
-| `target="_blank" rel="noopener noreferrer sponsored"` on affiliate/CTA links | Compliance + security; opens in new tab |
-| `target="_blank" rel="noopener noreferrer"` on non-affiliate external links | Security; opens in new tab |
-| Sources disclaimer paragraph at end of `#sources` | Transparency requirement |
-| `.cta-card` structure and CSS (Section 8.13) | Consistent CTA placement and visual identity across articles |
-| Three CTA card placements (post-intro, mid-article, before Sources) | Content marketing pattern; all three cards must be identical |
-| `.pill-list` structure and CSS (Section 8.12) | Consistent sources formatting across articles |
-| `.site-footer` structure and CSS (Section 8.14) | Global brand presence on every production page |
-| `prerender = true` | Static generation |
-
----
-
-## 18. Production Rules
-
-1. **One file, self-contained.** Every article is a single `.astro` file in the appropriate `src/pages/{type}/` directory. No layout imports, no component imports, no shared CSS files.
+1. **Component imports are mandatory.** Every article must import all 11 Gold Standard components. Do not omit imports.
 
 2. **`prerender = true` is mandatory.** Every article page must be statically generated.
 
-3. **Do not change the CSS token values.** Copy the entire `<style>` block verbatim. Customise only the content inside sections.
+3. **Do not modify the components in `src/components/olsp-standard/`.** They are shared across all articles. Changes to a component affect every article simultaneously.
 
-   Also copy the `<script is:inline>` tag verbatim — including the `is:inline` directive. Omitting `is:inline` breaks the quiz: Astro will bundle the script as an ES module, removing `evaluateQuiz` from global scope and silently breaking the `onclick` handler. See Section 10 for the full explanation.
+4. **Do not modify `src/components/olsp-standard/OlspLayout.astro`.** It is the canonical layout. CSS tokens, grid, TOC, and JS live here.
 
-4. **The section order is fixed for reviews.** Reviews must follow: `intro → overview → design → performance → ux → comparison → proscons → history → recommend → buy → verdict → faq → sources`. Do not reorder, skip, or rename these sections. Other article types (roundups, blog posts) define their own section order and `id` values, but must use the same layout grid, CSS tokens, and `<script is:inline>` block.
+5. **The section order is fixed.** Reviews must follow: `intro → overview → design → performance → ux → comparison → proscons → history → recommend → buy → verdict → faq → author → sources`. Do not reorder, skip, or rename these sections.
 
-5. **Section `id` values are fixed for each article type.** The TOC, scroll-spy JS, and `<link>` anchors all depend on them. Do not rename them within the same article type.
+6. **Section `id` values are fixed.** The TOC, scroll-spy JS, and link anchors depend on them.
 
-6. **The `intro` section must contain four elements in order:** `.hero-tag` pill, `<h1>`, opening paragraph, `.verdict-box`, then the first `<h3>`, then `.methodology`.
+7. **The `intro` section must contain in order:** `<HeroTag>`, `<h1>`, opening paragraph, `<VerdictBox>`, first `<h3>`, `<Methodology>`.
 
-7. **The `<title>` and `<h1>` must be different.** `<title>` is for search engines; `<h1>` is for readers. Both must target the same primary keyword.
+8. **Three `GoldMasterQuote` placements are fixed.** Post-intro (before first ProductCta), mid-article (after UX, before comparison), and near-end (after author, before sources). The component has no props — fixed text and URL.
 
-8. **The canonical URL must be absolute, with a trailing slash,** using the production domain: `https://olsp.profitandprivilege.com/{type}/{slug}/`.
+9. **ProductCta appears 1–2 times.** First after the first GoldMasterQuote (post-intro), second near Final Verdict before FAQ. The second may omit `description` to use the default.
 
-9. **All external links must include `target="_blank"`** so they open in a new browser tab. Affiliate and sponsored links must use `target="_blank" rel="noopener noreferrer sponsored"`. Non-affiliate external links must use `target="_blank" rel="noopener noreferrer"`. The active CTA destination is `https://olspacademy.com/megalive/1006001`.
+10. **The `<title>` and `<h1>` must be different.** `<title>` is for search engines; `<h1>` is for readers.
 
-10. **The sources section must end with a disclaimer paragraph** in small print (`font-size:.82rem; color:var(--ink-light)`) disclosing the financial interests of cited sources and the date the information was gathered.
+11. **The canonical URL must be absolute, with a trailing slash,** using the production domain.
 
-11. **The methodology block is not optional.** Every article must include a `<div class="methodology">` in the `intro` section disclosing who wrote it and how the research was conducted.
+12. **All external links must include `target="_blank"`.** Affiliate links use `sponsored`. Non-affiliate external links use `noopener noreferrer`. Internal links (starting with `/`) get no target or rel.
 
-12. **Income claims and self-reported figures must be labelled as unverified.** Use `.callout.warn` or explicit inline language ("self-reported," "could not be independently verified") whenever citing any earnings figure.
+13. **The sources section must end with a disclaimer paragraph** disclosing financial interests and information cutoff date.
 
-13. **SVG diagrams must carry `role="img"` and `aria-label`.** Captions must state the diagram is an original illustration, not a screenshot.
+14. **The methodology block is not optional.** Every article must include `<Methodology>` in the `intro` section.
 
-14. **The `<iframe>` must have a `title` attribute.** The caption must disclose that the video is third-party content.
+15. **Income claims and self-reported figures must be labelled as unverified.** Use `<Callout type="warn">` or explicit inline language.
 
-15. **The quiz must have exactly three questions.** Answers score `2` (aligned) or `0` (misaligned). Outcomes map to score ranges: `≥ 5` (good fit), `≥ 3` (mixed), `< 3` (poor fit).
+16. **The quiz must have exactly three questions.** Answers score `2` (aligned) or `0` (misaligned). Outcomes map to score ranges.
 
-16. **Score bar percentages must match the displayed fraction.** 5/5 = 100%, 4/5 = 80%, 3/5 = 60%, 2/5 = 40%, 1.5/5 = 30%, 1/5 = 20%.
+17. **Score bar percentages must match the displayed fraction.**
 
-17. **No site navigation or header.** Do not add a `<header>` or `<nav>` unless a deliberate site-wide navigation upgrade is applied to all pages simultaneously. A `<footer class="site-footer">` (as specified in Section 8.14) is required on every production article.
+18. **No site navigation or header.** Do not add a `<header>` or site-wide `<nav>`. A `<SiteFooter />` is required on every article.
 
-18. **Reviews: no Open Graph tags** unless added to all reviews as a deliberate upgrade. Do not add OG tags to individual reviews only. **Blog articles are exempt** — OG tags and JSON-LD `FAQPage` schema are part of the established blog standard (see Section 12 and `docs/BLOG-MASTER-SPEC.md`).
+19. **Reviews: no Open Graph tags or JSON-LD** unless added to all reviews as a deliberate upgrade.
 
-19. **The mobile TOC button label must be `☰ Table of Contents`** to maintain a consistent affordance.
+20. **Do not modify the validated reference articles** (`olsp-mineeme.astro`, `seo-writing-ai-review.astro`). They are canonical references for the component-based architecture.
 
-20. **Do not modify `src/pages/reviews/olsp-academy.astro`.** It is the canonical reference. Future changes to the standard are made by updating this spec, then applying the change to all article pages together.
+---
+
+## 17. Component Directory Reference
+
+| File | Path | Purpose |
+|------|------|---------|
+| OlspLayout | `src/components/olsp-standard/OlspLayout.astro` | Layout, CSS tokens, TOC, JS |
+| HeroTag | `src/components/olsp-standard/HeroTag.astro` | Category pill label |
+| VerdictBox | `src/components/olsp-standard/VerdictBox.astro` | Best-for / not-ideal-for |
+| Methodology | `src/components/olsp-standard/Methodology.astro` | Research disclosure |
+| Callout | `src/components/olsp-standard/Callout.astro` | Warn/info blocks |
+| ProductCta | `src/components/olsp-standard/ProductCta.astro` | Product CTA (props-driven) |
+| GoldMasterQuote | `src/components/olsp-standard/GoldMasterQuote.astro` | Fixed trust quote |
+| FaqItem | `src/components/olsp-standard/FaqItem.astro` | FAQ accordion |
+| PillList | `src/components/olsp-standard/PillList.astro` | Source link pills |
+| AuthorBox | `src/components/olsp-standard/AuthorBox.astro` | Author bio |
+| SiteFooter | `src/components/olsp-standard/SiteFooter.astro` | Brand footer |

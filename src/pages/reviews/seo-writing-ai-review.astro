@@ -1,783 +1,364 @@
 ---
 export const prerender = true;
 
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
 const pageTitle = "SEO Writing AI Review: An Independent, Research-Based Analysis";
 const pageDescription =
   "An independent, research-based review of SEO Writing AI: what it is, what it costs, how its SEO-focused content generation works, and whether it fits your content strategy.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Features & Performance" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. Company Background" },
+  { href: "#recommend", label: "9. Who Should Use It" },
+  { href: "#buy", label: "10. Where to Sign Up" },
+  { href: "#verdict", label: "11. Final Assessment" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html> 
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEO Writing AI Review: An Independent, Research-Based Analysis of the SEO Content Platform</title>
-<meta name="description" content="An independent, research-based review of SEO Writing AI: what it is, what it costs, how the SEO-focused AI writing platform works, and whether it fits your content strategy.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/seo-writing-ai-review/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/seo-writing-ai-review/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <HeroTag text="Independent Review · Updated July 2026" />
+    <h1>SEO Writing AI Review: An Independent, Research-Based Analysis</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>SEO Writing AI</strong> (branded as SEOWriting.ai) is an AI-powered content platform purpose-built for SEO — not a general AI writer with SEO features added later. It generates search-optimised articles, blog posts, and affiliate content in one click, with built-in SERP competitor analysis, NLP keyword placement, and content scoring. Based on official documentation, captured product pages, and independent third-party sources, our assessment is this: SEO Writing AI offers a focused, affordable tool for SEO content creation with strong bulk-generation and publishing capabilities, but content quality and real-world SEO effectiveness can only be fully evaluated through hands-on testing.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+    <VerdictBox>
+      <p><strong>Best for:</strong> affiliate marketers, SEO specialists, content marketers, bloggers, and digital agencies who need affordable, search-optimised content at scale — especially those running Amazon affiliate sites or WordPress blogs.</p>
+      <p><strong>Not ideal for:</strong> teams needing a general-purpose AI writer for ad copy, social media, email marketing, or creative writing; organisations that need human-level content depth without editing; or users who prefer a visual drag-and-drop editor.</p>
+    </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+    <h3>What Is SEO Writing AI, and Who Is It For?</h3>
+    <p>SEO Writing AI is a cloud-based SaaS platform developed by Cybereter FZ-LLC (Ras Al Khaimah, UAE). It allows users to enter a keyword or brief and receive a complete, SEO-optimised article with proper heading structure, keyword placement, meta tags, and optionally AI-generated images. The platform supports 48 languages, bulk generation of up to 100 articles at once, and direct auto-publishing to WordPress via an MCP (Model Context Protocol) server. A Shopify app is also available.</p>
+    <p>The target market spans affiliate marketers, SEO specialists, content marketers, bloggers, digital agencies, and small business owners. The platform claims 50,000+ users and maintains strong cross-platform ratings: WordPress Plugin Directory 4.9/5 (117 reviews), G2 4.6/5 (79 reviews), and Capterra 4.8/5 (70 reviews).</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+    <h3>Author Background &amp; Review Methodology</h3>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
+      <p><strong>How this review was built:</strong> We did not purchase or personally test SEO Writing AI. This article is based on independent desk research: a captured snapshot of the official SEO Writing AI website (homepage, pricing page, feature pages), cross-referenced against the live website, official documentation, and four independent third-party sources (AI Gear Base, G2, WordPress Plugin Directory, Capterra). Where a capability could not be verified without hands-on testing — including content quality, SEO effectiveness, and bulk generation consistency — we state that explicitly rather than speculating.</p>
+    </Methodology>
+  </section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  <GoldMasterQuote />
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+  <ProductCta title="Create SEO-optimised articles with SEO Writing AI" description="Generate search-optimised articles from a single keyword — with built-in SERP analysis, NLP content scoring, and WordPress auto-publishing. Start with the free plan (3 articles, no credit card)." buttonText="Try SEO Writing AI" href="https://seowriting.ai?fp_ref=jarmo12" />
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+  <section id="overview">
+    <h2>SEO Writing AI Overview &amp; Pricing</h2>
+    <p>SEO Writing AI operates on a freemium SaaS model with four paid tiers plus a free plan. All pricing below was verified from the official pricing page captured on July 4, 2026. Annual billing saves approximately 25% across all tiers.</p>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
+    <h3>What's Included</h3>
+    <ul>
+      <li><strong>One-click SEO article generation:</strong> Enter a keyword and receive a complete long-form article optimised for search rankings, with auto-analysed SERP competitor data informing structure and keyword placement.</li>
+      <li><strong>Bulk article generation:</strong> Generate up to 100 articles in a single batch from a keyword list. Articles can be auto-scheduled on WordPress with staggered publishing times.</li>
+      <li><strong>WordPress MCP integration:</strong> Direct auto-publishing to WordPress with auto-generated meta titles, meta descriptions, and image alt tags. Plugin rating: 4.9/5 from 117 reviews.</li>
+      <li><strong>NLP SEO checker:</strong> Built-in content scoring evaluates keyword placement, readability, content depth, and technical SEO elements, providing actionable recommendations to reach 100% optimisation.</li>
+      <li><strong>Amazon affiliate article builder:</strong> Enter product URLs and ASINs to generate product descriptions, pros/cons lists, specifications, and reviews — purpose-built for affiliate marketers.</li>
+      <li><strong>AI text humanizer:</strong> Post-generation tool that removes AI-detection patterns to make content sound more natural. Unlimited on all paid plans.</li>
+      <li><strong>Brand voice customisation:</strong> Train the AI on your writing style. Starter: 1 voice, Professional: 5 voices, Pro Plus 2: up to 25 voices.</li>
+      <li><strong>Multilingual content:</strong> Article generation in 48 languages with local SEO optimisation.</li>
+      <li><strong>AI image generation:</strong> Contextual images generated during article creation, included on all paid plans.</li>
+      <li><strong>Rewriter tool, Super Pages, Real-Time SERP analysis, and Connect to Web for internet-linked generation.</strong></li>
+    </ul>
 
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Features &amp; Performance</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. Company Background</a>
-      <a href="#recommend">9. Who Should Use It</a>
-      <a href="#buy">10. Where to Sign Up</a>
-      <a href="#verdict">11. Final Assessment</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Independent Review · Updated July 2026</span>
-      <h1>SEO Writing AI Review: An Independent, Research-Based Analysis</h1>
-
-      <p><strong>SEO Writing AI</strong> (branded as SEOWriting.ai) is an AI-powered content platform purpose-built for SEO — not a general AI writer with SEO features added later. It generates search-optimised articles, blog posts, and affiliate content in one click, with built-in SERP competitor analysis, NLP keyword placement, and content scoring. Based on official documentation, captured product pages, and independent third-party sources, our assessment is this: SEO Writing AI offers a focused, affordable tool for SEO content creation with strong bulk-generation and publishing capabilities, but content quality and real-world SEO effectiveness can only be fully evaluated through hands-on testing.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> affiliate marketers, SEO specialists, content marketers, bloggers, and digital agencies who need affordable, search-optimised content at scale — especially those running Amazon affiliate sites or WordPress blogs.</p>
-        <p><strong>Not ideal for:</strong> teams needing a general-purpose AI writer for ad copy, social media, email marketing, or creative writing; organisations that need human-level content depth without editing; or users who prefer a visual drag-and-drop editor.</p>
-      </div>
-
-      <h3>What Is SEO Writing AI, and Who Is It For?</h3>
-      <p>SEO Writing AI is a cloud-based SaaS platform developed by Cybereter FZ-LLC (Ras Al Khaimah, UAE). It allows users to enter a keyword or brief and receive a complete, SEO-optimised article with proper heading structure, keyword placement, meta tags, and optionally AI-generated images. The platform supports 48 languages, bulk generation of up to 100 articles at once, and direct auto-publishing to WordPress via an MCP (Model Context Protocol) server. A Shopify app is also available.</p>
-      <p>The target market spans affiliate marketers, SEO specialists, content marketers, bloggers, digital agencies, and small business owners. The platform claims 50,000+ users and maintains strong cross-platform ratings: WordPress Plugin Directory 4.9/5 (117 reviews), G2 4.6/5 (79 reviews), and Capterra 4.8/5 (70 reviews).</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
-        <p><strong>How this review was built:</strong> We did not purchase or personally test SEO Writing AI. This article is based on independent desk research: a captured snapshot of the official SEO Writing AI website (homepage, pricing page, feature pages), cross-referenced against the live website, official documentation, and four independent third-party sources (AI Gear Base, G2, WordPress Plugin Directory, Capterra). Where a capability could not be verified without hands-on testing — including content quality, SEO effectiveness, and bulk generation consistency — we state that explicitly rather than speculating.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Try SEO Writing AI free — 3 articles, no credit card required</h3>
-      <p>SEO Writing AI generates search-optimised articles from a single keyword in one click. Create blog posts, affiliate content, and product roundups — all optimised for Google and AI search engines. Start with the free plan and upgrade when you need more.</p>
-      <p><a href="https://seowriting.ai?fp_ref=jarmo12" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try SEO Writing AI Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join SEO Writing AI through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Pricing Tiers</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Plan</th><th>Monthly Price</th><th>Annual Price</th><th>Articles/Month</th><th>Word Limit</th><th>Brand Voices</th></tr>
+      <tr><td>Free</td><td>$0</td><td>$0</td><td>3</td><td>25,000</td><td>1</td></tr>
+      <tr><td>Starter</td><td>$14</td><td>$168/yr</td><td>Up to 50</td><td>Unlimited</td><td>1</td></tr>
+      <tr><td>Professional</td><td>$59</td><td>$708/yr</td><td>Up to 250</td><td>Unlimited</td><td>5</td></tr>
+      <tr><td>Pro Plus 1</td><td>$119</td><td>$1,428/yr</td><td>Up to 500</td><td>Unlimited</td><td>10</td></tr>
+      <tr><td>Pro Plus 2</td><td>$230</td><td>$2,760/yr</td><td>Up to 1,000</td><td>Unlimited</td><td>25</td></tr>
+    </table>
     </div>
 
-    <section id="overview">
-      <h2>SEO Writing AI Overview &amp; Pricing</h2>
-      <p>SEO Writing AI operates on a freemium SaaS model with four paid tiers plus a free plan. All pricing below was verified from the official pricing page captured on July 4, 2026. Annual billing saves approximately 25% across all tiers.</p>
-
-      <h3>What's Included</h3>
-      <ul>
-        <li><strong>One-click SEO article generation:</strong> Enter a keyword and receive a complete long-form article optimised for search rankings, with auto-analysed SERP competitor data informing structure and keyword placement.</li>
-        <li><strong>Bulk article generation:</strong> Generate up to 100 articles in a single batch from a keyword list. Articles can be auto-scheduled on WordPress with staggered publishing times.</li>
-        <li><strong>WordPress MCP integration:</strong> Direct auto-publishing to WordPress with auto-generated meta titles, meta descriptions, and image alt tags. Plugin rating: 4.9/5 from 117 reviews.</li>
-        <li><strong>NLP SEO checker:</strong> Built-in content scoring evaluates keyword placement, readability, content depth, and technical SEO elements, providing actionable recommendations to reach 100% optimisation.</li>
-        <li><strong>Amazon affiliate article builder:</strong> Enter product URLs and ASINs to generate product descriptions, pros/cons lists, specifications, and reviews — purpose-built for affiliate marketers.</li>
-        <li><strong>AI text humanizer:</strong> Post-generation tool that removes AI-detection patterns to make content sound more natural. Unlimited on all paid plans.</li>
-        <li><strong>Brand voice customisation:</strong> Train the AI on your writing style. Starter: 1 voice, Professional: 5 voices, Pro Plus 2: up to 25 voices.</li>
-        <li><strong>Multilingual content:</strong> Article generation in 48 languages with local SEO optimisation.</li>
-        <li><strong>AI image generation:</strong> Contextual images generated during article creation, included on all paid plans.</li>
-        <li><strong>Rewriter tool, Super Pages, Real-Time SERP analysis, and Connect to Web for internet-linked generation.</strong></li>
-      </ul>
-
-      <h3>Pricing Tiers</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Plan</th><th>Monthly Price</th><th>Annual Price</th><th>Articles/Month</th><th>Word Limit</th><th>Brand Voices</th></tr>
-        <tr><td>Free</td><td>$0</td><td>$0</td><td>3</td><td>25,000</td><td>1</td></tr>
-        <tr><td>Starter</td><td>$14</td><td>$168/yr</td><td>Up to 50</td><td>Unlimited</td><td>1</td></tr>
-        <tr><td>Professional</td><td>$59</td><td>$708/yr</td><td>Up to 250</td><td>Unlimited</td><td>5</td></tr>
-        <tr><td>Pro Plus 1</td><td>$119</td><td>$1,428/yr</td><td>Up to 500</td><td>Unlimited</td><td>10</td></tr>
-        <tr><td>Pro Plus 2</td><td>$230</td><td>$2,760/yr</td><td>Up to 1,000</td><td>Unlimited</td><td>25</td></tr>
-      </table>
-      </div>
-
-      <h3>Plan Feature Breakdown</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Feature</th><th>Free</th><th>Starter</th><th>Professional</th><th>Pro Plus 1</th><th>Pro Plus 2</th></tr>
-        <tr><td>SEO Content Creation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>AI Editor</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Bulk Generation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Rewriter Tool</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Humanizer Tool</td><td>✓</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-        <tr><td>Super Pages</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Real-Time SERP</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>External Linking</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Internal Linking</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>WordPress MCP</td><td>7 days free</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-        <tr><td>Shopify App</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>AI Image Generator</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Content Score</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-      </table>
-      </div>
-
-      <h3>Pricing Analysis</h3>
-      <p>At $14&ndash;$230 per month, SEO Writing AI is positioned as a budget-to-mid-range AI writing tool. The Professional plan ($59/month, 250 articles) offers the best value and is the most popular. For comparison: Jasper starts at $49/month for a general AI writer without native SEO optimisation, Writesonic starts at $16/month with broader focus, and Surfer SEO starts at $89/month for optimisation only (no writing). SEO Writing AI undercuts most general AI writers while adding specialised SEO features — the Amazon affiliate article builder alone is a feature not available in most competing tools at any price point.</p>
-
-      <div class="callout info">
-        <strong>Research note:</strong> All pricing verified from the official pricing page on July 4, 2026. SaaS pricing can change — verify current rates before subscribing. The Professional plan at $59/month is labelled "Most Popular" on the pricing page.
-      </div>
-    </section>
-
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>SEO Writing AI is a cloud-hosted SaaS platform with a web-based dashboard. All content generation and management happens through the browser — there is no desktop app. A Shopify app and a WordPress plugin are available for integration.</p>
-
-      <h3>Technology Architecture</h3>
-      <p>The platform connects to multiple LLM providers (OpenAI, Anthropic, Meta, DeepSeek, Groq) via their APIs and uses proprietary AI technology for specific tasks including SERP analysis, content scoring, and the Amazon affiliate builder. Articles can be up to 5,000 words per generation. The WordPress MCP (Model Context Protocol) server enables direct publishing without additional plugins.</p>
-
-      <h3>Data Flow</h3>
-      <p>The core workflow follows a simple pipeline: user enters a keyword → AI fetches SERP competitor data → generates article with heading structure, keyword placement, and images → optional auto-publish to WordPress or Shopify. This keyword-to-published-article flow in a single session is a meaningful differentiator for content creators who value speed over manual optimisation.</p>
-
-      <h3>Supported AI Models</h3>
-      <p>Based on the platform's FAQ and documentation, SEO Writing AI works with models from OpenAI, Anthropic, Meta, DeepSeek, and Groq. The platform also has proprietary AI technology for specific tasks such as the humanizer and the Amazon product builder.</p>
-
-      <h3>Security &amp; Compliance</h3>
-      <p>A privacy policy is published at seowriting.ai/privacy-policy. Beyond standard web-application security (HTTPS, password-protected accounts), no specific certifications (SOC 2, GDPR compliance statements) were prominently featured in the reviewed documentation. The platform stores user-generated content and API keys for connected services.</p>
-
-      <h3>Visual Appeal &amp; Trust Signals</h3>
-      <p>The homepage presents a clean, modern design with prominent trust signals: WordPress Plugin Directory ratings (4.9), G2 ratings (4.6), and Capterra ratings (4.8) are displayed in the hero section alongside the "50,000+ businesses, bloggers, and agencies worldwide" claim. Six customer testimonials with photos are displayed. The design is functional and straightforward — it prioritises information density over visual flourish.</p>
-    </section>
-
-    <section id="performance">
-      <h2>Features &amp; Performance</h2>
-
-      <h3>Core Mechanic: How SEO Writing AI Works</h3>
-      <p>The platform follows a straightforward workflow: choose a tool (blog post, product roundup, review), enter a keyword or brief, configure settings (language, article size, tone, image generation), and generate. The AI produces a complete article that can be edited in the built-in editor, scored for SEO completeness, and published directly to WordPress — all from the same interface.</p>
-
-      <figure>
-        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the SEO Writing AI content generation flow">
-          <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
-          <rect x="20" y="80" width="140" height="60" rx="8" fill="#2563eb"/>
-          <text x="90" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Enter keyword</text>
-          <text x="90" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">+ configure settings</text>
-          <line x1="160" y1="110" x2="240" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="240,104 252,110 240,116" fill="#94a3b8"/>
-          <rect x="255" y="80" width="140" height="60" rx="8" fill="#0f172a"/>
-          <text x="325" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">AI generates article</text>
-          <text x="325" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(SERP-aware + optimised)</text>
-          <line x1="395" y1="110" x2="475" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="475,104 487,110 475,116" fill="#94a3b8"/>
-          <rect x="490" y="80" width="130" height="60" rx="8" fill="#166534"/>
-          <text x="555" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Edit + score</text>
-          <text x="555" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">+ auto-publish</text>
-        </svg>
-        <figcaption>Original illustration based on the SEO Writing AI content generation process — not an actual screenshot of the dashboard.</figcaption>
-      </figure>
-
-      <h3>Key Features</h3>
-
-      <h4>One-Click SEO Article Generation</h4>
-      <p>The core feature. Enter a keyword, and the AI generates a complete long-form article optimised for search rankings. The platform auto-analyses SERP competitors to inform content structure, keyword density, and heading hierarchy. Articles can be up to 5,000 words. This is the feature that most directly differentiates SEO Writing AI from general AI writers — the SEO optimisation is built into the generation step, not applied as a post-processing layer.</p>
-
-      <h4>Bulk Article Generation</h4>
-      <p>Supports generating up to 100 articles in a single batch from a keyword list. Articles can be auto-scheduled on WordPress with staggered publishing times. The vendor claims "1,000+ articles in hours" using this feature. For content marketers running multiple sites or agencies producing client content, this is potentially the platform's highest-value capability — if the batch quality holds up across all 100 outputs.</p>
-
-      <h4>WordPress MCP Integration</h4>
-      <p>The WordPress MCP server enables direct auto-publishing of generated articles. Articles can be published immediately or scheduled. The system auto-generates meta titles, meta descriptions, and image alt tags. The WordPress plugin holds a 4.9/5 rating from 117 reviews, suggesting reliable performance in the field — though plugin ratings should be interpreted cautiously as they often reflect a self-selected user base.</p>
-
-      <h4>NLP SEO Checker &amp; Content Score</h4>
-      <p>Built-in content scoring evaluates keyword placement and density, readability and content depth, and technical SEO elements (headings, meta tags, alt text). The system provides actionable recommendations to reach 100% optimisation. This gives writers a concrete target — "score of X out of 100" — rather than vague SEO guidance.</p>
-
-      <h4>Amazon Affiliate Article Builder</h4>
-      <p>A specialised tool for affiliate marketers. Users enter product URLs and ASINs, and the AI generates product descriptions, pros/cons lists, specifications, and reviews. This is a unique feature not commonly found in competing AI writing tools. For affiliate site operators who produce product roundups and reviews, this directly addresses a repetitive, high-volume content task.</p>
-
-      <h4>AI Text Humanizer</h4>
-      <p>Post-generation tool that removes AI-detection patterns ("robotic language") to make content sound more natural. Unlimited on all paid plans. This addresses a practical concern for publishers: AI-detection tools are increasingly used by content platforms and search engines. The actual effectiveness of the humanizer would require hands-on testing against multiple detection tools to evaluate.</p>
-
-      <h4>Brand Voice Customisation</h4>
-      <p>Users can train the AI on their writing style. The Starter plan includes 1 brand voice, Professional includes 5, and Pro Plus 2 includes 25. This enables agencies to maintain distinct brand voices across multiple clients from a single account.</p>
-
-      <h4>Multilingual Content</h4>
-      <p>Content generation in 48 languages with local SEO optimisation. The company claims 100+ content languages for the UI localisation system. Quality consistency across languages is an open question — multilingual AI content generation often produces weaker results in lower-resource languages compared to English.</p>
-
-      <h3>Areas Requiring Hands-On Validation</h3>
-      <p>Several important performance characteristics cannot be assessed from documentation alone. These include: article quality compared to manual writing on the same keyword, actual SERP ranking effectiveness of generated content, uniqueness and coherence of bulk-generated articles, WordPress MCP reliability across different hosting configurations, effectiveness of the AI humanizer against detection tools, brand voice fidelity beyond surface-level keyword substitution, AI image quality, multilingual accuracy across all 48 languages, customer support responsiveness for a 2-10 person company, and overall platform stability. These are noted as open questions from the research and would benefit from real product testing.</p>
-    </section>
-
-    <section id="ux">
-      <h2>User Experience</h2>
-      <h3>Setup Process</h3>
-      <p>The platform is accessed through a web dashboard at seowriting.ai. Users sign up with an email address, receive 3 free article credits (no credit card required), and can begin generating content immediately. The workflow is: select a content type, enter a keyword, adjust optional settings (language, tone, word count, image generation), and click generate. For WordPress users, connecting the site via the MCP server enables auto-publishing.</p>
-
-      <h3>Daily Usage</h3>
-      <p>Ongoing activity centers on keyword entry, content generation, reviewing and editing articles in the built-in editor, checking content scores, and publishing to connected WordPress sites. The bulk generation feature allows creating content calendars in single sessions rather than article-by-article workflows.</p>
-
-      <h3>Learning Curve</h3>
-      <p>Independent reviewers (AI Gear Base) note a "steep learning curve for beginners" as a limitation. The platform offers multiple content types (blog posts, product roundups, reviews), each with its own configuration options and settings. Users familiar with AI writing tools should find the interface approachable, but complete beginners may need time to understand the different tools, scoring system, and publishing workflow.</p>
-
-      <h3>Interface &amp; Usability</h3>
-      <p>We did not get hands-on access to the dashboard, so interface usability is assessed from documentation and third-party descriptions. The public website presents a straightforward feature-by-feature layout. The pricing page is clear and well-structured, which may carry into the product interface. Documents are managed in a list view described as Google-Docs-like, with create, edit, search, and delete operations.</p>
-    </section>
-
-    <section id="comparison">
-      <h2>How SEO Writing AI Compares to Other Options</h2>
-      <p>The AI SEO writing tool market includes several competing products with different specialisations. The following comparison is based on the Research Brief's market categorisation and general industry knowledge — it is not a competitive analysis against specific products.</p>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Tool</th><th>Starting Price</th><th>SEO Approach</th><th>WordPress Integration</th><th>Bulk Generation</th><th>Best For</th></tr>
-        <tr><td>SEO Writing AI</td><td>$14/mo</td><td>Native (core feature — SERP analysis + NLP scoring)</td><td>Native MCP auto-publish</td><td>✓ (100/batch)</td><td>Affiliate content, SEO blog posts, bulk content production</td></tr>
-        <tr><td>Jasper</td><td>$49/mo</td><td>Add-on (SEO mode)</td><td>Plugin</td><td>Limited</td><td>General content marketing, ad copy, social media</td></tr>
-        <tr><td>Writesonic</td><td>$16/mo</td><td>Built-in (broader focus)</td><td>Plugin</td><td>✓</td><td>SEO content + general marketing content</td></tr>
-        <tr><td>Surfer SEO</td><td>$89/mo</td><td>Optimisation only (no writing)</td><td>Plugin</td><td>—</td><td>SEO optimisation of externally written content</td></tr>
-        <tr><td>Frase</td><td>$15/mo</td><td>SERP research + briefs</td><td>Plugin</td><td>—</td><td>Content research and outline generation</td></tr>
-        <tr><td>Copy.ai</td><td>$49/mo</td><td>Basic SEO</td><td>Plugin</td><td>✓</td><td>Marketing copy, blog drafts, social content</td></tr>
-      </table>
-      </div>
-      <p><strong>SEO Writing AI's clear differentiator:</strong> purpose-built for SEO content from the ground up. Unlike Jasper or Copy.ai (general AI writers with SEO as an add-on feature), SEO Writing AI's core workflow is SEO-first: SERP analysis feeds directly into content structure, keyword placement is built into generation, and the content score provides a quantifiable optimisation target. The Amazon affiliate article builder is a unique feature not available in any competing tool at a comparable price point. <strong>Trade-off:</strong> narrower general writing capability, no mobile app, limited collaboration features, and a small company behind the product.</p>
-    </section>
-
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>Strengths</h3>
-          <ul>
-            <li>Purpose-built for SEO content — SERP analysis, keyword placement, and content scoring are native to the generation process, not post-processing add-ons.</li>
-            <li>Amazon affiliate article builder: unique feature for product roundups and reviews with live product data — not available in most competing tools.</li>
-            <li>Bulk generation of up to 100 articles per batch with WordPress auto-publishing — strong "set and forget" content pipeline.</li>
-            <li>Very affordable entry price: free tier (3 articles) and starter plan at $14/month undercut Jasper ($49/mo) and Surfer SEO ($89/mo) significantly.</li>
-            <li>Unlimited words on all paid plans — only articles are counted, not word count, which supports long-form content without penalty.</li>
-            <li>Multilingual support across 48 languages with local SEO optimisation.</li>
-            <li>AI text humanizer included unlimited on paid plans — addresses AI detection concerns.</li>
-            <li>Strong cross-platform ratings: WordPress 4.9, G2 4.6, Capterra 4.8.</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Limitations</h3>
-          <ul>
-            <li>Narrower general writing capability — not designed for ad copy, social media, email marketing, or creative writing.</li>
-            <li>Limited app ecosystem — no mobile app, no live collaboration features, fewer integrations than Jasper or Copy.ai.</li>
-            <li>Content quality and SEO effectiveness can only be verified through hands-on testing — AI-generated SEO content varies significantly in quality.</li>
-            <li>Bulk generation consistency is unverified — 100 batch-generated articles may exhibit template patterns detectable by search engines.</li>
-            <li>Small company (2-10 employees) with limited public information about the founding team — higher vendor risk than established competitors.</li>
-            <li>Only one brand voice on the Starter plan — agencies managing multiple clients need the Professional plan at $59/month minimum.</li>
-            <li>No self-hosting or on-premises option — cloud SaaS only.</li>
-            <li>AI detection remains a concern — independent testing by Originality.ai found SEO Writing AI content detectable (2025 review).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="history">
-      <h2>Company Background</h2>
-      <p>SEO Writing AI is developed by Cybereter FZ-LLC, a company registered in Ras Al Khaimah, United Arab Emirates. The team is small, estimated at 2-10 employees based on available information. The platform first appeared in the market around 2023-2024 and has since grown to claim 50,000+ users with active adoption across the WordPress ecosystem (4.9/5 plugin rating, 117 reviews).</p>
-
-      <h3>Positioning &amp; Market Presence</h3>
-      <p>SEO Writing AI positions itself as a specialised SEO content creation tool for "businesses, bloggers, and agencies worldwide," distinguishing itself from general AI writers by its SEO-first architecture. The platform maintains an active presence on X (Twitter), LinkedIn, and YouTube. A documentation site at docs.seowriting.ai provides user guides and API references.</p>
-      <p>Cross-platform ratings are consistently strong: WordPress Plugin Directory (4.9/5, 117 reviews), G2 (4.6/5, 79 reviews), and Capterra (4.8/5, 70 reviews). Independent editorial review site AI Gear Base rates the tool 7.4/10 (June 2026), citing strengths in SERP analysis, bulk content production, and WordPress integration, with weaknesses in learning curve, mobile functionality, and price at scale.</p>
-
-      <h3>Affiliate Program</h3>
-      <p>SEO Writing AI operates a FirstPromoter-based affiliate program offering up to 30% lifetime commission on recurring subscriptions. The program is accessible from the main site navigation ("Become an Affiliate" link in the footer). This is a highly competitive commission structure — 30% lifetime recurring is significantly above the 20-30% first-year-only standard in the AI SaaS affiliate space.</p>
-    </section>
-
-    <section id="recommend">
-      <h2>Who Should Use SEO Writing AI?</h2>
-      <h3>Best For</h3>
-      <ul>
-        <li><strong>Affiliate marketers</strong> who produce product roundups, reviews, and comparison content — the Amazon affiliate article builder directly addresses your core content type.</li>
-        <li><strong>SEO specialists and content marketers</strong> who need search-optimised content at scale and value built-in SERP analysis and content scoring over general writing flexibility.</li>
-        <li><strong>Bloggers</strong> who publish regularly and want a one-click content generation workflow with WordPress auto-publishing.</li>
-        <li><strong>Digital agencies</strong> managing multiple client content calendars — the Professional plan's 5 brand voices and bulk generation features support client work at scale.</li>
-        <li><strong>Small business owners</strong> with limited budgets who need affordable SEO content production without hiring writers or SEO specialists — the $14/month Starter plan offers strong value.</li>
-        <li><strong>Content creators on a tight budget</strong> who find Jasper ($49/mo+) or Surfer SEO ($89/mo+) too expensive and want an integrated writing-plus-optimisation solution under $20/month.</li>
-      </ul>
-      <h3>Skip If</h3>
-      <ul>
-        <li>You need a <strong>general-purpose AI writer</strong> for ad copy, social media, email marketing, landing pages, or creative writing — SEO Writing AI is narrowly focused on SEO content.</li>
-        <li>You require <strong>hands-off quality at human-writer depth</strong> — AI-generated SEO content varies significantly and typically requires human editing for nuance, accuracy, and authority.</li>
-        <li>You prefer a <strong>visual drag-and-drop editor</strong> or need advanced formatting control — the platform uses a text-based document editor.</li>
-        <li>You need <strong>deep native integrations</strong> beyond WordPress and Shopify — the platform has a narrower integration ecosystem than Jasper or Copy.ai.</li>
-        <li>You are <strong>risk-averse about vendor stability</strong> — a 2-10 person company in the UAE is a smaller, less established vendor than publicly traded competitors.</li>
-      </ul>
-    </section>
-
-    <section id="buy">
-      <h2>Where to Sign Up &amp; Pricing</h2>
-      <p>Sign-up happens directly through the SEO Writing AI website at <a href="https://seowriting.ai?fp_ref=jarmo12" target="_blank" rel="noopener noreferrer sponsored">seowriting.ai</a>. There is no third-party marketplace or retailer — the product is a direct-to-customer SaaS platform. The free plan provides 3 article generations with 25,000 total words, no credit card required, sufficient for testing the platform's output quality and workflow.</p>
-      <p>Paid plans start at $14/month (Starter, up to 50 articles) and scale to $230/month (Pro Plus 2, up to 1,000 articles). The Professional plan at $59/month (up to 250 articles) is the most popular tier. Annual billing reduces the effective monthly cost by approximately 25%.</p>
-      <p>All pricing was verified from the official pricing page captured on July 4, 2026. Pricing for SaaS platforms can change, so verify current rates before subscribing.</p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Assessment</h2>
-
-      <p>SEO Writing AI presents a focused, affordable solution for one specific job: producing SEO-optimised content from keywords. It does not try to be a general AI writing platform, and that narrow focus is its strongest asset. The Amazon affiliate article builder, bulk generation with WordPress auto-publish, and built-in SEO scoring create a workflow that directly serves affiliate marketers and content creators — our core audience.</p>
-
-      <p>The limitations are equally important: content quality varies with AI generation, the "SEO effectiveness" claim can only be verified through real ranking data, bulk generation consistency is unconfirmed, and the company behind the product is small. The platform is a tool for accelerating content production, not a replacement for editorial judgment or human oversight.</p>
-
-      <div class="score-row"><div class="score-label">Ease of Use</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
-      <div class="score-row"><div class="score-label">SEO Features</div><div class="score-track"><div class="score-fill" style="width:85%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Value for Money</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
-      <div class="score-row"><div class="score-label">Bulk Generation Capability</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Content Quality (Estimated)</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:50%"></div></div><div class="score-num">2.5/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for content quality, SEO ranking effectiveness, and reliability under load cannot be assigned without hands-on testing.</p>
-
-      <p>For affiliate marketers, SEO specialists, and content creators who need affordable, search-optimised content production with WordPress auto-publishing, SEO Writing AI is worth evaluating through its free tier (3 articles, no credit card). For teams that need a general-purpose AI writing platform with broad integrations, mobile access, or human-level content depth, alternative tools may be more suitable.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is SEO Writing AI Worth Exploring for You?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not a personalised recommendation.</p>
-        <fieldset>
-          <legend>Is your primary content need SEO-optimised blog posts and affiliate articles (rather than ad copy, social media, or email marketing)?</legend>
-          <label><input type="radio" name="q1" value="2"> Yes, SEO content is my main focus</label>
-          <label><input type="radio" name="q1" value="0"> No, I need a general-purpose writing tool</label>
-        </fieldset>
-        <fieldset>
-          <legend>Are you comfortable editing AI-generated content before publishing, rather than expecting publish-ready output?</legend>
-          <label><input type="radio" name="q2" value="2"> Yes, I expect to edit AI drafts</label>
-          <label><input type="radio" name="q2" value="0"> No, I want publish-ready content</label>
-        </fieldset>
-        <fieldset>
-          <legend>Do you need bulk content production (50+ articles per month) or run a WordPress site that would benefit from auto-publishing?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes, scale matters to me</label>
-          <label><input type="radio" name="q3" value="0"> No, I write article by article</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>What is SEO Writing AI?</summary>
-        <p>SEO Writing AI (SEOWriting.ai) is an AI-powered content platform that generates search-optimised articles, blog posts, and affiliate content in one click. It features built-in SERP competitor analysis, NLP keyword placement, content scoring, and WordPress auto-publishing — all designed specifically for SEO content creation rather than general-purpose AI writing.</p>
-      </details>
-      <details>
-        <summary>Is SEO Writing AI free?</summary>
-        <p>Yes, there is a free plan with 3 article generations and 25,000 words total, no credit card required. It is sufficient for testing the platform's output quality. Paid plans start at $14/month (Starter, up to 50 articles) with unlimited words on all paid tiers.</p>
-      </details>
-      <details>
-        <summary>How does SEO Writing AI differ from Jasper or ChatGPT?</summary>
-        <p>Jasper and ChatGPT are general-purpose AI writing tools. SEO Writing AI is purpose-built for SEO content — it analyses SERP competitors, places keywords during generation, scores content for SEO completeness, and auto-publishes to WordPress. It is narrower in scope but deeper in SEO-specific functionality. Jasper starts at $49/month versus SEO Writing AI's $14/month.</p>
-      </details>
-      <details>
-        <summary>Can SEO Writing AI generate Amazon affiliate content?</summary>
-        <p>Yes. The Amazon affiliate article builder lets users enter product URLs and ASINs to generate product descriptions, pros/cons lists, specifications, and reviews. This is a unique feature not commonly available in competing AI writing tools at this price point.</p>
-      </details>
-      <details>
-        <summary>Does SEO Writing AI work with WordPress?</summary>
-        <p>Yes. The WordPress MCP (Model Context Protocol) server enables direct auto-publishing of generated articles. Articles can be published immediately or scheduled with auto-generated meta titles, descriptions, and image alt tags. The WordPress plugin holds a 4.9/5 rating from 117 reviews.</p>
-      </details>
-      <details>
-        <summary>How many languages does SEO Writing AI support?</summary>
-        <p>The platform supports content generation in 48 languages with local SEO optimisation. The company also claims 100+ content languages for the UI localisation system. Quality may vary across languages — English content is typically the strongest.</p>
-      </details>
-      <details>
-        <summary>Can SEO Writing AI rewrite existing content?</summary>
-        <p>Yes. The Rewriter Tool (available on Starter plan and above) can rewrite existing content for freshness, alternative angles, or improved SEO. The Humanizer tool also post-processes AI-generated content to remove robotic language patterns.</p>
-      </details>
-      <details>
-        <summary>How does the bulk generation feature work?</summary>
-        <p>You enter a list of keywords and configure settings once. The platform then generates multiple unique articles simultaneously — up to 100 per batch. Articles can be published directly to WordPress with staggered scheduling. The vendor claims the ability to generate "1,000+ articles in hours."</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Try SEO Writing AI free — 3 articles, no credit card required</h3>
-      <p>SEO Writing AI generates search-optimised articles from a single keyword in one click. Create blog posts, affiliate content, and product roundups — all optimised for Google and AI search engines. Start with the free plan and upgrade when you need more.</p>
-      <p><a href="https://seowriting.ai?fp_ref=jarmo12" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try SEO Writing AI Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join SEO Writing AI through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Plan Feature Breakdown</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Feature</th><th>Free</th><th>Starter</th><th>Professional</th><th>Pro Plus 1</th><th>Pro Plus 2</th></tr>
+      <tr><td>SEO Content Creation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>AI Editor</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Bulk Generation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Rewriter Tool</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Humanizer Tool</td><td>✓</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>Super Pages</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Real-Time SERP</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>External Linking</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Internal Linking</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>WordPress MCP</td><td>7 days free</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>Shopify App</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>AI Image Generator</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Content Score</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    </table>
     </div>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://seowriting.ai?fp_ref=jarmo12" target="_blank" rel="noopener noreferrer sponsored">SEO Writing AI Official Site</a></li>
-        <li><a href="https://seowriting.ai/pricing" target="_blank" rel="noopener noreferrer">SEO Writing AI Pricing</a></li>
-        <li><a href="https://docs.seowriting.ai" target="_blank" rel="noopener noreferrer">SEO Writing AI Documentation</a></li>
-        <li><a href="https://wordpress.org/plugins/seowriting" target="_blank" rel="noopener noreferrer">WordPress Plugin Directory</a></li>
-        <li><a href="https://www.g2.com/products/seo-writing/reviews" target="_blank" rel="noopener noreferrer">G2 Reviews</a></li>
-        <li><a href="https://www.capterra.ae/software/1062809/seowriting-ai" target="_blank" rel="noopener noreferrer">Capterra Reviews</a></li>
-        <li><a href="https://aigearbase.com/tool/seowriting-ai" target="_blank" rel="noopener noreferrer">AI Gear Base Review</a></li>
-        <li><a href="https://originality.ai/blog/seowriting-ai-review" target="_blank" rel="noopener noreferrer">Originality.ai Review</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: Website snapshot of seowriting.ai captured July 4, 2026. Cross-referenced with live website. Third-party sources are cited to show what claims are publicly circulating. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
-    </section>
+    <h3>Pricing Analysis</h3>
+    <p>At $14&ndash;$230 per month, SEO Writing AI is positioned as a budget-to-mid-range AI writing tool. The Professional plan ($59/month, 250 articles) offers the best value and is the most popular. For comparison: Jasper starts at $49/month for a general AI writer without native SEO optimisation, Writesonic starts at $16/month with broader focus, and Surfer SEO starts at $89/month for optimisation only (no writing). SEO Writing AI undercuts most general AI writers while adding specialised SEO features — the Amazon affiliate article builder alone is a feature not available in most competing tools at any price point.</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <Callout type="info">
+      <strong>Research note:</strong> All pricing verified from the official pricing page on July 4, 2026. SaaS pricing can change — verify current rates before subscribing. The Professional plan at $59/month is labelled "Most Popular" on the pricing page.
+    </Callout>
+  </section>
 
-  </main>
-</div>
+  <section id="design">
+    <h2>Platform &amp; Build Quality</h2>
+    <p>SEO Writing AI is a cloud-hosted SaaS platform with a web-based dashboard. All content generation and management happens through the browser — there is no desktop app. A Shopify app and a WordPress plugin are available for integration.</p>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+    <h3>Technology Architecture</h3>
+    <p>The platform connects to multiple LLM providers (OpenAI, Anthropic, Meta, DeepSeek, Groq) via their APIs and uses proprietary AI technology for specific tasks including SERP analysis, content scoring, and the Amazon affiliate builder. Articles can be up to 5,000 words per generation. The WordPress MCP (Model Context Protocol) server enables direct publishing without additional plugins.</p>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>Data Flow</h3>
+    <p>The core workflow follows a simple pipeline: user enters a keyword → AI fetches SERP competitor data → generates article with heading structure, keyword placement, and images → optional auto-publish to WordPress or Shopify. This keyword-to-published-article flow in a single session is a meaningful differentiator for content creators who value speed over manual optimisation.</p>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <h3>Supported AI Models</h3>
+    <p>Based on the platform's FAQ and documentation, SEO Writing AI works with models from OpenAI, Anthropic, Meta, DeepSeek, and Groq. The platform also has proprietary AI technology for specific tasks such as the humanizer and the Amazon product builder.</p>
 
-  sections.forEach(s => observer.observe(s));
+    <h3>Security &amp; Compliance</h3>
+    <p>A privacy policy is published at seowriting.ai/privacy-policy. Beyond standard web-application security (HTTPS, password-protected accounts), no specific certifications (SOC 2, GDPR compliance statements) were prominently featured in the reviewed documentation. The platform stores user-generated content and API keys for connected services.</p>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+    <h3>Visual Appeal &amp; Trust Signals</h3>
+    <p>The homepage presents a clean, modern design with prominent trust signals: WordPress Plugin Directory ratings (4.9), G2 ratings (4.6), and Capterra ratings (4.8) are displayed in the hero section alongside the "50,000+ businesses, bloggers, and agencies worldwide" claim. Six customer testimonials with photos are displayed. The design is functional and straightforward — it prioritises information density over visual flourish.</p>
+  </section>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+  <section id="performance">
+    <h2>Features &amp; Performance</h2>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+    <h3>Core Mechanic: How SEO Writing AI Works</h3>
+    <p>The platform follows a straightforward workflow: choose a tool (blog post, product roundup, review), enter a keyword or brief, configure settings (language, article size, tone, image generation), and generate. The AI produces a complete article that can be edited in the built-in editor, scored for SEO completeness, and published directly to WordPress — all from the same interface.</p>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, SEO Writing AI may be a strong fit for your workflow. Its SEO-focused generation, bulk capabilities, and WordPress auto-publishing align with what you're looking for. Start with the free tier (3 articles, no credit card) to evaluate content quality before committing to a paid plan.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. SEO Writing AI could work if your primary need is SEO content production, but you may find the narrow focus limiting if you need broader writing capabilities. Try the free plan to see if the output quality meets your standards.";
-    } else {
-      message = "Based on your answers, SEO Writing AI's narrow SEO focus may not match what you're looking for. Consider a general-purpose AI writing tool like Jasper or Writesonic if you need broader content creation capabilities beyond SEO blog posts.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+    <figure>
+      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the SEO Writing AI content generation flow">
+        <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
+        <rect x="20" y="80" width="140" height="60" rx="8" fill="#2563eb"/>
+        <text x="90" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Enter keyword</text>
+        <text x="90" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">+ configure settings</text>
+        <line x1="160" y1="110" x2="240" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="240,104 252,110 240,116" fill="#94a3b8"/>
+        <rect x="255" y="80" width="140" height="60" rx="8" fill="#0f172a"/>
+        <text x="325" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">AI generates article</text>
+        <text x="325" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(SERP-aware + optimised)</text>
+        <line x1="395" y1="110" x2="475" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="475,104 487,110 475,116" fill="#94a3b8"/>
+        <rect x="490" y="80" width="130" height="60" rx="8" fill="#166534"/>
+        <text x="555" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Edit + score</text>
+        <text x="555" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">+ auto-publish</text>
+      </svg>
+      <figcaption>Original illustration based on the SEO Writing AI content generation process — not an actual screenshot of the dashboard.</figcaption>
+    </figure>
 
-</body>
-</html>
+    <h3>Key Features</h3>
+
+    <h4>One-Click SEO Article Generation</h4>
+    <p>The core feature. Enter a keyword, and the AI generates a complete long-form article optimised for search rankings. The platform auto-analyses SERP competitors to inform content structure, keyword density, and heading hierarchy. Articles can be up to 5,000 words. This is the feature that most directly differentiates SEO Writing AI from general AI writers — the SEO optimisation is built into the generation step, not applied as a post-processing layer.</p>
+
+    <h4>Bulk Article Generation</h4>
+    <p>Supports generating up to 100 articles in a single batch from a keyword list. Articles can be auto-scheduled on WordPress with staggered publishing times. The vendor claims "1,000+ articles in hours" using this feature. For content marketers running multiple sites or agencies producing client content, this is potentially the platform's highest-value capability — if the batch quality holds up across all 100 outputs.</p>
+
+    <h4>WordPress MCP Integration</h4>
+    <p>The WordPress MCP server enables direct auto-publishing of generated articles. Articles can be published immediately or scheduled. The system auto-generates meta titles, meta descriptions, and image alt tags. The WordPress plugin holds a 4.9/5 rating from 117 reviews, suggesting reliable performance in the field — though plugin ratings should be interpreted cautiously as they often reflect a self-selected user base.</p>
+
+    <h4>NLP SEO Checker &amp; Content Score</h4>
+    <p>Built-in content scoring evaluates keyword placement and density, readability and content depth, and technical SEO elements (headings, meta tags, alt text). The system provides actionable recommendations to reach 100% optimisation. This gives writers a concrete target — "score of X out of 100" — rather than vague SEO guidance.</p>
+
+    <h4>Amazon Affiliate Article Builder</h4>
+    <p>A specialised tool for affiliate marketers. Users enter product URLs and ASINs, and the AI generates product descriptions, pros/cons lists, specifications, and reviews. This is a unique feature not commonly found in competing AI writing tools. For affiliate site operators who produce product roundups and reviews, this directly addresses a repetitive, high-volume content task.</p>
+
+    <h4>AI Text Humanizer</h4>
+    <p>Post-generation tool that removes AI-detection patterns ("robotic language") to make content sound more natural. Unlimited on all paid plans. This addresses a practical concern for publishers: AI-detection tools are increasingly used by content platforms and search engines. The actual effectiveness of the humanizer would require hands-on testing against multiple detection tools to evaluate.</p>
+
+    <h4>Brand Voice Customisation</h4>
+    <p>Users can train the AI on their writing style. The Starter plan includes 1 brand voice, Professional includes 5, and Pro Plus 2 includes 25. This enables agencies to maintain distinct brand voices across multiple clients from a single account.</p>
+
+    <h4>Multilingual Content</h4>
+    <p>Content generation in 48 languages with local SEO optimisation. The company claims 100+ content languages for the UI localisation system. Quality consistency across languages is an open question — multilingual AI content generation often produces weaker results in lower-resource languages compared to English.</p>
+
+    <h3>Areas Requiring Hands-On Validation</h3>
+    <p>Several important performance characteristics cannot be assessed from documentation alone. These include: article quality compared to manual writing on the same keyword, actual SERP ranking effectiveness of generated content, uniqueness and coherence of bulk-generated articles, WordPress MCP reliability across different hosting configurations, effectiveness of the AI humanizer against detection tools, brand voice fidelity beyond surface-level keyword substitution, AI image quality, multilingual accuracy across all 48 languages, customer support responsiveness for a 2-10 person company, and overall platform stability. These are noted as open questions from the research and would benefit from real product testing.</p>
+  </section>
+
+  <section id="ux">
+    <h2>User Experience</h2>
+    <h3>Setup Process</h3>
+    <p>The platform is accessed through a web dashboard at seowriting.ai. Users sign up with an email address, receive 3 free article credits (no credit card required), and can begin generating content immediately. The workflow is: select a content type, enter a keyword, adjust optional settings (language, tone, word count, image generation), and click generate. For WordPress users, connecting the site via the MCP server enables auto-publishing.</p>
+
+    <h3>Daily Usage</h3>
+    <p>Ongoing activity centers on keyword entry, content generation, reviewing and editing articles in the built-in editor, checking content scores, and publishing to connected WordPress sites. The bulk generation feature allows creating content calendars in single sessions rather than article-by-article workflows.</p>
+
+    <h3>Learning Curve</h3>
+    <p>Independent reviewers (AI Gear Base) note a "steep learning curve for beginners" as a limitation. The platform offers multiple content types (blog posts, product roundups, reviews), each with its own configuration options and settings. Users familiar with AI writing tools should find the interface approachable, but complete beginners may need time to understand the different tools, scoring system, and publishing workflow.</p>
+
+    <h3>Interface &amp; Usability</h3>
+    <p>We did not get hands-on access to the dashboard, so interface usability is assessed from documentation and third-party descriptions. The public website presents a straightforward feature-by-feature layout. The pricing page is clear and well-structured, which may carry into the product interface. Documents are managed in a list view described as Google-Docs-like, with create, edit, search, and delete operations.</p>
+  </section>
+
+  <GoldMasterQuote />
+
+  <section id="comparison">
+    <h2>How SEO Writing AI Compares to Other Options</h2>
+    <p>The AI SEO writing tool market includes several competing products with different specialisations. The following comparison is based on the Research Brief's market categorisation and general industry knowledge — it is not a competitive analysis against specific products.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Tool</th><th>Starting Price</th><th>SEO Approach</th><th>WordPress Integration</th><th>Bulk Generation</th><th>Best For</th></tr>
+      <tr><td>SEO Writing AI</td><td>$14/mo</td><td>Native (core feature — SERP analysis + NLP scoring)</td><td>Native MCP auto-publish</td><td>✓ (100/batch)</td><td>Affiliate content, SEO blog posts, bulk content production</td></tr>
+      <tr><td>Jasper</td><td>$49/mo</td><td>Add-on (SEO mode)</td><td>Plugin</td><td>Limited</td><td>General content marketing, ad copy, social media</td></tr>
+      <tr><td>Writesonic</td><td>$16/mo</td><td>Built-in (broader focus)</td><td>Plugin</td><td>✓</td><td>SEO content + general marketing content</td></tr>
+      <tr><td>Surfer SEO</td><td>$89/mo</td><td>Optimisation only (no writing)</td><td>Plugin</td><td>—</td><td>SEO optimisation of externally written content</td></tr>
+      <tr><td>Frase</td><td>$15/mo</td><td>SERP research + briefs</td><td>Plugin</td><td>—</td><td>Content research and outline generation</td></tr>
+      <tr><td>Copy.ai</td><td>$49/mo</td><td>Basic SEO</td><td>Plugin</td><td>✓</td><td>Marketing copy, blog drafts, social content</td></tr>
+    </table>
+    </div>
+    <p><strong>SEO Writing AI's clear differentiator:</strong> purpose-built for SEO content from the ground up. Unlike Jasper or Copy.ai (general AI writers with SEO as an add-on feature), SEO Writing AI's core workflow is SEO-first: SERP analysis feeds directly into content structure, keyword placement is built into generation, and the content score provides a quantifiable optimisation target. The Amazon affiliate article builder is a unique feature not available in any competing tool at a comparable price point. <strong>Trade-off:</strong> narrower general writing capability, no mobile app, limited collaboration features, and a small company behind the product.</p>
+  </section>
+
+  <section id="proscons">
+    <h2>Pros &amp; Cons</h2>
+    <div class="two-col">
+      <div class="pc-card good">
+        <h3>Strengths</h3>
+        <ul>
+          <li>Purpose-built for SEO content — SERP analysis, keyword placement, and content scoring are native to the generation process, not post-processing add-ons.</li>
+          <li>Amazon affiliate article builder: unique feature for product roundups and reviews with live product data — not available in most competing tools.</li>
+          <li>Bulk generation of up to 100 articles per batch with WordPress auto-publishing — strong "set and forget" content pipeline.</li>
+          <li>Very affordable entry price: free tier (3 articles) and starter plan at $14/month undercut Jasper ($49/mo) and Surfer SEO ($89/mo) significantly.</li>
+          <li>Unlimited words on all paid plans — only articles are counted, not word count, which supports long-form content without penalty.</li>
+          <li>Multilingual support across 48 languages with local SEO optimisation.</li>
+          <li>AI text humanizer included unlimited on paid plans — addresses AI detection concerns.</li>
+          <li>Strong cross-platform ratings: WordPress 4.9, G2 4.6, Capterra 4.8.</li>
+        </ul>
+      </div>
+      <div class="pc-card bad">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Narrower general writing capability — not designed for ad copy, social media, email marketing, or creative writing.</li>
+          <li>Limited app ecosystem — no mobile app, no live collaboration features, fewer integrations than Jasper or Copy.ai.</li>
+          <li>Content quality and SEO effectiveness can only be verified through hands-on testing — AI-generated SEO content varies significantly in quality.</li>
+          <li>Bulk generation consistency is unverified — 100 batch-generated articles may exhibit template patterns detectable by search engines.</li>
+          <li>Small company (2-10 employees) with limited public information about the founding team — higher vendor risk than established competitors.</li>
+          <li>Only one brand voice on the Starter plan — agencies managing multiple clients need the Professional plan at $59/month minimum.</li>
+          <li>No self-hosting or on-premises option — cloud SaaS only.</li>
+          <li>AI detection remains a concern — independent testing by Originality.ai found SEO Writing AI content detectable (2025 review).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <h2>Company Background</h2>
+    <p>SEO Writing AI is developed by Cybereter FZ-LLC, a company registered in Ras Al Khaimah, United Arab Emirates. The team is small, estimated at 2-10 employees based on available information. The platform first appeared in the market around 2023-2024 and has since grown to claim 50,000+ users with active adoption across the WordPress ecosystem (4.9/5 plugin rating, 117 reviews).</p>
+
+    <h3>Positioning &amp; Market Presence</h3>
+    <p>SEO Writing AI positions itself as a specialised SEO content creation tool for "businesses, bloggers, and agencies worldwide," distinguishing itself from general AI writers by its SEO-first architecture. The platform maintains an active presence on X (Twitter), LinkedIn, and YouTube. A documentation site at docs.seowriting.ai provides user guides and API references.</p>
+    <p>Cross-platform ratings are consistently strong: WordPress Plugin Directory (4.9/5, 117 reviews), G2 (4.6/5, 79 reviews), and Capterra (4.8/5, 70 reviews). Independent editorial review site AI Gear Base rates the tool 7.4/10 (June 2026), citing strengths in SERP analysis, bulk content production, and WordPress integration, with weaknesses in learning curve, mobile functionality, and price at scale.</p>
+
+    <h3>Affiliate Program</h3>
+    <p>SEO Writing AI operates a FirstPromoter-based affiliate program offering up to 30% lifetime commission on recurring subscriptions. The program is accessible from the main site navigation ("Become an Affiliate" link in the footer). This is a highly competitive commission structure — 30% lifetime recurring is significantly above the 20-30% first-year-only standard in the AI SaaS affiliate space.</p>
+  </section>
+
+  <section id="recommend">
+    <h2>Who Should Use SEO Writing AI?</h2>
+    <h3>Best For</h3>
+    <ul>
+      <li><strong>Affiliate marketers</strong> who produce product roundups, reviews, and comparison content — the Amazon affiliate article builder directly addresses your core content type.</li>
+      <li><strong>SEO specialists and content marketers</strong> who need search-optimised content at scale and value built-in SERP analysis and content scoring over general writing flexibility.</li>
+      <li><strong>Bloggers</strong> who publish regularly and want a one-click content generation workflow with WordPress auto-publishing.</li>
+      <li><strong>Digital agencies</strong> managing multiple client content calendars — the Professional plan's 5 brand voices and bulk generation features support client work at scale.</li>
+      <li><strong>Small business owners</strong> with limited budgets who need affordable SEO content production without hiring writers or SEO specialists — the $14/month Starter plan offers strong value.</li>
+      <li><strong>Content creators on a tight budget</strong> who find Jasper ($49/mo+) or Surfer SEO ($89/mo+) too expensive and want an integrated writing-plus-optimisation solution under $20/month.</li>
+    </ul>
+    <h3>Skip If</h3>
+    <ul>
+      <li>You need a <strong>general-purpose AI writer</strong> for ad copy, social media, email marketing, landing pages, or creative writing — SEO Writing AI is narrowly focused on SEO content.</li>
+      <li>You require <strong>hands-off quality at human-writer depth</strong> — AI-generated SEO content varies significantly and typically requires human editing for nuance, accuracy, and authority.</li>
+      <li>You prefer a <strong>visual drag-and-drop editor</strong> or need advanced formatting control — the platform uses a text-based document editor.</li>
+      <li>You need <strong>deep native integrations</strong> beyond WordPress and Shopify — the platform has a narrower integration ecosystem than Jasper or Copy.ai.</li>
+      <li>You are <strong>risk-averse about vendor stability</strong> — a 2-10 person company in the UAE is a smaller, less established vendor than publicly traded competitors.</li>
+    </ul>
+  </section>
+
+  <section id="buy">
+    <h2>Where to Sign Up &amp; Pricing</h2>
+    <p>Sign-up happens directly through the SEO Writing AI website at <a href="https://seowriting.ai?fp_ref=jarmo12" target="_blank" rel="noopener noreferrer sponsored">seowriting.ai</a>. There is no third-party marketplace or retailer — the product is a direct-to-customer SaaS platform. The free plan provides 3 article generations with 25,000 total words, no credit card required, sufficient for testing the platform's output quality and workflow.</p>
+    <p>Paid plans start at $14/month (Starter, up to 50 articles) and scale to $230/month (Pro Plus 2, up to 1,000 articles). The Professional plan at $59/month (up to 250 articles) is the most popular tier. Annual billing reduces the effective monthly cost by approximately 25%.</p>
+    <p>All pricing was verified from the official pricing page captured on July 4, 2026. Pricing for SaaS platforms can change, so verify current rates before subscribing.</p>
+  </section>
+
+  <section id="verdict">
+    <h2>Final Assessment</h2>
+
+    <p>SEO Writing AI presents a focused, affordable solution for one specific job: producing SEO-optimised content from keywords. It does not try to be a general AI writing platform, and that narrow focus is its strongest asset. The Amazon affiliate article builder, bulk generation with WordPress auto-publish, and built-in SEO scoring create a workflow that directly serves affiliate marketers and content creators — our core audience.</p>
+
+    <p>The limitations are equally important: content quality varies with AI generation, the "SEO effectiveness" claim can only be verified through real ranking data, bulk generation consistency is unconfirmed, and the company behind the product is small. The platform is a tool for accelerating content production, not a replacement for editorial judgment or human oversight.</p>
+
+    <div class="score-row"><div class="score-label">Ease of Use</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
+    <div class="score-row"><div class="score-label">SEO Features</div><div class="score-track"><div class="score-fill" style="width:85%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Value for Money</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
+    <div class="score-row"><div class="score-label">Bulk Generation Capability</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Content Quality (Estimated)</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:50%"></div></div><div class="score-num">2.5/5</div></div>
+    <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for content quality, SEO ranking effectiveness, and reliability under load cannot be assigned without hands-on testing.</p>
+
+    <p>For affiliate marketers, SEO specialists, and content creators who need affordable, search-optimised content production with WordPress auto-publishing, SEO Writing AI is worth evaluating through its free tier (3 articles, no credit card). For teams that need a general-purpose AI writing platform with broad integrations, mobile access, or human-level content depth, alternative tools may be more suitable.</p>
+  </section>
+
+  <ProductCta title="Create SEO-optimised articles with SEO Writing AI" buttonText="Try SEO Writing AI" href="https://seowriting.ai?fp_ref=jarmo12" />
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="What is SEO Writing AI?" answer="SEO Writing AI (SEOWriting.ai) is an AI-powered content platform that generates search-optimised articles, blog posts, and affiliate content in one click. It features built-in SERP competitor analysis, NLP keyword placement, content scoring, and WordPress auto-publishing — all designed specifically for SEO content creation rather than general-purpose AI writing." />
+    <FaqItem question="Is SEO Writing AI free?" answer="Yes, there is a free plan with 3 article generations and 25,000 words total, no credit card required. It is sufficient for testing the platform's output quality. Paid plans start at $14/month (Starter, up to 50 articles) with unlimited words on all paid tiers." />
+    <FaqItem question="How does SEO Writing AI differ from Jasper or ChatGPT?" answer="Jasper and ChatGPT are general-purpose AI writing tools. SEO Writing AI is purpose-built for SEO content — it analyses SERP competitors, places keywords during generation, scores content for SEO completeness, and auto-publishes to WordPress. It is narrower in scope but deeper in SEO-specific functionality. Jasper starts at $49/month versus SEO Writing AI's $14/month." />
+    <FaqItem question="Can SEO Writing AI generate Amazon affiliate content?" answer="Yes. The Amazon affiliate article builder lets users enter product URLs and ASINs to generate product descriptions, pros/cons lists, specifications, and reviews. This is a unique feature not commonly available in competing AI writing tools at this price point." />
+    <FaqItem question="Does SEO Writing AI work with WordPress?" answer="Yes. The WordPress MCP (Model Context Protocol) server enables direct auto-publishing of generated articles. Articles can be published immediately or scheduled with auto-generated meta titles, descriptions, and image alt tags. The WordPress plugin holds a 4.9/5 rating from 117 reviews." />
+    <FaqItem question="How many languages does SEO Writing AI support?" answer="The platform supports content generation in 48 languages with local SEO optimisation. The company also claims 100+ content languages for the UI localisation system. Quality may vary across languages — English content is typically the strongest." />
+    <FaqItem question="Can SEO Writing AI rewrite existing content?" answer="Yes. The Rewriter Tool (available on Starter plan and above) can rewrite existing content for freshness, alternative angles, or improved SEO. The Humanizer tool also post-processes AI-generated content to remove robotic language patterns." />
+    <FaqItem question="How does the bulk generation feature work?" answer="You enter a list of keywords and configure settings once. The platform then generates multiple unique articles simultaneously — up to 100 per batch. Articles can be published directly to WordPress with staggered scheduling. The vendor claims the ability to generate '1,000+ articles in hours.'" />
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <GoldMasterQuote />
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+
+    <h3>Sources &amp; References</h3>
+    <PillList items={[
+      { label: "SEO Writing AI Official Site", url: "https://seowriting.ai?fp_ref=jarmo12", sponsored: true },
+      { label: "SEO Writing AI Pricing", url: "https://seowriting.ai/pricing" },
+      { label: "SEO Writing AI Documentation", url: "https://docs.seowriting.ai" },
+      { label: "WordPress Plugin Directory", url: "https://wordpress.org/plugins/seowriting" },
+      { label: "G2 Reviews", url: "https://www.g2.com/products/seo-writing/reviews" },
+      { label: "Capterra Reviews", url: "https://www.capterra.ae/software/1062809/seowriting-ai" },
+      { label: "AI Gear Base Review", url: "https://aigearbase.com/tool/seowriting-ai" },
+      { label: "Originality.ai Review", url: "https://originality.ai/blog/seowriting-ai-review" },
+    ]} />
+    <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: Website snapshot of seowriting.ai captured July 4, 2026. Cross-referenced with live website. Third-party sources are cited to show what claims are publicly circulating. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
+
+    <SiteFooter />
+  </section>
+
+</OlspLayout>

@@ -286,12 +286,13 @@ Produced via the Light Pipeline: Opportunity (`agents/opportunity-discovery-agen
 | **Content Pillar** | Affiliate Traffic & List Building |
 | **Gold Master Status** | ✓ Gold Master V1 |
 | **Published** | 2026-06-27 |
-| **Last Modified** | 2026-07-03 |
+| **Last Modified** | 2026-07-06 |
 | **Internal Links Out** | `/blog/build-email-list-affiliate-marketing-no-website/` |
 | **Internal Links In** | `/blog/lead-generation-software/`, `/blog/best-lead-generation-tools/` |
 | **Publication Status** | Live |
 | **Workflow Status** | Published |
 | **Editorial Priority** | Low |
+| **Migrated** | 2026-07-06 — old self-contained pattern → Gold Master components (3 old `.cta-card` blocks replaced with 3× GoldMasterQuote + 2× ProductCta) |
 
 ---
 
