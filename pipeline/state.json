@@ -1,0 +1,28 @@
+{
+  "run_id": "run-20260706-demo",
+  "seed": "how to start affiliate marketing",
+  "started_at": "2026-07-06",
+  "current_stage": "publish",
+  "pipeline_type": "light",
+  "error": null,
+  "output": {
+    "discovery": {"searched_phrase": "how to start affiliate marketing", "competitor_count": "10+", "gap": "informational beginner guide"},
+    "research": {"brief_slug": "how-to-start-affiliate-marketing", "opportunity_score": 75, "recommendation": "WRITE NOW"},
+    "builder": {"article_path": "src/pages/blog/how-to-start-affiliate-marketing.astro", "slug": "how-to-start-affiliate-marketing"},
+    "qa": {
+      "canonical": "present",
+      "prerender": "present",
+      "external_links": 5,
+      "sponsored_links": 3,
+      "build_check": "pass (43 pages)",
+      "registry_conflict": "none"
+    }
+  },
+  "stages": {
+    "discovery": { "status": "complete",  "artifact": "agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md", "handoff_generated": true },
+    "research":  { "status": "complete",  "artifact": "agents/opportunity-research-agent/briefs/how-to-start-affiliate-marketing.md", "handoff_generated": true },
+    "builder":   { "status": "complete",  "artifact": "src/pages/blog/how-to-start-affiliate-marketing.astro", "handoff_generated": true },
+    "qa":        { "status": "complete",  "artifact": null, "handoff_generated": true },
+    "publish":   { "status": "running",  "artifact": null, "handoff_generated": false }
+  }
+}

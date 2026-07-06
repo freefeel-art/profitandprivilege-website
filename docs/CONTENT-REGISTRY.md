@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-05 (added Is OLSP Academy an MLM investigation)  
-Total pages built: 31  
-Editorial article pages: 29  
+Last updated: 2026-07-06 (added How to Start Affiliate Marketing)  
+Total pages built: 32  
+Editorial article pages: 30  
 Infrastructure pages: 2
 
 ---
@@ -13,9 +13,9 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 30 |
+| Total published pages | 31 |
 | Reviews | 14 |
-| Blog articles | 13 |
+| Blog articles | 14 |
 | Roundups | 1 |
 | Investigations | 1 |
 | Infrastructure (home, author) | 2 |
@@ -30,7 +30,7 @@ Infrastructure pages: 2
 | 1. OLSP Ecosystem | 8 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide + MLM investigation |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
-| 4. Online Income for Beginners | 3 | Informational / commercial investigation |
+| 4. Online Income for Beginners | 4 | Informational / commercial investigation |
 | 5. AI Tools | 6 | Independent reviews of AI software platforms and SaaS tools |
 | Infrastructure | 2 | Navigation and author credibility |
 
@@ -501,6 +501,7 @@ Primary subject: Earning money online with no experience or qualifications. This
 - `make-money-online-for-beginners` — high-volume anchor article; honest method comparison + selection framework + 30-day plan
 - `no-experience-online-income` — broad hub (8 methods); most internally-linked page on the site
 - `part-time-jobs-near-me-no-experience` — Gold Master reference article; offline-inclusive practical guide
+- `how-to-start-affiliate-marketing` — beginner-focused affiliate marketing guide; addresses fear of wasting time
 
 ---
 
@@ -737,6 +738,28 @@ Produced via the Light Pipeline: Opportunity Queue candidate `lead-generation-fo
 | **Publication Status** | Live |
 | **Workflow Status** | Published |
 | **Editorial Priority** | Low |
+
+---
+
+### How to Start Affiliate Marketing
+
+| Field | Value |
+|---|---|
+| **Title** | How to Start Affiliate Marketing: A Realistic Step-by-Step Guide for 2026 |
+| **URL** | https://olsp.profitandprivilege.com/blog/how-to-start-affiliate-marketing/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | how to start affiliate marketing |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Blog spec compatible |
+| **Built** | 2026-07-06 |
+| **Last Modified** | 2026-07-06 |
+| **Internal Links Out** | `/reviews/olsp-academy/`, `/blog/make-money-online-for-beginners/`, `/blog/online-income-scams-to-avoid/` |
+| **Internal Links In** | None |
+| **Publication Status** | Staged (pipeline demo) |
+| **Workflow Status** | Published (committed) |
+| **Editorial Priority** | Medium |
+
+Produced via the Light Pipeline: Opportunity Discovery (seed `how to start affiliate marketing`) → ORA (Score 75, WRITE NOW) → Editorial Builder → Editorial QA → Publisher. Article addresses both the surface question and the underlying fear of wasting time. See `agents/opportunity-research-agent/briefs/how-to-start-affiliate-marketing.md` for the full brief.
 
 ---
 
