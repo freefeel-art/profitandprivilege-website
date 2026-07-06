@@ -2,7 +2,7 @@
 
 An Astro static site publishing independent, research-based reviews and informational content in the affiliate marketing / online income niche. Primary monetization is the OLSP Academy affiliate program via the OLSP Megalink funnel.
 
-Every article page is a fully self-contained `.astro` file (`prerender = true`, no shared layouts) built to the **Gold Master V1** standard. See `PROJECT-STATUS.md` for current site status and `docs/CONTENT-REGISTRY.md` for the full published content inventory.
+Review articles use the **OLSP Standard V1** shared component system (`src/components/olsp-standard/`): OlspLayout provides the document shell, CSS tokens, SEO metadata (OG tags, Twitter Cards, JSON-LD), TOC, and JS. Blog and roundup articles remain fully self-contained `.astro` files. See `PROJECT-STATUS.md` for current site status and `docs/CONTENT-REGISTRY.md` for the full published content inventory.
 
 ## Key Documentation
 

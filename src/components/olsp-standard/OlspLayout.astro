@@ -11,9 +11,52 @@ interface Props {
   description: string;
   canonical: string;
   tocLinks: TocLink[];
+  ogImage?: string;
+  datePublished?: string;
+  dateModified?: string;
+  articleType?: "Article" | "Review" | "BlogPosting";
+  productName?: string;
 }
 
-const { title, description, canonical, tocLinks } = Astro.props;
+const { title, description, canonical, tocLinks, ogImage, datePublished, dateModified, articleType, productName } = Astro.props;
+
+const siteUrl = "https://olsp.profitandprivilege.com";
+const defaultAuthor = { name: "Jarmo Halonen", url: `${siteUrl}/authors/jarmo-halonen` };
+const defaultPublisher = { name: "Profit and Privilege", url: siteUrl };
+const resolvedDateModified = dateModified || datePublished;
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [] as Record<string, unknown>[],
+};
+
+if (articleType === "Review" && productName) {
+  const review: Record<string, unknown> = {
+    "@type": "Review",
+    itemReviewed: { "@type": "Product", name: productName },
+    author: { "@type": "Person", ...defaultAuthor },
+    url: canonical,
+    publisher: { "@type": "Organization", ...defaultPublisher },
+  };
+  if (datePublished) review.datePublished = datePublished;
+  if (resolvedDateModified) review.dateModified = resolvedDateModified;
+  schemaOrg["@graph"].push(review);
+} else {
+  const article: Record<string, unknown> = {
+    "@type": articleType === "BlogPosting" ? "BlogPosting" : "Article",
+    headline: title,
+    description,
+    url: canonical,
+    author: { "@type": "Person", ...defaultAuthor },
+    publisher: { "@type": "Organization", ...defaultPublisher },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+  };
+  if (datePublished) article.datePublished = datePublished;
+  if (resolvedDateModified) article.dateModified = resolvedDateModified;
+  schemaOrg["@graph"].push(article);
+}
+
+schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
 ---
 
 <!DOCTYPE html>
@@ -24,6 +67,20 @@ const { title, description, canonical, tocLinks } = Astro.props;
 <title>{title}</title>
 <meta name="description" content={description}>
 <link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Profit and Privilege" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta name="twitter:image" content={ogImage} />}
+<script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
 <style is:global>
   :root{
     --ink:#1e293b;
