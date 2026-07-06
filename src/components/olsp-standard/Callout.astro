@@ -1,0 +1,10 @@
+---
+interface Props {
+  type: "warn" | "info";
+}
+
+const { type } = Astro.props;
+---
+<div class={`callout ${type}`}>
+  <slot />
+</div>

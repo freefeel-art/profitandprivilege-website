@@ -17,6 +17,16 @@ Before making changes, read the relevant standard:
 | Running the Opportunity Research Agent | `agents/opportunity-research-agent/` |
 | General working rules for AI agents on this repo | `AGENTS.md` |
 
+## AI Onboarding
+
+All AI assistants working in this repository must begin by reading:
+
+/ai/01-CHATGPT-ARCHITECT.md
+
+The remaining onboarding files are read in the order defined by:
+
+/ai/03-READING-ORDER.md
+
 ## Project Structure
 
 ```text

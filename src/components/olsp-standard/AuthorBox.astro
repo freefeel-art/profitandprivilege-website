@@ -1,0 +1,26 @@
+---
+interface Props {
+  authorName?: string;
+  authorRole?: string;
+  bioText?: string;
+  imagePath?: string;
+  profileUrl?: string;
+}
+
+const {
+  authorName = "Jarmo Halonen",
+  authorRole = "Founder, ProfitAndPrivilege.com",
+  bioText = "Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.",
+  imagePath = "/assets/authors/jarmo-halonen-author.png",
+  profileUrl = "/authors/jarmo-halonen/",
+} = Astro.props;
+---
+<div class="author-box">
+  <img src={imagePath} alt={authorName} width="72" height="72">
+  <div class="author-box-info">
+    <h4><a href={profileUrl}>{authorName}</a></h4>
+    <span class="author-role">{authorRole}</span>
+    <p>{bioText}</p>
+    <p><a href={profileUrl}>View full author profile →</a></p>
+  </div>
+</div>

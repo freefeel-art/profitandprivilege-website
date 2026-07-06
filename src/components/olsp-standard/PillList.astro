@@ -1,0 +1,18 @@
+---
+interface PillItem {
+  label: string;
+  url: string;
+  sponsored?: boolean;
+}
+
+interface Props {
+  items: PillItem[];
+}
+
+const { items } = Astro.props;
+---
+<ul class="pill-list">
+  {items.map(item => (
+    <li><a href={item.url} target="_blank" rel={item.sponsored ? "noopener noreferrer sponsored" : "noopener noreferrer"}>{item.label}</a></li>
+  ))}
+</ul>
