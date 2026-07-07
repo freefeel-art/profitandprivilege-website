@@ -1,775 +1,383 @@
 ---
 export const prerender = true;
 
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
 const pageTitle = "OLSP Community Builders Review: Is Wayne Crowe's $197/Month Upgrade Worth It?";
 const pageDescription =
   "An independent, research-based review of OLSP Community Builders: what the mid-tier membership includes, how 200% commissions and Mega Builder tools work, and who it's actually for.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Performance Analysis" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. History & Updates" },
+  { href: "#recommend", label: "9. Who Should Join" },
+  { href: "#buy", label: "10. Where to Sign Up" },
+  { href: "#verdict", label: "11. Final Verdict" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OLSP Community Builders Review: Is Wayne Crowe's $197/Month Upgrade Worth It?</title>
-<meta name="description" content="An independent, research-based review of OLSP Community Builders: what the mid-tier membership includes, how 200% commissions and Mega Builder tools work, and who it's actually for.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/olsp-community-builders/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/olsp-community-builders/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <HeroTag text="Affiliate Marketing Upgrade · Updated June 2026" />
+    <h1>OLSP Community Builders: An Independent, Research-Based Review</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>OLSP Community Builders</strong> is the mid-tier paid membership inside Wayne Crowe's OLSP (One Lead System Pixel) affiliate marketing ecosystem — positioned above the free tier and the $7 Megalink level, and below the Team Builders and VIP tiers. According to publicly available marketing materials and third-party commentary, it bundles a white-label marketing software suite called Mega Builder, advanced Facebook training using the TOFFEE method, private community-building tools, and enhanced commission structures including 200% front-end commissions on Megalink sales and second-tier earnings from your referrals' promotional activity. Our short take: Community Builders offers genuine added value for active OLSP affiliates who are already seeing some results and want more leverage from the same ecosystem — but the recurring monthly cost, Facebook-heavy training approach, and entirely self-reported income examples mean it is not the right upgrade for everyone.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+    <VerdictBox>
+      <p><strong>Best for:</strong> existing OLSP members who are actively promoting, can commit daily time to Facebook content and live coaching calls, and want to earn from both their own sales and a recruited team's activity.</p>
+      <p><strong>Not ideal for:</strong> complete beginners who haven't validated the Megalink level yet, people who prefer SEO or non-social traffic channels, or anyone unlikely to maintain 30+ minutes of daily promotional activity.</p>
+    </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+    <h3>What Is It and Who Is It For?</h3>
+    <p>OLSP Community Builders is one of several membership tiers inside the OLSP System, created by British affiliate marketer Wayne Crowe. The OLSP ecosystem operates as a structured affiliate training-and-commission platform: members earn by promoting OLSP links, with higher tiers unlocking better tools, more commission rates, and expanded earning opportunities. Community Builders sits at roughly the third step on that ladder, designed for members who have already tested the $7 Megalink entry level and want to add team-building mechanics and more capable marketing software to their promotional workflow. Vendor and affiliate materials describe it as the step where members move from being solo affiliates to leading their own mini-community inside the OLSP platform.</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+    <h3>Author Background &amp; Review Methodology</h3>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> This review was prepared by Profit and Privilege's editorial research team, which evaluates online business, marketing, and digital-education products with particular attention to income claims, multi-tier commission structures, and consumer-protection considerations around online income opportunities.</p>
+      <p><strong>How this review was built:</strong> We did not purchase, join, or personally test OLSP Community Builders. This article is based entirely on independent desk research: the program's own public marketing pages, third-party review sites, YouTube reviews (including those with financial interests in the product), Reddit threads, and independent blog analysis. Where a claim could not be independently verified — including all income figures — we say so explicitly rather than presenting it as fact. Pricing figures are drawn from publicly available sources and should be confirmed directly with OLSP before any purchase decision.</p>
+    </Methodology>
+  </section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+  <section id="overview">
+    <h2>OLSP Community Builders Overview &amp; Pricing</h2>
+    <p>The OLSP System runs several membership tiers. Community Builders occupies the mid-range: above the free account and the $7 Megalink one-time purchase, above the Live Profit Builders monthly subscription, and below the Team Builders and VIP tiers. Vendor and affiliate materials frame this level as the point where members transition from solo affiliates into team-builders — earning not just from their own promotions but from the activity of affiliates they refer into the system.</p>
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+    <h3>What's Included (Vendor and Affiliate Claims)</h3>
+    <ul>
+      <li><strong>Mega Builder marketing suite:</strong> white-label GoHighLevel account with funnel and page builder (TD Pages), CRM and pipeline tracking, email autoresponder with pre-loaded OLSP sequences, calendar booking, and deep OLSP tracking integration.</li>
+      <li><strong>Enhanced commission rates:</strong> 200% front-end commissions on own Megalink sales and second-tier earnings from referred members' activity.</li>
+      <li><strong>Private community-building tools:</strong> ability to create invite-only OLSP communities with unique links that sign referred members directly under you.</li>
+      <li><strong>Public hub sites via TD Pages:</strong> branded resource hubs that act as a link-in-bio page for your offers and content.</li>
+      <li><strong>TOFFEE method training:</strong> multi-hour Facebook audience building, posting frameworks, DM handling, and Zoom sales course.</li>
+      <li><strong>Weekly live guru huddles:</strong> reportedly five sessions per week from different topic-specialist trainers.</li>
+      <li><strong>Group coaching by topic:</strong> dedicated sessions covering solo ads, YouTube ads, email marketing, and other traffic channels.</li>
+      <li><strong>Traffic rotator access:</strong> shared pool of solo-ad traffic purchased by OLSP leadership and distributed across participating members.</li>
+      <li><strong>Viral Hub credits:</strong> approximately 1,000 credits per month for incentivized engagement campaigns within the OLSP community.</li>
+      <li><strong>Expanded affiliate product library:</strong> access to more OLSP tools, solo ads, and automation products to promote, with reported commissions of 40–60% on mid-range products.</li>
+    </ul>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
+    <Callout type="warn">
+      <strong>Claims caution:</strong> The feature list above reflects vendor and affiliate descriptions, not independently verified inclusions. We could not test the software, confirm the live session schedule, or audit the traffic rotator. Verify current inclusions directly with OLSP before purchasing.
+    </Callout>
 
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" \2192";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Performance Analysis</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. History &amp; Updates</a>
-      <a href="#recommend">9. Who Should Join</a>
-      <a href="#buy">10. Where to Sign Up</a>
-      <a href="#verdict">11. Final Verdict</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Affiliate Marketing Upgrade · Updated June 2026</span>
-      <h1>OLSP Community Builders: An Independent, Research-Based Review</h1>
-
-      <p><strong>OLSP Community Builders</strong> is the mid-tier paid membership inside Wayne Crowe's OLSP (One Lead System Pixel) affiliate marketing ecosystem — positioned above the free tier and the $7 Megalink level, and below the Team Builders and VIP tiers. According to publicly available marketing materials and third-party commentary, it bundles a white-label marketing software suite called Mega Builder, advanced Facebook training using the TOFFEE method, private community-building tools, and enhanced commission structures including 200% front-end commissions on Megalink sales and second-tier earnings from your referrals' promotional activity. Our short take: Community Builders offers genuine added value for active OLSP affiliates who are already seeing some results and want more leverage from the same ecosystem — but the recurring monthly cost, Facebook-heavy training approach, and entirely self-reported income examples mean it is not the right upgrade for everyone.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> existing OLSP members who are actively promoting, can commit daily time to Facebook content and live coaching calls, and want to earn from both their own sales and a recruited team's activity.</p>
-        <p><strong>Not ideal for:</strong> complete beginners who haven't validated the Megalink level yet, people who prefer SEO or non-social traffic channels, or anyone unlikely to maintain 30+ minutes of daily promotional activity.</p>
-      </div>
-
-      <h3>What Is It and Who Is It For?</h3>
-      <p>OLSP Community Builders is one of several membership tiers inside the OLSP System, created by British affiliate marketer Wayne Crowe. The OLSP ecosystem operates as a structured affiliate training-and-commission platform: members earn by promoting OLSP links, with higher tiers unlocking better tools, more commission rates, and expanded earning opportunities. Community Builders sits at roughly the third step on that ladder, designed for members who have already tested the $7 Megalink entry level and want to add team-building mechanics and more capable marketing software to their promotional workflow. Vendor and affiliate materials describe it as the step where members move from being solo affiliates to leading their own mini-community inside the OLSP platform.</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by Profit and Privilege's editorial research team, which evaluates online business, marketing, and digital-education products with particular attention to income claims, multi-tier commission structures, and consumer-protection considerations around online income opportunities.</p>
-        <p><strong>How this review was built:</strong> We did not purchase, join, or personally test OLSP Community Builders. This article is based entirely on independent desk research: the program's own public marketing pages, third-party review sites, YouTube reviews (including those with financial interests in the product), Reddit threads, and independent blog analysis. Where a claim could not be independently verified — including all income figures — we say so explicitly rather than presenting it as fact. Pricing figures are drawn from publicly available sources and should be confirmed directly with OLSP before any purchase decision.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Reported Pricing</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Tier</th><th>Reported Cost</th><th>What It Reportedly Adds</th></tr>
+      <tr><td>Free account</td><td>$0</td><td>Basic dashboard, limited training, and system access</td></tr>
+      <tr><td>Megalink</td><td>$7 one-time</td><td>Trackable referral link, ~40 minutes of base training modules, 100% front-end commission on own Megalink sales</td></tr>
+      <tr><td>Live Profit Builders</td><td>~$49/month or $497/year</td><td>$1 per verified attendee at live events, high-ticket commissions, account-level attribution on future purchases</td></tr>
+      <tr><td><strong>Community Builders</strong></td><td><strong>~$197–$199/month or ~$1,997/year</strong></td><td><strong>Mega Builder suite, TOFFEE training, 200% commissions, second-tier earnings, community-building tools, traffic rotator, Viral Hub credits</strong></td></tr>
+      <tr><td>Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>All Community Builders benefits plus higher commission tiers, more products, deeper second-tier and VIP benefits</td></tr>
+    </table>
     </div>
 
-    <section id="overview">
-      <h2>OLSP Community Builders Overview &amp; Pricing</h2>
-      <p>The OLSP System runs several membership tiers. Community Builders occupies the mid-range: above the free account and the $7 Megalink one-time purchase, above the Live Profit Builders monthly subscription, and below the Team Builders and VIP tiers. Vendor and affiliate materials frame this level as the point where members transition from solo affiliates into team-builders — earning not just from their own promotions but from the activity of affiliates they refer into the system.</p>
+    <Callout type="warn">
+      <strong>Pricing caution:</strong> Reported prices range from $197 to $199/month depending on the source and the point in time it was published. The $1,997/year figure was cited in one promoter video as saving approximately $391 versus monthly billing. OLSP has adjusted its offers during relaunch campaigns; always confirm the current price on OLSP's live checkout page before purchasing.
+    </Callout>
+  </section>
 
-      <h3>What's Included (Vendor and Affiliate Claims)</h3>
-      <ul>
-        <li><strong>Mega Builder marketing suite:</strong> white-label GoHighLevel account with funnel and page builder (TD Pages), CRM and pipeline tracking, email autoresponder with pre-loaded OLSP sequences, calendar booking, and deep OLSP tracking integration.</li>
-        <li><strong>Enhanced commission rates:</strong> 200% front-end commissions on own Megalink sales and second-tier earnings from referred members' activity.</li>
-        <li><strong>Private community-building tools:</strong> ability to create invite-only OLSP communities with unique links that sign referred members directly under you.</li>
-        <li><strong>Public hub sites via TD Pages:</strong> branded resource hubs that act as a link-in-bio page for your offers and content.</li>
-        <li><strong>TOFFEE method training:</strong> multi-hour Facebook audience building, posting frameworks, DM handling, and Zoom sales course.</li>
-        <li><strong>Weekly live guru huddles:</strong> reportedly five sessions per week from different topic-specialist trainers.</li>
-        <li><strong>Group coaching by topic:</strong> dedicated sessions covering solo ads, YouTube ads, email marketing, and other traffic channels.</li>
-        <li><strong>Traffic rotator access:</strong> shared pool of solo-ad traffic purchased by OLSP leadership and distributed across participating members.</li>
-        <li><strong>Viral Hub credits:</strong> approximately 1,000 credits per month for incentivized engagement campaigns within the OLSP community.</li>
-        <li><strong>Expanded affiliate product library:</strong> access to more OLSP tools, solo ads, and automation products to promote, with reported commissions of 40–60% on mid-range products.</li>
-      </ul>
+  <section id="design">
+    <h2>Platform &amp; Build Quality</h2>
+    <p>We did not access the OLSP member dashboard firsthand, so we cannot describe the interface directly. The following is based on third-party walkthroughs and vendor descriptions.</p>
 
-      <div class="callout warn">
-        <strong>Claims caution:</strong> The feature list above reflects vendor and affiliate descriptions, not independently verified inclusions. We could not test the software, confirm the live session schedule, or audit the traffic rotator. Verify current inclusions directly with OLSP before purchasing.
-      </div>
+    <h3>Mega Builder — The Core Software</h3>
+    <p>The most significant technology included at the Community Builders tier is Mega Builder: a white-label version of GoHighLevel, an established SaaS marketing platform used independently by marketing agencies worldwide. GoHighLevel's core capabilities are verifiable outside of OLSP, which is a meaningful trust signal compared to proprietary tools with no independent reference point.</p>
+    <p>Within the OLSP context, Mega Builder reportedly includes TD Pages for building funnels and landing pages, a CRM with pipeline tracking for managing leads, an email autoresponder pre-loaded with sequences for OLSP products, calendar and booking automation, and deep integration with OLSP's affiliate tracking and commission system. Vendor materials claim this suite replaces $100–$300 per month of separate subscriptions to tools like standalone CRMs and email platforms. That is a <strong>vendor claim</strong> and depends on which external tools you would otherwise be paying for.</p>
 
-      <h3>Reported Pricing</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Tier</th><th>Reported Cost</th><th>What It Reportedly Adds</th></tr>
-        <tr><td>Free account</td><td>$0</td><td>Basic dashboard, limited training, and system access</td></tr>
-        <tr><td>Megalink</td><td>$7 one-time</td><td>Trackable referral link, ~40 minutes of base training modules, 100% front-end commission on own Megalink sales</td></tr>
-        <tr><td>Live Profit Builders</td><td>~$49/month or $497/year</td><td>$1 per verified attendee at live events, high-ticket commissions, account-level attribution on future purchases</td></tr>
-        <tr><td><strong>Community Builders</strong></td><td><strong>~$197–$199/month or ~$1,997/year</strong></td><td><strong>Mega Builder suite, TOFFEE training, 200% commissions, second-tier earnings, community-building tools, traffic rotator, Viral Hub credits</strong></td></tr>
-        <tr><td>Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>All Community Builders benefits plus higher commission tiers, more products, deeper second-tier and VIP benefits</td></tr>
-      </table>
-      </div>
+    <h3>Community and Hub Sites</h3>
+    <p>Community Builders unlocks the ability to create private OLSP communities with unique invite links — curated spaces for your recruited team and prospects within the OLSP platform. Members can also build public hub pages via TD Pages that act as a centralized resource hub for offers and content. Both tools are designed to keep your leads inside the OLSP ecosystem and give you a layer of audience and relationship ownership on top of OLSP's central system.</p>
 
-      <div class="callout warn">
-        <strong>Pricing caution:</strong> Reported prices range from $197 to $199/month depending on the source and the point in time it was published. The $1,997/year figure was cited in one promoter video as saving approximately $391 versus monthly billing. OLSP has adjusted its offers during relaunch campaigns; always confirm the current price on OLSP's live checkout page before purchasing.
-      </div>
-    </section>
+    <h3>Long-Term Platform Considerations</h3>
+    <p>OLSP Community Builders is entirely dependent on the OLSP ecosystem remaining active and maintaining its commission structure, training calendar, and software suite. Multiple independent reviewers note this as a structural risk: if OLSP changes its compensation plan, retires a product tier, or shuts down, members lose the infrastructure they've built their promotional workflows around. This dependency is a risk shared by most single-vendor "earn inside our ecosystem" platforms and should be weighed against the recurring cost.</p>
+  </section>
 
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>We did not access the OLSP member dashboard firsthand, so we cannot describe the interface directly. The following is based on third-party walkthroughs and vendor descriptions.</p>
+  <section id="performance">
+    <h2>Performance Analysis</h2>
 
-      <h3>Mega Builder — The Core Software</h3>
-      <p>The most significant technology included at the Community Builders tier is Mega Builder: a white-label version of GoHighLevel, an established SaaS marketing platform used independently by marketing agencies worldwide. GoHighLevel's core capabilities are verifiable outside of OLSP, which is a meaningful trust signal compared to proprietary tools with no independent reference point.</p>
-      <p>Within the OLSP context, Mega Builder reportedly includes TD Pages for building funnels and landing pages, a CRM with pipeline tracking for managing leads, an email autoresponder pre-loaded with sequences for OLSP products, calendar and booking automation, and deep integration with OLSP's affiliate tracking and commission system. Vendor materials claim this suite replaces $100–$300 per month of separate subscriptions to tools like standalone CRMs and email platforms. That is a <strong>vendor claim</strong> and depends on which external tools you would otherwise be paying for.</p>
+    <h3>How the Commission Structure Works</h3>
+    <p>Community Builders modifies the baseline OLSP affiliate earnings in two principal ways, according to vendor and affiliate sources. The diagram below illustrates both commission streams.</p>
 
-      <h3>Community and Hub Sites</h3>
-      <p>Community Builders unlocks the ability to create private OLSP communities with unique invite links — curated spaces for your recruited team and prospects within the OLSP platform. Members can also build public hub pages via TD Pages that act as a centralized resource hub for offers and content. Both tools are designed to keep your leads inside the OLSP ecosystem and give you a layer of audience and relationship ownership on top of OLSP's central system.</p>
+    <figure>
+      <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the two Community Builders commission streams: own sales at 200% and second-tier earnings from team members">
+        <rect x="0" y="0" width="640" height="290" fill="#f8fafc"/>
+        <!-- Stream 1 label -->
+        <text x="20" y="24" fill="#475569" font-size="10" font-family="Arial" font-weight="700" letter-spacing=".06em">STREAM 1 — YOUR OWN SALES</text>
+        <!-- Stream 1 boxes -->
+        <rect x="20" y="34" width="130" height="60" rx="8" fill="#2563eb"/>
+        <text x="85" y="59" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">CB Member</text>
+        <text x="85" y="75" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">shares link</text>
+        <line x1="150" y1="64" x2="240" y2="64" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="240,58 252,64 240,70" fill="#94a3b8"/>
+        <rect x="255" y="34" width="130" height="60" rx="8" fill="#0f172a"/>
+        <text x="320" y="59" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Lead enters</text>
+        <text x="320" y="75" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">OLSP funnel</text>
+        <line x1="385" y1="64" x2="475" y2="64" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="475,58 487,64 475,70" fill="#94a3b8"/>
+        <rect x="490" y="34" width="130" height="60" rx="8" fill="#166534"/>
+        <text x="555" y="56" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Upgrade sale</text>
+        <text x="555" y="72" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">→ $14 (200%)</text>
+        <text x="555" y="86" fill="#d1fae5" font-size="10" text-anchor="middle" font-family="Arial">vs. $7 at Megalink</text>
+        <!-- Divider -->
+        <line x1="20" y1="148" x2="620" y2="148" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
+        <!-- Stream 2 label -->
+        <text x="20" y="172" fill="#475569" font-size="10" font-family="Arial" font-weight="700" letter-spacing=".06em">STREAM 2 — YOUR TEAM'S SALES (2ND TIER)</text>
+        <!-- Stream 2 boxes -->
+        <rect x="20" y="182" width="130" height="60" rx="8" fill="#3b82f6"/>
+        <text x="85" y="207" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Your recruit</text>
+        <text x="85" y="223" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">promotes link</text>
+        <line x1="150" y1="212" x2="240" y2="212" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="240,206 252,212 240,218" fill="#94a3b8"/>
+        <rect x="255" y="182" width="130" height="60" rx="8" fill="#334155"/>
+        <text x="320" y="207" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Their lead</text>
+        <text x="320" y="223" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">upgrades</text>
+        <line x1="385" y1="212" x2="475" y2="212" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="475,206 487,212 475,218" fill="#94a3b8"/>
+        <rect x="490" y="182" width="130" height="60" rx="8" fill="#15803d"/>
+        <text x="555" y="204" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">2nd-tier</text>
+        <text x="555" y="220" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">commission</text>
+        <text x="555" y="234" fill="#d1fae5" font-size="11" text-anchor="middle" font-family="Arial">→ $14 to you</text>
+        <!-- Footer note -->
+        <text x="20" y="270" fill="#94a3b8" font-size="10" font-family="Arial" font-style="italic">Figures are vendor/affiliate claims — not audited financial disclosure.</text>
+      </svg>
+      <figcaption>Original illustration based on publicly described commission mechanics — not a screenshot of the OLSP dashboard.</figcaption>
+    </figure>
 
-      <h3>Long-Term Platform Considerations</h3>
-      <p>OLSP Community Builders is entirely dependent on the OLSP ecosystem remaining active and maintaining its commission structure, training calendar, and software suite. Multiple independent reviewers note this as a structural risk: if OLSP changes its compensation plan, retires a product tier, or shuts down, members lose the infrastructure they've built their promotional workflows around. This dependency is a risk shared by most single-vendor "earn inside our ecosystem" platforms and should be weighed against the recurring cost.</p>
-    </section>
-
-    <section id="performance">
-      <h2>Performance Analysis</h2>
-
-      <h3>How the Commission Structure Works</h3>
-      <p>Community Builders modifies the baseline OLSP affiliate earnings in two principal ways, according to vendor and affiliate sources. The diagram below illustrates both commission streams.</p>
-
-      <figure>
-        <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the two Community Builders commission streams: own sales at 200% and second-tier earnings from team members">
-          <rect x="0" y="0" width="640" height="290" fill="#f8fafc"/>
-          <!-- Stream 1 label -->
-          <text x="20" y="24" fill="#475569" font-size="10" font-family="Arial" font-weight="700" letter-spacing=".06em">STREAM 1 — YOUR OWN SALES</text>
-          <!-- Stream 1 boxes -->
-          <rect x="20" y="34" width="130" height="60" rx="8" fill="#2563eb"/>
-          <text x="85" y="59" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">CB Member</text>
-          <text x="85" y="75" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">shares link</text>
-          <line x1="150" y1="64" x2="240" y2="64" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="240,58 252,64 240,70" fill="#94a3b8"/>
-          <rect x="255" y="34" width="130" height="60" rx="8" fill="#0f172a"/>
-          <text x="320" y="59" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Lead enters</text>
-          <text x="320" y="75" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">OLSP funnel</text>
-          <line x1="385" y1="64" x2="475" y2="64" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="475,58 487,64 475,70" fill="#94a3b8"/>
-          <rect x="490" y="34" width="130" height="60" rx="8" fill="#166534"/>
-          <text x="555" y="56" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Upgrade sale</text>
-          <text x="555" y="72" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">→ $14 (200%)</text>
-          <text x="555" y="86" fill="#d1fae5" font-size="10" text-anchor="middle" font-family="Arial">vs. $7 at Megalink</text>
-          <!-- Divider -->
-          <line x1="20" y1="148" x2="620" y2="148" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
-          <!-- Stream 2 label -->
-          <text x="20" y="172" fill="#475569" font-size="10" font-family="Arial" font-weight="700" letter-spacing=".06em">STREAM 2 — YOUR TEAM'S SALES (2ND TIER)</text>
-          <!-- Stream 2 boxes -->
-          <rect x="20" y="182" width="130" height="60" rx="8" fill="#3b82f6"/>
-          <text x="85" y="207" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Your recruit</text>
-          <text x="85" y="223" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">promotes link</text>
-          <line x1="150" y1="212" x2="240" y2="212" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="240,206 252,212 240,218" fill="#94a3b8"/>
-          <rect x="255" y="182" width="130" height="60" rx="8" fill="#334155"/>
-          <text x="320" y="207" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Their lead</text>
-          <text x="320" y="223" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">upgrades</text>
-          <line x1="385" y1="212" x2="475" y2="212" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="475,206 487,212 475,218" fill="#94a3b8"/>
-          <rect x="490" y="182" width="130" height="60" rx="8" fill="#15803d"/>
-          <text x="555" y="204" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">2nd-tier</text>
-          <text x="555" y="220" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">commission</text>
-          <text x="555" y="234" fill="#d1fae5" font-size="11" text-anchor="middle" font-family="Arial">→ $14 to you</text>
-          <!-- Footer note -->
-          <text x="20" y="270" fill="#94a3b8" font-size="10" font-family="Arial" font-style="italic">Figures are vendor/affiliate claims — not audited financial disclosure.</text>
-        </svg>
-        <figcaption>Original illustration based on publicly described commission mechanics — not a screenshot of the OLSP dashboard.</figcaption>
-      </figure>
-
-      <h3>Commission Structure Detail</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Transaction Type</th><th>Megalink Level</th><th>Community Builders</th></tr>
-        <tr><td>Own Megalink sale</td><td>$7 (100%)</td><td>$14 (200%)</td></tr>
-        <tr><td>Team member's Megalink sale (2nd tier)</td><td>—</td><td>$14 to you; their seller earns $7</td></tr>
-        <tr><td>Live event attendee commissions</td><td>$1/verified attendee (at LPB tier)</td><td>Inherited; 2nd-tier when your team brings attendees</td></tr>
-        <tr><td>Mid-range OLSP products</td><td>Limited access</td><td>Expanded library; reported 40–60% commissions</td></tr>
-        <tr><td>High-ticket offers (top tiers)</td><td>Not available</td><td>Reported up to ~$2,500/sale at highest tiers (unverified)</td></tr>
-      </table>
-      </div>
-
-      <div class="callout warn">
-        <strong>Income figures caution:</strong> All commission figures in this section come from vendor materials, promoter videos, and affiliate blog posts — sources with a financial incentive to present favourable numbers. One member's self-published review cited cumulative earnings of approximately $784.40 after investing in multiple tiers over an unspecified period. This figure is self-reported, could not be independently verified, and almost certainly does not represent typical results. No independently audited earnings data for Community Builders members exists in the public domain.
-      </div>
-
-      <h3>Training Quality</h3>
-      <p>The TOFFEE method training — a Facebook-centric prospecting and sales system — is the primary advanced training exclusive to Community Builders. Multiple sources describe it as a multi-hour course covering audience warm-up and warm-down routines, posting frameworks, direct messaging scripts, and Zoom sales call techniques. Weekly "guru huddles" (reportedly five per week from different topic-specialist trainers) and topic-specific coaching sessions on solo ads, YouTube ads, and email marketing are also cited as included benefits. Independent reviewers consistently note that most training is heavily skewed toward Facebook organic methods and OLSP-centric funnels rather than SEO, content marketing, or platform-independent list building.</p>
-
-      <h3>Traffic Tools</h3>
-      <p>Two traffic-related features are cited for Community Builders. First, the traffic rotator: a pool of solo-ad traffic purchased by OLSP leadership and distributed across participating members. Independent reviewers note that with tens of thousands of OLSP affiliates sharing the same rotator, internal traffic may be diluted and should not be treated as a primary strategy. Second, Viral Hub credits: approximately 1,000 credits per month to fund incentivized engagement campaigns (pay-per-comment and interaction campaigns) within the OLSP community. These are useful for community stimulation but are not the same as qualified buyer traffic from an external source.</p>
-    </section>
-
-    <section id="ux">
-      <h2>User Experience</h2>
-
-      <h3>Setup Process</h3>
-      <p>Community Builders is purchased as an upgrade to an existing OLSP account — there is no standalone sign-up path. Members go through an upgrade funnel inside OLSP or via an affiliate's sales page, which adds the Community Builders tier to their existing account. Once active, the Mega Builder software access and enhanced commission rates reportedly take effect immediately. Members who bundle their purchase through an individual affiliate's link may also receive the affiliate's personal bonus stack (extra coaching, tool credits, content), which varies by promoter and is not part of the core product.</p>
-
-      <h3>Daily Usage</h3>
-      <p>Based on vendor training descriptions and independent reviewer accounts, active Community Builders usage centers on: publishing regular Facebook content using the TOFFEE method framework; sending direct messages to warm prospects and following scripted DM sequences; attending or replaying live guru huddles and coaching calls; inviting prospects into your private OLSP community; and monitoring your OLSP dashboard for lead tracking and commission activity. Multiple sources suggest 30 or more minutes per day as a minimum commitment for the tier to justify its recurring cost.</p>
-
-      <h3>Learning Curve</h3>
-      <p>Reviewers describe a steeper learning curve at Community Builders compared to the Megalink level, primarily because the TOFFEE method requires consistent social content habits and active direct outreach skills developed over time. The Mega Builder software — being based on GoHighLevel — is documented externally and described as reasonably capable, but configuring funnels, email sequences, and CRM pipelines to work effectively with OLSP's system requires setup time and some technical comfort.</p>
-
-      <h3>Interface &amp; Community</h3>
-      <p>We could not independently assess the dashboard interface. Independent reviewers describe the OLSP member area as reasonably organized, but most of these sources carry their own referral links and cannot be considered neutral assessments. The OLSP Facebook community reportedly has 200,000 or more members and is described as active across multiple sources. Some Reddit commenters allege that sceptical or critical posts are blocked in the group — a claim that could not be independently confirmed.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Commission Structure Detail</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Transaction Type</th><th>Megalink Level</th><th>Community Builders</th></tr>
+      <tr><td>Own Megalink sale</td><td>$7 (100%)</td><td>$14 (200%)</td></tr>
+      <tr><td>Team member's Megalink sale (2nd tier)</td><td>—</td><td>$14 to you; their seller earns $7</td></tr>
+      <tr><td>Live event attendee commissions</td><td>$1/verified attendee (at LPB tier)</td><td>Inherited; 2nd-tier when your team brings attendees</td></tr>
+      <tr><td>Mid-range OLSP products</td><td>Limited access</td><td>Expanded library; reported 40–60% commissions</td></tr>
+      <tr><td>High-ticket offers (top tiers)</td><td>Not available</td><td>Reported up to ~$2,500/sale at highest tiers (unverified)</td></tr>
+    </table>
     </div>
 
-    <section id="comparison">
-      <h2>How Community Builders Compares to Alternatives</h2>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Option</th><th>Cost</th><th>Earning Model</th><th>Best For</th></tr>
-        <tr><td>OLSP Megalink (entry)</td><td>$7 one-time</td><td>100% front-end commission; no second tier</td><td>Testing the OLSP system before committing to recurring fees</td></tr>
-        <tr><td><strong>OLSP Community Builders</strong></td><td><strong>~$197/month or ~$1,997/year</strong></td><td><strong>200% front-end + second-tier commissions; Mega Builder tools; community building</strong></td><td><strong>Active OLSP affiliates ready to build a recruited team</strong></td></tr>
-        <tr><td>OLSP Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>Higher tiers still; everything in CB plus more products and deeper commissions</td><td>Long-term OLSP affiliates wanting maximum commission leverage; may be better long-run value than CB monthly</td></tr>
-        <tr><td>Standalone GoHighLevel</td><td>$97–$297/month</td><td>SaaS subscription only; no built-in affiliate program</td><td>Marketers who want the same core software without OLSP's training and commission layer</td></tr>
-        <tr><td>ClickFunnels / Kartra / Systeme.io</td><td>Varies ($27–$297/month)</td><td>SaaS subscription only; no affiliate upsell structure</td><td>Independent funnel and email marketing without a single-vendor ecosystem dependency</td></tr>
-        <tr><td>General affiliate networks (Amazon, ClickBank)</td><td>Free</td><td>Commission on external product sales; no recruitment required</td><td>People who want to promote standalone products without a multi-tier upgrade funnel</td></tr>
-      </table>
-      </div>
+    <Callout type="warn">
+      <strong>Income figures caution:</strong> All commission figures in this section come from vendor materials, promoter videos, and affiliate blog posts — sources with a financial incentive to present favourable numbers. One member's self-published review cited cumulative earnings of approximately $784.40 after investing in multiple tiers over an unspecified period. This figure is self-reported, could not be independently verified, and almost certainly does not represent typical results. No independently audited earnings data for Community Builders members exists in the public domain.
+    </Callout>
 
-      <div class="callout info">
-        <strong>Key distinction:</strong> Community Builders bundles marketing software, live training, and a multi-tier affiliate structure into a single membership specifically oriented around promoting OLSP products. This reduces setup complexity for OLSP-focused affiliates but ties your earning model and marketing infrastructure to one ecosystem. Standalone tools like GoHighLevel give you the same underlying software for potentially less cost, but without the training or commission structure that OLSP wraps around it. The right comparison depends on whether you want to promote OLSP specifically or build an independent affiliate business that promotes any offer.
-      </div>
-    </section>
+    <h3>Training Quality</h3>
+    <p>The TOFFEE method training — a Facebook-centric prospecting and sales system — is the primary advanced training exclusive to Community Builders. Multiple sources describe it as a multi-hour course covering audience warm-up and warm-down routines, posting frameworks, direct messaging scripts, and Zoom sales call techniques. Weekly "guru huddles" (reportedly five per week from different topic-specialist trainers) and topic-specific coaching sessions on solo ads, YouTube ads, and email marketing are also cited as included benefits. Independent reviewers consistently note that most training is heavily skewed toward Facebook organic methods and OLSP-centric funnels rather than SEO, content marketing, or platform-independent list building.</p>
 
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>What We Found, Based on Research</h3>
-          <ul>
-            <li>Integrated marketing tools (Mega Builder / GoHighLevel) remove the need for separate CRM, funnel builder, and email subscriptions for OLSP-focused promoters.</li>
-            <li>200% front-end commissions and second-tier earnings create genuine leverage for active members who can recruit and support other affiliates.</li>
-            <li>Multiple weekly live coaching sessions across different topics provide ongoing learning and community accountability beyond a self-paced module format.</li>
-            <li>Account-level attribution means leads you refer can generate commissions from future purchases inside OLSP — not just the initial transaction.</li>
-            <li>Low starting risk: the free account and $7 Megalink allow you to test the OLSP system before committing to Community Builders' recurring cost.</li>
-            <li>Private community-building tools give affiliates an owned audience layer within the OLSP platform, not just an impersonal referral link.</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Areas for Caution</h3>
-          <ul>
-            <li>Recurring cost risk: at ~$197/month, the membership only delivers net value if you promote consistently and generate commissions that exceed the fee.</li>
-            <li>Heavy Facebook and social dependency: the entire TOFFEE training method is built around Facebook organic traffic — limiting value for anyone who prefers SEO, blogging, or non-social channels.</li>
-            <li>Ecosystem lock-in: tools, training, and earnings are entirely tied to OLSP continuing to operate, maintain its commission structure, and keep the software suite active.</li>
-            <li>Upsell ladder criticism: OLSP's tiered structure reads to some observers — including active Reddit threads — as a recruitment-driven upsell funnel sharing structural characteristics with MLM-like models. No external regulatory determination exists in the public record as of our research.</li>
-            <li>Traffic dilution: internal rotator traffic is shared across tens of thousands of affiliates; independent sources note this limits its effectiveness as a standalone traffic strategy.</li>
-            <li>Most income examples online are self-reported by affiliate promoters with referral links; independently verified earnings data for typical members does not exist.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <h3>Traffic Tools</h3>
+    <p>Two traffic-related features are cited for Community Builders. First, the traffic rotator: a pool of solo-ad traffic purchased by OLSP leadership and distributed across participating members. Independent reviewers note that with tens of thousands of OLSP affiliates sharing the same rotator, internal traffic may be diluted and should not be treated as a primary strategy. Second, Viral Hub credits: approximately 1,000 credits per month to fund incentivized engagement campaigns (pay-per-comment and interaction campaigns) within the OLSP community. These are useful for community stimulation but are not the same as qualified buyer traffic from an external source.</p>
+  </section>
 
-    <section id="history">
-      <h2>History &amp; Updates</h2>
-      <p>Wayne Crowe is the founder and CEO of OLSP System/Academy, described publicly as a British affiliate marketer from Norwich. Vendor materials and the OLSP support portal credit him with over $15 million in affiliate commissions — a self-reported figure that appears consistently across official and affiliate sources but could not be independently verified. He had previously run a related program called Traffic Domination before building OLSP. The OLSP System was launched publicly around 2019–2020 and has been extended and relaunched multiple times.</p>
+  <section id="ux">
+    <h2>User Experience</h2>
 
-      <p>Marketing pages found in 2026 reference an "OLSP System Relaunch" and updated tier structures. Whether this represents a substantive platform overhaul or primarily a new promotional campaign layered on top of the existing system could not be confirmed from publicly available information alone. The Community Builders tier, as described in current affiliate and vendor materials, appears to be a longstanding component of the OLSP upgrade ladder rather than a newly introduced feature.</p>
+    <h3>Setup Process</h3>
+    <p>Community Builders is purchased as an upgrade to an existing OLSP account — there is no standalone sign-up path. Members go through an upgrade funnel inside OLSP or via an affiliate's sales page, which adds the Community Builders tier to their existing account. Once active, the Mega Builder software access and enhanced commission rates reportedly take effect immediately. Members who bundle their purchase through an individual affiliate's link may also receive the affiliate's personal bonus stack (extra coaching, tool credits, content), which varies by promoter and is not part of the core product.</p>
 
-      <div class="callout info">
-        <strong>Due-diligence note:</strong> When evaluating any relaunch claim, verify whether the core product mechanics, pricing, and terms have meaningfully changed — or whether a "relaunch" primarily describes new marketing for an existing product. OLSP's support portal and official domains are the most reliable starting point for current information.
-      </div>
-    </section>
+    <h3>Daily Usage</h3>
+    <p>Based on vendor training descriptions and independent reviewer accounts, active Community Builders usage centers on: publishing regular Facebook content using the TOFFEE method framework; sending direct messages to warm prospects and following scripted DM sequences; attending or replaying live guru huddles and coaching calls; inviting prospects into your private OLSP community; and monitoring your OLSP dashboard for lead tracking and commission activity. Multiple sources suggest 30 or more minutes per day as a minimum commitment for the tier to justify its recurring cost.</p>
 
-    <section id="recommend">
-      <h2>Who Should Join OLSP Community Builders?</h2>
+    <h3>Learning Curve</h3>
+    <p>Reviewers describe a steeper learning curve at Community Builders compared to the Megalink level, primarily because the TOFFEE method requires consistent social content habits and active direct outreach skills developed over time. The Mega Builder software — being based on GoHighLevel — is documented externally and described as reasonably capable, but configuring funnels, email sequences, and CRM pipelines to work effectively with OLSP's system requires setup time and some technical comfort.</p>
 
-      <h3>Best For</h3>
-      <ul>
-        <li>Existing OLSP members who have completed Megalink training and are already promoting on a regular basis.</li>
-        <li>Affiliates who can commit at least 30 minutes per day to Facebook content creation, direct messaging, and live event participation.</li>
-        <li>People who want an integrated marketing software stack (funnel builder, CRM, email automations) tightly configured for OLSP's product offers, without separately subscribing to each tool.</li>
-        <li>Members interested in building a recruited team of affiliates and earning second-tier commissions from their team's activity — not just their own promotions.</li>
-        <li>People who value structured live coaching and community accountability as part of their learning and motivation system.</li>
-      </ul>
+    <h3>Interface &amp; Community</h3>
+    <p>We could not independently assess the dashboard interface. Independent reviewers describe the OLSP member area as reasonably organized, but most of these sources carry their own referral links and cannot be considered neutral assessments. The OLSP Facebook community reportedly has 200,000 or more members and is described as active across multiple sources. Some Reddit commenters allege that sceptical or critical posts are blocked in the group — a claim that could not be independently confirmed.</p>
+  </section>
 
-      <h3>Skip If</h3>
-      <ul>
-        <li>You're brand new to OLSP and haven't validated results through the Megalink and Live Profit Builders levels. Most independent reviewers, including some who promote Community Builders, recommend against jumping to this tier without first completing the base training.</li>
-        <li>Your available time is limited or unpredictable. Attending live huddles and maintaining a daily Facebook content schedule are described as central to getting value from this tier.</li>
-        <li>You already have independent funnels, a CRM, and an email list, and primarily want to promote offers outside the OLSP ecosystem — in that case the OLSP-specific tools may deliver less incremental value.</li>
-        <li>You prefer SEO, blogging, or YouTube as primary traffic channels. The TOFFEE method and most Community Builders training is explicitly built around Facebook organic methods.</li>
-      </ul>
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
 
-      <h3>Alternatives Worth Comparing</h3>
-      <p>Before committing to Community Builders' recurring cost, consider: remaining at the Live Profit Builders tier ($49/month) while you build consistent results and active traffic, then upgrading when the 200% commissions and second-tier earnings clearly justify the additional cost; subscribing directly to GoHighLevel as a standalone tool if you need the software features without the OLSP-specific training and commission layer; or exploring general affiliate networks that let you promote independent products without a single-vendor upgrade funnel. It is also worth comparing Team Builders' lifetime pricing (~$997) against paying Community Builders' monthly fee over many months, depending on your long-term commitment to the OLSP ecosystem.</p>
-    </section>
-
-    <section id="buy">
-      <h2>Where to Sign Up &amp; Pricing</h2>
-      <p>Community Builders is accessed via OLSP's official member area or through affiliate sales pages — there is no standalone sign-up path. You must have or create an OLSP account first and then upgrade to this tier. Official OLSP channels include olspsystem.com, olspacademy.com, and olspfunnels.com. Multiple affiliate-branded pages also promote Community Builders, often bundling the promoter's personal bonuses (extra coaching, bonus content, tool credits) — these are not part of the core product and vary by promoter.</p>
-
-      <div class="callout warn">
-        <strong>Before you pay:</strong> Verify current pricing directly on OLSP's live checkout page. The $197–$199/month and $1,997/year figures in this article come from independent sources reporting at specific points in time; OLSP has adjusted its offers during relaunch campaigns. Urgency language ("limited spots," "today only" pricing) is common in this category of marketing and is typically a marketing tactic rather than a genuine capacity constraint. Read the terms regarding cancellation and refunds before entering payment details.
-      </div>
-
-      <p>If you're ready to join Community Builders directly, you can access the official sign-up page here:</p>
-      <p><a href="https://olspteambuilders.com/community-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">Join OLSP Community Builders (official page) →</a></p>
-      <p>Or start with the free account and live training to assess whether the system fits your goals before committing to the recurring fee:</p>
-      <p><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — free entry point →</a></p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Verdict</h2>
-      <div class="score-row"><div class="score-label">Integrated Tool Value</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Training &amp; Live Coaching</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Commission Structure</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
-      <div class="score-row"><div class="score-label">Value for Active Affiliates</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
-
-      <p>OLSP Community Builders offers a genuine step-up from the Megalink tier for affiliates who are already active and want more leverage from the OLSP ecosystem. The Mega Builder software (GoHighLevel) is a credible, independently verifiable tool. The training is structured and reportedly kept current through multiple weekly live sessions. The 200% commission plus second-tier model creates a plausible path to higher earnings for members who can consistently recruit and support active team members. The honest caveats are real: the recurring cost is only justified by sustained daily promotional activity; all income examples online are self-reported and unverified; the model is deeply Facebook-centric; and everything depends on OLSP remaining operational and maintaining its terms. Treat any income figures you see — including those cited in this review — as unverified self-reports, not evidence of typical results. For active OLSP members already promoting daily, Community Builders is a logical upgrade to evaluate. For beginners or anyone still building their promotional habits, the recurring cost makes it a premature commitment.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is Community Builders Right for You Now?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
-        <fieldset>
-          <legend>Have you already completed OLSP Megalink training and are actively promoting on a regular basis?</legend>
-          <label><input type="radio" name="q1" value="2"> Yes — I'm already promoting and want more leverage</label>
-          <label><input type="radio" name="q1" value="0"> Not yet — I'm still learning the basics</label>
-        </fieldset>
-        <fieldset>
-          <legend>Can you commit at least 30 minutes per day to Facebook content, direct messaging, and live coaching calls consistently?</legend>
-          <label><input type="radio" name="q2" value="2"> Yes, I can commit to that daily routine</label>
-          <label><input type="radio" name="q2" value="0"> Unlikely with my current schedule</label>
-        </fieldset>
-        <fieldset>
-          <legend>Are you comfortable paying $197/month or more knowing that earnings depend entirely on your own promotional activity and results?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes — I understand the cost-vs-effort reality</label>
-          <label><input type="radio" name="q3" value="0"> I'd need more certainty of returns to justify it</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>Is OLSP Community Builders an MLM?</summary>
-        <p>OLSP is an affiliate marketing ecosystem, not a multi-level marketing company in the legal or regulatory sense — it does not require members to buy or hold inventory, and commissions derive from genuine product and software subscriptions. However, the tiered structure where you earn from your own sales and from the activity of affiliates you recruit does share structural characteristics with multi-tier affiliate programs that critics describe as MLM-like. Reddit discussion around OLSP includes active debate on this point, with some users calling it a "Ponzi" and others defending it as a legitimate affiliate system. No external regulatory determination has been made in the public record as of our research.</p>
-      </details>
-      <details>
-        <summary>What exactly does Mega Builder include?</summary>
-        <p>Mega Builder is a white-label version of GoHighLevel, an established SaaS marketing platform used by agencies worldwide. Within the OLSP context, it reportedly includes a funnel and page builder (TD Pages), a CRM with pipeline tracking, an email autoresponder pre-loaded with OLSP sequences, calendar and booking automation, and deep integration with OLSP's affiliate tracking. The underlying GoHighLevel platform is independently verifiable — this is a meaningful feature compared to proprietary tools with no public reference. Verify which specific features are active at your tier directly with OLSP, as configurations can differ from what promotional materials describe.</p>
-      </details>
-      <details>
-        <summary>Is Team Builders a better financial deal than Community Builders?</summary>
-        <p>Community Builders' monthly fee (~$197/month) adds up over time: after five months you've paid close to the reported ~$997 Team Builders lifetime price. The better financial choice depends on your budget, how certain you are about committing to the OLSP ecosystem long-term, and whether Team Builders' additional commission tiers are relevant to the products you plan to promote. If you're uncertain about long-term commitment, the Community Builders monthly subscription lets you exit without a large upfront outlay.</p>
-      </details>
-      <details>
-        <summary>Can a complete beginner join Community Builders directly?</summary>
-        <p>There is no technical eligibility requirement — anyone can pay for the upgrade. However, both vendor materials and independent reviewers consistently recommend against joining Community Builders without first completing and actively using the Megalink level. The tools and TOFFEE training are designed for members who already understand the OLSP promotional workflow, not for people simultaneously learning affiliate marketing basics. Jumping directly to Community Builders as a beginner adds a recurring cost before you have the foundational habits needed to justify it.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+  <section id="comparison">
+    <h2>How Community Builders Compares to Alternatives</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Option</th><th>Cost</th><th>Earning Model</th><th>Best For</th></tr>
+      <tr><td>OLSP Megalink (entry)</td><td>$7 one-time</td><td>100% front-end commission; no second tier</td><td>Testing the OLSP system before committing to recurring fees</td></tr>
+      <tr><td><strong>OLSP Community Builders</strong></td><td><strong>~$197/month or ~$1,997/year</strong></td><td><strong>200% front-end + second-tier commissions; Mega Builder tools; community building</strong></td><td><strong>Active OLSP affiliates ready to build a recruited team</strong></td></tr>
+      <tr><td>OLSP Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>Higher tiers still; everything in CB plus more products and deeper commissions</td><td>Long-term OLSP affiliates wanting maximum commission leverage; may be better long-run value than CB monthly</td></tr>
+      <tr><td>Standalone GoHighLevel</td><td>$97–$297/month</td><td>SaaS subscription only; no built-in affiliate program</td><td>Marketers who want the same core software without OLSP's training and commission layer</td></tr>
+      <tr><td>ClickFunnels / Kartra / Systeme.io</td><td>Varies ($27–$297/month)</td><td>SaaS subscription only; no affiliate upsell structure</td><td>Independent funnel and email marketing without a single-vendor ecosystem dependency</td></tr>
+      <tr><td>General affiliate networks (Amazon, ClickBank)</td><td>Free</td><td>Commission on external product sales; no recruitment required</td><td>People who want to promote standalone products without a multi-tier upgrade funnel</td></tr>
+    </table>
     </div>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
+    <Callout type="info">
+      <strong>Key distinction:</strong> Community Builders bundles marketing software, live training, and a multi-tier affiliate structure into a single membership specifically oriented around promoting OLSP products. This reduces setup complexity for OLSP-focused affiliates but ties your earning model and marketing infrastructure to one ecosystem. Standalone tools like GoHighLevel give you the same underlying software for potentially less cost, but without the training or commission structure that OLSP wraps around it. The right comparison depends on whether you want to promote OLSP specifically or build an independent affiliate business that promotes any offer.
+    </Callout>
+  </section>
 
-      <h3>Video Content</h3>
-      <p>The video below is third-party content from an independent YouTube channel providing a walkthrough of OLSP Academy Community Builders tools and features. It is not an official OLSP company channel, and it represents that creator's own commentary and promotional perspective — not the experience of the author of this article.</p>
-      <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/7EAtaZfC2fM" title="Third-party YouTube video: OLSP Academy Community Builders — Inside Look at the Full Method" allowfullscreen></iframe>
+  <section id="proscons">
+    <h2>Pros &amp; Cons</h2>
+    <div class="two-col">
+      <div class="pc-card good">
+        <h3>What We Found, Based on Research</h3>
+        <ul>
+          <li>Integrated marketing tools (Mega Builder / GoHighLevel) remove the need for separate CRM, funnel builder, and email subscriptions for OLSP-focused promoters.</li>
+          <li>200% front-end commissions and second-tier earnings create genuine leverage for active members who can recruit and support other affiliates.</li>
+          <li>Multiple weekly live coaching sessions across different topics provide ongoing learning and community accountability beyond a self-paced module format.</li>
+          <li>Account-level attribution means leads you refer can generate commissions from future purchases inside OLSP — not just the initial transaction.</li>
+          <li>Low starting risk: the free account and $7 Megalink allow you to test the OLSP system before committing to Community Builders' recurring cost.</li>
+          <li>Private community-building tools give affiliates an owned audience layer within the OLSP platform, not just an impersonal referral link.</li>
+        </ul>
       </div>
-      <p class="video-caption">Third-party video discussing OLSP Community Builders features and commission structure. The creator of this video may earn commissions from referral links in their description.</p>
+      <div class="pc-card bad">
+        <h3>Areas for Caution</h3>
+        <ul>
+          <li>Recurring cost risk: at ~$197/month, the membership only delivers net value if you promote consistently and generate commissions that exceed the fee.</li>
+          <li>Heavy Facebook and social dependency: the entire TOFFEE training method is built around Facebook organic traffic — limiting value for anyone who prefers SEO, blogging, or non-social channels.</li>
+          <li>Ecosystem lock-in: tools, training, and earnings are entirely tied to OLSP continuing to operate, maintain its commission structure, and keep the software suite active.</li>
+          <li>Upsell ladder criticism: OLSP's tiered structure reads to some observers — including active Reddit threads — as a recruitment-driven upsell funnel sharing structural characteristics with MLM-like models. No external regulatory determination exists in the public record as of our research.</li>
+          <li>Traffic dilution: internal rotator traffic is shared across tens of thousands of affiliates; independent sources note this limits its effectiveness as a standalone traffic strategy.</li>
+          <li>Most income examples online are self-reported by affiliate promoters with referral links; independently verified earnings data for typical members does not exist.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <h3>Sources &amp; References</h3>
-      <ul class="pill-list">
-        <li><a href="https://olspteambuilders.com/community-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Community Builders — official sign-up page</a></li>
-        <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — official live training entry point</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
-    </section>
+  <section id="history">
+    <h2>History &amp; Updates</h2>
+    <p>Wayne Crowe is the founder and CEO of OLSP System/Academy, described publicly as a British affiliate marketer from Norwich. Vendor materials and the OLSP support portal credit him with over $15 million in affiliate commissions — a self-reported figure that appears consistently across official and affiliate sources but could not be independently verified. He had previously run a related program called Traffic Domination before building OLSP. The OLSP System was launched publicly around 2019–2020 and has been extended and relaunched multiple times.</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <p>Marketing pages found in 2026 reference an "OLSP System Relaunch" and updated tier structures. Whether this represents a substantive platform overhaul or primarily a new promotional campaign layered on top of the existing system could not be confirmed from publicly available information alone. The Community Builders tier, as described in current affiliate and vendor materials, appears to be a longstanding component of the OLSP upgrade ladder rather than a newly introduced feature.</p>
 
-  </main>
-</div>
+    <Callout type="info">
+      <strong>Due-diligence note:</strong> When evaluating any relaunch claim, verify whether the core product mechanics, pricing, and terms have meaningfully changed — or whether a "relaunch" primarily describes new marketing for an existing product. OLSP's support portal and official domains are the most reliable starting point for current information.
+    </Callout>
+  </section>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+  <section id="recommend">
+    <h2>Who Should Join OLSP Community Builders?</h2>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>Best For</h3>
+    <ul>
+      <li>Existing OLSP members who have completed Megalink training and are already promoting on a regular basis.</li>
+      <li>Affiliates who can commit at least 30 minutes per day to Facebook content creation, direct messaging, and live event participation.</li>
+      <li>People who want an integrated marketing software stack (funnel builder, CRM, email automations) tightly configured for OLSP's product offers, without separately subscribing to each tool.</li>
+      <li>Members interested in building a recruited team of affiliates and earning second-tier commissions from their team's activity — not just their own promotions.</li>
+      <li>People who value structured live coaching and community accountability as part of their learning and motivation system.</li>
+    </ul>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <h3>Skip If</h3>
+    <ul>
+      <li>You're brand new to OLSP and haven't validated results through the Megalink and Live Profit Builders levels. Most independent reviewers, including some who promote Community Builders, recommend against jumping to this tier without first completing the base training.</li>
+      <li>Your available time is limited or unpredictable. Attending live huddles and maintaining a daily Facebook content schedule are described as central to getting value from this tier.</li>
+      <li>You already have independent funnels, a CRM, and an email list, and primarily want to promote offers outside the OLSP ecosystem — in that case the OLSP-specific tools may deliver less incremental value.</li>
+      <li>You prefer SEO, blogging, or YouTube as primary traffic channels. The TOFFEE method and most Community Builders training is explicitly built around Facebook organic methods.</li>
+    </ul>
 
-  sections.forEach(s => observer.observe(s));
+    <h3>Alternatives Worth Comparing</h3>
+    <p>Before committing to Community Builders' recurring cost, consider: remaining at the Live Profit Builders tier ($49/month) while you build consistent results and active traffic, then upgrading when the 200% commissions and second-tier earnings clearly justify the additional cost; subscribing directly to GoHighLevel as a standalone tool if you need the software features without the OLSP-specific training and commission layer; or exploring general affiliate networks that let you promote independent products without a single-vendor upgrade funnel. It is also worth comparing Team Builders' lifetime pricing (~$997) against paying Community Builders' monthly fee over many months, depending on your long-term commitment to the OLSP ecosystem.</p>
+  </section>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+  <section id="buy">
+    <h2>Where to Sign Up &amp; Pricing</h2>
+    <p>Community Builders is accessed via OLSP's official member area or through affiliate sales pages — there is no standalone sign-up path. You must have or create an OLSP account first and then upgrade to this tier. Official OLSP channels include olspsystem.com, olspacademy.com, and olspfunnels.com. Multiple affiliate-branded pages also promote Community Builders, often bundling the promoter's personal bonuses (extra coaching, bonus content, tool credits) — these are not part of the core product and vary by promoter.</p>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+    <Callout type="warn">
+      <strong>Before you pay:</strong> Verify current pricing directly on OLSP's live checkout page. The $197–$199/month and $1,997/year figures in this article come from independent sources reporting at specific points in time; OLSP has adjusted its offers during relaunch campaigns. Urgency language ("limited spots," "today only" pricing) is common in this category of marketing and is typically a marketing tactic rather than a genuine capacity constraint. Read the terms regarding cancellation and refunds before entering payment details.
+    </Callout>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+    <p>If you're ready to join Community Builders directly, you can access the official sign-up page here:</p>
+    <p><a href="https://olspteambuilders.com/community-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">Join OLSP Community Builders (official page) →</a></p>
+    <p>Or start with the free account and live training to assess whether the system fits your goals before committing to the recurring fee:</p>
+    <p><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — free entry point →</a></p>
+  </section>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, you appear to meet the core prerequisites for Community Builders — existing OLSP experience, daily availability, and realistic expectations about cost versus results. Verify current pricing and terms directly with OLSP before committing, and treat all income projections as vendor claims rather than guaranteed outcomes.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. Review the 'Skip If' and 'Areas for Caution' sections above carefully before committing to a recurring monthly fee. Consider staying at the Megalink or Live Profit Builders tier until you can meet all three prerequisites comfortably.";
-    } else {
-      message = "Based on your answers, Community Builders' prerequisites likely aren't met right now. Start with the free OLSP account or the Megalink level, build consistent promotional habits, and reassess once you're seeing results at that level before adding a recurring cost.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+  <section id="verdict">
+    <h2>Final Verdict</h2>
+    <div class="score-row"><div class="score-label">Integrated Tool Value</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Training &amp; Live Coaching</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Commission Structure</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
+    <div class="score-row"><div class="score-label">Value for Active Affiliates</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
 
-</body>
-</html>
+    <p>OLSP Community Builders offers a genuine step-up from the Megalink tier for affiliates who are already active and want more leverage from the OLSP ecosystem. The Mega Builder software (GoHighLevel) is a credible, independently verifiable tool. The training is structured and reportedly kept current through multiple weekly live sessions. The 200% commission plus second-tier model creates a plausible path to higher earnings for members who can consistently recruit and support active team members. The honest caveats are real: the recurring cost is only justified by sustained daily promotional activity; all income examples online are self-reported and unverified; the model is deeply Facebook-centric; and everything depends on OLSP remaining operational and maintaining its terms. Treat any income figures you see — including those cited in this review — as unverified self-reports, not evidence of typical results. For active OLSP members already promoting daily, Community Builders is a logical upgrade to evaluate. For beginners or anyone still building their promotional habits, the recurring cost makes it a premature commitment.</p>
+
+    <div class="quiz-box" id="quizBox">
+      <h3 style="margin-top:0;">Quick Self-Check: Is Community Builders Right for You Now?</h3>
+      <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+      <fieldset>
+        <legend>Have you already completed OLSP Megalink training and are actively promoting on a regular basis?</legend>
+        <label><input type="radio" name="q1" value="2"> Yes — I'm already promoting and want more leverage</label>
+        <label><input type="radio" name="q1" value="0"> Not yet — I'm still learning the basics</label>
+      </fieldset>
+      <fieldset>
+        <legend>Can you commit at least 30 minutes per day to Facebook content, direct messaging, and live coaching calls consistently?</legend>
+        <label><input type="radio" name="q2" value="2"> Yes, I can commit to that daily routine</label>
+        <label><input type="radio" name="q2" value="0"> Unlikely with my current schedule</label>
+      </fieldset>
+      <fieldset>
+        <legend>Are you comfortable paying $197/month or more knowing that earnings depend entirely on your own promotional activity and results?</legend>
+        <label><input type="radio" name="q3" value="2"> Yes — I understand the cost-vs-effort reality</label>
+        <label><input type="radio" name="q3" value="0"> I'd need more certainty of returns to justify it</label>
+      </fieldset>
+      <button type="button" onclick="evaluateQuiz()">See My Result</button>
+      <div id="quiz-result"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="Is OLSP Community Builders an MLM?">
+      <p>OLSP is an affiliate marketing ecosystem, not a multi-level marketing company in the legal or regulatory sense — it does not require members to buy or hold inventory, and commissions derive from genuine product and software subscriptions. However, the tiered structure where you earn from your own sales and from the activity of affiliates you recruit does share structural characteristics with multi-tier affiliate programs that critics describe as MLM-like. Reddit discussion around OLSP includes active debate on this point, with some users calling it a "Ponzi" and others defending it as a legitimate affiliate system. No external regulatory determination has been made in the public record as of our research.</p>
+    </FaqItem>
+    <FaqItem question="What exactly does Mega Builder include?">
+      <p>Mega Builder is a white-label version of GoHighLevel, an established SaaS marketing platform used by agencies worldwide. Within the OLSP context, it reportedly includes a funnel and page builder (TD Pages), a CRM with pipeline tracking, an email autoresponder pre-loaded with OLSP sequences, calendar and booking automation, and deep integration with OLSP's affiliate tracking. The underlying GoHighLevel platform is independently verifiable — this is a meaningful feature compared to proprietary tools with no public reference. Verify which specific features are active at your tier directly with OLSP, as configurations can differ from what promotional materials describe.</p>
+    </FaqItem>
+    <FaqItem question="Is Team Builders a better financial deal than Community Builders?">
+      <p>Community Builders' monthly fee (~$197/month) adds up over time: after five months you've paid close to the reported ~$997 Team Builders lifetime price. The better financial choice depends on your budget, how certain you are about committing to the OLSP ecosystem long-term, and whether Team Builders' additional commission tiers are relevant to the products you plan to promote. If you're uncertain about long-term commitment, the Community Builders monthly subscription lets you exit without a large upfront outlay.</p>
+    </FaqItem>
+    <FaqItem question="Can a complete beginner join Community Builders directly?">
+      <p>There is no technical eligibility requirement — anyone can pay for the upgrade. However, both vendor materials and independent reviewers consistently recommend against joining Community Builders without first completing and actively using the Megalink level. The tools and TOFFEE training are designed for members who already understand the OLSP promotional workflow, not for people simultaneously learning affiliate marketing basics. Jumping directly to Community Builders as a beginner adds a recurring cost before you have the foundational habits needed to justify it.</p>
+    </FaqItem>
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+
+    <h3>Video Content</h3>
+    <p>The video below is third-party content from an independent YouTube channel providing a walkthrough of OLSP Academy Community Builders tools and features. It is not an official OLSP company channel, and it represents that creator's own commentary and promotional perspective — not the experience of the author of this article.</p>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/7EAtaZfC2fM" title="Third-party YouTube video: OLSP Academy Community Builders — Inside Look at the Full Method" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Third-party video discussing OLSP Community Builders features and commission structure. The creator of this video may earn commissions from referral links in their description.</p>
+
+    <h3>Sources &amp; References</h3>
+    <ul class="pill-list">
+      <li><a href="https://olspteambuilders.com/community-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Community Builders — official sign-up page</a></li>
+      <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — official live training entry point</a></li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
+
+    <SiteFooter />
+  </section>
+
+</OlspLayout>

@@ -1,771 +1,366 @@
 ---
 export const prerender = true;
 
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
 const pageTitle = "FastBots.ai Review: An Independent, Research-Based Analysis";
 const pageDescription =
   "An independent, research-based review of FastBots.ai: what it is, what it costs, how it works, and whether it fits your business.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Features & Performance" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. Company Background" },
+  { href: "#recommend", label: "9. Who Should Use It" },
+  { href: "#buy", label: "10. Where to Sign Up" },
+  { href: "#verdict", label: "11. Final Assessment" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html> 
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FastBots.ai Review: An Independent, Research-Based Analysis of the AI Chatbot Platform</title>
-<meta name="description" content="An independent, research-based review of FastBots.ai: what it is, what it costs, how the multi-channel AI chatbot platform works, and whether it fits your business.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/fastbots-ai-review/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/fastbots-ai-review/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <HeroTag text="Independent Review · Updated July 2026" />
+    <h1>FastBots.ai Review: An Independent, Research-Based Analysis</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>FastBots.ai</strong> is a no-code AI chatbot builder that lets businesses create custom chatbots trained on their own content — website pages, documents, and other data sources — and deploy them across multiple channels including website widgets, WhatsApp, Instagram, Facebook Messenger, Telegram, Slack, and email. Based on official documentation, a captured product snapshot, and independent third-party sources, our assessment is this: FastBots.ai offers a straightforward, multi-channel chatbot platform with strong training ingestion and a generous free tier, but advanced features require higher-tier plans and several important capabilities can only be verified through hands-on testing.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+    <VerdictBox>
+      <p><strong>Best for:</strong> small-to-medium businesses, agencies needing white-label solutions, e-commerce stores, SaaS companies, and non-technical business owners who want a chatbot live in under five minutes without coding.</p>
+      <p><strong>Not ideal for:</strong> organisations requiring on-premises deployment, teams that need a drag-and-drop conversation flow builder, or enterprises with HIPAA-specific compliance requirements that have not been confirmed.</p>
+    </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+    <h3>What Is FastBots.ai, and Who Is It For?</h3>
+    <p>FastBots.ai is a cloud-based SaaS platform founded in 2022 by CEO Jason West and based in the United Kingdom. It allows users to train an AI chatbot on their own content — website URLs, sitemaps, PDFs, DOCX files, CSV spreadsheets, Google Sheets, and even YouTube videos — and then embed that chatbot on their website via a JavaScript snippet, or connect it to messaging platforms. The platform supports 12+ large language models from OpenAI, Anthropic, and Google, giving users control over which underlying AI powers their chatbot.</p>
+    <p>The target market spans solo entrepreneurs, small-to-medium businesses, e-commerce stores, SaaS companies, agencies, educational institutions, and enterprises. Industry-specific landing pages exist for dentists, schools, hotels and B&Bs, e-commerce stores, SaaS companies, and gyms. Notable listed customers include Royal Caribbean, Holiday Inn, the University of Miami, the University of Arizona, Syngenta, Rentokil Initial, Wiley, Design Bundles, and Big Cat Rescue.</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+    <h3>Author Background &amp; Review Methodology</h3>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital-education platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
+      <p><strong>How this review was built:</strong> We did not purchase or personally test FastBots.ai. This article is based on independent desk research: a 35-page PDF FireShot capture of the official FastBots.ai homepage (captured July 4, 2026), cross-referenced against the live website, plus official documentation pages (About, Industries, Integrations, Use Cases), the public FAQ, and five independent third-party sources (AI Tools Mentor, G2, TechnologyChecker, AI Chat Review, and the FastBots Blog). Where a capability could not be verified without hands-on testing — including response quality, hallucination resistance, and auto retraining reliability — we state that explicitly rather than speculating.</p>
+    </Methodology>
+  </section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  <ProductCta title="Build your first AI chatbot — free, no credit card required" description="FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more." buttonText="Try FastBots.ai Free" href="https://fastbots.ai/?via=jarmo" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+  <section id="overview">
+    <h2>FastBots.ai Overview &amp; Pricing</h2>
+    <p>FastBots.ai operates on a freemium SaaS model with five paid tiers plus enterprise custom pricing. All pricing below was verified from the official pricing page captured in the PDF snapshot on July 4, 2026. Annual billing saves approximately 17% across all tiers.</p>
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+    <h3>What's Included</h3>
+    <ul>
+      <li><strong>Website training:</strong> An advanced web crawler that handles JavaScript-heavy sites, firewall-protected content, and sitemaps. The FAQ states: "we can crawl and extract data from almost any website, including javascript sites and those that have active firewalls."</li>
+      <li><strong>Document training:</strong> Upload PDF, DOC, DOCX, CSV, XLS, and TXT files. Also supports Google Sheets and YouTube video URLs.</li>
+      <li><strong>Three knowledge modes:</strong> Trained content only (strict mode), combined with ChatGPT knowledge, or combined with live internet search. Users control which sources are active per chatbot.</li>
+      <li><strong>Multi-channel deployment:</strong> Website embed (JS snippet, iframe, or share link), WhatsApp, Facebook Messenger, Instagram DMs, Telegram, Slack, and email replies (Business+ plan).</li>
+      <li><strong>Human handoff:</strong> Live chat takeover when the AI cannot answer. Available on Business plan and above with configurable availability hours.</li>
+      <li><strong>Auto retraining:</strong> Scheduled revisiting of website sources (daily, weekly, or monthly) to keep the chatbot current. Available on Business plan and above.</li>
+      <li><strong>Lead capture:</strong> Built-in collection of contact details during conversations, emailed to configured addresses and exportable.</li>
+      <li><strong>White-label:</strong> Full platform rebranding with custom domain and client login. Available on Reseller plan ($399/month) or via add-ons.</li>
+    </ul>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
-
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Features &amp; Performance</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. Company Background</a>
-      <a href="#recommend">9. Who Should Use It</a>
-      <a href="#buy">10. Where to Sign Up</a>
-      <a href="#verdict">11. Final Assessment</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Independent Review · Updated July 2026</span>
-      <h1>FastBots.ai Review: An Independent, Research-Based Analysis</h1>
-
-      <p><strong>FastBots.ai</strong> is a no-code AI chatbot builder that lets businesses create custom chatbots trained on their own content — website pages, documents, and other data sources — and deploy them across multiple channels including website widgets, WhatsApp, Instagram, Facebook Messenger, Telegram, Slack, and email. Based on official documentation, a captured product snapshot, and independent third-party sources, our assessment is this: FastBots.ai offers a straightforward, multi-channel chatbot platform with strong training ingestion and a generous free tier, but advanced features require higher-tier plans and several important capabilities can only be verified through hands-on testing.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> small-to-medium businesses, agencies needing white-label solutions, e-commerce stores, SaaS companies, and non-technical business owners who want a chatbot live in under five minutes without coding.</p>
-        <p><strong>Not ideal for:</strong> organisations requiring on-premises deployment, teams that need a drag-and-drop conversation flow builder, or enterprises with HIPAA-specific compliance requirements that have not been confirmed.</p>
-      </div>
-
-      <h3>What Is FastBots.ai, and Who Is It For?</h3>
-      <p>FastBots.ai is a cloud-based SaaS platform founded in 2022 by CEO Jason West and based in the United Kingdom. It allows users to train an AI chatbot on their own content — website URLs, sitemaps, PDFs, DOCX files, CSV spreadsheets, Google Sheets, and even YouTube videos — and then embed that chatbot on their website via a JavaScript snippet, or connect it to messaging platforms. The platform supports 12+ large language models from OpenAI, Anthropic, and Google, giving users control over which underlying AI powers their chatbot.</p>
-      <p>The target market spans solo entrepreneurs, small-to-medium businesses, e-commerce stores, SaaS companies, agencies, educational institutions, and enterprises. Industry-specific landing pages exist for dentists, schools, hotels and B&Bs, e-commerce stores, SaaS companies, and gyms. Notable listed customers include Royal Caribbean, Holiday Inn, the University of Miami, the University of Arizona, Syngenta, Rentokil Initial, Wiley, Design Bundles, and Big Cat Rescue.</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital-education platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
-        <p><strong>How this review was built:</strong> We did not purchase or personally test FastBots.ai. This article is based on independent desk research: a 35-page PDF FireShot capture of the official FastBots.ai homepage (captured July 4, 2026), cross-referenced against the live website, plus official documentation pages (About, Industries, Integrations, Use Cases), the public FAQ, and five independent third-party sources (AI Tools Mentor, G2, TechnologyChecker, AI Chat Review, and the FastBots Blog). Where a capability could not be verified without hands-on testing — including response quality, hallucination resistance, and auto retraining reliability — we state that explicitly rather than speculating.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Build your first AI chatbot — free, no credit card required</h3>
-      <p>FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more.</p>
-      <p><a href="https://fastbots.ai/?via=jarmo" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try FastBots.ai Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Pricing Tiers</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Plan</th><th>Monthly Price</th><th>Annual Price</th><th>Chatbots</th><th>Message Credits/Mo</th><th>Crawl Pages</th><th>Key Limit</th></tr>
+      <tr><td>Free</td><td>$0</td><td>$0</td><td>1</td><td>50</td><td>100</td><td>Training data cleared after 14 days inactivity</td></tr>
+      <tr><td>Essential</td><td>$39</td><td>$33/mo ($396/yr)</td><td>2</td><td>2,000</td><td>2,500</td><td>3 team members; integrations exclude email</td></tr>
+      <tr><td>Business</td><td>$89</td><td>$75/mo ($900/yr)</td><td>5</td><td>5,000</td><td>5,000</td><td>5 team members; adds live chat, auto retrain, email replies</td></tr>
+      <tr><td>Premium</td><td>$199</td><td>$165/mo ($1,980/yr)</td><td>10</td><td>10,000</td><td>7,500</td><td>10 team members; removes FastBots branding</td></tr>
+      <tr><td>Reseller</td><td>$399</td><td>$333/mo ($3,996/yr)</td><td>30</td><td>30,000</td><td>10,000</td><td>30 team members; white-label platform, custom domain</td></tr>
+      <tr><td>Enterprise</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>SLA, security review, dedicated success manager</td></tr>
+    </table>
     </div>
 
-    <section id="overview">
-      <h2>FastBots.ai Overview &amp; Pricing</h2>
-      <p>FastBots.ai operates on a freemium SaaS model with five paid tiers plus enterprise custom pricing. All pricing below was verified from the official pricing page captured in the PDF snapshot on July 4, 2026. Annual billing saves approximately 17% across all tiers.</p>
+    <h3>Add-Ons</h3>
+    <p>Available on any plan: extra chatbot ($10/mo), extra 1,000 message credits ($10/mo), extra 5M characters storage ($10/mo), remove branding ($29/mo or $290/yr), custom domain ($49/mo or $490/yr).</p>
 
-      <h3>What's Included</h3>
-      <ul>
-        <li><strong>Website training:</strong> An advanced web crawler that handles JavaScript-heavy sites, firewall-protected content, and sitemaps. The FAQ states: "we can crawl and extract data from almost any website, including javascript sites and those that have active firewalls."</li>
-        <li><strong>Document training:</strong> Upload PDF, DOC, DOCX, CSV, XLS, and TXT files. Also supports Google Sheets and YouTube video URLs.</li>
-        <li><strong>Three knowledge modes:</strong> Trained content only (strict mode), combined with ChatGPT knowledge, or combined with live internet search. Users control which sources are active per chatbot.</li>
-        <li><strong>Multi-channel deployment:</strong> Website embed (JS snippet, iframe, or share link), WhatsApp, Facebook Messenger, Instagram DMs, Telegram, Slack, and email replies (Business+ plan).</li>
-        <li><strong>Human handoff:</strong> Live chat takeover when the AI cannot answer. Available on Business plan and above with configurable availability hours.</li>
-        <li><strong>Auto retraining:</strong> Scheduled revisiting of website sources (daily, weekly, or monthly) to keep the chatbot current. Available on Business plan and above.</li>
-        <li><strong>Lead capture:</strong> Built-in collection of contact details during conversations, emailed to configured addresses and exportable.</li>
-        <li><strong>White-label:</strong> Full platform rebranding with custom domain and client login. Available on Reseller plan ($399/month) or via add-ons.</li>
-      </ul>
+    <h3>Message Credit System</h3>
+    <p>Each chatbot response consumes message credits. Standard models (Gemini 2.5 Flash, GPT-5 Mini) use 1 credit per response. Advanced models consume more: GPT-4o, GPT-4.1, GPT-5.2, and Gemini 2.5 Pro use 5 credits; Claude 4.5 Sonnet uses 10 credits. This means the effective cost per conversation varies significantly depending on which model the chatbot uses.</p>
 
-      <h3>Pricing Tiers</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Plan</th><th>Monthly Price</th><th>Annual Price</th><th>Chatbots</th><th>Message Credits/Mo</th><th>Crawl Pages</th><th>Key Limit</th></tr>
-        <tr><td>Free</td><td>$0</td><td>$0</td><td>1</td><td>50</td><td>100</td><td>Training data cleared after 14 days inactivity</td></tr>
-        <tr><td>Essential</td><td>$39</td><td>$33/mo ($396/yr)</td><td>2</td><td>2,000</td><td>2,500</td><td>3 team members; integrations exclude email</td></tr>
-        <tr><td>Business</td><td>$89</td><td>$75/mo ($900/yr)</td><td>5</td><td>5,000</td><td>5,000</td><td>5 team members; adds live chat, auto retrain, email replies</td></tr>
-        <tr><td>Premium</td><td>$199</td><td>$165/mo ($1,980/yr)</td><td>10</td><td>10,000</td><td>7,500</td><td>10 team members; removes FastBots branding</td></tr>
-        <tr><td>Reseller</td><td>$399</td><td>$333/mo ($3,996/yr)</td><td>30</td><td>30,000</td><td>10,000</td><td>30 team members; white-label platform, custom domain</td></tr>
-        <tr><td>Enterprise</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>SLA, security review, dedicated success manager</td></tr>
-      </table>
-      </div>
+    <Callout type="info">
+      <strong>Research note:</strong> The pricing credit box on the FastBots.ai website lists "GPT-5.2" while the FAQ lists "GPT-5" — these appear as different model references. Similarly, "Claude 4 Sonnet" (5 credits in FAQ) and "Claude 4.5 Sonnet" (10 credits in credit box) are documented separately but inconsistently across the site. This creates some ambiguity about which models are currently available.
+    </Callout>
+  </section>
 
-      <h3>Add-Ons</h3>
-      <p>Available on any plan: extra chatbot ($10/mo), extra 1,000 message credits ($10/mo), extra 5M characters storage ($10/mo), remove branding ($29/mo or $290/yr), custom domain ($49/mo or $490/yr).</p>
+  <section id="design">
+    <h2>Platform &amp; Build Quality</h2>
+    <p>FastBots.ai is a cloud-hosted SaaS platform. There is no self-hosted or on-premises option. All configuration happens through a web dashboard, and chatbots are deployed via an embeddable JavaScript widget or platform-specific integrations.</p>
 
-      <h3>Message Credit System</h3>
-      <p>Each chatbot response consumes message credits. Standard models (Gemini 2.5 Flash, GPT-5 Mini) use 1 credit per response. Advanced models consume more: GPT-4o, GPT-4.1, GPT-5.2, and Gemini 2.5 Pro use 5 credits; Claude 4.5 Sonnet uses 10 credits. This means the effective cost per conversation varies significantly depending on which model the chatbot uses.</p>
+    <h3>Technology Architecture</h3>
+    <p>The platform connects to third-party LLM providers (OpenAI, Anthropic, Google) via their APIs. Uploaded training data is not used to train these underlying models — the FAQ confirms API-only access and links to OpenAI's enterprise privacy policy. Data is stored on SOC 2 and GDPR-compliant infrastructure with military-grade encryption, according to vendor statements.</p>
 
-      <div class="callout info">
-        <strong>Research note:</strong> The pricing credit box on the FastBots.ai website lists "GPT-5.2" while the FAQ lists "GPT-5" — these appear as different model references. Similarly, "Claude 4 Sonnet" (5 credits in FAQ) and "Claude 4.5 Sonnet" (10 credits in credit box) are documented separately but inconsistently across the site. This creates some ambiguity about which models are currently available.
-      </div>
-    </section>
+    <h3>Knowledge Ingestion</h3>
+    <p>The web crawler is a notable component. The FAQ describes it as capable of handling JavaScript-rendered sites and active firewalls, which is relevant for businesses with modern single-page applications or security-hardened websites. Beyond websites, the platform accepts document uploads, Google Sheets, and YouTube video URLs (which it processes for transcript content).</p>
 
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>FastBots.ai is a cloud-hosted SaaS platform. There is no self-hosted or on-premises option. All configuration happens through a web dashboard, and chatbots are deployed via an embeddable JavaScript widget or platform-specific integrations.</p>
+    <h3>Supported LLMs</h3>
+    <p>Based on the captured pricing page and FAQ, FastBots.ai supports the following models:</p>
+    <ul>
+      <li><strong>OpenAI:</strong> GPT-4o, GPT-4o Mini, GPT-4.1, GPT-4.1 Mini, GPT-4.1 Nano, o3, o4 Mini, GPT-5, GPT-5.2*, GPT-5 Mini, GPT-5 Nano</li>
+      <li><strong>Anthropic:</strong> Claude 4.5 Sonnet, Claude 4 Sonnet, Claude 3.5 Haiku</li>
+      <li><strong>Google:</strong> Gemini 2.0 Flash, Gemini 2.5 Flash, Gemini 2.5 Pro</li>
+    </ul>
+    <p><small>* GPT-5.2 appears in the pricing credit box but not in the FAQ model list — see model documentation note above.</small></p>
 
-      <h3>Technology Architecture</h3>
-      <p>The platform connects to third-party LLM providers (OpenAI, Anthropic, Google) via their APIs. Uploaded training data is not used to train these underlying models — the FAQ confirms API-only access and links to OpenAI's enterprise privacy policy. Data is stored on SOC 2 and GDPR-compliant infrastructure with military-grade encryption, according to vendor statements.</p>
+    <h3>Security &amp; Compliance</h3>
+    <p>Vendor-claimed certifications include SOC 2 readiness and GDPR compliance. The site footer links to a Data Processing Agreement (DPA). Platform-level controls include domain whitelisting, password-protected chatbots, and rate limiting. HIPAA compliance is not mentioned in any documentation reviewed.</p>
 
-      <h3>Knowledge Ingestion</h3>
-      <p>The web crawler is a notable component. The FAQ describes it as capable of handling JavaScript-rendered sites and active firewalls, which is relevant for businesses with modern single-page applications or security-hardened websites. Beyond websites, the platform accepts document uploads, Google Sheets, and YouTube video URLs (which it processes for transcript content).</p>
+    <h3>Visual Appeal &amp; Trust Signals</h3>
+    <p>The homepage presents a clean, modern design with consistent branding. Trust signals are prominent: notable customer logos (Royal Caribbean, Holiday Inn, major universities), Stripe payment processing, and SOC 2/GDPR claims. Customer testimonials from six international small-business owners are displayed, suggesting a geographically diverse user base. The platform describes itself as having "almost daily" updates and maintains a public roadmap at roadmap.fastbots.ai for user feature voting.</p>
+  </section>
 
-      <h3>Supported LLMs</h3>
-      <p>Based on the captured pricing page and FAQ, FastBots.ai supports the following models:</p>
-      <ul>
-        <li><strong>OpenAI:</strong> GPT-4o, GPT-4o Mini, GPT-4.1, GPT-4.1 Mini, GPT-4.1 Nano, o3, o4 Mini, GPT-5, GPT-5.2*, GPT-5 Mini, GPT-5 Nano</li>
-        <li><strong>Anthropic:</strong> Claude 4.5 Sonnet, Claude 4 Sonnet, Claude 3.5 Haiku</li>
-        <li><strong>Google:</strong> Gemini 2.0 Flash, Gemini 2.5 Flash, Gemini 2.5 Pro</li>
-      </ul>
-      <p><small>* GPT-5.2 appears in the pricing credit box but not in the FAQ model list — see model documentation note above.</small></p>
+  <section id="performance">
+    <h2>Features &amp; Performance</h2>
 
-      <h3>Security &amp; Compliance</h3>
-      <p>Vendor-claimed certifications include SOC 2 readiness and GDPR compliance. The site footer links to a Data Processing Agreement (DPA). Platform-level controls include domain whitelisting, password-protected chatbots, and rate limiting. HIPAA compliance is not mentioned in any documentation reviewed.</p>
+    <h3>Core Mechanic: How FastBots.ai Works</h3>
+    <p>The platform follows a three-step process: Import Data (upload website URLs, documents, or other sources), Customise Bot (set welcome message, chat icon, colour scheme, and tone via custom prompts), and Start Using (embed on website or connect to messaging channels). The chatbot then answers visitor questions based on the trained content.</p>
 
-      <h3>Visual Appeal &amp; Trust Signals</h3>
-      <p>The homepage presents a clean, modern design with consistent branding. Trust signals are prominent: notable customer logos (Royal Caribbean, Holiday Inn, major universities), Stripe payment processing, and SOC 2/GDPR claims. Customer testimonials from six international small-business owners are displayed, suggesting a geographically diverse user base. The platform describes itself as having "almost daily" updates and maintains a public roadmap at roadmap.fastbots.ai for user feature voting.</p>
-    </section>
+    <figure>
+      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the FastBots.ai chatbot flow">
+        <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
+        <rect x="20" y="80" width="140" height="60" rx="8" fill="#2563eb"/>
+        <text x="90" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Import data</text>
+        <text x="90" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(URLs, PDFs, docs)</text>
+        <line x1="160" y1="110" x2="240" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="240,104 252,110 240,116" fill="#94a3b8"/>
+        <rect x="255" y="80" width="140" height="60" rx="8" fill="#0f172a"/>
+        <text x="325" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Customise bot</text>
+        <text x="325" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(prompt, tone, brand)</text>
+        <line x1="395" y1="110" x2="475" y2="110" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="475,104 487,110 475,116" fill="#94a3b8"/>
+        <rect x="490" y="80" width="130" height="60" rx="8" fill="#166534"/>
+        <text x="555" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Deploy</text>
+        <text x="555" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(website + channels)</text>
+      </svg>
+      <figcaption>Original illustration based on the FastBots.ai 3-step setup process — not an actual screenshot of the dashboard.</figcaption>
+    </figure>
 
-    <section id="performance">
-      <h2>Features &amp; Performance</h2>
+    <h3>Key Features</h3>
 
-      <h3>Core Mechanic: How FastBots.ai Works</h3>
-      <p>The platform follows a three-step process: Import Data (upload website URLs, documents, or other sources), Customise Bot (set welcome message, chat icon, colour scheme, and tone via custom prompts), and Start Using (embed on website or connect to messaging channels). The chatbot then answers visitor questions based on the trained content.</p>
+    <h4>Multi-Channel Deployment</h4>
+    <p>A single trained chatbot can simultaneously serve a website widget, WhatsApp, Facebook Messenger, Instagram DMs, Telegram, Slack, and email. The vendor states there are no per-channel fees — one subscription covers all channels. This is one of the platform's clearer differentiators compared to chatbot builders that charge per channel or per platform.</p>
 
-      <figure>
-        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the FastBots.ai chatbot flow">
-          <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
-          <rect x="20" y="80" width="140" height="60" rx="8" fill="#2563eb"/>
-          <text x="90" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Import data</text>
-          <text x="90" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(URLs, PDFs, docs)</text>
-          <line x1="160" y1="110" x2="240" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="240,104 252,110 240,116" fill="#94a3b8"/>
-          <rect x="255" y="80" width="140" height="60" rx="8" fill="#0f172a"/>
-          <text x="325" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Customise bot</text>
-          <text x="325" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(prompt, tone, brand)</text>
-          <line x1="395" y1="110" x2="475" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="475,104 487,110 475,116" fill="#94a3b8"/>
-          <rect x="490" y="80" width="130" height="60" rx="8" fill="#166534"/>
-          <text x="555" y="108" fill="#fff" font-size="13" text-anchor="middle" font-family="Arial">Deploy</text>
-          <text x="555" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">(website + channels)</text>
-        </svg>
-        <figcaption>Original illustration based on the FastBots.ai 3-step setup process — not an actual screenshot of the dashboard.</figcaption>
-      </figure>
+    <h4>Knowledge Source Controls</h4>
+    <p>Users can choose between three knowledge modes: restrict the chatbot to trained content only, allow it to supplement with ChatGPT's general knowledge, or enable live internet search. This gives granular control over whether the chatbot stays strictly within documented material or can draw on broader information.</p>
 
-      <h3>Key Features</h3>
+    <h4>Human Handoff &amp; Live Chat</h4>
+    <p>On the Business plan ($89/month) and above, the chatbot can offer to transfer a conversation to a human agent when it cannot find an answer. The agent receives the full conversation transcript and can continue from where the AI left off. Availability hours can be configured so handoff only happens during staffed periods.</p>
 
-      <h4>Multi-Channel Deployment</h4>
-      <p>A single trained chatbot can simultaneously serve a website widget, WhatsApp, Facebook Messenger, Instagram DMs, Telegram, Slack, and email. The vendor states there are no per-channel fees — one subscription covers all channels. This is one of the platform's clearer differentiators compared to chatbot builders that charge per channel or per platform.</p>
+    <h4>Automated Retraining</h4>
+    <p>Available on Business plan and above. The system revisits selected website sources on a daily, weekly, or monthly schedule and updates the chatbot's knowledge when content changes. Manual retraining is available on all plans. The extent to which this correctly identifies and applies content changes without introducing errors would require hands-on testing to evaluate.</p>
 
-      <h4>Knowledge Source Controls</h4>
-      <p>Users can choose between three knowledge modes: restrict the chatbot to trained content only, allow it to supplement with ChatGPT's general knowledge, or enable live internet search. This gives granular control over whether the chatbot stays strictly within documented material or can draw on broader information.</p>
+    <h4>Lead Capture &amp; CRM Integration</h4>
+    <p>Built-in lead forms collect contact details during conversations. Leads are stored in the dashboard and can be emailed to team members. However, syncing leads to a CRM requires setting up Zapier or Make workflows — there is no native one-click CRM connector (except for Shopify, which has deeper native integration).</p>
 
-      <h4>Human Handoff &amp; Live Chat</h4>
-      <p>On the Business plan ($89/month) and above, the chatbot can offer to transfer a conversation to a human agent when it cannot find an answer. The agent receives the full conversation transcript and can continue from where the AI left off. Availability hours can be configured so handoff only happens during staffed periods.</p>
+    <h4>Zapier MCP AI Actions</h4>
+    <p>Through the Zapier integration (via MCP), the chatbot can perform real-world actions during conversations: submitting forms, booking appointments, sending emails and SMS messages, and checking order status. This extends the platform beyond passive Q&amp;A into basic agentic functionality.</p>
 
-      <h4>Automated Retraining</h4>
-      <p>Available on Business plan and above. The system revisits selected website sources on a daily, weekly, or monthly schedule and updates the chatbot's knowledge when content changes. Manual retraining is available on all plans. The extent to which this correctly identifies and applies content changes without introducing errors would require hands-on testing to evaluate.</p>
+    <h3>Areas Requiring Hands-On Validation</h3>
+    <p>Several important performance characteristics cannot be assessed from documentation alone. These include: response quality and accuracy across different LLMs on the same training data, hallucination resistance when restricted to trained content only, the effectiveness of the auto retraining feature when content changes, multilingual accuracy (the platform claims 95 languages), and performance under concurrent conversations. These are noted as open questions from the research and would benefit from real product testing.</p>
+  </section>
 
-      <h4>Lead Capture &amp; CRM Integration</h4>
-      <p>Built-in lead forms collect contact details during conversations. Leads are stored in the dashboard and can be emailed to team members. However, syncing leads to a CRM requires setting up Zapier or Make workflows — there is no native one-click CRM connector (except for Shopify, which has deeper native integration).</p>
+  <ProductCta title="Build your first AI chatbot — free, no credit card required" description="FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more." buttonText="Try FastBots.ai Free" href="https://fastbots.ai/?via=jarmo" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
 
-      <h4>Zapier MCP AI Actions</h4>
-      <p>Through the Zapier integration (via MCP), the chatbot can perform real-world actions during conversations: submitting forms, booking appointments, sending emails and SMS messages, and checking order status. This extends the platform beyond passive Q&amp;A into basic agentic functionality.</p>
+  <section id="ux">
+    <h2>User Experience</h2>
+    <h3>Setup Process</h3>
+    <p>The vendor claims setup in "under 5 minutes." The process involves creating a free account, entering a website URL or uploading documents, customising the chatbot's appearance and prompt, and pasting a JavaScript snippet onto the target website. A free install service is available for users who need assistance. Setup is designed for non-technical users with no coding required.</p>
 
-      <h3>Areas Requiring Hands-On Validation</h3>
-      <p>Several important performance characteristics cannot be assessed from documentation alone. These include: response quality and accuracy across different LLMs on the same training data, hallucination resistance when restricted to trained content only, the effectiveness of the auto retraining feature when content changes, multilingual accuracy (the platform claims 95 languages), and performance under concurrent conversations. These are noted as open questions from the research and would benefit from real product testing.</p>
-    </section>
+    <h3>Daily Usage</h3>
+    <p>Ongoing activity centers on monitoring chat conversations through the dashboard's History panel, reviewing lead capture data, and refining the chatbot's prompt and knowledge sources based on real interactions. The Knowledge Assistant (Business+ plan) flags unanswered questions, suggesting content gaps to address.</p>
 
-    <div class="cta-card">
-      <h3>Build your first AI chatbot — free, no credit card required</h3>
-      <p>FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more.</p>
-      <p><a href="https://fastbots.ai/?via=jarmo" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try FastBots.ai Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Learning Curve</h3>
+    <p>The platform is marketed primarily to non-technical business owners. Configuration is prompt-based and settings-driven — there is no visual conversation flow builder. Users who are comfortable writing instructions in plain English should find the interface approachable. Users accustomed to drag-and-drop flow builders (such as those found in Botpress or Voiceflow) may find the configuration model less familiar.</p>
+
+    <h3>Interface &amp; Usability</h3>
+    <p>We did not get hands-on access to the dashboard, so interface usability is assessed from available documentation. The feature descriptions suggest a control panel organised by chatbot, with tabs for training sources, prompt configuration, chat history, lead capture settings, and integration connections. The pricing comparison table on the public site is clear and well-structured, suggesting attention to information design that likely carries into the product interface.</p>
+  </section>
+
+  <section id="comparison">
+    <h2>How FastBots.ai Compares to Other Options</h2>
+    <p>The AI chatbot platform market includes several competing products with different strengths. The following comparison is based on the Research Brief's market categorisation and general industry knowledge — it is not a competitive analysis against specific products.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Option</th><th>Model</th><th>Key Differentiator</th><th>Best For</th></tr>
+      <tr><td>FastBots.ai</td><td>Freemium SaaS, multi-model LLM</td><td>Single chatbot across 6+ channels; advanced web crawler; white-label reseller</td><td>Businesses wanting one bot everywhere without per-channel fees</td></tr>
+      <tr><td>Chatbase</td><td>Freemium SaaS</td><td>Strong data training; clean interface; SOC 2 Type II</td><td>Businesses focused on website-only chatbot with excellent knowledge ingestion</td></tr>
+      <tr><td>Tidio</td><td>Freemium SaaS</td><td>E-commerce integrations (Shopify, WooCommerce); live chat + AI combo</td><td>E-commerce stores wanting combined live chat and AI automation</td></tr>
+      <tr><td>Botpress</td><td>Open-core SaaS</td><td>Visual conversation flow builder; developer-focused; self-hosting option</td><td>Technical teams needing a customisable, self-hosted solution</td></tr>
+    </table>
     </div>
+    <p><strong>FastBots.ai's clear differentiator:</strong> one trained chatbot deployed across six channels from a single subscription, with advanced web crawling that handles JavaScript-heavy and firewall-protected sites. The white-label reseller program (up to 5 branded client portals) is also relatively uncommon among no-code chatbot platforms. <strong>Trade-off:</strong> no visual flow builder, cloud-only deployment, and advanced features are concentrated in higher pricing tiers.</p>
+  </section>
 
-    <section id="ux">
-      <h2>User Experience</h2>
-      <h3>Setup Process</h3>
-      <p>The vendor claims setup in "under 5 minutes." The process involves creating a free account, entering a website URL or uploading documents, customising the chatbot's appearance and prompt, and pasting a JavaScript snippet onto the target website. A free install service is available for users who need assistance. Setup is designed for non-technical users with no coding required.</p>
-
-      <h3>Daily Usage</h3>
-      <p>Ongoing activity centers on monitoring chat conversations through the dashboard's History panel, reviewing lead capture data, and refining the chatbot's prompt and knowledge sources based on real interactions. The Knowledge Assistant (Business+ plan) flags unanswered questions, suggesting content gaps to address.</p>
-
-      <h3>Learning Curve</h3>
-      <p>The platform is marketed primarily to non-technical business owners. Configuration is prompt-based and settings-driven — there is no visual conversation flow builder. Users who are comfortable writing instructions in plain English should find the interface approachable. Users accustomed to drag-and-drop flow builders (such as those found in Botpress or Voiceflow) may find the configuration model less familiar.</p>
-
-      <h3>Interface &amp; Usability</h3>
-      <p>We did not get hands-on access to the dashboard, so interface usability is assessed from available documentation. The feature descriptions suggest a control panel organised by chatbot, with tabs for training sources, prompt configuration, chat history, lead capture settings, and integration connections. The pricing comparison table on the public site is clear and well-structured, suggesting attention to information design that likely carries into the product interface.</p>
-    </section>
-
-    <section id="comparison">
-      <h2>How FastBots.ai Compares to Other Options</h2>
-      <p>The AI chatbot platform market includes several competing products with different strengths. The following comparison is based on the Research Brief's market categorisation and general industry knowledge — it is not a competitive analysis against specific products.</p>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Option</th><th>Model</th><th>Key Differentiator</th><th>Best For</th></tr>
-        <tr><td>FastBots.ai</td><td>Freemium SaaS, multi-model LLM</td><td>Single chatbot across 6+ channels; advanced web crawler; white-label reseller</td><td>Businesses wanting one bot everywhere without per-channel fees</td></tr>
-        <tr><td>Chatbase</td><td>Freemium SaaS</td><td>Strong data training; clean interface; SOC 2 Type II</td><td>Businesses focused on website-only chatbot with excellent knowledge ingestion</td></tr>
-        <tr><td>Tidio</td><td>Freemium SaaS</td><td>E-commerce integrations (Shopify, WooCommerce); live chat + AI combo</td><td>E-commerce stores wanting combined live chat and AI automation</td></tr>
-        <tr><td>Botpress</td><td>Open-core SaaS</td><td>Visual conversation flow builder; developer-focused; self-hosting option</td><td>Technical teams needing a customisable, self-hosted solution</td></tr>
-      </table>
+  <section id="proscons">
+    <h2>Pros &amp; Cons</h2>
+    <div class="two-col">
+      <div class="pc-card good">
+        <h3>Strengths</h3>
+        <ul>
+          <li>Setup in under five minutes — no coding required; free install service available.</li>
+          <li>One chatbot deployed across website, WhatsApp, Messenger, Instagram, Telegram, Slack, and email — no per-channel fees.</li>
+          <li>Choice of 12+ LLMs from OpenAI, Anthropic, and Google, allowing cost and capability trade-offs.</li>
+          <li>Free tier with 1 chatbot and 50 messages/month, no credit card required — sufficient for prototyping.</li>
+          <li>Advanced web crawler handles JavaScript-rendered sites and firewall-protected content.</li>
+          <li>White-label reseller program with custom domain and up to 5 branded client portals.</li>
+          <li>Zapier MCP integration lets the chatbot perform actions mid-conversation (book appointments, check orders, send messages).</li>
+          <li>Automatic retraining on schedule (daily/weekly/monthly) keeps chatbot current with content changes.</li>
+        </ul>
       </div>
-      <p><strong>FastBots.ai's clear differentiator:</strong> one trained chatbot deployed across six channels from a single subscription, with advanced web crawling that handles JavaScript-heavy and firewall-protected sites. The white-label reseller program (up to 5 branded client portals) is also relatively uncommon among no-code chatbot platforms. <strong>Trade-off:</strong> no visual flow builder, cloud-only deployment, and advanced features are concentrated in higher pricing tiers.</p>
-    </section>
-
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>Strengths</h3>
-          <ul>
-            <li>Setup in under five minutes — no coding required; free install service available.</li>
-            <li>One chatbot deployed across website, WhatsApp, Messenger, Instagram, Telegram, Slack, and email — no per-channel fees.</li>
-            <li>Choice of 12+ LLMs from OpenAI, Anthropic, and Google, allowing cost and capability trade-offs.</li>
-            <li>Free tier with 1 chatbot and 50 messages/month, no credit card required — sufficient for prototyping.</li>
-            <li>Advanced web crawler handles JavaScript-rendered sites and firewall-protected content.</li>
-            <li>White-label reseller program with custom domain and up to 5 branded client portals.</li>
-            <li>Zapier MCP integration lets the chatbot perform actions mid-conversation (book appointments, check orders, send messages).</li>
-            <li>Automatic retraining on schedule (daily/weekly/monthly) keeps chatbot current with content changes.</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Limitations</h3>
-          <ul>
-            <li>Cloud-only — no self-hosting or on-premises deployment option.</li>
-            <li>Live chat handover, auto retrain, email replies, and chat translation are locked behind the Business plan ($89/month) or above.</li>
-            <li>Advanced LLMs consume 5–10 credits per response, adding variable cost to conversations that is not immediately obvious from the base subscription price.</li>
-            <li>No native CRM or helpdesk push — lead data requires Zapier or Make workflows to reach most CRMs.</li>
-            <li>Free tier training data is cleared after 14 days of inactivity, which limits sporadic-use scenarios.</li>
-            <li>No visual conversation flow builder — configuration is prompt-based only.</li>
-            <li>Model documentation inconsistencies between the pricing credit box and FAQ create some ambiguity about available models.</li>
-            <li>Limited independent review footprint — only 2 G2 reviews as of mid-2026.</li>
-          </ul>
-        </div>
+      <div class="pc-card bad">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Cloud-only — no self-hosting or on-premises deployment option.</li>
+          <li>Live chat handover, auto retrain, email replies, and chat translation are locked behind the Business plan ($89/month) or above.</li>
+          <li>Advanced LLMs consume 5–10 credits per response, adding variable cost to conversations that is not immediately obvious from the base subscription price.</li>
+          <li>No native CRM or helpdesk push — lead data requires Zapier or Make workflows to reach most CRMs.</li>
+          <li>Free tier training data is cleared after 14 days of inactivity, which limits sporadic-use scenarios.</li>
+          <li>No visual conversation flow builder — configuration is prompt-based only.</li>
+          <li>Model documentation inconsistencies between the pricing credit box and FAQ create some ambiguity about available models.</li>
+          <li>Limited independent review footprint — only 2 G2 reviews as of mid-2026.</li>
+        </ul>
       </div>
-    </section>
-
-    <section id="history">
-      <h2>Company Background</h2>
-      <p>FastBots.ai was founded in 2022 by CEO Jason West. The company is privately held and based in the United Kingdom. The platform's public-facing brand carries a "Made in Great Britain" mark and the copyright on the website reads "Copyright 2026 — FastBots.ai."</p>
-
-      <h3>Positioning &amp; Market Presence</h3>
-      <p>The company positions itself as "the easiest AI chatbot builder for any website," emphasising simplicity, speed, and breadth of channel support. Independent third-party sources (AI Tools Mentor, G2, TechnologyChecker, AI Chat Review) describe the platform as a no-code option for customer support and knowledge base chatbots, with particular strength in multi-channel deployment and training ingestion.</p>
-      <p>TechnologyChecker data shows FastBots.ai went from zero to approximately 498 detected active domains in roughly 19 months (October 2023 to May 2025), with a significant growth spike between April and May 2024. This suggests early-stage but rapid adoption.</p>
-
-      <h3>Affiliate &amp; Agency Programs</h3>
-      <p>FastBots.ai operates an affiliate program accessible from the main site navigation. The PDF snapshot used for this review was captured via an affiliate referral URL, confirming the program is active. An agency program is also listed, though the specific terms (commission rates, reseller margins) are not disclosed in the reviewed documentation. The Reseller pricing tier ($399/month) enables agency use cases with white-label client portals.</p>
-    </section>
-
-    <section id="recommend">
-      <h2>Who Should Use FastBots.ai?</h2>
-      <h3>Best For</h3>
-      <ul>
-        <li><strong>Small-to-medium businesses</strong> that want a quick, no-code chatbot for customer support and lead generation across their website and messaging channels.</li>
-        <li><strong>Agencies and resellers</strong> that need a white-label chatbot platform they can offer under their own brand to multiple clients, with custom domains and branded client logins.</li>
-        <li><strong>E-commerce stores</strong> (especially on Shopify) that want product Q&amp;A, order lookups, and lead capture from website visitors.</li>
-        <li><strong>SaaS companies</strong> that want an AI knowledge base chatbot trained on their help docs, API documentation, and support articles.</li>
-        <li><strong>Solo entrepreneurs and freelancers</strong> who need an affordable, easy-to-deploy website assistant and can start on the free or Essential plan.</li>
-        <li><strong>Non-technical business owners</strong> who cannot code and need a chatbot live within minutes, with free install assistance available.</li>
-      </ul>
-      <h3>Skip If</h3>
-      <ul>
-        <li>You need <strong>on-premises or air-gapped deployment</strong> — FastBots.ai is cloud-hosted only.</li>
-        <li>You require a <strong>visual conversation flow builder</strong> — configuration is prompt-based, not drag-and-drop.</li>
-        <li>You have <strong>HIPAA-specific compliance requirements</strong> — SOC 2 and GDPR are confirmed, but HIPAA has not been mentioned in any reviewed documentation.</li>
-        <li>You primarily want to use <strong>premium LLMs (GPT-5, Claude 4.5 Sonnet)</strong> at high volume — the 5–10 credit-per-response cost makes these significantly more expensive to operate than standard models.</li>
-        <li>You need <strong>deep native CRM or helpdesk integration</strong> without setting up Zapier or Make workflows.</li>
-      </ul>
-    </section>
-
-    <section id="buy">
-      <h2>Where to Sign Up &amp; Pricing</h2>
-      <p>Sign-up happens directly through the FastBots.ai website at <a href="https://fastbots.ai/?via=jarmo" target="_blank" rel="noopener noreferrer sponsored">fastbots.ai</a>. There is no third-party marketplace or retailer — the product is a direct-to-customer SaaS platform. The free plan requires no credit card and provides 1 chatbot with 50 message credits per month, sufficient for testing.</p>
-      <p>Paid plans start at $39/month (Essential) and scale to $399/month (Reseller) for white-label use. Annual billing reduces the effective monthly cost by approximately 17%. Enterprise custom pricing is available on request for larger teams with specific security, SLA, or compliance needs.</p>
-      <p>All pricing was verified from the official pricing page captured on July 4, 2026. Pricing for SaaS platforms can change, so verify current rates before subscribing.</p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Assessment</h2>
-
-      <p>FastBots.ai presents a solid, no-code option for businesses that want to deploy an AI chatbot across multiple channels from a single trained knowledge base. The platform's strengths — speed of setup, multi-channel deployment, strong web crawling, LLM flexibility, and white-label reseller capabilities — are genuinely useful and well-documented.</p>
-
-      <p>The limitations are equally clear: advanced features are gated behind the Business plan or higher, the message credit system adds cost complexity when using premium models, and several important performance characteristics (response quality, hallucination resistance, multilingual accuracy) cannot be evaluated from documentation alone. The model documentation inconsistencies between the pricing page and FAQ suggest the platform's LLM offerings may be evolving rapidly, which is common in this space but worth noting for buyers who need a stable, documented feature set.</p>
-
-      <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
-      <div class="score-row"><div class="score-label">Multi-Channel Support</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
-      <div class="score-row"><div class="score-label">Training Ingestion</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Pricing Transparency</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
-      <div class="score-row"><div class="score-label">Documentation Quality</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
-      <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:50%"></div></div><div class="score-num">2.5/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for response quality, hallucination resistance, and reliability under load cannot be assigned without hands-on testing.</p>
-
-      <p>For business owners and website operators who need a straightforward, multi-channel chatbot with solid training capabilities and are comfortable with a prompt-based configuration model, FastBots.ai is worth evaluating through its free tier. For teams that require a visual flow builder, on-premises hosting, or deep native CRM integration, alternative platforms may be more suitable.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is FastBots.ai Worth Exploring for You?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not a personalised recommendation.</p>
-        <fieldset>
-          <legend>Do you need your chatbot to work on multiple channels (website, WhatsApp, Messenger, etc.) from one setup?</legend>
-          <label><input type="radio" name="q1" value="2"> Yes, multi-channel is important to me</label>
-          <label><input type="radio" name="q1" value="0"> No, I only need it on my website</label>
-        </fieldset>
-        <fieldset>
-          <legend>Are you comfortable with prompt-based chatbot configuration (no drag-and-drop flow builder)?</legend>
-          <label><input type="radio" name="q2" value="2"> Yes, writing instructions is fine</label>
-          <label><input type="radio" name="q2" value="0"> No, I prefer a visual builder</label>
-        </fieldset>
-        <fieldset>
-          <legend>Can you start with a free plan and upgrade only after validating the tool works for your use case?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes</label>
-          <label><input type="radio" name="q3" value="0"> No, I need everything from day one</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>What is FastBots.ai?</summary>
-        <p>FastBots.ai is a no-code AI chatbot builder that lets businesses create custom chatbots trained on their own content — website pages, documents, PDFs, and other data sources. Chatbots can be deployed on a website widget, WhatsApp, Instagram, Facebook Messenger, Telegram, Slack, and email, all from a single trained model.</p>
-      </details>
-      <details>
-        <summary>Is FastBots.ai free?</summary>
-        <p>Yes, there is a free plan with 1 chatbot and 50 message credits per month, no credit card required. It is sufficient for testing but limited — training data is cleared after 14 days of inactivity. Paid plans start at $39/month for the Essential tier.</p>
-      </details>
-      <details>
-        <summary>How does the message credit system work?</summary>
-        <p>Each chatbot response consumes message credits. Standard models (GPT-4o Mini, Gemini 2.5 Flash, Claude 3.5 Haiku) use 1 credit per response. Advanced models use more: GPT-4o and GPT-5 use 5 credits; Claude 4.5 Sonnet uses 10 credits. The free plan includes 50 credits per month; paid plans range from 2,000 to 30,000 credits per month. Additional credits can be purchased as add-ons.</p>
-      </details>
-      <details>
-        <summary>Can I use my own domain for the chatbot?</summary>
-        <p>Yes. A custom domain for chatbot embeds and share links is available as a $49/month add-on on any plan, or is included natively in the Reseller plan ($399/month).</p>
-      </details>
-      <details>
-        <summary>Does FastBots.ai support multiple languages?</summary>
-        <p>The platform supports approximately 95 languages. Visitors can chat in their preferred language, and the chatbot responds in the same language. Automated translation ensures conversations appear in the user's chosen language. Chat translation for reviewing transcripts is available on the Business plan and above.</p>
-      </details>
-      <details>
-        <summary>Can a human take over from the chatbot?</summary>
-        <p>Yes. The Live Chat / human handover feature (Business plan and above) lets the chatbot offer a transfer to a human agent when it cannot answer. The team member receives the full conversation transcript and can continue in real time. Availability hours can be configured.</p>
-      </details>
-      <details>
-        <summary>Can I white-label FastBots.ai for my clients?</summary>
-        <p>Yes. The Reseller plan ($399/month) provides a fully branded version of the platform with custom domain, custom "Powered by" text, and client login portals for up to 5 different brands. Lower plans can remove the "Powered by FastBots" branding as a $29/month add-on.</p>
-      </details>
-      <details>
-        <summary>How is FastBots.ai different from ChatGPT?</summary>
-        <p>ChatGPT is a general-purpose conversational AI. FastBots.ai lets you train a chatbot specifically on your own content — your website, documents, FAQs, and policies — so it answers based on your information rather than general knowledge. You control whether the chatbot can also draw on ChatGPT's general knowledge or live web search.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Build your first AI chatbot — free, no credit card required</h3>
-      <p>FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more.</p>
-      <p><a href="https://fastbots.ai/?via=jarmo" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try FastBots.ai Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
     </div>
+  </section>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://fastbots.ai/?via=jarmo" target="_blank" rel="noopener noreferrer sponsored">FastBots.ai Official Site</a></li>
-        <li><a href="https://fastbots.ai/about" target="_blank" rel="noopener noreferrer">FastBots.ai About Page</a></li>
-        <li><a href="https://fastbots.ai/industries" target="_blank" rel="noopener noreferrer">FastBots.ai Industries</a></li>
-        <li><a href="https://fastbots.ai/integrations" target="_blank" rel="noopener noreferrer">FastBots.ai Integrations</a></li>
-        <li><a href="https://fastbots.ai/use-cases/customer-support" target="_blank" rel="noopener noreferrer">Customer Support Use Case</a></li>
-        <li><a href="https://fastbots.ai/use-cases/lead-generation" target="_blank" rel="noopener noreferrer">Lead Generation Use Case</a></li>
-        <li><a href="https://fastbots.ai/use-cases/knowledge-base" target="_blank" rel="noopener noreferrer">Knowledge Base Use Case</a></li>
-        <li><a href="https://www.aitoolsmentor.com/tool/fastbots" target="_blank" rel="noopener noreferrer">AI Tools Mentor</a></li>
-        <li><a href="https://www.g2.com/products/fastbots/reviews" target="_blank" rel="noopener noreferrer">G2 Reviews</a></li>
-        <li><a href="https://roadmap.fastbots.ai" target="_blank" rel="noopener noreferrer">FastBots.ai Roadmap</a></li>
-        <li><a href="https://blog.fastbots.ai" target="_blank" rel="noopener noreferrer">FastBots Blog</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: 35-page PDF FireShot capture of fastbots.ai captured July 4, 2026. Cross-referenced with live website. Third-party sources are cited to show what claims are publicly circulating. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
-    </section>
+  <section id="history">
+    <h2>Company Background</h2>
+    <p>FastBots.ai was founded in 2022 by CEO Jason West. The company is privately held and based in the United Kingdom. The platform's public-facing brand carries a "Made in Great Britain" mark and the copyright on the website reads "Copyright 2026 — FastBots.ai."</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
-  </main>
-</div>
+    <h3>Positioning &amp; Market Presence</h3>
+    <p>The company positions itself as "the easiest AI chatbot builder for any website," emphasising simplicity, speed, and breadth of channel support. Independent third-party sources (AI Tools Mentor, G2, TechnologyChecker, AI Chat Review) describe the platform as a no-code option for customer support and knowledge base chatbots, with particular strength in multi-channel deployment and training ingestion.</p>
+    <p>TechnologyChecker data shows FastBots.ai went from zero to approximately 498 detected active domains in roughly 19 months (October 2023 to May 2025), with a significant growth spike between April and May 2024. This suggests early-stage but rapid adoption.</p>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+    <h3>Affiliate &amp; Agency Programs</h3>
+    <p>FastBots.ai operates an affiliate program accessible from the main site navigation. The PDF snapshot used for this review was captured via an affiliate referral URL, confirming the program is active. An agency program is also listed, though the specific terms (commission rates, reseller margins) are not disclosed in the reviewed documentation. The Reseller pricing tier ($399/month) enables agency use cases with white-label client portals.</p>
+  </section>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+  <section id="recommend">
+    <h2>Who Should Use FastBots.ai?</h2>
+    <h3>Best For</h3>
+    <ul>
+      <li><strong>Small-to-medium businesses</strong> that want a quick, no-code chatbot for customer support and lead generation across their website and messaging channels.</li>
+      <li><strong>Agencies and resellers</strong> that need a white-label chatbot platform they can offer under their own brand to multiple clients, with custom domains and branded client logins.</li>
+      <li><strong>E-commerce stores</strong> (especially on Shopify) that want product Q&amp;A, order lookups, and lead capture from website visitors.</li>
+      <li><strong>SaaS companies</strong> that want an AI knowledge base chatbot trained on their help docs, API documentation, and support articles.</li>
+      <li><strong>Solo entrepreneurs and freelancers</strong> who need an affordable, easy-to-deploy website assistant and can start on the free or Essential plan.</li>
+      <li><strong>Non-technical business owners</strong> who cannot code and need a chatbot live within minutes, with free install assistance available.</li>
+    </ul>
+    <h3>Skip If</h3>
+    <ul>
+      <li>You need <strong>on-premises or air-gapped deployment</strong> — FastBots.ai is cloud-hosted only.</li>
+      <li>You require a <strong>visual conversation flow builder</strong> — configuration is prompt-based, not drag-and-drop.</li>
+      <li>You have <strong>HIPAA-specific compliance requirements</strong> — SOC 2 and GDPR are confirmed, but HIPAA has not been mentioned in any reviewed documentation.</li>
+      <li>You primarily want to use <strong>premium LLMs (GPT-5, Claude 4.5 Sonnet)</strong> at high volume — the 5–10 credit-per-response cost makes these significantly more expensive to operate than standard models.</li>
+      <li>You need <strong>deep native CRM or helpdesk integration</strong> without setting up Zapier or Make workflows.</li>
+    </ul>
+  </section>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  <section id="buy">
+    <h2>Where to Sign Up &amp; Pricing</h2>
+    <p>Sign-up happens directly through the FastBots.ai website at <a href="https://fastbots.ai/?via=jarmo" target="_blank" rel="noopener noreferrer sponsored">fastbots.ai</a>. There is no third-party marketplace or retailer — the product is a direct-to-customer SaaS platform. The free plan requires no credit card and provides 1 chatbot with 50 message credits per month, sufficient for testing.</p>
+    <p>Paid plans start at $39/month (Essential) and scale to $399/month (Reseller) for white-label use. Annual billing reduces the effective monthly cost by approximately 17%. Enterprise custom pricing is available on request for larger teams with specific security, SLA, or compliance needs.</p>
+    <p>All pricing was verified from the official pricing page captured on July 4, 2026. Pricing for SaaS platforms can change, so verify current rates before subscribing.</p>
+  </section>
 
-  sections.forEach(s => observer.observe(s));
+  <section id="verdict">
+    <h2>Final Assessment</h2>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+    <p>FastBots.ai presents a solid, no-code option for businesses that want to deploy an AI chatbot across multiple channels from a single trained knowledge base. The platform's strengths — speed of setup, multi-channel deployment, strong web crawling, LLM flexibility, and white-label reseller capabilities — are genuinely useful and well-documented.</p>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+    <p>The limitations are equally clear: advanced features are gated behind the Business plan or higher, the message credit system adds cost complexity when using premium models, and several important performance characteristics (response quality, hallucination resistance, multilingual accuracy) cannot be evaluated from documentation alone. The model documentation inconsistencies between the pricing page and FAQ suggest the platform's LLM offerings may be evolving rapidly, which is common in this space but worth noting for buyers who need a stable, documented feature set.</p>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+    <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
+    <div class="score-row"><div class="score-label">Multi-Channel Support</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
+    <div class="score-row"><div class="score-label">Training Ingestion</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Pricing Transparency</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
+    <div class="score-row"><div class="score-label">Documentation Quality</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
+    <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:50%"></div></div><div class="score-num">2.5/5</div></div>
+    <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for response quality, hallucination resistance, and reliability under load cannot be assigned without hands-on testing.</p>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, FastBots.ai's multi-channel, prompt-based model may align well with your needs. Start with the free plan to test it on your own content before committing to a paid tier.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. FastBots.ai could work if its strengths (multi-channel, speed of setup) outweigh the limitations (no visual builder, cloud-only). Consider testing the free plan first.";
-    } else {
-      message = "Based on your answers, a platform with a visual flow builder or on-premises hosting may be more suitable for your needs. FastBots.ai's prompt-based, cloud-only model may not match your requirements.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+    <p>For business owners and website operators who need a straightforward, multi-channel chatbot with solid training capabilities and are comfortable with a prompt-based configuration model, FastBots.ai is worth evaluating through its free tier. For teams that require a visual flow builder, on-premises hosting, or deep native CRM integration, alternative platforms may be more suitable.</p>
 
-</body>
-</html>
+    <div class="quiz-box" id="quizBox">
+      <h3 style="margin-top:0;">Quick Self-Check: Is FastBots.ai Worth Exploring for You?</h3>
+      <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not a personalised recommendation.</p>
+      <fieldset>
+        <legend>Do you need your chatbot to work on multiple channels (website, WhatsApp, Messenger, etc.) from one setup?</legend>
+        <label><input type="radio" name="q1" value="2"> Yes, multi-channel is important to me</label>
+        <label><input type="radio" name="q1" value="0"> No, I only need it on my website</label>
+      </fieldset>
+      <fieldset>
+        <legend>Are you comfortable with prompt-based chatbot configuration (no drag-and-drop flow builder)?</legend>
+        <label><input type="radio" name="q2" value="2"> Yes, writing instructions is fine</label>
+        <label><input type="radio" name="q2" value="0"> No, I prefer a visual builder</label>
+      </fieldset>
+      <fieldset>
+        <legend>Can you start with a free plan and upgrade only after validating the tool works for your use case?</legend>
+        <label><input type="radio" name="q3" value="2"> Yes</label>
+        <label><input type="radio" name="q3" value="0"> No, I need everything from day one</label>
+      </fieldset>
+      <button type="button" onclick="evaluateQuiz()">See My Result</button>
+      <div id="quiz-result"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="What is FastBots.ai?" answer="FastBots.ai is a no-code AI chatbot builder that lets businesses create custom chatbots trained on their own content — website pages, documents, PDFs, and other data sources. Chatbots can be deployed on a website widget, WhatsApp, Instagram, Facebook Messenger, Telegram, Slack, and email, all from a single trained model." />
+    <FaqItem question="Is FastBots.ai free?" answer="Yes, there is a free plan with 1 chatbot and 50 message credits per month, no credit card required. It is sufficient for testing but limited — training data is cleared after 14 days of inactivity. Paid plans start at $39/month for the Essential tier." />
+    <FaqItem question="How does the message credit system work?" answer="Each chatbot response consumes message credits. Standard models (GPT-4o Mini, Gemini 2.5 Flash, Claude 3.5 Haiku) use 1 credit per response. Advanced models use more: GPT-4o and GPT-5 use 5 credits; Claude 4.5 Sonnet uses 10 credits. The free plan includes 50 credits per month; paid plans range from 2,000 to 30,000 credits per month. Additional credits can be purchased as add-ons." />
+    <FaqItem question="Can I use my own domain for the chatbot?" answer="Yes. A custom domain for chatbot embeds and share links is available as a $49/month add-on on any plan, or is included natively in the Reseller plan ($399/month)." />
+    <FaqItem question="Does FastBots.ai support multiple languages?" answer="The platform supports approximately 95 languages. Visitors can chat in their preferred language, and the chatbot responds in the same language. Automated translation ensures conversations appear in the user's chosen language. Chat translation for reviewing transcripts is available on the Business plan and above." />
+    <FaqItem question="Can a human take over from the chatbot?" answer="Yes. The Live Chat / human handover feature (Business plan and above) lets the chatbot offer a transfer to a human agent when it cannot answer. The team member receives the full conversation transcript and can continue in real time. Availability hours can be configured." />
+    <FaqItem question="Can I white-label FastBots.ai for my clients?" answer="Yes. The Reseller plan ($399/month) provides a fully branded version of the platform with custom domain, custom 'Powered by' text, and client login portals for up to 5 different brands. Lower plans can remove the 'Powered by FastBots' branding as a $29/month add-on." />
+    <FaqItem question="How is FastBots.ai different from ChatGPT?" answer="ChatGPT is a general-purpose conversational AI. FastBots.ai lets you train a chatbot specifically on your own content — your website, documents, FAQs, and policies — so it answers based on your information rather than general knowledge. You control whether the chatbot can also draw on ChatGPT's general knowledge or live web search." />
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <ProductCta title="Build your first AI chatbot — free, no credit card required" description="FastBots.ai lets you create a custom AI chatbot trained on your own content in minutes. Deploy it on your website, WhatsApp, Instagram, Messenger, and more — all from one dashboard. Start with the free plan and upgrade when you need more." buttonText="Try FastBots.ai Free" href="https://fastbots.ai/?via=jarmo" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join FastBots.ai through this link, we may earn a commission at no extra cost to you.</p>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <PillList items={[
+      { label: "FastBots.ai Official Site", url: "https://fastbots.ai/?via=jarmo", sponsored: true },
+      { label: "FastBots.ai About Page", url: "https://fastbots.ai/about" },
+      { label: "FastBots.ai Industries", url: "https://fastbots.ai/industries" },
+      { label: "FastBots.ai Integrations", url: "https://fastbots.ai/integrations" },
+      { label: "Customer Support Use Case", url: "https://fastbots.ai/use-cases/customer-support" },
+      { label: "Lead Generation Use Case", url: "https://fastbots.ai/use-cases/lead-generation" },
+      { label: "Knowledge Base Use Case", url: "https://fastbots.ai/use-cases/knowledge-base" },
+      { label: "AI Tools Mentor", url: "https://www.aitoolsmentor.com/tool/fastbots" },
+      { label: "G2 Reviews", url: "https://www.g2.com/products/fastbots/reviews" },
+      { label: "FastBots.ai Roadmap", url: "https://roadmap.fastbots.ai" },
+      { label: "FastBots Blog", url: "https://blog.fastbots.ai" },
+    ]} />
+    <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: 35-page PDF FireShot capture of fastbots.ai captured July 4, 2026. Cross-referenced with live website. Third-party sources are cited to show what claims are publicly circulating. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
+
+    <SiteFooter />
+  </section>
+
+</OlspLayout>

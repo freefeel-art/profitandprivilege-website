@@ -1,790 +1,389 @@
 ---
 export const prerender = true;
 
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
 const pageTitle = "Chatbase Review: An Independent, Research-Based Analysis";
 const pageDescription =
   "An independent, research-based review of Chatbase: what the AI customer service platform does, what it costs, how the AI agent builder and AI Actions work, and whether it fits your business.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Features & Performance" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. Company Background" },
+  { href: "#recommend", label: "9. Who Should Use It" },
+  { href: "#buy", label: "10. Where to Sign Up" },
+  { href: "#verdict", label: "11. Final Assessment" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html> 
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbase Review: An Independent, Research-Based Analysis of the AI Customer Service Platform 2026</title>
-<meta name="description" content="An independent, research-based review of Chatbase: what the AI customer service platform does, what it costs, how the AI agent builder and AI Actions system work, and whether it fits your business.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/chatbase-review/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/chatbase-review/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <HeroTag text="Independent Review · Updated July 2026" />
+    <h1>Chatbase Review: An Independent, Research-Based Analysis of the AI Customer Service Platform</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>Chatbase</strong> is an AI-powered platform for building custom customer service agents trained on your own business data. Founded in February 2023 by Yasser Elsaid and bootstrapped to over 10,000 businesses and an estimated $5-6M in annual recurring revenue, Chatbase has grown from a 16-Twitter-follower launch to one of the most flexible AI chatbot builders on the market. Its defining feature is model choice: 15+ AI models from 6 providers — including GPT-5.2, Claude Opus 4.6, Gemini 3 Pro, Grok 4, and DeepSeek — all accessible from a single platform with a no-code setup that takes under 10 minutes. Based on official documentation, pricing pages, and published cross-referenced reviews, our assessment is this: Chatbase offers the widest AI model selection of any chatbot builder at its price point, but the lack of built-in live chat and variable credit-based pricing create important trade-offs that depend heavily on your specific support workflow.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+    <VerdictBox>
+      <p><strong>Best for:</strong> Small to mid-sized businesses that want an AI-first customer support layer deployed in minutes, marketing teams needing smart lead capture and website engagement, companies already using Zendesk or Salesforce that want an AI front-end, and businesses requiring SOC 2 / GDPR compliance at mid-tier pricing. Particularly strong for lead capture, WhatsApp-heavy markets, and organizations that do not need deterministic chatbot flows.</p>
+      <p><strong>Not ideal for:</strong> businesses that need built-in live chat for human handoff (Chatbase integrates with helpdesk tools but does not include a native live chat inbox), teams that require deterministic conversation paths with visual flow builders, e-commerce stores needing deep Shopify-native customer service, or anyone on a tight budget whose monthly conversation volume exceeds what the Hobby plan's 500 credits cover.</p>
+    </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+    <h3>What Is Chatbase, and Who Is It For?</h3>
+    <p>Chatbase is not a traditional chatbot platform with visual flow builders and drag-and-drop conversation design. It is an AI agent platform built around Retrieval-Augmented Generation (RAG): you upload your business data (website URLs, PDFs, documents, Q&A pairs, Notion pages, support tickets), and Chatbase creates a conversational AI agent that answers customer questions, captures leads, books meetings, and performs automated tasks based on that data. The key architectural decision is that Chatbase lets you choose which AI model powers your agent from 15+ options across 6 providers — OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot AI, and Cohere — and you can switch models per agent at any time.</p>
+    <p>The platform is built for businesses that want intelligent, autonomous customer service agents rather than scripted chatbot flows. Its primary use cases are website support automation, FAQ handling, lead capture, and multi-channel deployment (website, WhatsApp, Messenger, Instagram, Slack, Email). The free plan lets you test the platform at no cost, though its 50-credit monthly limit and 14-day inactivity deletion policy mean it is strictly for evaluation.</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+    <h3>Author Background &amp; Review Methodology</h3>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
+      <p><strong>How this review was built:</strong> We did not purchase or personally test Chatbase. This article is based on independent desk research: captured product pages from chatbase.co, the official pricing page, the features page, published case studies and testimonials, and cross-referenced against four independent third-party reviews (Chatimize 4.1/5, Max Productive AI 4.1/5, SelectHub aggregated reviews, and AI Tool Ranks). Where a capability could not be verified without hands-on testing — including AI response accuracy across different models, real-world credit consumption rates, the quality of AI Actions in production, widget performance on live sites, and the actual experience of the lead capture and analytics features — we state that explicitly rather than speculating.</p>
+    </Methodology>
+  </section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  <ProductCta title="Build an AI customer service agent in under 10 minutes — start Chatbase free" description="Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity." buttonText="Try Chatbase Free" href="https://www.chatbase.co" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+  <section id="overview">
+    <h2>Chatbase Overview &amp; Pricing</h2>
+    <p>Chatbase operates on a SaaS subscription model with five tiers and add-on purchases. All pricing below was verified from the official chatbase.co/pricing page captured on July 4, 2026. Annual billing saves 20% on all plans.</p>
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+    <Callout type="warn">
+      <strong>Pricing note:</strong> Pricing was verified from the official website on July 4, 2026. SaaS pricing can change — verify current rates before subscribing. Annual billing prices shown below; monthly billing adds approximately 25%.
+    </Callout>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:680px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Features &amp; Performance</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. Company Background</a>
-      <a href="#recommend">9. Who Should Use It</a>
-      <a href="#buy">10. Where to Sign Up</a>
-      <a href="#verdict">11. Final Assessment</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Independent Review · Updated July 2026</span>
-      <h1>Chatbase Review: An Independent, Research-Based Analysis of the AI Customer Service Platform</h1>
-
-      <p><strong>Chatbase</strong> is an AI-powered platform for building custom customer service agents trained on your own business data. Founded in February 2023 by Yasser Elsaid and bootstrapped to over 10,000 businesses and an estimated $5-6M in annual recurring revenue, Chatbase has grown from a 16-Twitter-follower launch to one of the most flexible AI chatbot builders on the market. Its defining feature is model choice: 15+ AI models from 6 providers — including GPT-5.2, Claude Opus 4.6, Gemini 3 Pro, Grok 4, and DeepSeek — all accessible from a single platform with a no-code setup that takes under 10 minutes. Based on official documentation, pricing pages, and published cross-referenced reviews, our assessment is this: Chatbase offers the widest AI model selection of any chatbot builder at its price point, but the lack of built-in live chat and variable credit-based pricing create important trade-offs that depend heavily on your specific support workflow.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> Small to mid-sized businesses that want an AI-first customer support layer deployed in minutes, marketing teams needing smart lead capture and website engagement, companies already using Zendesk or Salesforce that want an AI front-end, and businesses requiring SOC 2 / GDPR compliance at mid-tier pricing. Particularly strong for lead capture, WhatsApp-heavy markets, and organizations that do not need deterministic chatbot flows.</p>
-        <p><strong>Not ideal for:</strong> businesses that need built-in live chat for human handoff (Chatbase integrates with helpdesk tools but does not include a native live chat inbox), teams that require deterministic conversation paths with visual flow builders, e-commerce stores needing deep Shopify-native customer service, or anyone on a tight budget whose monthly conversation volume exceeds what the Hobby plan's 500 credits cover.</p>
-      </div>
-
-      <h3>What Is Chatbase, and Who Is It For?</h3>
-      <p>Chatbase is not a traditional chatbot platform with visual flow builders and drag-and-drop conversation design. It is an AI agent platform built around Retrieval-Augmented Generation (RAG): you upload your business data (website URLs, PDFs, documents, Q&A pairs, Notion pages, support tickets), and Chatbase creates a conversational AI agent that answers customer questions, captures leads, books meetings, and performs automated tasks based on that data. The key architectural decision is that Chatbase lets you choose which AI model powers your agent from 15+ options across 6 providers — OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot AI, and Cohere — and you can switch models per agent at any time.</p>
-      <p>The platform is built for businesses that want intelligent, autonomous customer service agents rather than scripted chatbot flows. Its primary use cases are website support automation, FAQ handling, lead capture, and multi-channel deployment (website, WhatsApp, Messenger, Instagram, Slack, Email). The free plan lets you test the platform at no cost, though its 50-credit monthly limit and 14-day inactivity deletion policy mean it is strictly for evaluation.</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business tools, AI products, and digital platforms with attention to factual accuracy and separation of verified information from vendor claims.</p>
-        <p><strong>How this review was built:</strong> We did not purchase or personally test Chatbase. This article is based on independent desk research: captured product pages from chatbase.co, the official pricing page, the features page, published case studies and testimonials, and cross-referenced against four independent third-party reviews (Chatimize 4.1/5, Max Productive AI 4.1/5, SelectHub aggregated reviews, and AI Tool Ranks). Where a capability could not be verified without hands-on testing — including AI response accuracy across different models, real-world credit consumption rates, the quality of AI Actions in production, widget performance on live sites, and the actual experience of the lead capture and analytics features — we state that explicitly rather than speculating.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Build an AI customer service agent in under 10 minutes — start Chatbase free</h3>
-      <p>Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity.</p>
-      <p><a href="https://www.chatbase.co" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try Chatbase Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Pricing Tiers (Annual Billing)</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Plan</th><th>Monthly (Annual)</th><th>Message Credits</th><th>AI Agents</th><th>Training Data</th><th>AI Actions/Agent</th><th>Members</th></tr>
+      <tr><td>Free</td><td>$0</td><td>50</td><td>1</td><td>400 KB</td><td>0</td><td>1</td></tr>
+      <tr><td>Hobby</td><td>$32/mo</td><td>500</td><td>1</td><td>10 MB</td><td>5</td><td>2</td></tr>
+      <tr><td>Standard</td><td>$120/mo</td><td>4,000</td><td>1</td><td>20 MB</td><td>8</td><td>3</td></tr>
+      <tr><td>Pro</td><td>$400/mo</td><td>15,000</td><td>1</td><td>40 MB</td><td>12</td><td>5</td></tr>
+      <tr><td>Enterprise</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td></tr>
+    </table>
     </div>
 
-    <section id="overview">
-      <h2>Chatbase Overview &amp; Pricing</h2>
-      <p>Chatbase operates on a SaaS subscription model with five tiers and add-on purchases. All pricing below was verified from the official chatbase.co/pricing page captured on July 4, 2026. Annual billing saves 20% on all plans.</p>
-
-      <div class="callout warn">
-        <strong>Pricing note:</strong> Pricing was verified from the official website on July 4, 2026. SaaS pricing can change — verify current rates before subscribing. Annual billing prices shown below; monthly billing adds approximately 25%.
-      </div>
-
-      <h3>Pricing Tiers (Annual Billing)</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Plan</th><th>Monthly (Annual)</th><th>Message Credits</th><th>AI Agents</th><th>Training Data</th><th>AI Actions/Agent</th><th>Members</th></tr>
-        <tr><td>Free</td><td>$0</td><td>50</td><td>1</td><td>400 KB</td><td>0</td><td>1</td></tr>
-        <tr><td>Hobby</td><td>$32/mo</td><td>500</td><td>1</td><td>10 MB</td><td>5</td><td>2</td></tr>
-        <tr><td>Standard</td><td>$120/mo</td><td>4,000</td><td>1</td><td>20 MB</td><td>8</td><td>3</td></tr>
-        <tr><td>Pro</td><td>$400/mo</td><td>15,000</td><td>1</td><td>40 MB</td><td>12</td><td>5</td></tr>
-        <tr><td>Enterprise</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td><td>Custom</td></tr>
-      </table>
-      </div>
-
-      <h3>Add-on Costs</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Add-on</th><th>Price</th></tr>
-        <tr><td>Auto-recharge credits</td><td>$40 per 1,000 message credits</td></tr>
-        <tr><td>Extra AI agent</td><td>$25/mo ($300/yr)</td></tr>
-        <tr><td>Remove "Powered by Chatbase"</td><td>$99/mo ($1,188/yr)</td></tr>
-        <tr><td>Custom domain</td><td>~$199/mo (estimated)</td></tr>
-      </table>
-      </div>
-
-      <h3>Credit Consumption by AI Model</h3>
-      <p>Each message response consumes a variable number of credits depending on the AI model selected. This is a critical pricing detail that makes monthly costs harder to predict than a flat-rate plan.</p>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Credits per Response</th><th>Models</th></tr>
-        <tr><td>1</td><td>GPT-4o Mini, Claude 3.5 Sonnet, DeepSeek models</td></tr>
-        <tr><td>2</td><td>GPT-5.2, Gemini 2.5 Pro, Gemini 3 Pro</td></tr>
-        <tr><td>3</td><td>Claude Sonnet 4.5, Grok 3</td></tr>
-        <tr><td>4</td><td>Grok 4</td></tr>
-        <tr><td>5</td><td>Claude Opus 4.5, Claude Opus 4.6</td></tr>
-      </table>
-      </div>
-
-      <h3>Pricing Analysis</h3>
-      <p>At $32/month (annual), the Hobby plan offers solid value for small businesses testing AI customer support: 500 message credits, access to all AI models, 5 AI Actions, and basic analytics. However, 500 credits can disappear quickly if using premium models — at 5 credits per response with Claude Opus, that is only 100 conversations per month. The Standard plan at $120/month is the most popular tier, offering 4,000 credits (800-4,000 conversations depending on model choice), 8 AI Actions, helpdesk integration, voice support, and API access. The jump from Hobby to Standard is 275%, which is significant for growing businesses. Pro at $400/month targets higher-volume operations with 15,000 credits and advanced analytics.</p>
-      <p>Compared to competitors: Tidio's Lyro AI starts at free (50 conversations/month) and scales to ~$50/month for 1,000 conversations. Intercom Fin charges approximately $29/seat/month plus $0.99 per resolution. CustomGPT AI starts at $89/month. Chatbase's model flexibility comes at a premium over simpler alternatives, but the ability to choose from 15+ models gives it a flexibility advantage that no competitor matches at this price point.</p>
-
-      <div class="callout info">
-        <strong>Research note:</strong> The free plan has important limitations beyond the 50-credit monthly cap: agents are deleted after 14 days of inactivity, and only basic models (not premium ones like GPT-5.2 or Claude Opus) are available. It is useful for testing but not for any real business use.
-      </div>
-    </section>
-
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>Chatbase is a browser-based SaaS platform accessible through any modern web browser. The entire workflow — from training an agent to deploying it across channels — happens through a single dashboard interface. No installation, coding, or developer skills are required.</p>
-
-      <h3>Technology Architecture</h3>
-      <p>Chatbase uses Retrieval-Augmented Generation (RAG). When a visitor asks a question, the platform retrieves the most relevant information from the indexed business data and feeds it to the selected large language model to generate a response. This architecture means the AI answers based on your specific content rather than general knowledge, reducing hallucinations compared to generic chatbots. The data is never used to train AI models — a critical privacy distinction. The platform supports automatic daily retraining, meaning the agent stays current as website content or documents change.</p>
-
-      <h3>AI Model Architecture</h3>
-      <p>The defining architectural decision is multi-model support. Most chatbot builders (Tidio, Intercom, Botpress) lock you into a single AI provider or model. Chatbase offers 15+ models from 6 providers: OpenAI (GPT-5.2, GPT-5 Mini, GPT-4o, GPT-4o Mini, GPT-4.5, O3 Mini), Anthropic (Claude Opus 4.6, Claude Opus 4.5, Claude Sonnet 4.5, Claude 3.7 Sonnet, Claude 3.5 Sonnet), Google (Gemini 3 Pro, Gemini 2.5 Pro, Gemini 2.0 Flash), xAI (Grok 4, Grok 3), Moonshot AI (Kimi K2), DeepSeek (V3, R1), and Cohere (Command R+, Command R). You can select a different model per agent and switch at any time. The Playground even lets you compare models side-by-side to evaluate response quality before committing.</p>
-
-      <h3>Security &amp; Compliance</h3>
-      <p>Chatbase holds SOC 2 Type II certification with independently audited security controls, is GDPR compliant, uses AES-256 encryption for all data at rest and in transit, and added SSO (Single Sign-On) in January 2026. Additional protections include domain allowlisting, rate limiting, and role-based access controls. The platform runs on AWS infrastructure with data stored in the United States. Crucially, the RAG architecture means customer data is never used to train or fine-tune AI models — it is only retrieved at query time to inform responses.</p>
-
-      <h3>Visual Appeal &amp; Trust Signals</h3>
-      <p>The Chatbase website presents a modern, clean interface with clear information hierarchy. Trust signals on the public site include a customer count of 10,000+ businesses, logo walls featuring Chuck E. Cheese, Bridgestone, IHG, National Grid, Opal, Miele, F45 Training, and Noon, an OpenAI testimonial from Marc Manara (Head of Startups), and a SOC 2 certification badge. The platform's rapid development cadence — weekly feature releases throughout early 2026 including SSO, voice input, agent duplication, and 40+ language UI localization — signals an actively maintained product.</p>
-    </section>
-
-    <section id="performance">
-      <h2>Features &amp; Performance</h2>
-
-      <h3>Core Workflow: How Chatbase Works</h3>
-      <p>The platform follows a straightforward five-step lifecycle: build and train an agent on your data, deploy it across channels, let it automatically handle conversations, review and refine responses, and escalate complex issues to human agents when needed.</p>
-
-      <figure>
-        <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Chatbase AI agent workflow showing five stages: Build, Deploy, Automate, Refine, Escalate">
-          <rect x="0" y="0" width="680" height="240" fill="#f8fafc"/>
-          <rect x="20" y="30" width="115" height="80" rx="8" fill="#2563eb"/>
-          <text x="77" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">1. Build</text>
-          <text x="77" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Train on data</text>
-          <text x="77" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Choose model</text>
-          <line x1="135" y1="70" x2="215" y2="70" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="215,64 227,70 215,76" fill="#94a3b8"/>
-          <rect x="230" y="30" width="115" height="80" rx="8" fill="#0f172a"/>
-          <text x="287" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">2. Deploy</text>
-          <text x="287" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Website, WhatsApp</text>
-          <text x="287" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Messenger, Slack</text>
-          <line x1="345" y1="70" x2="425" y2="70" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="425,64 437,70 425,76" fill="#94a3b8"/>
-          <rect x="440" y="30" width="115" height="80" rx="8" fill="#166534"/>
-          <text x="497" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">3. Automate</text>
-          <text x="497" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">24/7 conversations</text>
-          <text x="497" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">AI Actions</text>
-          <line x1="497" y1="110" x2="497" y2="195" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="491,195 497,207 503,195" fill="#94a3b8"/>
-          <rect x="30" y="185" width="200" height="45" rx="8" fill="#92400e"/>
-          <text x="130" y="205" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">4. Refine &amp; Improve</text>
-          <text x="130" y="220" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Chat logs, Improve Answer, Suggestions</text>
-          <rect x="450" y="185" width="200" height="45" rx="8" fill="#991b1b"/>
-          <text x="550" y="205" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">5. Escalate to Human</text>
-          <text x="550" y="220" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Zendesk, Intercom, email</text>
-        </svg>
-        <figcaption>Original illustration of the Chatbase AI agent workflow — not an actual screenshot of the Chatbase interface.</figcaption>
-      </figure>
-
-      <h3>Key Features</h3>
-
-      <h4>Custom Knowledge Base Training</h4>
-      <p>The core feature. Train your AI agent on 6 types of data: website URLs (automatic crawling), files (PDF, DOCX, TXT, CSV), text, Q&A pairs, Notion pages, and Zendesk/Salesforce support tickets. The agent uses RAG to retrieve relevant information from this data at query time. Automatic daily retraining (configurable) keeps the agent current as content changes. Training content size limits range from 400 KB on Free to 40 MB on Pro.</p>
-
-      <h4>15+ AI Models from 6 Providers</h4>
-      <p>Unmatched model selection among chatbot builders. Choose from OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot AI, and Cohere models — per agent, with side-by-side comparison in the Playground. Model choice directly impacts credit consumption (1-5 credits per response), so users can balance quality against budget. The free plan only offers basic models; all premium models are available from Hobby and above.</p>
-
-      <h4>AI Actions (Task Automation)</h4>
-      <p>Beyond Q&A, AI Actions let the agent perform real tasks during conversations: check order status, book meetings (Calendly/Cal.com), process billing queries (Stripe), create support tickets (Zendesk), capture lead information, trigger custom webhooks, and connect to 5,000+ apps via Zapier and Make. Available AI Actions per agent scale from 5 (Hobby) to 12 (Pro). With GPT-5.2, tool-calling accuracy reportedly reaches 98.7%.</p>
-
-      <h4>Multi-Channel Deployment</h4>
-      <p>Deploy one AI agent across 6 native channels: website chat widget (embed code or iframe), WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, and Email. Additional channels via Zapier, Make, REST API, and webhooks. The website widget is fully customizable (colors, logo, welcome message, suggested questions). Standalone help page creates a ChatGPT-style interface at a custom domain path.</p>
-
-      <h4>Lead Capture &amp; CRM Integration</h4>
-      <p>Configure the agent to collect visitor information (name, email, phone) during conversations. Leads are displayed in a dedicated dashboard with date range filters and CSV export. Integrate with CRMs via Zapier for automated follow-up workflows. This lead capture functionality is one of Chatbase's key differentiators for marketing and sales teams.</p>
-
-      <h4>Smart Escalation</h4>
-      <p>Configure natural-language conditions for human handoff — tell the agent in plain language when to escalate (e.g., "if the customer is frustrated" or "if you cannot find the answer"). Escalated conversations route to Zendesk Sunshine, email, or helpdesk tools via integrations. Chatbase does not have built-in live chat for human takeover.</p>
-
-      <h4>Voice AI Agents</h4>
-      <p>A newer feature (early 2026) that extends Chatbase beyond text to phone-based AI support. The voice agent handles basic inquiries, provides 24/7 voice availability, and responds in natural-sounding speech. Standard plan and above includes voice and telephony capabilities.</p>
-
-      <h4>Chat Logs, Suggestions &amp; Analytics</h4>
-      <p>The Activity tab shows all conversations with confidence scores per response. The "Improve Answer" feature lets you manually correct responses, teaching the agent over time. The Suggestions feature spots knowledge base gaps — if the agent struggles to answer certain questions, Suggestions flags the missing data. Basic analytics are available on Hobby; advanced analytics (topic clustering, satisfaction ratings, missed question detection) are Pro-level features.</p>
-
-      <h3>Areas Requiring Hands-On Validation</h3>
-      <p>Several important performance characteristics cannot be assessed from documentation alone. These include: AI response accuracy across different models in real-world scenarios, the actual credit consumption experience and whether the variable pricing creates budget surprises, AI Actions reliability in production (whether the agent correctly executes tasks without errors), widget performance and loading impact on live websites, the quality and usefulness of the analytics and Suggestions features, the real-world experience of the "Improve Answer" workflow, and the point at which a team outgrows Chatbase and needs a full support suite like Intercom or Zendesk. These are noted as open questions from the research.</p>
-    </section>
-
-    <section id="ux">
-      <h2>User Experience</h2>
-      <h3>Setup Process</h3>
-      <p>Chatbase is accessed through a web browser at chatbase.co. Sign-up is quick with Google OAuth or email. After account creation, the user creates a new agent, adds training data (paste a website URL or upload files), selects an AI model, customizes the widget appearance, and copies the embed code to their website. Multiple independent reviewers consistently report the entire process takes under 10 minutes — easily the fastest setup time among AI chatbot builders.</p>
-
-      <h3>Daily Usage</h3>
-      <p>A typical Chatbase user workflow might be: log into the dashboard → review recent conversations in the Activity tab → check confidence scores and use "Improve Answer" on any low-confidence responses → review the Suggestions tab for knowledge base gaps → add new training data or Q&A pairs as needed → check the Analytics tab for conversation volume and user location data → fine-tune the AI model selection or system prompt in Settings. For lead generation use cases, the Leads tab is checked to export captured visitor information.</p>
-
-      <h3>Learning Curve</h3>
-      <p>Chatbase has a low learning curve for basic setup — independent reviewers consistently rate both ease of use and ease of setup as 5/5. The core workflow (train, deploy, review) is intuitive. However, more advanced features like AI Actions, smart escalation configuration, and model selection optimization require deeper understanding. The absence of a visual flow builder means there are no branching logic, decision trees, or conditional paths to configure, which both simplifies and limits the platform.</p>
-
-      <h3>Interface &amp; Usability</h3>
-      <p>The Chatbase dashboard is organized into clear tabs: Playground, Activity, Analytics, Sources, Actions, Contacts, Deploy, and Settings. Each tab corresponds to a distinct workflow step. The Playground provides a live chat preview for testing. The data sources section shows which content the agent is trained on. The Deploy section presents clear channel options with copy-paste embed codes. The interface is consistently described as clean, modern, and intuitive across all third-party reviews consulted for this research.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Build an AI customer service agent in under 10 minutes — start Chatbase free</h3>
-      <p>Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity.</p>
-      <p><a href="https://www.chatbase.co" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try Chatbase Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Add-on Costs</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Add-on</th><th>Price</th></tr>
+      <tr><td>Auto-recharge credits</td><td>$40 per 1,000 message credits</td></tr>
+      <tr><td>Extra AI agent</td><td>$25/mo ($300/yr)</td></tr>
+      <tr><td>Remove "Powered by Chatbase"</td><td>$99/mo ($1,188/yr)</td></tr>
+      <tr><td>Custom domain</td><td>~$199/mo (estimated)</td></tr>
+    </table>
     </div>
 
-    <section id="comparison">
-      <h2>How Chatbase Compares to Other Options</h2>
-      <p>Chatbase competes in the AI chatbot builder / customer service AI agent category. Since Chatbase is our second AI chatbot review in this pillar, the comparison to FastBots.ai is particularly relevant for readers deciding between entry-level and mid-tier solutions.</p>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Tool</th><th>Starting Price</th><th>AI Models</th><th>Live Chat</th><th>Flow Builder</th><th>Best For</th></tr>
-        <tr><td>Chatbase</td><td>$32/mo (annual)</td><td>15+ from 6 providers</td><td>No (integrations only)</td><td>No (LLM-driven)</td><td>AI-first support, lead capture, model flexibility</td></tr>
-        <tr><td>FastBots.ai</td><td>Free tier</td><td>Limited selection</td><td>No</td><td>No</td><td>Simple FAQ chatbots on a budget</td></tr>
-        <tr><td>Tidio</td><td>Free (50 chats)</td><td>Lyro (Claude-based)</td><td>Yes (built-in)</td><td>Yes (visual)</td><td>E-commerce, live chat + AI in one platform</td></tr>
-        <tr><td>Intercom Fin</td><td>$29/seat/mo + $0.99/resolution</td><td>Proprietary</td><td>Yes (built-in)</td><td>No</td><td>Enterprise-scale support, highest AI resolution rate</td></tr>
-        <tr><td>CustomGPT AI</td><td>$89/mo</td><td>GPT-4o, GPT-4o Mini</td><td>No</td><td>No</td><td>Custom AI agents on business data with anti-hallucination focus</td></tr>
-        <tr><td>Botpress</td><td>Free (open-source)</td><td>GPT, Claude, Llama</td><td>No</td><td>Yes (visual)</td><td>Developer-led chatbot projects, deterministic paths</td></tr>
-      </table>
-      </div>
-      <p><strong>Chatbase's clear differentiator:</strong> 15+ AI models from 6 providers, all accessible from a single no-code platform. No other chatbot builder offers this level of model flexibility at this price point. The AI Actions system also goes beyond simple Q&A into real task automation. <strong>The trade-off:</strong> Chatbase does not include built-in live chat (you need Zendesk, Intercom, or a similar helpdesk for human handoff). It also lacks a visual flow builder, meaning you cannot create deterministic conversation paths — the platform relies entirely on the LLM to interpret user intent. For readers comparing against FastBots.ai: Chatbase is the more advanced, higher-priced option ($32/mo vs free) with wider model choice, AI Actions, SOC 2 certification, and multi-channel deployment. FastBots.ai remains a capable entry-level solution for simple FAQ automation on a tight budget.</p>
-    </section>
-
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>Strengths</h3>
-          <ul>
-            <li>Fastest setup in the market — a fully functional AI agent can be live on your website in under 10 minutes with no coding required.</li>
-            <li>15+ AI models from 6 providers — unmatched flexibility. Choose per agent, switch at any time, compare side-by-side in the Playground.</li>
-            <li>AI Actions system moves beyond Q&A into real task automation: order lookups, meeting bookings, billing queries, ticket creation.</li>
-            <li>SOC 2 Type II + GDPR + SSO at mid-tier pricing — a rare combination at this price point. Data never used to train models.</li>
-            <li>Active development cadence — weekly feature releases in 2026 including SSO, voice dictation, agent duplication, 40+ language localization.</li>
-            <li>Strong multi-channel deployment: 6 native channels (website, WhatsApp, Messenger, Instagram, Slack, Email) plus API and Zapier/Make.</li>
-            <li>Lead capture built in — configure the agent to collect visitor information, export as CSV, integrate with CRMs.</li>
-            <li>Free plan available for evaluation (though limited to 50 credits and basic models).</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Limitations</h3>
-          <ul>
-            <li>No built-in live chat for human handoff — requires external helpdesk integrations (Zendesk, Intercom) that add cost and complexity.</li>
-            <li>Variable credit consumption by AI model (1-5 credits per response) makes monthly costs harder to predict than flat-rate pricing.</li>
-            <li>White-label branding removal is expensive — $99/month to remove "Powered by Chatbase," plus ~$199/month for a custom domain.</li>
-            <li>No visual flow builder — no conditional logic, decision trees, or branched conversation paths. Fully LLM-driven.</li>
-            <li>Steep price jumps between tiers: Hobby ($32) to Standard ($120) is a 275% increase, with key features (API, voice, helpdesk integration) gated behind Standard.</li>
-            <li>Free plan is very limited — 50 credits, basic models only, 14-day inactivity deletion. Not viable for business use.</li>
-            <li>Some user reviews on Trustpilot report billing issues and support responsiveness concerns (though these are mixed — Capterra and G2 ratings are higher).</li>
-            <li>No templates for chatbot design or conversation flows — every agent is built from scratch.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="history">
-      <h2>Company Background</h2>
-      <p>Chatbase was founded on February 4, 2023 by Yasser Elsaid, a York University computer science graduate who previously interned at Meta, Tesla, and BlackBerry. The product launched to just 16 Twitter followers and went viral — it was one of the first "chat with your data" SaaS products ever built. As of July 2026, Chatbase has grown to over 10,000 businesses with an estimated $5-6M in annual recurring revenue.</p>
-
-      <h3>Funding &amp; Growth</h3>
-      <p>Chatbase is entirely bootstrapped with zero external funding. The company has grown organically through product-market fit and viral word-of-mouth. The team ships weekly feature releases — recent additions include SSO for enterprise workspaces, voice input (dictation) across all channels, agent duplication, chat UI localization in 40+ languages including RTL support, support ticket ingestion from Zendesk and Salesforce, and Voice AI Agents.</p>
-
-      <h3>Market Position</h3>
-      <p>Chatbase occupies the "AI-first chatbot builder" segment of the customer service market, positioned between entry-level AI chatbot tools (Tidio, FastBots.ai) and enterprise support suites (Intercom, Zendesk). Its primary differentiators are model flexibility and ease of setup. The platform's SOC 2 Type II certification at mid-tier pricing is a meaningful competitive advantage against smaller players. The main competitors are Tidio (stronger for e-commerce with built-in live chat), Intercom Fin (stronger for enterprise with higher AI resolution rates), Botpress (stronger for developer-led projects with visual flow builder), and CustomGPT AI (stronger for anti-hallucination technology).</p>
-    </section>
-
-    <section id="recommend">
-      <h2>Who Should Use Chatbase?</h2>
-      <h3>Best For</h3>
-      <ul>
-        <li><strong>SMBs wanting a fast AI support layer</strong> — if you need an intelligent FAQ agent on your website within minutes, Chatbase is the fastest path.</li>
-        <li><strong>Marketing teams needing lead capture automation</strong> — the lead capture + analytics workflow is purpose-built for converting website visitors into CRM contacts.</li>
-        <li><strong>Companies already using Zendesk or Salesforce</strong> — Chatbase works as an AI front-end that escalates to your existing helpdesk; you already have the live chat infrastructure.</li>
-        <li><strong>WhatsApp-heavy businesses in international markets</strong> — native WhatsApp integration plus 95+ language support make Chatbase a strong fit for global customer bases.</li>
-        <li><strong>Teams that want to choose their AI model</strong> — if you care about which LLM powers your chatbot and want the flexibility to switch between GPT, Claude, Gemini, Grok, or DeepSeek, Chatbase is the best option.</li>
-        <li><strong>Businesses requiring SOC 2 or GDPR compliance on a budget</strong> — competitive security certifications at mid-tier pricing.</li>
-      </ul>
-      <h3>Skip If</h3>
-      <ul>
-        <li><strong>You need built-in live chat for human handoff</strong> — Chatbase integrates with live chat tools but does not have its own inbox. Consider Tidio or Intercom.</li>
-        <li><strong>You require deterministic conversation flows</strong> — no visual flow builder means no branched paths or decision trees. Consider Botpress or Tidio.</li>
-        <li><strong>You run a Shopify store and need deep e-commerce native support</strong> — Gorgias or Tidio offer purpose-built e-commerce integrations.</li>
-        <li><strong>You are on a tight budget and need more than 500 conversations/month</strong> — the Hobby plan's 500 credits (and effective cap depending on model choice) may not be enough; Tidio's free plan offers 50 conversations with lower-priced scaling.</li>
-        <li><strong>You prefer predictable monthly pricing</strong> — variable credit consumption by model makes costs harder to forecast. Flat-rate plans (Tidio, Botpress) may suit you better.</li>
-        <li><strong>You need a free plan for ongoing business use</strong> — Chatbase's free plan is for testing only (50 credits, 14-day deletion). You will need a paid plan for real usage.</li>
-      </ul>
-    </section>
-
-    <section id="buy">
-      <h2>Where to Sign Up &amp; Pricing</h2>
-      <p>Sign-up happens directly through the Chatbase website at <a href="https://www.chatbase.co" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">chatbase.co</a>. A free plan is available (no credit card required). All paid plans are available with monthly or annual billing (20% off annual).</p>
-      <p>The free plan includes 50 message credits/month, 1 AI agent, 400 KB training data, and basic models only. Hobby costs $32/month (annual) with 500 message credits, all AI models, 5 AI Actions, and 2 members. Standard costs $120/month (annual) with 4,000 message credits, 8 AI Actions, voice support, API access, and helpdesk integration. Pro costs $400/month (annual) with 15,000 message credits, 12 AI Actions, advanced analytics, and 5 members. Enterprise has custom pricing.</p>
-      <p>All pricing was verified from the official pricing page on July 4, 2026. SaaS pricing can change — verify current rates before subscribing.</p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Assessment</h2>
-
-      <p>Chatbase is one of the most capable AI chatbot builders available in 2026 — not because any single feature is best-in-class, but because the combination of model flexibility, setup speed, AI Actions, and enterprise-grade security at mid-tier pricing is genuinely unique. For our audience of affiliate marketers, small business owners, and content creators who need an AI customer support layer, the question is not "is Chatbase better than Tidio?" but rather "do you need built-in live chat, or can you work with an AI-first agent that integrates with your existing helpdesk?" For the latter use case, Chatbase is a strong choice.</p>
-
-      <p>The limitations matter: no built-in live chat, no visual flow builder, variable credit pricing that makes budgeting harder than flat-rate alternatives, and expensive white-labeling. But the value proposition is compelling for businesses that want intelligent, model-flexible AI agents deployed in minutes. The 15+ model selection is genuinely unmatched, the AI Actions system transforms a Q&A bot into a task-automation agent, and the SOC 2 + GDPR + SSO combination at this price point is rare.</p>
-
-      <div class="score-row"><div class="score-label">AI Model Flexibility</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
-      <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:100%"></div></div><div class="score-num">5/5</div></div>
-      <div class="score-row"><div class="score-label">Value for Money</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
-      <div class="score-row"><div class="score-label">Feature Breadth</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Security &amp; Compliance</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
-      <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for AI response accuracy and AI Actions reliability cannot be assigned without hands-on testing.</p>
-
-      <p>For most small to mid-sized businesses, the Standard plan at $120/month offers the best balance: 4,000 message credits, all AI models, 8 AI Actions, voice support, API access, and helpdesk integration. Start with the free plan to validate that the AI handles your business questions accurately. If results are promising, upgrade to Hobby ($32/month) and begin with efficient 1-credit models. Scale to Standard when you need API access, voice support, or higher credit volumes. Reserve premium models (Claude Opus, Grok 4) for complex queries where accuracy justifies the higher credit cost.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is Chatbase Right for Your Business?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not a personalised recommendation.</p>
-        <fieldset>
-          <legend>Do you need built-in live chat for human takeover?</legend>
-          <label><input type="radio" name="q1" value="0"> Yes — we want AI + human support in one platform</label>
-          <label><input type="radio" name="q1" value="2"> No — we already use Zendesk, Intercom, or another helpdesk</label>
-        </fieldset>
-        <fieldset>
-          <legend>How important is it to choose which AI model powers your chatbot?</legend>
-          <label><input type="radio" name="q2" value="2"> Very important — we want flexibility between GPT, Claude, Gemini, etc.</label>
-          <label><input type="radio" name="q2" value="0"> Not important — we just need the chatbot to work well</label>
-        </fieldset>
-        <fieldset>
-          <legend>Do you need your chatbot to take actions (book meetings, check orders) — not just answer questions?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes — we want AI Actions for task automation</label>
-          <label><input type="radio" name="q3" value="0"> No — basic Q&A and FAQ support is sufficient</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>What is Chatbase and how does it work?</summary>
-        <p>Chatbase is an AI-powered platform that lets you build custom AI agents trained on your own business data. You upload website URLs, documents, or text, and Chatbase creates a conversational agent that can answer customer questions, capture leads, book meetings, and perform automated tasks. It uses Retrieval-Augmented Generation (RAG) — when a visitor asks a question, the system retrieves relevant information from your indexed data and feeds it to the selected AI model to generate accurate responses. No coding required.</p>
-      </details>
-      <details>
-        <summary>How much does Chatbase cost?</summary>
-        <p>Chatbase offers five tiers: Free ($0, 50 credits/mo), Hobby ($32/mo annual, 500 credits), Standard ($120/mo annual, 4,000 credits), Pro ($400/mo annual, 15,000 credits), and Enterprise (custom). Annual billing saves 20%. Additional costs include auto-recharge credits ($40 per 1,000), extra agents ($25/mo), and white-label branding removal ($99/mo). Credit consumption varies by AI model (1-5 credits per response).</p>
-      </details>
-      <details>
-        <summary>What AI models does Chatbase support in 2026?</summary>
-        <p>As of July 2026, Chatbase offers 15+ models from 6 providers: OpenAI (GPT-5.2, GPT-5 Mini, GPT-4o, GPT-4o Mini, GPT-4.5, O3 Mini), Anthropic (Claude Opus 4.6, 4.5, Sonnet 4.5, 3.7, 3.5), Google (Gemini 3 Pro, 2.5 Pro, 2.0 Flash), xAI (Grok 4, Grok 3), Moonshot AI (Kimi K2), DeepSeek (V3, R1), and Cohere (Command R+, Command R). You can switch models per agent at any time.</p>
-      </details>
-      <details>
-        <summary>Is Chatbase free?</summary>
-        <p>Yes, Chatbase offers a free forever plan with 50 message credits/month, 1 AI agent, and 400 KB of training data. However, the free plan has significant limitations: only basic AI models are available, only 10 training links are allowed, and agents are deleted after 14 days of inactivity. It is suitable for testing the platform but not for ongoing business use.</p>
-      </details>
-      <details>
-        <summary>How do message credits work in Chatbase?</summary>
-        <p>Credits are consumed each time your AI agent generates a response. The rate varies by model: 1 credit for GPT-4o Mini and Claude 3.5 Sonnet, up to 5 credits for Claude Opus 4.6. Credits reset on the 1st of every month. When credits run out, the agent shows an unavailability message until credits renew or you purchase more via auto-recharge at $40 per 1,000 credits.</p>
-      </details>
-      <details>
-        <summary>Does Chatbase have built-in live chat?</summary>
-        <p>No. This is Chatbase's most notable limitation. The platform does not include a live chat inbox for human agents to take over conversations in real-time. You can configure smart escalation conditions in natural language — routes to Zendesk Sunshine, email, or other helpdesk tools via integrations. If built-in live chat is essential, consider Tidio or Intercom instead.</p>
-      </details>
-      <details>
-        <summary>What channels can I deploy Chatbase on?</summary>
-        <p>Chatbase supports 6 native channels: website chat widget, WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, and Email. Additional channels via Zapier, Make, REST API, and webhooks. Voice AI Agents are also available for phone-based support.</p>
-      </details>
-      <details>
-        <summary>Is Chatbase safe and secure?</summary>
-        <p>Yes. Chatbase holds SOC 2 Type II certification, is GDPR compliant, uses AES-256 encryption for all data at rest and in transit, and added SSO in January 2026. Crucially, your data is never used to train AI models — the RAG architecture retrieves your data at query time without exposing it to model training. Additional protections include domain allowlisting, rate limiting, and role-based access controls.</p>
-      </details>
-      <details>
-        <summary>What are Chatbase AI Actions?</summary>
-        <p>AI Actions let your agent perform real tasks during conversations — not just answer questions. The AI can autonomously check order status via API calls, book meetings through Calendly or Cal.com, process billing queries via Stripe, create support tickets in Zendesk, capture lead information, trigger custom webhooks, and connect to 5,000+ apps via Zapier and Make. Available AI Actions per agent: 5 (Hobby), 8 (Standard), 12 (Pro).</p>
-      </details>
-      <details>
-        <summary>How is Chatbase different from FastBots.ai?</summary>
-        <p>Chatbase is the more advanced option: it offers 15+ AI models vs FastBots.ai's more limited selection, includes AI Actions for task automation, has SOC 2 certification, supports 6 native deployment channels, and includes voice support. FastBots.ai has a free tier and is simpler to set up for basic FAQ chatbots. Chatbase is better for businesses that need intelligent, action-taking AI agents with compliance requirements. FastBots.ai is better for simple FAQ automation on a tight budget.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Build an AI customer service agent in under 10 minutes — start Chatbase free</h3>
-      <p>Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity.</p>
-      <p><a href="https://www.chatbase.co" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try Chatbase Free →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Credit Consumption by AI Model</h3>
+    <p>Each message response consumes a variable number of credits depending on the AI model selected. This is a critical pricing detail that makes monthly costs harder to predict than a flat-rate plan.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Credits per Response</th><th>Models</th></tr>
+      <tr><td>1</td><td>GPT-4o Mini, Claude 3.5 Sonnet, DeepSeek models</td></tr>
+      <tr><td>2</td><td>GPT-5.2, Gemini 2.5 Pro, Gemini 3 Pro</td></tr>
+      <tr><td>3</td><td>Claude Sonnet 4.5, Grok 3</td></tr>
+      <tr><td>4</td><td>Grok 4</td></tr>
+      <tr><td>5</td><td>Claude Opus 4.5, Claude Opus 4.6</td></tr>
+    </table>
     </div>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://www.chatbase.co" target="_blank" rel="noopener noreferrer">Chatbase Official Site</a></li>
-        <li><a href="https://www.chatbase.co/pricing" target="_blank" rel="noopener noreferrer">Chatbase Pricing Page</a></li>
-        <li><a href="https://www.chatbase.co/enterprise" target="_blank" rel="noopener noreferrer">Chatbase Enterprise</a></li>
-        <li><a href="https://www.chatbase.co/customers" target="_blank" rel="noopener noreferrer">Chatbase Customers</a></li>
-        <li><a href="https://www.chatbase.co/security" target="_blank" rel="noopener noreferrer">Chatbase Security</a></li>
-        <li><a href="https://chatimize.com/reviews/chatbase" target="_blank" rel="noopener noreferrer">Chatimize Review (4.1/5)</a></li>
-        <li><a href="https://max-productive.ai/ai-tools/chatbase" target="_blank" rel="noopener noreferrer">Max Productive AI Review (4.1/5)</a></li>
-        <li><a href="https://www.selecthub.com/p/ai-customer-service-agent-software/chatbase" target="_blank" rel="noopener noreferrer">SelectHub Aggregated Reviews</a></li>
-        <li><a href="https://aitoolranks.com/app/chatbase" target="_blank" rel="noopener noreferrer">AI Tool Ranks Listing</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: Website snapshot of chatbase.co captured July 4, 2026. Cross-referenced with live website and 4 independent third-party reviews. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
-    </section>
+    <h3>Pricing Analysis</h3>
+    <p>At $32/month (annual), the Hobby plan offers solid value for small businesses testing AI customer support: 500 message credits, access to all AI models, 5 AI Actions, and basic analytics. However, 500 credits can disappear quickly if using premium models — at 5 credits per response with Claude Opus, that is only 100 conversations per month. The Standard plan at $120/month is the most popular tier, offering 4,000 credits (800-4,000 conversations depending on model choice), 8 AI Actions, helpdesk integration, voice support, and API access. The jump from Hobby to Standard is 275%, which is significant for growing businesses. Pro at $400/month targets higher-volume operations with 15,000 credits and advanced analytics.</p>
+    <p>Compared to competitors: Tidio's Lyro AI starts at free (50 conversations/month) and scales to ~$50/month for 1,000 conversations. Intercom Fin charges approximately $29/seat/month plus $0.99 per resolution. CustomGPT AI starts at $89/month. Chatbase's model flexibility comes at a premium over simpler alternatives, but the ability to choose from 15+ models gives it a flexibility advantage that no competitor matches at this price point.</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <Callout type="info">
+      <strong>Research note:</strong> The free plan has important limitations beyond the 50-credit monthly cap: agents are deleted after 14 days of inactivity, and only basic models (not premium ones like GPT-5.2 or Claude Opus) are available. It is useful for testing but not for any real business use.
+    </Callout>
+  </section>
 
-  </main>
-</div>
+  <section id="design">
+    <h2>Platform &amp; Build Quality</h2>
+    <p>Chatbase is a browser-based SaaS platform accessible through any modern web browser. The entire workflow — from training an agent to deploying it across channels — happens through a single dashboard interface. No installation, coding, or developer skills are required.</p>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+    <h3>Technology Architecture</h3>
+    <p>Chatbase uses Retrieval-Augmented Generation (RAG). When a visitor asks a question, the platform retrieves the most relevant information from the indexed business data and feeds it to the selected large language model to generate a response. This architecture means the AI answers based on your specific content rather than general knowledge, reducing hallucinations compared to generic chatbots. The data is never used to train AI models — a critical privacy distinction. The platform supports automatic daily retraining, meaning the agent stays current as website content or documents change.</p>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>AI Model Architecture</h3>
+    <p>The defining architectural decision is multi-model support. Most chatbot builders (Tidio, Intercom, Botpress) lock you into a single AI provider or model. Chatbase offers 15+ models from 6 providers: OpenAI (GPT-5.2, GPT-5 Mini, GPT-4o, GPT-4o Mini, GPT-4.5, O3 Mini), Anthropic (Claude Opus 4.6, Claude Opus 4.5, Claude Sonnet 4.5, Claude 3.7 Sonnet, Claude 3.5 Sonnet), Google (Gemini 3 Pro, Gemini 2.5 Pro, Gemini 2.0 Flash), xAI (Grok 4, Grok 3), Moonshot AI (Kimi K2), DeepSeek (V3, R1), and Cohere (Command R+, Command R). You can select a different model per agent and switch at any time. The Playground even lets you compare models side-by-side to evaluate response quality before committing.</p>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <h3>Security &amp; Compliance</h3>
+    <p>Chatbase holds SOC 2 Type II certification with independently audited security controls, is GDPR compliant, uses AES-256 encryption for all data at rest and in transit, and added SSO (Single Sign-On) in January 2026. Additional protections include domain allowlisting, rate limiting, and role-based access controls. The platform runs on AWS infrastructure with data stored in the United States. Crucially, the RAG architecture means customer data is never used to train or fine-tune AI models — it is only retrieved at query time to inform responses.</p>
 
-  sections.forEach(s => observer.observe(s));
+    <h3>Visual Appeal &amp; Trust Signals</h3>
+    <p>The Chatbase website presents a modern, clean interface with clear information hierarchy. Trust signals on the public site include a customer count of 10,000+ businesses, logo walls featuring Chuck E. Cheese, Bridgestone, IHG, National Grid, Opal, Miele, F45 Training, and Noon, an OpenAI testimonial from Marc Manara (Head of Startups), and a SOC 2 certification badge. The platform's rapid development cadence — weekly feature releases throughout early 2026 including SSO, voice input, agent duplication, and 40+ language UI localization — signals an actively maintained product.</p>
+  </section>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+  <section id="performance">
+    <h2>Features &amp; Performance</h2>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+    <h3>Core Workflow: How Chatbase Works</h3>
+    <p>The platform follows a straightforward five-step lifecycle: build and train an agent on your data, deploy it across channels, let it automatically handle conversations, review and refine responses, and escalate complex issues to human agents when needed.</p>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+    <figure>
+      <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Chatbase AI agent workflow showing five stages: Build, Deploy, Automate, Refine, Escalate">
+        <rect x="0" y="0" width="680" height="240" fill="#f8fafc"/>
+        <rect x="20" y="30" width="115" height="80" rx="8" fill="#2563eb"/>
+        <text x="77" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">1. Build</text>
+        <text x="77" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Train on data</text>
+        <text x="77" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Choose model</text>
+        <line x1="135" y1="70" x2="215" y2="70" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="215,64 227,70 215,76" fill="#94a3b8"/>
+        <rect x="230" y="30" width="115" height="80" rx="8" fill="#0f172a"/>
+        <text x="287" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">2. Deploy</text>
+        <text x="287" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Website, WhatsApp</text>
+        <text x="287" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Messenger, Slack</text>
+        <line x1="345" y1="70" x2="425" y2="70" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="425,64 437,70 425,76" fill="#94a3b8"/>
+        <rect x="440" y="30" width="115" height="80" rx="8" fill="#166534"/>
+        <text x="497" y="58" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">3. Automate</text>
+        <text x="497" y="76" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">24/7 conversations</text>
+        <text x="497" y="92" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">AI Actions</text>
+        <line x1="497" y1="110" x2="497" y2="195" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="491,195 497,207 503,195" fill="#94a3b8"/>
+        <rect x="30" y="185" width="200" height="45" rx="8" fill="#92400e"/>
+        <text x="130" y="205" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">4. Refine &amp; Improve</text>
+        <text x="130" y="220" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Chat logs, Improve Answer, Suggestions</text>
+        <rect x="450" y="185" width="200" height="45" rx="8" fill="#991b1b"/>
+        <text x="550" y="205" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">5. Escalate to Human</text>
+        <text x="550" y="220" fill="#fff" font-size="10" text-anchor="middle" font-family="Arial">Zendesk, Intercom, email</text>
+      </svg>
+      <figcaption>Original illustration of the Chatbase AI agent workflow — not an actual screenshot of the Chatbase interface.</figcaption>
+    </figure>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, Chatbase is a strong fit for your business. You need model flexibility and AI Actions, and you already have a helpdesk for live chat handoff. The Standard plan at $120/month likely offers the best value. Start with the free plan to validate accuracy, then upgrade.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. Chatbase could work if your need for model flexibility or AI Actions justifies the lack of built-in live chat. Consider starting with the free plan and upgrading to Hobby ($32/month) if the AI handles your questions well and you do not miss the live chat feature.";
-    } else {
-      message = "Based on your answers, Chatbase may not be the right investment for your current workflow. Consider Tidio if you need built-in live chat, or FastBots.ai for simple FAQ automation on a budget. Re-evaluate Chatbase if your needs evolve toward AI model flexibility or task automation.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+    <h3>Key Features</h3>
 
-</body>
-</html>
+    <h4>Custom Knowledge Base Training</h4>
+    <p>The core feature. Train your AI agent on 6 types of data: website URLs (automatic crawling), files (PDF, DOCX, TXT, CSV), text, Q&A pairs, Notion pages, and Zendesk/Salesforce support tickets. The agent uses RAG to retrieve relevant information from this data at query time. Automatic daily retraining (configurable) keeps the agent current as content changes. Training content size limits range from 400 KB on Free to 40 MB on Pro.</p>
+
+    <h4>15+ AI Models from 6 Providers</h4>
+    <p>Unmatched model selection among chatbot builders. Choose from OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot AI, and Cohere models — per agent, with side-by-side comparison in the Playground. Model choice directly impacts credit consumption (1-5 credits per response), so users can balance quality against budget. The free plan only offers basic models; all premium models are available from Hobby and above.</p>
+
+    <h4>AI Actions (Task Automation)</h4>
+    <p>Beyond Q&A, AI Actions let the agent perform real tasks during conversations: check order status, book meetings (Calendly/Cal.com), process billing queries (Stripe), create support tickets (Zendesk), capture lead information, trigger custom webhooks, and connect to 5,000+ apps via Zapier and Make. Available AI Actions per agent scale from 5 (Hobby) to 12 (Pro). With GPT-5.2, tool-calling accuracy reportedly reaches 98.7%.</p>
+
+    <h4>Multi-Channel Deployment</h4>
+    <p>Deploy one AI agent across 6 native channels: website chat widget (embed code or iframe), WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, and Email. Additional channels via Zapier, Make, REST API, and webhooks. The website widget is fully customizable (colors, logo, welcome message, suggested questions). Standalone help page creates a ChatGPT-style interface at a custom domain path.</p>
+
+    <h4>Lead Capture &amp; CRM Integration</h4>
+    <p>Configure the agent to collect visitor information (name, email, phone) during conversations. Leads are displayed in a dedicated dashboard with date range filters and CSV export. Integrate with CRMs via Zapier for automated follow-up workflows. This lead capture functionality is one of Chatbase's key differentiators for marketing and sales teams.</p>
+
+    <h4>Smart Escalation</h4>
+    <p>Configure natural-language conditions for human handoff — tell the agent in plain language when to escalate (e.g., "if the customer is frustrated" or "if you cannot find the answer"). Escalated conversations route to Zendesk Sunshine, email, or helpdesk tools via integrations. Chatbase does not have built-in live chat for human takeover.</p>
+
+    <h4>Voice AI Agents</h4>
+    <p>A newer feature (early 2026) that extends Chatbase beyond text to phone-based AI support. The voice agent handles basic inquiries, provides 24/7 voice availability, and responds in natural-sounding speech. Standard plan and above includes voice and telephony capabilities.</p>
+
+    <h4>Chat Logs, Suggestions &amp; Analytics</h4>
+    <p>The Activity tab shows all conversations with confidence scores per response. The "Improve Answer" feature lets you manually correct responses, teaching the agent over time. The Suggestions feature spots knowledge base gaps — if the agent struggles to answer certain questions, Suggestions flags the missing data. Basic analytics are available on Hobby; advanced analytics (topic clustering, satisfaction ratings, missed question detection) are Pro-level features.</p>
+
+    <h3>Areas Requiring Hands-On Validation</h3>
+    <p>Several important performance characteristics cannot be assessed from documentation alone. These include: AI response accuracy across different models in real-world scenarios, the actual credit consumption experience and whether the variable pricing creates budget surprises, AI Actions reliability in production (whether the agent correctly executes tasks without errors), widget performance and loading impact on live websites, the quality and usefulness of the analytics and Suggestions features, the real-world experience of the "Improve Answer" workflow, and the point at which a team outgrows Chatbase and needs a full support suite like Intercom or Zendesk. These are noted as open questions from the research.</p>
+  </section>
+
+  <section id="ux">
+    <h2>User Experience</h2>
+    <h3>Setup Process</h3>
+    <p>Chatbase is accessed through a web browser at chatbase.co. Sign-up is quick with Google OAuth or email. After account creation, the user creates a new agent, adds training data (paste a website URL or upload files), selects an AI model, customizes the widget appearance, and copies the embed code to their website. Multiple independent reviewers consistently report the entire process takes under 10 minutes — easily the fastest setup time among AI chatbot builders.</p>
+
+    <h3>Daily Usage</h3>
+    <p>A typical Chatbase user workflow might be: log into the dashboard → review recent conversations in the Activity tab → check confidence scores and use "Improve Answer" on any low-confidence responses → review the Suggestions tab for knowledge base gaps → add new training data or Q&A pairs as needed → check the Analytics tab for conversation volume and user location data → fine-tune the AI model selection or system prompt in Settings. For lead generation use cases, the Leads tab is checked to export captured visitor information.</p>
+
+    <h3>Learning Curve</h3>
+    <p>Chatbase has a low learning curve for basic setup — independent reviewers consistently rate both ease of use and ease of setup as 5/5. The core workflow (train, deploy, review) is intuitive. However, more advanced features like AI Actions, smart escalation configuration, and model selection optimization require deeper understanding. The absence of a visual flow builder means there are no branching logic, decision trees, or conditional paths to configure, which both simplifies and limits the platform.</p>
+
+    <h3>Interface &amp; Usability</h3>
+    <p>The Chatbase dashboard is organized into clear tabs: Playground, Activity, Analytics, Sources, Actions, Contacts, Deploy, and Settings. Each tab corresponds to a distinct workflow step. The Playground provides a live chat preview for testing. The data sources section shows which content the agent is trained on. The Deploy section presents clear channel options with copy-paste embed codes. The interface is consistently described as clean, modern, and intuitive across all third-party reviews consulted for this research.</p>
+  </section>
+
+  <ProductCta title="Build an AI customer service agent in under 10 minutes — start Chatbase free" description="Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity." buttonText="Try Chatbase Free" href="https://www.chatbase.co" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
+
+  <section id="comparison">
+    <h2>How Chatbase Compares to Other Options</h2>
+    <p>Chatbase competes in the AI chatbot builder / customer service AI agent category. Since Chatbase is our second AI chatbot review in this pillar, the comparison to FastBots.ai is particularly relevant for readers deciding between entry-level and mid-tier solutions.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Tool</th><th>Starting Price</th><th>AI Models</th><th>Live Chat</th><th>Flow Builder</th><th>Best For</th></tr>
+      <tr><td>Chatbase</td><td>$32/mo (annual)</td><td>15+ from 6 providers</td><td>No (integrations only)</td><td>No (LLM-driven)</td><td>AI-first support, lead capture, model flexibility</td></tr>
+      <tr><td>FastBots.ai</td><td>Free tier</td><td>Limited selection</td><td>No</td><td>No</td><td>Simple FAQ chatbots on a budget</td></tr>
+      <tr><td>Tidio</td><td>Free (50 chats)</td><td>Lyro (Claude-based)</td><td>Yes (built-in)</td><td>Yes (visual)</td><td>E-commerce, live chat + AI in one platform</td></tr>
+      <tr><td>Intercom Fin</td><td>$29/seat/mo + $0.99/resolution</td><td>Proprietary</td><td>Yes (built-in)</td><td>No</td><td>Enterprise-scale support, highest AI resolution rate</td></tr>
+      <tr><td>CustomGPT AI</td><td>$89/mo</td><td>GPT-4o, GPT-4o Mini</td><td>No</td><td>No</td><td>Custom AI agents on business data with anti-hallucination focus</td></tr>
+      <tr><td>Botpress</td><td>Free (open-source)</td><td>GPT, Claude, Llama</td><td>No</td><td>Yes (visual)</td><td>Developer-led chatbot projects, deterministic paths</td></tr>
+    </table>
+    </div>
+    <p><strong>Chatbase's clear differentiator:</strong> 15+ AI models from 6 providers, all accessible from a single no-code platform. No other chatbot builder offers this level of model flexibility at this price point. The AI Actions system also goes beyond simple Q&A into real task automation. <strong>The trade-off:</strong> Chatbase does not include built-in live chat (you need Zendesk, Intercom, or a similar helpdesk for human handoff). It also lacks a visual flow builder, meaning you cannot create deterministic conversation paths — the platform relies entirely on the LLM to interpret user intent. For readers comparing against FastBots.ai: Chatbase is the more advanced, higher-priced option ($32/mo vs free) with wider model choice, AI Actions, SOC 2 certification, and multi-channel deployment. FastBots.ai remains a capable entry-level solution for simple FAQ automation on a tight budget.</p>
+  </section>
+
+  <section id="proscons">
+    <h2>Pros &amp; Cons</h2>
+    <div class="two-col">
+      <div class="pc-card good">
+        <h3>Strengths</h3>
+        <ul>
+          <li>Fastest setup in the market — a fully functional AI agent can be live on your website in under 10 minutes with no coding required.</li>
+          <li>15+ AI models from 6 providers — unmatched flexibility. Choose per agent, switch at any time, compare side-by-side in the Playground.</li>
+          <li>AI Actions system moves beyond Q&A into real task automation: order lookups, meeting bookings, billing queries, ticket creation.</li>
+          <li>SOC 2 Type II + GDPR + SSO at mid-tier pricing — a rare combination at this price point. Data never used to train models.</li>
+          <li>Active development cadence — weekly feature releases in 2026 including SSO, voice dictation, agent duplication, 40+ language localization.</li>
+          <li>Strong multi-channel deployment: 6 native channels (website, WhatsApp, Messenger, Instagram, Slack, Email) plus API and Zapier/Make.</li>
+          <li>Lead capture built in — configure the agent to collect visitor information, export as CSV, integrate with CRMs.</li>
+          <li>Free plan available for evaluation (though limited to 50 credits and basic models).</li>
+        </ul>
+      </div>
+      <div class="pc-card bad">
+        <h3>Limitations</h3>
+        <ul>
+          <li>No built-in live chat for human handoff — requires external helpdesk integrations (Zendesk, Intercom) that add cost and complexity.</li>
+          <li>Variable credit consumption by AI model (1-5 credits per response) makes monthly costs harder to predict than flat-rate pricing.</li>
+          <li>White-label branding removal is expensive — $99/month to remove "Powered by Chatbase," plus ~$199/month for a custom domain.</li>
+          <li>No visual flow builder — no conditional logic, decision trees, or branched conversation paths. Fully LLM-driven.</li>
+          <li>Steep price jumps between tiers: Hobby ($32) to Standard ($120) is a 275% increase, with key features (API, voice, helpdesk integration) gated behind Standard.</li>
+          <li>Free plan is very limited — 50 credits, basic models only, 14-day inactivity deletion. Not viable for business use.</li>
+          <li>Some user reviews on Trustpilot report billing issues and support responsiveness concerns (though these are mixed — Capterra and G2 ratings are higher).</li>
+          <li>No templates for chatbot design or conversation flows — every agent is built from scratch.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <h2>Company Background</h2>
+    <p>Chatbase was founded on February 4, 2023 by Yasser Elsaid, a York University computer science graduate who previously interned at Meta, Tesla, and BlackBerry. The product launched to just 16 Twitter followers and went viral — it was one of the first "chat with your data" SaaS products ever built. As of July 2026, Chatbase has grown to over 10,000 businesses with an estimated $5-6M in annual recurring revenue.</p>
+
+    <h3>Funding &amp; Growth</h3>
+    <p>Chatbase is entirely bootstrapped with zero external funding. The company has grown organically through product-market fit and viral word-of-mouth. The team ships weekly feature releases — recent additions include SSO for enterprise workspaces, voice input (dictation) across all channels, agent duplication, chat UI localization in 40+ languages including RTL support, support ticket ingestion from Zendesk and Salesforce, and Voice AI Agents.</p>
+
+    <h3>Market Position</h3>
+    <p>Chatbase occupies the "AI-first chatbot builder" segment of the customer service market, positioned between entry-level AI chatbot tools (Tidio, FastBots.ai) and enterprise support suites (Intercom, Zendesk). Its primary differentiators are model flexibility and ease of setup. The platform's SOC 2 Type II certification at mid-tier pricing is a meaningful competitive advantage against smaller players. The main competitors are Tidio (stronger for e-commerce with built-in live chat), Intercom Fin (stronger for enterprise with higher AI resolution rates), Botpress (stronger for developer-led projects with visual flow builder), and CustomGPT AI (stronger for anti-hallucination technology).</p>
+  </section>
+
+  <section id="recommend">
+    <h2>Who Should Use Chatbase?</h2>
+    <h3>Best For</h3>
+    <ul>
+      <li><strong>SMBs wanting a fast AI support layer</strong> — if you need an intelligent FAQ agent on your website within minutes, Chatbase is the fastest path.</li>
+      <li><strong>Marketing teams needing lead capture automation</strong> — the lead capture + analytics workflow is purpose-built for converting website visitors into CRM contacts.</li>
+      <li><strong>Companies already using Zendesk or Salesforce</strong> — Chatbase works as an AI front-end that escalates to your existing helpdesk; you already have the live chat infrastructure.</li>
+      <li><strong>WhatsApp-heavy businesses in international markets</strong> — native WhatsApp integration plus 95+ language support make Chatbase a strong fit for global customer bases.</li>
+      <li><strong>Teams that want to choose their AI model</strong> — if you care about which LLM powers your chatbot and want the flexibility to switch between GPT, Claude, Gemini, Grok, or DeepSeek, Chatbase is the best option.</li>
+      <li><strong>Businesses requiring SOC 2 or GDPR compliance on a budget</strong> — competitive security certifications at mid-tier pricing.</li>
+    </ul>
+    <h3>Skip If</h3>
+    <ul>
+      <li><strong>You need built-in live chat for human handoff</strong> — Chatbase integrates with live chat tools but does not have its own inbox. Consider Tidio or Intercom.</li>
+      <li><strong>You require deterministic conversation flows</strong> — no visual flow builder means no branched paths or decision trees. Consider Botpress or Tidio.</li>
+      <li><strong>You run a Shopify store and need deep e-commerce native support</strong> — Gorgias or Tidio offer purpose-built e-commerce integrations.</li>
+      <li><strong>You are on a tight budget and need more than 500 conversations/month</strong> — the Hobby plan's 500 credits (and effective cap depending on model choice) may not be enough; Tidio's free plan offers 50 conversations with lower-priced scaling.</li>
+      <li><strong>You prefer predictable monthly pricing</strong> — variable credit consumption by model makes costs harder to forecast. Flat-rate plans (Tidio, Botpress) may suit you better.</li>
+      <li><strong>You need a free plan for ongoing business use</strong> — Chatbase's free plan is for testing only (50 credits, 14-day deletion). You will need a paid plan for real usage.</li>
+    </ul>
+  </section>
+
+  <section id="buy">
+    <h2>Where to Sign Up &amp; Pricing</h2>
+    <p>Sign-up happens directly through the Chatbase website at <a href="https://www.chatbase.co" target="_blank" rel="noopener noreferrer sponsored">chatbase.co</a>. A free plan is available (no credit card required). All paid plans are available with monthly or annual billing (20% off annual).</p>
+    <p>The free plan includes 50 message credits/month, 1 AI agent, 400 KB training data, and basic models only. Hobby costs $32/month (annual) with 500 message credits, all AI models, 5 AI Actions, and 2 members. Standard costs $120/month (annual) with 4,000 message credits, 8 AI Actions, voice support, API access, and helpdesk integration. Pro costs $400/month (annual) with 15,000 message credits, 12 AI Actions, advanced analytics, and 5 members. Enterprise has custom pricing.</p>
+    <p>All pricing was verified from the official pricing page on July 4, 2026. SaaS pricing can change — verify current rates before subscribing.</p>
+  </section>
+
+  <section id="verdict">
+    <h2>Final Assessment</h2>
+
+    <p>Chatbase is one of the most capable AI chatbot builders available in 2026 — not because any single feature is best-in-class, but because the combination of model flexibility, setup speed, AI Actions, and enterprise-grade security at mid-tier pricing is genuinely unique. For our audience of affiliate marketers, small business owners, and content creators who need an AI customer support layer, the question is not "is Chatbase better than Tidio?" but rather "do you need built-in live chat, or can you work with an AI-first agent that integrates with your existing helpdesk?" For the latter use case, Chatbase is a strong choice.</p>
+
+    <p>The limitations matter: no built-in live chat, no visual flow builder, variable credit pricing that makes budgeting harder than flat-rate alternatives, and expensive white-labeling. But the value proposition is compelling for businesses that want intelligent, model-flexible AI agents deployed in minutes. The 15+ model selection is genuinely unmatched, the AI Actions system transforms a Q&A bot into a task-automation agent, and the SOC 2 + GDPR + SSO combination at this price point is rare.</p>
+
+    <div class="score-row"><div class="score-label">AI Model Flexibility</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
+    <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:100%"></div></div><div class="score-num">5/5</div></div>
+    <div class="score-row"><div class="score-label">Value for Money</div><div class="score-track"><div class="score-fill" style="width:70%"></div></div><div class="score-num">3.5/5</div></div>
+    <div class="score-row"><div class="score-label">Feature Breadth</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Security &amp; Compliance</div><div class="score-track"><div class="score-fill" style="width:90%"></div></div><div class="score-num">4.5/5</div></div>
+    <div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating. Scores for AI response accuracy and AI Actions reliability cannot be assigned without hands-on testing.</p>
+
+    <p>For most small to mid-sized businesses, the Standard plan at $120/month offers the best balance: 4,000 message credits, all AI models, 8 AI Actions, voice support, API access, and helpdesk integration. Start with the free plan to validate that the AI handles your business questions accurately. If results are promising, upgrade to Hobby ($32/month) and begin with efficient 1-credit models. Scale to Standard when you need API access, voice support, or higher credit volumes. Reserve premium models (Claude Opus, Grok 4) for complex queries where accuracy justifies the higher credit cost.</p>
+
+    <div class="quiz-box" id="quizBox">
+      <h3 style="margin-top:0;">Quick Self-Check: Is Chatbase Right for Your Business?</h3>
+      <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not a personalised recommendation.</p>
+      <fieldset>
+        <legend>Do you need built-in live chat for human takeover?</legend>
+        <label><input type="radio" name="q1" value="0"> Yes — we want AI + human support in one platform</label>
+        <label><input type="radio" name="q1" value="2"> No — we already use Zendesk, Intercom, or another helpdesk</label>
+      </fieldset>
+      <fieldset>
+        <legend>How important is it to choose which AI model powers your chatbot?</legend>
+        <label><input type="radio" name="q2" value="2"> Very important — we want flexibility between GPT, Claude, Gemini, etc.</label>
+        <label><input type="radio" name="q2" value="0"> Not important — we just need the chatbot to work well</label>
+      </fieldset>
+      <fieldset>
+        <legend>Do you need your chatbot to take actions (book meetings, check orders) — not just answer questions?</legend>
+        <label><input type="radio" name="q3" value="2"> Yes — we want AI Actions for task automation</label>
+        <label><input type="radio" name="q3" value="0"> No — basic Q&A and FAQ support is sufficient</label>
+      </fieldset>
+      <button type="button" onclick="evaluateQuiz()">See My Result</button>
+      <div id="quiz-result"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="What is Chatbase and how does it work?" answer="Chatbase is an AI-powered platform that lets you build custom AI agents trained on your own business data. You upload website URLs, documents, or text, and Chatbase creates a conversational agent that can answer customer questions, capture leads, book meetings, and perform automated tasks. It uses Retrieval-Augmented Generation (RAG) — when a visitor asks a question, the system retrieves relevant information from your indexed data and feeds it to the selected AI model to generate accurate responses. No coding required." />
+    <FaqItem question="How much does Chatbase cost?" answer="Chatbase offers five tiers: Free ($0, 50 credits/mo), Hobby ($32/mo annual, 500 credits), Standard ($120/mo annual, 4,000 credits), Pro ($400/mo annual, 15,000 credits), and Enterprise (custom). Annual billing saves 20%. Additional costs include auto-recharge credits ($40 per 1,000), extra agents ($25/mo), and white-label branding removal ($99/mo). Credit consumption varies by AI model (1-5 credits per response)." />
+    <FaqItem question="What AI models does Chatbase support in 2026?" answer="As of July 2026, Chatbase offers 15+ models from 6 providers: OpenAI (GPT-5.2, GPT-5 Mini, GPT-4o, GPT-4o Mini, GPT-4.5, O3 Mini), Anthropic (Claude Opus 4.6, 4.5, Sonnet 4.5, 3.7, 3.5), Google (Gemini 3 Pro, 2.5 Pro, 2.0 Flash), xAI (Grok 4, Grok 3), Moonshot AI (Kimi K2), DeepSeek (V3, R1), and Cohere (Command R+, Command R). You can switch models per agent at any time." />
+    <FaqItem question="Is Chatbase free?" answer="Yes, Chatbase offers a free forever plan with 50 message credits/month, 1 AI agent, and 400 KB of training data. However, the free plan has significant limitations: only basic AI models are available, only 10 training links are allowed, and agents are deleted after 14 days of inactivity. It is suitable for testing the platform but not for ongoing business use." />
+    <FaqItem question="How do message credits work in Chatbase?" answer="Credits are consumed each time your AI agent generates a response. The rate varies by model: 1 credit for GPT-4o Mini and Claude 3.5 Sonnet, up to 5 credits for Claude Opus 4.6. Credits reset on the 1st of every month. When credits run out, the agent shows an unavailability message until credits renew or you purchase more via auto-recharge at $40 per 1,000 credits." />
+    <FaqItem question="Does Chatbase have built-in live chat?" answer="No. This is Chatbase's most notable limitation. The platform does not include a live chat inbox for human agents to take over conversations in real-time. You can configure smart escalation conditions in natural language — routes to Zendesk Sunshine, email, or other helpdesk tools via integrations. If built-in live chat is essential, consider Tidio or Intercom instead." />
+    <FaqItem question="What channels can I deploy Chatbase on?" answer="Chatbase supports 6 native channels: website chat widget, WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, and Email. Additional channels via Zapier, Make, REST API, and webhooks. Voice AI Agents are also available for phone-based support." />
+    <FaqItem question="Is Chatbase safe and secure?" answer="Yes. Chatbase holds SOC 2 Type II certification, is GDPR compliant, uses AES-256 encryption for all data at rest and in transit, and added SSO in January 2026. Crucially, your data is never used to train AI models — the RAG architecture retrieves your data at query time without exposing it to model training. Additional protections include domain allowlisting, rate limiting, and role-based access controls." />
+    <FaqItem question="What are Chatbase AI Actions?" answer="AI Actions let your agent perform real tasks during conversations — not just answer questions. The AI can autonomously check order status via API calls, book meetings through Calendly or Cal.com, process billing queries via Stripe, create support tickets in Zendesk, capture lead information, trigger custom webhooks, and connect to 5,000+ apps via Zapier and Make. Available AI Actions per agent: 5 (Hobby), 8 (Standard), 12 (Pro)." />
+    <FaqItem question="How is Chatbase different from FastBots.ai?" answer="Chatbase is the more advanced option: it offers 15+ AI models vs FastBots.ai's more limited selection, includes AI Actions for task automation, has SOC 2 certification, supports 6 native deployment channels, and includes voice support. FastBots.ai has a free tier and is simpler to set up for basic FAQ chatbots. Chatbase is better for businesses that need intelligent, action-taking AI agents with compliance requirements. FastBots.ai is better for simple FAQ automation on a tight budget." />
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <ProductCta title="Build an AI customer service agent in under 10 minutes — start Chatbase free" description="Chatbase lets you create a custom AI agent trained on your own business data, deploy it across 6+ channels, and automate support, lead capture, and task execution — all without coding. Start with a free plan and upgrade when your business needs more capacity." buttonText="Try Chatbase Free" href="https://www.chatbase.co" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to purchase Chatbase through this link, we may earn a commission at no extra cost to you.</p>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <PillList items={[
+      { label: "Chatbase Official Site", url: "https://www.chatbase.co" },
+      { label: "Chatbase Pricing Page", url: "https://www.chatbase.co/pricing" },
+      { label: "Chatbase Enterprise", url: "https://www.chatbase.co/enterprise" },
+      { label: "Chatbase Customers", url: "https://www.chatbase.co/customers" },
+      { label: "Chatbase Security", url: "https://www.chatbase.co/security" },
+      { label: "Chatimize Review (4.1/5)", url: "https://chatimize.com/reviews/chatbase" },
+      { label: "Max Productive AI Review (4.1/5)", url: "https://max-productive.ai/ai-tools/chatbase" },
+      { label: "SelectHub Aggregated Reviews", url: "https://www.selecthub.com/p/ai-customer-service-agent-software/chatbase" },
+      { label: "AI Tool Ranks Listing", url: "https://aitoolranks.com/app/chatbase" },
+    ]} />
+    <p style="font-size:.82rem;color:var(--ink-light);">Primary research source: Website snapshot of chatbase.co captured July 4, 2026. Cross-referenced with live website and 4 independent third-party reviews. Information reflects publicly available pages as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. This article contains affiliate links; if you choose to purchase through them, we may earn a commission at no extra cost to you.</p>
+
+    <SiteFooter />
+  </section>
+
+</OlspLayout>

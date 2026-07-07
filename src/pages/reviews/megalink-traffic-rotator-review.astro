@@ -4,705 +4,304 @@ export const prerender = true;
 const pageTitle = "Megalink Traffic Rotator Review: Is OLSP's $47/Month Traffic Service Worth It?";
 const pageDescription =
   "An independent, research-based review of Megalink Traffic Rotator: how the service works, what the vendor claims, what independent analysts say, and who should actually buy it.";
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Performance Analysis" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. History & Updates" },
+  { href: "#recommend", label: "9. Who Should Subscribe" },
+  { href: "#buy", label: "10. Where to Subscribe" },
+  { href: "#verdict", label: "11. Final Verdict" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Megalink Traffic Rotator Review: Is OLSP's $47/Month Traffic Service Worth It?</title>
-<meta name="description" content="An independent, research-based review of Megalink Traffic Rotator: how the service works, what the vendor claims, what independent analysts say, and who should actually buy it.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/megalink-traffic-rotator-review/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/megalink-traffic-rotator-review/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+<section id="intro">
+  <HeroTag text="Independent Review · Updated June 2026" />
+  <h1>What Is Megalink Traffic Rotator? An Independent, Research-Based Review</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+  <p><strong>Megalink Traffic Rotator</strong> (also marketed as OLSP Traffic Rotator) is a paid monthly traffic subscription offered inside the OLSP ecosystem, operated by Wayne Crowe and Wayne Crowe Limited. It is designed to send a recurring allocation of visitors to a subscriber's OLSP Magick or Mega Link funnel, and in a more advanced configuration, to distribute incoming traffic across multiple Megalink destinations for split-testing. Our short take: the core concept — done-for-you traffic delivered to a pre-built funnel — solves a genuine bottleneck for affiliate marketers, and $47 per month is a verifiable price confirmed on the official products page. However, the vendor's claims of "100% guaranteed commissions" and "zero skill or effort required" are unverified marketing assertions, and independent analysts consistently recommend against purchasing this service until you are already earning meaningful commissions from OLSP and have a tested funnel to optimise.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+  <VerdictBox>
+    <p><strong>Best for:</strong> existing OLSP Magick or Mega Link owners who are already generating commissions and want to scale traffic volume or split-test landing page variations within the OLSP ecosystem.</p>
+    <p><strong>Not ideal for:</strong> anyone new to OLSP who has not yet validated their funnel, anyone expecting a passive income shortcut, or anyone who needs traffic for destinations outside the OLSP system.</p>
+  </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+  <h3>What Is It, and Who Is It For?</h3>
+  <p>Megalink Traffic Rotator is a service product, not a piece of software. Once subscribed, OLSP's team adds the member's Magick or Mega Link to an internal rotation and sends a monthly share of visitors from OLSP's traffic pool. The service is explicitly restricted to Magick and Mega Link owners — it is not available as a standalone traffic product for general use outside the OLSP ecosystem. It is aimed primarily at intermediate OLSP affiliates who have moved past the initial training and funnel setup stage and want to accelerate or test their traffic without building campaigns themselves.</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+  <h3>Author Background &amp; Review Methodology</h3>
+  <Methodology>
+    <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business, affiliate marketing, and digital-education products, with attention to consumer-protection norms around income claims and subscription-based traffic services.</p>
+    <p><strong>How this review was built:</strong> We did not purchase or personally use Megalink Traffic Rotator. This article is based entirely on independent desk research: the product's own public sales and product description pages, publicly available third-party reviews and analysis, community discussions, and general context for done-for-you traffic services. Where a claim could not be independently verified — including all earnings figures and all traffic quality assertions — we say so explicitly rather than presenting it as fact.</p>
+  </Methodology>
+</section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+<ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+<section id="overview">
+  <h2>Megalink Traffic Rotator Overview &amp; Pricing</h2>
+  <p>Megalink Traffic Rotator is one of several paid upgrades within the OLSP system built and operated by Wayne Crowe Limited, a UK-registered company. It sits above the free Mega Link entry point and below higher-tier upgrades such as Team Builders, functioning as a recurring traffic add-on for members who want to automate visitor flow to their funnel without managing traffic campaigns themselves.</p>
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+  <h3>What's Included</h3>
+  <ul>
+    <li><strong>Monthly traffic allocation:</strong> OLSP sets aside a reserved pool of traffic from its wider solo ad operation and distributes a share to each rotator subscriber's Magick or Mega Link on a recurring monthly basis.</li>
+    <li><strong>OLSP-native rotation:</strong> The member's Magick/Mega Link is placed into OLSP's internal rotator; no external rotator account or tracking tool is required.</li>
+    <li><strong>Traffic distribution across Megalink destinations (rotator function):</strong> For users with multiple Megalink variations, the service can distribute incoming traffic across different destinations to facilitate A/B testing of landing pages, hooks, and campaign angles — according to independent analysis, not official vendor documentation.</li>
+    <li><strong>Hands-off management:</strong> OLSP's team handles traffic generation and routing; no active campaign management is required from the subscriber after initial setup.</li>
+    <li><strong>Cancellable subscription:</strong> The service is described on the official products page as a monthly subscription with no stated minimum term.</li>
+  </ul>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
+  <h3>Reported Pricing</h3>
+  <Callout type="warn">
+    <strong>Pricing note:</strong> The $47/month figure is confirmed on two separate official OLSP pages — the products and descriptions page and the Traffic Rotator sales page — making it one of the more reliably documented prices in the OLSP ecosystem. However, OLSP products and pricing can change. The sales page presents the $47 as a permanent discount from $100; treat that framing as marketing copy rather than a confirmed retail price. Verify the current price directly on the official page before subscribing.
+  </Callout>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Tier</th><th>Confirmed Price</th><th>What It Provides</th></tr>
+    <tr><td>Megalink Traffic Rotator (standard)</td><td>$47/month recurring</td><td>Monthly traffic allocation to Magick/Mega Link; hands-off delivery; OLSP-native rotator access</td></tr>
+    <tr><td>Framing on sales page</td><td>"$100 worth of traffic for $47"</td><td>Marketing claim — $100 is struck through as a notional full price; this framing is not independently verified</td></tr>
+    <tr><td>Team Builders (separate product)</td><td>Higher-tier; separate pricing</td><td>Includes a traffic rotator component among other features — a different product aimed at a higher upgrade stage</td></tr>
+  </table>
+  </div>
+  <p><strong>Affiliate commission structure (per independent analysis, not confirmed on official sales pages):</strong> One independent reviewer documents a 20% level-one commission ($9.40 per active subscriber per month) and 5% at level two. This is an externally reported figure, not vendor-published data, and should be treated accordingly.</p>
+</section>
 
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
+<section id="design">
+  <h2>Platform &amp; Build Quality</h2>
+  <p>Megalink Traffic Rotator is a service subscription, not a software product. There is no dashboard to install, no application to download, and no interface to configure beyond the initial account-level setup inside OLSP. This is fundamentally different from standalone rotator tools like ClickMagick or Linkly, which give users a full control panel for managing destinations, weights, and tracking.</p>
 
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
+  <h3>Service Infrastructure</h3>
+  <p>The traffic originates from OLSP's existing solo ad operation. According to the official sales page, OLSP "sets aside a limited stream of traffic just for the Traffic Rotator program" from a broader daily visitor volume it describes as running to "tens of thousands" per day. Members' links are placed into this reserved stream; OLSP handles the routing entirely. We could not independently verify the size, composition, or quality of OLSP's traffic pool from publicly available information.</p>
 
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
+  <h3>Trust Signals</h3>
+  <p>The product is operated by Wayne Crowe Limited, a UK-registered entity identified in OLSP's official footer. Wayne Crowe has been publicly associated with online marketing and solo ads for approximately 15 years. The OLSP ecosystem has been running since around 2020 and has a documented public presence — products pages, community groups, and press materials — which establishes a baseline of operational continuity. That said, none of these signals constitute an independent audit of the service's traffic quality or results.</p>
 
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
+  <h3>Long-Term Considerations</h3>
+  <p>Because the service is entirely OLSP-operated with no external contract, any change to OLSP's pricing, traffic volume, or business model directly affects what subscribers receive. A subscriber's results are structurally dependent on OLSP maintaining its solo ad operation and rotator program at the described level — a concentration risk that standalone tracking tools (where the user controls the traffic source) do not carry.</p>
+</section>
 
-  .mobile-toc-btn{display:none;}
+<section id="performance">
+  <h2>Performance Analysis</h2>
 
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" \2192";}
+  <h3>4.1 Core Functionality: How Traffic Reaches the Funnel</h3>
+  <p>The mechanics can be described in four steps: OLSP reserves a pool of visitors from its solo ad operation specifically for rotator subscribers; each subscriber's Magick or Mega Link is placed into the rotation; OLSP routes a monthly share of those visitors to each link in turn; and those visitors enter the OLSP funnel, which handles list-building, upsell sequencing, and commission tracking on the subscriber's behalf.</p>
 
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
+  <figure>
+    <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Megalink Traffic Rotator flow from OLSP traffic pool to member funnel">
+      <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
+      <rect x="10" y="75" width="140" height="70" rx="8" fill="#0f172a"/>
+      <text x="80" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">OLSP traffic</text>
+      <text x="80" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">pool reserved</text>
+      <line x1="150" y1="110" x2="178" y2="110" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="178,104 190,110 178,116" fill="#94a3b8"/>
+      <rect x="193" y="75" width="140" height="70" rx="8" fill="#2563eb"/>
+      <text x="263" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Rotator allocates</text>
+      <text x="263" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">monthly share</text>
+      <line x1="333" y1="110" x2="361" y2="110" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="361,104 373,110 361,116" fill="#94a3b8"/>
+      <rect x="376" y="75" width="140" height="70" rx="8" fill="#1d4ed8"/>
+      <text x="446" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Member's Magick</text>
+      <text x="446" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">/ Mega Link</text>
+      <line x1="516" y1="110" x2="544" y2="110" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="544,104 556,110 544,116" fill="#94a3b8"/>
+      <rect x="559" y="75" width="72" height="70" rx="8" fill="#166534"/>
+      <text x="595" y="106" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">OLSP funnel</text>
+      <text x="595" y="122" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">→ commission</text>
+    </svg>
+    <figcaption>Original illustration based on publicly described service mechanics — not a screenshot of the OLSP dashboard or internal rotator interface.</figcaption>
+  </figure>
 
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
+  <h3>4.2 Key Performance Categories</h3>
 
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
+  <h4>Traffic Quality and Volume</h4>
+  <p>The official sales page describes the traffic as coming from OLSP's "secret source of high-quality traffic" and frames the monthly allocation as "$100 worth" of visitors. Neither claim is independently verified. No public technical documentation describes the traffic source in detail — whether it is solo ad list traffic, paid display traffic, or some other origin — and no independent conversion rate audit exists. The characterisation of this traffic as "Tier 1" or "high-quality" is vendor language, not a verified specification.</p>
 
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
+  <h4>Split-Testing Utility</h4>
+  <p>Independent analysts — not official vendor materials — identify split-testing across multiple Megalink destinations as the strongest genuine use case for this service. According to one independent review, the rotator can distribute traffic across different Megalink landing page variants and track per-destination performance, enabling comparisons of hooks, bridge pages, and offer angles. This is a meaningful capability for an affiliate who is already generating enough OLSP income to justify systematic optimisation. It is not a beginner use case.</p>
 
-<div class="layout">
+  <h4>"Guaranteed Commissions" Claim</h4>
+  <Callout type="warn">
+    <strong>This claim requires careful reading:</strong> The official sales page states that the Traffic Rotator provides "100% guaranteed commissions" and describes it as a "100% autopilot commission generating program." These phrases appear to mean that OLSP pays a commission on every visitor routed through the Magick Link — not that the subscriber is guaranteed a specific income or a profitable return. No independent verification of this claim exists, and the sales page provides no commission rate, no earnings disclosure, and no data on typical subscriber outcomes. Treat all income-adjacent language on the sales page as vendor marketing copy, not a contractual earnings guarantee.
+  </Callout>
 
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Performance Analysis</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. History &amp; Updates</a>
-      <a href="#recommend">9. Who Should Subscribe</a>
-      <a href="#buy">10. Where to Subscribe</a>
-      <a href="#verdict">11. Final Verdict</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
+  <h4>Community and Support</h4>
+  <p>There is no dedicated support channel documented for the Traffic Rotator specifically. Support appears to operate through the broader OLSP community — a Facebook group where setup guides and optimisation tips are shared by members — and through OLSP's general training resources. No standalone technical manual, FAQ, or help-desk process for the rotator was found in publicly available material.</p>
+</section>
 
-  <main>
+<section id="ux">
+  <h2>User Experience</h2>
+  <h3>Setup Process</h3>
+  <p>A community-produced guide inside the OLSP Facebook group describes the setup process as: activate your Magick Link ($7 entry product), configure a squeeze page using TD Pages or a compatible landing page builder, add that squeeze page link inside your OLSP account settings, then purchase the Traffic Rotator subscription. Once the subscription is active, OLSP adds the link to the rotation. The vendor describes no further technical action required from the subscriber.</p>
+  <h3>Daily Usage</h3>
+  <p>Once active, the service requires no ongoing management from the subscriber. OLSP handles traffic routing; the subscriber's role is to monitor funnel performance — opt-in rates, email open rates, and conversion rates through the Magick Link — and adjust their downstream sequences accordingly. The community guide cited above recommends tracking these metrics to determine whether the traffic is converting and whether the subscription is delivering value relative to cost.</p>
+  <h3>Learning Curve</h3>
+  <p>For a subscriber who already has a working OLSP funnel, adding the Traffic Rotator is described as straightforward. The complexity lies not in the service itself but in interpreting the results: understanding whether lower-than-expected conversions reflect traffic quality issues, funnel issues, or offer positioning requires marketing judgment that the service does not provide. First-time OLSP users should build that baseline understanding before adding a paid traffic subscription.</p>
+  <h3>Transparency and Control</h3>
+  <p>Compared to self-managed traffic tools, subscribers have limited visibility into how the rotator operates — there is no public documentation of the distribution algorithm, the traffic source composition, or per-subscriber allocation methodology. Independent tools like ClickMagick provide a full tracking dashboard; Megalink Traffic Rotator does not offer an equivalent level of subscriber-facing transparency.</p>
+</section>
 
-    <section id="intro">
-      <span class="hero-tag">Independent Review · Updated June 2026</span>
-      <h1>What Is Megalink Traffic Rotator? An Independent, Research-Based Review</h1>
+<ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
 
-      <p><strong>Megalink Traffic Rotator</strong> (also marketed as OLSP Traffic Rotator) is a paid monthly traffic subscription offered inside the OLSP ecosystem, operated by Wayne Crowe and Wayne Crowe Limited. It is designed to send a recurring allocation of visitors to a subscriber's OLSP Magick or Mega Link funnel, and in a more advanced configuration, to distribute incoming traffic across multiple Megalink destinations for split-testing. Our short take: the core concept — done-for-you traffic delivered to a pre-built funnel — solves a genuine bottleneck for affiliate marketers, and $47 per month is a verifiable price confirmed on the official products page. However, the vendor's claims of "100% guaranteed commissions" and "zero skill or effort required" are unverified marketing assertions, and independent analysts consistently recommend against purchasing this service until you are already earning meaningful commissions from OLSP and have a tested funnel to optimise.</p>
+<section id="comparison">
+  <h2>How Megalink Traffic Rotator Compares</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Option</th><th>Cost</th><th>Traffic Source</th><th>Works With</th><th>Best For</th></tr>
+    <tr><td>Megalink Traffic Rotator</td><td>$47/month</td><td>OLSP's pool — source not independently documented</td><td>OLSP Magick/Mega Link only</td><td>OLSP affiliates at scale who want hands-off split-testing within the ecosystem</td></tr>
+    <tr><td>ClickMagick</td><td>From ~$27/month</td><td>User supplies own traffic; ClickMagick tracks and rotates it</td><td>Any URL — full control</td><td>Affiliates who want transparent tracking and rotation across any traffic source or destination</td></tr>
+    <tr><td>Linkly</td><td>Free tier (up to ~1,000 clicks/month); paid tiers above</td><td>User supplies own traffic</td><td>Any URL</td><td>Lower-budget affiliates who need basic rotation and link management without a monthly fee</td></tr>
+    <tr><td>Independent solo ads</td><td>Variable (typically $0.40–$0.80 per click)</td><td>Solo ad vendor's email list — quality varies by vendor</td><td>Any URL</td><td>Affiliates who want to control traffic volume and test vendors independently, with their own tracking</td></tr>
+  </table>
+  </div>
+  <p><strong>Key distinction:</strong> Megalink Traffic Rotator is the only option on this list that bundles the traffic source and the distribution mechanism together in a single subscription. That simplicity is its appeal. The trade-off is that the subscriber cannot audit, swap, or scale the traffic source independently — a meaningful constraint for anyone whose goals extend beyond OLSP's own ecosystem.</p>
+</section>
 
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> existing OLSP Magick or Mega Link owners who are already generating commissions and want to scale traffic volume or split-test landing page variations within the OLSP ecosystem.</p>
-        <p><strong>Not ideal for:</strong> anyone new to OLSP who has not yet validated their funnel, anyone expecting a passive income shortcut, or anyone who needs traffic for destinations outside the OLSP system.</p>
-      </div>
-
-      <h3>What Is It, and Who Is It For?</h3>
-      <p>Megalink Traffic Rotator is a service product, not a piece of software. Once subscribed, OLSP's team adds the member's Magick or Mega Link to an internal rotation and sends a monthly share of visitors from OLSP's traffic pool. The service is explicitly restricted to Magick and Mega Link owners — it is not available as a standalone traffic product for general use outside the OLSP ecosystem. It is aimed primarily at intermediate OLSP affiliates who have moved past the initial training and funnel setup stage and want to accelerate or test their traffic without building campaigns themselves.</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by an editorial research team that evaluates online business, affiliate marketing, and digital-education products, with attention to consumer-protection norms around income claims and subscription-based traffic services.</p>
-        <p><strong>How this review was built:</strong> We did not purchase or personally use Megalink Traffic Rotator. This article is based entirely on independent desk research: the product's own public sales and product description pages, publicly available third-party reviews and analysis, community discussions, and general context for done-for-you traffic services. Where a claim could not be independently verified — including all earnings figures and all traffic quality assertions — we say so explicitly rather than presenting it as fact.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
-    </div>
-
-    <section id="overview">
-      <h2>Megalink Traffic Rotator Overview &amp; Pricing</h2>
-      <p>Megalink Traffic Rotator is one of several paid upgrades within the OLSP system built and operated by Wayne Crowe Limited, a UK-registered company. It sits above the free Mega Link entry point and below higher-tier upgrades such as Team Builders, functioning as a recurring traffic add-on for members who want to automate visitor flow to their funnel without managing traffic campaigns themselves.</p>
-
-      <h3>What's Included</h3>
+<section id="proscons">
+  <h2>Pros &amp; Cons</h2>
+  <div class="two-col">
+    <div class="pc-card good">
+      <h3>What We Noted as Strengths, Based on Research</h3>
       <ul>
-        <li><strong>Monthly traffic allocation:</strong> OLSP sets aside a reserved pool of traffic from its wider solo ad operation and distributes a share to each rotator subscriber's Magick or Mega Link on a recurring monthly basis.</li>
-        <li><strong>OLSP-native rotation:</strong> The member's Magick/Mega Link is placed into OLSP's internal rotator; no external rotator account or tracking tool is required.</li>
-        <li><strong>Traffic distribution across Megalink destinations (rotator function):</strong> For users with multiple Megalink variations, the service can distribute incoming traffic across different destinations to facilitate A/B testing of landing pages, hooks, and campaign angles — according to independent analysis, not official vendor documentation.</li>
-        <li><strong>Hands-off management:</strong> OLSP's team handles traffic generation and routing; no active campaign management is required from the subscriber after initial setup.</li>
-        <li><strong>Cancellable subscription:</strong> The service is described on the official products page as a monthly subscription with no stated minimum term.</li>
+        <li>OLSP-native integration eliminates the need to configure an external rotator account, connect tracking pixels, or manage a separate traffic tool — the service operates inside the funnel infrastructure the subscriber is already using.</li>
+        <li>Genuinely hands-off once set up — OLSP manages traffic routing with no active campaign work required from the subscriber, which distinguishes it from solo ad buying or self-managed paid advertising.</li>
+        <li>Useful for split-testing multiple Megalink destinations — independent reviewers identify this as the most legitimate value proposition, enabling data-driven comparison of landing page variations within OLSP.</li>
+        <li>Cancellable monthly subscription with a publicly confirmed price — no long-term contract and no ambiguity about the monthly commitment, both of which are documented on official OLSP pages.</li>
       </ul>
-
-      <h3>Reported Pricing</h3>
-      <div class="callout warn">
-        <strong>Pricing note:</strong> The $47/month figure is confirmed on two separate official OLSP pages — the products and descriptions page and the Traffic Rotator sales page — making it one of the more reliably documented prices in the OLSP ecosystem. However, OLSP products and pricing can change. The sales page presents the $47 as a permanent discount from $100; treat that framing as marketing copy rather than a confirmed retail price. Verify the current price directly on the official page before subscribing.
-      </div>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Tier</th><th>Confirmed Price</th><th>What It Provides</th></tr>
-        <tr><td>Megalink Traffic Rotator (standard)</td><td>$47/month recurring</td><td>Monthly traffic allocation to Magick/Mega Link; hands-off delivery; OLSP-native rotator access</td></tr>
-        <tr><td>Framing on sales page</td><td>"$100 worth of traffic for $47"</td><td>Marketing claim — $100 is struck through as a notional full price; this framing is not independently verified</td></tr>
-        <tr><td>Team Builders (separate product)</td><td>Higher-tier; separate pricing</td><td>Includes a traffic rotator component among other features — a different product aimed at a higher upgrade stage</td></tr>
-      </table>
-      </div>
-      <p><strong>Affiliate commission structure (per independent analysis, not confirmed on official sales pages):</strong> One independent reviewer documents a 20% level-one commission ($9.40 per active subscriber per month) and 5% at level two. This is an externally reported figure, not vendor-published data, and should be treated accordingly.</p>
-    </section>
-
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>Megalink Traffic Rotator is a service subscription, not a software product. There is no dashboard to install, no application to download, and no interface to configure beyond the initial account-level setup inside OLSP. This is fundamentally different from standalone rotator tools like ClickMagick or Linkly, which give users a full control panel for managing destinations, weights, and tracking.</p>
-
-      <h3>Service Infrastructure</h3>
-      <p>The traffic originates from OLSP's existing solo ad operation. According to the official sales page, OLSP "sets aside a limited stream of traffic just for the Traffic Rotator program" from a broader daily visitor volume it describes as running to "tens of thousands" per day. Members' links are placed into this reserved stream; OLSP handles the routing entirely. We could not independently verify the size, composition, or quality of OLSP's traffic pool from publicly available information.</p>
-
-      <h3>Trust Signals</h3>
-      <p>The product is operated by Wayne Crowe Limited, a UK-registered entity identified in OLSP's official footer. Wayne Crowe has been publicly associated with online marketing and solo ads for approximately 15 years. The OLSP ecosystem has been running since around 2020 and has a documented public presence — products pages, community groups, and press materials — which establishes a baseline of operational continuity. That said, none of these signals constitute an independent audit of the service's traffic quality or results.</p>
-
-      <h3>Long-Term Considerations</h3>
-      <p>Because the service is entirely OLSP-operated with no external contract, any change to OLSP's pricing, traffic volume, or business model directly affects what subscribers receive. A subscriber's results are structurally dependent on OLSP maintaining its solo ad operation and rotator program at the described level — a concentration risk that standalone tracking tools (where the user controls the traffic source) do not carry.</p>
-    </section>
-
-    <section id="performance">
-      <h2>Performance Analysis</h2>
-
-      <h3>4.1 Core Functionality: How Traffic Reaches the Funnel</h3>
-      <p>The mechanics can be described in four steps: OLSP reserves a pool of visitors from its solo ad operation specifically for rotator subscribers; each subscriber's Magick or Mega Link is placed into the rotation; OLSP routes a monthly share of those visitors to each link in turn; and those visitors enter the OLSP funnel, which handles list-building, upsell sequencing, and commission tracking on the subscriber's behalf.</p>
-
-      <figure>
-        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Megalink Traffic Rotator flow from OLSP traffic pool to member funnel">
-          <rect x="0" y="0" width="640" height="220" fill="#f8fafc"/>
-          <rect x="10" y="75" width="140" height="70" rx="8" fill="#0f172a"/>
-          <text x="80" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">OLSP traffic</text>
-          <text x="80" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">pool reserved</text>
-          <line x1="150" y1="110" x2="178" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="178,104 190,110 178,116" fill="#94a3b8"/>
-          <rect x="193" y="75" width="140" height="70" rx="8" fill="#2563eb"/>
-          <text x="263" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Rotator allocates</text>
-          <text x="263" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">monthly share</text>
-          <line x1="333" y1="110" x2="361" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="361,104 373,110 361,116" fill="#94a3b8"/>
-          <rect x="376" y="75" width="140" height="70" rx="8" fill="#1d4ed8"/>
-          <text x="446" y="106" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Member's Magick</text>
-          <text x="446" y="122" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">/ Mega Link</text>
-          <line x1="516" y1="110" x2="544" y2="110" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="544,104 556,110 544,116" fill="#94a3b8"/>
-          <rect x="559" y="75" width="72" height="70" rx="8" fill="#166534"/>
-          <text x="595" y="106" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">OLSP funnel</text>
-          <text x="595" y="122" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">→ commission</text>
-        </svg>
-        <figcaption>Original illustration based on publicly described service mechanics — not a screenshot of the OLSP dashboard or internal rotator interface.</figcaption>
-      </figure>
-
-      <h3>4.2 Key Performance Categories</h3>
-
-      <h4>Traffic Quality and Volume</h4>
-      <p>The official sales page describes the traffic as coming from OLSP's "secret source of high-quality traffic" and frames the monthly allocation as "$100 worth" of visitors. Neither claim is independently verified. No public technical documentation describes the traffic source in detail — whether it is solo ad list traffic, paid display traffic, or some other origin — and no independent conversion rate audit exists. The characterisation of this traffic as "Tier 1" or "high-quality" is vendor language, not a verified specification.</p>
-
-      <h4>Split-Testing Utility</h4>
-      <p>Independent analysts — not official vendor materials — identify split-testing across multiple Megalink destinations as the strongest genuine use case for this service. According to one independent review, the rotator can distribute traffic across different Megalink landing page variants and track per-destination performance, enabling comparisons of hooks, bridge pages, and offer angles. This is a meaningful capability for an affiliate who is already generating enough OLSP income to justify systematic optimisation. It is not a beginner use case.</p>
-
-      <h4>"Guaranteed Commissions" Claim</h4>
-      <div class="callout warn">
-        <strong>This claim requires careful reading:</strong> The official sales page states that the Traffic Rotator provides "100% guaranteed commissions" and describes it as a "100% autopilot commission generating program." These phrases appear to mean that OLSP pays a commission on every visitor routed through the Magick Link — not that the subscriber is guaranteed a specific income or a profitable return. No independent verification of this claim exists, and the sales page provides no commission rate, no earnings disclosure, and no data on typical subscriber outcomes. Treat all income-adjacent language on the sales page as vendor marketing copy, not a contractual earnings guarantee.
-      </div>
-
-      <h4>Community and Support</h4>
-      <p>There is no dedicated support channel documented for the Traffic Rotator specifically. Support appears to operate through the broader OLSP community — a Facebook group where setup guides and optimisation tips are shared by members — and through OLSP's general training resources. No standalone technical manual, FAQ, or help-desk process for the rotator was found in publicly available material.</p>
-    </section>
-
-    <section id="ux">
-      <h2>User Experience</h2>
-      <h3>Setup Process</h3>
-      <p>A community-produced guide inside the OLSP Facebook group describes the setup process as: activate your Magick Link ($7 entry product), configure a squeeze page using TD Pages or a compatible landing page builder, add that squeeze page link inside your OLSP account settings, then purchase the Traffic Rotator subscription. Once the subscription is active, OLSP adds the link to the rotation. The vendor describes no further technical action required from the subscriber.</p>
-      <h3>Daily Usage</h3>
-      <p>Once active, the service requires no ongoing management from the subscriber. OLSP handles traffic routing; the subscriber's role is to monitor funnel performance — opt-in rates, email open rates, and conversion rates through the Magick Link — and adjust their downstream sequences accordingly. The community guide cited above recommends tracking these metrics to determine whether the traffic is converting and whether the subscription is delivering value relative to cost.</p>
-      <h3>Learning Curve</h3>
-      <p>For a subscriber who already has a working OLSP funnel, adding the Traffic Rotator is described as straightforward. The complexity lies not in the service itself but in interpreting the results: understanding whether lower-than-expected conversions reflect traffic quality issues, funnel issues, or offer positioning requires marketing judgment that the service does not provide. First-time OLSP users should build that baseline understanding before adding a paid traffic subscription.</p>
-      <h3>Transparency and Control</h3>
-      <p>Compared to self-managed traffic tools, subscribers have limited visibility into how the rotator operates — there is no public documentation of the distribution algorithm, the traffic source composition, or per-subscriber allocation methodology. Independent tools like ClickMagick provide a full tracking dashboard; Megalink Traffic Rotator does not offer an equivalent level of subscriber-facing transparency.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
     </div>
-
-    <section id="comparison">
-      <h2>How Megalink Traffic Rotator Compares</h2>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Option</th><th>Cost</th><th>Traffic Source</th><th>Works With</th><th>Best For</th></tr>
-        <tr><td>Megalink Traffic Rotator</td><td>$47/month</td><td>OLSP's pool — source not independently documented</td><td>OLSP Magick/Mega Link only</td><td>OLSP affiliates at scale who want hands-off split-testing within the ecosystem</td></tr>
-        <tr><td>ClickMagick</td><td>From ~$27/month</td><td>User supplies own traffic; ClickMagick tracks and rotates it</td><td>Any URL — full control</td><td>Affiliates who want transparent tracking and rotation across any traffic source or destination</td></tr>
-        <tr><td>Linkly</td><td>Free tier (up to ~1,000 clicks/month); paid tiers above</td><td>User supplies own traffic</td><td>Any URL</td><td>Lower-budget affiliates who need basic rotation and link management without a monthly fee</td></tr>
-        <tr><td>Independent solo ads</td><td>Variable (typically $0.40–$0.80 per click)</td><td>Solo ad vendor's email list — quality varies by vendor</td><td>Any URL</td><td>Affiliates who want to control traffic volume and test vendors independently, with their own tracking</td></tr>
-      </table>
-      </div>
-      <p><strong>Key distinction:</strong> Megalink Traffic Rotator is the only option on this list that bundles the traffic source and the distribution mechanism together in a single subscription. That simplicity is its appeal. The trade-off is that the subscriber cannot audit, swap, or scale the traffic source independently — a meaningful constraint for anyone whose goals extend beyond OLSP's own ecosystem.</p>
-    </section>
-
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>What We Noted as Strengths, Based on Research</h3>
-          <ul>
-            <li>OLSP-native integration eliminates the need to configure an external rotator account, connect tracking pixels, or manage a separate traffic tool — the service operates inside the funnel infrastructure the subscriber is already using.</li>
-            <li>Genuinely hands-off once set up — OLSP manages traffic routing with no active campaign work required from the subscriber, which distinguishes it from solo ad buying or self-managed paid advertising.</li>
-            <li>Useful for split-testing multiple Megalink destinations — independent reviewers identify this as the most legitimate value proposition, enabling data-driven comparison of landing page variations within OLSP.</li>
-            <li>Cancellable monthly subscription with a publicly confirmed price — no long-term contract and no ambiguity about the monthly commitment, both of which are documented on official OLSP pages.</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Areas for Caution</h3>
-          <ul>
-            <li>Independent analysts consistently recommend against buying this service until you are already earning at least several hundred dollars per month from OLSP — paying $47/month for traffic before your funnel converts is adding cost without solving the underlying problem.</li>
-            <li>Vendor claims of "100% guaranteed commissions" and "zero skill or effort" are marketing assertions with no independently audited earnings data, no disclosed commission rates, and no typical-results disclosure.</li>
-            <li>No public documentation of traffic source composition, quality metrics, or distribution algorithm — subscribers cannot verify what they are receiving in any technical sense, unlike self-managed tools that provide per-click tracking data.</li>
-            <li>The service is restricted to OLSP Magick and Mega Link destinations — it has no utility outside the OLSP ecosystem, and cancelling OLSP means the subscription provides zero residual value.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="history">
-      <h2>History &amp; Updates</h2>
-      <p>Megalink Traffic Rotator is part of the OLSP system, which Wayne Crowe has operated publicly since around 2020. Wayne Crowe Limited is identified as the corporate entity in OLSP's official materials, with a UK base of operations. The Traffic Rotator appears to have been part of the OLSP product lineup for several years, referenced in community materials and training guides dating back to at least 2023, though the exact launch date of the standalone rotator product is not documented in publicly available sources.</p>
-      <p>The product sits within a layered upgrade path: free Mega Link → $7 Magick Link → Traffic Rotator ($47/month) → Team Builders (higher tier). The positioning has remained consistent across materials found during research — a done-for-you traffic add-on aimed at members who have graduated from the initial training and funnel setup stage.</p>
-      <div class="callout info">
-        <strong>Naming note:</strong> This product appears under several names in OLSP materials and community discussions — "Traffic Rotator," "OLSP Traffic Rotator," "Megalink Traffic Rotator," and in some contexts "Magick Link Traffic Rotator." These all refer to the same $47/month service. The naming inconsistency reflects OLSP's broader pattern of evolving and layering product terminology, which is worth bearing in mind when researching or comparing sources.
-      </div>
-    </section>
-
-    <section id="recommend">
-      <h2>Who Should Subscribe to Megalink Traffic Rotator?</h2>
-      <h3>Best For</h3>
+    <div class="pc-card bad">
+      <h3>Areas for Caution</h3>
       <ul>
-        <li>OLSP affiliates who already have a working Magick or Mega Link funnel and are generating consistent commissions — particularly those at or above the $500/month level cited by independent analysts as the point at which additional traffic optimisation becomes worthwhile.</li>
-        <li>People actively split-testing Megalink landing page variations who want to distribute traffic across multiple destinations without setting up an external rotator account.</li>
-        <li>Affiliates whose primary bottleneck is traffic volume rather than funnel conversion — i.e., those who have verified their funnel works and simply need more visitors.</li>
+        <li>Independent analysts consistently recommend against buying this service until you are already earning at least several hundred dollars per month from OLSP — paying $47/month for traffic before your funnel converts is adding cost without solving the underlying problem.</li>
+        <li>Vendor claims of "100% guaranteed commissions" and "zero skill or effort" are marketing assertions with no independently audited earnings data, no disclosed commission rates, and no typical-results disclosure.</li>
+        <li>No public documentation of traffic source composition, quality metrics, or distribution algorithm — subscribers cannot verify what they are receiving in any technical sense, unlike self-managed tools that provide per-click tracking data.</li>
+        <li>The service is restricted to OLSP Magick and Mega Link destinations — it has no utility outside the OLSP ecosystem, and cancelling OLSP means the subscription provides zero residual value.</li>
       </ul>
-      <h3>Skip If</h3>
-      <ul>
-        <li>You are new to OLSP and have not yet validated that your funnel converts visitors into commissions — adding paid traffic to an unvalidated funnel is an expensive way to discover that the funnel needs work.</li>
-        <li>You need traffic for destinations outside the OLSP ecosystem — this service has no utility beyond Magick and Mega Link funnels.</li>
-        <li>You need independent tracking and audit capabilities — the service provides no subscriber-facing analytics dashboard or traffic quality data comparable to standalone rotator tools.</li>
-        <li>You are evaluating "guaranteed commissions" as a literal promise of income — no legitimate service can guarantee earnings, and that language reflects marketing convention, not a contractual commitment.</li>
-      </ul>
-      <h3>Alternatives Worth Comparing</h3>
-      <p>Anyone considering Megalink Traffic Rotator should also evaluate building organic traffic through OLSP's own training before adding a paid subscription, purchasing solo ads from vetted independent vendors (which provides greater traffic source control and transparency), and ClickMagick or Linkly for rotation and A/B testing if the goal is optimisation rather than traffic volume per se. See our <a href="/blog/best-free-traffic-sources-affiliate-marketing/">guide to free traffic sources</a> for what to validate an offer with before adding a paid tool like this one.</p>
-    </section>
-
-    <section id="buy">
-      <h2>Where to Subscribe &amp; Pricing</h2>
-      <p>Megalink Traffic Rotator is available exclusively through OLSP's own sales funnel — it is not sold through third-party platforms or affiliate networks in the conventional sense. The primary entry points are the Traffic Rotator sales page at <code>megafunnels.olspsystem.com/traffic-offer</code> and, for existing Megalink users, as an upsell within the Megalink purchase flow. The $47/month price is confirmed on the official OLSP products and descriptions page.</p>
-      <p>As with other OLSP products, multiple affiliate-branded pages link to the same subscription funnel with referral tracking parameters appended to the URL. Buying through any of these pages funds the referring affiliate's commission but delivers the same product. Be cautious of "limited spots" urgency language on the sales page — this is standard marketing copy for this category of product and does not constitute independently verified scarcity.</p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Verdict</h2>
-      <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Traffic Transparency</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
-      <div class="score-row"><div class="score-label">Beginner Suitability</div><div class="score-track"><div class="score-fill" style="width:20%"></div></div><div class="score-num">1/5</div></div>
-      <div class="score-row"><div class="score-label">Value at Scale</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
-
-      <p>Megalink Traffic Rotator is a coherent product for a specific, narrow use case: an OLSP affiliate who already has a proven funnel and wants to scale traffic volume or run structured split-tests without managing a separate traffic tool. At $47/month with no long-term contract, the subscription cost is defined and cancellable, which limits the downside. The meaningful caveat is that the "100% guaranteed commissions" framing is marketing language unsupported by any published earnings data, the traffic source is opaque compared to self-managed alternatives, and the service delivers no value whatsoever to anyone whose funnel has not yet been validated. Independent analysts are consistent on this point: buy it at scale, not at the start.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is Megalink Traffic Rotator Worth Exploring for You?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalised recommendation.</p>
-        <fieldset>
-          <legend>Do you already have an active OLSP Magick or Mega Link funnel that is generating regular commission income?</legend>
-          <label><input type="radio" name="q1" value="2"> Yes, my funnel is set up and generating commissions</label>
-          <label><input type="radio" name="q1" value="0"> No, I am still setting up or just starting with OLSP</label>
-        </fieldset>
-        <fieldset>
-          <legend>Is your current bottleneck traffic volume or split-testing — rather than funnel setup or conversion rate?</legend>
-          <label><input type="radio" name="q2" value="2"> Yes, my funnel converts and I need more traffic or optimisation data</label>
-          <label><input type="radio" name="q2" value="0"> No, I am not yet sure my funnel works and I need more traffic first</label>
-        </fieldset>
-        <fieldset>
-          <legend>Are you comfortable with a $47/month subscription where traffic quality and volume cannot be independently audited?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes, I understand the opacity and have budgeted for the monthly cost</label>
-          <label><input type="radio" name="q3" value="0"> No, I need transparent tracking and verifiable traffic data before spending</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>What does "100% guaranteed commissions" actually mean?</summary>
-        <p>Based on the sales page copy, this phrase appears to mean that OLSP pays a commission on every visitor routed through the subscriber's Magick Link — not that the subscriber is guaranteed a specific income level or a profitable return on the $47/month cost. No commission rate, earnings disclosure, or typical-results data accompanies the claim on the official sales page. We could not independently verify any income guarantee, and the phrase should be read as marketing language rather than a contractual promise.</p>
-      </details>
-      <details>
-        <summary>Can I use Megalink Traffic Rotator to send traffic to non-OLSP destinations?</summary>
-        <p>No. The official sales page explicitly states that the rotator is available only to Magick Link owners and routes traffic to Magick or Mega Link destinations within the OLSP ecosystem. It is not a general-purpose traffic service for external websites, standalone landing pages, or offers outside the OLSP funnel infrastructure.</p>
-      </details>
-      <details>
-        <summary>How does this compare to buying solo ads independently?</summary>
-        <p>Independent solo ads give you control over vendor selection, traffic volume, and destination URL, and you can use a third-party tracker like ClickMagick to audit results. Megalink Traffic Rotator is simpler to set up and requires no vendor research, but in exchange you receive no visibility into traffic source composition or per-click data. Independent solo ads are more transparent; Megalink Traffic Rotator is more hands-off. Independent analysts generally recommend solo ads or other verifiable traffic sources while building a funnel, and the Traffic Rotator as an add-on once the funnel is proven.</p>
-      </details>
-      <details>
-        <summary>Is this worth buying as a beginner to OLSP?</summary>
-        <p>Multiple independent reviewers say no — and the reasoning is consistent. A beginner who has not yet validated their funnel will not be able to distinguish poor traffic quality from poor funnel performance. Paying $47/month before that diagnostic baseline exists adds cost without clarifying the problem. Independent analysis recommends waiting until OLSP commissions reach at least a few hundred dollars per month before adding a paid traffic subscription, at which point the rotator's split-testing utility becomes meaningful.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
     </div>
+  </div>
+</section>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
+<section id="history">
+  <h2>History &amp; Updates</h2>
+  <p>Megalink Traffic Rotator is part of the OLSP system, which Wayne Crowe has operated publicly since around 2020. Wayne Crowe Limited is identified as the corporate entity in OLSP's official materials, with a UK base of operations. The Traffic Rotator appears to have been part of the OLSP product lineup for several years, referenced in community materials and training guides dating back to at least 2023, though the exact launch date of the standalone rotator product is not documented in publicly available sources.</p>
+  <p>The product sits within a layered upgrade path: free Mega Link → $7 Magick Link → Traffic Rotator ($47/month) → Team Builders (higher tier). The positioning has remained consistent across materials found during research — a done-for-you traffic add-on aimed at members who have graduated from the initial training and funnel setup stage.</p>
+  <Callout type="info">
+    <strong>Naming note:</strong> This product appears under several names in OLSP materials and community discussions — "Traffic Rotator," "OLSP Traffic Rotator," "Megalink Traffic Rotator," and in some contexts "Magick Link Traffic Rotator." These all refer to the same $47/month service. The naming inconsistency reflects OLSP's broader pattern of evolving and layering product terminology, which is worth bearing in mind when researching or comparing sources.
+  </Callout>
+</section>
 
-      <h3>Video Content</h3>
-      <p>The video below is from an independent YouTube channel reviewing the Mega Link and OLSP system, including discussion of traffic methods such as Traffic Rotator. It is not an official OLSP channel and represents that creator's own commentary — not the view of this article's authors. As with most third-party OLSP content, the creator may promote their own referral link in the video description.</p>
-      <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/qNq4JR4FcQY" title="Third-party YouTube review of the Mega Link and OLSP traffic system" allowfullscreen></iframe>
-      </div>
-      <p class="video-caption">Independent Mega Link and OLSP system review discussing traffic methods including Traffic Rotator. Not an official OLSP channel; represents the reviewer's own perspective.</p>
+<section id="recommend">
+  <h2>Who Should Subscribe to Megalink Traffic Rotator?</h2>
+  <h3>Best For</h3>
+  <ul>
+    <li>OLSP affiliates who already have a working Magick or Mega Link funnel and are generating consistent commissions — particularly those at or above the $500/month level cited by independent analysts as the point at which additional traffic optimisation becomes worthwhile.</li>
+    <li>People actively split-testing Megalink landing page variations who want to distribute traffic across multiple destinations without setting up an external rotator account.</li>
+    <li>Affiliates whose primary bottleneck is traffic volume rather than funnel conversion — i.e., those who have verified their funnel works and simply need more visitors.</li>
+  </ul>
+  <h3>Skip If</h3>
+  <ul>
+    <li>You are new to OLSP and have not yet validated that your funnel converts visitors into commissions — adding paid traffic to an unvalidated funnel is an expensive way to discover that the funnel needs work.</li>
+    <li>You need traffic for destinations outside the OLSP ecosystem — this service has no utility beyond Magick and Mega Link funnels.</li>
+    <li>You need independent tracking and audit capabilities — the service provides no subscriber-facing analytics dashboard or traffic quality data comparable to standalone rotator tools.</li>
+    <li>You are evaluating "guaranteed commissions" as a literal promise of income — no legitimate service can guarantee earnings, and that language reflects marketing convention, not a contractual commitment.</li>
+  </ul>
+  <h3>Alternatives Worth Comparing</h3>
+  <p>Anyone considering Megalink Traffic Rotator should also evaluate building organic traffic through OLSP's own training before adding a paid subscription, purchasing solo ads from vetted independent vendors (which provides greater traffic source control and transparency), and ClickMagick or Linkly for rotation and A/B testing if the goal is optimisation rather than traffic volume per se. See our <a href="/blog/best-free-traffic-sources-affiliate-marketing/">guide to free traffic sources</a> for what to validate an offer with before adding a paid tool like this one.</p>
+</section>
 
-      <h3>Sources &amp; References</h3>
-      <ul class="pill-list">
-        <li><a href="https://products.olspsystem.com/megalink-rotator-9483?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Megalink Traffic Rotator</a></li>
-        <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">Brand New Live Training – Limited Spaces</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Official OLSP pages are cited for pricing and product description only; marketing language on those pages is not treated as verified performance data. Information in this article reflects publicly available pages as of June 2026 and may no longer be current — verify directly with the official source before making any purchase decision.</p>
-    </section>
+<section id="buy">
+  <h2>Where to Subscribe &amp; Pricing</h2>
+  <p>Megalink Traffic Rotator is available exclusively through OLSP's own sales funnel — it is not sold through third-party platforms or affiliate networks in the conventional sense. The primary entry points are the Traffic Rotator sales page at <code>megafunnels.olspsystem.com/traffic-offer</code> and, for existing Megalink users, as an upsell within the Megalink purchase flow. The $47/month price is confirmed on the official OLSP products and descriptions page.</p>
+  <p>As with other OLSP products, multiple affiliate-branded pages link to the same subscription funnel with referral tracking parameters appended to the URL. Buying through any of these pages funds the referring affiliate's commission but delivers the same product. Be cautious of "limited spots" urgency language on the sales page — this is standard marketing copy for this category of product and does not constitute independently verified scarcity.</p>
+</section>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+<section id="verdict">
+  <h2>Final Verdict</h2>
+  <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+  <div class="score-row"><div class="score-label">Traffic Transparency</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
+  <div class="score-row"><div class="score-label">Beginner Suitability</div><div class="score-track"><div class="score-fill" style="width:20%"></div></div><div class="score-num">1/5</div></div>
+  <div class="score-row"><div class="score-label">Value at Scale</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+  <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
 
-  </main>
-</div>
+  <p>Megalink Traffic Rotator is a coherent product for a specific, narrow use case: an OLSP affiliate who already has a proven funnel and wants to scale traffic volume or run structured split-tests without managing a separate traffic tool. At $47/month with no long-term contract, the subscription cost is defined and cancellable, which limits the downside. The meaningful caveat is that the "100% guaranteed commissions" framing is marketing language unsupported by any published earnings data, the traffic source is opaque compared to self-managed alternatives, and the service delivers no value whatsoever to anyone whose funnel has not yet been validated. Independent analysts are consistent on this point: buy it at scale, not at the start.</p>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+  <div class="quiz-box" id="quizBox">
+    <h3 style="margin-top:0;">Quick Self-Check: Is Megalink Traffic Rotator Worth Exploring for You?</h3>
+    <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalised recommendation.</p>
+    <fieldset>
+      <legend>Do you already have an active OLSP Magick or Mega Link funnel that is generating regular commission income?</legend>
+      <label><input type="radio" name="q1" value="2"> Yes, my funnel is set up and generating commissions</label>
+      <label><input type="radio" name="q1" value="0"> No, I am still setting up or just starting with OLSP</label>
+    </fieldset>
+    <fieldset>
+      <legend>Is your current bottleneck traffic volume or split-testing — rather than funnel setup or conversion rate?</legend>
+      <label><input type="radio" name="q2" value="2"> Yes, my funnel converts and I need more traffic or optimisation data</label>
+      <label><input type="radio" name="q2" value="0"> No, I am not yet sure my funnel works and I need more traffic first</label>
+    </fieldset>
+    <fieldset>
+      <legend>Are you comfortable with a $47/month subscription where traffic quality and volume cannot be independently audited?</legend>
+      <label><input type="radio" name="q3" value="2"> Yes, I understand the opacity and have budgeted for the monthly cost</label>
+      <label><input type="radio" name="q3" value="0"> No, I need transparent tracking and verifiable traffic data before spending</label>
+    </fieldset>
+    <button type="button" onclick="evaluateQuiz()">See My Result</button>
+    <div id="quiz-result"></div>
+  </div>
+</section>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <FaqItem question='What does "100% guaranteed commissions" actually mean?' answer="Based on the sales page copy, this phrase appears to mean that OLSP pays a commission on every visitor routed through the subscriber's Magick Link — not that the subscriber is guaranteed a specific income level or a profitable return on the $47/month cost. No commission rate, earnings disclosure, or typical-results data accompanies the claim on the official sales page. We could not independently verify any income guarantee, and the phrase should be read as marketing language rather than a contractual promise." />
+  <FaqItem question="Can I use Megalink Traffic Rotator to send traffic to non-OLSP destinations?" answer="No. The official sales page explicitly states that the rotator is available only to Magick Link owners and routes traffic to Magick or Mega Link destinations within the OLSP ecosystem. It is not a general-purpose traffic service for external websites, standalone landing pages, or offers outside the OLSP funnel infrastructure." />
+  <FaqItem question="How does this compare to buying solo ads independently?" answer="Independent solo ads give you control over vendor selection, traffic volume, and destination URL, and you can use a third-party tracker like ClickMagick to audit results. Megalink Traffic Rotator is simpler to set up and requires no vendor research, but in exchange you receive no visibility into traffic source composition or per-click data. Independent solo ads are more transparent; Megalink Traffic Rotator is more hands-off. Independent analysts generally recommend solo ads or other verifiable traffic sources while building a funnel, and the Traffic Rotator as an add-on once the funnel is proven." />
+  <FaqItem question="Is this worth buying as a beginner to OLSP?" answer="Multiple independent reviewers say no — and the reasoning is consistent. A beginner who has not yet validated their funnel will not be able to distinguish poor traffic quality from poor funnel performance. Paying $47/month before that diagnostic baseline exists adds cost without clarifying the problem. Independent analysis recommends waiting until OLSP commissions reach at least a few hundred dollars per month before adding a paid traffic subscription, at which point the rotator's split-testing utility becomes meaningful." />
+</section>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+<section id="author">
+  <h2>About the Author</h2>
+  <AuthorBox />
+</section>
 
-  sections.forEach(s => observer.observe(s));
+<ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+<section id="sources">
+  <h2>Sources &amp; References</h2>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+  <h3>Video Content</h3>
+  <p>The video below is from an independent YouTube channel reviewing the Mega Link and OLSP system, including discussion of traffic methods such as Traffic Rotator. It is not an official OLSP channel and represents that creator's own commentary — not the view of this article's authors. As with most third-party OLSP content, the creator may promote their own referral link in the video description.</p>
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/qNq4JR4FcQY" title="Third-party YouTube review of the Mega Link and OLSP traffic system" allowfullscreen></iframe>
+  </div>
+  <p class="video-caption">Independent Mega Link and OLSP system review discussing traffic methods including Traffic Rotator. Not an official OLSP channel; represents the reviewer's own perspective.</p>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+  <h3>Sources &amp; References</h3>
+  <ul class="pill-list">
+    <li><a href="https://products.olspsystem.com/megalink-rotator-9483?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Megalink Traffic Rotator</a></li>
+    <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">Brand New Live Training – Limited Spaces</a></li>
+  </ul>
+  <p style="font-size:.82rem;color:var(--ink-light);">Official OLSP pages are cited for pricing and product description only; marketing language on those pages is not treated as verified performance data. Information in this article reflects publicly available pages as of June 2026 and may no longer be current — verify directly with the official source before making any purchase decision.</p>
+</section>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, Megalink Traffic Rotator may be worth adding to your OLSP setup — your funnel appears validated and your bottleneck sounds like traffic volume or optimisation data. Verify current pricing directly on the official page before subscribing.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. Review the 'Who Should Subscribe' section closely. If you are unsure whether your funnel converts, consider resolving that question with organic or lower-cost traffic before committing to a $47/month subscription.";
-    } else {
-      message = "Based on your answers, Megalink Traffic Rotator is probably not the right next step. Focus on validating your OLSP funnel and building a baseline with free or low-cost traffic before adding a recurring paid traffic subscription.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+<SiteFooter />
 
-</body>
-</html>
+</OlspLayout>

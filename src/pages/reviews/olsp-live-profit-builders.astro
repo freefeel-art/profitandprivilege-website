@@ -1,783 +1,391 @@
 ---
 export const prerender = true;
 
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
 const pageTitle = "OLSP Live Profit Builders Review: Is the $49/Month Upgrade Worth It?";
 const pageDescription =
   "An independent, research-based review of OLSP Live Profit Builders: how the $1/attendee commissions, lifetime attribution, and AI content tools work — and who they actually benefit.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#design", label: "3. Platform & Build Quality" },
+  { href: "#performance", label: "4. Performance Analysis" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. How It Compares" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#history", label: "8. History & Updates" },
+  { href: "#recommend", label: "9. Who Should Join" },
+  { href: "#buy", label: "10. Where to Sign Up" },
+  { href: "#verdict", label: "11. Final Verdict" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OLSP Live Profit Builders Review: Is Wayne Crowe's $49/Month Upgrade Worth It?</title>
-<meta name="description" content="An independent, research-based review of OLSP Live Profit Builders: how the $1/attendee commissions, lifetime attribution, and AI content tools work — and who they actually benefit.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/olsp-live-profit-builders/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/olsp-live-profit-builders/" tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <HeroTag text="Affiliate Marketing Upgrade · Updated June 2026" />
+    <h1>OLSP Live Profit Builders: An Independent, Research-Based Review</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>OLSP Live Profit Builders</strong> (LPB) is a paid membership tier inside the OLSP Academy affiliate marketing ecosystem, created by Wayne Crowe. According to official sales pages and independent analysis, it adds three features that standard OLSP tiers lack: 100% commissions on designated front-end offers, a $1-per-verified-attendee payment for each person you send to OLSP's live events, and permanent account-level attribution that ties your referred leads to you for future purchases rather than relying on browser cookies. It also bundles an AI marketing material generator, structured traffic challenges, and live promotional action plans designed specifically around OLSP's twice-weekly live training events. Our short take: Live Profit Builders is a meaningful step up for affiliates who are already driving consistent traffic to OLSP and want to be paid for behavioral touchpoints beyond direct purchases — but without an existing audience or reliable traffic source, the multi-touchpoint commission model is theoretical rather than practical.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+    <VerdictBox>
+      <p><strong>Best for:</strong> existing OLSP members who can consistently direct a warm audience to live events and challenges, are comfortable with a webinar-centric promotional strategy, and want earnings tied to multiple lead actions rather than purchases alone.</p>
+      <p><strong>Not ideal for:</strong> complete beginners without an established traffic source, people who prefer SEO or non-social traffic channels, or anyone expecting the $1/attendee mechanic to substitute for developing their own audience.</p>
+    </VerdictBox>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+    <h3>What Is It and Who Is It For?</h3>
+    <p>OLSP (One Lead System Pixel) is an affiliate training and commission platform built around a single tracked link — the MegaLink — that routes prospects into OLSP's marketing funnel. Live Profit Builders is the second paid tier above the $7 Megalink entry level. It is positioned at affiliates who have already validated the base system and now want to earn from the behavioral activity of their leads beyond just front-end purchases: live event attendance, onboarding training completion, and future purchases attributed back to the original referral. Vendor materials describe it as "one link, one system, compounding income," framing LPB as a way to tilt affiliate economics in the promoter's favour by paying on multiple touchpoints.</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+    <h3>Author Background &amp; Review Methodology</h3>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> This review was prepared by Profit and Privilege's editorial research team, which evaluates online business, marketing, and digital-education products with particular attention to income claims, multi-touchpoint commission structures, and consumer-protection considerations around online income opportunities.</p>
+      <p><strong>How this review was built:</strong> We did not purchase, join, or personally test OLSP Live Profit Builders. This article is based entirely on independent desk research: the program's own public sales pages, third-party review sites, independent YouTube reviews, Reddit community threads, and independent blog analysis. Where a claim could not be independently verified — including all income figures and commission mechanics — we say so explicitly. Pricing figures are drawn from publicly available sources and must be confirmed directly with OLSP before any purchase decision, as LPB pricing is promotion-sensitive and has changed over time.</p>
+    </Methodology>
+  </section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
+  <section id="overview">
+    <h2>OLSP Live Profit Builders Overview &amp; Pricing</h2>
+    <p>Live Profit Builders sits as the first significant paid subscription tier above the $7 one-time Megalink purchase, and below Community Builders and Team Builders in the OLSP upgrade ladder. Its core proposition is expanding how and when you earn from referred leads: rather than earning only when a lead makes a purchase, LPB members reportedly earn when their leads attend a live event or complete onboarding training steps — not just when they buy.</p>
 
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
+    <h3>What's Included (Vendor and Affiliate Claims)</h3>
+    <ul>
+      <li><strong>Mega Live Link:</strong> an upgraded version of the standard MegaLink that automatically routes prospects into the current live event, challenge, or funnel running in the OLSP ecosystem at the time they click.</li>
+      <li><strong>100% front-end commissions</strong> on designated MegaLink offers (e.g., the $7 entry product).</li>
+      <li><strong>$1 per unique verified attendee</strong> at specific Tuesday and Saturday live events linked to the LPB funnel.</li>
+      <li><strong>Lifetime account-level attribution:</strong> once a lead signs up via your link, future OLSP purchases from that lead are attributed to you — not to a browser cookie with an expiry date.</li>
+      <li><strong>Lead activation bonuses:</strong> referred leads can earn $5 for each of their first four completed OLSP onboarding training sessions, incentivizing engagement with the system and keeping leads active.</li>
+      <li><strong>AI Marketing Material Generator:</strong> produces emails, social media posts, captions, and scripts "in the member's voice" for each upcoming live event, reducing manual copywriting time.</li>
+      <li><strong>Traffic challenges:</strong> structured 30-day and shorter programs including the 30-Day Traffic Challenge, Commission Challenge, Student Challenge, and AI Twin Challenge.</li>
+      <li><strong>Live Premium Action Plans:</strong> done-for-you promotional blueprints for each upcoming live event — what to post, when to post, how to drive attendance.</li>
+      <li><strong>Private LPB community</strong> inside the OLSP platform (separate from the public Facebook group), with peer support and strategy sharing.</li>
+      <li><strong>Viral Hub credits</strong> for amplifying content across platforms.</li>
+      <li><strong>Leaderboard and points system</strong> with recognition and occasional cash prizes linked to activity and results.</li>
+    </ul>
 
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
+    <Callout type="warn">
+      <strong>Claims caution:</strong> The feature list above reflects vendor sales pages and affiliate descriptions, not independently verified inclusions. We could not test the AI generator, confirm the live event schedule frequency, or audit the attribution system. Verify current inclusions directly with OLSP before purchasing.
+    </Callout>
 
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" \2192";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. First Impressions</a>
-      <a href="#overview">2. Overview &amp; Pricing</a>
-      <a href="#design">3. Platform &amp; Build Quality</a>
-      <a href="#performance">4. Performance Analysis</a>
-      <a href="#ux">5. User Experience</a>
-      <a href="#comparison">6. How It Compares</a>
-      <a href="#proscons">7. Pros &amp; Cons</a>
-      <a href="#history">8. History &amp; Updates</a>
-      <a href="#recommend">9. Who Should Join</a>
-      <a href="#buy">10. Where to Sign Up</a>
-      <a href="#verdict">11. Final Verdict</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Affiliate Marketing Upgrade · Updated June 2026</span>
-      <h1>OLSP Live Profit Builders: An Independent, Research-Based Review</h1>
-
-      <p><strong>OLSP Live Profit Builders</strong> (LPB) is a paid membership tier inside the OLSP Academy affiliate marketing ecosystem, created by Wayne Crowe. According to official sales pages and independent analysis, it adds three features that standard OLSP tiers lack: 100% commissions on designated front-end offers, a $1-per-verified-attendee payment for each person you send to OLSP's live events, and permanent account-level attribution that ties your referred leads to you for future purchases rather than relying on browser cookies. It also bundles an AI marketing material generator, structured traffic challenges, and live promotional action plans designed specifically around OLSP's twice-weekly live training events. Our short take: Live Profit Builders is a meaningful step up for affiliates who are already driving consistent traffic to OLSP and want to be paid for behavioral touchpoints beyond direct purchases — but without an existing audience or reliable traffic source, the multi-touchpoint commission model is theoretical rather than practical.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> existing OLSP members who can consistently direct a warm audience to live events and challenges, are comfortable with a webinar-centric promotional strategy, and want earnings tied to multiple lead actions rather than purchases alone.</p>
-        <p><strong>Not ideal for:</strong> complete beginners without an established traffic source, people who prefer SEO or non-social traffic channels, or anyone expecting the $1/attendee mechanic to substitute for developing their own audience.</p>
-      </div>
-
-      <h3>What Is It and Who Is It For?</h3>
-      <p>OLSP (One Lead System Pixel) is an affiliate training and commission platform built around a single tracked link — the MegaLink — that routes prospects into OLSP's marketing funnel. Live Profit Builders is the second paid tier above the $7 Megalink entry level. It is positioned at affiliates who have already validated the base system and now want to earn from the behavioral activity of their leads beyond just front-end purchases: live event attendance, onboarding training completion, and future purchases attributed back to the original referral. Vendor materials describe it as "one link, one system, compounding income," framing LPB as a way to tilt affiliate economics in the promoter's favour by paying on multiple touchpoints.</p>
-
-      <h3>Author Background &amp; Review Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This review was prepared by Profit and Privilege's editorial research team, which evaluates online business, marketing, and digital-education products with particular attention to income claims, multi-touchpoint commission structures, and consumer-protection considerations around online income opportunities.</p>
-        <p><strong>How this review was built:</strong> We did not purchase, join, or personally test OLSP Live Profit Builders. This article is based entirely on independent desk research: the program's own public sales pages, third-party review sites, independent YouTube reviews, Reddit community threads, and independent blog analysis. Where a claim could not be independently verified — including all income figures and commission mechanics — we say so explicitly. Pricing figures are drawn from publicly available sources and must be confirmed directly with OLSP before any purchase decision, as LPB pricing is promotion-sensitive and has changed over time.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Reported Pricing</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Offer / Context</th><th>Reported Price</th><th>Notes</th></tr>
+      <tr><td>Students' Week Special (promotional)</td><td>$297 one-time or $29/month</td><td>Discounted from a "normal" $497; seen on specific promotional pages in 2026</td></tr>
+      <tr><td>Standard / annual pricing</td><td>$497/year or $49/month</td><td>Most consistently cited across independent reviews and cost breakdowns</td></tr>
+      <tr><td>Launch pricing (early movers, ~2025)</td><td>$297 one-time</td><td>One independent review cites this; public price was later reported as "around $997"</td></tr>
+      <tr><td>Future pricing (announced, not confirmed)</td><td>$697/year or $69/month</td><td>Cited on one LPB sales page as a forthcoming price increase; unverified timing</td></tr>
+      <tr><td>Refund policy</td><td>14-day money-back guarantee</td><td>Stated on vendor sales pages; cancel-anytime for subscription tiers</td></tr>
+    </table>
     </div>
 
-    <section id="overview">
-      <h2>OLSP Live Profit Builders Overview &amp; Pricing</h2>
-      <p>Live Profit Builders sits as the first significant paid subscription tier above the $7 one-time Megalink purchase, and below Community Builders and Team Builders in the OLSP upgrade ladder. Its core proposition is expanding how and when you earn from referred leads: rather than earning only when a lead makes a purchase, LPB members reportedly earn when their leads attend a live event or complete onboarding training steps — not just when they buy.</p>
+    <Callout type="warn">
+      <strong>Pricing caution:</strong> LPB pricing is promotion-sensitive and has varied significantly over time — from $29/month to $49/month for subscriptions, and from $297 to $997+ for one-time offers. The $49/month figure is most consistently cited in independent cost analysis. Promotional pages and affiliate funnels may show different prices depending on entry link, region, and timing. Always confirm the current price on OLSP's live checkout page before committing.
+    </Callout>
+  </section>
 
-      <h3>What's Included (Vendor and Affiliate Claims)</h3>
-      <ul>
-        <li><strong>Mega Live Link:</strong> an upgraded version of the standard MegaLink that automatically routes prospects into the current live event, challenge, or funnel running in the OLSP ecosystem at the time they click.</li>
-        <li><strong>100% front-end commissions</strong> on designated MegaLink offers (e.g., the $7 entry product).</li>
-        <li><strong>$1 per unique verified attendee</strong> at specific Tuesday and Saturday live events linked to the LPB funnel.</li>
-        <li><strong>Lifetime account-level attribution:</strong> once a lead signs up via your link, future OLSP purchases from that lead are attributed to you — not to a browser cookie with an expiry date.</li>
-        <li><strong>Lead activation bonuses:</strong> referred leads can earn $5 for each of their first four completed OLSP onboarding training sessions, incentivizing engagement with the system and keeping leads active.</li>
-        <li><strong>AI Marketing Material Generator:</strong> produces emails, social media posts, captions, and scripts "in the member's voice" for each upcoming live event, reducing manual copywriting time.</li>
-        <li><strong>Traffic challenges:</strong> structured 30-day and shorter programs including the 30-Day Traffic Challenge, Commission Challenge, Student Challenge, and AI Twin Challenge.</li>
-        <li><strong>Live Premium Action Plans:</strong> done-for-you promotional blueprints for each upcoming live event — what to post, when to post, how to drive attendance.</li>
-        <li><strong>Private LPB community</strong> inside the OLSP platform (separate from the public Facebook group), with peer support and strategy sharing.</li>
-        <li><strong>Viral Hub credits</strong> for amplifying content across platforms.</li>
-        <li><strong>Leaderboard and points system</strong> with recognition and occasional cash prizes linked to activity and results.</li>
-      </ul>
+  <section id="design">
+    <h2>Platform &amp; Build Quality</h2>
+    <p>We did not access the OLSP member dashboard firsthand, so we cannot describe the interface directly. The following is based on third-party walkthroughs, official sales pages, and independent review descriptions.</p>
 
-      <div class="callout warn">
-        <strong>Claims caution:</strong> The feature list above reflects vendor sales pages and affiliate descriptions, not independently verified inclusions. We could not test the AI generator, confirm the live event schedule frequency, or audit the attribution system. Verify current inclusions directly with OLSP before purchasing.
-      </div>
+    <h3>The Mega Live Link</h3>
+    <p>The most distinctive technical feature of LPB is the Mega Live Link — an upgrade to the standard MegaLink that dynamically routes prospects into whichever live event, challenge, or funnel is currently running in the OLSP ecosystem. Rather than pointing to a static landing page, the link updates automatically as OLSP cycles through its event calendar (twice-weekly live events on Tuesdays and Saturdays, plus rotating challenge programs). The practical implication is that a single shared link remains relevant and promotional as OLSP's schedule changes, without the member needing to update links or swap out content.</p>
+    <p>Account-based attribution — rather than cookie-based tracking — means that once a prospect clicks your link and creates an OLSP account, that lead is permanently associated with you. This addresses the common affiliate problem of losing commission credit when a prospect switches devices, clears cookies, or purchases weeks after their initial click. This is a vendor claim about the technical implementation; we cannot independently verify how the attribution system operates in practice.</p>
 
-      <h3>Reported Pricing</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Offer / Context</th><th>Reported Price</th><th>Notes</th></tr>
-        <tr><td>Students' Week Special (promotional)</td><td>$297 one-time or $29/month</td><td>Discounted from a "normal" $497; seen on specific promotional pages in 2026</td></tr>
-        <tr><td>Standard / annual pricing</td><td>$497/year or $49/month</td><td>Most consistently cited across independent reviews and cost breakdowns</td></tr>
-        <tr><td>Launch pricing (early movers, ~2025)</td><td>$297 one-time</td><td>One independent review cites this; public price was later reported as "around $997"</td></tr>
-        <tr><td>Future pricing (announced, not confirmed)</td><td>$697/year or $69/month</td><td>Cited on one LPB sales page as a forthcoming price increase; unverified timing</td></tr>
-        <tr><td>Refund policy</td><td>14-day money-back guarantee</td><td>Stated on vendor sales pages; cancel-anytime for subscription tiers</td></tr>
-      </table>
-      </div>
+    <h3>AI Marketing Material Generator</h3>
+    <p>LPB includes an AI tool that generates promotional emails, social media posts, captions, and call scripts adapted to each upcoming live event. Vendor materials claim the output is generated "in your voice." Independent reviewers note that AI-generated content tools like this genuinely reduce the time burden of content production for recurring events, though the quality of output depends on how the system is configured and how much personal context it incorporates. We could not test the generator firsthand.</p>
 
-      <div class="callout warn">
-        <strong>Pricing caution:</strong> LPB pricing is promotion-sensitive and has varied significantly over time — from $29/month to $49/month for subscriptions, and from $297 to $997+ for one-time offers. The $49/month figure is most consistently cited in independent cost analysis. Promotional pages and affiliate funnels may show different prices depending on entry link, region, and timing. Always confirm the current price on OLSP's live checkout page before committing.
-      </div>
-    </section>
+    <h3>Traffic Challenges and Live Action Plans</h3>
+    <p>Multiple structured challenge programs — including the 30-Day Traffic Challenge, Commission Challenge, Student Challenge, and AI Twin Challenge — are cited as included with LPB. Live Premium Action Plans provide done-for-you promotional calendars for each event: what to post, when, and how to encourage attendance. These are described as particularly useful for members who need external structure to maintain a consistent promotional schedule. Whether these challenges meaningfully accelerate results depends on the member having existing channels to apply the content in.</p>
 
-    <section id="design">
-      <h2>Platform &amp; Build Quality</h2>
-      <p>We did not access the OLSP member dashboard firsthand, so we cannot describe the interface directly. The following is based on third-party walkthroughs, official sales pages, and independent review descriptions.</p>
+    <h3>Private Community and Leaderboard</h3>
+    <p>LPB includes a private community space inside the OLSP platform — distinct from the broader public Facebook group — described as providing more targeted peer support and strategy sharing among LPB-level members. A leaderboard and points system adds competitive recognition and occasional cash prizes for top performers, which some reviewers describe as effective for engagement and motivation.</p>
 
-      <h3>The Mega Live Link</h3>
-      <p>The most distinctive technical feature of LPB is the Mega Live Link — an upgrade to the standard MegaLink that dynamically routes prospects into whichever live event, challenge, or funnel is currently running in the OLSP ecosystem. Rather than pointing to a static landing page, the link updates automatically as OLSP cycles through its event calendar (twice-weekly live events on Tuesdays and Saturdays, plus rotating challenge programs). The practical implication is that a single shared link remains relevant and promotional as OLSP's schedule changes, without the member needing to update links or swap out content.</p>
-      <p>Account-based attribution — rather than cookie-based tracking — means that once a prospect clicks your link and creates an OLSP account, that lead is permanently associated with you. This addresses the common affiliate problem of losing commission credit when a prospect switches devices, clears cookies, or purchases weeks after their initial click. This is a vendor claim about the technical implementation; we cannot independently verify how the attribution system operates in practice.</p>
+    <h3>Long-Term Platform Considerations</h3>
+    <p>Live Profit Builders is entirely dependent on OLSP continuing to run live events on a reliable schedule. The $1/attendee mechanic and the Mega Live Link's dynamic routing only function while OLSP is actively hosting events and maintaining the commission infrastructure. Multiple reviewers note that a 2026 compensation change removed previously available lifetime membership options and shifted the model to higher monthly and annual subscriptions — an example of how OLSP's terms can change in ways that affect what members originally paid for.</p>
+  </section>
 
-      <h3>AI Marketing Material Generator</h3>
-      <p>LPB includes an AI tool that generates promotional emails, social media posts, captions, and call scripts adapted to each upcoming live event. Vendor materials claim the output is generated "in your voice." Independent reviewers note that AI-generated content tools like this genuinely reduce the time burden of content production for recurring events, though the quality of output depends on how the system is configured and how much personal context it incorporates. We could not test the generator firsthand.</p>
+  <section id="performance">
+    <h2>Performance Analysis</h2>
 
-      <h3>Traffic Challenges and Live Action Plans</h3>
-      <p>Multiple structured challenge programs — including the 30-Day Traffic Challenge, Commission Challenge, Student Challenge, and AI Twin Challenge — are cited as included with LPB. Live Premium Action Plans provide done-for-you promotional calendars for each event: what to post, when, and how to encourage attendance. These are described as particularly useful for members who need external structure to maintain a consistent promotional schedule. Whether these challenges meaningfully accelerate results depends on the member having existing channels to apply the content in.</p>
+    <h3>The Multi-Touchpoint Commission Model</h3>
+    <p>The fundamental difference between LPB and a standard affiliate arrangement is the number of earning events generated by a single referred lead. The diagram below illustrates this mechanic as described by vendor and affiliate sources.</p>
 
-      <h3>Private Community and Leaderboard</h3>
-      <p>LPB includes a private community space inside the OLSP platform — distinct from the broader public Facebook group — described as providing more targeted peer support and strategy sharing among LPB-level members. A leaderboard and points system adds competitive recognition and occasional cash prizes for top performers, which some reviewers describe as effective for engagement and motivation.</p>
+    <figure>
+      <svg viewBox="0 0 640 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Live Profit Builders multi-touchpoint commission model: one lead generates three types of earnings — front-end sale, webinar attendance, and future purchases via lifetime attribution">
+        <rect x="0" y="0" width="640" height="270" fill="#f8fafc"/>
+        <!-- Left box: member -->
+        <rect x="10" y="90" width="120" height="80" rx="8" fill="#2563eb"/>
+        <text x="70" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Member shares</text>
+        <text x="70" y="140" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Mega Live Link</text>
+        <!-- Arrow left to center -->
+        <line x1="130" y1="130" x2="208" y2="130" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="208,124 220,130 208,136" fill="#94a3b8"/>
+        <!-- Center box: lead in OLSP -->
+        <rect x="220" y="82" width="122" height="96" rx="8" fill="#0f172a"/>
+        <text x="281" y="112" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">Lead enters OLSP</text>
+        <text x="281" y="127" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">via Mega Live Link</text>
+        <text x="281" y="146" fill="#cccccc" font-size="10" text-anchor="middle" font-family="Arial">(account attribution,</text>
+        <text x="281" y="159" fill="#cccccc" font-size="10" text-anchor="middle" font-family="Arial">no cookie expiry)</text>
+        <!-- Branch lines from center to three right boxes -->
+        <!-- Line to top right box -->
+        <line x1="342" y1="102" x2="428" y2="54" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="428,48 440,54 428,60" fill="#94a3b8"/>
+        <!-- Line to middle right box -->
+        <line x1="342" y1="130" x2="428" y2="134" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="428,128 440,134 428,140" fill="#94a3b8"/>
+        <!-- Line to bottom right box -->
+        <line x1="342" y1="158" x2="428" y2="214" stroke="#94a3b8" stroke-width="2"/>
+        <polygon points="428,208 440,214 428,220" fill="#94a3b8"/>
+        <!-- Right box top: front-end sale -->
+        <rect x="440" y="27" width="188" height="55" rx="8" fill="#166534"/>
+        <text x="534" y="50" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Front-end sale</text>
+        <text x="534" y="66" fill="#d1fae5" font-size="11" text-anchor="middle" font-family="Arial">100% commission</text>
+        <!-- Right box middle: attendee -->
+        <rect x="440" y="107" width="188" height="55" rx="8" fill="#0d9488"/>
+        <text x="534" y="130" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Live event attended</text>
+        <text x="534" y="146" fill="#ccfbf1" font-size="11" text-anchor="middle" font-family="Arial">$1 per verified attendee</text>
+        <!-- Right box bottom: lifetime -->
+        <rect x="440" y="187" width="188" height="55" rx="8" fill="#1e40af"/>
+        <text x="534" y="210" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Future OLSP purchase</text>
+        <text x="534" y="226" fill="#bfdbfe" font-size="11" text-anchor="middle" font-family="Arial">→ lifetime commission</text>
+        <!-- Footer note -->
+        <text x="10" y="258" fill="#94a3b8" font-size="10" font-family="Arial" font-style="italic">Mechanics described by vendor and affiliate sources — not audited financial disclosure.</text>
+      </svg>
+      <figcaption>Original illustration of the LPB multi-touchpoint commission model — not a screenshot of the OLSP dashboard.</figcaption>
+    </figure>
 
-      <h3>Long-Term Platform Considerations</h3>
-      <p>Live Profit Builders is entirely dependent on OLSP continuing to run live events on a reliable schedule. The $1/attendee mechanic and the Mega Live Link's dynamic routing only function while OLSP is actively hosting events and maintaining the commission infrastructure. Multiple reviewers note that a 2026 compensation change removed previously available lifetime membership options and shifted the model to higher monthly and annual subscriptions — an example of how OLSP's terms can change in ways that affect what members originally paid for.</p>
-    </section>
-
-    <section id="performance">
-      <h2>Performance Analysis</h2>
-
-      <h3>The Multi-Touchpoint Commission Model</h3>
-      <p>The fundamental difference between LPB and a standard affiliate arrangement is the number of earning events generated by a single referred lead. The diagram below illustrates this mechanic as described by vendor and affiliate sources.</p>
-
-      <figure>
-        <svg viewBox="0 0 640 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Live Profit Builders multi-touchpoint commission model: one lead generates three types of earnings — front-end sale, webinar attendance, and future purchases via lifetime attribution">
-          <rect x="0" y="0" width="640" height="270" fill="#f8fafc"/>
-          <!-- Left box: member -->
-          <rect x="10" y="90" width="120" height="80" rx="8" fill="#2563eb"/>
-          <text x="70" y="124" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Member shares</text>
-          <text x="70" y="140" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Mega Live Link</text>
-          <!-- Arrow left to center -->
-          <line x1="130" y1="130" x2="208" y2="130" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="208,124 220,130 208,136" fill="#94a3b8"/>
-          <!-- Center box: lead in OLSP -->
-          <rect x="220" y="82" width="122" height="96" rx="8" fill="#0f172a"/>
-          <text x="281" y="112" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">Lead enters OLSP</text>
-          <text x="281" y="127" fill="#fff" font-size="11" text-anchor="middle" font-family="Arial">via Mega Live Link</text>
-          <text x="281" y="146" fill="#cccccc" font-size="10" text-anchor="middle" font-family="Arial">(account attribution,</text>
-          <text x="281" y="159" fill="#cccccc" font-size="10" text-anchor="middle" font-family="Arial">no cookie expiry)</text>
-          <!-- Branch lines from center to three right boxes -->
-          <!-- Line to top right box -->
-          <line x1="342" y1="102" x2="428" y2="54" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="428,48 440,54 428,60" fill="#94a3b8"/>
-          <!-- Line to middle right box -->
-          <line x1="342" y1="130" x2="428" y2="134" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="428,128 440,134 428,140" fill="#94a3b8"/>
-          <!-- Line to bottom right box -->
-          <line x1="342" y1="158" x2="428" y2="214" stroke="#94a3b8" stroke-width="2"/>
-          <polygon points="428,208 440,214 428,220" fill="#94a3b8"/>
-          <!-- Right box top: front-end sale -->
-          <rect x="440" y="27" width="188" height="55" rx="8" fill="#166534"/>
-          <text x="534" y="50" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Front-end sale</text>
-          <text x="534" y="66" fill="#d1fae5" font-size="11" text-anchor="middle" font-family="Arial">100% commission</text>
-          <!-- Right box middle: attendee -->
-          <rect x="440" y="107" width="188" height="55" rx="8" fill="#0d9488"/>
-          <text x="534" y="130" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Live event attended</text>
-          <text x="534" y="146" fill="#ccfbf1" font-size="11" text-anchor="middle" font-family="Arial">$1 per verified attendee</text>
-          <!-- Right box bottom: lifetime -->
-          <rect x="440" y="187" width="188" height="55" rx="8" fill="#1e40af"/>
-          <text x="534" y="210" fill="#fff" font-size="12" text-anchor="middle" font-family="Arial">Future OLSP purchase</text>
-          <text x="534" y="226" fill="#bfdbfe" font-size="11" text-anchor="middle" font-family="Arial">→ lifetime commission</text>
-          <!-- Footer note -->
-          <text x="10" y="258" fill="#94a3b8" font-size="10" font-family="Arial" font-style="italic">Mechanics described by vendor and affiliate sources — not audited financial disclosure.</text>
-        </svg>
-        <figcaption>Original illustration of the LPB multi-touchpoint commission model — not a screenshot of the OLSP dashboard.</figcaption>
-      </figure>
-
-      <h3>Commission Structure in Detail</h3>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Earning Event</th><th>Standard Affiliate Arrangement</th><th>Live Profit Builders</th></tr>
-        <tr><td>Front-end MegaLink offer sale</td><td>Standard commission rate (varies)</td><td>100% on designated front-end offers (vendor claim)</td></tr>
-        <tr><td>Lead attends a live Tuesday event</td><td>Not paid</td><td>$1 per unique verified attendee (vendor claim)</td></tr>
-        <tr><td>Lead attends a Saturday challenge kickoff</td><td>Not paid</td><td>$1 per unique verified attendee (vendor claim)</td></tr>
-        <tr><td>Lead completes onboarding training sessions</td><td>Not paid</td><td>Lead earns $5 per session (up to 4 sessions) — incentivizes lead engagement; member earns on subsequent products</td></tr>
-        <tr><td>Lead makes a future OLSP purchase</td><td>Cookie-based; credit may expire</td><td>Lifetime account attribution — credited regardless of time elapsed (vendor claim)</td></tr>
-        <tr><td>Higher-ticket OLSP products</td><td>Limited access</td><td>Commissions on expanded product library (rates not specified in research sources)</td></tr>
-      </table>
-      </div>
-
-      <h3>The $1 Per Attendee Mechanic</h3>
-      <p>The $1/attendee payment is the most distinctive commission feature of LPB and the one most frequently highlighted in both vendor materials and independent reviews. It works on a per-unique-person basis: if you send 50 people to a Tuesday live session and 30 show up, you reportedly earn $30 from that single event. Independent reviewers point out two important conditions: first, the attendee must be new and verified (preventing inflated numbers through fake signups), and second, the value of this mechanic scales entirely with your ability to recruit consistent, qualified traffic to the events. For someone with a warm audience of 500 who attends regularly, $1/person per session could accumulate meaningfully. For someone just starting to build an audience, it generates minimal income regardless of the tier's appeal on paper.</p>
-
-      <h3>Lifetime Attribution</h3>
-      <p>Account-level attribution — where leads are permanently associated with the referring affiliate by OLSP account rather than browser cookie — is positioned as a significant commercial advantage over standard affiliate setups. The practical benefit is that if a lead you referred signs up for free, consumes content for three months, and then buys a $997 program, you still earn the commission. How consistently this system operates in practice, and whether it is maintained reliably across system updates and compensation plan changes, could not be confirmed from independent sources.</p>
-
-      <h3>Lead Activation Bonuses</h3>
-      <p>Referred leads can reportedly earn $5 for each of their first four completed OLSP onboarding training sessions, totalling up to $20 in potential rewards for engaging with OLSP's introductory content. This mechanic is framed as a way to incentivize leads to stay active, engage with the platform, and progress through training — which in turn exposes them to higher-tier offers. The member benefits indirectly by having more engaged leads who are more likely to purchase; the $5 rewards go to the lead, not the referring member.</p>
-
-      <div class="callout warn">
-        <strong>Income figures caution:</strong> All commission figures in this section come from vendor sales pages and affiliate materials — sources with a direct financial incentive to present favourable numbers. Long-term performance data for LPB members specifically (average earnings, retention rates, refund rates) is not publicly available. Most evidence is anecdotal or from affiliates with referral links to LPB. No independently audited earnings data exists for this tier in the public domain.
-      </div>
-    </section>
-
-    <section id="ux">
-      <h2>User Experience</h2>
-
-      <h3>Setup Process</h3>
-      <p>Live Profit Builders is purchased as an upgrade to an existing OLSP account — it cannot be joined as a standalone product. Members upgrade via a funnel inside OLSP or through an affiliate's sales page. Once active, the Mega Live Link and enhanced commission structure reportedly take effect immediately. The AI Marketing Material Generator and challenge programs become accessible in the member area. Some affiliates bundle personal bonuses (extra coaching, content packs) with LPB sign-ups through their own referral links; these are not part of the core product and vary by promoter.</p>
-
-      <h3>Daily Usage</h3>
-      <p>Based on vendor training descriptions and independent reviewer accounts, active LPB usage is built around the live event calendar. The typical workflow involves: generating promotional content via the AI tool for each upcoming Tuesday or Saturday event; publishing that content to social media, email lists, or community channels; driving leads to the Mega Live Link; and tracking attendance and commission activity in the OLSP dashboard. During challenge weeks, members follow the Live Premium Action Plan — a structured day-by-day promotional guide provided by OLSP. Traffic challenge programs provide an additional layer of structured activity for members building their audiences from scratch.</p>
-
-      <h3>Learning Curve</h3>
-      <p>Independent reviewers describe LPB as reasonably accessible for members already familiar with the OLSP system, but note that extracting value from the tier requires more active audience-building than the lower-cost Megalink entry point. The AI content generator reportedly reduces copywriting friction, but producing content at sufficient volume and quality to drive meaningful event attendance still requires consistent time investment. The learning curve is primarily about developing promotional habits around a recurring live event schedule rather than mastering complex technical tools.</p>
-
-      <h3>Live Event Calendar and Consistency</h3>
-      <p>The LPB mechanic is built around OLSP running live events twice per week, consistently. If OLSP's event schedule is interrupted — due to technical issues, calendar gaps, or changes in the platform's strategy — the $1/attendee income stream pauses with it. Independent reviewers do not specifically report event reliability problems, but the structural dependency on a third party's operational schedule is worth noting when evaluating LPB's long-term income potential.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+    <h3>Commission Structure in Detail</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Earning Event</th><th>Standard Affiliate Arrangement</th><th>Live Profit Builders</th></tr>
+      <tr><td>Front-end MegaLink offer sale</td><td>Standard commission rate (varies)</td><td>100% on designated front-end offers (vendor claim)</td></tr>
+      <tr><td>Lead attends a live Tuesday event</td><td>Not paid</td><td>$1 per unique verified attendee (vendor claim)</td></tr>
+      <tr><td>Lead attends a Saturday challenge kickoff</td><td>Not paid</td><td>$1 per unique verified attendee (vendor claim)</td></tr>
+      <tr><td>Lead completes onboarding training sessions</td><td>Not paid</td><td>Lead earns $5 per session (up to 4 sessions) — incentivizes lead engagement; member earns on subsequent products</td></tr>
+      <tr><td>Lead makes a future OLSP purchase</td><td>Cookie-based; credit may expire</td><td>Lifetime account attribution — credited regardless of time elapsed (vendor claim)</td></tr>
+      <tr><td>Higher-ticket OLSP products</td><td>Limited access</td><td>Commissions on expanded product library (rates not specified in research sources)</td></tr>
+    </table>
     </div>
 
-    <section id="comparison">
-      <h2>How Live Profit Builders Compares to Alternatives</h2>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Option</th><th>Cost</th><th>Key Earning Mechanic</th><th>Best For</th></tr>
-        <tr><td>OLSP Megalink (entry)</td><td>$7 one-time</td><td>Standard commission on front-end MegaLink sales; no attendee pay; cookie-based attribution</td><td>Testing the OLSP system before committing to a subscription</td></tr>
-        <tr><td><strong>OLSP Live Profit Builders</strong></td><td><strong>~$49/month or $497/year</strong></td><td><strong>100% front-end commissions + $1/attendee at live events + lifetime account attribution</strong></td><td><strong>Active OLSP members with an audience ready to promote live events</strong></td></tr>
-        <tr><td>OLSP Community Builders</td><td>~$197/month or ~$1,997/year</td><td>200% front-end + second-tier team commissions + Mega Builder (GoHighLevel) software suite</td><td>Affiliates who want to build a recruited team and need integrated marketing tools</td></tr>
-        <tr><td>OLSP Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>Highest commission tiers; deeper second-tier and VIP benefits</td><td>Long-term committed OLSP affiliates</td></tr>
-        <tr><td>Legendary Marketer</td><td>$7 15-Day Challenge; high-ticket upsells up to $2,000+</td><td>Traditional affiliate commissions on training products; no attendance-based pay</td><td>Affiliates who prefer high-ticket education products over a done-for-you funnel model</td></tr>
-        <tr><td>Wealthy Affiliate</td><td>Free starter; $49–$99/month</td><td>Commission from promoting WA + building SEO niche sites for external affiliate offers</td><td>Affiliates who prefer content/SEO strategies over live event promotion</td></tr>
-      </table>
-      </div>
+    <h3>The $1 Per Attendee Mechanic</h3>
+    <p>The $1/attendee payment is the most distinctive commission feature of LPB and the one most frequently highlighted in both vendor materials and independent reviews. It works on a per-unique-person basis: if you send 50 people to a Tuesday live session and 30 show up, you reportedly earn $30 from that single event. Independent reviewers point out two important conditions: first, the attendee must be new and verified (preventing inflated numbers through fake signups), and second, the value of this mechanic scales entirely with your ability to recruit consistent, qualified traffic to the events. For someone with a warm audience of 500 who attends regularly, $1/person per session could accumulate meaningfully. For someone just starting to build an audience, it generates minimal income regardless of the tier's appeal on paper.</p>
 
-      <div class="callout info">
-        <strong>Key distinction:</strong> LPB's $1/attendee and lifetime attribution mechanics are uncommon in standard affiliate programs and represent a genuine structural difference from most "done-for-you" funnel systems. The trade-off is that both benefits only materialize with consistent traffic — and that traffic must go specifically to OLSP's live events, not to general-purpose affiliate offers. If you want to promote independent products or build SEO-driven traffic, LPB's unique features don't apply.
-      </div>
-    </section>
+    <h3>Lifetime Attribution</h3>
+    <p>Account-level attribution — where leads are permanently associated with the referring affiliate by OLSP account rather than browser cookie — is positioned as a significant commercial advantage over standard affiliate setups. The practical benefit is that if a lead you referred signs up for free, consumes content for three months, and then buys a $997 program, you still earn the commission. How consistently this system operates in practice, and whether it is maintained reliably across system updates and compensation plan changes, could not be confirmed from independent sources.</p>
 
-    <section id="proscons">
-      <h2>Pros &amp; Cons</h2>
-      <div class="two-col">
-        <div class="pc-card good">
-          <h3>What We Found, Based on Research</h3>
-          <ul>
-            <li>Multiple earning events per lead — front-end sales, live event attendance, and future purchases — rather than a single commission on the initial transaction.</li>
-            <li>Lifetime account-level attribution addresses a common affiliate pain point: losing commission credit when leads buy later or on a different device.</li>
-            <li>AI Marketing Material Generator reduces the content production burden for recurring event promotion — a genuine time-saving tool if the output quality is adequate.</li>
-            <li>Structured traffic challenges and done-for-you action plans provide external scaffolding for members who struggle with consistency and planning.</li>
-            <li>Live events are generally higher-converting than static landing pages; multiple independent reviewers confirm this as a meaningful advantage of OLSP's webinar-centric model.</li>
-            <li>14-day money-back guarantee and cancel-anytime subscription terms reduce the financial risk of trying the tier, compared to a large one-time commitment.</li>
-          </ul>
-        </div>
-        <div class="pc-card bad">
-          <h3>Areas for Caution</h3>
-          <ul>
-            <li>All three income streams (front-end commissions, $1/attendee, lifetime commissions) require consistent qualified traffic. Without an existing audience, LPB's multi-touchpoint model is a framework with no inputs.</li>
-            <li>Ecosystem dependency: LPB's AI tools, live link routing, and event-based commissions are entirely specific to OLSP's platform and event schedule — you're building on rented infrastructure.</li>
-            <li>Compensation plan changes: OLSP removed previously available lifetime membership options and shifted to higher recurring fees in 2026, demonstrating that the terms members rely on can change.</li>
-            <li>Heavy Facebook and social media emphasis: most training and challenge programs are built around social content and live event promotion, not SEO, search, or platform-independent list building.</li>
-            <li>Early upgrade risk: multiple independent analysts explicitly advise against buying LPB before you are already earning consistently at the Megalink level — a recurring warning that many members buy too early.</li>
-            <li>No publicly audited earnings data: all income examples for LPB come from affiliates with referral incentives; independently verified typical results don't exist.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <h3>Lead Activation Bonuses</h3>
+    <p>Referred leads can reportedly earn $5 for each of their first four completed OLSP onboarding training sessions, totalling up to $20 in potential rewards for engaging with OLSP's introductory content. This mechanic is framed as a way to incentivize leads to stay active, engage with the platform, and progress through training — which in turn exposes them to higher-tier offers. The member benefits indirectly by having more engaged leads who are more likely to purchase; the $5 rewards go to the lead, not the referring member.</p>
 
-    <section id="history">
-      <h2>History &amp; Updates</h2>
-      <p>Wayne Crowe, the founder and CEO of OLSP, is a UK-based affiliate marketer and online business educator described on his own support pages and external profiles as a long-time solo ads vendor and trainer. OLSP System/Academy was launched publicly around 2019–2020, with Live Profit Builders introduced as a structured higher-tier membership as the ecosystem expanded beyond the base MegaLink product.</p>
+    <Callout type="warn">
+      <strong>Income figures caution:</strong> All commission figures in this section come from vendor sales pages and affiliate materials — sources with a direct financial incentive to present favourable numbers. Long-term performance data for LPB members specifically (average earnings, retention rates, refund rates) is not publicly available. Most evidence is anecdotal or from affiliates with referral links to LPB. No independently audited earnings data exists for this tier in the public domain.
+    </Callout>
+  </section>
 
-      <p>Early movers reportedly accessed LPB at a $297 one-time price during its initial launch phase, with the public price later moving toward higher subscription-based models. The 2026 period saw a notable compensation structure change: OLSP removed previously available lifetime membership options and introduced higher monthly and annual subscription prices across multiple tiers. HomeBusinessWatch, an independent review site, rated the OLSP system 2/5 overall in 2026, specifically citing these changes to the compensation plan and the escalation from the $7 entry product to recurring $199/month tiers as key criticisms — while still acknowledging OLSP as a legitimate platform with real tools and training.</p>
+  <section id="ux">
+    <h2>User Experience</h2>
 
-      <div class="callout warn">
-        <strong>Compensation plan change note:</strong> The removal of one-time lifetime LPB access and shift to recurring subscriptions is a material change that affects how members should evaluate long-term cost. If you see references to a $297 lifetime LPB offer in older reviews, verify whether that option is still available before relying on it. As of our research, the standard pricing appears to be subscription-based at approximately $49/month or $497/year.
-      </div>
-    </section>
+    <h3>Setup Process</h3>
+    <p>Live Profit Builders is purchased as an upgrade to an existing OLSP account — it cannot be joined as a standalone product. Members upgrade via a funnel inside OLSP or through an affiliate's sales page. Once active, the Mega Live Link and enhanced commission structure reportedly take effect immediately. The AI Marketing Material Generator and challenge programs become accessible in the member area. Some affiliates bundle personal bonuses (extra coaching, content packs) with LPB sign-ups through their own referral links; these are not part of the core product and vary by promoter.</p>
 
-    <section id="recommend">
-      <h2>Who Should Join OLSP Live Profit Builders?</h2>
+    <h3>Daily Usage</h3>
+    <p>Based on vendor training descriptions and independent reviewer accounts, active LPB usage is built around the live event calendar. The typical workflow involves: generating promotional content via the AI tool for each upcoming Tuesday or Saturday event; publishing that content to social media, email lists, or community channels; driving leads to the Mega Live Link; and tracking attendance and commission activity in the OLSP dashboard. During challenge weeks, members follow the Live Premium Action Plan — a structured day-by-day promotional guide provided by OLSP. Traffic challenge programs provide an additional layer of structured activity for members building their audiences from scratch.</p>
 
-      <h3>Best For</h3>
-      <ul>
-        <li>Existing OLSP members who are already promoting the MegaLink, have validated that the system generates some results, and want to unlock earning from lead behaviors beyond purchases.</li>
-        <li>Affiliates who have an active social media audience, email list, or community they can consistently direct to live events twice per week.</li>
-        <li>People who are comfortable with a webinar-centric promotional strategy and can build a consistent habit around OLSP's Tuesday/Saturday event schedule.</li>
-        <li>Content creators who want structured AI-assisted tools to reduce the time needed to produce event-specific promotional content.</li>
-        <li>Members who want lifetime attribution on their referrals and are planning to be active in OLSP for the long term, making the ongoing lifetime commission potential relevant.</li>
-      </ul>
+    <h3>Learning Curve</h3>
+    <p>Independent reviewers describe LPB as reasonably accessible for members already familiar with the OLSP system, but note that extracting value from the tier requires more active audience-building than the lower-cost Megalink entry point. The AI content generator reportedly reduces copywriting friction, but producing content at sufficient volume and quality to drive meaningful event attendance still requires consistent time investment. The learning curve is primarily about developing promotional habits around a recurring live event schedule rather than mastering complex technical tools.</p>
 
-      <h3>Skip If</h3>
-      <ul>
-        <li>You're still at the beginning stages with OLSP and haven't yet generated consistent results from the Megalink level. Multiple independent analysts explicitly recommend against LPB until you're earning consistently.</li>
-        <li>You don't have a reliable traffic source — social media following, email list, YouTube channel, or similar — that you can direct to live events. Without traffic, the $1/attendee mechanic and multi-touchpoint commissions don't generate income regardless of how the system is designed.</li>
-        <li>You prefer SEO, blogging, or content-driven traffic strategies. LPB's training, challenges, and promotional tools are built around social media content and live event promotion.</li>
-        <li>The twice-weekly live event schedule doesn't fit your promotional availability. LPB's model requires consistent promotion around a fixed calendar; irregular participation limits the attendee commission potential.</li>
-      </ul>
+    <h3>Live Event Calendar and Consistency</h3>
+    <p>The LPB mechanic is built around OLSP running live events twice per week, consistently. If OLSP's event schedule is interrupted — due to technical issues, calendar gaps, or changes in the platform's strategy — the $1/attendee income stream pauses with it. Independent reviewers do not specifically report event reliability problems, but the structural dependency on a third party's operational schedule is worth noting when evaluating LPB's long-term income potential.</p>
+  </section>
 
-      <h3>Alternatives Worth Comparing</h3>
-      <p>Before committing to LPB's recurring subscription, consider staying at the Megalink level and focusing on building a consistent traffic source first. Most independent analysts — including those who are themselves LPB members — recommend LPB only once you're already generating commissions at the entry level. If you want to promote independent products alongside or instead of OLSP, general affiliate networks (Amazon, ClickBank, ShareASale) allow you to do so without a single-ecosystem subscription. Wealthy Affiliate is worth comparing for anyone who wants to build SEO-driven affiliate income with a stronger emphasis on content sites and platform independence.</p>
-    </section>
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
 
-    <section id="buy">
-      <h2>Where to Sign Up &amp; Pricing</h2>
-      <p>Live Profit Builders is accessed via OLSP's official platform or through affiliate sales pages — there is no standalone sign-up separate from having an OLSP account. Official OLSP-branded pages include olspteambuilders.com/live-profit-builders and related variants, as well as the broader OLSP Academy and system domains. Multiple affiliate-branded pages also promote LPB with personal bonus stacks (extra coaching sessions, tools, traffic credits) that are not part of the core product.</p>
-
-      <div class="callout warn">
-        <strong>Before you pay:</strong> LPB pricing is promotion-sensitive and has changed over time. Verify the current price on OLSP's live checkout page, not from a third-party review or affiliate blog — those prices may reflect an older offer. The 14-day money-back guarantee and cancel-anytime messaging appear on vendor pages; independently verifying refund practices is difficult as reviews tend to cover OLSP overall rather than LPB refund experiences specifically. Read the subscription terms before entering payment details.
-      </div>
-
-      <p>If you're evaluating Live Profit Builders, starting with the free account or the $7 Megalink level is the lowest-risk first step — most independent analysts recommend LPB only after validating results at the entry level:</p>
-      <p><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">Explore OLSP Academy — start with the free entry tier →</a></p>
-    </section>
-
-    <section id="verdict">
-      <h2>Final Verdict</h2>
-      <div class="score-row"><div class="score-label">Multi-touchpoint Commissions</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">AI Content Tools</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-      <div class="score-row"><div class="score-label">Live Event Integration</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
-      <div class="score-row"><div class="score-label">Value for Active Promoters</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-      <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
-
-      <p>OLSP Live Profit Builders has a genuinely differentiated commission model compared to standard affiliate setups: paying for live event attendance and attributing future purchases at the account level rather than through expiring cookies are uncommon features that address real affiliate marketing pain points. The AI Marketing Material Generator and structured challenge programs reduce the operational burden of promoting recurring live events. The honest limitation is that every one of these advantages depends on the member having — or being willing to actively build — an audience that consistently shows up for twice-weekly live events. The $1/attendee figure sounds compelling until you realize that generating 100 attendees per session requires a warm audience of several hundred to several thousand people who trust you and respond to your invitations. Treat all income projections as vendor claims rather than typical results. For active OLSP members who already have traffic and want to monetize lead behaviors beyond purchases, LPB is worth evaluating. For beginners or anyone still building their first traffic source, the subscription cost is an investment better delayed until the foundation is in place.</p>
-
-      <div class="quiz-box" id="quizBox">
-        <h3 style="margin-top:0;">Quick Self-Check: Is Live Profit Builders Right for You Now?</h3>
-        <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
-        <fieldset>
-          <legend>Do you already have an active audience or traffic source you can consistently direct to live events twice per week?</legend>
-          <label><input type="radio" name="q1" value="2"> Yes — I have an engaged audience ready to receive event invitations</label>
-          <label><input type="radio" name="q1" value="0"> Not yet — I'm still building my first traffic source</label>
-        </fieldset>
-        <fieldset>
-          <legend>Are you comfortable building your promotional schedule around OLSP's recurring live event calendar (Tuesdays and Saturdays)?</legend>
-          <label><input type="radio" name="q2" value="2"> Yes — I can align my content and promotional activity with a fixed event schedule</label>
-          <label><input type="radio" name="q2" value="0"> Not really — I'd prefer a more flexible or SEO-based approach</label>
-        </fieldset>
-        <fieldset>
-          <legend>Have you already validated results at the OLSP Megalink level and are now looking to unlock additional earning mechanics?</legend>
-          <label><input type="radio" name="q3" value="2"> Yes — I'm earning at the entry level and ready to scale</label>
-          <label><input type="radio" name="q3" value="0"> No — I haven't yet seen consistent results from the Megalink tier</label>
-        </fieldset>
-        <button type="button" onclick="evaluateQuiz()">See My Result</button>
-        <div id="quiz-result"></div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>How does the $1 per attendee commission actually work?</summary>
-        <p>According to vendor sales pages and independent reviewers, LPB members earn $1 for each unique, verified person they refer who attends specific OLSP live events — typically Tuesday webinars and Saturday challenge kickoff sessions. "Verified" means the attendee must be a real person linked to your referral account; there is no apparent mechanism for inflating numbers with fake accounts. The practical earning potential scales directly with how many people you can reliably send to each session. If you regularly get 50 attendees per event and events run twice weekly, that is roughly $400/month from attendance alone — but reaching that level requires an active, responsive audience. This figure is a vendor and affiliate claim; actual payouts depend on OLSP's technical verification and payout processes, which we cannot independently audit.</p>
-      </details>
-      <details>
-        <summary>Is "lifetime attribution" really permanent?</summary>
-        <p>Vendor materials claim that once a prospect signs up for OLSP via your Mega Live Link, all future OLSP purchases from that person are attributed to you permanently — regardless of whether months or years pass between their initial sign-up and a later purchase. This is described as account-level attribution rather than cookie-based tracking, meaning it survives device changes, browser resets, and time. We cannot independently verify how robustly this system operates in practice, whether it has been maintained consistently through OLSP's multiple relaunches and compensation plan changes, or how reliably payouts occur on backend purchases. The 2026 compensation changes that removed lifetime membership options are a reminder that attribution and commission terms can change.</p>
-      </details>
-      <details>
-        <summary>Is Live Profit Builders worth it compared to staying at the Megalink level?</summary>
-        <p>Multiple independent analysts phrase their answer as: yes, but only once you're consistently earning at the Megalink level. The upgrade makes financial sense if your referral volume is high enough that the 100% front-end commission and $1/attendee mechanics generate more each month than the subscription cost ($49/month or $497/year). If you're generating fewer than 50 attendees per event and a handful of front-end sales per month, the math likely doesn't support the cost. Independent reviewers who cover OLSP's upgrade ladder consistently flag premature upgrading as the most common costly mistake among OLSP members.</p>
-      </details>
-      <details>
-        <summary>What happened to the $297 one-time lifetime LPB offer?</summary>
-        <p>Early LPB adopters reportedly accessed lifetime membership at a one-time price of $297. One independent review from 2025 cites this pricing and notes that public pricing was later reported as "around $997." Subsequent compensation plan changes in 2026 appear to have removed lifetime membership options across OLSP tiers, shifting the model to ongoing monthly or annual subscriptions. If you encounter references to the $297 lifetime offer in older reviews or affiliate promotions, verify directly with OLSP whether this option is still available before assuming it applies to your sign-up.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+  <section id="comparison">
+    <h2>How Live Profit Builders Compares to Alternatives</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Option</th><th>Cost</th><th>Key Earning Mechanic</th><th>Best For</th></tr>
+      <tr><td>OLSP Megalink (entry)</td><td>$7 one-time</td><td>Standard commission on front-end MegaLink sales; no attendee pay; cookie-based attribution</td><td>Testing the OLSP system before committing to a subscription</td></tr>
+      <tr><td><strong>OLSP Live Profit Builders</strong></td><td><strong>~$49/month or $497/year</strong></td><td><strong>100% front-end commissions + $1/attendee at live events + lifetime account attribution</strong></td><td><strong>Active OLSP members with an audience ready to promote live events</strong></td></tr>
+      <tr><td>OLSP Community Builders</td><td>~$197/month or ~$1,997/year</td><td>200% front-end + second-tier team commissions + Mega Builder (GoHighLevel) software suite</td><td>Affiliates who want to build a recruited team and need integrated marketing tools</td></tr>
+      <tr><td>OLSP Team Builders</td><td>~$997 lifetime or ~$197/month</td><td>Highest commission tiers; deeper second-tier and VIP benefits</td><td>Long-term committed OLSP affiliates</td></tr>
+      <tr><td>Legendary Marketer</td><td>$7 15-Day Challenge; high-ticket upsells up to $2,000+</td><td>Traditional affiliate commissions on training products; no attendance-based pay</td><td>Affiliates who prefer high-ticket education products over a done-for-you funnel model</td></tr>
+      <tr><td>Wealthy Affiliate</td><td>Free starter; $49–$99/month</td><td>Commission from promoting WA + building SEO niche sites for external affiliate offers</td><td>Affiliates who prefer content/SEO strategies over live event promotion</td></tr>
+    </table>
     </div>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
+    <Callout type="info">
+      <strong>Key distinction:</strong> LPB's $1/attendee and lifetime attribution mechanics are uncommon in standard affiliate programs and represent a genuine structural difference from most "done-for-you" funnel systems. The trade-off is that both benefits only materialize with consistent traffic — and that traffic must go specifically to OLSP's live events, not to general-purpose affiliate offers. If you want to promote independent products or build SEO-driven traffic, LPB's unique features don't apply.
+    </Callout>
+  </section>
 
-      <h3>Video Content</h3>
-      <p>The video below is third-party content from an independent YouTube channel explaining the OLSP membership tier structure, including where Live Profit Builders sits in the system. It is not an official OLSP company channel, and it represents that creator's own commentary and promotional perspective — not the experience of the author of this article.</p>
-      <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/QUYDMkc4vEk" title="Third-party YouTube video: OLSP Membership Levels Explained — Which Tier Is Right For You?" allowfullscreen></iframe>
+  <section id="proscons">
+    <h2>Pros &amp; Cons</h2>
+    <div class="two-col">
+      <div class="pc-card good">
+        <h3>What We Found, Based on Research</h3>
+        <ul>
+          <li>Multiple earning events per lead — front-end sales, live event attendance, and future purchases — rather than a single commission on the initial transaction.</li>
+          <li>Lifetime account-level attribution addresses a common affiliate pain point: losing commission credit when leads buy later or on a different device.</li>
+          <li>AI Marketing Material Generator reduces the content production burden for recurring event promotion — a genuine time-saving tool if the output quality is adequate.</li>
+          <li>Structured traffic challenges and done-for-you action plans provide external scaffolding for members who struggle with consistency and planning.</li>
+          <li>Live events are generally higher-converting than static landing pages; multiple independent reviewers confirm this as a meaningful advantage of OLSP's webinar-centric model.</li>
+          <li>14-day money-back guarantee and cancel-anytime subscription terms reduce the financial risk of trying the tier, compared to a large one-time commitment.</li>
+        </ul>
       </div>
-      <p class="video-caption">Third-party video explaining the OLSP membership tier structure including Live Profit Builders. The creator of this video may earn commissions from referral links in their description.</p>
+      <div class="pc-card bad">
+        <h3>Areas for Caution</h3>
+        <ul>
+          <li>All three income streams (front-end commissions, $1/attendee, lifetime commissions) require consistent qualified traffic. Without an existing audience, LPB's multi-touchpoint model is a framework with no inputs.</li>
+          <li>Ecosystem dependency: LPB's AI tools, live link routing, and event-based commissions are entirely specific to OLSP's platform and event schedule — you're building on rented infrastructure.</li>
+          <li>Compensation plan changes: OLSP removed previously available lifetime membership options and shifted to higher recurring fees in 2026, demonstrating that the terms members rely on can change.</li>
+          <li>Heavy Facebook and social media emphasis: most training and challenge programs are built around social content and live event promotion, not SEO, search, or platform-independent list building.</li>
+          <li>Early upgrade risk: multiple independent analysts explicitly advise against buying LPB before you are already earning consistently at the Megalink level — a recurring warning that many members buy too early.</li>
+          <li>No publicly audited earnings data: all income examples for LPB come from affiliates with referral incentives; independently verified typical results don't exist.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <h3>Sources &amp; References</h3>
-      <ul class="pill-list">
-        <li><a href="https://olspteambuilders.com/live-profit-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Live Profit Builders — official sign-up page</a></li>
-        <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — official live training entry point</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
-    </section>
+  <section id="history">
+    <h2>History &amp; Updates</h2>
+    <p>Wayne Crowe, the founder and CEO of OLSP, is a UK-based affiliate marketer and online business educator described on his own support pages and external profiles as a long-time solo ads vendor and trainer. OLSP System/Academy was launched publicly around 2019–2020, with Live Profit Builders introduced as a structured higher-tier membership as the ecosystem expanded beyond the base MegaLink product.</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <p>Early movers reportedly accessed LPB at a $297 one-time price during its initial launch phase, with the public price later moving toward higher subscription-based models. The 2026 period saw a notable compensation structure change: OLSP removed previously available lifetime membership options and introduced higher monthly and annual subscription prices across multiple tiers. HomeBusinessWatch, an independent review site, rated the OLSP system 2/5 overall in 2026, specifically citing these changes to the compensation plan and the escalation from the $7 entry product to recurring $199/month tiers as key criticisms — while still acknowledging OLSP as a legitimate platform with real tools and training.</p>
 
-  </main>
-</div>
+    <Callout type="warn">
+      <strong>Compensation plan change note:</strong> The removal of one-time lifetime LPB access and shift to recurring subscriptions is a material change that affects how members should evaluate long-term cost. If you see references to a $297 lifetime LPB offer in older reviews, verify whether that option is still available before relying on it. As of our research, the standard pricing appears to be subscription-based at approximately $49/month or $497/year.
+    </Callout>
+  </section>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+  <section id="recommend">
+    <h2>Who Should Join OLSP Live Profit Builders?</h2>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>Best For</h3>
+    <ul>
+      <li>Existing OLSP members who are already promoting the MegaLink, have validated that the system generates some results, and want to unlock earning from lead behaviors beyond purchases.</li>
+      <li>Affiliates who have an active social media audience, email list, or community they can consistently direct to live events twice per week.</li>
+      <li>People who are comfortable with a webinar-centric promotional strategy and can build a consistent habit around OLSP's Tuesday/Saturday event schedule.</li>
+      <li>Content creators who want structured AI-assisted tools to reduce the time needed to produce event-specific promotional content.</li>
+      <li>Members who want lifetime attribution on their referrals and are planning to be active in OLSP for the long term, making the ongoing lifetime commission potential relevant.</li>
+    </ul>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <h3>Skip If</h3>
+    <ul>
+      <li>You're still at the beginning stages with OLSP and haven't yet generated consistent results from the Megalink level. Multiple independent analysts explicitly recommend against LPB until you're earning consistently.</li>
+      <li>You don't have a reliable traffic source — social media following, email list, YouTube channel, or similar — that you can direct to live events. Without traffic, the $1/attendee mechanic and multi-touchpoint commissions don't generate income regardless of how the system is designed.</li>
+      <li>You prefer SEO, blogging, or content-driven traffic strategies. LPB's training, challenges, and promotional tools are built around social media content and live event promotion.</li>
+      <li>The twice-weekly live event schedule doesn't fit your promotional availability. LPB's model requires consistent promotion around a fixed calendar; irregular participation limits the attendee commission potential.</li>
+    </ul>
 
-  sections.forEach(s => observer.observe(s));
+    <h3>Alternatives Worth Comparing</h3>
+    <p>Before committing to LPB's recurring subscription, consider staying at the Megalink level and focusing on building a consistent traffic source first. Most independent analysts — including those who are themselves LPB members — recommend LPB only once you're already generating commissions at the entry level. If you want to promote independent products alongside or instead of OLSP, general affiliate networks (Amazon, ClickBank, ShareASale) allow you to do so without a single-ecosystem subscription. Wealthy Affiliate is worth comparing for anyone who wants to build SEO-driven affiliate income with a stronger emphasis on content sites and platform independence.</p>
+  </section>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
+  <section id="buy">
+    <h2>Where to Sign Up &amp; Pricing</h2>
+    <p>Live Profit Builders is accessed via OLSP's official platform or through affiliate sales pages — there is no standalone sign-up separate from having an OLSP account. Official OLSP-branded pages include olspteambuilders.com/live-profit-builders and related variants, as well as the broader OLSP Academy and system domains. Multiple affiliate-branded pages also promote LPB with personal bonus stacks (extra coaching sessions, tools, traffic credits) that are not part of the core product.</p>
 
-  // Quick self-check quiz
-  function evaluateQuiz(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    const result = document.getElementById('quiz-result');
+    <Callout type="warn">
+      <strong>Before you pay:</strong> LPB pricing is promotion-sensitive and has changed over time. Verify the current price on OLSP's live checkout page, not from a third-party review or affiliate blog — those prices may reflect an older offer. The 14-day money-back guarantee and cancel-anytime messaging appear on vendor pages; independently verifying refund practices is difficult as reviews tend to cover OLSP overall rather than LPB refund experiences specifically. Read the subscription terms before entering payment details.
+    </Callout>
 
-    if(!q1 || !q2 || !q3){
-      result.style.display = 'block';
-      result.textContent = 'Please answer all three questions first.';
-      return;
-    }
+    <p>If you're evaluating Live Profit Builders, starting with the free account or the $7 Megalink level is the lowest-risk first step — most independent analysts recommend LPB only after validating results at the entry level:</p>
+    <p><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">Explore OLSP Academy — start with the free entry tier →</a></p>
+  </section>
 
-    const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value);
-    let message = '';
-    if(score >= 5){
-      message = "Based on your answers, you appear to have the prerequisites for Live Profit Builders — an existing traffic source, a workable event promotion schedule, and validated entry-level results. Verify current pricing and terms directly with OLSP before committing, and treat all income projections as vendor claims rather than guaranteed outcomes.";
-    } else if(score >= 3){
-      message = "Your answers suggest a mixed fit. At least one key prerequisite isn't fully in place. Review the 'Skip If' section above before committing to a subscription, and consider whether building that missing element at the Megalink level first would set you up better for LPB.";
-    } else {
-      message = "Based on your answers, the core prerequisites for Live Profit Builders likely aren't met yet. Start with the free OLSP account or Megalink level, build a consistent traffic source and promotional habit, and reassess once you're generating regular commissions at that level.";
-    }
-    result.style.display = 'block';
-    result.textContent = message;
-  }
-</script>
+  <section id="verdict">
+    <h2>Final Verdict</h2>
+    <div class="score-row"><div class="score-label">Multi-touchpoint Commissions</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">AI Content Tools</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
+    <div class="score-row"><div class="score-label">Live Event Integration</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
+    <div class="score-row"><div class="score-label">Value for Active Promoters</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+    <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
 
-</body>
-</html>
+    <p>OLSP Live Profit Builders has a genuinely differentiated commission model compared to standard affiliate setups: paying for live event attendance and attributing future purchases at the account level rather than through expiring cookies are uncommon features that address real affiliate marketing pain points. The AI Marketing Material Generator and structured challenge programs reduce the operational burden of promoting recurring live events. The honest limitation is that every one of these advantages depends on the member having — or being willing to actively build — an audience that consistently shows up for twice-weekly live events. The $1/attendee figure sounds compelling until you realize that generating 100 attendees per session requires a warm audience of several hundred to several thousand people who trust you and respond to your invitations. Treat all income projections as vendor claims rather than typical results. For active OLSP members who already have traffic and want to monetize lead behaviors beyond purchases, LPB is worth evaluating. For beginners or anyone still building their first traffic source, the subscription cost is an investment better delayed until the foundation is in place.</p>
+
+    <div class="quiz-box" id="quizBox">
+      <h3 style="margin-top:0;">Quick Self-Check: Is Live Profit Builders Right for You Now?</h3>
+      <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+      <fieldset>
+        <legend>Do you already have an active audience or traffic source you can consistently direct to live events twice per week?</legend>
+        <label><input type="radio" name="q1" value="2"> Yes — I have an engaged audience ready to receive event invitations</label>
+        <label><input type="radio" name="q1" value="0"> Not yet — I'm still building my first traffic source</label>
+      </fieldset>
+      <fieldset>
+        <legend>Are you comfortable building your promotional schedule around OLSP's recurring live event calendar (Tuesdays and Saturdays)?</legend>
+        <label><input type="radio" name="q2" value="2"> Yes — I can align my content and promotional activity with a fixed event schedule</label>
+        <label><input type="radio" name="q2" value="0"> Not really — I'd prefer a more flexible or SEO-based approach</label>
+      </fieldset>
+      <fieldset>
+        <legend>Have you already validated results at the OLSP Megalink level and are now looking to unlock additional earning mechanics?</legend>
+        <label><input type="radio" name="q3" value="2"> Yes — I'm earning at the entry level and ready to scale</label>
+        <label><input type="radio" name="q3" value="0"> No — I haven't yet seen consistent results from the Megalink tier</label>
+      </fieldset>
+      <button type="button" onclick="evaluateQuiz()">See My Result</button>
+      <div id="quiz-result"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="How does the $1 per attendee commission actually work?">
+      <p>According to vendor sales pages and independent reviewers, LPB members earn $1 for each unique, verified person they refer who attends specific OLSP live events — typically Tuesday webinars and Saturday challenge kickoff sessions. "Verified" means the attendee must be a real person linked to your referral account; there is no apparent mechanism for inflating numbers with fake accounts. The practical earning potential scales directly with how many people you can reliably send to each session. If you regularly get 50 attendees per event and events run twice weekly, that is roughly $400/month from attendance alone — but reaching that level requires an active, responsive audience. This figure is a vendor and affiliate claim; actual payouts depend on OLSP's technical verification and payout processes, which we cannot independently audit.</p>
+    </FaqItem>
+    <FaqItem question='Is "lifetime attribution" really permanent?'>
+      <p>Vendor materials claim that once a prospect signs up for OLSP via your Mega Live Link, all future OLSP purchases from that person are attributed to you permanently — regardless of whether months or years pass between their initial sign-up and a later purchase. This is described as account-level attribution rather than cookie-based tracking, meaning it survives device changes, browser resets, and time. We cannot independently verify how robustly this system operates in practice, whether it has been maintained consistently through OLSP's multiple relaunches and compensation plan changes, or how reliably payouts occur on backend purchases. The 2026 compensation changes that removed lifetime membership options are a reminder that attribution and commission terms can change.</p>
+    </FaqItem>
+    <FaqItem question="Is Live Profit Builders worth it compared to staying at the Megalink level?">
+      <p>Multiple independent analysts phrase their answer as: yes, but only once you're consistently earning at the Megalink level. The upgrade makes financial sense if your referral volume is high enough that the 100% front-end commission and $1/attendee mechanics generate more each month than the subscription cost ($49/month or $497/year). If you're generating fewer than 50 attendees per event and a handful of front-end sales per month, the math likely doesn't support the cost. Independent reviewers who cover OLSP's upgrade ladder consistently flag premature upgrading as the most common costly mistake among OLSP members.</p>
+    </FaqItem>
+    <FaqItem question="What happened to the $297 one-time lifetime LPB offer?">
+      <p>Early LPB adopters reportedly accessed lifetime membership at a one-time price of $297. One independent review from 2025 cites this pricing and notes that public pricing was later reported as "around $997." Subsequent compensation plan changes in 2026 appear to have removed lifetime membership options across OLSP tiers, shifting the model to ongoing monthly or annual subscriptions. If you encounter references to the $297 lifetime offer in older reviews or affiliate promotions, verify directly with OLSP whether this option is still available before assuming it applies to your sign-up.</p>
+    </FaqItem>
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <ProductCta title="Start earning today — join OLSP for just $7" description="OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link. Each referral pays $5 commission. Join now and get everything you need to begin." buttonText="Try OLSP Academy for $7" href="https://olsp.profitandprivilege.com" />
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+
+    <h3>Video Content</h3>
+    <p>The video below is third-party content from an independent YouTube channel explaining the OLSP membership tier structure, including where Live Profit Builders sits in the system. It is not an official OLSP company channel, and it represents that creator's own commentary and promotional perspective — not the experience of the author of this article.</p>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/QUYDMkc4vEk" title="Third-party YouTube video: OLSP Membership Levels Explained — Which Tier Is Right For You?" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Third-party video explaining the OLSP membership tier structure including Live Profit Builders. The creator of this video may earn commissions from referral links in their description.</p>
+
+    <h3>Sources &amp; References</h3>
+    <ul class="pill-list">
+      <li><a href="https://olspteambuilders.com/live-profit-builders-now?olsp=1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP Live Profit Builders — official sign-up page</a></li>
+      <li><a href="https://olspacademy.com/megalive/1006001" target="_blank" rel="noopener noreferrer sponsored">OLSP New Live Training — official live training entry point</a></li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--ink-light);">Links marked "sponsored" above are tracked referral links; this site may earn a commission if you purchase through them. Information in this article reflects publicly available sources as of June 2026 and may no longer be current — verify pricing, features, and terms directly with OLSP before making any purchase decision.</p>
+
+    <SiteFooter />
+  </section>
+
+</OlspLayout>
