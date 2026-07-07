@@ -81,9 +81,7 @@ Editorial QA → Publisher
 ### Suggested Command / Prompt
 If READY FOR PUBLICATION:
 
-    Publish article at: src/pages/[section]/[slug].astro
-    Slug: [slug]
-    Section: [section]
+    node publishing/publish.cjs [slug] --qa reports/editorial-qa/[OPP-NNN-EQA-REPORT-NNN].md
 
 ```
 
