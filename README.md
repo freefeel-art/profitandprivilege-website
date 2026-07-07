@@ -1,77 +1,144 @@
-# Profit and Privilege — olsp.profitandprivilege.com
+# OLSP.PROFITANDPRIVILEGE.COM — Editorial Operating System
 
-An Astro static site publishing independent, research-based reviews and informational content in the affiliate marketing / online income niche. Primary monetization is the OLSP Academy affiliate program via the OLSP Megalink funnel.
+Independent research and reviews in the affiliate marketing / online income niche, monetized through the OLSP Academy affiliate program. The site is built with [Astro](https://astro.build) and generated as a fully static site — no database, no backend, no runtime AI.
 
-Review articles use the **OLSP Standard V1** shared component system (`src/components/olsp-standard/`): OlspLayout provides the document shell, CSS tokens, SEO metadata (OG tags, Twitter Cards, JSON-LD), TOC, and JS. Blog and roundup articles remain fully self-contained `.astro` files. See `PROJECT-STATUS.md` for current site status and `docs/CONTENT-REGISTRY.md` for the full published content inventory.
+## Project Mission
 
-## Key Documentation
+Surface and research content opportunities in the affiliate marketing and online income space. Produce authoritative, research-backed articles. Publish via a reproducible editorial pipeline. Every output is version-controlled, reviewed, and statically deployed.
 
-Before making changes, read the relevant standard:
+## Editorial Operating System
 
-| Task | Read first |
-|---|---|
-| Editing or building a review article | `docs/GOLD-MASTER-SPEC.md`, `docs/PRODUCTION-MASTER-PROMPT.md` |
-| Editing or building a roundup article | `docs/ROUNDUP-GOLD-MASTER-SPEC.md`, `docs/ROUNDUP-MASTER-PROMPT.md` |
-| Editing or building a blog article | `docs/BLOG-MASTER-SPEC.md`, `docs/BLOG-MASTER-PROMPT.md` |
-| Adding/updating internal links or new content | `docs/CONTENT-REGISTRY.md` |
-| Running the Opportunity Research Agent | `agents/opportunity-research-agent/` |
-| General working rules for AI agents on this repo | `AGENTS.md` |
+The repository contains a structured editorial pipeline with eight stages, each backed by an agent prompt, output template, and handoff specification:
 
-## AI Onboarding
+| Stage | Agent | Status |
+|---|---|---|
+| Community Intelligence | `agents/community-intelligence/` | Complete |
+| Editorial Intelligence | `agents/editorial-intelligence/` (via CI) | Complete |
+| Opportunity Discovery | `agents/opportunity-discovery-agent/` | Complete |
+| Opportunity Research | `agents/opportunity-research-agent/` | Complete |
+| Research Factory | `agents/research-factory/` | Complete |
+| Content Production | `agents/editorial-builder/` | Complete |
+| Editorial QA | `agents/editorial-qa/` | Operational |
+| Publishing | `publishing/publish.cjs` | Operational |
 
-All AI assistants working in this repository must begin by reading:
+Pipeline state is tracked in `pipeline/state.json`. Handoffs between stages follow `docs/PIPELINE-HANDOFF-STANDARD.md`.
 
-/ai/01-CHATGPT-ARCHITECT.md
+## Mission Control
 
-The remaining onboarding files are read in the order defined by:
+The operational dashboard lives at `/mission-control/` — a single-page control center for the entire Editorial OS:
 
-/ai/03-READING-ORDER.md
+- **Run Pipeline** — natural language input + pipeline mode selection (Discover / Produce / Full)
+- **Live Pipeline Console** — real-time event stream during pipeline execution
+- **Pipeline Progress** — visual stage tracking (Queued → Starting → Running → Completed)
+- **Pipeline Summary** — mode, topic, status, elapsed time, current stage
+- **Results Panel** — output artifacts that populate after a pipeline run
+- **Pipeline Health** — overall system status indicator
+- **Pipeline Status** — live stage states from `pipeline/state.json`
+- **Production Overview** — metrics dashboard (opportunities, briefs, articles, reports)
+- **Quick Access** — links to all pipeline artifacts and documentation
 
-## Project Structure
+Mission Control is the front door for all editorial operations. See `src/pages/mission-control.astro` and `src/components/mission-control/`.
 
-```text
+## Current Implementation Status
+
+- **Production site**: live at [olsp.profitandprivilege.com](https://olsp.profitandprivilege.com) — 44 static pages (14 reviews, 25 blog, 1 roundup, 3 root informational, 1 author)
+- **OLSP Standard**: shared component system (`src/components/olsp-standard/`) with 11 reusable Astro components — layout, TOC, SEO metadata, author box, FAQ, callouts, product CTAs, verdict box
+- **All production pages**: use `OlspLayout` — ~12,500 lines of duplicated CSS and JS eliminated
+- **Editorial QA**: validates every article against OlspLayout compliance, SEO metadata, internal linking, and schema.org markup; generates structured QA reports
+- **Publishing Engine**: `publishing/publish.cjs` — validates QA report, runs Astro build, writes publication report; supports both single-slug and full-site builds
+- **Pipeline Integration**: handoff chain from opportunity queue through research, production, QA, and publishing; state persisted in `pipeline/state.json`
+- **Production Reports**: pipeline readiness audit and production readiness verification completed — documented in `docs/reports/`
+- **Git**: 110+ commits across 23 files, main branch
+
+## Repository Structure
+
+```
 /
-├── docs/                        Production specs and builder prompts
-├── agents/                      AI editorial pipeline (ORA + placeholder stages)
-├── src
-│   ├── pages
-│   │   ├── reviews/              Review articles
-│   │   ├── blog/                 Blog / informational articles
-│   │   ├── roundups/             Roundup articles
-│   │   └── authors/               Author profile page(s)
-│   └── assets
+├── agents/                        # 8 pipeline agents (prompts + templates)
+│   ├── community-intelligence/
+│   ├── content-production/
+│   ├── editorial-builder/
+│   ├── editorial-qa/
+│   ├── opportunity-discovery-agent/
+│   ├── opportunity-research-agent/  # includes briefs/
+│   ├── publisher/
+│   ├── research-compiler/
+│   └── research-factory/
+├── docs/                          # Specs, reports, research
+│   ├── reports/                   # Pipeline Readiness Report, Production Readiness Report
+│   ├── research/                  # Heavy research briefs
+│   ├── AI-EDITORIAL-OPERATING-SYSTEM.md
+│   ├── CONTENT-REGISTRY.md        # Full published content inventory
+│   ├── GOLD-MASTER-SPEC.md        # UI/UX standard
+│   ├── PIPELINE-ARCHITECTURE.md   # Two-track pipeline architecture
+│   └── PIPELINE-HANDOFF-STANDARD.md
+├── publishing/                    # Publishing engine
+│   ├── publish.cjs                # CLI: publish.cjs <slug> --qa <qa-report-path>
+│   ├── CHECKLIST.md
+│   └── WORKFLOW.md
+├── reports/                       # Generated reports from pipeline runs
+│   ├── community-intelligence/
+│   ├── editorial-intelligence/
+│   ├── editorial-qa/
+│   ├── handoff/
+│   ├── production-validation/
+│   ├── publication/
+│   └── research-briefs/
+├── scripts/                       # Build and migration utilities
+│   ├── prebuild.mjs               # Copies docs/reports to public/ for static serving
+│   └── migrate-blog.js
+├── src/
+│   ├── components/
+│   │   ├── mission-control/       # Dashboard components (7 panels)
+│   │   └── olsp-standard/         # Shared layout system (11 components)
+│   ├── data/
+│   │   └── mission-control.js     # Build-time data layer
+│   ├── pages/
+│   │   ├── reviews/               # 14 review articles
+│   │   ├── blog/                  # 25 blog / informational articles
+│   │   ├── roundups/              # Roundup articles
+│   │   ├── mission-control.astro  # Operational dashboard
+│   │   └── index.astro
+│   └── scripts/
+│       └── pipeline-runner.js     # Pipeline state store + simulation engine
+├── pipeline/
+│   └── state.json                 # Pipeline orchestration state
+├── astro.config.mjs
 └── package.json
 ```
 
-## Commands
+## Quick Start
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm install
+npm run dev        # Start dev server at localhost:4321
+npm run build      # Build production site to dist/
+npm run preview    # Preview built site locally
+```
 
-| Command | Action |
-|---|---|
-| `npm install` | Installs dependencies |
-| `npm run dev` | Starts local dev server at `localhost:4321` |
-| `npm run build` | Build the production site to `./dist/` |
-| `npm run preview` | Preview the build locally, before deploying |
-| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
+For AI-agent sessions: `astro dev` runs in the background and is managed via process supervision. See `AGENTS.md` for working rules.
 
-For AI-agent sessions, prefer `astro dev --background` and manage it with `astro dev stop` / `astro dev status` / `astro dev logs` — see `AGENTS.md`.
+## Development Workflow
 
-## Repository Scope
+1. **Research** — Community Intelligence + Editorial Intelligence identify opportunities; Opportunity Discovery Agent scores and queues candidates; briefs go to the Research Factory
+2. **Produce** — Editorial Builder generates articles from briefs using GOLD-MASTER-SPEC.md and the appropriate master prompt
+3. **QA** — Editorial QA validates against OlspLayout, SEO, schema, internal linking
+4. **Publish** — `publishing/publish.cjs <slug> --qa <qa-report-path>` builds and reports
 
-This repository is a static content site only. The following are intentionally **out of scope** — there is no code for any of these here, and none should be added without a deliberate architectural decision:
+All stages run offline. Output is committed to version control. No runtime AI generation.
 
-- **AI generation at runtime** — no LLM/API calls happen when the site serves a page. Article content is authored offline (via the builder prompts in `docs/`) and committed as static HTML/Astro; nothing is generated on request.
-- **Image generation** — no image-generation APIs or pipelines. Images (e.g. author photo) are static assets checked into `src/assets` / `public`.
-- **Backend APIs / server routes** — no `/api` directory, no serverless functions, no server-side request handling. Every page has `prerender = true` and ships as static HTML.
-- **Authentication / user accounts** — no login, sessions, or user data of any kind.
-- **Database / persistent storage** — no database, ORM, or data layer. Content lives in version-controlled files.
-- **Environment variables / secrets** — no `.env` files or runtime secrets. There is nothing to configure at deploy time beyond the static build.
-- **Payment processing / checkout** — monetization is affiliate links only (OLSP Megalink); no payment or checkout flow is handled by this site.
-- **Analytics / tracking scripts** — no analytics integration is currently wired in, despite some article content discussing analytics/marketing tools editorially.
+## Future Roadmap
 
-If a task assumes any of the above exists (e.g. an API integration, an `.env` variable, a generation pipeline), treat that as a sign the task targets a different repository, or as a deliberate new feature that needs explicit scoping before implementation.
+- **Pipeline Runner** — dedicated orchestration layer to execute full pipeline runs with a single command
+- **Real-time Execution** — connect Mission Control Run Pipeline to live agent execution
+- **Analytics Dashboard** — content performance tracking
+- **Automated Scheduling** — recurring content opportunity scans via Community Intelligence
 
-## Documentation
+## Architecture
 
-Full Astro documentation: https://docs.astro.build
+This repository enforces strict separation:
+
+- **Mission Control** — visualizes and orchestrates (no agent calls)
+- **Pipeline Runner** — single execution entry point (planned)
+- **Agents** — perform the work (prompts + templates only)
+- **Static Site** — production output (no backend, no database)
