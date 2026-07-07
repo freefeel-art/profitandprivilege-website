@@ -6,29 +6,39 @@ const { execSync } = require('child_process');
 
 const REPORTS_DIR = 'reports/publication';
 
-const ARTICLES = {
-  'is-olsp-academy-an-mlm': {
-    id: 'OPP-001',
-    title: 'Is OLSP Academy an MLM?',
-    file: 'src/pages/is-olsp-academy-an-mlm.astro',
-    qaReport: 'reports/editorial-qa/OPP-001-EQA-REPORT-002.md',
-    canonical: 'https://profitandprivilege.com/is-olsp-academy-an-mlm/'
-  },
-  'fastbots-chatbot-wrong-answers': {
-    id: 'OPP-002',
-    title: 'Why Your FastBots Chatbot Gives Wrong Answers — And How to Fix It',
-    file: 'src/pages/fastbots-chatbot-wrong-answers.astro',
-    qaReport: 'reports/editorial-qa/OPP-002-EQA-REPORT-002.md',
-    canonical: 'https://profitandprivilege.com/fastbots-chatbot-wrong-answers/'
-  },
-  'does-google-penalize-ai-content': {
-    id: 'OPP-003',
-    title: 'Does Google Actually Penalize AI Content? (What the Data Shows)',
-    file: 'src/pages/does-google-penalize-ai-content.astro',
-    qaReport: 'reports/editorial-qa/OPP-003-EQA-REPORT-001.md',
-    canonical: 'https://profitandprivilege.com/does-google-penalize-ai-content/'
-  }
-};
+function findFile(slug) {
+  const walk = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        const found = walk(full);
+        if (found) return found;
+      } else if (entry.isFile() && entry.name === `${slug}.astro`) {
+        return full;
+      }
+    }
+    return null;
+  };
+  return walk('src/pages');
+}
+
+function discoverArticle(slug, qaReport) {
+  const file = findFile(slug);
+  if (!file) return null;
+
+  const content = readFile(file);
+  const titleMatch = content.match(/const pageTitle\s*=\s*["']([^"']+)["']/);
+  const title = titleMatch ? titleMatch[1] : slug;
+
+  const canonicalMatch = content.match(/canonical="([^"]+)"/) || content.match(/<link rel="canonical"\s*href="([^"]+)"/);
+  const canonical = canonicalMatch ? canonicalMatch[1] : `https://olsp.profitandprivilege.com/${slug}/`;
+
+  const idMatch = qaReport ? qaReport.match(/OPP-\d+/) : null;
+  const id = idMatch ? idMatch[0] : 'OPP-UNKNOWN';
+
+  return { id, title, file, qaReport, canonical };
+}
 
 function log(prefix, msg) {
   const ts = new Date().toISOString();
@@ -102,7 +112,7 @@ function getExistingRoutes() {
 
 function generateReport(article, result) {
   const ts = new Date().toISOString();
-  const slug = Object.keys(ARTICLES).find(k => ARTICLES[k].id === article.id) || 'unknown';
+  const slug = result.slug || article.file.match(/([^/]+)\.astro$/)?.[1] || 'unknown';
   const report = [
     `# Publication Report`,
     ``,
@@ -310,7 +320,7 @@ async function stage5(articles, deployUrl) {
   return { passed: allPassed, detail };
 }
 
-async function stage6() {
+async function stage6(slug) {
   log('STAGE-6', 'Search engine submission');
 
   const sitemapUrl = 'https://olsp.profitandprivilege.com/sitemap-index.xml';
@@ -321,12 +331,7 @@ async function stage6() {
 
   if (sitemapInDist) {
     const sitemapContent = readFile('dist/sitemap-index.xml');
-    for (const slug of Object.keys(ARTICLES)) {
-      if (sitemapContent.includes(slug)) {
-        sitemapContainsArticles = true;
-        break;
-      }
-    }
+    sitemapContainsArticles = sitemapContent.includes(slug);
   }
 
   log('STAGE-6', `Sitemap exists: ${sitemapInDist}`);
@@ -341,32 +346,35 @@ async function stage6() {
 }
 
 async function main() {
-  log('PUBLISH', 'Publishing Engine V1');
+  log('PUBLISH', 'Publishing Engine V2 — Dynamic Discovery');
 
   const args = process.argv.slice(2);
-  let selectedArticles = {};
+  const slugIndex = args.findIndex(a => !a.startsWith('--'));
+  const qaIndex = args.indexOf('--qa');
 
-  if (args.includes('--all')) {
-    selectedArticles = { ...ARTICLES };
-  } else if (args.length > 0) {
-    for (const slug of args) {
-      if (ARTICLES[slug]) {
-        selectedArticles[slug] = ARTICLES[slug];
-      } else {
-        log('ERROR', `Unknown article slug: ${slug}`);
-        process.exit(1);
-      }
-    }
-  } else {
-    console.error('Usage: node publishing/publish.js <slug> [slug...] | --all');
-    console.error('Available slugs: ' + Object.keys(ARTICLES).join(', '));
+  if (slugIndex === -1 || qaIndex === -1 || qaIndex >= args.length - 1) {
+    console.error('Usage: node publishing/publish.js <slug> --qa <qa-report-path>');
+    console.error('Example: node publishing/publish.js affiliate-marketing-mistakes-beginners --qa reports/editorial-qa/OPP-004-EQA-REPORT-001.md');
     process.exit(1);
   }
 
-  const articleNames = Object.values(selectedArticles).map(a => `${a.id}: ${a.title}`);
-  log('PUBLISH', `Candidates: ${articleNames.join(' | ')}`);
+  const slug = args[slugIndex];
+  const qaReport = args[qaIndex + 1];
+
+  const article = discoverArticle(slug, qaReport);
+  if (!article) {
+    log('ERROR', `Article not found for slug: ${slug}`);
+    process.exit(1);
+  }
+
+  const selectedArticles = { [slug]: article };
+
+  log('PUBLISH', `Article: ${article.id}: ${article.title}`);
+  log('PUBLISH', `File: ${article.file}`);
+  log('PUBLISH', `QA Report: ${article.qaReport}`);
 
   const result = {
+    slug,
     commitHash: 'N/A',
     buildResult: 'N/A',
     deployResult: 'N/A',
@@ -396,10 +404,7 @@ async function main() {
   result.s1Detail = s1.passed ? 'All candidates validated' : s1.reason;
   if (!s1.passed) {
     result.finalDetail = `Stage 1 failed: ${s1.reason}`;
-    const reportFile = generateReport(
-      Object.values(selectedArticles)[0],
-      result
-    );
+    const reportFile = generateReport(article, result);
     log('PUBLISH', `PUBLICATION BLOCKED — ${result.finalDetail}`);
     log('PUBLISH', `Report: ${reportFile}`);
     process.exitCode = 1;
@@ -407,14 +412,13 @@ async function main() {
   }
 
   // Stage 2: Git
-  const s2 = await stage2(selectedArticles);
+  const s2 = await stage2(selectedArticles, slug);
   result.s2Result = s2.passed ? 'PASS' : 'FAIL';
   result.s2Detail = s2.passed ? `Committed: ${s2.commitMsg}` : s2.detail;
   result.commitHash = s2.hash || 'N/A';
   if (!s2.passed) {
     result.finalDetail = `Stage 2 failed: ${s2.detail}`;
-    const firstArticle = Object.values(selectedArticles)[0];
-    generateReport(firstArticle, result);
+    generateReport(article, result);
     log('PUBLISH', `PUBLICATION BLOCKED — ${result.finalDetail}`);
     process.exitCode = 1;
     return;
@@ -428,8 +432,7 @@ async function main() {
   result.s3Detail = s3.passed ? 'Build completed successfully' : s3.detail;
   if (!s3.passed) {
     result.finalDetail = `Stage 3 failed: ${s3.detail}`;
-    const firstArticle = Object.values(selectedArticles)[0];
-    generateReport(firstArticle, result);
+    generateReport(article, result);
     log('PUBLISH', `PUBLICATION BLOCKED — ${result.finalDetail}`);
     process.exitCode = 1;
     return;
@@ -443,8 +446,7 @@ async function main() {
   result.s4Detail = s4.passed ? `Deployed to ${result.deployUrl}` : s4.detail;
   if (!s4.passed) {
     result.finalDetail = `Stage 4 failed: ${s4.detail}`;
-    const firstArticle = Object.values(selectedArticles)[0];
-    generateReport(firstArticle, result);
+    generateReport(article, result);
     log('PUBLISH', `PUBLICATION BLOCKED — ${result.finalDetail}`);
     process.exitCode = 1;
     return;
@@ -458,8 +460,7 @@ async function main() {
   result.s5Detail = s5.passed ? `All articles validated: ${s5.detail}` : `Validation issues: ${s5.detail}`;
   if (!s5.passed) {
     result.finalDetail = `Stage 5 failed: ${s5.detail}`;
-    const firstArticle = Object.values(selectedArticles)[0];
-    generateReport(firstArticle, result);
+    generateReport(article, result);
     log('PUBLISH', `PUBLICATION BLOCKED — ${result.finalDetail}`);
     process.exitCode = 1;
     return;
@@ -467,7 +468,7 @@ async function main() {
   log('PUBLISH', 'Post-deployment validation passed');
 
   // Stage 6: Search Engine Submission
-  const s6 = await stage6();
+  const s6 = await stage6(slug);
   result.s6Result = s6.passed ? 'PASS' : 'FAIL';
   result.sitemapStatus = s6.sitemapStatus;
   result.s6Detail = s6.detail;
@@ -475,22 +476,15 @@ async function main() {
 
   // Stage 7: Generate reports
   result.finalDecision = 'PUBLISHED';
-  result.finalDetail = `All 7 stages completed successfully. ${Object.keys(selectedArticles).length} article(s) published.`;
+  result.finalDetail = `All 7 stages completed successfully. Article published: ${article.canonical}`;
 
-  const publishedNames = Object.keys(selectedArticles).map(slug => {
-    const article = selectedArticles[slug];
-    return `${article.id}: ${article.title} (${article.canonical})`;
-  });
-
-  for (const [slug, article] of Object.entries(selectedArticles)) {
-    const singleResult = { ...result };
-    const reportFile = generateReport(article, singleResult);
-    log('PUBLISH', `Report generated: ${reportFile}`);
-  }
+  const reportFile = generateReport(article, result);
+  log('PUBLISH', `Report generated: ${reportFile}`);
 
   log('PUBLISH', '═══════════════════════════════════════');
   log('PUBLISH', 'PUBLISHED');
-  log('PUBLISH', `Articles: ${publishedNames.join(' | ')}`);
+  log('PUBLISH', `Article: ${article.id}: ${article.title}`);
+  log('PUBLISH', `URL: ${article.canonical}`);
   log('PUBLISH', `Deploy URL: ${result.deployUrl}`);
   log('PUBLISH', `Commit: ${result.commitHash}`);
   log('PUBLISH', '═══════════════════════════════════════');

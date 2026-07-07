@@ -32,7 +32,7 @@ Perform 8 validation checks against the article:
 5. **Editorial Standards** — sections match OPP brief; primary question answered; related questions addressed; tone neutral; decision framework present
 6. **Citation Integrity** — all factual claims have reliability labels; sources section complete; disclaimer present
 7. **Internal Linking** — OPP brief's internal links present; CTA placement natural; links resolve correctly
-8. **Astro Validation** — build succeeds; prerender=true; canonical URL; no layout imports; inline CSS/JS
+8. **Astro Validation** — build succeeds; prerender=true; canonical URL; OlspLayout wrapper used; no inline `<style>` or `<script>` blocks
 
 ## Issue Classification
 
@@ -50,6 +50,42 @@ Perform 8 validation checks against the article:
 | READY FOR PUBLICATION | Zero critical, zero major issues |
 | REQUIRES MINOR REVISIONS | Zero critical, one or more major issues |
 | PUBLICATION BLOCKED | One or more critical issues |
+
+## Stage Handoff (MANDATORY — per docs/PIPELINE-HANDOFF-STANDARD.md)
+
+After completing all validation checks, append the following handoff block to your output:
+
+```
+## Stage Handoff
+
+**Stage Status:** [Complete / Blocked]
+
+### Completed Items
+- Performed 8 validation checks: Research Fidelity, Evidence Mapping, Knowledge Gap Compliance, Vendor Claim Handling, Editorial Standards, Citation Integrity, Internal Linking, Astro Validation
+- [N] Critical issues found
+- [N] Major issues found
+- [N] Minor issues found
+- Decision: [READY FOR PUBLICATION / REQUIRES MINOR REVISIONS / PUBLICATION BLOCKED]
+
+### Produced Artifact(s)
+| Artifact | Path |
+|----------|------|
+| QA Report | (inline — saved to handoff output) |
+
+### Current Pipeline Position
+Editorial QA → Publisher
+
+### Recommended Next Stage
+[READY FOR PUBLICATION → Publish the article / REQUIRES MINOR REVISIONS → Return to Editorial Builder / PUBLICATION BLOCKED → Return to Content Production]
+
+### Suggested Command / Prompt
+If READY FOR PUBLICATION:
+
+    Publish article at: src/pages/[section]/[slug].astro
+    Slug: [slug]
+    Section: [section]
+
+```
 
 ## Quality Checklist (before output)
 

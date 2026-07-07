@@ -184,9 +184,10 @@ Brief overview of QA findings including total issues found by severity and the f
 | `astro build` succeeds | ✓ / ✗ |
 | `export const prerender = true` | ✓ / ✗ |
 | Canonical URL present (absolute, trailing slash) | ✓ / ✗ |
-| No layout imports | ✓ / ✗ |
-| Inline CSS (no external files) | ✓ / ✗ |
-| Inline JS with `is:inline` directive | ✓ / ✗ |
+| OlspLayout imported and wrapping content | ✓ / ✗ |
+| No inline `<style>` blocks | ✓ / ✗ |
+| No inline `<script>` blocks | ✓ / ✗ |
+| ArticleType and productName props correct | ✓ / ✗ |
 
 **Verdict:** PASS / FAIL with issues
 

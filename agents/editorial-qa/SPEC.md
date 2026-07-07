@@ -150,8 +150,8 @@ Community (COM-NNN)
 | Build | Run `astro build` | Build succeeds |
 | Frontmatter | Verify `export const prerender = true` and metadata variables | Present |
 | Canonical URL | Verify absolute URL with trailing slash | Present and correct format |
-| No layout imports | Verify no `import Layout` statements | No layout imports |
-| Inline CSS/JS | Verify all CSS and JS are inline in the file | No external file references |
+| OlspLayout wrapper | Verify OlspLayout is imported and wraps the content | OlspLayout is the page shell |
+| No inline style/script | Verify no inline `<style>` or `<script is:inline>` blocks exist | Presentation comes from OlspLayout |
 
 ---
 
