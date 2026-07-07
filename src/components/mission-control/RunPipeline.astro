@@ -1,0 +1,307 @@
+---
+const examples = [
+  "OLSP Academy", "Affiliate Marketing", "Email Marketing",
+  "AI Tools", "Lead Generation", "Weight Loss",
+];
+
+const modes = [
+  {
+    id: "discover",
+    label: "Discover Opportunities",
+    stages: [
+      "Community Intelligence", "Editorial Intelligence",
+      "Opportunity Queue", "Opportunity Briefs",
+    ],
+    desc: "Surface and qualify new content opportunities from the community.",
+  },
+  {
+    id: "produce",
+    label: "Produce Content",
+    stages: [
+      "Opportunity Brief", "Research Factory", "Content Production",
+      "Editorial QA", "Publishing",
+    ],
+    desc: "Take a brief through research, writing, QA, and publication.",
+  },
+  {
+    id: "full",
+    label: "Full Production Run",
+    stages: [
+      "Community Intelligence", "Editorial Intelligence",
+      "Opportunity Queue", "Opportunity Briefs",
+      "Research Factory", "Content Production",
+      "Editorial QA", "Publishing",
+    ],
+    desc: "Complete end-to-end pipeline from discovery to publication.",
+  },
+];
+---
+
+<section id="run" class="run-pipeline">
+  <h2>Run Pipeline</h2>
+
+  <div class="run-input-wrap">
+    <label for="research-topic" class="run-label">What do you want to research?</label>
+    <input id="research-topic" type="text" class="run-input"
+      placeholder="e.g. OLSP Academy, Affiliate Marketing, AI Tools..."
+      autocomplete="off" />
+    <div class="run-examples">
+      {examples.map(ex => <button type="button" class="example-chip" data-topic={ex}>{ex}</button>)}
+    </div>
+  </div>
+
+  <div class="run-modes">
+    {modes.map(m => (
+      <div class="mode-card" data-mode={m.id}>
+        <div class="mode-header">
+          <span class="mode-radio"></span>
+          <strong class="mode-label">{m.label}</strong>
+        </div>
+        <p class="mode-desc">{m.desc}</p>
+        <div class="mode-stages">
+          {m.stages.map((s, i) => (
+            <span class="mode-stage">
+              <span class="mode-stage-name">{s}</span>
+              {i < m.stages.length - 1 && <span class="mode-stage-arrow">→</span>}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="run-actions">
+    <button type="button" class="run-btn" disabled id="run-btn">Run Pipeline</button>
+    <div id="run-status" class="run-status"></div>
+  </div>
+</section>
+
+<script>
+  const topicInput = document.getElementById("research-topic");
+  const runBtn = document.getElementById("run-btn");
+  const runStatus = document.getElementById("run-status");
+  const modeCards = document.querySelectorAll(".mode-card");
+  const exampleChips = document.querySelectorAll(".example-chip");
+
+  let selectedMode = null;
+  let validated = false;
+
+  function validate() {
+    const topic = topicInput.value.trim();
+    const ready = topic.length >= 2 && selectedMode !== null;
+    validated = ready;
+    runBtn.disabled = !ready;
+    updateStatus();
+  }
+
+  function updateStatus() {
+    if (!validated) {
+      const topic = topicInput.value.trim();
+      if (topic && topic.length < 2) {
+        runStatus.textContent = "Enter at least 2 characters to describe your research topic.";
+      } else if (topic && !selectedMode) {
+        runStatus.textContent = "Select a pipeline mode above.";
+      } else if (!topic && !selectedMode) {
+        runStatus.textContent = "Enter a topic and select a pipeline mode to begin.";
+      } else {
+        runStatus.textContent = "";
+      }
+      return;
+    }
+
+    const mode = modeCards.find(c => c.dataset.mode === selectedMode);
+    const modeLabel = mode ? mode.querySelector(".mode-label").textContent : selectedMode;
+    const stages = mode ? Array.from(mode.querySelectorAll(".mode-stage-name")).map(s => s.textContent) : [];
+    runStatus.innerHTML =
+      `<span class="status-ready">Ready to Run</span>` +
+      `<span class="status-topic">Topic: <strong>${escapeHtml(topicInput.value.trim())}</strong></span>` +
+      `<span class="status-mode">Pipeline: <strong>${modeLabel}</strong></span>` +
+      `<span class="status-stages">${stages.join(" → ")}</span>`;
+  }
+
+  function escapeHtml(s) {
+    const d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  topicInput.addEventListener("input", validate);
+
+  modeCards.forEach(card => {
+    card.addEventListener("click", () => {
+      modeCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      selectedMode = card.dataset.mode;
+      validate();
+    });
+  });
+
+  exampleChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      topicInput.value = chip.dataset.topic;
+      validate();
+      topicInput.focus();
+    });
+  });
+
+  runBtn.addEventListener("click", () => {
+    if (!validated) return;
+    runStatus.innerHTML = `<span class="status-ready">Pipeline queued for: ${escapeHtml(topicInput.value.trim())}</span>`;
+    runBtn.disabled = true;
+    runBtn.textContent = "Queued";
+  });
+</script>
+
+<style is:inline>
+  .run-pipeline {
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: var(--bg);
+    margin-bottom: 2rem;
+  }
+  .run-pipeline h2 { margin-top: 0; }
+
+  .run-input-wrap { margin-bottom: 1.25rem; }
+  .run-label {
+    display: block;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .5rem;
+  }
+  .run-input {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    padding: .65rem .8rem;
+    font-size: .95rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s;
+    box-sizing: border-box;
+  }
+  .run-input:focus { border-color: var(--accent); }
+  .run-input::placeholder { color: var(--ink-light); opacity: .6; }
+
+  .run-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: .6rem;
+  }
+  .example-chip {
+    font-size: .78rem;
+    padding: .25rem .65rem;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    background: var(--bg-soft);
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .example-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .run-modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: .7rem;
+    margin-bottom: 1.25rem;
+  }
+  .mode-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .mode-card:hover { border-color: var(--accent); }
+  .mode-card.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .mode-header {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .35rem;
+  }
+  .mode-radio {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--ink-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: border-color .15s, background .15s;
+  }
+  .mode-card.active .mode-radio {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: inset 0 0 0 2px var(--bg);
+  }
+  .mode-label { font-size: .9rem; color: var(--ink); }
+  .mode-desc { font-size: .78rem; color: var(--ink-light); margin: 0 0 .6rem; }
+  .mode-stages {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .2rem .4rem;
+  }
+  .mode-stage { display: inline-flex; align-items: center; gap: .2rem; }
+  .mode-stage-name { font-size: .72rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .45rem; border-radius: 4px; }
+  .mode-stage-arrow { font-size: .72rem; color: var(--ink-light); opacity: .4; }
+
+  .run-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .run-btn {
+    padding: .6rem 1.8rem;
+    font-size: .9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .run-btn:hover:not(:disabled) { opacity: .85; }
+  .run-btn:disabled { opacity: .35; cursor: default; }
+
+  .run-status {
+    font-size: .85rem;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+  .status-ready {
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--good);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background: var(--good-bg);
+    padding: .2rem .6rem;
+    border-radius: 4px;
+  }
+  .status-topic, .status-mode { font-size: .82rem; color: var(--ink-light); }
+  .status-topic strong, .status-mode strong { color: var(--ink); }
+  .status-stages {
+    font-size: .78rem;
+    color: var(--ink-light);
+    background: var(--bg-soft);
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+</style>

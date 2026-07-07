@@ -6,6 +6,7 @@ import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
 import StatusBadge from "../components/mission-control/StatusBadge.astro";
 import MetricCard from "../components/mission-control/MetricCard.astro";
 import ActivityItem from "../components/mission-control/ActivityItem.astro";
+import RunPipeline from "../components/mission-control/RunPipeline.astro";
 import {
   getStageStatus,
   getProductionMetrics,
@@ -23,6 +24,7 @@ const repo = getRepoStatus();
 const links = getQuickLinks();
 
 const tocLinks = [
+  { href: "#run", label: "Run Pipeline" },
   { href: "#pipeline", label: "Pipeline Status" },
   { href: "#metrics", label: "Production Overview" },
   { href: "#activity", label: "Recent Activity" },
@@ -36,6 +38,8 @@ const tocLinks = [
   description="Editorial Operating System dashboard for OLSP.PROFITANDPRIVILEGE.COM"
   canonical="https://olsp.profitandprivilege.com/mission-control/"
   tocLinks={tocLinks}>
+
+<RunPipeline />
 
 <section id="pipeline">
 <h2>Pipeline Status</h2>
