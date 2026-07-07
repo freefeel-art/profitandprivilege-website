@@ -1,0 +1,120 @@
+---
+const allStages = [
+  { id: 'ci', label: 'Community Intelligence' },
+  { id: 'ei', label: 'Editorial Intelligence' },
+  { id: 'oq', label: 'Opportunity Queue' },
+  { id: 'ob', label: 'Opportunity Brief' },
+  { id: 'rf', label: 'Research Factory' },
+  { id: 'cp', label: 'Content Production' },
+  { id: 'eq', label: 'Editorial QA' },
+  { id: 'pub', label: 'Publishing' },
+];
+---
+
+<section class="panel" id="panel-progress">
+  <h3>Pipeline Progress</h3>
+  <div class="progress-track" id="progress-track">
+    {allStages.map((s, i) => (
+      <div class="progress-stage" data-ps-id={s.id}>
+        <div class="progress-node" data-ps-node={s.id}>
+          <span class="progress-number">{i + 1}</span>
+        </div>
+        <span class="progress-label">{s.label}</span>
+        <span class="progress-state" data-ps-state={s.id}>waiting</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { pipelineStore } from '../../scripts/pipeline-runner.js';
+
+  const nodes = document.querySelectorAll('[data-ps-node]');
+  const states = document.querySelectorAll('[data-ps-state]');
+  const nodeMap = {};
+  const stateMap = {};
+  nodes.forEach(el => nodeMap[el.dataset.psNode] = el);
+  states.forEach(el => stateMap[el.dataset.psState] = el);
+
+  const CFG = {
+    completed: { cls: 'ps-completed', label: 'completed' },
+    complete:  { cls: 'ps-completed', label: 'completed' },
+    running:   { cls: 'ps-running', label: 'running' },
+    starting:  { cls: 'ps-running', label: 'starting' },
+    queued:    { cls: 'ps-queued', label: 'queued' },
+    waiting:   { cls: 'ps-waiting', label: 'waiting' },
+    failed:    { cls: 'ps-failed', label: 'failed' },
+  };
+
+  pipelineStore.subscribe(s => {
+    for (const [id, stage] of Object.entries(s.stages)) {
+      const node = nodeMap[id];
+      const st = stateMap[id];
+      if (!node) continue;
+      const cfg = CFG[stage.status] || CFG.waiting;
+      node.className = `progress-node ${cfg.cls}`;
+      if (st) { st.textContent = cfg.label; st.className = `progress-state ${cfg.cls}`; }
+    }
+  });
+</script>
+
+<style is:inline>
+  .panel { margin-bottom: 1.5rem; }
+  .panel h3 { font-size: 1rem; margin: 0 0 .6rem; }
+
+  .progress-track {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+    align-items: center;
+  }
+  .progress-stage {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .25rem .4rem;
+    border-radius: var(--radius);
+  }
+  .progress-node {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+    border: 2px solid var(--line);
+    color: var(--ink-light);
+    background: var(--bg);
+    transition: all .3s;
+    flex-shrink: 0;
+  }
+  .progress-number { line-height: 1; }
+  .progress-node.ps-completed { border-color: var(--good); background: var(--good); color: #fff; }
+  .progress-node.ps-running { border-color: var(--accent); background: var(--accent); color: #fff; animation: pulse 1s infinite; }
+  .progress-node.ps-queued { border-color: var(--ink-light); background: var(--bg-soft); }
+  .progress-node.ps-waiting { border-color: var(--line); }
+  .progress-node.ps-failed { border-color: var(--bad); background: var(--bad); color: #fff; }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 87, 179, .4); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 87, 179, 0); }
+  }
+
+  .progress-label {
+    font-size: .78rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .progress-state {
+    font-size: .65rem;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    margin-left: .15rem;
+  }
+  .progress-state.ps-completed { color: var(--good); }
+  .progress-state.ps-running { color: var(--accent); }
+  .progress-state.ps-failed { color: var(--bad); }
+</style>

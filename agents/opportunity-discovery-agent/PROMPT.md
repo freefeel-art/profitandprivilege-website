@@ -320,6 +320,48 @@ Call: Read docs/CONTENT-REGISTRY.md § Content Pillars, § Internal Link Map, §
 
 ---
 
+## Stage Handoff (MANDATORY — per docs/PIPELINE-HANDOFF-STANDARD.md)
+
+After completing Stage D5, append the following handoff block to your output:
+
+```
+## Stage Handoff
+
+**Stage Status:** Complete
+
+### Completed Items
+- Explored [pillar] with [N] seed topics
+- Surfaced [N] candidates from multi-source exploration
+- Dropped [N] candidates (duplicate at Stage D2)
+- Scored [N] surviving candidates (Opportunity Score + Priority Score + Authority Value + Pipeline Type)
+- Wrote [N] new rows to OPPORTUNITY-QUEUE.md
+
+### Produced Artifact(s)
+| Artifact | Path |
+|----------|------|
+| Opportunity Queue | `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` |
+
+### Current Pipeline Position
+Discovery → Research
+
+### Recommended Next Stage
+Promote the top unclaimed candidate to Research
+- Light pipeline candidate → ORA (`agents/opportunity-research-agent/`)
+- Heavy pipeline candidate → Research Compiler (`agents/research-compiler/`)
+
+### Suggested Command / Prompt
+If promoting the top Light candidate, invoke ORA with:
+
+    Keyword: [candidate_keyword from queue row]
+    Intent hint: [opportunity_summary from queue row]
+    Opportunity name: [candidate_id from queue row]
+
+If promoting the top Heavy candidate, invoke Research Compiler with the candidate's subject directly.
+```
+ 
+---
+
+
 ## Invocation examples
 
 ### Example 1 — Single pillar, no seed topics or constraints supplied

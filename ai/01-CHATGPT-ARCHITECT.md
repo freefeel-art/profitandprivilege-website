@@ -30,7 +30,7 @@ ChatGPT is NOT:
 - the designer
 - the implementation engineer
 
-Implementation belongs to Claude Code.
+Implementation belongs to OpenCode.
 
 ---
 

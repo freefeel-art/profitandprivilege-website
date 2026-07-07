@@ -1,0 +1,127 @@
+---
+const stageStatuses = [
+  { id: 'ci', label: 'Community Intelligence' },
+  { id: 'ei', label: 'Editorial Intelligence' },
+  { id: 'oq', label: 'Opportunity Queue' },
+  { id: 'ob', label: 'Opportunity Brief' },
+  { id: 'rf', label: 'Research Factory' },
+  { id: 'cp', label: 'Content Production' },
+  { id: 'eq', label: 'Editorial QA' },
+  { id: 'pub', label: 'Publishing' },
+];
+---
+
+<section class="panel" id="panel-console">
+  <h3>Live Pipeline Console</h3>
+  <div class="console-log" id="console-log">
+    <div class="console-waiting">No active pipeline run. Enter a topic and run the pipeline above.</div>
+  </div>
+  <div class="console-progress" id="console-progress">
+    {stageStatuses.map(s => (
+      <span class="sp-item" data-sp-id={s.id}>
+        <span class="sp-dot" data-sp-dot={s.id}></span>
+        <span class="sp-label">{s.label}</span>
+        <span class="sp-state" data-sp-state={s.id}>waiting</span>
+      </span>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { pipelineStore } from '../../scripts/pipeline-runner.js';
+
+  const log = document.getElementById('console-log');
+  const dots = document.querySelectorAll('[data-sp-dot]');
+  const states = document.querySelectorAll('[data-sp-state]');
+  const dotMap = {};
+  const stateMap = {};
+  dots.forEach(el => dotMap[el.dataset.spDot] = el);
+  states.forEach(el => stateMap[el.dataset.spState] = el);
+
+  const CFG = {
+    completed: { c: 'var(--good)', bg: 'var(--good-bg)', label: 'completed' },
+    complete:  { c: 'var(--good)', bg: 'var(--good-bg)', label: 'completed' },
+    running:   { c: 'var(--accent)', bg: 'var(--accent-soft)', label: 'running' },
+    starting:  { c: 'var(--accent)', bg: 'var(--accent-soft)', label: 'starting' },
+    queued:    { c: 'var(--ink-light)', bg: 'var(--bg-soft)', label: 'queued' },
+    waiting:   { c: 'var(--ink-light)', bg: 'var(--bg-soft)', label: 'waiting' },
+    failed:    { c: 'var(--bad)', bg: 'var(--bad-bg)', label: 'failed' },
+  };
+
+  pipelineStore.subscribe(s => {
+    log.innerHTML = s.events.length
+      ? s.events.map(e =>
+          `<div class="console-entry console-${e.type}"><span class="console-time">${e.time}</span><span class="console-msg">${esc(e.msg)}</span></div>`
+        ).join('')
+      : '<div class="console-waiting">No active pipeline run. Enter a topic and run the pipeline above.</div>';
+    log.scrollTop = log.scrollHeight;
+
+    for (const [id, stage] of Object.entries(s.stages)) {
+      const dot = dotMap[id];
+      const st = states ? stateMap[id] : null;
+      if (!dot) continue;
+      const cfg = CFG[stage.status] || CFG.waiting;
+      dot.style.background = cfg.c;
+      if (st) st.textContent = cfg.label;
+    }
+  });
+
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+</script>
+
+<style is:inline>
+  .panel { margin-bottom: 1.5rem; }
+  .panel h3 { font-size: 1rem; margin: 0 0 .6rem; }
+
+  .console-log {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: .5rem .8rem;
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: .78rem;
+    line-height: 1.6;
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: .8rem;
+  }
+  .console-waiting { color: #8b949e; font-style: italic; padding: .3rem 0; }
+  .console-entry { display: flex; gap: .6rem; padding: 1px 0; }
+  .console-time { color: #58a6ff; flex-shrink: 0; }
+  .console-msg { color: #c9d1d9; }
+  .console-success .console-msg { color: #3fb950; }
+  .console-error .console-msg { color: #f85149; }
+  .console-info .console-msg { color: #c9d1d9; }
+
+  .console-progress {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem .8rem;
+  }
+  .sp-item {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .78rem;
+  }
+  .sp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ink-light);
+    flex-shrink: 0;
+    transition: background .3s;
+  }
+  .sp-label { color: var(--ink); }
+  .sp-state {
+    color: var(--ink-light);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
+</style>

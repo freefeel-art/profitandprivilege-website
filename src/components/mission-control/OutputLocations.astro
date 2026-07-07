@@ -1,0 +1,64 @@
+---
+import fs from "fs";
+import path from "path";
+
+const ROOT = process.cwd();
+const locations = [
+  { path: '/reviews/', dir: 'src/pages/reviews', label: 'Review Articles', exists: false },
+  { path: '/blog/', dir: 'src/pages/blog', label: 'Blog Articles', exists: false },
+  { path: '/docs/research/', dir: 'docs/research', label: 'Research Briefs', exists: false },
+  { path: '/reports/editorial-qa/', dir: 'reports/editorial-qa', label: 'QA Reports', exists: false },
+  { path: '/reports/publication/', dir: 'reports/publication', label: 'Publishing Reports', exists: false },
+];
+
+for (const loc of locations) {
+  loc.exists = fs.existsSync(path.join(ROOT, loc.dir));
+}
+---
+
+<section class="panel" id="panel-locations">
+  <h3>Output Locations</h3>
+  <div class="locations-grid">
+    {locations.map(l => (
+      <div class="loc-item">
+        <span class="loc-path">{l.path}</span>
+        <span class="loc-label">{l.label}</span>
+        <span class={`loc-status${l.exists ? ' loc-exists' : ''}`}>{l.exists ? 'Ready' : 'Waiting'}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style is:inline>
+  .panel { margin-bottom: 1.5rem; }
+  .panel h3 { font-size: 1rem; margin: 0 0 .6rem; }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .5rem;
+  }
+  .loc-item {
+    display: flex;
+    flex-direction: column;
+    padding: .6rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    gap: .1rem;
+  }
+  .loc-path {
+    font-size: .82rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--accent);
+  }
+  .loc-label { font-size: .75rem; color: var(--ink-light); }
+  .loc-status {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--ink-light);
+    margin-top: .2rem;
+  }
+  .loc-status.loc-exists { color: var(--good); }
+</style>

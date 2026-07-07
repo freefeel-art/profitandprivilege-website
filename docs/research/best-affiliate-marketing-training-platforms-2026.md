@@ -560,7 +560,7 @@ However, given its historical importance and the comparative focus of this brief
 
 ## 7. Separation of Verified Facts, Vendor Claims, and Independent Opinions
 
-For Claude Code and Astro article generation, ensure the following distinctions are preserved:
+When generating Astro articles with OpenCode, ensure the following distinctions are preserved:
 
 ### Verified Facts
 
@@ -589,7 +589,7 @@ These belong in sections labeled "Independent reviews" or "User opinions" and sh
 
 ## 8. Editorial Notes for the Roundup Article
 
-When Claude Code uses this brief to generate a production‑ready Astro article:
+When OpenCode uses this brief to generate a production‑ready Astro article:
 
 - Clearly mark **which statements are vendor claims, which are independent opinions, and which are verifiable facts**.
 - Avoid inventing performance metrics, testimonials, income figures, or detailed case studies.

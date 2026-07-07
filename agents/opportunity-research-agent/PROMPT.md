@@ -497,6 +497,46 @@ No tool calls. Internal reasoning only.
 
 ---
 
+## Stage Handoff (MANDATORY — per docs/PIPELINE-HANDOFF-STANDARD.md)
+
+After completing Stage 6, append the following handoff block to your output:
+
+```
+## Stage Handoff
+
+**Stage Status:** Complete
+
+### Completed Items
+- Ran 6-stage ORA workflow on keyword: [keyword]
+- Pre-flight duplicate check: [PASS / DUPLICATE FOUND]
+- Computed Opportunity Score: [N]/100
+- Computed Business Value: [N]/100
+- Computed Strategic Fit: [N]/100
+- Produced and saved Opportunity Brief
+
+### Produced Artifact(s)
+| Artifact | Path |
+|----------|------|
+| Opportunity Brief | `agents/opportunity-research-agent/briefs/[slug].md` |
+
+### Current Pipeline Position
+Research → Editorial Builder
+
+### Recommended Next Stage
+Build article from this Opportunity Brief via the Editorial Builder
+
+### Suggested Command / Prompt
+Invoke the Editorial Builder with:
+
+    Article type: [informational / review / how-to / guide / comparison]
+    Brief path: agents/opportunity-research-agent/briefs/[slug].md
+    Seed keyword: [primary keyword]
+    Target path: src/pages/blog/[slug].astro
+
+```
+
+---
+
 ## Invocation examples
 
 ### Example 1 — Standard invocation

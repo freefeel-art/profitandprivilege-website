@@ -1,0 +1,143 @@
+---
+const modeLabels = {
+  discover: 'Discover Opportunities',
+  produce: 'Produce Content',
+  full: 'Full Production Run',
+};
+---
+
+<section class="panel" id="panel-summary">
+  <h3>Pipeline Summary</h3>
+  <div class="summary-grid" id="summary-grid">
+    <div class="summary-item">
+      <span class="summary-label">Mode</span>
+      <span class="summary-value" id="sum-mode">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Input</span>
+      <span class="summary-value" id="sum-topic">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Status</span>
+      <span class="summary-value" id="sum-status">
+        <span class="sum-dot" id="sum-dot"></span>
+        <span id="sum-status-text">Waiting for Pipeline Runner</span>
+      </span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Current Stage</span>
+      <span class="summary-value" id="sum-stage">—</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Elapsed</span>
+      <span class="summary-value mono" id="sum-elapsed">00:00</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Pipeline Runner</span>
+      <span class="summary-value mono" id="sum-runner">interface ready</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { pipelineStore } from '../../scripts/pipeline-runner.js';
+
+  const modeLabels = {
+    discover: 'Discover Opportunities',
+    produce: 'Produce Content',
+    full: 'Full Production Run',
+  };
+
+  const sumMode = document.getElementById('sum-mode');
+  const sumTopic = document.getElementById('sum-topic');
+  const sumStatus = document.getElementById('sum-status-text');
+  const sumDot = document.getElementById('sum-dot');
+  const sumStage = document.getElementById('sum-stage');
+  const sumElapsed = document.getElementById('sum-elapsed');
+
+  let elapsedTimer = null;
+
+  pipelineStore.subscribe(s => {
+    sumMode.textContent = modeLabels[s.mode] || '—';
+    sumTopic.textContent = s.topic || '—';
+    sumStatus.textContent = statusLabel(s.status);
+    sumStage.textContent = s.currentStage || 'Waiting for Pipeline Runner';
+
+    const dotColors = {
+      idle: 'var(--good)', queued: 'var(--ink-light)', starting: 'var(--accent)',
+      running: 'var(--accent)', completed: 'var(--good)', failed: 'var(--bad)',
+    };
+    sumDot.style.background = dotColors[s.status] || 'var(--good)';
+
+    if (s.status === 'running' || s.status === 'starting' || s.status === 'queued') {
+      if (!elapsedTimer) startElapsed();
+    } else {
+      if (elapsedTimer) { clearInterval(elapsedTimer); elapsedTimer = null; }
+      if (s.startedAt) {
+        const secs = Math.floor((Date.now() - s.startedAt) / 1000);
+        sumElapsed.textContent = formatTime(secs);
+      }
+    }
+  });
+
+  function startElapsed() {
+    elapsedTimer = setInterval(() => {
+      const s = pipelineStore.get();
+      if (s.startedAt) {
+        const secs = Math.floor((Date.now() - s.startedAt) / 1000);
+        sumElapsed.textContent = formatTime(secs);
+      }
+    }, 1000);
+  }
+
+  function statusLabel(st) {
+    const labels = {
+      idle: 'Pipeline Operational', queued: 'Pipeline Queued',
+      starting: 'Pipeline Starting', running: 'Pipeline Busy',
+      completed: 'Pipeline Complete', failed: 'Pipeline Error',
+    };
+    return labels[st] || 'Waiting for Pipeline Runner';
+  }
+
+  function formatTime(s) {
+    const m = String(Math.floor(s / 60)).padStart(2, '0');
+    const sec = String(s % 60).padStart(2, '0');
+    return `${m}:${sec}`;
+  }
+</script>
+
+<style is:inline>
+  .panel { margin-bottom: 1.5rem; }
+  .panel h3 { font-size: 1rem; margin: 0 0 .6rem; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: .5rem;
+  }
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    padding: .6rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    gap: .15rem;
+  }
+  .summary-label { font-size: .72rem; color: var(--ink-light); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  .summary-value {
+    font-size: .88rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .summary-value.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: .82rem; }
+  .sum-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--good);
+    flex-shrink: 0;
+  }
+</style>

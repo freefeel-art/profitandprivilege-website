@@ -763,6 +763,28 @@ Produced via the Light Pipeline: Opportunity Discovery (seed `how to start affil
 
 ---
 
+### Affiliate Marketing Mistakes Beginners
+
+| Field | Value |
+|---|---|
+| **Title** | Affiliate Marketing Mistakes Beginners Make in 2026 (And How to Fix Them) |
+| **URL** | https://olsp.profitandprivilege.com/blog/affiliate-marketing-mistakes-beginners/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | affiliate marketing mistakes beginners |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Blog spec compatible |
+| **Built** | 2026-07-06 |
+| **Last Modified** | 2026-07-06 |
+| **Internal Links Out** | `/blog/how-to-start-affiliate-marketing/`, `/reviews/olsp-academy/`, `/blog/make-money-online-for-beginners/`, `/roundups/best-affiliate-marketing-training-platforms-2026/` |
+| **Internal Links In** | None |
+| **Publication Status** | Staged (pipeline demo) |
+| **Workflow Status** | Published (committed) |
+| **Editorial Priority** | Medium |
+
+Produced via the Light Pipeline: Opportunity Discovery Agent (candidate `affiliate-marketing-mistakes-beginners`, Priority High) → ORA (Score 70/100, WRITE NOW) → Editorial Builder → Editorial QA → Publisher. Article addresses the 8 most common affiliate marketing mistakes beginners make in the 2026 landscape (AI Overviews, Google HCU, SaaS recurring commissions) with actionable fixes and OLSP Academy as the recommended training path. See `agents/opportunity-research-agent/briefs/affiliate-marketing-mistakes-beginners.md` for the full brief.
+
+---
+
 ## Pillar 5 — AI Tools
 
 Primary subject: Independent reviews of AI-powered software tools, platforms, and SaaS products. Each review evaluates features, pricing, technology, and ideal use cases based on documentation research and independent sources.

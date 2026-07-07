@@ -77,6 +77,7 @@ const modes = [
 </section>
 
 <script>
+  import { simulatePipeline } from '../../scripts/pipeline-runner.js';
   const topicInput = document.getElementById("research-topic");
   const runBtn = document.getElementById("run-btn");
   const runStatus = document.getElementById("run-status");
@@ -144,11 +145,15 @@ const modes = [
     });
   });
 
-  runBtn.addEventListener("click", () => {
+  runBtn.addEventListener("click", async () => {
     if (!validated) return;
     runStatus.innerHTML = `<span class="status-ready">Pipeline queued for: ${escapeHtml(topicInput.value.trim())}</span>`;
     runBtn.disabled = true;
-    runBtn.textContent = "Queued";
+    runBtn.textContent = "Running...";
+    await simulatePipeline(topicInput.value.trim(), selectedMode);
+    runBtn.textContent = "Run Pipeline";
+    runBtn.disabled = false;
+    runStatus.innerHTML = '<span class="status-ready">Pipeline complete</span>';
   });
 </script>
 

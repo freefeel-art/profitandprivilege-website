@@ -10,7 +10,7 @@
 
 ## How to Use This Document
 
-Copy everything inside the horizontal rule below (from "## Task" to the end of the checklist) into a new conversation with Claude. Supply all required inputs listed in the Inputs section before asking for output. Do not modify this prompt between articles — if the standard needs to change, update `docs/BLOG-MASTER-SPEC.md` first, then revise this document.
+Copy everything inside the horizontal rule below (from "## Task" to the end of the checklist) into an OpenCode run session (`opencode run "<prompt>"`). Supply all required inputs listed in the Inputs section before asking for output. Do not modify this prompt between articles — if the standard needs to change, update `docs/BLOG-MASTER-SPEC.md` first, then revise this document.
 
 ---
 

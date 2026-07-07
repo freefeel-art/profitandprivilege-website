@@ -1,0 +1,66 @@
+---
+const stateLabels = {
+  idle: { label: 'Pipeline Operational', color: 'var(--good)', bg: 'var(--good-bg)' },
+  queued: { label: 'Pipeline Queued', color: 'var(--accent)', bg: 'var(--accent-soft)' },
+  starting: { label: 'Pipeline Starting', color: 'var(--accent)', bg: 'var(--accent-soft)' },
+  running: { label: 'Pipeline Busy', color: 'var(--accent)', bg: 'var(--accent-soft)' },
+  completed: { label: 'Pipeline Complete', color: 'var(--good)', bg: 'var(--good-bg)' },
+  failed: { label: 'Pipeline Error', color: 'var(--bad)', bg: 'var(--bad-bg)' },
+};
+---
+
+<div class="health-bar">
+  <div class="health-indicator" id="pipeline-health">
+    <span class="health-dot" id="health-dot"></span>
+    <span class="health-label" id="health-label">Pipeline Operational</span>
+  </div>
+</div>
+
+<script>
+  import { pipelineStore } from '../../scripts/pipeline-runner.js';
+
+  const labels = {
+    idle: { label: 'Pipeline Operational', color: 'var(--good)' },
+    queued: { label: 'Pipeline Queued', color: 'var(--accent)' },
+    starting: { label: 'Pipeline Starting', color: 'var(--accent)' },
+    running: { label: 'Pipeline Busy', color: 'var(--accent)' },
+    completed: { label: 'Pipeline Complete', color: 'var(--good)' },
+    failed: { label: 'Pipeline Error', color: 'var(--bad)' },
+  };
+
+  const dot = document.getElementById('health-dot');
+  const label = document.getElementById('health-label');
+
+  pipelineStore.subscribe(s => {
+    const cfg = labels[s.status] || labels.idle;
+    label.textContent = cfg.label;
+    dot.style.background = cfg.color;
+  });
+</script>
+
+<style is:inline>
+  .health-bar {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .health-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--bg-soft);
+    padding: .35rem 1rem .35rem .8rem;
+    border-radius: 99px;
+    border: 1px solid var(--line);
+  }
+  .health-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--good);
+    flex-shrink: 0;
+  }
+</style>

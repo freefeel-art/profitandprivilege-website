@@ -1,6 +1,6 @@
 # Agent Working Rules
 
-General working rules for any AI agent (Claude Code or otherwise) operating in this repository. These are production standards, not suggestions — follow them without being asked.
+General working rules for any AI agent (OpenCode or otherwise) operating in this repository. These are production standards, not suggestions — follow them without being asked.
 
 ## Content Standards
 

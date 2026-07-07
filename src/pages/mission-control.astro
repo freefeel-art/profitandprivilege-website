@@ -7,6 +7,12 @@ import StatusBadge from "../components/mission-control/StatusBadge.astro";
 import MetricCard from "../components/mission-control/MetricCard.astro";
 import ActivityItem from "../components/mission-control/ActivityItem.astro";
 import RunPipeline from "../components/mission-control/RunPipeline.astro";
+import PipelineHealth from "../components/mission-control/PipelineHealth.astro";
+import PipelineConsole from "../components/mission-control/PipelineConsole.astro";
+import PipelineProgress from "../components/mission-control/PipelineProgress.astro";
+import ResultsPanel from "../components/mission-control/ResultsPanel.astro";
+import OutputLocations from "../components/mission-control/OutputLocations.astro";
+import PipelineSummary from "../components/mission-control/PipelineSummary.astro";
 import {
   getStageStatus,
   getProductionMetrics,
@@ -25,6 +31,11 @@ const links = getQuickLinks();
 
 const tocLinks = [
   { href: "#run", label: "Run Pipeline" },
+  { href: "#panel-console", label: "Live Pipeline Console" },
+  { href: "#panel-progress", label: "Pipeline Progress" },
+  { href: "#panel-summary", label: "Pipeline Summary" },
+  { href: "#panel-results", label: "Results" },
+  { href: "#panel-locations", label: "Output Locations" },
   { href: "#pipeline", label: "Pipeline Status" },
   { href: "#metrics", label: "Production Overview" },
   { href: "#activity", label: "Recent Activity" },
@@ -40,6 +51,22 @@ const tocLinks = [
   tocLinks={tocLinks}>
 
 <RunPipeline />
+
+<PipelineHealth />
+
+<div class="v2-grid">
+  <div class="v2-main">
+    <PipelineConsole />
+    <PipelineProgress />
+    <div class="v2-row">
+      <ResultsPanel />
+      <OutputLocations />
+    </div>
+  </div>
+  <div class="v2-side">
+    <PipelineSummary />
+  </div>
+</div>
 
 <section id="pipeline">
 <h2>Pipeline Status</h2>
@@ -215,4 +242,9 @@ const tocLinks = [
   .coming-soon-badge { font-size: .68rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-top: .25rem; align-self: flex-start; }
   .coming-soon { color: var(--ink-light); }
   .coming-soon-label { font-size: .68rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-left: .4rem; }
+
+  .v2-grid { display: grid; grid-template-columns: 1fr 280px; gap: 1.2rem; margin-bottom: 2rem; align-items: start; }
+  .v2-main { display: flex; flex-direction: column; gap: 1.2rem; }
+  .v2-side { display: flex; flex-direction: column; gap: 1.2rem; }
+  .v2-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 </style>

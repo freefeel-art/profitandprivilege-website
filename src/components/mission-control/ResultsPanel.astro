@@ -1,0 +1,67 @@
+---
+const placeholders = [
+  { key: 'opportunity', label: 'Selected Opportunity', icon: '' },
+  { key: 'researchBrief', label: 'Research Brief', icon: '' },
+  { key: 'article', label: 'Generated Article', icon: '' },
+  { key: 'qaReport', label: 'QA Report', icon: '' },
+  { key: 'publishReport', label: 'Publish Report', icon: '' },
+];
+---
+
+<section class="panel" id="panel-results">
+  <h3>Results</h3>
+  <div class="results-grid" id="results-grid">
+    {placeholders.map(p => (
+      <div class="result-slot" data-result-key={p.key}>
+        <span class="result-label">{p.label}</span>
+        <span class="result-value" data-result-val={p.key}>—</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { pipelineStore } from '../../scripts/pipeline-runner.js';
+
+  const vals = document.querySelectorAll('[data-result-val]');
+  const valMap = {};
+  vals.forEach(el => valMap[el.dataset.resultVal] = el);
+
+  pipelineStore.subscribe(s => {
+    for (const [key, val] of Object.entries(s.results)) {
+      const el = valMap[key];
+      if (!el) continue;
+      el.textContent = val || '—';
+      el.className = `result-value${val ? ' result-populated' : ''}`;
+    }
+  });
+</script>
+
+<style is:inline>
+  .panel { margin-bottom: 1.5rem; }
+  .panel h3 { font-size: 1rem; margin: 0 0 .6rem; }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: .6rem;
+  }
+  .result-slot {
+    display: flex;
+    flex-direction: column;
+    padding: .7rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    gap: .15rem;
+  }
+  .result-label { font-size: .78rem; color: var(--ink-light); font-weight: 600; }
+  .result-value {
+    font-size: .8rem;
+    color: var(--ink-light);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    word-break: break-all;
+    margin-top: .15rem;
+  }
+  .result-populated { color: var(--accent); }
+</style>

@@ -55,7 +55,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview` | Preview the build locally, before deploying |
 | `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
 
-For AI-agent sessions, prefer `astro dev --background` and manage it with `astro dev stop` / `astro dev status` / `astro dev logs` — see `CLAUDE.md`.
+For AI-agent sessions, prefer `astro dev --background` and manage it with `astro dev stop` / `astro dev status` / `astro dev logs` — see `AGENTS.md`.
 
 ## Repository Scope
 

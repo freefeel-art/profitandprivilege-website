@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# generated static assets (copied by scripts/prebuild.mjs)
+/public/docs/
+/public/ops/
+/public/pipeline/
+/public/reports/
