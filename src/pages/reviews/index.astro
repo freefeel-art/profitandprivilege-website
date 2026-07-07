@@ -1,0 +1,44 @@
+---
+export const prerender = true;
+
+import fs from "fs";
+import path from "path";
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const dir = path.join(process.cwd(), "src", "pages", "reviews");
+const files = fs.readdirSync(dir)
+  .filter(f => f.endsWith(".astro") && f !== "index.astro")
+  .map(f => ({
+    slug: f.replace(/\.astro$/, ""),
+    title: f.replace(/\.astro$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<OlspLayout title="Reviews — OLSP Affiliate Marketing Tools"
+  description="In-depth reviews of affiliate marketing tools and platforms"
+  canonical="https://olsp.profitandprivilege.com/reviews/"
+  tocLinks={[]}>
+
+<section>
+<h2>All Reviews</h2>
+
+<ul class="page-list">
+{ files.map(r => <li><a href={`/reviews/${r.slug}/`}>{r.title}</a></li>) }
+</ul>
+
+<p class="back"><a href="/mission-control/">← Mission Control</a></p>
+</section>
+
+<SiteFooter />
+</OlspLayout>
+
+<style is:inline>
+  .page-list { list-style: none; padding: 0; }
+  .page-list li { padding: .4rem 0; border-bottom: 1px solid var(--line); }
+  .page-list a { color: var(--accent); font-size: .95rem; }
+  .page-list a:hover { text-decoration: underline; }
+  .back { margin-top: 1.5rem; }
+  .back a { color: var(--ink-light); font-size: .88rem; }
+</style>

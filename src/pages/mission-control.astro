@@ -1,0 +1,214 @@
+---
+export const prerender = true;
+
+import OlspLayout from "../components/olsp-standard/OlspLayout.astro";
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
+import StatusBadge from "../components/mission-control/StatusBadge.astro";
+import MetricCard from "../components/mission-control/MetricCard.astro";
+import ActivityItem from "../components/mission-control/ActivityItem.astro";
+import {
+  getStageStatus,
+  getProductionMetrics,
+  getRecentActivity,
+  getReports,
+  getRepoStatus,
+  getQuickLinks,
+} from "../data/mission-control";
+
+const stages = getStageStatus();
+const metrics = getProductionMetrics();
+const activity = getRecentActivity();
+const reports = getReports();
+const repo = getRepoStatus();
+const links = getQuickLinks();
+
+const tocLinks = [
+  { href: "#pipeline", label: "Pipeline Status" },
+  { href: "#metrics", label: "Production Overview" },
+  { href: "#activity", label: "Recent Activity" },
+  { href: "#reports", label: "Production Reports" },
+  { href: "#repo", label: "Repository Status" },
+  { href: "#links", label: "Quick Access" },
+];
+---
+
+<OlspLayout title="Mission Control — OLSP Editorial Dashboard"
+  description="Editorial Operating System dashboard for OLSP.PROFITANDPRIVILEGE.COM"
+  canonical="https://olsp.profitandprivilege.com/mission-control/"
+  tocLinks={tocLinks}>
+
+<section id="pipeline">
+<h2>Pipeline Status</h2>
+
+<div class="pipeline-flow">
+{
+  stages.map((stage, i) => (
+    <div class="stage-row">
+      <div class="stage-col">
+        <div class="stage-name">{stage.name}</div>
+        <StatusBadge status={stage.status} />
+      </div>
+      {i < stages.length - 1 && <div class="stage-arrow">↓</div>}
+    </div>
+  ))
+}
+</div>
+</section>
+
+<section id="metrics">
+<h2>Production Overview</h2>
+
+<div class="metric-grid">
+  <MetricCard value={metrics.opportunities} label="Opportunities Discovered" sublabel="scored in queue" />
+  <MetricCard value={metrics.opportunityBriefs} label="Opportunity Briefs" sublabel="research completed" />
+  <MetricCard value={metrics.researchBriefs} label="Research Briefs" sublabel="heavy pipeline" />
+  <MetricCard value={metrics.articlesGenerated} label="Articles Generated" sublabel={`${metrics.reviewArticles} reviews · ${metrics.blogArticles} blog`} />
+  <MetricCard value={metrics.articlesPublished} label="Articles Published" sublabel="unique slugs" />
+  <MetricCard value={metrics.qaReports} label="QA Reports" sublabel="editorial validation" />
+  <MetricCard value={metrics.pubReports} label="Publication Reports" sublabel="publish runs" />
+</div>
+</section>
+
+<section id="activity">
+<h2>Recent Activity</h2>
+
+<div class="activity-list">
+{
+  activity.length > 0
+    ? activity.map(item => <ActivityItem hash={item.hash} subject={item.subject} relative={item.relative} />)
+    : <p class="empty">No recent activity.</p>
+}
+</div>
+</section>
+
+<section id="reports">
+<h2>Production Reports</h2>
+
+<h3>Documentation</h3>
+<ul class="report-list">
+{
+  reports.docs.map(r => (
+    <li>
+      {r.exists
+        ? <a href={r.path} target="_blank" rel="noopener noreferrer">{r.name}</a>
+        : <span class="coming-soon">{r.name}</span>
+      }
+      <span class="report-type">{r.type}</span>
+      {!r.exists && <span class="coming-soon-label">Coming Soon</span>}
+    </li>
+  ))
+}
+</ul>
+
+<h3>Editorial QA Reports</h3>
+<ul class="report-list">
+{
+  reports.qa.slice(0, 5).map(r => (
+    <li>
+      {r.exists
+        ? <a href={r.path} target="_blank" rel="noopener noreferrer">{r.name}</a>
+        : <span class="coming-soon">{r.name}</span>
+      }
+      <span class="report-type">QA Report</span>
+      {!r.exists && <span class="coming-soon-label">Coming Soon</span>}
+    </li>
+  ))
+}
+</ul>
+
+<h3>Publication Reports</h3>
+<ul class="report-list">
+{
+  reports.pub.slice(0, 5).map(r => (
+    <li>
+      {r.exists
+        ? <a href={r.path} target="_blank" rel="noopener noreferrer">{r.name}</a>
+        : <span class="coming-soon">{r.name}</span>
+      }
+      <span class="report-type">Publication Report</span>
+      {!r.exists && <span class="coming-soon-label">Coming Soon</span>}
+    </li>
+  ))
+}
+</ul>
+</section>
+
+<section id="repo">
+<h2>Repository Status</h2>
+
+<table class="kv-table">
+  <tr><td>Branch</td><td><code>{repo.branch}</code></td></tr>
+  <tr><td>Last Commit</td><td>{repo.lastCommit}</td></tr>
+  <tr><td>Total Commits</td><td>{repo.totalCommits}</td></tr>
+  <tr><td>Sprint</td><td>{repo.sprint}</td></tr>
+  <tr><td>Phase</td><td>{repo.phase}</td></tr>
+  <tr><td>Architecture Freeze</td><td><strong style="color:var(--bad)">ACTIVE</strong></td></tr>
+</table>
+</section>
+
+<section id="links">
+<h2>Quick Access</h2>
+
+<div class="link-grid">
+{
+  links.map(link => (
+    link.exists
+      ? <a href={link.path} class="quick-link" target="_blank" rel="noopener noreferrer">
+          <strong>{link.label}</strong>
+          <span>{link.desc}</span>
+        </a>
+      : <div class="quick-link disabled">
+          <strong>{link.label}</strong>
+          <span>{link.desc}</span>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+  ))
+}
+</div>
+</section>
+
+<SiteFooter />
+
+</OlspLayout>
+
+<style is:inline>
+  .pipeline-flow { max-width: 440px; }
+  .stage-row { display: flex; flex-direction: column; align-items: flex-start; }
+  .stage-col { display: flex; align-items: center; gap: 1rem; width: 100%; padding: .7rem 0; }
+  .stage-name { font-size: .95rem; font-weight: 600; color: var(--ink); min-width: 200px; }
+  .stage-arrow { color: var(--ink-light); font-size: .8rem; padding-left: .3rem; opacity: .5; margin: -.2rem 0; }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .8rem; }
+
+  .activity-list { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 1rem; background: var(--bg); }
+  .empty { color: var(--ink-light); font-size: .9rem; padding: .8rem 0; }
+
+  .report-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+  .report-list li { padding: .35rem 0; font-size: .9rem; }
+  .report-list a { color: var(--accent); }
+  .report-list a:hover { text-decoration: underline; }
+  .report-type { font-size: .72rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .5rem; border-radius: 4px; margin-left: .5rem; text-transform: uppercase; letter-spacing: .04em; }
+
+  .kv-table { width: 100%; max-width: 500px; }
+  .kv-table td { padding: .5rem .7rem; border-bottom: 1px solid var(--line); font-size: .9rem; }
+  .kv-table td:first-child { color: var(--ink-light); font-weight: 600; width: 180px; }
+  .kv-table code { font-size: .85rem; background: var(--bg-soft); padding: .1rem .4rem; border-radius: 4px; }
+
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .7rem; }
+  .quick-link {
+    display: flex; flex-direction: column;
+    padding: .9rem 1rem;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--bg);
+    text-decoration: none;
+    transition: border-color .15s;
+  }
+  .quick-link:hover { border-color: var(--accent); text-decoration: none; }
+  .quick-link strong { font-size: .88rem; color: var(--ink); margin-bottom: .15rem; }
+  .quick-link span { font-size: .78rem; color: var(--ink-light); }
+  .quick-link.disabled { opacity: .55; cursor: default; }
+  .quick-link.disabled:hover { border-color: var(--line); }
+  .coming-soon-badge { font-size: .68rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-top: .25rem; align-self: flex-start; }
+  .coming-soon { color: var(--ink-light); }
+  .coming-soon-label { font-size: .68rem; color: var(--ink-light); background: var(--bg-soft); padding: .1rem .5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-left: .4rem; }
+</style>

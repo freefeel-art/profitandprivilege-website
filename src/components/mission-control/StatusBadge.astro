@@ -1,0 +1,56 @@
+---
+export interface Props {
+  status: 'complete' | 'running' | 'waiting' | 'failed';
+}
+const { status } = Astro.props;
+
+const colors = {
+  complete: 'var(--good)',
+  running: 'var(--accent)',
+  waiting: 'var(--ink-light)',
+  failed: 'var(--bad)',
+};
+
+const bgColors = {
+  complete: 'var(--good-bg)',
+  running: 'var(--accent-soft)',
+  waiting: 'var(--bg-soft)',
+  failed: 'var(--bad-bg)',
+};
+
+const labels = {
+  complete: 'Complete',
+  running: 'Running',
+  waiting: 'Waiting',
+  failed: 'Failed',
+};
+---
+
+<span class="badge" style={{ '--dot': colors[status], '--bg': bgColors[status] }}>
+  <span class="dot"></span>
+  {labels[status]}
+</span>
+
+<style is:inline>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--dot);
+    background: var(--bg);
+    padding: 3px 10px 3px 8px;
+    border-radius: 99px;
+    border: 1px solid var(--dot);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dot);
+    flex-shrink: 0;
+  }
+</style>

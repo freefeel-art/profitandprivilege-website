@@ -1,0 +1,42 @@
+---
+export interface Props {
+  value: number | string;
+  label: string;
+  sublabel?: string;
+}
+const { value, label, sublabel } = Astro.props;
+---
+
+<div class="metric">
+  <span class="value">{value}</span>
+  <span class="label">{label}</span>
+  {sublabel && <span class="sublabel">{sublabel}</span>}
+</div>
+
+<style is:inline>
+  .metric {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .label {
+    font-size: .82rem;
+    color: var(--ink-light);
+    margin-top: .2rem;
+  }
+  .sublabel {
+    font-size: .75rem;
+    color: var(--ink-light);
+    margin-top: .15rem;
+    opacity: .7;
+  }
+</style>

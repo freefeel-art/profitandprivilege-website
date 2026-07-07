@@ -1,0 +1,47 @@
+---
+export interface Props {
+  hash: string;
+  subject: string;
+  relative: string;
+}
+const { hash, subject, relative } = Astro.props;
+---
+
+<div class="activity">
+  <code class="hash">{hash}</code>
+  <span class="subject">{subject}</span>
+  <span class="time">{relative}</span>
+</div>
+
+<style is:inline>
+  .activity {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: .88rem;
+  }
+  .activity:last-child { border-bottom: none; }
+  .hash {
+    font-size: .78rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: .1rem .4rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .subject {
+    flex: 1;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .time {
+    font-size: .78rem;
+    color: var(--ink-light);
+    flex-shrink: 0;
+  }
+</style>
