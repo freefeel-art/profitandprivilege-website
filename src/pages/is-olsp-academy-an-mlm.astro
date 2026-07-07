@@ -4,671 +4,317 @@ export const prerender = true;
 const pageTitle = "Is OLSP Academy an MLM? An Evidence-Based Investigation of Wayne Crowe's Platform";
 const pageDescription =
   "An evidence-based investigation into whether OLSP Academy meets the legal definition of an MLM, using FTC criteria, community evidence, and documented commission structure.";
+import OlspLayout from "../components/olsp-standard/OlspLayout.astro";
+import Callout from "../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Is OLSP Academy an MLM? An Evidence-Based Investigation of Wayne Crowe's Platform</title>
-<meta name="description" content="An evidence-based investigation into whether OLSP Academy meets the legal definition of an MLM, using FTC criteria, community evidence, and documented commission structure.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/is-olsp-academy-an-mlm/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/is-olsp-academy-an-mlm/"
+  tocLinks={[
+    { href: "#intro", label: "1. The Question That Won't Go Away" },
+    { href: "#accusation", label: "2. What the Accusation Is" },
+    { href: "#legal-definition", label: "3. The Legal Definition of MLM" },
+    { href: "#how-it-works", label: "4. How OLSP Academy Operates" },
+    { href: "#mlm-characteristics", label: "5. MLM Characteristics: Where OLSP Fits" },
+    { href: "#unsatisfying-answer", label: "6. Why the Answer Is Unsatisfying" },
+    { href: "#decision-framework", label: "7. Your Decision Framework" },
+    { href: "#conclusion", label: "8. Conclusion" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#sources", label: "Sources" },
+  ]}
+>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+  <section id="intro">
+    <span class="hero-tag">Evidence-Based Investigation · Updated July 2026</span>
+    <h1>Is OLSP Academy an MLM? An Evidence-Based Investigation of Wayne Crowe's Platform</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p><strong>OLSP Academy</strong> is an affiliate-marketing training and commission system created by UK-based marketer Wayne Crowe. It is built around a single tracking link — the "Mega Link" — that members share to earn commissions. But a recurring question follows the platform across every community where it is discussed: <strong>is it an MLM?</strong> Based on FTC regulatory guidance, multiple independent reviews, vendor documentation, and community discussions, our finding is that OLSP Academy shares meaningful structural characteristics with MLMs but does not meet the legal definition of an illegal pyramid scheme. Whether that distinction matters depends on your personal tolerance for MLM-adjacent business models.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
-
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
-
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
-
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. The Question That Won't Go Away</a>
-      <a href="#accusation">2. What the Accusation Is</a>
-      <a href="#legal-definition">3. The Legal Definition of MLM</a>
-      <a href="#how-it-works">4. How OLSP Academy Operates</a>
-      <a href="#mlm-characteristics">5. MLM Characteristics: Where OLSP Fits</a>
-      <a href="#unsatisfying-answer">6. Why the Answer Is Unsatisfying</a>
-      <a href="#decision-framework">7. Your Decision Framework</a>
-      <a href="#conclusion">8. Conclusion</a>
-      <a href="#faq">FAQ</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Evidence-Based Investigation · Updated July 2026</span>
-      <h1>Is OLSP Academy an MLM? An Evidence-Based Investigation of Wayne Crowe's Platform</h1>
-
-      <p><strong>OLSP Academy</strong> is an affiliate-marketing training and commission system created by UK-based marketer Wayne Crowe. It is built around a single tracking link — the "Mega Link" — that members share to earn commissions. But a recurring question follows the platform across every community where it is discussed: <strong>is it an MLM?</strong> Based on FTC regulatory guidance, multiple independent reviews, vendor documentation, and community discussions, our finding is that OLSP Academy shares meaningful structural characteristics with MLMs but does not meet the legal definition of an illegal pyramid scheme. Whether that distinction matters depends on your personal tolerance for MLM-adjacent business models.</p>
-
-      <div class="verdict-box">
-        <p><strong>The short answer:</strong> Technically no — OLSP Academy does not meet the FTC's legal definition of an illegal pyramid scheme. Practically, it shares structural characteristics with MLMs, including 2-tier commissions at higher membership levels and a business model where the primary product sold is the membership itself.</p>
-        <p><strong>Why you can trust this answer:</strong> This article evaluates OLSP against the FTC's own criteria using evidence from independent reviewers, vendor sales pages, and community discussions — not opinion or affiliation bias.</p>
-      </div>
-
-      <h3>What Is the MLM Question About OLSP?</h3>
-      <p>OLSP stands for "One Lead System Pixel" according to most sources. It is marketed as a beginner-friendly affiliate system: members get a single link to share, training on how to drive traffic, and commissions when referrals purchase add-ons inside the OLSP ecosystem. The platform has grown since approximately 2020 and its marketing materials claim over 50,000 active students — a figure from OLSP's own affiliate sales page that could not be independently verified.</p>
-
-      <p>The MLM question arises because of how members are compensated. At higher tiers, commissions flow two levels deep — meaning you earn from your direct referrals and from their referrals. Critics point to this structure as MLM-like. Defenders argue the $7 entry fee, the availability of direct sales commissions, and the lack of any purchase requirement distinguish it from MLM models. Both sides have valid points, and the evidence supports a nuanced conclusion.</p>
-
-      <h3>Investigation Methodology</h3>
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This investigation was prepared by an editorial research team that evaluates online business and affiliate marketing programs, with attention to consumer-protection norms around MLM classification and income-opportunity claims.</p>
-        <p><strong>How this investigation was built:</strong> We did not purchase, join, or personally test OLSP Academy. This article is based entirely on independent desk research: FTC regulatory guidance, OLSP's own public marketing pages, publicly available independent reviews from multiple sources, community discussions on Reddit and Trustpilot, and general consumer-protection context for affiliate marketing programs. Where a claim could not be independently verified — including most income figures and the official terms of service — we say so explicitly rather than presenting it as fact. Every factual claim in this article is labelled by source reliability.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>New to online income? Start with the $7 Megalink</h3>
-      <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+    <div class="verdict-box">
+      <p><strong>The short answer:</strong> Technically no — OLSP Academy does not meet the FTC's legal definition of an illegal pyramid scheme. Practically, it shares structural characteristics with MLMs, including 2-tier commissions at higher membership levels and a business model where the primary product sold is the membership itself.</p>
+      <p><strong>Why you can trust this answer:</strong> This article evaluates OLSP against the FTC's own criteria using evidence from independent reviewers, vendor sales pages, and community discussions — not opinion or affiliation bias.</p>
     </div>
 
-    <section id="accusation">
-      <h2>What the Accusation Is</h2>
+    <h3>What Is the MLM Question About OLSP?</h3>
+    <p>OLSP stands for "One Lead System Pixel" according to most sources. It is marketed as a beginner-friendly affiliate system: members get a single link to share, training on how to drive traffic, and commissions when referrals purchase add-ons inside the OLSP ecosystem. The platform has grown since approximately 2020 and its marketing materials claim over 50,000 active students — a figure from OLSP's own affiliate sales page that could not be independently verified.</p>
 
-      <p>The question "Is OLSP an MLM or a scam?" is the single most common question about the platform across online communities. According to independent research that analysed community discussions, this question appears with striking frequency across Reddit, Trustpilot, Quora, and independent review platforms. It is not a fringe concern — it is the dominant question anyone researching OLSP encounters.</p>
+    <p>The MLM question arises because of how members are compensated. At higher tiers, commissions flow two levels deep — meaning you earn from your direct referrals and from their referrals. Critics point to this structure as MLM-like. Defenders argue the $7 entry fee, the availability of direct sales commissions, and the lack of any purchase requirement distinguish it from MLM models. Both sides have valid points, and the evidence supports a nuanced conclusion.</p>
 
-      <p>The accusation carries significant emotional weight. Community discussions reveal four distinct fears: wasting money on a program that does not deliver, wasting months of effort with nothing to show, looking foolish by promoting a program that friends and family will recognise as MLM-adjacent, and missing out on a genuine opportunity. Trust and money are at stake simultaneously, and the emotional intensity of the question reflects that.</p>
+    <h3>Investigation Methodology</h3>
+    <div class="methodology">
+      <p><strong>Who wrote this:</strong> This investigation was prepared by an editorial research team that evaluates online business and affiliate marketing programs, with attention to consumer-protection norms around MLM classification and income-opportunity claims.</p>
+      <p><strong>How this investigation was built:</strong> We did not purchase, join, or personally test OLSP Academy. This article is based entirely on independent desk research: FTC regulatory guidance, OLSP's own public marketing pages, publicly available independent reviews from multiple sources, community discussions on Reddit and Trustpilot, and general consumer-protection context for affiliate marketing programs. Where a claim could not be independently verified — including most income figures and the official terms of service — we say so explicitly rather than presenting it as fact. Every factual claim in this article is labelled by source reliability.</p>
+    </div>
+  </section>
 
-      <div class="callout warn">
-        <strong>Important context:</strong> Community members have raised these accusations, but no legal or regulatory body has made a finding that OLSP Academy operates as an illegal pyramid scheme. The accusation exists in public discussion, not in any court or regulator ruling.
-      </div>
+  <div class="cta-card">
+    <h3>New to online income? Start with the $7 Megalink</h3>
+    <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+  </div>
 
-      <p>The difficulty for prospective members is that the available information is structurally biased. According to multiple independent reviewers, most positive reviews of OLSP come from members who earn affiliate commissions, while negative reviews may come from people who gave up or never joined. Independent review sites that cover OLSP are split roughly evenly, with the negative side specifically noting that most positive reviews come from members who are themselves promoting OLSP through their own referral links. Trustpilot shows a 4.2/5 TrustScore from 209 reviews, though OLSP does not actively solicit reviews and the volume is low relative to its claimed member base of 50,000+.</p>
+  <section id="accusation">
+    <h2>What the Accusation Is</h2>
 
-      <p>This article exists to fill the gap that no neutral, evidence-based assessment currently occupies. We provide the legal framework from the FTC, factual evidence about OLSP's structure from independent sources, and a decision framework you can use to make your own call.</p>
-    </section>
+    <p>The question "Is OLSP an MLM or a scam?" is the single most common question about the platform across online communities. According to independent research that analysed community discussions, this question appears with striking frequency across Reddit, Trustpilot, Quora, and independent review platforms. It is not a fringe concern — it is the dominant question anyone researching OLSP encounters.</p>
 
-    <section id="legal-definition">
-      <h2>The Legal Definition of MLM</h2>
+    <p>The accusation carries significant emotional weight. Community discussions reveal four distinct fears: wasting money on a program that does not deliver, wasting months of effort with nothing to show, looking foolish by promoting a program that friends and family will recognise as MLM-adjacent, and missing out on a genuine opportunity. Trust and money are at stake simultaneously, and the emotional intensity of the question reflects that.</p>
 
-      <p>Before evaluating OLSP, we need a clear, authoritative definition of what an MLM is — and more importantly, what distinguishes a legal MLM from an illegal pyramid scheme under US federal law.</p>
+    <Callout type="warn">
+      <strong>Important context:</strong> Community members have raised these accusations, but no legal or regulatory body has made a finding that OLSP Academy operates as an illegal pyramid scheme. The accusation exists in public discussion, not in any court or regulator ruling.
+    </Callout>
 
-      <h3>The FTC Framework</h3>
-      <p>The US Federal Trade Commission defines an illegal pyramid scheme as an enterprise "characterised by the payment by participants of money to the company in return for which they receive (1) the right to sell a product and (2) the right to receive in return for recruiting other participants into the program rewards which are unrelated to the sale of the product to ultimate users." This definition comes from the 1975 <em>Koscot</em> court decision and remains the canonical legal standard, according to the FTC's own Business Guidance concerning multi-level marketing.</p>
+    <p>The difficulty for prospective members is that the available information is structurally biased. According to multiple independent reviewers, most positive reviews of OLSP come from members who earn affiliate commissions, while negative reviews may come from people who gave up or never joined. Independent review sites that cover OLSP are split roughly evenly, with the negative side specifically noting that most positive reviews come from members who are themselves promoting OLSP through their own referral links. Trustpilot shows a 4.2/5 TrustScore from 209 reviews, though OLSP does not actively solicit reviews and the volume is low relative to its claimed member base of 50,000+.</p>
 
-      <p>The FTC explicitly states there is no percentage-based safe harbour. There is no rule that says "if commissions from recruitment stay below X%, it is legal." Instead, the FTC evaluates the entire business model on a case-by-case basis, examining multiple factors holistically.</p>
+    <p>This article exists to fill the gap that no neutral, evidence-based assessment currently occupies. We provide the legal framework from the FTC, factual evidence about OLSP's structure from independent sources, and a decision framework you can use to make your own call.</p>
+  </section>
 
-      <h3>Key FTC Evaluation Criteria</h3>
-      <p>According to the FTC's Business Guidance, the following factors are examined to distinguish a legal MLM from an illegal pyramid scheme:</p>
+  <section id="legal-definition">
+    <h2>The Legal Definition of MLM</h2>
 
-      <div class="table-scroll">
-      <table>
-        <tr><th>Factor</th><th>What the FTC Examines</th></tr>
-        <tr><td>Incentive structure</td><td>What behaviour does the compensation plan incentivise — recruitment or product sales?</td></tr>
-        <tr><td>Income expectations</td><td>What earnings claims does the marketing create, and are they substantiated?</td></tr>
-        <tr><td>Training and messaging</td><td>What are participants taught to prioritise — selling products or recruiting others?</td></tr>
-        <tr><td>Entry motivation</td><td>Why do people actually sign up — to earn from sales or to earn from recruitment?</td></tr>
-        <tr><td>Actual earnings</td><td>How do participants actually make money in practice, not just in theory?</td></tr>
-        <tr><td>Customer base</td><td>Who buys the products — actual external customers or the participants themselves?</td></tr>
-        <tr><td>Participant losses</td><td>Do participants experience financial losses, which the FTC notes are "inevitable due to the structure of the pyramid scheme"?</td></tr>
-      </table>
-      </div>
+    <p>Before evaluating OLSP, we need a clear, authoritative definition of what an MLM is — and more importantly, what distinguishes a legal MLM from an illegal pyramid scheme under US federal law.</p>
 
-      <div class="callout info">
-        <strong>Key takeaway:</strong> There is no single yes/no test. The FTC evaluates the whole picture. A program can have some MLM-like features without being an illegal pyramid scheme — and it can be a legal MLM while still being a poor fit for many people.
-      </div>
-    </section>
+    <h3>The FTC Framework</h3>
+    <p>The US Federal Trade Commission defines an illegal pyramid scheme as an enterprise "characterised by the payment by participants of money to the company in return for which they receive (1) the right to sell a product and (2) the right to receive in return for recruiting other participants into the program rewards which are unrelated to the sale of the product to ultimate users." This definition comes from the 1975 <em>Koscot</em> court decision and remains the canonical legal standard, according to the FTC's own Business Guidance concerning multi-level marketing.</p>
 
-    <section id="how-it-works">
-      <h2>How OLSP Academy Operates</h2>
+    <p>The FTC explicitly states there is no percentage-based safe harbour. There is no rule that says "if commissions from recruitment stay below X%, it is legal." Instead, the FTC evaluates the entire business model on a case-by-case basis, examining multiple factors holistically.</p>
 
-      <p>To evaluate OLSP against the FTC framework, we need to understand its pricing, its commission system, and what members actually promote. According to multiple independent reviewers who are current members — cross-referenced with OLSP's own vendor sales pages — the following structure is consistently documented.</p>
+    <h3>Key FTC Evaluation Criteria</h3>
+    <p>According to the FTC's Business Guidance, the following factors are examined to distinguish a legal MLM from an illegal pyramid scheme:</p>
 
-      <h3>Pricing Structure</h3>
-
-      <div class="table-scroll">
-      <table>
-        <tr><th>Tier</th><th>Cost</th><th>What It Includes</th></tr>
-        <tr><td>Free</td><td>$0</td><td>Basic training content, limited access</td></tr>
-        <tr><td>Mega Link</td><td>$7 one-time</td><td>Entry-level affiliate link system, basic training</td></tr>
-        <tr><td>Magick Link</td><td>$47 one-time</td><td>Enhanced link system with additional features</td></tr>
-        <tr><td>Live Profit Builders</td><td>$49/month or $497/year</td><td>Live training, community access, weekly coaching calls</td></tr>
-        <tr><td>Team / Community Builders</td><td>$199/month or $997–$1,997 one-time</td><td>Full system access, 2-tier commissions, done-for-you funnels, CRM, autoresponder, page builder</td></tr>
-        <tr><td>VIP</td><td>$6,500 (by application only)</td><td>Personal coaching, high-level strategy, advanced tools</td></tr>
-      </table>
-      </div>
-
-      <div class="callout warn">
-        <strong>Pricing caveat:</strong> OLSP's official terms of service and commission documentation are accessible only to logged-in members and could not be independently verified at the time of writing. The pricing and tier data above comes from multiple independent reviewers whose accounts are consistent with each other. OLSP's affiliate marketing page also claims a "$497 launch offer" which may refer to a specific promotion rather than a standard tier.
-      </div>
-
-      <h3>Commission Structure</h3>
-      <p>According to independent reviewers who are current members, OLSP Academy's commission system operates on multiple levels:</p>
-      <ul>
-        <li><strong>100% commissions</strong> on Mega Link front-end sales — affiliates keep the full $7</li>
-        <li><strong>40%–60% commission rates</strong> on most products across the catalogue</li>
-        <li><strong>2-tier (second-level) commissions</strong> at the Team Builders/Community Builders tier — affiliates earn from both their direct referrals' purchases and their referrals' referrals' purchases</li>
-        <li><strong>Up to $2,500 per high-ticket sale</strong> for the Team Builders program, according to OLSP's vendor sales page (multiple independent reviewers confirm this commission rate, though actual member earnings depend on individual execution)</li>
-      </ul>
-
-      <h3>What Members Actually Promote</h3>
-      <p>According to multiple independent reviewers, the product catalogue that members promote consists primarily of OLSP's own membership tiers and marketing tools. One independent reviewer with over four years as a Community Builders member describes the system as "worth it only if committed to selling OLSP products." Independent reviewers consistently note that OLSP training focuses on teaching members to promote OLSP products, rather than third-party affiliate offers. This is a significant structural characteristic: the primary source of commissions is recruitment into OLSP's own membership ecosystem, not sales of external products.</p>
-
-      <p>OLSP's marketing materials on its affiliate sales page claim "50,000+ Active Students," "$50M+ Student Earnings," and a "4.8/5 Trustpilot Rating." According to OLSP's marketing materials, these figures represent aggregate platform statistics. However, as of July 2026, the actual Trustpilot TrustScore is 4.2/5 from 209 reviews — a discrepancy that prospective members should be aware of.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>New to online income? Start with the $7 Megalink</h3>
-      <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Factor</th><th>What the FTC Examines</th></tr>
+      <tr><td>Incentive structure</td><td>What behaviour does the compensation plan incentivise — recruitment or product sales?</td></tr>
+      <tr><td>Income expectations</td><td>What earnings claims does the marketing create, and are they substantiated?</td></tr>
+      <tr><td>Training and messaging</td><td>What are participants taught to prioritise — selling products or recruiting others?</td></tr>
+      <tr><td>Entry motivation</td><td>Why do people actually sign up — to earn from sales or to earn from recruitment?</td></tr>
+      <tr><td>Actual earnings</td><td>How do participants actually make money in practice, not just in theory?</td></tr>
+      <tr><td>Customer base</td><td>Who buys the products — actual external customers or the participants themselves?</td></tr>
+      <tr><td>Participant losses</td><td>Do participants experience financial losses, which the FTC notes are "inevitable due to the structure of the pyramid scheme"?</td></tr>
+    </table>
     </div>
 
-    <section id="mlm-characteristics">
-      <h2>MLM Characteristics: Where OLSP Fits</h2>
+    <Callout type="info">
+      <strong>Key takeaway:</strong> There is no single yes/no test. The FTC evaluates the whole picture. A program can have some MLM-like features without being an illegal pyramid scheme — and it can be a legal MLM while still being a poor fit for many people.
+    </Callout>
+  </section>
 
-      <p>With the FTC framework established and OLSP's structure documented, we can now evaluate the platform against each MLM criterion. This is the evidence-based answer the article's title promises.</p>
+  <section id="how-it-works">
+    <h2>How OLSP Academy Operates</h2>
 
-      <div class="table-scroll">
-      <table>
-        <tr><th>MLM Characteristic</th><th>OLSP Status</th><th>Evidence Source</th></tr>
-        <tr>
-          <td>Requires recruitment to earn</td>
-          <td><strong>No.</strong> Members can earn commissions from direct sales of the Mega Link and other OLSP products without recruiting anyone. The $7 entry tier pays 100% commission on direct sales.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-        <tr>
-          <td>Multi-tier commission structure</td>
-          <td><strong>Yes, at higher tiers.</strong> The Team Builders/Community Builders level includes 2-tier commissions — you earn from your referrals and from their referrals. This is the structural characteristic that most closely matches MLM compensation models.</td>
-          <td>Multiple independent reviewers; OLSP Team Builders sales page</td>
-        </tr>
-        <tr>
-          <td>Primary product is membership itself</td>
-          <td><strong>Partially.</strong> Most commissions are earned by promoting OLSP's own membership tiers and marketing tools. Independent reviewers note the training focuses almost exclusively on selling OLSP products rather than third-party affiliate offers.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-        <tr>
-          <td>System growth depends on recruitment</td>
-          <td><strong>Partially.</strong> Because the primary product is membership in the system itself, continuous new member acquisition is required to sustain commission flows. This is a structural feature of any program where the product is the program.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-        <tr>
-          <td>Large upfront entry fee</td>
-          <td><strong>No.</strong> The minimum entry is $7, far lower than most MLM entry fees. However, independent reviewers note that the realistic investment for meaningful earning potential is $49–$199/month or more at higher tiers.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-        <tr>
-          <td>Inventory purchase requirements</td>
-          <td><strong>No.</strong> There is no requirement to purchase or hold inventory. Members promote digital products and memberships.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-        <tr>
-          <td>Earnings claims substantiated</td>
-          <td><strong>No.</strong> OLSP does not publish member earnings data. Marketing claims of "$50M+ Student Earnings" and "$3,000–$10,000+ per month" are from OLSP's own marketing materials and could not be independently verified. OLSP Academy does not publish member earnings data — the only available figures are self-reported in community discussions and could not be independently verified.</td>
-          <td>OLSP marketing materials (unverified); community discussions</td>
-        </tr>
-        <tr>
-          <td>Training emphasis</td>
-          <td><strong>MLM-adjacent.</strong> Training teaches real marketing skills — email marketing, traffic generation, list building — but applies these skills primarily to promoting OLSP's own products. The skills are transferable, but the application context is narrow.</td>
-          <td>Multiple independent reviewers</td>
-        </tr>
-      </table>
-      </div>
+    <p>To evaluate OLSP against the FTC framework, we need to understand its pricing, its commission system, and what members actually promote. According to multiple independent reviewers who are current members — cross-referenced with OLSP's own vendor sales pages — the following structure is consistently documented.</p>
 
-      <h3>The Core Finding</h3>
-      <p>Multiple independent reviewers consistently reach the same conclusion: OLSP shares structural characteristics with MLMs but is not a legal pyramid scheme. According to one independent reviewer who provides the most explicit analysis on this point, "OLSP is not technically a multi-level marketing company in the legal sense. It does not require recruitment to participate, income can be generated from direct product sales, and the product catalogue contains real digital tools and training. It does, however, share structural characteristics with MLM."</p>
+    <h3>Pricing Structure</h3>
 
-      <div class="callout warn">
-        <strong>The unsatisfying truth:</strong> OLSP is not legally a pyramid scheme, but it operates in the same structural neighbourhood as MLMs. Whether that distinction matters depends on your personal tolerance for MLM-adjacent models — which is precisely what the decision framework in the next section addresses.
-      </div>
-    </section>
-
-    <section id="unsatisfying-answer">
-      <h2>Why the Answer Is Unsatisfying</h2>
-
-      <p>If you reached this section hoping for a simple yes or no, you are not alone. Community discussions show that most people researching OLSP want a binary answer. The evidence does not support one. Here is why:</p>
-
-      <h3>1. The legal definition is situational, not mechanical</h3>
-      <p>The FTC evaluates business models holistically, not by checking boxes. Two programs with identical commission structures could receive different evaluations based on how they train members, what earnings claims they make, and who actually buys their products. There is no definitive checklist for OLSP to pass or fail — only a judgment call based on all available evidence.</p>
-
-      <h3>2. The available information is structurally biased</h3>
-      <p>Every source of information about OLSP has a built-in bias. According to independent reviewers and community analysis, positive sources have financial incentive — most write-ups rank for OLSP keywords and carry affiliate links. Negative sources may be uninformed or disgruntled. Trustpilot data shows a 4.2/5 score from 209 reviews, though the platform does not actively solicit reviews and the volume is low relative to its claimed member base of 50,000+, making the sample self-selected rather than statistically representative.</p>
-
-      <h3>3. "Legally acceptable" and "personally acceptable" are different questions</h3>
-      <p>A program can be fully legal under FTC guidelines and still be a bad fit for you personally. The question you are really asking may not be "Is OLSP legally an MLM?" but rather "Will I be comfortable building my business in a system that shares MLM characteristics?" Those are different questions, and only you can answer the second one.</p>
-    </section>
-
-    <section id="decision-framework">
-      <h2>Your Decision Framework</h2>
-
-      <p>Instead of offering a yes/no answer that the evidence cannot support, here are three questions to ask yourself. Your answers will tell you whether OLSP's structure is acceptable for your situation.</p>
-
-      <div class="callout info">
-        <strong>Are you comfortable earning primarily from promoting the platform's own membership?</strong> If your goal is to promote a wide range of third-party products as an affiliate, OLSP may feel constraining. If you are comfortable with the primary product being the membership itself — as is the case with many training platforms — the structure may not bother you.
-      </div>
-
-      <div class="callout info">
-        <strong>Does a 2-tier commission structure bother you?</strong> The Team Builders tier pays commissions two levels deep. This is the characteristic that most closely resembles MLM compensation. If earning from your referrals' referrals makes you uncomfortable, consider staying at lower tiers or choosing a different platform. If you see it as a legitimate way to earn from team building, it may not be an issue.
-      </div>
-
-      <div class="callout info">
-        <strong>Can you generate your own traffic without relying on built-in systems?</strong> OLSP provides training and tools, but according to multiple independent reviewers, members still need to generate their own traffic. Community discussions document members who joined expecting automated traffic and earned nothing. If you have traffic generation skills or are willing to learn them, the system can work. If you expect built-in traffic, you may be disappointed.
-      </div>
-
-      <p>If you answered "no" to two or more of these questions, OLSP's structure may not be a comfortable fit — regardless of whether it meets the legal definition of an MLM. If you answered "yes" to all three, the structural questions are likely not a barrier for you.</p>
-    </section>
-
-    <section id="conclusion">
-      <h2>Conclusion: Your Call</h2>
-
-      <p>OLSP Academy occupies a grey area. It is not an illegal pyramid scheme by the FTC's definition — no regulatory body has made such a finding, and the evidence does not support that conclusion. Direct sales are always possible, the $7 entry barrier is low, and real digital products are sold. It would not be accurate or fair to label OLSP a pyramid scheme.</p>
-
-      <p>But OLSP also shares meaningful structural characteristics with MLMs. The 2-tier commission system at the Team Builders level, the focus on selling the membership itself, and the system's dependence on continuous recruitment create an environment that many people experience as MLM-adjacent. Community discussions make it clear: the MLM feel is real for many members, even if the legal definition is not satisfied.</p>
-
-      <p>This article has presented the evidence, the legal framework, and the practical realities. We have not taken a side because the evidence does not support a single binary conclusion. What the evidence does support is your right to make an informed decision based on your own values, goals, and tolerance for MLM-adjacent structures.</p>
-
-      <p>If you decide OLSP is worth exploring, the $7 Mega Link entry is low-risk enough to evaluate first-hand. If you decide it is not the right fit, that is a valid conclusion — and you now have the evidence to explain why.</p>
-
-      <p>Wayne Crowe is a publicly identifiable UK-based affiliate marketer who, according to his LinkedIn profile and multiple independent reviews, has been teaching digital marketing since 2011 and founded the OLSP System around 2020. Multiple independent sources confirm he runs a live training program with consistent attendance and has built a platform with real digital products — regardless of whether one agrees with the commission structure.</p>
-
-      <div class="callout info">
-        <strong>Next steps:</strong> For the complete picture on OLSP Academy's pricing, features, and overall value, see our <a href="/reviews/olsp-academy/">full independent review</a>. For a broader comparison of how OLSP stacks up against other platforms, see our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">affiliate training platforms roundup</a>.
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>New to online income? Start with the $7 Megalink</h3>
-      <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Tier</th><th>Cost</th><th>What It Includes</th></tr>
+      <tr><td>Free</td><td>$0</td><td>Basic training content, limited access</td></tr>
+      <tr><td>Mega Link</td><td>$7 one-time</td><td>Entry-level affiliate link system, basic training</td></tr>
+      <tr><td>Magick Link</td><td>$47 one-time</td><td>Enhanced link system with additional features</td></tr>
+      <tr><td>Live Profit Builders</td><td>$49/month or $497/year</td><td>Live training, community access, weekly coaching calls</td></tr>
+      <tr><td>Team / Community Builders</td><td>$199/month or $997–$1,997 one-time</td><td>Full system access, 2-tier commissions, done-for-you funnels, CRM, autoresponder, page builder</td></tr>
+      <tr><td>VIP</td><td>$6,500 (by application only)</td><td>Personal coaching, high-level strategy, advanced tools</td></tr>
+    </table>
     </div>
 
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>Is OLSP Academy an MLM?</summary>
-        <p>OLSP Academy shares structural characteristics with MLMs — including 2-tier commissions at higher membership levels and a business model where the primary product sold is the membership itself — but it does not meet the FTC's legal definition of an illegal pyramid scheme. The distinction matters legally but may not matter practically for someone deciding whether the model is comfortable for them.</p>
-      </details>
-      <details>
-        <summary>Is OLSP Academy a pyramid scheme?</summary>
-        <p>No legal or regulatory body has found OLSP Academy to be a pyramid scheme. The FTC defines an illegal pyramid scheme by the relationship between recruitment rewards and product sales — and OLSP offers direct sales commissions from a $7 entry point without requiring recruitment. However, the 2-tier commission structure and the focus on selling the membership itself create substantial structural overlap with MLM models.</p>
-      </details>
-      <details>
-        <summary>Do I have to recruit people to make money at OLSP?</summary>
-        <p>No. According to multiple independent reviewers, members can earn commissions from direct sales of the Mega Link and other OLSP products without recruiting anyone. The 100% commission on Mega Link front-end sales is available at all levels. Higher tiers add 2-tier commissions as an additional earning method, but direct sales remain an option at every level.</p>
-      </details>
-      <details>
-        <summary>How is OLSP different from other affiliate training platforms?</summary>
-        <p>Like OLSP, platforms such as Wealthy Affiliate and Legendary Marketer offer tiered memberships and affiliate programs for their own products. The key differences are structural: Wealthy Affiliate does not offer multi-tier commissions, while Legendary Marketer has a compensation plan that some critics also compare to MLM. Each platform should be evaluated individually against FTC criteria.</p>
-      </details>
-      <details>
-        <summary>Can I trust positive reviews of OLSP Academy?</summary>
-        <p>Most positive reviews of OLSP come from members who earn affiliate commissions — including many of the independent review sites that rank for OLSP-related searches. This does not automatically make them wrong, but it means the reviewer has a financial interest in your decision. Cross-reference claims across multiple sources, look for reviewers who acknowledge their affiliate relationship, and prioritise sources that provide specific, verifiable data over general enthusiasm.</p>
-      </details>
-      <details>
-        <summary>What percentage of OLSP members actually earn money?</summary>
-        <p>OLSP Academy does not publish member earnings data. The only available earnings figures are self-reported in community discussions and could not be independently verified. Industry-wide, studies find that approximately 99% of MLM participants lose money across 350 US MLMs, but this is a general industry statistic, not specific to OLSP.</p>
-      </details>
-    </section>
+    <Callout type="warn">
+      <strong>Pricing caveat:</strong> OLSP's official terms of service and commission documentation are accessible only to logged-in members and could not be independently verified at the time of writing. The pricing and tier data above comes from multiple independent reviewers whose accounts are consistent with each other. OLSP's affiliate marketing page also claims a "$497 launch offer" which may refer to a specific promotion rather than a standard tier.
+    </Callout>
 
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
+    <h3>Commission Structure</h3>
+    <p>According to independent reviewers who are current members, OLSP Academy's commission system operates on multiple levels:</p>
+    <ul>
+      <li><strong>100% commissions</strong> on Mega Link front-end sales — affiliates keep the full $7</li>
+      <li><strong>40%–60% commission rates</strong> on most products across the catalogue</li>
+      <li><strong>2-tier (second-level) commissions</strong> at the Team Builders/Community Builders tier — affiliates earn from both their direct referrals' purchases and their referrals' referrals' purchases</li>
+      <li><strong>Up to $2,500 per high-ticket sale</strong> for the Team Builders program, according to OLSP's vendor sales page (multiple independent reviewers confirm this commission rate, though actual member earnings depend on individual execution)</li>
+    </ul>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://www.ftc.gov/business-guidance/resources/business-guidance-concerning-multi-level-marketing" target="_blank" rel="noopener noreferrer">FTC Business Guidance — MLM</a></li>
-        <li><a href="https://consumer.ftc.gov/articles/multi-level-marketing-businesses-and-pyramid-schemes" target="_blank" rel="noopener noreferrer">FTC Consumer Guidance — MLM</a></li>
-        <li><a href="https://affiliatemarketinglessons.com/olsp-academy-review" target="_blank" rel="noopener noreferrer">OLSP Review — affiliatesmarketinglessons.com</a></li>
-        <li><a href="https://marksinsights.com/olsp-academy" target="_blank" rel="noopener noreferrer">OLSP Review — marksinsights.com</a></li>
-        <li><a href="https://daily-ads.com/blog/who-is-wayne-crowe-background-philosophy-and-business-model-explained" target="_blank" rel="noopener noreferrer">Wayne Crowe Profile — daily-ads.com</a></li>
-        <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener noreferrer">OLSP Trustpilot Profile</a></li>
-        <li><a href="https://uk.linkedin.com/in/wayne-crowe-17427741" target="_blank" rel="noopener noreferrer">Wayne Crowe — LinkedIn</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/Multi-level_marketing" target="_blank" rel="noopener noreferrer">Wikipedia — Multi-level Marketing</a></li>
-        <li><a href="https://theolspacademy.com" target="_blank" rel="noopener noreferrer sponsored">OLSP Academy — Official Sales Page</a></li>
-        <li><a href="https://megafunnels.olspsystem.com/team_builders_standalone-8509" target="_blank" rel="noopener noreferrer sponsored">OLSP Team Builders — Vendor Page</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Information in this article reflects publicly available sources as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. Some sources cited may have affiliate relationships with OLSP Academy. OLSP's official terms of service and commission documentation are behind a login wall and could not be independently verified; pricing and commission data comes from multiple independent third-party reviewers whose accounts are consistent with each other.</p>
-    </section>
+    <h3>What Members Actually Promote</h3>
+    <p>According to multiple independent reviewers, the product catalogue that members promote consists primarily of OLSP's own membership tiers and marketing tools. One independent reviewer with over four years as a Community Builders member describes the system as "worth it only if committed to selling OLSP products." Independent reviewers consistently note that OLSP training focuses on teaching members to promote OLSP products, rather than third-party affiliate offers. This is a significant structural characteristic: the primary source of commissions is recruitment into OLSP's own membership ecosystem, not sales of external products.</p>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <p>OLSP's marketing materials on its affiliate sales page claim "50,000+ Active Students," "$50M+ Student Earnings," and a "4.8/5 Trustpilot Rating." According to OLSP's marketing materials, these figures represent aggregate platform statistics. However, as of July 2026, the actual Trustpilot TrustScore is 4.2/5 from 209 reviews — a discrepancy that prospective members should be aware of.</p>
+  </section>
 
-  </main>
-</div>
+  <div class="cta-card">
+    <h3>New to online income? Start with the $7 Megalink</h3>
+    <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+  </div>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+  <section id="mlm-characteristics">
+    <h2>MLM Characteristics: Where OLSP Fits</h2>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <p>With the FTC framework established and OLSP's structure documented, we can now evaluate the platform against each MLM criterion. This is the evidence-based answer the article's title promises.</p>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <div class="table-scroll">
+    <table>
+      <tr><th>MLM Characteristic</th><th>OLSP Status</th><th>Evidence Source</th></tr>
+      <tr>
+        <td>Requires recruitment to earn</td>
+        <td><strong>No.</strong> Members can earn commissions from direct sales of the Mega Link and other OLSP products without recruiting anyone. The $7 entry tier pays 100% commission on direct sales.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+      <tr>
+        <td>Multi-tier commission structure</td>
+        <td><strong>Yes, at higher tiers.</strong> The Team Builders/Community Builders level includes 2-tier commissions — you earn from your referrals and from their referrals. This is the structural characteristic that most closely matches MLM compensation models.</td>
+        <td>Multiple independent reviewers; OLSP Team Builders sales page</td>
+      </tr>
+      <tr>
+        <td>Primary product is membership itself</td>
+        <td><strong>Partially.</strong> Most commissions are earned by promoting OLSP's own membership tiers and marketing tools. Independent reviewers note the training focuses almost exclusively on selling OLSP products rather than third-party affiliate offers.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+      <tr>
+        <td>System growth depends on recruitment</td>
+        <td><strong>Partially.</strong> Because the primary product is membership in the system itself, continuous new member acquisition is required to sustain commission flows. This is a structural feature of any program where the product is the program.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+      <tr>
+        <td>Large upfront entry fee</td>
+        <td><strong>No.</strong> The minimum entry is $7, far lower than most MLM entry fees. However, independent reviewers note that the realistic investment for meaningful earning potential is $49–$199/month or more at higher tiers.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+      <tr>
+        <td>Inventory purchase requirements</td>
+        <td><strong>No.</strong> There is no requirement to purchase or hold inventory. Members promote digital products and memberships.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+      <tr>
+        <td>Earnings claims substantiated</td>
+        <td><strong>No.</strong> OLSP does not publish member earnings data. Marketing claims of "$50M+ Student Earnings" and "$3,000–$10,000+ per month" are from OLSP's own marketing materials and could not be independently verified. OLSP Academy does not publish member earnings data — the only available figures are self-reported in community discussions and could not be independently verified.</td>
+        <td>OLSP marketing materials (unverified); community discussions</td>
+      </tr>
+      <tr>
+        <td>Training emphasis</td>
+        <td><strong>MLM-adjacent.</strong> Training teaches real marketing skills — email marketing, traffic generation, list building — but applies these skills primarily to promoting OLSP's own products. The skills are transferable, but the application context is narrow.</td>
+        <td>Multiple independent reviewers</td>
+      </tr>
+    </table>
+    </div>
 
-  sections.forEach(s => observer.observe(s));
+    <h3>The Core Finding</h3>
+    <p>Multiple independent reviewers consistently reach the same conclusion: OLSP shares structural characteristics with MLMs but is not a legal pyramid scheme. According to one independent reviewer who provides the most explicit analysis on this point, "OLSP is not technically a multi-level marketing company in the legal sense. It does not require recruitment to participate, income can be generated from direct product sales, and the product catalogue contains real digital tools and training. It does, however, share structural characteristics with MLM."</p>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
+    <Callout type="warn">
+      <strong>The unsatisfying truth:</strong> OLSP is not legally a pyramid scheme, but it operates in the same structural neighbourhood as MLMs. Whether that distinction matters depends on your personal tolerance for MLM-adjacent models — which is precisely what the decision framework in the next section addresses.
+    </Callout>
+  </section>
 
-</body>
-</html>
+  <section id="unsatisfying-answer">
+    <h2>Why the Answer Is Unsatisfying</h2>
+
+    <p>If you reached this section hoping for a simple yes or no, you are not alone. Community discussions show that most people researching OLSP want a binary answer. The evidence does not support one. Here is why:</p>
+
+    <h3>1. The legal definition is situational, not mechanical</h3>
+    <p>The FTC evaluates business models holistically, not by checking boxes. Two programs with identical commission structures could receive different evaluations based on how they train members, what earnings claims they make, and who actually buys their products. There is no definitive checklist for OLSP to pass or fail — only a judgment call based on all available evidence.</p>
+
+    <h3>2. The available information is structurally biased</h3>
+    <p>Every source of information about OLSP has a built-in bias. According to independent reviewers and community analysis, positive sources have financial incentive — most write-ups rank for OLSP keywords and carry affiliate links. Negative sources may be uninformed or disgruntled. Trustpilot data shows a 4.2/5 score from 209 reviews, though the platform does not actively solicit reviews and the volume is low relative to its claimed member base of 50,000+, making the sample self-selected rather than statistically representative.</p>
+
+    <h3>3. "Legally acceptable" and "personally acceptable" are different questions</h3>
+    <p>A program can be fully legal under FTC guidelines and still be a bad fit for you personally. The question you are really asking may not be "Is OLSP legally an MLM?" but rather "Will I be comfortable building my business in a system that shares MLM characteristics?" Those are different questions, and only you can answer the second one.</p>
+  </section>
+
+  <section id="decision-framework">
+    <h2>Your Decision Framework</h2>
+
+    <p>Instead of offering a yes/no answer that the evidence cannot support, here are three questions to ask yourself. Your answers will tell you whether OLSP's structure is acceptable for your situation.</p>
+
+    <Callout type="info">
+      <strong>Are you comfortable earning primarily from promoting the platform's own membership?</strong> If your goal is to promote a wide range of third-party products as an affiliate, OLSP may feel constraining. If you are comfortable with the primary product being the membership itself — as is the case with many training platforms — the structure may not bother you.
+    </Callout>
+
+    <Callout type="info">
+      <strong>Does a 2-tier commission structure bother you?</strong> The Team Builders tier pays commissions two levels deep. This is the characteristic that most closely resembles MLM compensation. If earning from your referrals' referrals makes you uncomfortable, consider staying at lower tiers or choosing a different platform. If you see it as a legitimate way to earn from team building, it may not be an issue.
+    </Callout>
+
+    <Callout type="info">
+      <strong>Can you generate your own traffic without relying on built-in systems?</strong> OLSP provides training and tools, but according to multiple independent reviewers, members still need to generate their own traffic. Community discussions document members who joined expecting automated traffic and earned nothing. If you have traffic generation skills or are willing to learn them, the system can work. If you expect built-in traffic, you may be disappointed.
+    </Callout>
+
+    <p>If you answered "no" to two or more of these questions, OLSP's structure may not be a comfortable fit — regardless of whether it meets the legal definition of an MLM. If you answered "yes" to all three, the structural questions are likely not a barrier for you.</p>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion: Your Call</h2>
+
+    <p>OLSP Academy occupies a grey area. It is not an illegal pyramid scheme by the FTC's definition — no regulatory body has made such a finding, and the evidence does not support that conclusion. Direct sales are always possible, the $7 entry barrier is low, and real digital products are sold. It would not be accurate or fair to label OLSP a pyramid scheme.</p>
+
+    <p>But OLSP also shares meaningful structural characteristics with MLMs. The 2-tier commission system at the Team Builders level, the focus on selling the membership itself, and the system's dependence on continuous recruitment create an environment that many people experience as MLM-adjacent. Community discussions make it clear: the MLM feel is real for many members, even if the legal definition is not satisfied.</p>
+
+    <p>This article has presented the evidence, the legal framework, and the practical realities. We have not taken a side because the evidence does not support a single binary conclusion. What the evidence does support is your right to make an informed decision based on your own values, goals, and tolerance for MLM-adjacent structures.</p>
+
+    <p>If you decide OLSP is worth exploring, the $7 Mega Link entry is low-risk enough to evaluate first-hand. If you decide it is not the right fit, that is a valid conclusion — and you now have the evidence to explain why.</p>
+
+    <p>Wayne Crowe is a publicly identifiable UK-based affiliate marketer who, according to his LinkedIn profile and multiple independent reviews, has been teaching digital marketing since 2011 and founded the OLSP System around 2020. Multiple independent sources confirm he runs a live training program with consistent attendance and has built a platform with real digital products — regardless of whether one agrees with the commission structure.</p>
+
+    <Callout type="info">
+      <strong>Next steps:</strong> For the complete picture on OLSP Academy's pricing, features, and overall value, see our <a href="/reviews/olsp-academy/">full independent review</a>. For a broader comparison of how OLSP stacks up against other platforms, see our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">affiliate training platforms roundup</a>.
+    </Callout>
+  </section>
+
+  <div class="cta-card">
+    <h3>New to online income? Start with the $7 Megalink</h3>
+    <p>If you're curious about earning online but don't know where to begin, the <strong>$7 OLSP Megalink</strong> is one of the most <strong>beginner-friendly</strong> ways to get started. It walks you through <strong>affiliate marketing step by step</strong>—from generating traffic and leads to earning commissions—so you understand how the business works <strong>before investing in expensive tools or ads</strong>. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while earning. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join through this link, we may earn a commission at no extra cost to you.</p>
+  </div>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="Is OLSP Academy an MLM?">
+      <p>OLSP Academy shares structural characteristics with MLMs — including 2-tier commissions at higher membership levels and a business model where the primary product sold is the membership itself — but it does not meet the FTC's legal definition of an illegal pyramid scheme. The distinction matters legally but may not matter practically for someone deciding whether the model is comfortable for them.</p>
+    </FaqItem>
+    <FaqItem question="Is OLSP Academy a pyramid scheme?">
+      <p>No legal or regulatory body has found OLSP Academy to be a pyramid scheme. The FTC defines an illegal pyramid scheme by the relationship between recruitment rewards and product sales — and OLSP offers direct sales commissions from a $7 entry point without requiring recruitment. However, the 2-tier commission structure and the focus on selling the membership itself create substantial structural overlap with MLM models.</p>
+    </FaqItem>
+    <FaqItem question="Do I have to recruit people to make money at OLSP?">
+      <p>No. According to multiple independent reviewers, members can earn commissions from direct sales of the Mega Link and other OLSP products without recruiting anyone. The 100% commission on Mega Link front-end sales is available at all levels. Higher tiers add 2-tier commissions as an additional earning method, but direct sales remain an option at every level.</p>
+    </FaqItem>
+    <FaqItem question="How is OLSP different from other affiliate training platforms?">
+      <p>Like OLSP, platforms such as Wealthy Affiliate and Legendary Marketer offer tiered memberships and affiliate programs for their own products. The key differences are structural: Wealthy Affiliate does not offer multi-tier commissions, while Legendary Marketer has a compensation plan that some critics also compare to MLM. Each platform should be evaluated individually against FTC criteria.</p>
+    </FaqItem>
+    <FaqItem question="Can I trust positive reviews of OLSP Academy?">
+      <p>Most positive reviews of OLSP come from members who earn affiliate commissions — including many of the independent review sites that rank for OLSP-related searches. This does not automatically make them wrong, but it means the reviewer has a financial interest in your decision. Cross-reference claims across multiple sources, look for reviewers who acknowledge their affiliate relationship, and prioritise sources that provide specific, verifiable data over general enthusiasm.</p>
+    </FaqItem>
+    <FaqItem question="What percentage of OLSP members actually earn money?">
+      <p>OLSP Academy does not publish member earnings data. The only available earnings figures are self-reported in community discussions and could not be independently verified. Industry-wide, studies find that approximately 99% of MLM participants lose money across 350 US MLMs, but this is a general industry statistic, not specific to OLSP.</p>
+    </FaqItem>
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <ul class="pill-list">
+      <li><a href="https://www.ftc.gov/business-guidance/resources/business-guidance-concerning-multi-level-marketing" target="_blank" rel="noopener noreferrer">FTC Business Guidance — MLM</a></li>
+      <li><a href="https://consumer.ftc.gov/articles/multi-level-marketing-businesses-and-pyramid-schemes" target="_blank" rel="noopener noreferrer">FTC Consumer Guidance — MLM</a></li>
+      <li><a href="https://affiliatemarketinglessons.com/olsp-academy-review" target="_blank" rel="noopener noreferrer">OLSP Review — affiliatesmarketinglessons.com</a></li>
+      <li><a href="https://marksinsights.com/olsp-academy" target="_blank" rel="noopener noreferrer">OLSP Review — marksinsights.com</a></li>
+      <li><a href="https://daily-ads.com/blog/who-is-wayne-crowe-background-philosophy-and-business-model-explained" target="_blank" rel="noopener noreferrer">Wayne Crowe Profile — daily-ads.com</a></li>
+      <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener noreferrer">OLSP Trustpilot Profile</a></li>
+      <li><a href="https://uk.linkedin.com/in/wayne-crowe-17427741" target="_blank" rel="noopener noreferrer">Wayne Crowe — LinkedIn</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Multi-level_marketing" target="_blank" rel="noopener noreferrer">Wikipedia — Multi-level Marketing</a></li>
+      <li><a href="https://theolspacademy.com" target="_blank" rel="noopener noreferrer sponsored">OLSP Academy — Official Sales Page</a></li>
+      <li><a href="https://megafunnels.olspsystem.com/team_builders_standalone-8509" target="_blank" rel="noopener noreferrer sponsored">OLSP Team Builders — Vendor Page</a></li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--ink-light);">Information in this article reflects publicly available sources as of July 2026 and may no longer be current — verify directly with the official source before making any purchase decision. Some sources cited may have affiliate relationships with OLSP Academy. OLSP's official terms of service and commission documentation are behind a login wall and could not be independently verified; pricing and commission data comes from multiple independent third-party reviewers whose accounts are consistent with each other.</p>
+  </section>
+
+  <SiteFooter />
+
+</OlspLayout>

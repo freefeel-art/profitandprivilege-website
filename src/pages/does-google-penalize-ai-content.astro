@@ -4,864 +4,509 @@ export const prerender = true;
 const pageTitle = "Does Google Actually Penalize AI Content? (What the Data Shows)";
 const pageDescription =
   "Does Google penalize AI-generated content? Evidence from Google's official policy, Ahrefs' 600K-page study, Digital Applied's 16-month experiment, and real deindexing cases.";
+import OlspLayout from "../components/olsp-standard/OlspLayout.astro";
+import Callout from "../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Does Google Actually Penalize AI Content? (What the Data Shows)</title>
-<meta name="description" content="Does Google penalize AI-generated content? Evidence from Google's official policy, Ahrefs' 600K-page study, Digital Applied's 16-month experiment, and real deindexing cases.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/does-google-penalize-ai-content/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
-
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
-
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
-
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
-
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
-
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
-
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-<button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-
-<aside class="toc-wrap" id="tocWrap">
-  <h4>On This Page</h4>
-  <nav id="tocNav">
-    <a href="#myth">1. Where the Myth Comes From</a>
-    <a href="#what-google-says">2. What Google Actually Says</a>
-    <a href="#data">3. What the Data Shows</a>
-    <a href="#horror-stories">4. The Horror Stories</a>
-    <a href="#real-question">5. The Real Question</a>
-    <a href="#framework">6. Practical Framework</a>
-    <a href="#faq">FAQ</a>
-    <a href="#sources">Sources</a>
-  </nav>
-</aside>
-
-<main>
-
-<section id="intro">
-  <span class="hero-tag">Evidence-Based Investigation · Updated July 2026</span>
-  <h1>Does Google Actually Penalize AI Content? (What the Data Shows)</h1>
-  <p>A single sentence from John Mueller in 2022 sent the SEO world into a panic. Three years later, the myth persists — but the data tells a different story.</p>
-
-  <div class="verdict-box">
-    <p><strong>The short answer:</strong> No — Google does not systematically penalise AI-generated content. The evidence across 650,000+ pages and 16 months of testing shows that Google evaluates content quality, not production method. AI-assisted content performs within 4% of human-written content.</p>
-    <p><strong>Why you can trust this answer:</strong> This article evaluates Google's official policy documentation, three large-scale independent studies (Ahrefs, Digital Applied, Semrush), and two verifiable deindexing case studies — not opinion or anecdote. Every factual claim is labelled by source reliability.</p>
-  </div>
-
-  <div class="methodology">
-    <p><strong>How this article was built:</strong> This investigation follows a structured editorial pipeline. Google's official policy documentation (developers.google.com) was consulted as the primary source. Public statements from Google Search Liaison Danny Sullivan were compiled from multiple news sources. Three large-scale independent studies (Ahrefs, Semrush, Digital Applied) provided ranking data across more than 650,000 pages. Two verifiable deindexing case studies were analysed alongside Google's scaled content abuse policy. Every factual claim in this article is labelled by source reliability.</p>
-    <p><strong>Source reliability labels:</strong> (Verified) = independently verifiable from primary sources (Google's own documentation). (Third-Party Reported) = from independent research or news reporting. (Self-Reported) = from first-person case studies that could not be independently verified. (Vendor Claim) = from a source with commercial interest. (Unverified) = could not be confirmed at time of writing.</p>
-    <p><strong>Important note on terminology:</strong> This article distinguishes between three categories of AI content throughout. <strong>Pure AI</strong>: content generated by AI with no substantive human editing. <strong>AI-assisted</strong>: content drafted by AI but substantially rewritten, supplemented with original data, or attributed to named experts. <strong>Human-written</strong>: content written without AI drafting. The research shows dramatically different outcomes for each category (Verified).</p>
-  </div>
-</section>
-
-<div class="cta-card">
-  <h3>New to AI content writing? Start with our complete guide</h3>
-  <p>If you're exploring how to use AI for SEO without risking rankings, our <strong>complete step-by-step guide</strong> walks you through everything — from Google's actual policy to the editorial workflow proven to keep your content competitive. <strong>Learn what the data actually shows</strong> and apply it to your own content strategy starting today.</p>
-  <a href="/reviews/olsp-academy/" class="cta-btn">Read the Complete Guide →</a>
-</div>
-
-<section id="myth">
-  <h2>Where the Myth Comes From</h2>
-
-  <p>Every discussion about Google and AI content traces back to a single source: an off-the-cuff remark John Mueller made during a Google Search Central office-hours hangout in April 2022 (Third-Party Reported).</p>
-
-  <p>Asked about AI-based content creation tools, Mueller responded: "For us, these would essentially still fall into the category of automatically generated content, which is something that we've had in the Webmaster Guidelines since almost the beginning... My suspicion is that maybe the quality of content is a little bit better than the really old school tools. But for us, it's still automatically generated content. And that means for us, it's still against the Webmaster Guidelines. So we would consider that to be spam" (Third-Party Reported).</p>
-
-  <p>This was not a formal policy announcement — it was an unscripted answer during a community Q&A. But it spread fast. Mueller had also said "nope" on Reddit in March 2022 when asked if AI content writers were good for blog posts (Third-Party Reported). The SEO community had its soundbite.</p>
-
-  <div class="callout info">
-    <strong>Key context:</strong> Mueller's 2022 statement represented Google's position <em>at the time</em>. It was superseded by Google's official policy reversal in February 2023 — 10 months later. The statement has not been formally recanted, but it no longer reflects Google's policy (Verified). Presenting Mueller as "wrong" misses the point: Google's policy evolved.
-  </div>
-
-  <h3>Why the Myth Persists</h3>
-
-  <p>The penalty myth survives because of a cognitive bias called the <strong>availability heuristic</strong>: dramatic deindexation stories spread faster and stick harder than Google's policy updates. A single story about a site losing all its traffic generates more community discussion than any blog post from Google Search Central. The research confirms that community discussions about AI content penalties are dominated by anecdotal reports, not policy documentation (Verified).</p>
-
-  <p>This dynamic creates an information environment where the fear of penalties is widespread among content creators, even as SEO professionals — who track policy changes more closely — hold different beliefs. Semrush's 2025 survey of 224 SEO professionals found that 72% believe AI-assisted content performs as well or better than human-written content in search rankings (Third-Party Reported).</p>
-
-  <div class="callout warn">
-    <strong>The perception gap:</strong> Among general content creators, fear of AI penalties is high. Among SEO professionals who track Google's policy, 72% believe AI content ranks. This gap is itself a finding: the myth lives in the content creator community, not among those who follow Google's official communications closely (Third-Party Reported).
-  </div>
-
-  <div class="callout warn">
-    <strong>Knowledge gap:</strong> Google has not publicly confirmed its ability to detect AI-generated content. The company's stated position is that it evaluates content quality, not content origin. The safest interpretation: assume Google can detect low-quality patterns regardless of origin.
-  </div>
-</section>
-
-<section id="what-google-says">
-  <h2>What Google Actually Says</h2>
-
-  <p>Google's current policy is unambiguous. The "What Google said vs What people heard" gap is at the heart of this debate.</p>
-
-  <h3>The Official Policy (February 2023)</h3>
-
-  <p>On February 8, 2023, Danny Sullivan and Chris Nelson published a blog post that definitively reset Google's position: "Appropriate use of AI or automation is not against our guidelines. This means that it is not used to generate content primarily to manipulate search rankings, which is against our spam policies" (Verified).</p>
-
-  <p>This policy has remained consistent through 2026. Google's current guidance page reiterates: generative AI can be useful for research and structuring content, but mass-generating pages without adding value violates the scaled content abuse policy (Verified). The policy explicitly covers both AI and human content equally — it is method-agnostic (Verified).</p>
-
-  <h3>Danny Sullivan's Statements: A Consistent Record (2022–2025)</h3>
-
-  <p>Google Search Liaison Danny Sullivan has made at least five public statements between 2022 and 2025, each reinforcing the same message: quality is the variable, not production method (Third-Party Reported).</p>
-
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>What Google Said</th>
-          <th>What People Heard</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>April 2022</td>
-          <td>"AI content is automatically generated content and we would consider that to be spam" (John Mueller, office-hours Q&A). This was an informal remark during a community session, not a formal policy announcement.</td>
-          <td>"Google penalises AI content permanently and universally." The statement was treated as definitive policy, even though it was extemporaneous and predated the formal policy clarification.</td>
-        </tr>
-        <tr>
-          <td>November 2022</td>
-          <td>"We haven't said AI content is bad. We've said, pretty clearly, content written primarily for search engines rather than humans is the issue." (Third-Party Reported)</td>
-          <td>"Google is walking back its position." In reality, Sullivan was clarifying that the policy had always been about intent and quality, not tools.</td>
-        </tr>
-        <tr>
-          <td>January 2023</td>
-          <td>"Content created primarily for search engines, however it is done, is against our guidance. If content is helpful &amp; created for people first, that's not an issue." (Third-Party Reported)</td>
-          <td>"Google is still figuring out its AI policy." In reality, Sullivan was repeating a consistent principle that predated the AI debate entirely.</td>
-        </tr>
-        <tr>
-          <td>February 2023</td>
-          <td>Official blog post: "Appropriate use of AI or automation is not against our guidelines." Co-authored by Sullivan and Chris Nelson. (Verified)</td>
-          <td>"Google now allows AI content." In reality, Google clarified that AI is allowed but low-quality content at scale — regardless of how it is produced — remains a violation.</td>
-        </tr>
-        <tr>
-          <td>April 2025</td>
-          <td>Google does not care how you do scaled content — "AI, automation, or human beings. It's going to be an issue." (Third-Party Reported)</td>
-          <td>"Google is cracking down on AI content again." In reality, Sullivan was reiterating that scaled content abuse is the violation, not AI itself.</td>
-        </tr>
-        <tr>
-          <td>August–December 2025</td>
-          <td>"Good SEO is good GEO" (WordCamp US keynote). "SEO for AI is still SEO — write for humans, not for ranking systems" (Search Off the Record podcast). (Third-Party Reported)</td>
-          <td>"Google is changing the rules." In reality, Sullivan was repeating the same fundamentals he has stated since 2022.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>The Helpful Content System</h3>
-
-  <p>Google's Helpful Content System launched in August 2022 and was incorporated into core ranking systems in March 2024 (Verified). It is no longer a standalone classifier — its principles now influence all rankings. The system evaluates content based on people-first vs search-engine-first criteria, not whether it was written by AI or humans (Verified).</p>
-
-  <p>Google stated that its March 2024 update reduced low-quality content in search results by 45% (Vendor Claim). This figure is Google's own estimate and has not been independently verified, though multiple third-party analyses confirm significant ranking volatility from this update.</p>
-
-  <div class="callout info">
-    <strong>The core takeaway:</strong> Google's policy has been consistent since February 2023: AI content is not penalised for being AI. What is penalised is low-quality content produced at scale, regardless of whether it was written by a human, an AI, or both. The "What Google said" column above represents the company's actual position. The "What people heard" column explains why the myth persists.
-  </div>
-
-  <div class="callout warn">
-    <strong>Knowledge gap:</strong> No independent audit exists of Google's "45% reduction in low-quality content" claim. The figure is Google's own estimate and has not been independently verified, though multiple third-party analyses (Originality.ai, Sistrix, Semrush) confirm significant ranking impacts from the March 2024 update.
-  </div>
-</section>
-
-<section id="data">
-  <h2>What the Data Shows</h2>
-
-  <p>Google's policy tells us what the company <em>says</em> it does. The data tells us what actually happens in search results. Three large-scale studies provide the evidence.</p>
-
-  <h3>1. Ahrefs: 600,000 Pages, Zero Correlation</h3>
-
-  <p>Ahrefs analysed 100,000 random keywords, extracting the top-20 URLs and classifying content via their AI detector. The result across 600,000 pages: the correlation between AI content percentage and ranking position was <strong>0.011</strong> — effectively zero (Third-Party Reported).</p>
-
-  <p>Other findings from the July 2025 study (Third-Party Reported):</p>
-
-  <ul>
-    <li><strong>86.5%</strong> of top-20 ranking pages contain some AI-generated content</li>
-    <li><strong>4.6%</strong> of top-ranking pages are "pure AI" (no substantive human editing)</li>
-    <li><strong>13.5%</strong> of top-20 pages are pure human content</li>
-    <li><strong>81.9%</strong> are mixed (some AI, some human input)</li>
-    <li>The group with <strong>minimal AI use (0–30%)</strong> correlated very slightly with higher rankings</li>
-  </ul>
-
-  <p>This is the strongest evidence that Google does not systematically penalise AI content. If Google had an AI-specific penalty, the correlation would not be 0.011 — and 86.5% of top-ranking pages would not contain any AI-generated content.</p>
-
-  <h3>2. Digital Applied: The 16-Month Experiment (4,200 Articles)</h3>
-
-  <p>Digital Applied tracked 4,200 matched articles across 140 domains from November 2024 to February 2026. The study compared three groups: pure AI, AI-assisted (30%+ rewriting with original data and expert attribution), and human-written (Third-Party Reported).</p>
-
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Pure AI vs Human-Written</th>
-          <th>AI-Assisted vs Human-Written</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Average ranking position</td>
-          <td>23% lower</td>
-          <td>Within 4%</td>
-        </tr>
-        <tr>
-          <td>Gap at 3 months</td>
-          <td>14% lower</td>
-          <td>~2%</td>
-        </tr>
-        <tr>
-          <td>Gap at 16 months</td>
-          <td>31% lower</td>
-          <td>~6%</td>
-        </tr>
-        <tr>
-          <td>Editorial backlinks (avg per article)</td>
-          <td>1.6 (39% of human baseline)</td>
-          <td>3.9 (92% of human baseline)</td>
-        </tr>
-        <tr>
-          <td>Deindexation rate</td>
-          <td>3.2x higher</td>
-          <td>Similar to human-written</td>
-        </tr>
-        <tr>
-          <td>March 2026 Core Update impact</td>
-          <td>−18% visibility</td>
-          <td>+11% visibility (human-written also gained)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>The key insight: <strong>AI-assisted content nearly closed the gap</strong> with human-written content. The variable was editorial quality — not AI authorship. Pure AI content underperformed, but the underperformance was driven by lack of original data, missing expert attribution, and fewer backlinks, not by an AI penalty (Third-Party Reported).</p>
-
-  <div class="callout warn">
-    <strong>Caveat:</strong> The Digital Applied study was conducted by a digital marketing agency, which introduces potential commercial bias. AI detectors used for classification have inherent accuracy limitations. The 30% rewriting threshold for "AI-assisted" is an arbitrary boundary. Despite these limitations, the directional finding — that editorial quality matters more than production method — is consistent with Google's stated policy (Verified).
-  </div>
-
-  <h3>3. Semrush: The Position-1 Reality</h3>
-
-  <p>Semrush's April 2026 study analysed 42,000 blog pages across 20,000 keywords, classifying content via GPTZero. The finding: position 1 is <strong>80.5% likely to be human-written</strong> vs 10% AI-generated (Third-Party Reported).</p>
-
-  <p>This sounds like bad news for AI content — until you look at the full picture. By position 5–10, AI and human content are competitive. The 8:1 ratio at position 1 reflects that the absolute top result requires differentiation that purely synthetic content rarely achieves, not that Google penalises AI content (Third-Party Reported).</p>
-
-  <p>Among the 224 SEO professionals surveyed by Semrush, 72% believe AI content ranks as well as human-written (up from 64% in 2024) (Third-Party Reported). This perception aligns with the Ahrefs data at a broad level but underestimates the gap at the very top of SERPs.</p>
-
-  <div class="callout info">
-    <strong>Reconciling the studies:</strong> Ahrefs shows no systematic penalty (AI content reaches top positions). Digital Applied shows pure AI underperforms over time due to quality and backlink gaps. Semrush shows top positions favour human content. These findings are complementary: AI content can rank, but reaching #1 requires differentiation that most pure AI content lacks. The key distinction is between <em>can AI content rank</em> (yes, supported by Ahrefs) and <em>does pure AI content perform as well as human content</em> (no, supported by Digital Applied and Semrush) (Third-Party Reported).
-  </div>
-
-  <div class="callout warn">
-    <strong>Note on methodology:</strong> The Ahrefs, Semrush, and Digital Applied studies each used different AI detection tools (Ahrefs' own detector, GPTZero, and third-party classifiers). Different detectors may classify the same content differently. The directional finding — that quality and editorial input matter more than production method — is consistent across all three studies.
-  </div>
-</section>
-
-<section id="horror-stories">
-  <h2>The Horror Stories: Deindexing Cases Analysed</h2>
-
-  <p>"I used AI and my site got deindexed." These stories circulate constantly in SEO communities. When we trace verifiable claims to documented cases, a clear pattern emerges — and it is not an AI penalty.</p>
-
-  <h3>What the Scaled Content Abuse Policy Actually Says</h3>
-
-  <p>The scaled content abuse policy (added March 2024) targets "many pages generated for the primary purpose of manipulating search rankings and not helping users, no matter how it's created" (Verified). The policy is explicitly method-agnostic. Danny Sullivan clarified in April 2025: Google does not care whether scaled content is produced by "AI, automation, or human beings. It's going to be an issue" (Third-Party Reported).</p>
-
-  <h3>Documented Case Analysis</h3>
-
-  <p>Two verifiable case studies provide detailed, documentable evidence of what actually happened:</p>
-
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Case</th>
-          <th>What Happened</th>
-          <th>Root Cause</th>
-          <th>What Really Caused It</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Tailride</strong> (Self-reported, documented with Search Console data)</td>
-          <td>Site went from 300 to 22,000 pages in months using AI-generated content. Traffic dropped to zero overnight (February 28). Went from 20,000+ indexed pages to 1 (homepage) over six months. No manual action — algorithmic.</td>
-          <td>"AI content" (per community discussion)</td>
-          <td>The founder's own analysis: "Was this because of AI? Not directly. The issue wasn't AI, it was scale + quality + trust." Content was "technically original but not very valuable." Keywords were unrelated to their product. Recovery: proper keyword research, 1 high-quality page per day, human write/edit each article, AI only for outlining/assistance (Self-Reported).</td>
-        </tr>
-        <tr>
-          <td><strong>SEOHack "AI Expert Site"</strong> (Self-reported, documented with analytics data)</td>
-          <td>Built AI-generated "expert site" fabricating authority. March 2024 Core Update: lost 71% of organic visibility in 10 days. By April 19: traffic down 89% from peak. Manual Action issued: "Pure Spam / Scaled Content Abuse." Complete deindexation.</td>
-          <td>"AI content" (per community discussion)</td>
-          <td>The site faked expertise via AI without any verifiable author credentials. It received a manual action for "Pure Spam / Scaled Content Abuse" — not for using AI, but for fabricating authority and mass-producing thin content. Recovery requires 3–6 months minimum (Self-Reported).</td>
-        </tr>
-        <tr>
-          <td><strong>Community pattern (multiple sites)</strong> (Third-party reported, aggregated data)</td>
-          <td>Sites publishing 500+ AI pages lost 50–80% traffic. Working threshold identified in community data: 10–15 articles per week (human-reviewable pace).</td>
-          <td>"AI content" (per community discussion)</td>
-          <td>Mass production at scale, thin templated content, no substantive human editing, keywords unrelated to site authority. The consistent pattern across all documented cases is scale + low quality, not AI (Self-Reported).</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="callout info">
-    <strong>The pattern is consistent:</strong> In every documented case where full details are available, the deindexed sites shared common characteristics — mass production at scale, thin templated content, no substantive human editing, and keywords unrelated to the site's authority. AI was the production method, but scaled content abuse was the violation. The scaled content abuse policy targets the behaviour (flooding the index with low-quality pages), not the tool (Verified).
-  </div>
-
-  <p>Unverifiable "my friend's site got deindexed just for using AI" stories circulate widely in SEO communities. These claims lack Search Console data, manual action notices, or specific URLs. In every documented case where these details are available, additional quality and scale factors were present alongside AI use (Verified).</p>
-
-  <p>Originality.ai tracked 1,446+ sites receiving manual actions from a sample of 79,000. While 100% of deindexed sites in their analysis showed signs of AI use, 51 of 175 sites (~30%) were pure AI (95%+), and all demonstrated thin content at scale (Self-Reported).</p>
-
-  <div class="callout warn">
-    <strong>Important:</strong> Pure AI content has a 3.2x higher deindexation rate than human-written content according to Digital Applied's 16-month study (Third-Party Reported). But the mechanism is not "AI detection → penalty." The mechanism is "low-quality content at scale → violation of scaled content abuse policy → deindexation." AI makes it faster and cheaper to produce low-quality content at scale, which is why pure AI sites are disproportionately affected. The solution is not to avoid AI — it is to avoid low-quality content at scale.
-  </div>
-</section>
-
-<section id="real-question">
-  <h2>The Real Question: E-E-A-T and Content Quality</h2>
-
-  <p>If Google does not penalise AI content for being AI, why does pure AI content underperform? The answer lies in Google's E-E-A-T framework and the structural signals that differentiate high-quality content.</p>
-
-  <h3>What E-E-A-T Actually Is</h3>
-
-  <p>Google's Search Quality Rater Guidelines define E-E-A-T as Experience, Expertise, Authoritativeness, and Trustworthiness. Trust is "the most important member at the centre of the E-E-A-T family" (Verified). The framework is used by human quality raters to evaluate search results, and it informs the training data for Google's ranking systems.</p>
-
-  <p>Evaluation is based on three factors (Verified):</p>
-  <ol>
-    <li>What the website and content creators say about themselves</li>
-    <li>What others say about them</li>
-    <li>What is visible in the main content (MC)</li>
-  </ol>
-
-  <h3>Where AI Content Lacks E-E-A-T Signals</h3>
-
-  <p>Digital Applied's study measured E-E-A-T proxy signals across the three content categories. The differences are stark (Third-Party Reported):</p>
-
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>E-E-A-T Signal</th>
-          <th>Pure AI Content</th>
-          <th>Human-Written Content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Bylined author with verifiable credentials</td>
-          <td>11% (89% lack this)</td>
-          <td>71%</td>
-        </tr>
-        <tr>
-          <td>Original research or data cited</td>
-          <td>4% (96% absent)</td>
-          <td>38%</td>
-        </tr>
-        <tr>
-          <td>Expert quotes included</td>
-          <td>6% (94% absent)</td>
-          <td>52%</td>
-        </tr>
-        <tr>
-          <td>First-person narrative or genuine experience</td>
-          <td>2% (98% absent)</td>
-          <td>67%</td>
-        </tr>
-        <tr>
-          <td>Opinionated or unique perspective</td>
-          <td>Minimal</td>
-          <td>67% contained one</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>These signals are not directly ranking factors — Google explicitly states E-E-A-T is not a specific ranking signal (Verified). But they correlate strongly with content that earns backlinks, citations, and user engagement, which are ranking factors. The backlink gap is particularly stark: AI-only content acquired 61% fewer editorial backlinks (avg 1.6 vs 4.2 per article) (Third-Party Reported).</p>
-
-  <div class="callout info">
-    <strong>The mechanism:</strong> The backlink gap compounds over time. Fewer editorial backlinks → lower rankings → lower visibility → fewer content discoverers → even fewer backlinks. This explains the temporal effect Digital Applied documented: the gap between pure AI and human-written content widened from 14% at 3 months to 31% at 16 months. AI-assisted content (with original data and expert attribution) nearly matched human-written backlink acquisition (3.9 vs 4.2) because publishers link to original data, unique perspective, and compelling narrative — not synthesis-only content (Third-Party Reported).
-  </div>
-
-  <h3>Google's "Who, How, Why" Framework</h3>
-
-  <p>Google's official documentation recommends creators answer three questions (Verified):</p>
-  <ul>
-    <li><strong>Who</strong> created the content? (authorship, credentials, experience)</li>
-    <li><strong>How</strong> was it created? (disclosing AI use is recommended)</li>
-    <li><strong>Why</strong> was it created? (to help people, not to manipulate rankings)</li>
-  </ul>
-
-  <p>The "Who" and "How" questions are where AI-only content most frequently falls short — not because it uses AI, but because it fails to establish the experience, expertise, and trustworthiness that Google's systems look for through proxy signals (Verified).</p>
-</section>
-
-<div class="cta-card">
-  <h3>Want to use AI for SEO without the guesswork?</h3>
-  <p>Our <strong>complete guide to AI-assisted content</strong> shows you exactly how top SEOs blend AI efficiency with human editorial quality. <strong>Data-backed strategies</strong> for backlink acquisition, E-E-A-T signals, and content differentiation — all in one place.</p>
-  <a href="/reviews/olsp-academy/" class="cta-btn">Get the Full Guide →</a>
-</div>
-
-<section id="framework">
-  <h2>Practical Framework: What Works in 2026</h2>
-
-  <p>The evidence supports a clear framework for using AI in content creation without risking ranking performance. Here is what the data shows works.</p>
-
-  <div class="callout info">
-    <h3 style="color:var(--ink);font-size:1.15rem;margin-top:0;margin-bottom:.8rem;">The Evidence-Based AI Content Framework</h3>
-    <ol style="margin-bottom:0;">
-      <li>
-        <strong>Avoid pure AI at scale.</strong> Pure AI content (no substantive human editing) has a 23% average ranking disadvantage, 61% fewer backlinks, and 3.2x higher deindexation risk (Third-Party Reported). Digital Applied's study found the performance gap widens over time — 14% at 3 months, 31% at 16 months. Pure AI content also dropped 18% in visibility during the March 2026 Core Update while human-written content gained 11% (Third-Party Reported).
-      </li>
-      <li>
-        <strong>Use AI assistance with human editorial input.</strong> AI-assisted content (30%+ rewriting, original data, expert attribution) performed within 4% of human-written content in the 16-month study (Third-Party Reported). Backlink acquisition was nearly identical (3.9 vs 4.2). This is the "sweet spot" the data supports — AI for drafting and research, humans for original data, expert input, and substantive rewriting.
-      </li>
-      <li>
-        <strong>Always add E-E-A-T signals.</strong> Include bylined authors with verifiable credentials. Cite original research or data. Include expert quotes. Add first-person perspective or genuine experience where relevant. These signals drive the backlinks and engagement that close the ranking gap (Verified).
-      </li>
-      <li>
-        <strong>Never produce at a scale you cannot review.</strong> The community data suggests a working threshold of 10–15 articles per week — a pace that allows for substantive human review and editing (Self-Reported). The Tailride case (22,000 AI pages to zero traffic) demonstrates the risk of unchecked scaling. The scaled content abuse policy targets mass low-quality pages regardless of production method (Verified).
-      </li>
-      <li>
-        <strong>Disclose AI use.</strong> Google's guidance recommends disclosing AI use to readers (Verified). This is not a ranking requirement — it is a trust signal. Transparency about production methods aligns with E-E-A-T principles.
-      </li>
-      <li>
-        <strong>Focus on differentiation, not volume.</strong> The Semrush data shows that reaching position 1 is 8x more likely with human-written content (Third-Party Reported). The most competitive positions require unique data, original research, genuine expertise, or a distinct perspective — inputs that AI cannot generate on its own. Use AI to handle the research and structuring, but invest human effort where differentiation matters most.
-      </li>
-    </ol>
-  </div>
-
-  <div class="callout info">
-    <strong>The Bottom Line</strong>
-    <p style="margin-bottom:0;margin-top:.4rem;">Google does not penalise AI content for being AI. The data across 650,000+ pages shows zero correlation between AI usage and ranking position (Ahrefs), and AI-assisted content performs within 4% of human-written (Digital Applied). The sites that got deindexed were penalised for scaled content abuse — mass-producing low-quality content, whether by AI, automation, or human writers. The solution is not to avoid AI. It is to avoid producing low-quality content at any scale, using any tool.</p>
-  </div>
-
-  <div class="callout warn">
-    <strong>Knowledge gap:</strong> Google has not publicly confirmed its specific AI detection capabilities. The company's stated position is that it evaluates content quality, not content origin. Quality Rater Guidelines (updated 2025) direct raters to flag AI-generated content as potentially lowest quality, but this feeds training signals, not direct ranking penalties. The safest approach: assume Google can detect low-quality patterns regardless of origin, and focus on producing genuinely helpful content with transparent authorship.
-  </div>
-</section>
-
-<section id="faq">
-  <h2>Frequently Asked Questions</h2>
-
-  <details>
-    <summary>Does Google penalise AI-generated content in 2026?</summary>
-    <p>No. Google's official policy (February 2023, reaffirmed through 2026) states that "appropriate use of AI or automation is not against our guidelines." Large-scale data confirms this: Ahrefs' study of 600,000 pages found a 0.011 correlation between AI content percentage and ranking position — effectively zero. What Google does penalise is low-quality content produced at scale, regardless of production method (Verified).</p>
-  </details>
-
-  <details>
-    <summary>Why did John Mueller say AI content is spam in 2022?</summary>
-    <p>Mueller's April 2022 statement — that AI content would be considered "automatically generated content" and therefore spam — represented Google's position at the time. It was made during an informal office-hours Q&A, not as a formal policy announcement. Google's official policy was updated in February 2023 to explicitly state that appropriate use of AI is not against guidelines. Mueller's statement has not been formally recanted but has been effectively superseded by Google's official policy (Third-Party Reported).</p>
-  </details>
-
-  <details>
-    <summary>Can AI content rank on Google's first page?</summary>
-    <p>Yes. Ahrefs found that 86.5% of top-20 ranking pages contain some AI-generated content, and 4.6% are "pure AI" with no substantive human editing. However, reaching position 1 is significantly harder — Semrush found that position 1 is 80.5% likely to be human-written vs 10% AI-generated. AI content can rank, but the very top positions favour content with original data, expert attribution, and unique perspective (Third-Party Reported).</p>
-  </details>
-
-  <details>
-    <summary>My friend's site got deindexed after using AI. Why?</summary>
-    <p>In every documented case where full details are available (e.g., Tailride, SEOHack), the deindexed sites shared common patterns: mass production at scale, thin or templated content, no substantive human editing, and keywords unrelated to the site's existing authority. These sites were penalised for scaled content abuse — a policy that explicitly covers "AI, automation, or human beings" equally. AI was the production method, but the violation was flooding the index with low-quality pages (Verified).</p>
-  </details>
-
-  <details>
-    <summary>What is the difference between pure AI content and AI-assisted content?</summary>
-    <p>Pure AI content is generated by AI with no substantive human editing. AI-assisted content is drafted by AI but substantially rewritten (30%+), supplemented with original data, and attributed to named experts. The performance difference is dramatic: pure AI content ranks 23% lower than human-written on average, while AI-assisted content performs within 4%. The backlink gap is even larger: pure AI earns 61% fewer editorial backlinks, while AI-assisted nearly matches human-written (Third-Party Reported).</p>
-  </details>
-
-  <details>
-    <summary>Can Google detect AI-generated content?</summary>
-    <p>Google has not publicly confirmed or denied specific AI detection capabilities. The company's official position is that it evaluates content quality and helpfulness, not content origin. John Mueller stated in 2022 that he "can't claim" Google detects AI content. Google's Quality Rater Guidelines (updated 2025) direct raters to flag AI-generated content as potentially lowest quality, but this feeds training signals rather than direct ranking penalties. The safest interpretation: assume Google can detect low-quality patterns regardless of origin (Verified).</p>
-  </details>
-</section>
-
-<section id="author">
-  <h2>About the Author</h2>
-  <div class="author-box">
-    <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-    <div class="author-box-info">
-      <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-      <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-      <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-      <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
+<OlspLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/does-google-penalize-ai-content/"
+  tocLinks={[
+    { href: "#myth", label: "1. Where the Myth Comes From" },
+    { href: "#what-google-says", label: "2. What Google Actually Says" },
+    { href: "#data", label: "3. What the Data Shows" },
+    { href: "#horror-stories", label: "4. The Horror Stories" },
+    { href: "#real-question", label: "5. The Real Question" },
+    { href: "#framework", label: "6. Practical Framework" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#sources", label: "Sources" },
+  ]}
+>
+
+  <section id="intro">
+    <span class="hero-tag">Evidence-Based Investigation · Updated July 2026</span>
+    <h1>Does Google Actually Penalize AI Content? (What the Data Shows)</h1>
+    <p>A single sentence from John Mueller in 2022 sent the SEO world into a panic. Three years later, the myth persists — but the data tells a different story.</p>
+
+    <div class="verdict-box">
+      <p><strong>The short answer:</strong> No — Google does not systematically penalise AI-generated content. The evidence across 650,000+ pages and 16 months of testing shows that Google evaluates content quality, not production method. AI-assisted content performs within 4% of human-written content.</p>
+      <p><strong>Why you can trust this answer:</strong> This article evaluates Google's official policy documentation, three large-scale independent studies (Ahrefs, Digital Applied, Semrush), and two verifiable deindexing case studies — not opinion or anecdote. Every factual claim is labelled by source reliability.</p>
     </div>
+
+    <div class="methodology">
+      <p><strong>How this article was built:</strong> This investigation follows a structured editorial pipeline. Google's official policy documentation (developers.google.com) was consulted as the primary source. Public statements from Google Search Liaison Danny Sullivan were compiled from multiple news sources. Three large-scale independent studies (Ahrefs, Semrush, Digital Applied) provided ranking data across more than 650,000 pages. Two verifiable deindexing case studies were analysed alongside Google's scaled content abuse policy. Every factual claim in this article is labelled by source reliability.</p>
+      <p><strong>Source reliability labels:</strong> (Verified) = independently verifiable from primary sources (Google's own documentation). (Third-Party Reported) = from independent research or news reporting. (Self-Reported) = from first-person case studies that could not be independently verified. (Vendor Claim) = from a source with commercial interest. (Unverified) = could not be confirmed at time of writing.</p>
+      <p><strong>Important note on terminology:</strong> This article distinguishes between three categories of AI content throughout. <strong>Pure AI</strong>: content generated by AI with no substantive human editing. <strong>AI-assisted</strong>: content drafted by AI but substantially rewritten, supplemented with original data, or attributed to named experts. <strong>Human-written</strong>: content written without AI drafting. The research shows dramatically different outcomes for each category (Verified).</p>
+    </div>
+  </section>
+
+  <div class="cta-card">
+    <h3>New to AI content writing? Start with our complete guide</h3>
+    <p>If you're exploring how to use AI for SEO without risking rankings, our <strong>complete step-by-step guide</strong> walks you through everything — from Google's actual policy to the editorial workflow proven to keep your content competitive. <strong>Learn what the data actually shows</strong> and apply it to your own content strategy starting today.</p>
+    <a href="/reviews/olsp-academy/" class="cta-btn">Read the Complete Guide →</a>
   </div>
-</section>
 
-<div class="cta-card">
-  <h3>Ready to start publishing AI-assisted content that ranks?</h3>
-  <p>Get the <strong>complete strategy guide</strong> covering Google's actual policy, editorial workflows that earn backlinks, and the E-E-A-T signals that differentiate your content. <strong>No fluff, just data-backed tactics.</strong></p>
-  <a href="/reviews/olsp-academy/" class="cta-btn">Read the Complete Guide →</a>
-</div>
+  <section id="myth">
+    <h2>Where the Myth Comes From</h2>
 
-<section id="sources">
-  <h2>Sources &amp; References</h2>
+    <p>Every discussion about Google and AI content traces back to a single source: an off-the-cuff remark John Mueller made during a Google Search Central office-hours hangout in April 2022 (Third-Party Reported).</p>
 
-  <p>This article was built from the following sources. Each is labelled by type and reliability.</p>
+    <p>Asked about AI-based content creation tools, Mueller responded: "For us, these would essentially still fall into the category of automatically generated content, which is something that we've had in the Webmaster Guidelines since almost the beginning... My suspicion is that maybe the quality of content is a little bit better than the really old school tools. But for us, it's still automatically generated content. And that means for us, it's still against the Webmaster Guidelines. So we would consider that to be spam" (Third-Party Reported).</p>
 
-  <h3>Official Google Documentation</h3>
-  <ul class="pill-list">
-    <li><a href="https://developers.google.com/search/blog/2023/02/google-search-and-ai-content" target="_blank" rel="noopener noreferrer">Google Search's Guidance about AI-Generated Content</a></li>
-    <li><a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" target="_blank" rel="noopener noreferrer">Using Generative AI Content on Your Website</a></li>
-    <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer">Creating Helpful, Reliable, People-First Content</a></li>
-    <li><a href="https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf" target="_blank" rel="noopener noreferrer">Search Quality Rater Guidelines (September 11, 2025)</a></li>
-  </ul>
+    <p>This was not a formal policy announcement — it was an unscripted answer during a community Q&A. But it spread fast. Mueller had also said "nope" on Reddit in March 2022 when asked if AI content writers were good for blog posts (Third-Party Reported). The SEO community had its soundbite.</p>
 
-  <h3>Google Search Liaison Statements</h3>
-  <ul class="pill-list">
-    <li><a href="https://searchengineland.com/google-danny-sullivan-seo-for-ai-is-still-seo-466368" target="_blank" rel="noopener noreferrer">Danny Sullivan: SEO for AI Is Still SEO — Search Engine Land</a></li>
-    <li><a href="https://iloveseo.com/seo/google-says-ai-generated-content-is-against-its-webmaster-guidelines/" target="_blank" rel="noopener noreferrer">John Mueller's 2022 Statement — iLoveSEO</a></li>
-  </ul>
+    <Callout type="info">
+      <strong>Key context:</strong> Mueller's 2022 statement represented Google's position <em>at the time</em>. It was superseded by Google's official policy reversal in February 2023 — 10 months later. The statement has not been formally recanted, but it no longer reflects Google's policy (Verified). Presenting Mueller as "wrong" misses the point: Google's policy evolved.
+    </Callout>
 
-  <h3>Independent Research Studies</h3>
-  <ul class="pill-list">
-    <li><a href="https://ahrefs.com/blog/ai-generated-content-does-not-hurt-your-google-rankings/" target="_blank" rel="noopener noreferrer">AI-Generated Content Does Not Hurt Your Google Rankings (600,000 Pages Analyzed) — Ahrefs</a></li>
-    <li><a href="https://www.digitalapplied.com/blog/ai-generated-vs-human-content-16-month-google-ranking-study" target="_blank" rel="noopener noreferrer">AI vs Human Content: 16-Month Google Ranking Study (4,200 Articles) — Digital Applied</a></li>
-    <li><a href="https://www.semrush.com/blog/does-ai-content-rank-in-search-data-study/" target="_blank" rel="noopener noreferrer">Does AI Content Rank Well in Search? — Semrush</a></li>
-  </ul>
+    <h3>Why the Myth Persists</h3>
 
-  <h3>Case Studies (Deindexing)</h3>
-  <ul class="pill-list">
-    <li><a href="https://tailride.so/blog/google-penalty-22000-ai-pages" target="_blank" rel="noopener noreferrer">We Got Hit by a Google Penalty After Publishing 22,000 AI Pages — Tailride</a></li>
-    <li><a href="https://www.seohack.info/i-built-an-ai-expert-site/" target="_blank" rel="noopener noreferrer">I Built an AI Expert Site (and Google Dismantled It) — SEOHack</a></li>
-  </ul>
+    <p>The penalty myth survives because of a cognitive bias called the <strong>availability heuristic</strong>: dramatic deindexation stories spread faster and stick harder than Google's policy updates. A single story about a site losing all its traffic generates more community discussion than any blog post from Google Search Central. The research confirms that community discussions about AI content penalties are dominated by anecdotal reports, not policy documentation (Verified).</p>
 
-  <h3>Policy Documentation</h3>
-  <ul class="pill-list">
-    <li><a href="https://developers.google.com/search/blog/2024/03/core-update-spam-policies" target="_blank" rel="noopener noreferrer">March 2024 Core Update and New Spam Policies — Google</a></li>
-  </ul>
+    <p>This dynamic creates an information environment where the fear of penalties is widespread among content creators, even as SEO professionals — who track policy changes more closely — hold different beliefs. Semrush's 2025 survey of 224 SEO professionals found that 72% believe AI-assisted content performs as well or better than human-written content in search rankings (Third-Party Reported).</p>
 
-  <p style="font-size:.82rem;color:var(--ink-light);">
-    <strong>Disclaimer:</strong> This article is an independent, evidence-based investigation produced through a structured editorial pipeline that separates research from writing. The information presented is current as of July 2026. Google's AI policy documentation is actively evolving — verify current policy at developers.google.com/search/blog before relying on any specific guidance. The large-scale studies cited (Ahrefs, Semrush, Digital Applied) were conducted by organisations with commercial interests in SEO tools and services. Their methodologies and findings are presented in good faith, but each study used different AI detection tools with different accuracy characteristics. This article does not constitute legal advice. Consult a qualified SEO professional for specific questions about your content strategy.
-  </p>
-</section>
+    <Callout type="warn">
+      <strong>The perception gap:</strong> Among general content creators, fear of AI penalties is high. Among SEO professionals who track Google's policy, 72% believe AI content ranks. This gap is itself a finding: the myth lives in the content creator community, not among those who follow Google's official communications closely (Third-Party Reported).
+    </Callout>
 
-<footer class="site-footer">
-  <span>Profit and Privilege — independent research since 2025</span>
-  <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-</footer>
+    <Callout type="warn">
+      <strong>Knowledge gap:</strong> Google has not publicly confirmed its ability to detect AI-generated content. The company's stated position is that it evaluates content quality, not content origin. The safest interpretation: assume Google can detect low-quality patterns regardless of origin.
+    </Callout>
+  </section>
 
-</main>
-</div>
+  <section id="what-google-says">
+    <h2>What Google Actually Says</h2>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+    <p>Google's current policy is unambiguous. The "What Google said vs What people heard" gap is at the heart of this debate.</p>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>The Official Policy (February 2023)</h3>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+    <p>On February 8, 2023, Danny Sullivan and Chris Nelson published a blog post that definitively reset Google's position: "Appropriate use of AI or automation is not against our guidelines. This means that it is not used to generate content primarily to manipulate search rankings, which is against our spam policies" (Verified).</p>
 
-  sections.forEach(s => observer.observe(s));
+    <p>This policy has remained consistent through 2026. Google's current guidance page reiterates: generative AI can be useful for research and structuring content, but mass-generating pages without adding value violates the scaled content abuse policy (Verified). The policy explicitly covers both AI and human content equally — it is method-agnostic (Verified).</p>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
+    <h3>Danny Sullivan's Statements: A Consistent Record (2022–2025)</h3>
 
-</body>
-</html>
+    <p>Google Search Liaison Danny Sullivan has made at least five public statements between 2022 and 2025, each reinforcing the same message: quality is the variable, not production method (Third-Party Reported).</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>What Google Said</th>
+            <th>What People Heard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>April 2022</td>
+            <td>"AI content is automatically generated content and we would consider that to be spam" (John Mueller, office-hours Q&A). This was an informal remark during a community session, not a formal policy announcement.</td>
+            <td>"Google penalises AI content permanently and universally." The statement was treated as definitive policy, even though it was extemporaneous and predated the formal policy clarification.</td>
+          </tr>
+          <tr>
+            <td>November 2022</td>
+            <td>"We haven't said AI content is bad. We've said, pretty clearly, content written primarily for search engines rather than humans is the issue." (Third-Party Reported)</td>
+            <td>"Google is walking back its position." In reality, Sullivan was clarifying that the policy had always been about intent and quality, not tools.</td>
+          </tr>
+          <tr>
+            <td>January 2023</td>
+            <td>"Content created primarily for search engines, however it is done, is against our guidance. If content is helpful &amp; created for people first, that's not an issue." (Third-Party Reported)</td>
+            <td>"Google is still figuring out its AI policy." In reality, Sullivan was repeating a consistent principle that predated the AI debate entirely.</td>
+          </tr>
+          <tr>
+            <td>February 2023</td>
+            <td>Official blog post: "Appropriate use of AI or automation is not against our guidelines." Co-authored by Sullivan and Chris Nelson. (Verified)</td>
+            <td>"Google now allows AI content." In reality, Google clarified that AI is allowed but low-quality content at scale — regardless of how it is produced — remains a violation.</td>
+          </tr>
+          <tr>
+            <td>April 2025</td>
+            <td>Google does not care how you do scaled content — "AI, automation, or human beings. It's going to be an issue." (Third-Party Reported)</td>
+            <td>"Google is cracking down on AI content again." In reality, Sullivan was reiterating that scaled content abuse is the violation, not AI itself.</td>
+          </tr>
+          <tr>
+            <td>August–December 2025</td>
+            <td>"Good SEO is good GEO" (WordCamp US keynote). "SEO for AI is still SEO — write for humans, not for ranking systems" (Search Off the Record podcast). (Third-Party Reported)</td>
+            <td>"Google is changing the rules." In reality, Sullivan was repeating the same fundamentals he has stated since 2022.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The Helpful Content System</h3>
+
+    <p>Google's Helpful Content System launched in August 2022 and was incorporated into core ranking systems in March 2024 (Verified). It is no longer a standalone classifier — its principles now influence all rankings. The system evaluates content based on people-first vs search-engine-first criteria, not whether it was written by AI or humans (Verified).</p>
+
+    <p>Google stated that its March 2024 update reduced low-quality content in search results by 45% (Vendor Claim). This figure is Google's own estimate and has not been independently verified, though multiple third-party analyses confirm significant ranking volatility from this update.</p>
+
+    <Callout type="info">
+      <strong>The core takeaway:</strong> Google's policy has been consistent since February 2023: AI content is not penalised for being AI. What is penalised is low-quality content produced at scale, regardless of whether it was written by a human, an AI, or both. The "What Google said" column above represents the company's actual position. The "What people heard" column explains why the myth persists.
+    </Callout>
+
+    <Callout type="warn">
+      <strong>Knowledge gap:</strong> No independent audit exists of Google's "45% reduction in low-quality content" claim. The figure is Google's own estimate and has not been independently verified, though multiple third-party analyses (Originality.ai, Sistrix, Semrush) confirm significant ranking impacts from the March 2024 update.
+    </Callout>
+  </section>
+
+  <section id="data">
+    <h2>What the Data Shows</h2>
+
+    <p>Google's policy tells us what the company <em>says</em> it does. The data tells us what actually happens in search results. Three large-scale studies provide the evidence.</p>
+
+    <h3>1. Ahrefs: 600,000 Pages, Zero Correlation</h3>
+
+    <p>Ahrefs analysed 100,000 random keywords, extracting the top-20 URLs and classifying content via their AI detector. The result across 600,000 pages: the correlation between AI content percentage and ranking position was <strong>0.011</strong> — effectively zero (Third-Party Reported).</p>
+
+    <p>Other findings from the July 2025 study (Third-Party Reported):</p>
+
+    <ul>
+      <li><strong>86.5%</strong> of top-20 ranking pages contain some AI-generated content</li>
+      <li><strong>4.6%</strong> of top-ranking pages are "pure AI" (no substantive human editing)</li>
+      <li><strong>13.5%</strong> of top-20 pages are pure human content</li>
+      <li><strong>81.9%</strong> are mixed (some AI, some human input)</li>
+      <li>The group with <strong>minimal AI use (0–30%)</strong> correlated very slightly with higher rankings</li>
+    </ul>
+
+    <p>This is the strongest evidence that Google does not systematically penalise AI content. If Google had an AI-specific penalty, the correlation would not be 0.011 — and 86.5% of top-ranking pages would not contain any AI-generated content.</p>
+
+    <h3>2. Digital Applied: The 16-Month Experiment (4,200 Articles)</h3>
+
+    <p>Digital Applied tracked 4,200 matched articles across 140 domains from November 2024 to February 2026. The study compared three groups: pure AI, AI-assisted (30%+ rewriting with original data and expert attribution), and human-written (Third-Party Reported).</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Pure AI vs Human-Written</th>
+            <th>AI-Assisted vs Human-Written</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Average ranking position</td>
+            <td>23% lower</td>
+            <td>Within 4%</td>
+          </tr>
+          <tr>
+            <td>Gap at 3 months</td>
+            <td>14% lower</td>
+            <td>~2%</td>
+          </tr>
+          <tr>
+            <td>Gap at 16 months</td>
+            <td>31% lower</td>
+            <td>~6%</td>
+          </tr>
+          <tr>
+            <td>Editorial backlinks (avg per article)</td>
+            <td>1.6 (39% of human baseline)</td>
+            <td>3.9 (92% of human baseline)</td>
+          </tr>
+          <tr>
+            <td>Deindexation rate</td>
+            <td>3.2x higher</td>
+            <td>Similar to human-written</td>
+          </tr>
+          <tr>
+            <td>March 2026 Core Update impact</td>
+            <td>−18% visibility</td>
+            <td>+11% visibility (human-written also gained)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The key insight: <strong>AI-assisted content nearly closed the gap</strong> with human-written content. The variable was editorial quality — not AI authorship. Pure AI content underperformed, but the underperformance was driven by lack of original data, missing expert attribution, and fewer backlinks, not by an AI penalty (Third-Party Reported).</p>
+
+    <Callout type="warn">
+      <strong>Caveat:</strong> The Digital Applied study was conducted by a digital marketing agency, which introduces potential commercial bias. AI detectors used for classification have inherent accuracy limitations. The 30% rewriting threshold for "AI-assisted" is an arbitrary boundary. Despite these limitations, the directional finding — that editorial quality matters more than production method — is consistent with Google's stated policy (Verified).
+    </Callout>
+
+    <h3>3. Semrush: The Position-1 Reality</h3>
+
+    <p>Semrush's April 2026 study analysed 42,000 blog pages across 20,000 keywords, classifying content via GPTZero. The finding: position 1 is <strong>80.5% likely to be human-written</strong> vs 10% AI-generated (Third-Party Reported).</p>
+
+    <p>This sounds like bad news for AI content — until you look at the full picture. By position 5–10, AI and human content are competitive. The 8:1 ratio at position 1 reflects that the absolute top result requires differentiation that purely synthetic content rarely achieves, not that Google penalises AI content (Third-Party Reported).</p>
+
+    <p>Among the 224 SEO professionals surveyed by Semrush, 72% believe AI content ranks as well as human-written (up from 64% in 2024) (Third-Party Reported). This perception aligns with the Ahrefs data at a broad level but underestimates the gap at the very top of SERPs.</p>
+
+    <Callout type="info">
+      <strong>Reconciling the studies:</strong> Ahrefs shows no systematic penalty (AI content reaches top positions). Digital Applied shows pure AI underperforms over time due to quality and backlink gaps. Semrush shows top positions favour human content. These findings are complementary: AI content can rank, but reaching #1 requires differentiation that most pure AI content lacks. The key distinction is between <em>can AI content rank</em> (yes, supported by Ahrefs) and <em>does pure AI content perform as well as human content</em> (no, supported by Digital Applied and Semrush) (Third-Party Reported).
+    </Callout>
+
+    <Callout type="warn">
+      <strong>Note on methodology:</strong> The Ahrefs, Semrush, and Digital Applied studies each used different AI detection tools (Ahrefs' own detector, GPTZero, and third-party classifiers). Different detectors may classify the same content differently. The directional finding — that quality and editorial input matter more than production method — is consistent across all three studies.
+    </Callout>
+  </section>
+
+  <section id="horror-stories">
+    <h2>The Horror Stories: Deindexing Cases Analysed</h2>
+
+    <p>"I used AI and my site got deindexed." These stories circulate constantly in SEO communities. When we trace verifiable claims to documented cases, a clear pattern emerges — and it is not an AI penalty.</p>
+
+    <h3>What the Scaled Content Abuse Policy Actually Says</h3>
+
+    <p>The scaled content abuse policy (added March 2024) targets "many pages generated for the primary purpose of manipulating search rankings and not helping users, no matter how it's created" (Verified). The policy is explicitly method-agnostic. Danny Sullivan clarified in April 2025: Google does not care whether scaled content is produced by "AI, automation, or human beings. It's going to be an issue" (Third-Party Reported).</p>
+
+    <h3>Documented Case Analysis</h3>
+
+    <p>Two verifiable case studies provide detailed, documentable evidence of what actually happened:</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Case</th>
+            <th>What Happened</th>
+            <th>Root Cause</th>
+            <th>What Really Caused It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tailride</strong> (Self-reported, documented with Search Console data)</td>
+            <td>Site went from 300 to 22,000 pages in months using AI-generated content. Traffic dropped to zero overnight (February 28). Went from 20,000+ indexed pages to 1 (homepage) over six months. No manual action — algorithmic.</td>
+            <td>"AI content" (per community discussion)</td>
+            <td>The founder's own analysis: "Was this because of AI? Not directly. The issue wasn't AI, it was scale + quality + trust." Content was "technically original but not very valuable." Keywords were unrelated to their product. Recovery: proper keyword research, 1 high-quality page per day, human write/edit each article, AI only for outlining/assistance (Self-Reported).</td>
+          </tr>
+          <tr>
+            <td><strong>SEOHack "AI Expert Site"</strong> (Self-reported, documented with analytics data)</td>
+            <td>Built AI-generated "expert site" fabricating authority. March 2024 Core Update: lost 71% of organic visibility in 10 days. By April 19: traffic down 89% from peak. Manual Action issued: "Pure Spam / Scaled Content Abuse." Complete deindexation.</td>
+            <td>"AI content" (per community discussion)</td>
+            <td>The site faked expertise via AI without any verifiable author credentials. It received a manual action for "Pure Spam / Scaled Content Abuse" — not for using AI, but for fabricating authority and mass-producing thin content. Recovery requires 3–6 months minimum (Self-Reported).</td>
+          </tr>
+          <tr>
+            <td><strong>Community pattern (multiple sites)</strong> (Third-party reported, aggregated data)</td>
+            <td>Sites publishing 500+ AI pages lost 50–80% traffic. Working threshold identified in community data: 10–15 articles per week (human-reviewable pace).</td>
+            <td>"AI content" (per community discussion)</td>
+            <td>Mass production at scale, thin templated content, no substantive human editing, keywords unrelated to site authority. The consistent pattern across all documented cases is scale + low quality, not AI (Self-Reported).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <Callout type="info">
+      <strong>The pattern is consistent:</strong> In every documented case where full details are available, the deindexed sites shared common characteristics — mass production at scale, thin templated content, no substantive human editing, and keywords unrelated to the site's authority. AI was the production method, but scaled content abuse was the violation. The scaled content abuse policy targets the behaviour (flooding the index with low-quality pages), not the tool (Verified).
+    </Callout>
+
+    <p>Unverifiable "my friend's site got deindexed just for using AI" stories circulate widely in SEO communities. These claims lack Search Console data, manual action notices, or specific URLs. In every documented case where these details are available, additional quality and scale factors were present alongside AI use (Verified).</p>
+
+    <p>Originality.ai tracked 1,446+ sites receiving manual actions from a sample of 79,000. While 100% of deindexed sites in their analysis showed signs of AI use, 51 of 175 sites (~30%) were pure AI (95%+), and all demonstrated thin content at scale (Self-Reported).</p>
+
+    <Callout type="warn">
+      <strong>Important:</strong> Pure AI content has a 3.2x higher deindexation rate than human-written content according to Digital Applied's 16-month study (Third-Party Reported). But the mechanism is not "AI detection → penalty." The mechanism is "low-quality content at scale → violation of scaled content abuse policy → deindexation." AI makes it faster and cheaper to produce low-quality content at scale, which is why pure AI sites are disproportionately affected. The solution is not to avoid AI — it is to avoid low-quality content at scale.
+    </Callout>
+  </section>
+
+  <section id="real-question">
+    <h2>The Real Question: E-E-A-T and Content Quality</h2>
+
+    <p>If Google does not penalise AI content for being AI, why does pure AI content underperform? The answer lies in Google's E-E-A-T framework and the structural signals that differentiate high-quality content.</p>
+
+    <h3>What E-E-A-T Actually Is</h3>
+
+    <p>Google's Search Quality Rater Guidelines define E-E-A-T as Experience, Expertise, Authoritativeness, and Trustworthiness. Trust is "the most important member at the centre of the E-E-A-T family" (Verified). The framework is used by human quality raters to evaluate search results, and it informs the training data for Google's ranking systems.</p>
+
+    <p>Evaluation is based on three factors (Verified):</p>
+    <ol>
+      <li>What the website and content creators say about themselves</li>
+      <li>What others say about them</li>
+      <li>What is visible in the main content (MC)</li>
+    </ol>
+
+    <h3>Where AI Content Lacks E-E-A-T Signals</h3>
+
+    <p>Digital Applied's study measured E-E-A-T proxy signals across the three content categories. The differences are stark (Third-Party Reported):</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>E-E-A-T Signal</th>
+            <th>Pure AI Content</th>
+            <th>Human-Written Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bylined author with verifiable credentials</td>
+            <td>11% (89% lack this)</td>
+            <td>71%</td>
+          </tr>
+          <tr>
+            <td>Original research or data cited</td>
+            <td>4% (96% absent)</td>
+            <td>38%</td>
+          </tr>
+          <tr>
+            <td>Expert quotes included</td>
+            <td>6% (94% absent)</td>
+            <td>52%</td>
+          </tr>
+          <tr>
+            <td>First-person narrative or genuine experience</td>
+            <td>2% (98% absent)</td>
+            <td>67%</td>
+          </tr>
+          <tr>
+            <td>Opinionated or unique perspective</td>
+            <td>Minimal</td>
+            <td>67% contained one</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>These signals are not directly ranking factors — Google explicitly states E-E-A-T is not a specific ranking signal (Verified). But they correlate strongly with content that earns backlinks, citations, and user engagement, which are ranking factors. The backlink gap is particularly stark: AI-only content acquired 61% fewer editorial backlinks (avg 1.6 vs 4.2 per article) (Third-Party Reported).</p>
+
+    <Callout type="info">
+      <strong>The mechanism:</strong> The backlink gap compounds over time. Fewer editorial backlinks → lower rankings → lower visibility → fewer content discoverers → even fewer backlinks. This explains the temporal effect Digital Applied documented: the gap between pure AI and human-written content widened from 14% at 3 months to 31% at 16 months. AI-assisted content (with original data and expert attribution) nearly matched human-written backlink acquisition (3.9 vs 4.2) because publishers link to original data, unique perspective, and compelling narrative — not synthesis-only content (Third-Party Reported).
+    </Callout>
+
+    <h3>Google's "Who, How, Why" Framework</h3>
+
+    <p>Google's official documentation recommends creators answer three questions (Verified):</p>
+    <ul>
+      <li><strong>Who</strong> created the content? (authorship, credentials, experience)</li>
+      <li><strong>How</strong> was it created? (disclosing AI use is recommended)</li>
+      <li><strong>Why</strong> was it created? (to help people, not to manipulate rankings)</li>
+    </ul>
+
+    <p>The "Who" and "How" questions are where AI-only content most frequently falls short — not because it uses AI, but because it fails to establish the experience, expertise, and trustworthiness that Google's systems look for through proxy signals (Verified).</p>
+  </section>
+
+  <div class="cta-card">
+    <h3>Want to use AI for SEO without the guesswork?</h3>
+    <p>Our <strong>complete guide to AI-assisted content</strong> shows you exactly how top SEOs blend AI efficiency with human editorial quality. <strong>Data-backed strategies</strong> for backlink acquisition, E-E-A-T signals, and content differentiation — all in one place.</p>
+    <a href="/reviews/olsp-academy/" class="cta-btn">Get the Full Guide →</a>
+  </div>
+
+  <section id="framework">
+    <h2>Practical Framework: What Works in 2026</h2>
+
+    <p>The evidence supports a clear framework for using AI in content creation without risking ranking performance. Here is what the data shows works.</p>
+
+    <Callout type="info">
+      <h3 style="color:var(--ink);font-size:1.15rem;margin-top:0;margin-bottom:.8rem;">The Evidence-Based AI Content Framework</h3>
+      <ol style="margin-bottom:0;">
+        <li>
+          <strong>Avoid pure AI at scale.</strong> Pure AI content (no substantive human editing) has a 23% average ranking disadvantage, 61% fewer backlinks, and 3.2x higher deindexation risk (Third-Party Reported). Digital Applied's study found the performance gap widens over time — 14% at 3 months, 31% at 16 months. Pure AI content also dropped 18% in visibility during the March 2026 Core Update while human-written content gained 11% (Third-Party Reported).
+        </li>
+        <li>
+          <strong>Use AI assistance with human editorial input.</strong> AI-assisted content (30%+ rewriting, original data, expert attribution) performed within 4% of human-written content in the 16-month study (Third-Party Reported). Backlink acquisition was nearly identical (3.9 vs 4.2). This is the "sweet spot" the data supports — AI for drafting and research, humans for original data, expert input, and substantive rewriting.
+        </li>
+        <li>
+          <strong>Always add E-E-A-T signals.</strong> Include bylined authors with verifiable credentials. Cite original research or data. Include expert quotes. Add first-person perspective or genuine experience where relevant. These signals drive the backlinks and engagement that close the ranking gap (Verified).
+        </li>
+        <li>
+          <strong>Never produce at a scale you cannot review.</strong> The community data suggests a working threshold of 10–15 articles per week — a pace that allows for substantive human review and editing (Self-Reported). The Tailride case (22,000 AI pages to zero traffic) demonstrates the risk of unchecked scaling. The scaled content abuse policy targets mass low-quality pages regardless of production method (Verified).
+        </li>
+        <li>
+          <strong>Disclose AI use.</strong> Google's guidance recommends disclosing AI use to readers (Verified). This is not a ranking requirement — it is a trust signal. Transparency about production methods aligns with E-E-A-T principles.
+        </li>
+        <li>
+          <strong>Focus on differentiation, not volume.</strong> The Semrush data shows that reaching position 1 is 8x more likely with human-written content (Third-Party Reported). The most competitive positions require unique data, original research, genuine expertise, or a distinct perspective — inputs that AI cannot generate on its own. Use AI to handle the research and structuring, but invest human effort where differentiation matters most.
+        </li>
+      </ol>
+    </Callout>
+
+    <Callout type="info">
+      <strong>The Bottom Line</strong>
+      <p style="margin-bottom:0;margin-top:.4rem;">Google does not penalise AI content for being AI. The data across 650,000+ pages shows zero correlation between AI usage and ranking position (Ahrefs), and AI-assisted content performs within 4% of human-written (Digital Applied). The sites that got deindexed were penalised for scaled content abuse — mass-producing low-quality content, whether by AI, automation, or human writers. The solution is not to avoid AI. It is to avoid producing low-quality content at any scale, using any tool.</p>
+    </Callout>
+
+    <Callout type="warn">
+      <strong>Knowledge gap:</strong> Google has not publicly confirmed its specific AI detection capabilities. The company's stated position is that it evaluates content quality, not content origin. Quality Rater Guidelines (updated 2025) direct raters to flag AI-generated content as potentially lowest quality, but this feeds training signals, not direct ranking penalties. The safest approach: assume Google can detect low-quality patterns regardless of origin, and focus on producing genuinely helpful content with transparent authorship.
+    </Callout>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <FaqItem question="Does Google penalise AI-generated content in 2026?">
+      <p>No. Google's official policy (February 2023, reaffirmed through 2026) states that "appropriate use of AI or automation is not against our guidelines." Large-scale data confirms this: Ahrefs' study of 600,000 pages found a 0.011 correlation between AI content percentage and ranking position — effectively zero. What Google does penalise is low-quality content produced at scale, regardless of production method (Verified).</p>
+    </FaqItem>
+
+    <FaqItem question="Why did John Mueller say AI content is spam in 2022?">
+      <p>Mueller's April 2022 statement — that AI content would be considered "automatically generated content" and therefore spam — represented Google's position at the time. It was made during an informal office-hours Q&A, not as a formal policy announcement. Google's official policy was updated in February 2023 to explicitly state that appropriate use of AI is not against guidelines. Mueller's statement has not been formally recanted but has been effectively superseded by Google's official policy (Third-Party Reported).</p>
+    </FaqItem>
+
+    <FaqItem question="Can AI content rank on Google's first page?">
+      <p>Yes. Ahrefs found that 86.5% of top-20 ranking pages contain some AI-generated content, and 4.6% are "pure AI" with no substantive human editing. However, reaching position 1 is significantly harder — Semrush found that position 1 is 80.5% likely to be human-written vs 10% AI-generated. AI content can rank, but the very top positions favour content with original data, expert attribution, and unique perspective (Third-Party Reported).</p>
+    </FaqItem>
+
+    <FaqItem question="My friend's site got deindexed after using AI. Why?">
+      <p>In every documented case where full details are available (e.g., Tailride, SEOHack), the deindexed sites shared common patterns: mass production at scale, thin or templated content, no substantive human editing, and keywords unrelated to the site's existing authority. These sites were penalised for scaled content abuse — a policy that explicitly covers "AI, automation, or human beings" equally. AI was the production method, but the violation was flooding the index with low-quality pages (Verified).</p>
+    </FaqItem>
+
+    <FaqItem question="What is the difference between pure AI content and AI-assisted content?">
+      <p>Pure AI content is generated by AI with no substantive human editing. AI-assisted content is drafted by AI but substantially rewritten (30%+), supplemented with original data, and attributed to named experts. The performance difference is dramatic: pure AI content ranks 23% lower than human-written on average, while AI-assisted content performs within 4%. The backlink gap is even larger: pure AI earns 61% fewer editorial backlinks, while AI-assisted nearly matches human-written (Third-Party Reported).</p>
+    </FaqItem>
+
+    <FaqItem question="Can Google detect AI-generated content?">
+      <p>Google has not publicly confirmed or denied specific AI detection capabilities. The company's official position is that it evaluates content quality and helpfulness, not content origin. John Mueller stated in 2022 that he "can't claim" Google detects AI content. Google's Quality Rater Guidelines (updated 2025) direct raters to flag AI-generated content as potentially lowest quality, but this feeds training signals rather than direct ranking penalties. The safest interpretation: assume Google can detect low-quality patterns regardless of origin (Verified).</p>
+    </FaqItem>
+  </section>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <div class="cta-card">
+    <h3>Ready to start publishing AI-assisted content that ranks?</h3>
+    <p>Get the <strong>complete strategy guide</strong> covering Google's actual policy, editorial workflows that earn backlinks, and the E-E-A-T signals that differentiate your content. <strong>No fluff, just data-backed tactics.</strong></p>
+    <a href="/reviews/olsp-academy/" class="cta-btn">Read the Complete Guide →</a>
+  </div>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+
+    <p>This article was built from the following sources. Each is labelled by type and reliability.</p>
+
+    <h3>Official Google Documentation</h3>
+    <ul class="pill-list">
+      <li><a href="https://developers.google.com/search/blog/2023/02/google-search-and-ai-content" target="_blank" rel="noopener noreferrer">Google Search's Guidance about AI-Generated Content</a></li>
+      <li><a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" target="_blank" rel="noopener noreferrer">Using Generative AI Content on Your Website</a></li>
+      <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer">Creating Helpful, Reliable, People-First Content</a></li>
+      <li><a href="https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf" target="_blank" rel="noopener noreferrer">Search Quality Rater Guidelines (September 11, 2025)</a></li>
+    </ul>
+
+    <h3>Google Search Liaison Statements</h3>
+    <ul class="pill-list">
+      <li><a href="https://searchengineland.com/google-danny-sullivan-seo-for-ai-is-still-seo-466368" target="_blank" rel="noopener noreferrer">Danny Sullivan: SEO for AI Is Still SEO — Search Engine Land</a></li>
+      <li><a href="https://iloveseo.com/seo/google-says-ai-generated-content-is-against-its-webmaster-guidelines/" target="_blank" rel="noopener noreferrer">John Mueller's 2022 Statement — iLoveSEO</a></li>
+    </ul>
+
+    <h3>Independent Research Studies</h3>
+    <ul class="pill-list">
+      <li><a href="https://ahrefs.com/blog/ai-generated-content-does-not-hurt-your-google-rankings/" target="_blank" rel="noopener noreferrer">AI-Generated Content Does Not Hurt Your Google Rankings (600,000 Pages Analyzed) — Ahrefs</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/ai-generated-vs-human-content-16-month-google-ranking-study" target="_blank" rel="noopener noreferrer">AI vs Human Content: 16-Month Google Ranking Study (4,200 Articles) — Digital Applied</a></li>
+      <li><a href="https://www.semrush.com/blog/does-ai-content-rank-in-search-data-study/" target="_blank" rel="noopener noreferrer">Does AI Content Rank Well in Search? — Semrush</a></li>
+    </ul>
+
+    <h3>Case Studies (Deindexing)</h3>
+    <ul class="pill-list">
+      <li><a href="https://tailride.so/blog/google-penalty-22000-ai-pages" target="_blank" rel="noopener noreferrer">We Got Hit by a Google Penalty After Publishing 22,000 AI Pages — Tailride</a></li>
+      <li><a href="https://www.seohack.info/i-built-an-ai-expert-site/" target="_blank" rel="noopener noreferrer">I Built an AI Expert Site (and Google Dismantled It) — SEOHack</a></li>
+    </ul>
+
+    <h3>Policy Documentation</h3>
+    <ul class="pill-list">
+      <li><a href="https://developers.google.com/search/blog/2024/03/core-update-spam-policies" target="_blank" rel="noopener noreferrer">March 2024 Core Update and New Spam Policies — Google</a></li>
+    </ul>
+
+    <p style="font-size:.82rem;color:var(--ink-light);">
+      <strong>Disclaimer:</strong> This article is an independent, evidence-based investigation produced through a structured editorial pipeline that separates research from writing. The information presented is current as of July 2026. Google's AI policy documentation is actively evolving — verify current policy at developers.google.com/search/blog before relying on any specific guidance. The large-scale studies cited (Ahrefs, Semrush, Digital Applied) were conducted by organisations with commercial interests in SEO tools and services. Their methodologies and findings are presented in good faith, but each study used different AI detection tools with different accuracy characteristics. This article does not constitute legal advice. Consult a qualified SEO professional for specific questions about your content strategy.
+    </p>
+  </section>
+
+  <SiteFooter />
+
+</OlspLayout>
