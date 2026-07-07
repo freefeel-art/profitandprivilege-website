@@ -1,687 +1,225 @@
 ---
 export const prerender = true;
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const tocLinks = [
+  { href: "#intro", text: "Introduction" },
+  { href: "#lineup", text: "1. The OLSP Product Lineup" },
+  { href: "#price-ladder", text: "2. The Complete Price Ladder" },
+  { href: "#decision-framework", text: "3. Which Product Should You Buy First?" },
+  { href: "#concerns", text: "4. Upsell Overwhelm, Refunds & Legitimacy" },
+  { href: "#next-steps", text: "5. Your First 90 Days" },
+  { href: "#faq", text: "FAQ" },
+  { href: "#author", text: "About the Author" },
+  { href: "#sources", text: "Sources & References" },
+];
 ---
+<OlspLayout
+  title="OLSP Academy: Complete Guide to Every Product &amp; Upgrade"
+  description="Confused by OLSP Academy's product lineup? Our independent hub breaks down every OLSP product and upgrade tier so you know exactly what to buy next."
+  canonical="https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/"
+  tocLinks={tocLinks}
+>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OLSP Academy: Complete Guide to Every Product &amp; Upgrade</title>
-<meta name="description" content="Confused by OLSP Academy's product lineup? Our independent hub breaks down every OLSP product and upgrade tier so you know exactly what to buy next." />
-<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/" />
-<meta property="og:title" content="OLSP Academy: Complete Guide to Every Product &amp; Upgrade" />
-<meta property="og:description" content="Confused by OLSP Academy's product lineup? Our independent hub breaks down every OLSP product and upgrade tier so you know exactly what to buy next." />
-<meta property="og:url" content="https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="Profit and Privilege" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="OLSP Academy: Complete Guide to Every Product &amp; Upgrade" />
-<meta name="twitter:description" content="Confused by OLSP Academy's product lineup? Our independent hub breaks down every OLSP product and upgrade tier so you know exactly what to buy next." />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "OLSP Academy: The Complete Guide to Every Product and Upgrade",
-      "description": "Confused by OLSP Academy's product lineup? Our independent hub breaks down every OLSP product and upgrade tier so you know exactly what to buy next.",
-      "datePublished": "2026-07-03",
-      "dateModified": "2026-07-03",
-      "url": "https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/",
-      "author": {
-        "@type": "Person",
-        "name": "Jarmo Halonen",
-        "url": "https://olsp.profitandprivilege.com/authors/jarmo-halonen"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Profit and Privilege",
-        "url": "https://olsp.profitandprivilege.com"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://olsp.profitandprivilege.com/blog/olsp-academy-complete-guide/"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is OLSP Academy and how does it work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "OLSP Academy is the entry point and training layer of Wayne Crowe's OLSP System. After free registration, members get access to a Mega Link — a single trackable link — plus Bootcamp training modules, live webinars, and a Facebook community. The $7 one-time Mega Link unlocks the ability to earn a flat $5 commission for every Starter Training referral you generate, while you work through the beginner training."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the difference between all the OLSP upgrade tiers, and which one should I buy first?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "OLSP's tiers solve different problems rather than being simple better versions of each other — Live Profit Builders adds event-based commissions, Community Builders adds team-recruiting tools, and MineeMe and Solo Ads are parallel tools rather than sequential tiers. This guide's decision framework matches you to a tier based on your specific bottleneck — traffic, audience, time, or team-building — rather than simply recommending the next tier up."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is OLSP Academy legit, or is it a scam?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Each individual OLSP product reviewed on this site addresses that question in detail for its specific product. This hub does not re-litigate legitimacy; it assumes you've already decided OLSP is worth trying and are now working out which upgrade, if any, is right for you."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need any experience or a website to start with OLSP?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. The $7 Megalink is designed for complete beginners and does not require a pre-existing website, list, or traffic source — training on basic traffic methods is included. Some upgrades, like Solo Ads, assume you already have a working funnel or opt-in page to send traffic to, so check each product's fit before buying."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much would it cost to get every OLSP upgrade?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is no single official total, and pricing shifts across relaunches, but a rough add-up of currently reported prices runs from the $7 Mega Link through Live Profit Builders (around $49/month), Community Builders (around $197/month), and the highest publicly reported one-time tiers — VIP, Elite, and Elite Plus — which independent sources put at $6,500 to $25,000. We have not independently reviewed those three highest tiers, and most people should only need one or two upgrades at most, not all of them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is 'upsell overwhelm' and why do people complain about it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It's the recurring criticism, raised by multiple independent reviewers and OLSP members, that the number of optional upgrades and the size of the price jumps between them can feel confusing or pressuring, especially for beginners. This guide exists specifically to give you a neutral way to evaluate which, if any, of those upgrades matches your situation, rather than a generic prompt to upgrade."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are the OLSP VIP, Elite, or Elite Plus tiers worth it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We can't say. None of these tiers, reported at roughly $6,500, $15,000, and $25,000 respectively, has been independently reviewed on this site, and we're not able to vouch for what they include or whether the price is justified. Apply the same caution you would to any five-figure purchase: get everything in writing and don't decide during a live sales call."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I get a refund if an OLSP product doesn't work out for me?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Refund and cancellation experiences are mixed across independent reviews and community reports, and policies can vary by product and by when you purchased. Confirm the specific refund terms for whichever product you're considering directly on its checkout page before paying, and treat verbal assurances made during a sales call as secondary to the written policy."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+  <section id="intro">
+    <span class="hero-tag">Complete Guide · Updated July 2026</span>
+    <h1>OLSP Academy: The Complete Guide to Every Product and Upgrade</h1>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+    <p><strong>If you've joined OLSP Academy and started seeing upgrade offers, you are not imagining the confusion.</strong> Between the $7 Mega Link, Live Profit Builders, Community Builders, MineeMe, Solo Ads, and a handful of five-figure tiers most people never hear about until they're already on a sales call, the OLSP product lineup has grown into one of the more sprawling ecosystems in affiliate marketing training. Independent reviewers have a name for the resulting feeling: "upsell overwhelm" — and it's real enough that it shows up, unprompted, across multiple reviews and member accounts.</p>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+    <p>This guide exists because no single resource — not OLSP's own marketing, not any of the dozen-plus third-party reviews we found while researching this page — actually tells you which OLSP product fits your situation. Every one of them either bundles the whole system into one review, or evaluates a single product in isolation. We've already published five independent, in-depth reviews of the core OLSP products, plus a roundup comparing OLSP against outside training platforms. This page is the missing piece: one place that lines all of them up side by side and gives you a concrete way to decide what, if anything, to buy next.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
-
-  .score-row{display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem;}
-  .score-label{flex:0 0 190px; font-size:.9rem; color:var(--ink-light);}
-  .score-track{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
-  .score-fill{height:100%; background:var(--accent); border-radius:99px;}
-  .score-num{flex:0 0 36px; text-align:right; font-weight:700; font-size:.9rem;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  .quiz-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.3rem 1.4rem;
-  }
-  .quiz-box fieldset{border:none; margin:0 0 1rem; padding:0;}
-  .quiz-box legend{font-weight:600; margin-bottom:.5rem; font-size:.95rem;}
-  .quiz-box label{display:block; font-size:.92rem; margin-bottom:.35rem; cursor:pointer;}
-  .quiz-box button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:.6rem 1.2rem;
-    border-radius:8px;
-    font-size:.95rem;
-    cursor:pointer;
-  }
-  .quiz-box button:hover{background:#1d4ed8;}
-  #quiz-result{
-    margin-top:1rem;
-    padding:.9rem 1rem;
-    border-radius:8px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:.93rem;
-    display:none;
-  }
-
-  .video-frame{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#000;
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:.6rem;
-  }
-  .video-frame iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
-  .video-caption{font-size:.85rem; color:var(--ink-light); margin-top:0; margin-bottom:1.6rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-    .score-label{flex:0 0 130px; font-size:.82rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">Introduction</a>
-      <a href="#lineup">1. The OLSP Product Lineup</a>
-      <a href="#price-ladder">2. The Complete Price Ladder</a>
-      <a href="#decision-framework">3. Which Product Should You Buy First?</a>
-      <a href="#concerns">4. Upsell Overwhelm, Refunds &amp; Legitimacy</a>
-      <a href="#next-steps">5. Your First 90 Days</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources &amp; References</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Complete Guide · Updated July 2026</span>
-      <h1>OLSP Academy: The Complete Guide to Every Product and Upgrade</h1>
-
-      <p><strong>If you've joined OLSP Academy and started seeing upgrade offers, you are not imagining the confusion.</strong> Between the $7 Mega Link, Live Profit Builders, Community Builders, MineeMe, Solo Ads, and a handful of five-figure tiers most people never hear about until they're already on a sales call, the OLSP product lineup has grown into one of the more sprawling ecosystems in affiliate marketing training. Independent reviewers have a name for the resulting feeling: "upsell overwhelm" — and it's real enough that it shows up, unprompted, across multiple reviews and member accounts.</p>
-
-      <p>This guide exists because no single resource — not OLSP's own marketing, not any of the dozen-plus third-party reviews we found while researching this page — actually tells you which OLSP product fits your situation. Every one of them either bundles the whole system into one review, or evaluates a single product in isolation. We've already published five independent, in-depth reviews of the core OLSP products, plus a roundup comparing OLSP against outside training platforms. This page is the missing piece: one place that lines all of them up side by side and gives you a concrete way to decide what, if anything, to buy next.</p>
-
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> people who already have (or are about to get) the $7 OLSP Megalink and want a single, honest map of every upgrade, its real cost, and whether it fits their specific bottleneck — not a sales pitch for any one tier.</p>
-        <p><strong>Not ideal for:</strong> people who haven't tried OLSP Academy yet and want to know if it's worth joining at all (start with our <a href="/reviews/olsp-academy/">OLSP Academy review</a> instead), or people who are still deciding between OLSP and an outside training platform entirely (see our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">training platforms roundup</a>).</p>
-      </div>
-
-      <h3>What This Guide Covers</h3>
-      <p>We'll walk through every product in the OLSP ecosystem, lay out the full price ladder from free to the highest reported tier, give you a bottleneck-based framework for deciding what to buy first (and what to skip), and address the upsell-overwhelm complaint directly — including two ultra-high tiers no OLSP review on this site has evaluated.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Ready to start with the $7 Megalink?</h3>
-      <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <div class="verdict-box">
+      <p><strong>Best for:</strong> people who already have (or are about to get) the $7 OLSP Megalink and want a single, honest map of every upgrade, its real cost, and whether it fits their specific bottleneck — not a sales pitch for any one tier.</p>
+      <p><strong>Not ideal for:</strong> people who haven't tried OLSP Academy yet and want to know if it's worth joining at all (start with our <a href="/reviews/olsp-academy/">OLSP Academy review</a> instead), or people who are still deciding between OLSP and an outside training platform entirely (see our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">training platforms roundup</a>).</p>
     </div>
 
-    <section id="lineup">
-      <h2>1. The OLSP Product Lineup at a Glance</h2>
-      <p>Six pages on this site cover the OLSP ecosystem in depth. Here's the short version of each, with a link to the full independent review if you want more detail before deciding.</p>
+    <h3>What This Guide Covers</h3>
+    <p>We'll walk through every product in the OLSP ecosystem, lay out the full price ladder from free to the highest reported tier, give you a bottleneck-based framework for deciding what to buy first (and what to skip), and address the upsell-overwhelm complaint directly — including two ultra-high tiers no OLSP review on this site has evaluated.</p>
+  </section>
 
-      <h3><a href="/reviews/olsp-academy/">OLSP Academy</a> — the required starting point</h3>
-      <p>Free registration gets you into the system; a one-time <strong>$7 payment</strong> unlocks the Mega Link, Bootcamp training modules, live webinars, and the Facebook community. This is the entry point every other product in this guide assumes you already have. It's built for total beginners — no website, list, or prior experience required — and pays a flat $5 commission on each Starter Training referral while you learn the basics.</p>
+  <div class="cta-card">
+    <h3>Ready to start with the $7 Megalink?</h3>
+    <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+  </div>
 
-      <h3><a href="/reviews/olsp-live-profit-builders/">OLSP Live Profit Builders</a> — around $49/month</h3>
-      <p>The first subscription tier above the $7 entry. It adds 100% commission on designated front-end offers, a $1-per-verified-attendee payment for OLSP's twice-weekly live events, and permanent account-level attribution instead of cookie-based tracking. It only generates meaningful income once you already have some traffic source directing people to those live events — it's not a fit for someone who hasn't sent a single visitor anywhere yet.</p>
+  <section id="lineup">
+    <h2>1. The OLSP Product Lineup at a Glance</h2>
+    <p>Six pages on this site cover the OLSP ecosystem in depth. Here's the short version of each, with a link to the full independent review if you want more detail before deciding.</p>
 
-      <h3><a href="/reviews/olsp-community-builders/">OLSP Community Builders</a> — around $197/month</h3>
-      <p>A mid-tier membership that bundles a white-label funnel-and-CRM suite, Facebook-centric "TOFFEE method" training, and team-building tools. It moves you from solo promotion into recruiting and earning second-tier commissions from other affiliates' sales — 200% commission on your own front-end sales, plus overrides on your team's. The site's own review is explicit that this is not a beginner product: it assumes you've already validated the Megalink and can commit 30+ minutes a day to Facebook content and coaching calls.</p>
+    <h3><a href="/reviews/olsp-academy/">OLSP Academy</a> — the required starting point</h3>
+    <p>Free registration gets you into the system; a one-time <strong>$7 payment</strong> unlocks the Mega Link, Bootcamp training modules, live webinars, and the Facebook community. This is the entry point every other product in this guide assumes you already have. It's built for total beginners — no website, list, or prior experience required — and pays a flat $5 commission on each Starter Training referral while you learn the basics.</p>
 
-      <h3><a href="/reviews/olsp-mineeme/">OLSP MineeMe</a> — $27/month promotional</h3>
-      <p>An AI-powered Chrome extension, not a membership tier, that automates Facebook comments and reactions using your own OpenAI API key (billed separately). It reduces the time cost of staying visible on Facebook — it does not build an audience or generate leads by itself, and it's only relevant if you're already active on the platform.</p>
+    <h3><a href="/reviews/olsp-live-profit-builders/">OLSP Live Profit Builders</a> — around $49/month</h3>
+    <p>The first subscription tier above the $7 entry. It adds 100% commission on designated front-end offers, a $1-per-verified-attendee payment for OLSP's twice-weekly live events, and permanent account-level attribution instead of cookie-based tracking. It only generates meaningful income once you already have some traffic source directing people to those live events — it's not a fit for someone who hasn't sent a single visitor anywhere yet.</p>
 
-      <h3><a href="/reviews/olsp-solo-ads/">OLSP Solo Ads</a> — around $90 per 100 clicks</h3>
-      <p>An email-based paid traffic service under the "Traffic Dominators" brand. You pay for a fixed number of clicks sent to your own funnel or opt-in page — it's a traffic cost, not a training or commission tier, and the site's own review is blunt about it: skip this if you don't already have a tested funnel to send the traffic to.</p>
+    <h3><a href="/reviews/olsp-community-builders/">OLSP Community Builders</a> — around $197/month</h3>
+    <p>A mid-tier membership that bundles a white-label funnel-and-CRM suite, Facebook-centric "TOFFEE method" training, and team-building tools. It moves you from solo promotion into recruiting and earning second-tier commissions from other affiliates' sales — 200% commission on your own front-end sales, plus overrides on your team's. The site's own review is explicit that this is not a beginner product: it assumes you've already validated the Megalink and can commit 30+ minutes a day to Facebook content and coaching calls.</p>
 
-      <p>A seventh product worth knowing about, though it isn't one of the six pages this guide synthesizes directly, is the <a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator</a> — a separate ~$47/month recurring traffic subscription, distinct from the one-time Solo Ads click purchase. We cover it in the price ladder below since readers frequently confuse the two.</p>
+    <h3><a href="/reviews/olsp-mineeme/">OLSP MineeMe</a> — $27/month promotional</h3>
+    <p>An AI-powered Chrome extension, not a membership tier, that automates Facebook comments and reactions using your own OpenAI API key (billed separately). It reduces the time cost of staying visible on Facebook — it does not build an audience or generate leads by itself, and it's only relevant if you're already active on the platform.</p>
 
-      <p>Finally, if you're still weighing OLSP against training platforms outside its ecosystem entirely — Wealthy Affiliate, Legendary Marketer, Spark by ClickBank — our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">training platforms roundup</a> compares OLSP against those alternatives directly. This guide only covers OLSP's own internal ladder.</p>
-    </section>
+    <h3><a href="/reviews/olsp-solo-ads/">OLSP Solo Ads</a> — around $90 per 100 clicks</h3>
+    <p>An email-based paid traffic service under the "Traffic Dominators" brand. You pay for a fixed number of clicks sent to your own funnel or opt-in page — it's a traffic cost, not a training or commission tier, and the site's own review is blunt about it: skip this if you don't already have a tested funnel to send the traffic to.</p>
 
-    <section id="price-ladder">
-      <h2>2. The Complete OLSP Price Ladder</h2>
-      <p>Here is every tier we could verify, sequenced from free to the highest reported one-time price. Treat every number below as directional rather than fixed — every product review on this site already flags OLSP pricing as promotion-sensitive and prone to change across platform relaunches, and this guide inherits that same caution.</p>
+    <p>A seventh product worth knowing about, though it isn't one of the six pages this guide synthesizes directly, is the <a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator</a> — a separate ~$47/month recurring traffic subscription, distinct from the one-time Solo Ads click purchase. We cover it in the price ladder below since readers frequently confuse the two.</p>
 
-      <div class="table-scroll">
-      <table>
-        <tr><th>Step</th><th>Product</th><th>Reported price</th><th>Type</th></tr>
-        <tr><td>0</td><td>Free registration</td><td>$0</td><td>Required starting point</td></tr>
-        <tr><td>1</td><td>Mega Link (Megalink)</td><td>$7 one-time</td><td>Required starting point</td></tr>
-        <tr><td>—</td><td>Megalink Traffic Rotator</td><td>~$47/month</td><td>Parallel add-on (traffic)</td></tr>
-        <tr><td>—</td><td>OLSP Solo Ads (Traffic Dominators)</td><td>~$90/100 clicks (volume pricing to ~$3,750/5,000 clicks)</td><td>Parallel add-on (traffic)</td></tr>
-        <tr><td>—</td><td>OLSP MineeMe</td><td>$27/month promo ($97/month stated regular)</td><td>Parallel add-on (tool)</td></tr>
-        <tr><td>2</td><td>Live Profit Builders</td><td>~$49/month or ~$497/year</td><td>Sequential upgrade</td></tr>
-        <tr><td>3</td><td>Community Builders</td><td>~$197–199/month or ~$1,997/year</td><td>Sequential upgrade</td></tr>
-        <tr><td>4</td><td>Team Builders</td><td>~$997 lifetime or ~$197/month (naming varies by source — see note below)</td><td>Sequential upgrade</td></tr>
-        <tr><td>5</td><td>VIP</td><td>~$6,500 (phone consultation required)</td><td>Not reviewed on this site</td></tr>
-        <tr><td>6</td><td>Elite</td><td>~$15,000</td><td>Not reviewed on this site</td></tr>
-        <tr><td>7</td><td>Elite Plus</td><td>~$25,000 (lifetime, all programs)</td><td>Not reviewed on this site</td></tr>
-      </table>
-      </div>
+    <p>Finally, if you're still weighing OLSP against training platforms outside its ecosystem entirely — Wealthy Affiliate, Legendary Marketer, Spark by ClickBank — our <a href="/roundups/best-affiliate-marketing-training-platforms-2026/">training platforms roundup</a> compares OLSP against those alternatives directly. This guide only covers OLSP's own internal ladder.</p>
+  </section>
 
-      <div class="callout info">
-        <strong>A note on naming:</strong> Independent sources do not agree on what to call the tiers above Community Builders. Some describe a separate "Mega Builders" tier around $99/month and a "Team Builders" tier around $199/month; others describe "Team Builders" as a single ~$997 lifetime step above Community Builders. This isn't a mistake on any one source's part — OLSP has renamed and restructured these tiers across platform relaunches. Don't expect a single canonical ladder above Community Builders; verify the current name, contents, and price directly at checkout before buying.
-      </div>
+  <section id="price-ladder">
+    <h2>2. The Complete OLSP Price Ladder</h2>
+    <p>Here is every tier we could verify, sequenced from free to the highest reported one-time price. Treat every number below as directional rather than fixed — every product review on this site already flags OLSP pricing as promotion-sensitive and prone to change across platform relaunches, and this guide inherits that same caution.</p>
 
-      <div class="callout warn">
-        <strong>We have not reviewed VIP, Elite, or Elite Plus.</strong> These three tiers, reported at roughly $6,500, $15,000, and $25,000, surfaced during our research but are not covered by any of the five in-depth OLSP reviews on this site. We're stating that they exist and their reported price range — we are not recommending them, ranking them, or vouching for what they include. If you're offered one of these on a call, get the full terms in writing before deciding.
-      </div>
-    </section>
-
-    <section id="decision-framework">
-      <h2>3. Which OLSP Product Should You Buy First? A Decision Framework</h2>
-      <p>The mistake most upsell-overwhelm complaints describe is treating the ladder above as "tier 1, tier 2, tier 3" — buy the next one up when you can afford it. That's not how these products actually work. Each one solves a different bottleneck, and buying the wrong one for your situation is the single most common way people end up feeling like OLSP is "just upsells." Start by asking what's actually stopping you, then match it to the table below.</p>
-
-      <div class="table-scroll">
-      <table>
-        <tr><th>If your bottleneck is...</th><th>Consider</th><th>Why</th></tr>
-        <tr><td>"I don't have traffic or an audience yet"</td><td>Stay at Megalink. Use the free Bootcamp training first.</td><td>Live Profit Builders and Community Builders both require an existing audience to generate meaningful income — buying either before this point is the most common source of upsell regret.</td></tr>
-        <tr><td>"I have a funnel but need faster traffic to test it"</td><td>OLSP Solo Ads, as a bounded, one-time test</td><td>Solo Ads is a traffic cost, not a training product — only worth it once you already have somewhere for that traffic to go.</td></tr>
-        <tr><td>"I'm earning something at Megalink and want event-based commissions"</td><td>Live Profit Builders (~$49/month)</td><td>This tier is designed to be added after you've validated results at Megalink, not as an automatic next step for everyone.</td></tr>
-        <tr><td>"I'm active, want to build a team, and use Facebook heavily"</td><td>Community Builders (~$197/month)</td><td>Only worth it if all three are true: you're already promoting, you can commit 30+ minutes a day, and you're comfortable with Facebook-centric training. Skip it if any one of those doesn't apply.</td></tr>
-        <tr><td>"I'm Facebook-active and my bottleneck is time, not leads"</td><td>MineeMe ($27/month), evaluated on its own</td><td>A parallel tool, not a ladder rung — only relevant if you're already posting consistently and want to reduce manual engagement time.</td></tr>
-        <tr><td>"I've been on Community Builders for 5+ months and plan to stay"</td><td>Compare against Team Builders' lifetime price</td><td>Roughly five months of Community Builders at ~$197/month approaches the ~$997 lifetime Team Builders price — worth doing the math if you're committed long-term.</td></tr>
-        <tr><td>"I'm being offered VIP, Elite, or Elite Plus"</td><td>Pause before buying</td><td>No review on this site covers these tiers. Treat a four- or five-figure upgrade with the same caution you'd apply to any major purchase, regardless of how it's presented on the call.</td></tr>
-      </table>
-      </div>
-
-      <p>Two filters apply on top of the table above, not instead of it:</p>
-      <ul>
-        <li><strong>Budget filters within your matched bottleneck — it doesn't override it.</strong> If your bottleneck is "no audience yet," a bigger budget doesn't make Community Builders the right choice; it still requires an audience Community Builders itself won't build for you.</li>
-        <li><strong>Time availability is a hard gate for Community Builders specifically.</strong> Every source we found — the site's own review and independent commentary alike — agrees this tier's recurring cost only pays off with sustained daily activity. Treat the 30-minutes-a-day commitment as a yes/no question before buying, not a soft suggestion.</li>
-      </ul>
-    </section>
-
-    <div class="cta-card">
-      <h3>Ready to start with the $7 Megalink?</h3>
-      <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Step</th><th>Product</th><th>Reported price</th><th>Type</th></tr>
+      <tr><td>0</td><td>Free registration</td><td>$0</td><td>Required starting point</td></tr>
+      <tr><td>1</td><td>Mega Link (Megalink)</td><td>$7 one-time</td><td>Required starting point</td></tr>
+      <tr><td>—</td><td>Megalink Traffic Rotator</td><td>~$47/month</td><td>Parallel add-on (traffic)</td></tr>
+      <tr><td>—</td><td>OLSP Solo Ads (Traffic Dominators)</td><td>~$90/100 clicks (volume pricing to ~$3,750/5,000 clicks)</td><td>Parallel add-on (traffic)</td></tr>
+      <tr><td>—</td><td>OLSP MineeMe</td><td>$27/month promo ($97/month stated regular)</td><td>Parallel add-on (tool)</td></tr>
+      <tr><td>2</td><td>Live Profit Builders</td><td>~$49/month or ~$497/year</td><td>Sequential upgrade</td></tr>
+      <tr><td>3</td><td>Community Builders</td><td>~$197–199/month or ~$1,997/year</td><td>Sequential upgrade</td></tr>
+      <tr><td>4</td><td>Team Builders</td><td>~$997 lifetime or ~$197/month (naming varies by source — see note below)</td><td>Sequential upgrade</td></tr>
+      <tr><td>5</td><td>VIP</td><td>~$6,500 (phone consultation required)</td><td>Not reviewed on this site</td></tr>
+      <tr><td>6</td><td>Elite</td><td>~$15,000</td><td>Not reviewed on this site</td></tr>
+      <tr><td>7</td><td>Elite Plus</td><td>~$25,000 (lifetime, all programs)</td><td>Not reviewed on this site</td></tr>
+    </table>
     </div>
 
-    <section id="concerns">
-      <h2>4. Upsell Overwhelm, Refunds &amp; Legitimacy</h2>
-      <p>These are the three questions that come up most often once someone is a few weeks into OLSP Academy and starts seeing the rest of the ecosystem. Here's what we found researching each one.</p>
+    <Callout type="info">
+      <strong>A note on naming:</strong> Independent sources do not agree on what to call the tiers above Community Builders. Some describe a separate "Mega Builders" tier around $99/month and a "Team Builders" tier around $199/month; others describe "Team Builders" as a single ~$997 lifetime step above Community Builders. This isn't a mistake on any one source's part — OLSP has renamed and restructured these tiers across platform relaunches. Don't expect a single canonical ladder above Community Builders; verify the current name, contents, and price directly at checkout before buying.
+    </Callout>
 
-      <h3>"Upsell overwhelm" is a real, named criticism</h3>
-      <p>One independent reviewer put it plainly: multiple optional upgrades exist, and "while many of these are legit, the sheer number can feel overwhelming," adding that going from $7 to four- or five-figure tiers "is a big leap" that can pressure beginners to upgrade before they're ready. A separate, more skeptical independent source — a watchdog site focused on multi-level and affiliate marketing programs — raised the same pattern from a more critical angle, and specifically noted that exact commission rates are not disclosed for every product, meaning the confusion isn't only about which tier to buy, but about what buying it actually pays. We don't have an independent way to verify commission structures beyond what each product's own review already documents, and we're stating this as a reported pattern, not a certified fact.</p>
+    <Callout type="warn">
+      <strong>We have not reviewed VIP, Elite, or Elite Plus.</strong> These three tiers, reported at roughly $6,500, $15,000, and $25,000, surfaced during our research but are not covered by any of the five in-depth OLSP reviews on this site. We're stating that they exist and their reported price range — we are not recommending them, ranking them, or vouching for what they include. If you're offered one of these on a call, get the full terms in writing before deciding.
+    </Callout>
+  </section>
 
-      <h3>Complaints about unpaid commissions exist and should be weighed as self-reported</h3>
-      <p>At least one first-person account describes a delayed or unpaid payout — a $3,000 contest win the writer says was never received, with a larger total described as owed. This is a self-reported, individual experience, not a verified or typical outcome, and we present it here exactly as labelled: one person's account, not a pattern we can independently confirm at scale. If you're evaluating any OLSP tier, ask directly about payout history and terms before committing, rather than relying on either promotional claims or a single negative account.</p>
+  <section id="decision-framework">
+    <h2>3. Which OLSP Product Should You Buy First? A Decision Framework</h2>
+    <p>The mistake most upsell-overwhelm complaints describe is treating the ladder above as "tier 1, tier 2, tier 3" — buy the next one up when you can afford it. That's not how these products actually work. Each one solves a different bottleneck, and buying the wrong one for your situation is the single most common way people end up feeling like OLSP is "just upsells." Start by asking what's actually stopping you, then match it to the table below.</p>
 
-      <h3>Legitimacy is addressed per-product, not here</h3>
-      <p>This guide's job is routing you to the right product, not re-deciding whether OLSP is legitimate — each of our five individual reviews already renders its own verdict on its specific product, including pros, cons, and a self-check quiz. If you haven't read the <a href="/reviews/olsp-academy/">OLSP Academy review</a> yet, start there for the legitimacy question; come back here once you're deciding what to add on top of it.</p>
-    </section>
-
-    <section id="next-steps">
-      <h2>5. Your First 90 Days: A Simple Action Plan</h2>
-      <p>If you're new to OLSP or still on the Megalink, one piece of advice shows up consistently across independent reviews: give the free training a real trial period before spending on anything else. A rough, realistic sequence looks like this:</p>
-
-      <ul>
-        <li><strong>Days 1–30:</strong> Complete the free Bootcamp training, set up your Mega Link, and follow the built-in traffic methods (largely Facebook-based) exactly as taught. Do not buy an upgrade during this window unless a specific bottleneck from Section 3 already applies to you.</li>
-        <li><strong>Days 30–60:</strong> Review your results honestly against the bottleneck table above. If you have some traffic and commissions coming in but no event-based income, Live Profit Builders may fit. If you have nothing yet, stay at Megalink and revisit your traffic approach instead of upgrading.</li>
-        <li><strong>Days 60–90:</strong> Only consider Community Builders once you can answer yes to all three of its prerequisites (active promotion, 30+ minutes a day, comfort with Facebook-centric training). If any answer is no, it's not yet the right tier, regardless of how it's presented.</li>
-      </ul>
-
-      <p>Whichever path you take, every one of them starts and ends at the same place: the $7 Megalink and the <a href="/reviews/olsp-academy/">OLSP Academy</a> training underneath it. Everything in this guide is designed to help you decide what, if anything, to add on top of that foundation — not to talk you into adding something you don't need.</p>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-
-      <details>
-        <summary>What is OLSP Academy and how does it work?</summary>
-        <p>OLSP Academy is the entry point and training layer of Wayne Crowe's OLSP System. After free registration, members get access to a Mega Link — a single trackable link — plus Bootcamp training modules, live webinars, and a Facebook community. The $7 one-time Mega Link unlocks the ability to earn a flat $5 commission for every Starter Training referral you generate, while you work through the beginner training.</p>
-      </details>
-
-      <details>
-        <summary>What's the difference between all the OLSP upgrade tiers, and which one should I buy first?</summary>
-        <p>OLSP's tiers solve different problems rather than being simple "better versions" of each other — Live Profit Builders adds event-based commissions, Community Builders adds team-recruiting tools, and MineeMe and Solo Ads are parallel tools rather than sequential tiers. This guide's decision framework (Section 3) matches you to a tier based on your specific bottleneck — traffic, audience, time, or team-building — rather than simply recommending the next tier up.</p>
-      </details>
-
-      <details>
-        <summary>Is OLSP Academy legit, or is it a scam?</summary>
-        <p>Each individual OLSP product reviewed on this site addresses that question in detail for its specific product. This hub does not re-litigate legitimacy; it assumes you've already decided OLSP is worth trying and are now working out which upgrade, if any, is right for you.</p>
-      </details>
-
-      <details>
-        <summary>Do I need any experience or a website to start with OLSP?</summary>
-        <p>No. The $7 Megalink is designed for complete beginners and does not require a pre-existing website, list, or traffic source — training on basic traffic methods is included. Some upgrades, like Solo Ads, assume you already have a working funnel or opt-in page to send traffic to, so check each product's fit before buying.</p>
-      </details>
-
-      <details>
-        <summary>How much would it cost to get every OLSP upgrade?</summary>
-        <p>There is no single official total, and pricing shifts across relaunches, but a rough add-up of currently reported prices runs from the $7 Mega Link through Live Profit Builders (around $49/month), Community Builders (around $197/month), and the highest publicly reported one-time tiers — VIP, Elite, and Elite Plus — which independent sources put at $6,500 to $25,000. We have not independently reviewed those three highest tiers, and most people should only need one or two upgrades at most, not all of them.</p>
-      </details>
-
-      <details>
-        <summary>What is "upsell overwhelm" and why do people complain about it?</summary>
-        <p>It's the recurring criticism, raised by multiple independent reviewers and OLSP members, that the number of optional upgrades and the size of the price jumps between them can feel confusing or pressuring, especially for beginners. This guide exists specifically to give you a neutral way to evaluate which, if any, of those upgrades matches your situation, rather than a generic prompt to upgrade.</p>
-      </details>
-
-      <details>
-        <summary>Are the OLSP VIP, Elite, or Elite Plus tiers worth it?</summary>
-        <p>We can't say. None of these tiers, reported at roughly $6,500, $15,000, and $25,000 respectively, has been independently reviewed on this site, and we're not able to vouch for what they include or whether the price is justified. Apply the same caution you would to any five-figure purchase: get everything in writing and don't decide during a live sales call.</p>
-      </details>
-
-      <details>
-        <summary>Can I get a refund if an OLSP product doesn't work out for me?</summary>
-        <p>Refund and cancellation experiences are mixed across independent reviews and community reports, and policies can vary by product and by when you purchased. Confirm the specific refund terms for whichever product you're considering directly on its checkout page before paying, and treat verbal assurances made during a sales call as secondary to the written policy.</p>
-      </details>
-    </section>
-
-    <div class="cta-card">
-      <h3>Ready to start with the $7 Megalink?</h3>
-      <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
-      <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+    <div class="table-scroll">
+    <table>
+      <tr><th>If your bottleneck is...</th><th>Consider</th><th>Why</th></tr>
+      <tr><td>"I don't have traffic or an audience yet"</td><td>Stay at Megalink. Use the free Bootcamp training first.</td><td>Live Profit Builders and Community Builders both require an existing audience to generate meaningful income — buying either before this point is the most common source of upsell regret.</td></tr>
+      <tr><td>"I have a funnel but need faster traffic to test it"</td><td>OLSP Solo Ads, as a bounded, one-time test</td><td>Solo Ads is a traffic cost, not a training product — only worth it once you already have somewhere for that traffic to go.</td></tr>
+      <tr><td>"I'm earning something at Megalink and want event-based commissions"</td><td>Live Profit Builders (~$49/month)</td><td>This tier is designed to be added after you've validated results at Megalink, not as an automatic next step for everyone.</td></tr>
+      <tr><td>"I'm active, want to build a team, and use Facebook heavily"</td><td>Community Builders (~$197/month)</td><td>Only worth it if all three are true: you're already promoting, you can commit 30+ minutes a day, and you're comfortable with Facebook-centric training. Skip it if any one of those doesn't apply.</td></tr>
+      <tr><td>"I'm Facebook-active and my bottleneck is time, not leads"</td><td>MineeMe ($27/month), evaluated on its own</td><td>A parallel tool, not a ladder rung — only relevant if you're already posting consistently and want to reduce manual engagement time.</td></tr>
+      <tr><td>"I've been on Community Builders for 5+ months and plan to stay"</td><td>Compare against Team Builders' lifetime price</td><td>Roughly five months of Community Builders at ~$197/month approaches the ~$997 lifetime Team Builders price — worth doing the math if you're committed long-term.</td></tr>
+      <tr><td>"I'm being offered VIP, Elite, or Elite Plus"</td><td>Pause before buying</td><td>No review on this site covers these tiers. Treat a four- or five-figure upgrade with the same caution you'd apply to any major purchase, regardless of how it's presented on the call.</td></tr>
+    </table>
     </div>
 
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
+    <p>Two filters apply on top of the table above, not instead of it:</p>
+    <ul>
+      <li><strong>Budget filters within your matched bottleneck — it doesn't override it.</strong> If your bottleneck is "no audience yet," a bigger budget doesn't make Community Builders the right choice; it still requires an audience Community Builders itself won't build for you.</li>
+      <li><strong>Time availability is a hard gate for Community Builders specifically.</strong> Every source we found — the site's own review and independent commentary alike — agrees this tier's recurring cost only pays off with sustained daily activity. Treat the 30-minutes-a-day commitment as a yes/no question before buying, not a soft suggestion.</li>
+    </ul>
+  </section>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://bloggingworks.com/olsp-system-review/" target="_blank" rel="noopener noreferrer">Bloggingworks — OLSP System Review</a></li>
-        <li><a href="https://behindmlm.com/mlm-reviews/olsp-system-review-marketing-suite-with-25000-upsells/" target="_blank" rel="noopener noreferrer">BehindMLM — OLSP System Review</a></li>
-        <li><a href="https://internetmoneypro.com/blog/olsp-academy-review" target="_blank" rel="noopener noreferrer">InternetMoneyPro — OLSP Academy Review</a></li>
-        <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener noreferrer">Trustpilot — Olspsystem.com</a></li>
-        <li><a href="https://www.marketerrakib.com/wayne-crowe-solo-ads-review/" target="_blank" rel="noopener noreferrer">Wayne Crowe Solo Ads Pricing</a></li>
-        <li><a href="https://theonlineblogger.com/olsp-academy-platform-update/" target="_blank" rel="noopener noreferrer">2026 OLSP Platform Update</a></li>
-        <li><a href="https://www.jaymarketer.com/2025/12/understanding-olsp-system-cost-what-you.html" target="_blank" rel="noopener noreferrer">OLSP System Cost Breakdown</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">This guide synthesizes our own five independent OLSP product reviews with external research current as of July 2026. Pricing, tier names, and commission structures change across OLSP platform relaunches — always verify current terms directly at checkout before purchasing. Nothing in this guide is a guarantee of income or outcome; see each linked product review for that product's own methodology and caveats.</p>
-    </section>
+  <div class="cta-card">
+    <h3>Ready to start with the $7 Megalink?</h3>
+    <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+  </div>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+  <section id="concerns">
+    <h2>4. Upsell Overwhelm, Refunds &amp; Legitimacy</h2>
+    <p>These are the three questions that come up most often once someone is a few weeks into OLSP Academy and starts seeing the rest of the ecosystem. Here's what we found researching each one.</p>
 
-  </main>
-</div>
+    <h3>"Upsell overwhelm" is a real, named criticism</h3>
+    <p>One independent reviewer put it plainly: multiple optional upgrades exist, and "while many of these are legit, the sheer number can feel overwhelming," adding that going from $7 to four- or five-figure tiers "is a big leap" that can pressure beginners to upgrade before they're ready. A separate, more skeptical independent source — a watchdog site focused on multi-level and affiliate marketing programs — raised the same pattern from a more critical angle, and specifically noted that exact commission rates are not disclosed for every product, meaning the confusion isn't only about which tier to buy, but about what buying it actually pays. We don't have an independent way to verify commission structures beyond what each product's own review already documents, and we're stating this as a reported pattern, not a certified fact.</p>
 
-<script is:inline>
-  // Mobile TOC toggle
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+    <h3>Complaints about unpaid commissions exist and should be weighed as self-reported</h3>
+    <p>At least one first-person account describes a delayed or unpaid payout — a $3,000 contest win the writer says was never received, with a larger total described as owed. This is a self-reported, individual experience, not a verified or typical outcome, and we present it here exactly as labelled: one person's account, not a pattern we can independently confirm at scale. If you're evaluating any OLSP tier, ask directly about payout history and terms before committing, rather than relying on either promotional claims or a single negative account.</p>
 
-  // Scroll-spy active link highlighting
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+    <h3>Legitimacy is addressed per-product, not here</h3>
+    <p>This guide's job is routing you to the right product, not re-deciding whether OLSP is legitimate — each of our five individual reviews already renders its own verdict on its specific product, including pros, cons, and a self-check quiz. If you haven't read the <a href="/reviews/olsp-academy/">OLSP Academy review</a> yet, start there for the legitimacy question; come back here once you're deciding what to add on top of it.</p>
+  </section>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  <section id="next-steps">
+    <h2>5. Your First 90 Days: A Simple Action Plan</h2>
+    <p>If you're new to OLSP or still on the Megalink, one piece of advice shows up consistently across independent reviews: give the free training a real trial period before spending on anything else. A rough, realistic sequence looks like this:</p>
 
-  sections.forEach(s => observer.observe(s));
+    <ul>
+      <li><strong>Days 1–30:</strong> Complete the free Bootcamp training, set up your Mega Link, and follow the built-in traffic methods (largely Facebook-based) exactly as taught. Do not buy an upgrade during this window unless a specific bottleneck from Section 3 already applies to you.</li>
+      <li><strong>Days 30–60:</strong> Review your results honestly against the bottleneck table above. If you have some traffic and commissions coming in but no event-based income, Live Profit Builders may fit. If you have nothing yet, stay at Megalink and revisit your traffic approach instead of upgrading.</li>
+      <li><strong>Days 60–90:</strong> Only consider Community Builders once you can answer yes to all three of its prerequisites (active promotion, 30+ minutes a day, comfort with Facebook-centric training). If any answer is no, it's not yet the right tier, regardless of how it's presented.</li>
+    </ul>
 
-  // Close mobile TOC after clicking a link
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
+    <p>Whichever path you take, every one of them starts and ends at the same place: the $7 Megalink and the <a href="/reviews/olsp-academy/">OLSP Academy</a> training underneath it. Everything in this guide is designed to help you decide what, if anything, to add on top of that foundation — not to talk you into adding something you don't need.</p>
+  </section>
 
-</body>
-</html>
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <FaqItem question="What is OLSP Academy and how does it work?">
+      <p>OLSP Academy is the entry point and training layer of Wayne Crowe's OLSP System. After free registration, members get access to a Mega Link — a single trackable link — plus Bootcamp training modules, live webinars, and a Facebook community. The $7 one-time Mega Link unlocks the ability to earn a flat $5 commission for every Starter Training referral you generate, while you work through the beginner training.</p>
+    </FaqItem>
+
+    <FaqItem question="What's the difference between all the OLSP upgrade tiers, and which one should I buy first?">
+      <p>OLSP's tiers solve different problems rather than being simple "better versions" of each other — Live Profit Builders adds event-based commissions, Community Builders adds team-recruiting tools, and MineeMe and Solo Ads are parallel tools rather than sequential tiers. This guide's decision framework (Section 3) matches you to a tier based on your specific bottleneck — traffic, audience, time, or team-building — rather than simply recommending the next tier up.</p>
+    </FaqItem>
+
+    <FaqItem question="Is OLSP Academy legit, or is it a scam?">
+      <p>Each individual OLSP product reviewed on this site addresses that question in detail for its specific product. This hub does not re-litigate legitimacy; it assumes you've already decided OLSP is worth trying and are now working out which upgrade, if any, is right for you.</p>
+    </FaqItem>
+
+    <FaqItem question="Do I need any experience or a website to start with OLSP?">
+      <p>No. The $7 Megalink is designed for complete beginners and does not require a pre-existing website, list, or traffic source — training on basic traffic methods is included. Some upgrades, like Solo Ads, assume you already have a working funnel or opt-in page to send traffic to, so check each product's fit before buying.</p>
+    </FaqItem>
+
+    <FaqItem question="How much would it cost to get every OLSP upgrade?">
+      <p>There is no single official total, and pricing shifts across relaunches, but a rough add-up of currently reported prices runs from the $7 Mega Link through Live Profit Builders (around $49/month), Community Builders (around $197/month), and the highest publicly reported one-time tiers — VIP, Elite, and Elite Plus — which independent sources put at $6,500 to $25,000. We have not independently reviewed those three highest tiers, and most people should only need one or two upgrades at most, not all of them.</p>
+    </FaqItem>
+
+    <FaqItem question="What is &quot;upsell overwhelm&quot; and why do people complain about it?">
+      <p>It's the recurring criticism, raised by multiple independent reviewers and OLSP members, that the number of optional upgrades and the size of the price jumps between them can feel confusing or pressuring, especially for beginners. This guide exists specifically to give you a neutral way to evaluate which, if any, of those upgrades matches your situation, rather than a generic prompt to upgrade.</p>
+    </FaqItem>
+
+    <FaqItem question="Are the OLSP VIP, Elite, or Elite Plus tiers worth it?">
+      <p>We can't say. None of these tiers, reported at roughly $6,500, $15,000, and $25,000 respectively, has been independently reviewed on this site, and we're not able to vouch for what they include or whether the price is justified. Apply the same caution you would to any five-figure purchase: get everything in writing and don't decide during a live sales call.</p>
+    </FaqItem>
+
+    <FaqItem question="Can I get a refund if an OLSP product doesn't work out for me?">
+      <p>Refund and cancellation experiences are mixed across independent reviews and community reports, and policies can vary by product and by when you purchased. Confirm the specific refund terms for whichever product you're considering directly on its checkout page before paying, and treat verbal assurances made during a sales call as secondary to the written policy.</p>
+    </FaqItem>
+  </section>
+
+  <div class="cta-card">
+    <h3>Ready to start with the $7 Megalink?</h3>
+    <p>Every product in this guide builds on the same foundation: the <strong>$7 OLSP Megalink</strong>. It's the single required starting point regardless of which upgrade you eventually choose, and it comes with structured training on <strong>affiliate marketing, traffic, and funnels</strong> — so you understand the model before spending more. As an added bonus, <strong>every Starter Training you refer earns you a $5 commission</strong>, making it possible to learn while you earn. <strong>No experience required.</strong></p>
+    <a href="https://olspacademy.com/megalive/1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start the $7 Megalink →</a>
+  </div>
+
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <ul class="pill-list">
+      <li><a href="https://bloggingworks.com/olsp-system-review/" target="_blank" rel="noopener noreferrer">Bloggingworks — OLSP System Review</a></li>
+      <li><a href="https://behindmlm.com/mlm-reviews/olsp-system-review-marketing-suite-with-25000-upsells/" target="_blank" rel="noopener noreferrer">BehindMLM — OLSP System Review</a></li>
+      <li><a href="https://internetmoneypro.com/blog/olsp-academy-review" target="_blank" rel="noopener noreferrer">InternetMoneyPro — OLSP Academy Review</a></li>
+      <li><a href="https://www.trustpilot.com/review/olspsystem.com" target="_blank" rel="noopener noreferrer">Trustpilot — Olspsystem.com</a></li>
+      <li><a href="https://www.marketerrakib.com/wayne-crowe-solo-ads-review/" target="_blank" rel="noopener noreferrer">Wayne Crowe Solo Ads Pricing</a></li>
+      <li><a href="https://theonlineblogger.com/olsp-academy-platform-update/" target="_blank" rel="noopener noreferrer">2026 OLSP Platform Update</a></li>
+      <li><a href="https://www.jaymarketer.com/2025/12/understanding-olsp-system-cost-what-you.html" target="_blank" rel="noopener noreferrer">OLSP System Cost Breakdown</a></li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--ink-light);">This guide synthesizes our own five independent OLSP product reviews with external research current as of July 2026. Pricing, tier names, and commission structures change across OLSP platform relaunches — always verify current terms directly at checkout before purchasing. Nothing in this guide is a guarantee of income or outcome; see each linked product review for that product's own methodology and caveats.</p>
+  </section>
+
+  <SiteFooter />
+</OlspLayout>

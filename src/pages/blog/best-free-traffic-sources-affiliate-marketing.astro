@@ -1,244 +1,113 @@
 ---
-export const prerender = true;
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const pageTitle = "Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid)";
+const pageDescription = "The free traffic channels worth using before you spend anything on ads — and when a paid tool like a traffic rotator actually becomes worth adding.";
+
+const tocLinks = [
+  { href: "#intro", label: "Introduction" },
+  { href: "#free-channels", label: "1. The Free Channels Worth Using" },
+  { href: "#which-first", label: "2. Which Channel to Start With" },
+  { href: "#when-to-add-paid", label: "3. When Free Traffic Stops Being Enough" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources & References" },
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid)</title>
-<meta name="description" content="The free traffic channels worth using before you spend anything on ads — and when a paid tool like a traffic rotator actually becomes worth adding." />
-<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/" />
-<meta property="og:title" content="Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid)" />
-<meta property="og:description" content="The free traffic channels worth using before you spend anything on ads — and when a paid tool like a traffic rotator actually becomes worth adding." />
-<meta property="og:url" content="https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="Profit and Privilege" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid)" />
-<meta name="twitter:description" content="The free traffic channels worth using before you spend anything on ads — and when a paid tool like a traffic rotator actually becomes worth adding." />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Best Free Traffic Sources for Affiliate Marketing (And When to Add Paid)",
-      "description": "The free traffic channels worth using before you spend anything on ads — and when a paid tool like a traffic rotator actually becomes worth adding.",
-      "datePublished": "2026-07-04",
-      "dateModified": "2026-07-04",
-      "url": "https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/",
-      "author": { "@type": "Person", "name": "Jarmo Halonen", "url": "https://olsp.profitandprivilege.com/authors/jarmo-halonen" },
-      "publisher": { "@type": "Organization", "name": "Profit and Privilege", "url": "https://olsp.profitandprivilege.com" },
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/" }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is the single best free traffic source for affiliate marketing?", "acceptedAnswer": { "@type": "Answer", "text": "SEO/organic search produces the highest-quality traffic because visitors are already searching for a solution, but it's also the slowest to build. For faster organic reach, short-form video (TikTok, YouTube Shorts) rewards engagement over follower count, making it more accessible to someone starting from zero." } },
-        { "@type": "Question", "name": "How long does free traffic take to become meaningful?", "acceptedAnswer": { "@type": "Answer", "text": "SEO and Pinterest both commonly take 3–6 months to build meaningful, compounding traffic. Short-form video can produce a viral spike within weeks, but consistent traffic still requires months of regular posting." } },
-        { "@type": "Question", "name": "When should I add paid traffic instead of relying only on free sources?", "acceptedAnswer": { "@type": "Answer", "text": "Once a free channel has validated that your offer converts — meaning you have real click and conversion data, not a guess — paid or rotator-based traffic can scale what's already working faster than organic growth alone. Adding paid traffic before validating an offer just accelerates spending on something unproven." } },
-        { "@type": "Question", "name": "Is email still a real free traffic source in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — and it typically converts better than any single free channel, since a subscriber has already opted in specifically to hear from you. The catch is that it takes the other free channels (or paid ones) to build the list in the first place; email is a compounding asset, not a starting channel." } }
-      ]
-    }
-  ]
-}
-</script>
-<style>
-  :root{--ink:#1e293b;--ink-light:#475569;--bg:#ffffff;--bg-soft:#f8fafc;--line:#e2e8f0;--accent:#2563eb;--accent-soft:#eff6ff;--warn:#92400e;--warn-bg:#fef3c7;--warn-border:#fcd34d;--good:#166534;--good-bg:#f0fdf4;--bad:#991b1b;--bad-bg:#fef2f2;--radius:10px;}
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px;}
-  h1,h2,h3{line-height:1.25;color:var(--ink);}
-  h1{font-size:1.9rem;margin:0 0 .5rem;}
-  h2{font-size:1.5rem;margin-top:0;border-bottom:3px solid var(--accent-soft);padding-bottom:.4rem;}
-  h3{font-size:1.15rem;color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem;padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
-  .layout{display:grid;grid-template-columns:280px 1fr;max-width:1280px;margin:0 auto;}
-  .toc-wrap{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;border-right:1px solid var(--line);background:var(--bg-soft);padding:1.5rem 1rem;}
-  .toc-wrap h4{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);margin:0 0 .75rem;}
-  .toc-wrap nav a{display:block;font-size:.9rem;color:var(--ink-light);padding:.45rem .6rem;border-radius:6px;margin-bottom:.15rem;}
-  .toc-wrap nav a:hover{background:var(--accent-soft);text-decoration:none;color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent);color:#fff;font-weight:600;}
-  main{padding:2.5rem 3rem 5rem;max-width:880px;}
-  section{margin-bottom:3rem;scroll-margin-top:1rem;}
-  .hero-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:.8rem;font-weight:600;padding:.3rem .7rem;border-radius:99px;margin-bottom:.8rem;}
-  .verdict-box{background:var(--bg-soft);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);padding:1.2rem 1.4rem;margin:1.2rem 0 1.5rem;}
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-  .callout{border-radius:var(--radius);padding:1rem 1.2rem;margin:1.2rem 0;border:1px solid var(--line);}
-  .callout.warn{background:var(--warn-bg);border-color:var(--warn-border);color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft);border-color:#bfdbfe;color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-  table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.93rem;}
-  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top;}
-  th{background:var(--bg-soft);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-light);}
-  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .cta-card{border-radius:var(--radius);padding:1.1rem 1.3rem;border:1px solid var(--line);background:var(--accent-soft);border-left:4px solid var(--accent);margin:3rem 0;}
-  .cta-card h3{font-size:1.05rem;margin:0 0 .3rem;color:var(--ink);}
-  .cta-card .cta-btn{font-size:.88rem;padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-  .cta-btn{display:inline-block;background:var(--accent);color:#fff;font-weight:600;border-radius:8px;}
-  .cta-btn:hover{background:#1d4ed8;text-decoration:none;color:#fff;}
-  .quote-banner{display:block;text-align:center;margin:4rem 0;text-decoration:none;}
-  .quote-banner p{font-size:1.2rem;font-weight:700;font-style:italic;line-height:1.6;margin:0;color:var(--accent);}
-  .quote-banner:hover p{color:#1d4ed8;text-decoration:none;}
-  .standard-cta{margin-bottom:0;}
-  .pill-list{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;padding:0;list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{display:inline-block;font-size:.78rem;background:var(--bg-soft);color:var(--ink-light);border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem;white-space:nowrap;}
-  .pill-list a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);text-decoration:none;}
-  .site-footer{border-top:1px solid var(--line);padding:1.2rem 0 0;margin-top:2rem;font-size:.8rem;color:var(--ink-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;}
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent);text-decoration:underline;}
-  details{border:1px solid var(--line);border-radius:8px;margin-bottom:.6rem;padding:.7rem 1rem;}
-  summary{font-weight:600;cursor:pointer;font-size:.97rem;}
-  details p{margin-top:.6rem;margin-bottom:0;color:var(--ink-light);font-size:.95rem;}
-  .author-box{display:flex;align-items:flex-start;gap:1.2rem;border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.4rem;background:var(--bg-soft);}
-  .author-box img{width:72px;height:72px;border-radius:50%;flex-shrink:0;object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem;font-size:1rem;color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem;color:var(--ink-light);margin:0 0 .55rem;display:block;}
-  .author-box-info p{font-size:.9rem;color:var(--ink-light);margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-  .mobile-toc-btn{display:none;}
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{position:sticky;top:0;height:auto;max-height:0;overflow:hidden;transition:max-height .25s ease;border-right:none;border-bottom:1px solid var(--line);z-index:50;}
-    .toc-wrap.open{max-height:70vh;overflow-y:auto;}
-    .mobile-toc-btn{display:block;position:sticky;top:0;z-index:60;width:100%;text-align:left;background:var(--ink);color:#fff;border:none;padding:.9rem 1.2rem;font-size:.95rem;font-weight:600;}
-    main{padding:1.5rem 1.2rem 3rem;}
-  }
-</style>
-</head>
-<body>
-<div class="layout">
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">Introduction</a>
-      <a href="#free-channels">1. The Free Channels Worth Using</a>
-      <a href="#which-first">2. Which Channel to Start With</a>
-      <a href="#when-to-add-paid">3. When Free Traffic Stops Being Enough</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources &amp; References</a>
-    </nav>
-  </aside>
-  <main>
-    <section id="intro">
-      <span class="hero-tag">Traffic Guide · Updated July 2026</span>
-      <h1>Best Free Traffic Sources for Affiliate Marketing</h1>
-      <p><strong>Free traffic is the right starting point for affiliate marketing — but it's not the whole strategy.</strong> This guide is deliberately short on the generic channel list (SEO, Pinterest, YouTube, short-form video, and email are well-documented elsewhere) and more specific about the part most guides skip: knowing when free traffic has done its job and it's time to add a paid channel.</p>
-      <div class="verdict-box">
-        <p><strong>Best for:</strong> beginners validating an offer before spending anything on traffic, and anyone deciding whether it's time to add a paid channel.</p>
-        <p><strong>Not ideal for:</strong> anyone who has already validated an offer and needs to scale fast — at that point, paid traffic will typically outpace free channels.</p>
-      </div>
-    </section>
 
-    <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
-      <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
-    </a>
+<OlspLayout title={pageTitle} description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/blog/best-free-traffic-sources-affiliate-marketing/"
+  tocLinks={tocLinks}>
 
-    <section id="free-channels">
-      <h2>1. The Free Channels Worth Using</h2>
-      <div class="table-scroll">
-      <table>
-        <tr><th>Channel</th><th>Time to Meaningful Traffic</th><th>Best For</th></tr>
-        <tr><td>SEO / organic search</td><td>3–6 months</td><td>Long-term, buyer-intent traffic</td></tr>
-        <tr><td>Short-form video (TikTok, Shorts)</td><td>Weeks (viral) to months (consistent)</td><td>Rewards engagement over existing following</td></tr>
-        <tr><td>Pinterest</td><td>3–6 months</td><td>Long content shelf-life, visual niches</td></tr>
-        <tr><td>Reddit / community participation</td><td>Immediate, if genuine</td><td>Answering real questions, not posting links</td></tr>
-        <tr><td>Email (once a list exists)</td><td>Immediate for existing subscribers</td><td>Highest-converting of all free channels</td></tr>
-      </table>
-      </div>
-      <p>Each of these is covered in depth elsewhere on the web — the honest summary is that SEO and email convert best long-term, while short-form video and Reddit can produce faster initial traction.</p>
-    </section>
+<section id="intro">
+  <span class="hero-tag">Traffic Guide · Updated July 2026</span>
+  <h1>Best Free Traffic Sources for Affiliate Marketing</h1>
+  <p><strong>Free traffic is the right starting point for affiliate marketing — but it's not the whole strategy.</strong> This guide is deliberately short on the generic channel list (SEO, Pinterest, YouTube, short-form video, and email are well-documented elsewhere) and more specific about the part most guides skip: knowing when free traffic has done its job and it's time to add a paid channel.</p>
+  <div class="verdict-box">
+    <p><strong>Best for:</strong> beginners validating an offer before spending anything on traffic, and anyone deciding whether it's time to add a paid channel.</p>
+    <p><strong>Not ideal for:</strong> anyone who has already validated an offer and needs to scale fast — at that point, paid traffic will typically outpace free channels.</p>
+  </div>
+</section>
 
-    <section id="which-first">
-      <h2>2. Which Channel to Start With</h2>
-      <p>Pick based on where you already have some presence, not the "best" channel in the abstract. Someone already active on TikTok will get traction faster there than starting SEO from zero. Someone comfortable writing will get more from SEO than from video they've never made before.</p>
-    </section>
+<a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+  <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+</a>
 
-    <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
-      <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
-    </a>
+<section id="free-channels">
+  <h2>1. The Free Channels Worth Using</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Channel</th><th>Time to Meaningful Traffic</th><th>Best For</th></tr>
+    <tr><td>SEO / organic search</td><td>3–6 months</td><td>Long-term, buyer-intent traffic</td></tr>
+    <tr><td>Short-form video (TikTok, Shorts)</td><td>Weeks (viral) to months (consistent)</td><td>Rewards engagement over existing following</td></tr>
+    <tr><td>Pinterest</td><td>3–6 months</td><td>Long content shelf-life, visual niches</td></tr>
+    <tr><td>Reddit / community participation</td><td>Immediate, if genuine</td><td>Answering real questions, not posting links</td></tr>
+    <tr><td>Email (once a list exists)</td><td>Immediate for existing subscribers</td><td>Highest-converting of all free channels</td></tr>
+  </table>
+  </div>
+  <p>Each of these is covered in depth elsewhere on the web — the honest summary is that SEO and email convert best long-term, while short-form video and Reddit can produce faster initial traction.</p>
+</section>
 
-    <section id="when-to-add-paid">
-      <h2>3. When Free Traffic Stops Being Enough</h2>
-      <p>Free traffic's job is to validate that an offer converts before you spend money proving it faster. Once a free channel shows you real click-through and conversion data — not a guess, actual numbers — a paid or rotator-based traffic tool can scale what's already working. Adding paid traffic before that validation just accelerates spending on an unproven offer.</p>
-      <p>This is the point where a tool like our reviewed <a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator</a> becomes relevant — not as a replacement for the free channels above, but as the next step once one of them has proven an offer converts and you want to scale traffic faster than organic growth allows.</p>
-    </section>
+<section id="which-first">
+  <h2>2. Which Channel to Start With</h2>
+  <p>Pick based on where you already have some presence, not the "best" channel in the abstract. Someone already active on TikTok will get traction faster there than starting SEO from zero. Someone comfortable writing will get more from SEO than from video they've never made before.</p>
+</section>
 
-    <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
-      <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
-    </a>
+<a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+  <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+</a>
 
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details><summary>What is the single best free traffic source for affiliate marketing?</summary><p>SEO/organic search produces the highest-quality traffic because visitors are already searching for a solution, but it's also the slowest to build. For faster organic reach, short-form video (TikTok, YouTube Shorts) rewards engagement over follower count, making it more accessible to someone starting from zero.</p></details>
-      <details><summary>How long does free traffic take to become meaningful?</summary><p>SEO and Pinterest both commonly take 3–6 months to build meaningful, compounding traffic. Short-form video can produce a viral spike within weeks, but consistent traffic still requires months of regular posting.</p></details>
-      <details><summary>When should I add paid traffic instead of relying only on free sources?</summary><p>Once a free channel has validated that your offer converts — meaning you have real click and conversion data, not a guess — paid or rotator-based traffic can scale what's already working faster than organic growth alone. Adding paid traffic before validating an offer just accelerates spending on something unproven.</p></details>
-      <details><summary>Is email still a real free traffic source in 2026?</summary><p>Yes — and it typically converts better than any single free channel, since a subscriber has already opted in specifically to hear from you. The catch is that it takes the other free channels (or paid ones) to build the list in the first place; email is a compounding asset, not a starting channel.</p></details>
-    </section>
+<section id="when-to-add-paid">
+  <h2>3. When Free Traffic Stops Being Enough</h2>
+  <p>Free traffic's job is to validate that an offer converts before you spend money proving it faster. Once a free channel shows you real click-through and conversion data — not a guess, actual numbers — a paid or rotator-based traffic tool can scale what's already working. Adding paid traffic before that validation just accelerates spending on an unproven offer.</p>
+  <p>This is the point where a tool like our reviewed <a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator</a> becomes relevant — not as a replacement for the free channels above, but as the next step once one of them has proven an offer converts and you want to scale traffic faster than organic growth allows.</p>
+</section>
 
-    <div class="cta-card standard-cta">
-      <h3>Ready to See a Paid Traffic Option Worth Considering?</h3>
-      <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink →</a>
-    </div>
+<a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+  <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+</a>
 
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <FaqItem question="What is the single best free traffic source for affiliate marketing?">
+    <p>SEO/organic search produces the highest-quality traffic because visitors are already searching for a solution, but it's also the slowest to build. For faster organic reach, short-form video (TikTok, YouTube Shorts) rewards engagement over follower count, making it more accessible to someone starting from zero.</p>
+  </FaqItem>
+  <FaqItem question="How long does free traffic take to become meaningful?">
+    <p>SEO and Pinterest both commonly take 3–6 months to build meaningful, compounding traffic. Short-form video can produce a viral spike within weeks, but consistent traffic still requires months of regular posting.</p>
+  </FaqItem>
+  <FaqItem question="When should I add paid traffic instead of relying only on free sources?">
+    <p>Once a free channel has validated that your offer converts — meaning you have real click and conversion data, not a guess — paid or rotator-based traffic can scale what's already working faster than organic growth alone. Adding paid traffic before validating an offer just accelerates spending on something unproven.</p>
+  </FaqItem>
+  <FaqItem question="Is email still a real free traffic source in 2026?">
+    <p>Yes — and it typically converts better than any single free channel, since a subscriber has already opted in specifically to hear from you. The catch is that it takes the other free channels (or paid ones) to build the list in the first place; email is a compounding asset, not a starting channel.</p>
+  </FaqItem>
+</section>
 
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://wecantrack.com/insights/free-traffic-sources-for-affiliate-marketing/" target="_blank" rel="noopener noreferrer">WeCanTrack — Free Traffic Sources</a></li>
-        <li><a href="https://www.mobidea.com/academy/traffic-sources-affiliate-marketing/" target="_blank" rel="noopener noreferrer">Mobidea Academy — Traffic Sources</a></li>
-        <li><a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator — Independent Review</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">This article reflects independent research current as of July 2026. This article does not constitute financial advice.</p>
-    </section>
-
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
-  </main>
+<div class="cta-card standard-cta">
+  <h3>Ready to See a Paid Traffic Option Worth Considering?</h3>
+  <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink →</a>
 </div>
-<script is:inline>
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) { tocToggle.addEventListener('click', () => { tocWrap.classList.toggle('open'); }); }
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) { tocLinks.forEach(l => l.classList.remove('active')); link.classList.add('active'); }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(s => observer.observe(s));
-  tocLinks.forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) tocWrap.classList.remove('open'); }); });
-</script>
-</body>
-</html>
+
+<section id="author">
+  <h2>About the Author</h2>
+  <AuthorBox />
+</section>
+
+<section id="sources">
+  <h2>Sources &amp; References</h2>
+  <ul class="pill-list">
+    <li><a href="https://wecantrack.com/insights/free-traffic-sources-for-affiliate-marketing/" target="_blank" rel="noopener noreferrer">WeCanTrack — Free Traffic Sources</a></li>
+    <li><a href="https://www.mobidea.com/academy/traffic-sources-affiliate-marketing/" target="_blank" rel="noopener noreferrer">Mobidea Academy — Traffic Sources</a></li>
+    <li><a href="/reviews/megalink-traffic-rotator-review/">Megalink Traffic Rotator — Independent Review</a></li>
+  </ul>
+  <p style="font-size:.82rem;color:var(--ink-light);">This article reflects independent research current as of July 2026. This article does not constitute financial advice.</p>
+</section>
+
+<SiteFooter />
+
+</OlspLayout>

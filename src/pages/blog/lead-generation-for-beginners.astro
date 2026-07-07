@@ -1,380 +1,32 @@
 ---
 export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const pageTitle = "Lead Generation for Beginners: A Step-by-Step Practical Guide [2026]";
+const pageDescription = "Lead generation for beginners: how to define your ICP, choose your first channel, build a capture page, write a nurture sequence, and get your first lead in 2026.";
+
+const tocLinks = [
+  { href: "#section-1", label: "1. Before You Start" },
+  { href: "#section-2", label: "2. Define Your Target Lead" },
+  { href: "#section-3", label: "3. Pick One Channel" },
+  { href: "#section-4", label: "4. Build Your Capture System" },
+  { href: "#section-5", label: "5. Write a Nurture Sequence" },
+  { href: "#section-6", label: "6. Track Three Numbers" },
+  { href: "#section-7", label: "7. Fastest Path to First Lead" },
+  { href: "#section-8", label: "8. Common Beginner Mistakes" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources & References" },
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lead Generation for Beginners: A Step-by-Step Practical Guide [2026]</title>
-<meta name="description" content="Lead generation for beginners: how to define your ICP, choose your first channel, build a capture page, write a nurture sequence, and get your first lead in 2026." />
-<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/lead-generation-for-beginners/" />
-<meta property="og:title" content="Lead Generation for Beginners: A Step-by-Step Practical Guide [2026]" />
-<meta property="og:description" content="Lead generation for beginners: how to define your ICP, choose your first channel, build a capture page, write a nurture sequence, and get your first lead in 2026." />
-<meta property="og:url" content="https://olsp.profitandprivilege.com/blog/lead-generation-for-beginners/" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="Profit and Privilege" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Lead Generation for Beginners: A Step-by-Step Practical Guide [2026]" />
-<meta name="twitter:description" content="Lead generation for beginners: how to define your ICP, choose your first channel, build a capture page, write a nurture sequence, and get your first lead in 2026." />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Lead Generation for Beginners: A Step-by-Step Practical Guide [2026]",
-      "description": "Lead generation for beginners: how to define your ICP, choose your first channel, build a capture page, write a nurture sequence, and get your first lead in 2026.",
-      "datePublished": "2026-07-03",
-      "dateModified": "2026-07-03",
-      "url": "https://olsp.profitandprivilege.com/blog/lead-generation-for-beginners/",
-      "author": {
-        "@type": "Person",
-        "name": "Jarmo Halonen",
-        "url": "https://olsp.profitandprivilege.com/authors/jarmo-halonen"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Profit and Privilege",
-        "url": "https://olsp.profitandprivilege.com"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://olsp.profitandprivilege.com/blog/lead-generation-for-beginners/"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How long does it take to get my first lead?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "With paid traffic and a clear offer, the first lead can come within 24–48 hours. With organic methods — social media content, SEO — the first lead typically takes 2–8 weeks. Direct outreach is the fastest method: if you have a warm network and a relevant offer, you can get your first lead the same day you start."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many leads do I need to make a sale?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "This depends on your offer, price point, and how well your nurture sequence is written. In affiliate marketing, typical conversion rates range from 1–5% of your email list. In B2B, a 1–3% lead-to-customer conversion rate is standard. Your goal in the beginning is not to optimise conversion rates — it is to get 50–100 leads through your system so you can see the pattern and identify where to improve."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to pay for tools to get started with lead generation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. You can start with free tiers of ConvertKit, MailerLite, or Mailchimp for email marketing. Many landing page builders — Carrd, Systeme.io — have free plans. Organic social media and Google search are free to start. Paid tools only make sense after you have a working system to scale."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between lead generation and list building?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "They are closely related but not identical. List building is the act of growing your email subscriber count. Lead generation is the process of attracting people who fit your target customer profile and capturing their information in a systematic way. You can build a large email list of people poorly matched to your offer — that is list building without effective lead generation. Effective lead generation produces a smaller but better-qualified list that converts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is lead generation only for B2B companies?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Lead generation is used in B2C, B2B, affiliate marketing, e-commerce, local services, and direct-response marketing. The tactics differ — B2B often uses LinkedIn and direct outreach; affiliate marketers often use solo ads and organic social; local services often use Google Ads and local SEO — but the underlying system (attract, capture, nurture, convert) is the same across every industry."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I know if my lead magnet is good enough?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A well-matched lead magnet typically converts 20–40% of landing page visitors into email subscribers. If your conversion rate is below 10%, your lead magnet likely isn't solving a specific enough problem, or your landing page copy doesn't communicate its value clearly. Start by testing the headline — it has the largest single impact on conversion rate. Change one element at a time and measure the result."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the fastest lead generation channel for a complete beginner?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Direct outreach is fastest if you have a warm network. Paid social ads (Facebook, Instagram) with a small budget of $10–20 per day can deliver the first lead within 24–48 hours. Solo ads in the affiliate marketing space are also fast — traffic is delivered immediately upon purchase. Organic social media and SEO are slower but cost far less over time."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
-
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
-
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" →";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  .step-list{counter-reset:steps; padding:0; list-style:none; margin:0 0 1.5rem;}
-  .step-list li{
-    counter-increment:steps;
-    display:flex;
-    gap:1rem;
-    align-items:flex-start;
-    margin-bottom:1.1rem;
-  }
-  .step-list li::before{
-    content:counter(steps);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-width:2rem;
-    height:2rem;
-    background:var(--accent);
-    color:#fff;
-    font-weight:700;
-    font-size:.9rem;
-    border-radius:50%;
-    flex-shrink:0;
-    margin-top:.15rem;
-  }
-  .step-list li div strong{display:block; margin-bottom:.2rem;}
-  .step-list li div{flex:1;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .table-scroll{overflow-x:auto;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#section-1">1. Before You Start</a>
-      <a href="#section-2">2. Define Your Target Lead</a>
-      <a href="#section-3">3. Pick One Channel</a>
-      <a href="#section-4">4. Build Your Capture System</a>
-      <a href="#section-5">5. Write a Nurture Sequence</a>
-      <a href="#section-6">6. Track Three Numbers</a>
-      <a href="#section-7">7. Fastest Path to First Lead</a>
-      <a href="#section-8">8. Common Beginner Mistakes</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources &amp; References</a>
-    </nav>
-  </aside>
-
-  <main>
+<OlspLayout title={pageTitle} description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/blog/lead-generation-for-beginners/"
+  tocLinks={tocLinks}>
 
     <section id="intro">
       <span class="hero-tag">Lead Generation · Practical Guide · July 2026</span>
@@ -731,40 +383,19 @@ export const prerender = true;
     <section id="faq">
       <h2>Frequently Asked Questions</h2>
 
-      <details>
-        <summary>How long does it take to get my first lead?</summary>
-        <p>With paid traffic and a clear offer, the first lead can come within 24–48 hours. With organic methods — social media content, SEO — the first lead typically takes 2–8 weeks. Direct outreach to a warm network is the fastest method: if you have a relevant offer, you can get your first lead the same day you start.</p>
-      </details>
+      <FaqItem question="How long does it take to get my first lead?" answer="With paid traffic and a clear offer, the first lead can come within 24–48 hours. With organic methods — social media content, SEO — the first lead typically takes 2–8 weeks. Direct outreach to a warm network is the fastest method: if you have a relevant offer, you can get your first lead the same day you start." />
 
-      <details>
-        <summary>How many leads do I need to make a sale?</summary>
-        <p>This depends on your offer and nurture sequence. In affiliate marketing, typical email-to-conversion rates range from 1–5% of your list. In B2B, a 1–3% lead-to-customer conversion rate is standard. Your goal in the beginning is not to optimise conversion — it is to get 50–100 leads through your system so you can observe the pattern and identify where to improve.</p>
-      </details>
+      <FaqItem question="How many leads do I need to make a sale?" answer="This depends on your offer and nurture sequence. In affiliate marketing, typical email-to-conversion rates range from 1–5% of your list. In B2B, a 1–3% lead-to-customer conversion rate is standard. Your goal in the beginning is not to optimise conversion — it is to get 50–100 leads through your system so you can observe the pattern and identify where to improve." />
 
-      <details>
-        <summary>Do I need to pay for tools to get started?</summary>
-        <p>No. ConvertKit, MailerLite, and Mailchimp all have free tiers adequate for the first 500–1,000 subscribers. Carrd and Systeme.io both offer free landing page plans. Organic social media is free. The only paid element — traffic — is optional at the start if you are willing to invest time in organic channels instead.</p>
-      </details>
+      <FaqItem question="Do I need to pay for tools to get started?" answer="No. ConvertKit, MailerLite, and Mailchimp all have free tiers adequate for the first 500–1,000 subscribers. Carrd and Systeme.io both offer free landing page plans. Organic social media is free. The only paid element — traffic — is optional at the start if you are willing to invest time in organic channels instead." />
 
-      <details>
-        <summary>What is the difference between lead generation and list building?</summary>
-        <p>List building is the act of growing your email subscriber count. Lead generation is the process of attracting people who match your ideal customer profile and capturing their information systematically. You can build a large list of poorly matched subscribers — that is list building without effective lead generation. Effective lead generation produces a smaller but better-qualified list that converts at a meaningful rate.</p>
-      </details>
+      <FaqItem question="What is the difference between lead generation and list building?" answer="List building is the act of growing your email subscriber count. Lead generation is the process of attracting people who match your ideal customer profile and capturing their information systematically. You can build a large list of poorly matched subscribers — that is list building without effective lead generation. Effective lead generation produces a smaller but better-qualified list that converts at a meaningful rate." />
 
-      <details>
-        <summary>Is lead generation only for B2B companies?</summary>
-        <p>No. Lead generation is used in B2C, B2B, affiliate marketing, e-commerce, local services, and direct-response marketing. The tactics differ by context — B2B uses LinkedIn and direct outreach; affiliate marketers use solo ads and organic social; local businesses use Google Ads and local SEO — but the underlying system is the same across every industry.</p>
-      </details>
+      <FaqItem question="Is lead generation only for B2B companies?" answer="No. Lead generation is used in B2C, B2B, affiliate marketing, e-commerce, local services, and direct-response marketing. The tactics differ by context — B2B uses LinkedIn and direct outreach; affiliate marketers use solo ads and organic social; local businesses use Google Ads and local SEO — but the underlying system is the same across every industry." />
 
-      <details>
-        <summary>How do I know if my lead magnet is good enough?</summary>
-        <p>A well-matched lead magnet converts 20–40% of landing page visitors into subscribers. Below 10% typically means the offer is not specific enough for your audience, or the landing page copy does not communicate its value clearly. Start by testing the headline — it has the largest single impact on conversion rate. Change one element at a time and measure the result before changing anything else.</p>
-      </details>
+      <FaqItem question="How do I know if my lead magnet is good enough?" answer="A well-matched lead magnet converts 20–40% of landing page visitors into subscribers. Below 10% typically means the offer is not specific enough for your audience, or the landing page copy does not communicate its value clearly. Start by testing the headline — it has the largest single impact on conversion rate. Change one element at a time and measure the result before changing anything else." />
 
-      <details>
-        <summary>What is the fastest lead generation channel for a complete beginner?</summary>
-        <p>Direct outreach is fastest if you have a warm network and a relevant offer. Paid social ads with $10–20/day can deliver the first lead within 24–48 hours. Solo ads in affiliate niches are similarly fast. Organic social and SEO are slower but cost far less over a 6–12 month horizon. Match your channel choice to your budget and your urgency, not to what sounds most sophisticated.</p>
-      </details>
+      <FaqItem question="What is the fastest lead generation channel for a complete beginner?" answer="Direct outreach is fastest if you have a warm network and a relevant offer. Paid social ads with $10–20/day can deliver the first lead within 24–48 hours. Solo ads in affiliate niches are similarly fast. Organic social and SEO are slower but cost far less over a 6–12 month horizon. Match your channel choice to your budget and your urgency, not to what sounds most sophisticated." />
     </section>
 
     <div class="cta-card">
@@ -774,16 +405,7 @@ export const prerender = true;
     </div>
 
     <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
+      <AuthorBox />
     </section>
 
     <section id="sources">
@@ -802,43 +424,6 @@ export const prerender = true;
       <p style="font-size:.82rem;color:var(--ink-light);">Statistics cited in this article are drawn from the sources listed above. Conversion rate benchmarks, cost-per-lead figures, and channel performance data reflect industry averages and will vary significantly based on niche, offer, audience, and execution quality. This article does not constitute financial or professional marketing advice.</p>
     </section>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <SiteFooter />
 
-  </main>
-</div>
-
-<script is:inline>
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(s => observer.observe(s));
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
-
-</body>
-</html>
+</OlspLayout>

@@ -1,290 +1,33 @@
 ---
 export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const pageTitle = "Social Media Lead Generation: Platform-by-Platform Guide [2026]";
+const pageDescription = "How to generate leads on Facebook, Instagram, LinkedIn, TikTok, and YouTube — platform-specific strategies, tool recommendations, and a selection matrix to find your best channel.";
+
+const tocLinks = [
+  { href: "#section-1", label: "1. Social Media as a Lead Channel" },
+  { href: "#section-2", label: "2. Facebook" },
+  { href: "#section-3", label: "3. Instagram" },
+  { href: "#section-4", label: "4. LinkedIn" },
+  { href: "#section-5", label: "5. TikTok" },
+  { href: "#section-6", label: "6. YouTube" },
+  { href: "#section-7", label: "7. Platform Selection Matrix" },
+  { href: "#section-8", label: "8. Cross-Platform Strategy" },
+  { href: "#section-9", label: "9. OLSP Tools for Social Lead Gen" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources & References" },
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Social Media Lead Generation: Platform-by-Platform Guide [2026]</title>
-<meta name="description" content="How to generate leads on Facebook, Instagram, LinkedIn, TikTok, and YouTube — platform-specific strategies, tool recommendations, and a selection matrix to find your best channel." />
-<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/social-media-lead-generation/" />
-<meta property="og:title" content="Social Media Lead Generation: Platform-by-Platform Guide [2026]" />
-<meta property="og:description" content="How to generate leads on Facebook, Instagram, LinkedIn, TikTok, and YouTube — platform-specific strategies, tool recommendations, and a selection matrix to find your best channel." />
-<meta property="og:url" content="https://olsp.profitandprivilege.com/blog/social-media-lead-generation/" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="Profit and Privilege" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Social Media Lead Generation: Platform-by-Platform Guide [2026]" />
-<meta name="twitter:description" content="How to generate leads on Facebook, Instagram, LinkedIn, TikTok, and YouTube — platform-specific strategies, tool recommendations, and a selection matrix to find your best channel." />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Social Media Lead Generation: Platform-by-Platform Guide [2026]",
-      "description": "How to generate leads on Facebook, Instagram, LinkedIn, TikTok, and YouTube — platform-specific strategies, tool recommendations, and a selection matrix to find your best channel.",
-      "datePublished": "2026-07-03",
-      "dateModified": "2026-07-03",
-      "url": "https://olsp.profitandprivilege.com/blog/social-media-lead-generation/",
-      "author": {
-        "@type": "Person",
-        "name": "Jarmo Halonen",
-        "url": "https://olsp.profitandprivilege.com/authors/jarmo-halonen"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Profit and Privilege",
-        "url": "https://olsp.profitandprivilege.com"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://olsp.profitandprivilege.com/blog/social-media-lead-generation/"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is social media lead generation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Social media lead generation is the process of using social media platforms — Facebook, Instagram, LinkedIn, TikTok, YouTube, and others — to attract potential customers and capture their contact information or direct intent. This includes both organic methods (posting content, engaging in groups, DM conversations) and paid methods (social media advertising, lead generation ad formats). The goal is to move followers and viewers from passive audience members into identifiable prospects who have expressed interest in your product or service."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which social media platform is best for lead generation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It depends on your audience and business type. Facebook has the broadest demographic reach and the most mature lead generation advertising tools (Facebook Lead Ads, Groups, Pages) — it is the most versatile platform for most businesses. LinkedIn is the top platform for B2B lead generation, reaching professionals with verified job titles and industries. Instagram works best for visual brands targeting 18–34 demographics. TikTok delivers strong reach for content-led businesses targeting younger audiences. YouTube is best for high-consideration products where prospects research before buying. The right platform is where your specific buyers already spend time."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do you generate leads from social media without paid ads?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Organic social media lead generation centres on three tactics: (1) Community participation — joining and actively engaging in relevant groups (Facebook Groups, LinkedIn Groups, Reddit communities) where your target audience asks questions, and providing genuine helpful answers that build visibility and trust. (2) Content that captures intent — publishing content designed to attract people at the research stage of a buying decision, with a clear call to action directing them to a lead capture mechanism (email opt-in, DM, link in bio). (3) Direct outreach — identifying prospects through platform search and engagement signals, and initiating personalised conversations without immediate selling intent. Combined, these produce a steady flow of organic leads at zero cost beyond the time invested."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are Facebook Lead Ads and how do they work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Facebook Lead Ads are an advertising format that captures a prospect's contact information — name, email, phone — directly within Facebook without requiring them to leave the platform. When someone clicks the ad, a form opens pre-populated with their Facebook profile data. They can submit their details in two taps. The reduced friction dramatically improves conversion rates compared to sending ad traffic to an external landing page. Lead data is collected in Facebook's Ads Manager and can be automatically synced to email marketing platforms via integration or Zapier. Lead Ads work on both Facebook and Instagram."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is LinkedIn good for lead generation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "LinkedIn is the most effective social media platform for B2B lead generation. Its audience is defined by professional identity — job title, industry, company size, seniority — making targeting precision significantly higher than any other social platform for business audiences. LinkedIn offers both organic lead generation (content posting, connection requests, group activity) and paid options (Sponsored Content, Message Ads, LinkedIn Lead Gen Forms). The cost per lead is typically higher than Facebook, but lead quality for B2B is consistently superior because the audience is already in a professional mindset when engaging. For businesses selling to other businesses, it is the default social media starting point."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What tools help with social media lead generation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Key tool categories include: (1) Lead capture tools — landing page builders and email opt-in tools that capture leads from social traffic (e.g. TD Pages, ClickFunnels, ConvertKit). (2) Engagement automation — tools that help identify and engage with prospects at scale on Facebook (e.g. LeadsMiner Pro for prospect research, OLSP MineeMe for AI-assisted comment engagement). (3) CRM and follow-up — email marketing platforms that receive lead data from social ads and automate follow-up sequences (e.g. ActiveCampaign, Mailchimp, GetResponse). (4) Ad management — native platform tools (Facebook Ads Manager, LinkedIn Campaign Manager) plus third-party analytics tools. For affiliate marketers specifically, the OLSP ecosystem includes several tools purpose-built for Facebook-based lead generation."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --green:#166534;
-    --green-bg:#f0fdf4;
-    --green-border:#86efac;
-    --gold:#d97706;
-    --gold-bg:#fffbeb;
-    --gold-border:#fcd34d;
-    --radius:10px;
 
-    /* Platform colours */
-    --fb:#1877f2;
-    --fb-soft:#eff6ff;
-    --ig:#e1306c;
-    --ig-soft:#fff0f6;
-    --li:#0a66c2;
-    --li-soft:#eef4ff;
-    --tt:#000000;
-    --tt-soft:#f8f8f8;
-    --yt:#ff0000;
-    --yt-soft:#fff5f5;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3,h4{line-height:1.25;color:var(--ink);}
-  h1{font-size:1.9rem;margin:0 0 .5rem;}
-  h2{font-size:1.5rem;margin-top:0;border-bottom:3px solid var(--accent-soft);padding-bottom:.4rem;}
-  h3{font-size:1.15rem;color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem;padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
-
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;top:0;align-self:start;
-    height:100vh;overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);margin:0 0 .75rem;}
-  .toc-wrap nav a{display:block;font-size:.9rem;color:var(--ink-light);padding:.45rem .6rem;border-radius:6px;margin-bottom:.15rem;}
-  .toc-wrap nav a:hover{background:var(--accent-soft);text-decoration:none;color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent);color:#fff;font-weight:600;}
-
-  main{padding:2.5rem 3rem 5rem;max-width:880px;}
-  section{margin-bottom:3rem;scroll-margin-top:1rem;}
-
-  .hero-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:.8rem;font-weight:600;padding:.3rem .7rem;border-radius:99px;margin-bottom:.8rem;}
-
-  .verdict-box{background:var(--bg-soft);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);padding:1.2rem 1.4rem;margin:1.2rem 0 1.5rem;}
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
-
-  .callout{border-radius:var(--radius);padding:1rem 1.2rem;margin:1.2rem 0;}
-  .callout.info{background:var(--accent-soft);border:1px solid #bfdbfe;color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
-  .callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border);color:#78350f;}
-  .callout.gold strong{color:#92400e;}
-  .callout.green{background:var(--green-bg);border:1px solid var(--green-border);color:#14532d;}
-  .callout.green strong{color:var(--green);}
-
-  /* Platform cards */
-  .platform-card{border-radius:var(--radius);overflow:hidden;margin-bottom:2rem;border:1px solid var(--line);}
-  .pc-header{padding:.75rem 1.2rem;display:flex;align-items:center;gap:.9rem;}
-  .pc-header .pc-name{font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;}
-  .pc-header .pc-tagline{font-size:.82rem;color:rgba(255,255,255,.8);}
-  .pc-body{padding:1.1rem 1.2rem;}
-  .pc-body p{font-size:.93rem;margin-bottom:.8rem;}
-  .pc-body p:last-child{margin-bottom:0;}
-
-  .pc-facebook .pc-header{background:var(--fb);}
-  .pc-instagram .pc-header{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
-  .pc-linkedin .pc-header{background:var(--li);}
-  .pc-tiktok .pc-header{background:#000;}
-  .pc-youtube .pc-header{background:#c00;}
-
-  .pc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.9rem 0;}
-  .pc-stat{background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:.5rem .6rem;text-align:center;}
-  .pc-stat .label{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);display:block;margin-bottom:.15rem;}
-  .pc-stat .val{font-size:.88rem;font-weight:700;color:var(--ink);}
-
-  .tactic-list{list-style:none;padding:0;margin:.7rem 0 1rem;}
-  .tactic-list li{padding:.4rem 0 .4rem 1.6rem;position:relative;font-size:.92rem;border-bottom:1px solid var(--line);}
-  .tactic-list li:last-child{border-bottom:none;}
-  .tactic-list li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;}
-
-  .tool-tag{display:inline-block;font-size:.76rem;background:var(--gold-bg);border:1px solid var(--gold-border);color:#78350f;border-radius:99px;padding:.15rem .5rem;margin-left:.4rem;vertical-align:middle;white-space:nowrap;}
-
-  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.93rem;}
-  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top;}
-  th{background:var(--bg-soft);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-light);}
-
-  .stack-box{border:2px solid var(--gold-border);border-radius:var(--radius);background:var(--gold-bg);padding:1.1rem 1.3rem;margin:1.5rem 0;}
-  .stack-box h3{margin:0 0 .6rem;font-size:1rem;color:var(--gold);}
-  .stack-phase{display:flex;align-items:flex-start;gap:.7rem;margin:.55rem 0;}
-  .stack-phase .sp-badge{background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;border-radius:4px;padding:.2rem .45rem;white-space:nowrap;flex-shrink:0;margin-top:.15rem;}
-  .stack-phase p{font-size:.9rem;margin:0;color:var(--ink);}
-
-  .cta-card{border-radius:var(--radius);padding:1.1rem 1.3rem;border:1px solid var(--line);background:var(--accent-soft);border-left:4px solid var(--accent);margin:3rem 0;}
-  .cta-card h3{font-size:1.05rem;margin:0 0 .3rem;color:var(--ink);}
-  .cta-card p{font-size:.92rem;margin:0 0 .8rem;color:var(--ink-light);line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem;padding:.45rem 1.1rem;}
-  .cta-btn{display:inline-block;background:var(--accent);color:#fff;font-weight:600;border-radius:8px;padding:.55rem 1.3rem;}
-  .cta-btn:hover{background:#1d4ed8;text-decoration:none;color:#fff;}
-
-  .pill-list{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;padding:0;list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{display:inline-block;font-size:.78rem;background:var(--bg-soft);color:var(--ink-light);border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem;white-space:nowrap;}
-  .pill-list a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);text-decoration:none;}
-
-  .site-footer{border-top:1px solid var(--line);padding:1.2rem 0 0;margin-top:2rem;font-size:.8rem;color:var(--ink-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;}
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent);text-decoration:underline;}
-
-  details{border:1px solid var(--line);border-radius:8px;margin-bottom:.6rem;padding:.7rem 1rem;}
-  summary{font-weight:600;cursor:pointer;font-size:.97rem;}
-  details p{margin-top:.6rem;margin-bottom:0;color:var(--ink-light);font-size:.95rem;}
-
-  .author-box{display:flex;align-items:flex-start;gap:1.2rem;border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.4rem;background:var(--bg-soft);}
-  .author-box img{width:72px;height:72px;border-radius:50%;flex-shrink:0;object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem;font-size:1rem;color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem;color:var(--ink-light);margin:0 0 .55rem;display:block;}
-  .author-box-info p{font-size:.9rem;color:var(--ink-light);margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .mobile-toc-btn{display:none;}
-
-  @media(max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{position:sticky;top:0;height:auto;max-height:0;overflow:hidden;transition:max-height .25s ease;border-right:none;border-bottom:1px solid var(--line);z-index:50;}
-    .toc-wrap.open{max-height:70vh;overflow-y:auto;}
-    .mobile-toc-btn{display:block;position:sticky;top:0;z-index:60;width:100%;text-align:left;background:var(--ink);color:#fff;border:none;padding:.9rem 1.2rem;font-size:.95rem;font-weight:600;}
-    main{padding:1.5rem 1.2rem 3rem;}
-    .pc-stats{grid-template-columns:repeat(2,1fr);}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#section-1">1. Social Media as a Lead Channel</a>
-      <a href="#section-2">2. Facebook</a>
-      <a href="#section-3">3. Instagram</a>
-      <a href="#section-4">4. LinkedIn</a>
-      <a href="#section-5">5. TikTok</a>
-      <a href="#section-6">6. YouTube</a>
-      <a href="#section-7">7. Platform Selection Matrix</a>
-      <a href="#section-8">8. Cross-Platform Strategy</a>
-      <a href="#section-9">9. OLSP Tools for Social Lead Gen</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources &amp; References</a>
-    </nav>
-  </aside>
-
-  <main>
+<OlspLayout title={pageTitle} description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/blog/social-media-lead-generation/"
+  tocLinks={tocLinks}>
 
     <section id="intro">
       <span class="hero-tag">Lead Generation · Social Media · July 2026</span>
@@ -661,35 +404,17 @@ export const prerender = true;
     <section id="faq">
       <h2>Frequently Asked Questions</h2>
 
-      <details>
-        <summary>What is social media lead generation?</summary>
-        <p>Social media lead generation is the process of using social platforms — Facebook, Instagram, LinkedIn, TikTok, YouTube — to attract potential customers and capture their contact information or direct purchase intent. It includes organic methods (community participation, content posting, DM conversations) and paid methods (social media advertising, in-platform lead forms). The goal is moving passive platform users into identifiable prospects in your CRM or email list.</p>
-      </details>
+      <FaqItem question="What is social media lead generation?" answer="Social media lead generation is the process of using social platforms — Facebook, Instagram, LinkedIn, TikTok, YouTube — to attract potential customers and capture their contact information or direct purchase intent. It includes organic methods (community participation, content posting, DM conversations) and paid methods (social media advertising, in-platform lead forms). The goal is moving passive platform users into identifiable prospects in your CRM or email list." />
 
-      <details>
-        <summary>Which social media platform is best for lead generation?</summary>
-        <p>It depends on your audience. Facebook has the broadest demographic reach and the most mature lead capture tools — it is the best starting point for most businesses. LinkedIn is the default for B2B. Instagram works best for visual brands targeting 18–34 audiences. TikTok delivers reach for content-led businesses targeting younger audiences. YouTube is best for high-consideration products and services. The right platform is where your specific buyers already spend time.</p>
-      </details>
+      <FaqItem question="Which social media platform is best for lead generation?" answer="It depends on your audience. Facebook has the broadest demographic reach and the most mature lead capture tools — it is the best starting point for most businesses. LinkedIn is the default for B2B. Instagram works best for visual brands targeting 18–34 audiences. TikTok delivers reach for content-led businesses targeting younger audiences. YouTube is best for high-consideration products and services. The right platform is where your specific buyers already spend time." />
 
-      <details>
-        <summary>How do you generate leads from social media without paid ads?</summary>
-        <p>Organic social media lead generation uses three tactics: (1) Community participation — joining relevant groups and building visibility through consistent, helpful contributions. (2) Content that captures intent — publishing material that attracts people at the research stage, with a clear call to action directing them to an email opt-in or DM. (3) Direct outreach — identifying prospects through engagement signals and initiating personalised conversations. These produce consistent leads at zero cost beyond time investment, though they scale slowly compared to paid options.</p>
-      </details>
+      <FaqItem question="How do you generate leads from social media without paid ads?" answer="Organic social media lead generation uses three tactics: (1) Community participation — joining relevant groups and building visibility through consistent, helpful contributions. (2) Content that captures intent — publishing material that attracts people at the research stage, with a clear call to action directing them to an email opt-in or DM. (3) Direct outreach — identifying prospects through engagement signals and initiating personalised conversations. These produce consistent leads at zero cost beyond time investment, though they scale slowly compared to paid options." />
 
-      <details>
-        <summary>What are Facebook Lead Ads and how do they work?</summary>
-        <p>Facebook Lead Ads are an ad format that captures contact information within Facebook without sending users to an external page. When clicked, a form opens pre-populated with the user's Facebook profile data. Submission takes two taps. Conversion rates are typically higher than campaigns directing traffic to external landing pages because friction is minimal. Lead data syncs to email platforms via native integrations or Zapier. They work on both Facebook and Instagram through the same campaign setup.</p>
-      </details>
+      <FaqItem question="What are Facebook Lead Ads and how do they work?" answer="Facebook Lead Ads are an ad format that captures contact information within Facebook without sending users to an external page. When clicked, a form opens pre-populated with the user's Facebook profile data. Submission takes two taps. Conversion rates are typically higher than campaigns directing traffic to external landing pages because friction is minimal. Lead data syncs to email platforms via native integrations or Zapier. They work on both Facebook and Instagram through the same campaign setup." />
 
-      <details>
-        <summary>Is LinkedIn good for lead generation?</summary>
-        <p>LinkedIn is the most effective platform for B2B lead generation. Its audience self-identifies by professional context — job title, industry, company size — allowing targeting precision no other social platform matches for business audiences. Lead quality is consistently high because users are in a professional mindset. Cost per lead is higher than Facebook, but conversion rates and deal values for B2B justify the premium. For consumer businesses, Facebook and Instagram typically deliver better cost efficiency.</p>
-      </details>
+      <FaqItem question="Is LinkedIn good for lead generation?" answer="LinkedIn is the most effective platform for B2B lead generation. Its audience self-identifies by professional context — job title, industry, company size — allowing targeting precision no other social platform matches for business audiences. Lead quality is consistently high because users are in a professional mindset. Cost per lead is higher than Facebook, but conversion rates and deal values for B2B justify the premium. For consumer businesses, Facebook and Instagram typically deliver better cost efficiency." />
 
-      <details>
-        <summary>What tools help with social media lead generation?</summary>
-        <p>Key tool categories: (1) Lead capture tools — landing page builders and email opt-ins that receive social traffic (e.g. TD Pages, ConvertKit). (2) Engagement assistance — tools for managing Facebook Group presence at scale (e.g. LeadsMiner Pro, OLSP MineeMe). (3) CRM and follow-up — email marketing platforms that automate sequences for social media leads (e.g. ActiveCampaign, GetResponse). (4) Ad management — native platform tools (Facebook Ads Manager, LinkedIn Campaign Manager) for paid campaigns. For affiliate marketers, the OLSP ecosystem includes purpose-built Facebook lead generation tools.</p>
-      </details>
+      <FaqItem question="What tools help with social media lead generation?" answer="Key tool categories: (1) Lead capture tools — landing page builders and email opt-ins that receive social traffic (e.g. TD Pages, ConvertKit). (2) Engagement assistance — tools for managing Facebook Group presence at scale (e.g. LeadsMiner Pro, OLSP MineeMe). (3) CRM and follow-up — email marketing platforms that automate sequences for social media leads (e.g. ActiveCampaign, GetResponse). (4) Ad management — native platform tools (Facebook Ads Manager, LinkedIn Campaign Manager) for paid campaigns. For affiliate marketers, the OLSP ecosystem includes purpose-built Facebook lead generation tools." />
     </section>
 
     <div class="cta-card">
@@ -699,16 +424,7 @@ export const prerender = true;
     </div>
 
     <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen is the founder of ProfitAndPrivilege.com, where he researches affiliate marketing, online business opportunities, AI tools, and digital entrepreneurship. Originally from Finland and now based in Sweden, he combines more than 30 years of experience in network marketing with a background in industrial logistics. His editorial approach distinguishes verified facts, vendor claims, and community opinions to help readers make informed decisions before investing their time or money.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
+      <AuthorBox />
     </section>
 
     <section id="sources">
@@ -728,43 +444,6 @@ export const prerender = true;
       <p style="font-size:.82rem;color:var(--ink-light);">Platform-specific claims in this article reflect published documentation and industry benchmarks available as of July 2026. Performance estimates are ranges drawn from published research — individual results vary by audience, creative, offer, and execution quality. This article contains affiliate links marked "sponsored."</p>
     </section>
 
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
+    <SiteFooter />
 
-  </main>
-</div>
-
-<script is:inline>
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(s => observer.observe(s));
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
-
-</body>
-</html>
+</OlspLayout>

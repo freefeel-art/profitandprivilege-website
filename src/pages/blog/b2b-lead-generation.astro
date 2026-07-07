@@ -1,555 +1,248 @@
 ---
-export const prerender = true;
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
 
 const pageTitle = "B2B Lead Generation: What It Is and How It Works";
-const pageDescription =
-  "B2B lead generation is the process of attracting and qualifying business buyers. Learn how it works, which channels drive results, and what the 2026 data says.";
+const pageDescription = "B2B lead generation is the process of attracting and qualifying business buyers. Learn how it works, which channels drive results, and what the 2026 data says.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. What Is B2B Lead Generation?" },
+  { href: "#process", label: "2. The Six-Stage Process" },
+  { href: "#channels", label: "3. Most Effective Channels" },
+  { href: "#performance", label: "4. Performance Data" },
+  { href: "#mistakes", label: "5. Common Mistakes" },
+  { href: "#practice", label: "6. What To Do in Practice" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B2B Lead Generation: What It Is and How It Works</title>
-<meta name="description" content="B2B lead generation is the process of attracting and qualifying business buyers. Learn how it works, which channels drive results, and what the 2026 data says.">
-<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/b2b-lead-generation/" />
-<style>
-  :root{
-    --ink:#1e293b;
-    --ink-light:#475569;
-    --bg:#ffffff;
-    --bg-soft:#f8fafc;
-    --line:#e2e8f0;
-    --accent:#2563eb;
-    --accent-soft:#eff6ff;
-    --warn:#92400e;
-    --warn-bg:#fef3c7;
-    --warn-border:#fcd34d;
-    --good:#166534;
-    --good-bg:#f0fdf4;
-    --bad:#991b1b;
-    --bad-bg:#fef2f2;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    font-size:17px;
-  }
-  h1,h2,h3{line-height:1.25; color:var(--ink);}
-  h1{font-size:1.9rem; margin:0 0 .5rem;}
-  h2{font-size:1.5rem; margin-top:0; border-bottom:3px solid var(--accent-soft); padding-bottom:.4rem;}
-  h3{font-size:1.15rem; color:var(--accent);}
-  p{margin:0 0 1rem;}
-  a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  ul,ol{margin:0 0 1rem; padding-left:1.3rem;}
-  li{margin-bottom:.4rem;}
+<OlspLayout title={pageTitle} description={pageDescription}
+  canonical="https://olsp.profitandprivilege.com/blog/b2b-lead-generation/"
+  tocLinks={tocLinks}>
 
-  .layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .toc-wrap{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--line);
-    background:var(--bg-soft);
-    padding:1.5rem 1rem;
-  }
-  .toc-wrap h4{
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-light);
-    margin:0 0 .75rem;
-  }
-  .toc-wrap nav a{
-    display:block;
-    font-size:.9rem;
-    color:var(--ink-light);
-    padding:.45rem .6rem;
-    border-radius:6px;
-    margin-bottom:.15rem;
-  }
-  .toc-wrap nav a:hover{background:var(--accent-soft); text-decoration:none; color:var(--accent);}
-  .toc-wrap nav a.active{background:var(--accent); color:#fff; font-weight:600;}
+<section id="intro">
+  <span class="hero-tag">Lead Generation Guide · Updated June 2026</span>
+  <h1>B2B Lead Generation: What It Is and How It Works</h1>
 
-  main{padding:2.5rem 3rem 5rem; max-width:880px;}
-  section{margin-bottom:3rem; scroll-margin-top:1rem;}
+  <p><strong>B2B lead generation</strong> — business-to-business lead generation — is the process a company uses to attract individuals at other businesses who might buy its products or services, and then capture enough information about them to hand off to a sales team for follow-up.</p>
 
-  .hero-tag{
-    display:inline-block;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:.8rem;
-    font-weight:600;
-    padding:.3rem .7rem;
-    border-radius:99px;
-    margin-bottom:.8rem;
-  }
-  .verdict-box{
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-left:5px solid var(--accent);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    margin:1.2rem 0 1.5rem;
-  }
-  .verdict-box p{margin-bottom:.4rem;}
-  .verdict-box p:last-child{margin-bottom:0;}
+  <div class="verdict-box">
+    <p><strong>Why it matters:</strong> Three structural shifts have made B2B lead generation both more important and more complex. Buyers are now 61% through their decision-making process before contacting a supplier. 67% of the buying journey occurs online. And the lead generation industry is projected to reach $295 billion by 2027. Getting the process right is not optional — it is the primary revenue engine for most B2B organizations.</p>
+  </div>
 
-  .callout{
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    margin:1.2rem 0;
-    border:1px solid var(--line);
-  }
-  .callout.warn{background:var(--warn-bg); border-color:var(--warn-border); color:var(--warn);}
-  .callout.warn strong{color:#78350f;}
-  .callout.info{background:var(--accent-soft); border-color:#bfdbfe; color:#1e3a5f;}
-  .callout.info strong{color:#1e3a8a;}
+  <p>A "lead" is a potential buyer who has taken some measurable action: filling out a form, downloading a whitepaper, signing up for a webinar, or responding to an outbound email. This is distinct from a passive website visitor — they have raised their hand in some way. Most B2B organisations classify leads through a progression: MQL (Marketing-Qualified Lead), SQL (Sales-Qualified Lead), and PQL (Product-Qualified Lead for SaaS models).</p>
 
-  .methodology{
-    background:#fff;
-    border:1px dashed #94a3b8;
-    border-radius:var(--radius);
-    padding:1rem 1.2rem;
-    font-size:.95rem;
-    color:var(--ink-light);
-  }
+  <div class="methodology">
+    <p><strong>Who wrote this:</strong> This article was prepared by an editorial research team that evaluates online business, marketing, and sales strategies based on publicly available data and practitioner research.</p>
+    <p><strong>How this guide was built:</strong> This article draws on publicly available research from B2B marketing analytics firms, industry benchmark reports, and practitioner-oriented publications. Statistics cited trace to their primary sources and are linked directly. Data reviewed June 2026.</p>
+  </div>
+</section>
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:1rem 0 1.5rem;
-    font-size:.93rem;
-  }
-  th,td{
-    text-align:left;
-    padding:.6rem .7rem;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  th{background:var(--bg-soft); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-light);}
-  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
-  .pc-card{border-radius:var(--radius); padding:1.1rem 1.2rem; border:1px solid var(--line);}
-  .pc-card.good{background:var(--good-bg); border-color:#bbf7d0;}
-  .pc-card.bad{background:var(--bad-bg); border-color:#fecaca;}
-  .pc-card h3{margin-top:0;}
-  .pc-card.good h3{color:var(--good);}
-  .pc-card.bad h3{color:var(--bad);}
-  .pc-card ul{margin-bottom:0; padding-left:1.1rem;}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:8px;
-    margin-bottom:.6rem;
-    padding:.7rem 1rem;
-  }
-  summary{font-weight:600; cursor:pointer; font-size:.97rem;}
-  details p{margin-top:.6rem; margin-bottom:0; color:var(--ink-light); font-size:.95rem;}
-
-  .author-box{
-    display:flex;
-    align-items:flex-start;
-    gap:1.2rem;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:1.2rem 1.4rem;
-    background:var(--bg-soft);
-  }
-  .author-box img{width:72px; height:72px; border-radius:50%; flex-shrink:0; object-fit:cover;}
-  .author-box-info{flex:1;}
-  .author-box-info h4{margin:0 0 .15rem; font-size:1rem; color:var(--ink);}
-  .author-box-info .author-role{font-size:.85rem; color:var(--ink-light); margin:0 0 .55rem; display:block;}
-  .author-box-info p{font-size:.9rem; color:var(--ink-light); margin:0 0 .4rem;}
-  .author-box-info p:last-child{margin:0;}
-
-  .cta-card{
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    border:1px solid var(--line);
-    background:var(--accent-soft);
-    border-left:4px solid var(--accent);
-    margin:3rem 0;
-  }
-  .cta-card h3{font-size:1.05rem; margin:0 0 .3rem; color:var(--ink);}
-  .cta-card p{font-size:.92rem; margin:0 0 .8rem; color:var(--ink-light); line-height:1.55;}
-  .cta-card .cta-btn{font-size:.88rem; padding:.45rem 1.1rem;}
-  .cta-card .cta-btn::after{content:" \2192";}
-
-  .cta-btn{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
-    border-radius:8px;
-  }
-  .cta-btn:hover{background:#1d4ed8; text-decoration:none; color:#fff;}
-
-  .pill-list{display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; padding:0; list-style:none;}
-  .pill-list li{margin:0;}
-  .pill-list a{
-    display:inline-block;
-    font-size:.78rem;
-    background:var(--bg-soft);
-    color:var(--ink-light);
-    border:1px solid var(--line);
-    border-radius:99px;
-    padding:.25rem .7rem;
-    white-space:nowrap;
-  }
-  .pill-list a:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent); text-decoration:none;}
-
-  .site-footer{
-    border-top:1px solid var(--line);
-    padding:1.2rem 0 0;
-    margin-top:2rem;
-    font-size:.8rem;
-    color:var(--ink-light);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:.4rem;
-  }
-  .site-footer a{color:var(--ink-light);}
-  .site-footer a:hover{color:var(--accent); text-decoration:underline;}
-
-  figure{margin:1rem 0 1.6rem;}
-  figure svg{width:100%; max-width:640px; display:block; margin:0 auto;}
-  figcaption{text-align:center; font-size:.82rem; color:var(--ink-light); margin-top:.5rem;}
-
-  .mobile-toc-btn{display:none;}
-
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;}
-    .toc-wrap{
-      position:sticky; top:0; height:auto; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
-      border-right:none; border-bottom:1px solid var(--line);
-      z-index:50;
-    }
-    .toc-wrap.open{max-height:70vh; overflow-y:auto;}
-    .mobile-toc-btn{
-      display:block; position:sticky; top:0; z-index:60;
-      width:100%; text-align:left; background:var(--ink); color:#fff;
-      border:none; padding:.9rem 1.2rem; font-size:.95rem; font-weight:600;
-    }
-    main{padding:1.5rem 1.2rem 3rem;}
-    .two-col{grid-template-columns:1fr;}
-  }
-</style>
-</head>
-<body>
-
-<div class="layout">
-
-  <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
-  <aside class="toc-wrap" id="tocWrap">
-    <h4>On This Page</h4>
-    <nav id="tocNav">
-      <a href="#intro">1. What Is B2B Lead Generation?</a>
-      <a href="#process">2. The Six-Stage Process</a>
-      <a href="#channels">3. Most Effective Channels</a>
-      <a href="#performance">4. Performance Data</a>
-      <a href="#mistakes">5. Common Mistakes</a>
-      <a href="#practice">6. What To Do in Practice</a>
-      <a href="#faq">FAQ</a>
-      <a href="#author">About the Author</a>
-      <a href="#sources">Sources</a>
-    </nav>
-  </aside>
-
-  <main>
-
-    <section id="intro">
-      <span class="hero-tag">Lead Generation Guide · Updated June 2026</span>
-      <h1>B2B Lead Generation: What It Is and How It Works</h1>
-
-      <p><strong>B2B lead generation</strong> — business-to-business lead generation — is the process a company uses to attract individuals at other businesses who might buy its products or services, and then capture enough information about them to hand off to a sales team for follow-up.</p>
-
-      <div class="verdict-box">
-        <p><strong>Why it matters:</strong> Three structural shifts have made B2B lead generation both more important and more complex. Buyers are now 61% through their decision-making process before contacting a supplier. 67% of the buying journey occurs online. And the lead generation industry is projected to reach $295 billion by 2027. Getting the process right is not optional — it is the primary revenue engine for most B2B organizations.</p>
-      </div>
-
-      <p>A "lead" is a potential buyer who has taken some measurable action: filling out a form, downloading a whitepaper, signing up for a webinar, or responding to an outbound email. This is distinct from a passive website visitor — they have raised their hand in some way. Most B2B organisations classify leads through a progression: MQL (Marketing-Qualified Lead), SQL (Sales-Qualified Lead), and PQL (Product-Qualified Lead for SaaS models).</p>
-
-      <div class="methodology">
-        <p><strong>Who wrote this:</strong> This article was prepared by an editorial research team that evaluates online business, marketing, and sales strategies based on publicly available data and practitioner research.</p>
-        <p><strong>How this guide was built:</strong> This article draws on publicly available research from B2B marketing analytics firms, industry benchmark reports, and practitioner-oriented publications. Statistics cited trace to their primary sources and are linked directly. Data reviewed June 2026.</p>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
-    </div>
-
-    <section id="process">
-      <h2>The Six-Stage B2B Lead Generation Process</h2>
-
-      <p>B2B lead generation is not a single tactic — it is a six-stage process that moves a potential buyer from anonymous interest to a qualified sales conversation. Most B2B teams underperform not because they lack tactics at any single stage, but because the stages are disconnected: leads attracted well are captured poorly, or captured well and never nurtured.</p>
-
-      <ol>
-        <li><strong>Define the ICP (Ideal Customer Profile).</strong> Before any tactic: who is the target? Which industry, company size, role, budget range, and geography describes the buyer who gets the most value from what you sell? Every tactic downstream flows from this definition.</li>
-        <li><strong>Attract.</strong> Drive traffic from potential buyers using the channels best suited to your ICP: organic content and SEO for long-cycle buyers doing independent research; LinkedIn for mid-to-senior roles; paid search for solution-aware queries; webinars for buyers who want to evaluate expertise before committing.</li>
-        <li><strong>Capture.</strong> Convert anonymous visitors into identified contacts via landing pages, lead magnets, or LinkedIn Lead Gen Forms. The offer must be specific enough to attract the right contacts and not just anyone looking for free content.</li>
-        <li><strong>Qualify.</strong> Lead scoring assigns points based on demographic fit (company size, industry, role) and behavioural signals (pages visited, content downloaded, email engagement). Only contacts above the scoring threshold pass to sales as MQLs.</li>
-        <li><strong>Nurture.</strong> 79% of marketing leads never convert to sales, with inadequate nurturing cited as the primary cause. Nurture means staying relevant — sending useful content over weeks or months until the lead signals readiness to talk.</li>
-        <li><strong>Convert (hand off to sales).</strong> When a lead crosses the SQL threshold, they move to sales for direct outreach. Speed matters: leads followed up within 5 minutes are 9x more likely to convert than those contacted after 30 minutes.</li>
-      </ol>
-
-      <p>The average B2B sales cycle runs approximately 10.1 months, compared to minutes or hours for most B2C purchases. The process demands patience and a higher content investment per contact, but the value of each closed customer is typically orders of magnitude higher than a single B2C transaction.</p>
-
-      <figure>
-        <svg viewBox="0 0 860 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="B2B lead generation six-stage process: ICP, Attract, Capture, Qualify, Nurture, Convert">
-          <rect x="0" y="0" width="860" height="130" rx="8" fill="#0f172a"/>
-          <rect x="12" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
-          <text x="71" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">DEFINE</text>
-          <text x="71" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">ICP</text>
-          <polygon points="130,65 140,59 140,71" fill="#475569"/>
-          <rect x="143" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
-          <text x="202" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">ATTRACT</text>
-          <text x="202" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Content, SEO, Ads</text>
-          <polygon points="261,65 271,59 271,71" fill="#475569"/>
-          <rect x="274" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
-          <text x="333" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">CAPTURE</text>
-          <text x="333" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Forms, Lead Magnets</text>
-          <polygon points="392,65 402,59 402,71" fill="#475569"/>
-          <rect x="405" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
-          <text x="464" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">QUALIFY</text>
-          <text x="464" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Lead Scoring</text>
-          <polygon points="523,65 533,59 533,71" fill="#475569"/>
-          <rect x="536" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
-          <text x="595" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">NURTURE</text>
-          <text x="595" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Email Sequences</text>
-          <polygon points="654,65 664,59 664,71" fill="#475569"/>
-          <rect x="667" y="28" width="182" height="74" rx="6" fill="#1a4a2e"/>
-          <text x="758" y="62" fill="#4ade80" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">CONVERT</text>
-          <text x="758" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Sales handoff &lt;5 min</text>
-        </svg>
-        <figcaption>The six stages of B2B lead generation. Most pipeline failures occur at the Qualify to Nurture handoff, not at the Attract stage.</figcaption>
-      </figure>
-    </section>
-
-    <section id="channels">
-      <h2>Which Channels Produce the Best B2B Leads?</h2>
-
-      <p>There is no universally best channel — the right choice depends on your ICP, deal size, and content capability. What the data shows clearly is that cost per lead and lead quality vary dramatically by channel.</p>
-
-      <div class="table-scroll">
-      <table>
-        <tr><th>Channel</th><th>Avg CPL</th><th>Key Data Point</th></tr>
-        <tr><td>Organic SEO / Content</td><td>$31</td><td>SEO leads close at 14.6% vs. 1.7% for outbound (Search Engine Journal)</td></tr>
-        <tr><td>Email marketing</td><td>$53</td><td>42% of companies cite email as most important lead channel (DemandSage)</td></tr>
-        <tr><td>Webinars</td><td>$72</td><td>73% say webinars produce best-quality leads (Cvent)</td></tr>
-        <tr><td>LinkedIn</td><td>$75</td><td>Drives ~80% of B2B social leads (HubSpot)</td></tr>
-        <tr><td>Paid search (PPC)</td><td>$110</td><td>High intent; faster than organic but higher CPL</td></tr>
-        <tr><td>Events / Trade shows</td><td>$811–$881</td><td>Highest CPL; best for enterprise relationship-building</td></tr>
-      </table>
-      </div>
-
-      <p>The data supports a clear efficiency hierarchy: SEO and content are the cheapest channels per lead with the highest close rates over time. LinkedIn and email add direct outreach capability. Webinars add a qualification layer. Events are expensive per lead but sometimes irreplaceable for enterprise deals.</p>
-
-      <div class="callout info">
-        <strong>Channel insight:</strong> 89% of B2B marketers use LinkedIn for lead generation, and it drives approximately 80% of all B2B social media leads. LinkedIn is 277% more effective for B2B lead generation than Facebook or other social platforms (LinkedIn B2B Institute).
-      </div>
-
-      <p>For affiliate marketers exploring B2B list-building strategies, organic content and email nurture form the backbone of a sustainable lead generation system that does not depend on any single platform's advertising algorithm.</p>
-    </section>
-
-    <section id="performance">
-      <h2>What the Numbers Say About B2B Lead Generation Performance</h2>
-
-      <p>The headline metrics in B2B lead generation reveal a consistent pattern: most businesses generate enough leads — they convert too few of them, and they nurture almost none of them effectively.</p>
-
-      <ul>
-        <li><strong>79% of marketing leads never convert to sales.</strong> The primary cause is inadequate lead nurturing — contacts are captured and then ignored until they go cold (<a href="https://www.marketingsherpa.com" target="_blank" rel="noopener noreferrer">MarketingSherpa, 2023</a>).</li>
-        <li><strong>Only 27% of B2B leads generated by marketing are ever contacted by sales.</strong> Nearly three-quarters of captured leads receive zero follow-up (<a href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">Salesforce, 2024</a>).</li>
-        <li><strong>Companies excelling at lead nurturing generate 50% more sales-ready leads at 33% lower cost</strong> — a compound advantage that builds over time (99Firms).</li>
-        <li><strong>Companies with mature lead management processes report 133% more revenue</strong> than those with immature processes (<a href="https://www.forrester.com" target="_blank" rel="noopener noreferrer">Forrester, 2023</a>).</li>
-        <li><strong>B2B organizations that align sales and marketing achieve 24% faster revenue growth</strong> and 27% faster profit growth (Forrester, 2023).</li>
-        <li><strong>ABM programs see a 70% increase in pipeline value per targeted account</strong> (<a href="https://www.demandbase.com" target="_blank" rel="noopener noreferrer">Demandbase, 2024</a>).</li>
-        <li><strong>Average B2B website conversion rate: 2.23%</strong> — roughly 98 in 100 visitors leave without providing contact details (Power Digital).</li>
-      </ul>
-
-      <div class="callout warn">
-        <strong>The gap that matters most:</strong> The difference between a team generating leads and one generating revenue is almost always nurturing. A system that captures 100 leads and nurtures 80 of them outperforms one that captures 300 leads and nurtures none.
-      </div>
-    </section>
-
-    <section id="mistakes">
-      <h2>Common B2B Lead Generation Mistakes</h2>
-
-      <p>The same failure patterns appear repeatedly across B2B lead generation programmes, regardless of company size or industry.</p>
-
-      <h3>1. Chasing Volume Instead of Quality</h3>
-      <p>61% of B2B marketers identify lead quality — not quantity — as their biggest challenge (HubSpot / DemandSage). Yet most teams measure success by leads generated per month, not by leads that eventually close.</p>
-
-      <h3>2. No Nurturing System</h3>
-      <p>The 79% non-conversion statistic points directly here. Most teams have a capture mechanism but no systematic nurture sequence to engage contacts between capture and purchase readiness.</p>
-
-      <h3>3. Slow or No Follow-Up</h3>
-      <p>Responding within 5 minutes of a high-intent action increases conversion probability by 9x. Yet 42% of sales reps report being too busy to follow up that quickly (InBeat Agency).</p>
-
-      <h3>4. Single-Channel Dependency</h3>
-      <p>Relying on one channel — most commonly LinkedIn outbound or cold email alone — creates pipeline fragility. When that channel's performance drops, the entire pipeline stalls.</p>
-
-      <h3>5. Sales and Marketing Misalignment</h3>
-      <p>Only 41% of marketers report being satisfied with their multi-channel lead generation strategy (Salesforce). Misaligned definitions of what constitutes a qualified lead cause much of this friction.</p>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
-    </div>
-
-    <section id="practice">
-      <h2>What To Do in Practice</h2>
-
-      <p>The research points to a sequence that works for most B2B teams and affiliate marketers building lead-dependent businesses.</p>
-
-      <ol>
-        <li><strong>Start with ICP definition, not with channel selection.</strong> Write down specifically which job titles, company sizes, and industries describe your ideal buyers. Every channel and content decision follows from this.</li>
-        <li><strong>Pick two or three channels before expanding to six.</strong> The lowest-resistance starting stack: SEO-driven content (lowest CPL, highest close rate), email nurture (lowest cost to maintain contact over a 10-month B2B cycle), and LinkedIn (direct outreach and thought leadership).</li>
-        <li><strong>Build the nurture sequence before worrying about top-of-funnel volume.</strong> A contact captured without a follow-up plan loses most of its value within a week. Even a four-email sequence sent over 30 days outperforms no sequence by a significant margin.</li>
-        <li><strong>Measure cost per lead by channel.</strong> Compare your numbers against the benchmarks above. If your SEO CPL is $120 but the benchmark is $31, the gap is fixable once you can see it.</li>
-        <li><strong>Set up an alert for high-intent signals and follow up within 5 minutes.</strong> The 9x conversion advantage of a 5-minute response is one of the highest-ROI optimizations available and requires no additional spend.</li>
-      </ol>
-    </section>
-
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>What is the difference between a lead and a prospect in B2B?</summary>
-        <p>A lead is anyone who has shown initial interest and provided contact details. A prospect is a lead that has been qualified: they match your target company size, industry, budget range, and decision-making authority. Not every lead becomes a prospect, which is why lead scoring is central to B2B lead generation.</p>
-      </details>
-      <details>
-        <summary>What is the difference between an MQL and an SQL?</summary>
-        <p>An MQL (Marketing-Qualified Lead) is a contact who has engaged with your marketing content enough to suggest buying intent. An SQL (Sales-Qualified Lead) is a contact that the sales team has reviewed and confirmed as a real opportunity. Only 12–18% of MQLs become SQLs (MarketJoy).</p>
-      </details>
-      <details>
-        <summary>Which channels drive the highest-quality B2B leads?</summary>
-        <p>73% of B2B marketers say webinars produce their best-quality leads (Cvent). LinkedIn drives ~80% of B2B social leads (LinkedIn B2B Institute). Organic search delivers leads that close at 14.6% — roughly 8.6x the close rate of outbound leads (Search Engine Journal).</p>
-      </details>
-      <details>
-        <summary>What is a good B2B lead conversion rate?</summary>
-        <p>A conversion rate of 2–5% is generally considered good. The average B2B website converts at approximately 2.23% (Power Digital). Legal services leads all sectors at 7.4%, while B2B e-commerce converts at around 1.8%.</p>
-      </details>
-      <details>
-        <summary>How much does B2B lead generation cost?</summary>
-        <p>Cost per lead varies significantly by channel. Organic SEO averages $31, email $53, webinars $72, LinkedIn advertising $75, paid search $110, and trade shows $811–$881 (DemandSage). The median B2B CPL across all channels sits at approximately $198–$214.</p>
-      </details>
-      <details>
-        <summary>What is Account-Based Marketing (ABM)?</summary>
-        <p>ABM is a targeted B2B strategy where sales and marketing align around a defined list of high-value accounts rather than casting a wide net. Demandbase data shows ABM programs see a 70% increase in pipeline value per targeted account. It is most effective for high average contract values.</p>
-      </details>
-      <details>
-        <summary>How is AI changing B2B lead generation?</summary>
-        <p>AI has moved into active qualification and routing. AI agents autonomously handle prospect research, data enrichment, lead scoring, and real-time routing. Forrester reports AI-powered lead scoring improves conversion rates by approximately 30%. Businesses using AI report 50% more sales-ready leads and 60% lower customer acquisition costs.</p>
-      </details>
-    </section>
-
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="72" height="72">
-        <div class="author-box-info">
-          <h4><a href="/authors/jarmo-halonen/">Jarmo Halonen</a></h4>
-          <span class="author-role">Founder, ProfitAndPrivilege.com</span>
-          <p>Jarmo Halonen researches affiliate marketing, online business opportunities, and digital lead generation strategies at ProfitAndPrivilege.com. Originally from Finland and based in Sweden, he brings over 30 years of experience in network marketing and direct sales to his analysis of tools and systems for building online income.</p>
-          <p><a href="/authors/jarmo-halonen/">View full author profile →</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-card">
-      <h3>Start earning today — join OLSP for just $7</h3>
-      <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
-      <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
-      <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
-      <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
-    </div>
-
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="https://www.6sense.com" target="_blank" rel="noopener noreferrer">6sense — B2B Buyer Behavior 2025</a></li>
-        <li><a href="https://www.demandgenreport.com" target="_blank" rel="noopener noreferrer">Demand Gen Report — B2B Buyers Consume 13 Content Pieces</a></li>
-        <li><a href="https://www.businesswire.com" target="_blank" rel="noopener noreferrer">Business Wire — Lead Generation Market Growth to 2027</a></li>
-        <li><a href="https://www.marketingsherpa.com" target="_blank" rel="noopener noreferrer">MarketingSherpa — Lead Nurturing Statistics 2023</a></li>
-        <li><a href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">Salesforce — B2B Lead Follow-Up Data 2024</a></li>
-        <li><a href="https://www.forrester.com" target="_blank" rel="noopener noreferrer">Forrester — Lead Management Maturity and Revenue Growth 2023</a></li>
-        <li><a href="https://www.demandbase.com" target="_blank" rel="noopener noreferrer">Demandbase — ABM Pipeline Value Increase 2024</a></li>
-        <li><a href="https://www.saleshandy.com/blog/lead-generation-statistics/" target="_blank" rel="noopener noreferrer">Saleshandy — Lead Generation Statistics (HubSpot, Statista, CMI)</a></li>
-        <li><a href="https://firstpagesage.com/reports/average-cost-per-lead-by-industry/" target="_blank" rel="noopener noreferrer">First Page Sage — Average Cost Per Lead by Industry 2026</a></li>
-        <li><a href="https://learn.g2.com/lead-generation-statistics" target="_blank" rel="noopener noreferrer">G2 — Lead Generation Statistics for 2026</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Data reviewed June 2026. Statistics cited trace to their primary sources linked above. This article does not constitute business advice or a recommendation of any specific product or platform.</p>
-    </section>
-
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="https://olsp.profitandprivilege.com">olsp.profitandprivilege.com</a></span>
-    </footer>
-
-  </main>
+<div class="cta-card">
+  <h3>Start earning today — join OLSP for just $7</h3>
+  <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+  <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+  <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
 </div>
 
-<script is:inline>
-  const tocToggle = document.getElementById('tocToggle');
-  const tocWrap = document.getElementById('tocWrap');
-  if (tocToggle) {
-    tocToggle.addEventListener('click', () => {
-      tocWrap.classList.toggle('open');
-    });
-  }
+<section id="process">
+  <h2>The Six-Stage B2B Lead Generation Process</h2>
 
-  const sections = document.querySelectorAll('main section');
-  const tocLinks = document.querySelectorAll('#tocNav a');
-  const linkMap = {};
-  tocLinks.forEach(link => { linkMap[link.getAttribute('href').slice(1)] = link; });
+  <p>B2B lead generation is not a single tactic — it is a six-stage process that moves a potential buyer from anonymous interest to a qualified sales conversation. Most B2B teams underperform not because they lack tactics at any single stage, but because the stages are disconnected: leads attracted well are captured poorly, or captured well and never nurtured.</p>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = linkMap[entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  <ol>
+    <li><strong>Define the ICP (Ideal Customer Profile).</strong> Before any tactic: who is the target? Which industry, company size, role, budget range, and geography describes the buyer who gets the most value from what you sell? Every tactic downstream flows from this definition.</li>
+    <li><strong>Attract.</strong> Drive traffic from potential buyers using the channels best suited to your ICP: organic content and SEO for long-cycle buyers doing independent research; LinkedIn for mid-to-senior roles; paid search for solution-aware queries; webinars for buyers who want to evaluate expertise before committing.</li>
+    <li><strong>Capture.</strong> Convert anonymous visitors into identified contacts via landing pages, lead magnets, or LinkedIn Lead Gen Forms. The offer must be specific enough to attract the right contacts and not just anyone looking for free content.</li>
+    <li><strong>Qualify.</strong> Lead scoring assigns points based on demographic fit (company size, industry, role) and behavioural signals (pages visited, content downloaded, email engagement). Only contacts above the scoring threshold pass to sales as MQLs.</li>
+    <li><strong>Nurture.</strong> 79% of marketing leads never convert to sales, with inadequate nurturing cited as the primary cause. Nurture means staying relevant — sending useful content over weeks or months until the lead signals readiness to talk.</li>
+    <li><strong>Convert (hand off to sales).</strong> When a lead crosses the SQL threshold, they move to sales for direct outreach. Speed matters: leads followed up within 5 minutes are 9x more likely to convert than those contacted after 30 minutes.</li>
+  </ol>
 
-  sections.forEach(s => observer.observe(s));
+  <p>The average B2B sales cycle runs approximately 10.1 months, compared to minutes or hours for most B2C purchases. The process demands patience and a higher content investment per contact, but the value of each closed customer is typically orders of magnitude higher than a single B2C transaction.</p>
 
-  tocLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) tocWrap.classList.remove('open');
-    });
-  });
-</script>
+  <figure>
+    <svg viewBox="0 0 860 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="B2B lead generation six-stage process: ICP, Attract, Capture, Qualify, Nurture, Convert">
+      <rect x="0" y="0" width="860" height="130" rx="8" fill="#0f172a"/>
+      <rect x="12" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
+      <text x="71" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">DEFINE</text>
+      <text x="71" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">ICP</text>
+      <polygon points="130,65 140,59 140,71" fill="#475569"/>
+      <rect x="143" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
+      <text x="202" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">ATTRACT</text>
+      <text x="202" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Content, SEO, Ads</text>
+      <polygon points="261,65 271,59 271,71" fill="#475569"/>
+      <rect x="274" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
+      <text x="333" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">CAPTURE</text>
+      <text x="333" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Forms, Lead Magnets</text>
+      <polygon points="392,65 402,59 402,71" fill="#475569"/>
+      <rect x="405" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
+      <text x="464" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">QUALIFY</text>
+      <text x="464" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Lead Scoring</text>
+      <polygon points="523,65 533,59 533,71" fill="#475569"/>
+      <rect x="536" y="28" width="118" height="74" rx="6" fill="#1e3a5f"/>
+      <text x="595" y="62" fill="#93c5fd" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">NURTURE</text>
+      <text x="595" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Email Sequences</text>
+      <polygon points="654,65 664,59 664,71" fill="#475569"/>
+      <rect x="667" y="28" width="182" height="74" rx="6" fill="#1a4a2e"/>
+      <text x="758" y="62" fill="#4ade80" font-size="11" font-weight="700" text-anchor="middle" font-family="Arial">CONVERT</text>
+      <text x="758" y="78" fill="#faf4e6" font-size="11" text-anchor="middle" font-family="Arial">Sales handoff &lt;5 min</text>
+    </svg>
+    <figcaption>The six stages of B2B lead generation. Most pipeline failures occur at the Qualify to Nurture handoff, not at the Attract stage.</figcaption>
+  </figure>
+</section>
 
-</body>
-</html>
+<section id="channels">
+  <h2>Which Channels Produce the Best B2B Leads?</h2>
+
+  <p>There is no universally best channel — the right choice depends on your ICP, deal size, and content capability. What the data shows clearly is that cost per lead and lead quality vary dramatically by channel.</p>
+
+  <div class="table-scroll">
+  <table>
+    <tr><th>Channel</th><th>Avg CPL</th><th>Key Data Point</th></tr>
+    <tr><td>Organic SEO / Content</td><td>$31</td><td>SEO leads close at 14.6% vs. 1.7% for outbound (Search Engine Journal)</td></tr>
+    <tr><td>Email marketing</td><td>$53</td><td>42% of companies cite email as most important lead channel (DemandSage)</td></tr>
+    <tr><td>Webinars</td><td>$72</td><td>73% say webinars produce best-quality leads (Cvent)</td></tr>
+    <tr><td>LinkedIn</td><td>$75</td><td>Drives ~80% of B2B social leads (HubSpot)</td></tr>
+    <tr><td>Paid search (PPC)</td><td>$110</td><td>High intent; faster than organic but higher CPL</td></tr>
+    <tr><td>Events / Trade shows</td><td>$811–$881</td><td>Highest CPL; best for enterprise relationship-building</td></tr>
+  </table>
+  </div>
+
+  <p>The data supports a clear efficiency hierarchy: SEO and content are the cheapest channels per lead with the highest close rates over time. LinkedIn and email add direct outreach capability. Webinars add a qualification layer. Events are expensive per lead but sometimes irreplaceable for enterprise deals.</p>
+
+  <Callout type="info">
+    <strong>Channel insight:</strong> 89% of B2B marketers use LinkedIn for lead generation, and it drives approximately 80% of all B2B social media leads. LinkedIn is 277% more effective for B2B lead generation than Facebook or other social platforms (LinkedIn B2B Institute).
+  </Callout>
+
+  <p>For affiliate marketers exploring B2B list-building strategies, organic content and email nurture form the backbone of a sustainable lead generation system that does not depend on any single platform's advertising algorithm.</p>
+</section>
+
+<section id="performance">
+  <h2>What the Numbers Say About B2B Lead Generation Performance</h2>
+
+  <p>The headline metrics in B2B lead generation reveal a consistent pattern: most businesses generate enough leads — they convert too few of them, and they nurture almost none of them effectively.</p>
+
+  <ul>
+    <li><strong>79% of marketing leads never convert to sales.</strong> The primary cause is inadequate lead nurturing — contacts are captured and then ignored until they go cold (<a href="https://www.marketingsherpa.com" target="_blank" rel="noopener noreferrer">MarketingSherpa, 2023</a>).</li>
+    <li><strong>Only 27% of B2B leads generated by marketing are ever contacted by sales.</strong> Nearly three-quarters of captured leads receive zero follow-up (<a href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">Salesforce, 2024</a>).</li>
+    <li><strong>Companies excelling at lead nurturing generate 50% more sales-ready leads at 33% lower cost</strong> — a compound advantage that builds over time (99Firms).</li>
+    <li><strong>Companies with mature lead management processes report 133% more revenue</strong> than those with immature processes (<a href="https://www.forrester.com" target="_blank" rel="noopener noreferrer">Forrester, 2023</a>).</li>
+    <li><strong>B2B organizations that align sales and marketing achieve 24% faster revenue growth</strong> and 27% faster profit growth (Forrester, 2023).</li>
+    <li><strong>ABM programs see a 70% increase in pipeline value per targeted account</strong> (<a href="https://www.demandbase.com" target="_blank" rel="noopener noreferrer">Demandbase, 2024</a>).</li>
+    <li><strong>Average B2B website conversion rate: 2.23%</strong> — roughly 98 in 100 visitors leave without providing contact details (Power Digital).</li>
+  </ul>
+
+  <Callout type="warn">
+    <strong>The gap that matters most:</strong> The difference between a team generating leads and one generating revenue is almost always nurturing. A system that captures 100 leads and nurtures 80 of them outperforms one that captures 300 leads and nurtures none.
+  </Callout>
+</section>
+
+<section id="mistakes">
+  <h2>Common B2B Lead Generation Mistakes</h2>
+
+  <p>The same failure patterns appear repeatedly across B2B lead generation programmes, regardless of company size or industry.</p>
+
+  <h3>1. Chasing Volume Instead of Quality</h3>
+  <p>61% of B2B marketers identify lead quality — not quantity — as their biggest challenge (HubSpot / DemandSage). Yet most teams measure success by leads generated per month, not by leads that eventually close.</p>
+
+  <h3>2. No Nurturing System</h3>
+  <p>The 79% non-conversion statistic points directly here. Most teams have a capture mechanism but no systematic nurture sequence to engage contacts between capture and purchase readiness.</p>
+
+  <h3>3. Slow or No Follow-Up</h3>
+  <p>Responding within 5 minutes of a high-intent action increases conversion probability by 9x. Yet 42% of sales reps report being too busy to follow up that quickly (InBeat Agency).</p>
+
+  <h3>4. Single-Channel Dependency</h3>
+  <p>Relying on one channel — most commonly LinkedIn outbound or cold email alone — creates pipeline fragility. When that channel's performance drops, the entire pipeline stalls.</p>
+
+  <h3>5. Sales and Marketing Misalignment</h3>
+  <p>Only 41% of marketers report being satisfied with their multi-channel lead generation strategy (Salesforce). Misaligned definitions of what constitutes a qualified lead cause much of this friction.</p>
+</section>
+
+<div class="cta-card">
+  <h3>Start earning today — join OLSP for just $7</h3>
+  <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+  <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+  <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+</div>
+
+<section id="practice">
+  <h2>What To Do in Practice</h2>
+
+  <p>The research points to a sequence that works for most B2B teams and affiliate marketers building lead-dependent businesses.</p>
+
+  <ol>
+    <li><strong>Start with ICP definition, not with channel selection.</strong> Write down specifically which job titles, company sizes, and industries describe your ideal buyers. Every channel and content decision follows from this.</li>
+    <li><strong>Pick two or three channels before expanding to six.</strong> The lowest-resistance starting stack: SEO-driven content (lowest CPL, highest close rate), email nurture (lowest cost to maintain contact over a 10-month B2B cycle), and LinkedIn (direct outreach and thought leadership).</li>
+    <li><strong>Build the nurture sequence before worrying about top-of-funnel volume.</strong> A contact captured without a follow-up plan loses most of its value within a week. Even a four-email sequence sent over 30 days outperforms no sequence by a significant margin.</li>
+    <li><strong>Measure cost per lead by channel.</strong> Compare your numbers against the benchmarks above. If your SEO CPL is $120 but the benchmark is $31, the gap is fixable once you can see it.</li>
+    <li><strong>Set up an alert for high-intent signals and follow up within 5 minutes.</strong> The 9x conversion advantage of a 5-minute response is one of the highest-ROI optimizations available and requires no additional spend.</li>
+  </ol>
+</section>
+
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <FaqItem question="What is the difference between a lead and a prospect in B2B?">
+    <p>A lead is anyone who has shown initial interest and provided contact details. A prospect is a lead that has been qualified: they match your target company size, industry, budget range, and decision-making authority. Not every lead becomes a prospect, which is why lead scoring is central to B2B lead generation.</p>
+  </FaqItem>
+  <FaqItem question="What is the difference between an MQL and an SQL?">
+    <p>An MQL (Marketing-Qualified Lead) is a contact who has engaged with your marketing content enough to suggest buying intent. An SQL (Sales-Qualified Lead) is a contact that the sales team has reviewed and confirmed as a real opportunity. Only 12–18% of MQLs become SQLs (MarketJoy).</p>
+  </FaqItem>
+  <FaqItem question="Which channels drive the highest-quality B2B leads?">
+    <p>73% of B2B marketers say webinars produce their best-quality leads (Cvent). LinkedIn drives ~80% of B2B social leads (LinkedIn B2B Institute). Organic search delivers leads that close at 14.6% — roughly 8.6x the close rate of outbound leads (Search Engine Journal).</p>
+  </FaqItem>
+  <FaqItem question="What is a good B2B lead conversion rate?">
+    <p>A conversion rate of 2–5% is generally considered good. The average B2B website converts at approximately 2.23% (Power Digital). Legal services leads all sectors at 7.4%, while B2B e-commerce converts at around 1.8%.</p>
+  </FaqItem>
+  <FaqItem question="How much does B2B lead generation cost?">
+    <p>Cost per lead varies significantly by channel. Organic SEO averages $31, email $53, webinars $72, LinkedIn advertising $75, paid search $110, and trade shows $811–$881 (DemandSage). The median B2B CPL across all channels sits at approximately $198–$214.</p>
+  </FaqItem>
+  <FaqItem question="What is Account-Based Marketing (ABM)?">
+    <p>ABM is a targeted B2B strategy where sales and marketing align around a defined list of high-value accounts rather than casting a wide net. Demandbase data shows ABM programs see a 70% increase in pipeline value per targeted account. It is most effective for high average contract values.</p>
+  </FaqItem>
+  <FaqItem question="How is AI changing B2B lead generation?">
+    <p>AI has moved into active qualification and routing. AI agents autonomously handle prospect research, data enrichment, lead scoring, and real-time routing. Forrester reports AI-powered lead scoring improves conversion rates by approximately 30%. Businesses using AI report 50% more sales-ready leads and 60% lower customer acquisition costs.</p>
+  </FaqItem>
+</section>
+
+<section id="author">
+  <h2>About the Author</h2>
+  <AuthorBox />
+</section>
+
+<div class="cta-card">
+  <h3>Start earning today — join OLSP for just $7</h3>
+  <p>OLSP's Megalink system gives you a complete done-for-you affiliate funnel. You don't need experience, a website, or a following — just follow the step-by-step training and start sharing your unique link.</p>
+  <p>Each referral pays $5 commission. Join now and get everything you need to begin.</p>
+  <p><a href="https://olsp.profitandprivilege.com" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Try OLSP Academy for $7 →</a></p>
+  <p style="font-size:.82rem; color:var(--ink-light); margin:0;">If you choose to join OLSP through this link, we may earn a commission at no extra cost to you.</p>
+</div>
+
+<section id="sources">
+  <h2>Sources &amp; References</h2>
+  <ul class="pill-list">
+    <li><a href="https://www.6sense.com" target="_blank" rel="noopener noreferrer">6sense — B2B Buyer Behavior 2025</a></li>
+    <li><a href="https://www.demandgenreport.com" target="_blank" rel="noopener noreferrer">Demand Gen Report — B2B Buyers Consume 13 Content Pieces</a></li>
+    <li><a href="https://www.businesswire.com" target="_blank" rel="noopener noreferrer">Business Wire — Lead Generation Market Growth to 2027</a></li>
+    <li><a href="https://www.marketingsherpa.com" target="_blank" rel="noopener noreferrer">MarketingSherpa — Lead Nurturing Statistics 2023</a></li>
+    <li><a href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">Salesforce — B2B Lead Follow-Up Data 2024</a></li>
+    <li><a href="https://www.forrester.com" target="_blank" rel="noopener noreferrer">Forrester — Lead Management Maturity and Revenue Growth 2023</a></li>
+    <li><a href="https://www.demandbase.com" target="_blank" rel="noopener noreferrer">Demandbase — ABM Pipeline Value Increase 2024</a></li>
+    <li><a href="https://www.saleshandy.com/blog/lead-generation-statistics/" target="_blank" rel="noopener noreferrer">Saleshandy — Lead Generation Statistics (HubSpot, Statista, CMI)</a></li>
+    <li><a href="https://firstpagesage.com/reports/average-cost-per-lead-by-industry/" target="_blank" rel="noopener noreferrer">First Page Sage — Average Cost Per Lead by Industry 2026</a></li>
+    <li><a href="https://learn.g2.com/lead-generation-statistics" target="_blank" rel="noopener noreferrer">G2 — Lead Generation Statistics for 2026</a></li>
+  </ul>
+  <p style="font-size:.82rem;color:var(--ink-light);">Data reviewed June 2026. Statistics cited trace to their primary sources linked above. This article does not constitute business advice or a recommendation of any specific product or platform.</p>
+</section>
+
+<SiteFooter />
+
+</OlspLayout>
