@@ -1,0 +1,586 @@
+{
+  "rr_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_research_package": "affiliate_marketing-research-package.json",
+    "generated_at": "2026-07-08T06:51:36Z",
+    "report_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "briefs_reported": 3,
+    "total_evidence_across_briefs": 90
+  },
+  "research_reports": [
+    {
+      "brief_id": "OPP-001",
+      "working_title": "Complete Guide to Traffic & Audience Building for Affiliate Marketers",
+      "research_summary": {
+        "total_evidence": 30,
+        "high_confidence_items": 0,
+        "medium_confidence_items": 26,
+        "total_sources": 30,
+        "total_facts": 10,
+        "total_gaps": 0
+      },
+      "key_findings": [],
+      "evidence_breakdown": {
+        "recurring_questions": 30
+      },
+      "fact_summary": [
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        }
+      ],
+      "knowledge_gaps": [],
+      "recommended_citations": [
+        {
+          "source_id": "SRC-001",
+          "url": "https://www.reddit.com/r/passive_income/comments/1t5l19x/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-002",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1t5l4ag/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-003",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1t5l4xe/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-004",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t5l2ab/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-021",
+          "url": "https://www.reddit.com/r/passive_income/comments/1uj33gz/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-022",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1uj35tf/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-023",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1uj34v0/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-024",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1uj37zl/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-041",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tdx58h/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-042",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tdx3mh/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-043",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tdx33y/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-056",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tjx5gi/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-057",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tjx60y/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-058",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tjx8ny/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-074",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t95yia/how_to_build_an_email_list_when_you_have_almost/",
+          "type": "Community_thread",
+          "claim": "How to build an email list when you have almost no traffic"
+        }
+      ]
+    },
+    {
+      "brief_id": "OPP-002",
+      "working_title": "Complete Guide to Getting Started & Beginner Struggles for Affiliate Marketers",
+      "research_summary": {
+        "total_evidence": 30,
+        "high_confidence_items": 0,
+        "medium_confidence_items": 29,
+        "total_sources": 30,
+        "total_facts": 10,
+        "total_gaps": 0
+      },
+      "key_findings": [],
+      "evidence_breakdown": {
+        "recurring_questions": 30
+      },
+      "fact_summary": [
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        }
+      ],
+      "knowledge_gaps": [],
+      "recommended_citations": [
+        {
+          "source_id": "SRC-001",
+          "url": "https://www.reddit.com/r/passive_income/comments/1t5l19x/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-002",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1t5l4ag/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-003",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1t5l4xe/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-004",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t5l2ab/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-021",
+          "url": "https://www.reddit.com/r/passive_income/comments/1uj33gz/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-022",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1uj35tf/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-023",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1uj34v0/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-024",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1uj37zl/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-041",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tdx58h/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-042",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tdx3mh/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-043",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tdx33y/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-056",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tjx5gi/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-057",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tjx60y/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-058",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tjx8ny/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-074",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t95yia/how_to_build_an_email_list_when_you_have_almost/",
+          "type": "Community_thread",
+          "claim": "How to build an email list when you have almost no traffic"
+        }
+      ]
+    },
+    {
+      "brief_id": "OPP-003",
+      "working_title": "Complete Guide to Tool Selection & Evaluation for Affiliate Marketers",
+      "research_summary": {
+        "total_evidence": 30,
+        "high_confidence_items": 4,
+        "medium_confidence_items": 26,
+        "total_sources": 30,
+        "total_facts": 10,
+        "total_gaps": 0
+      },
+      "key_findings": [
+        {
+          "finding": "Users report: problem",
+          "confidence": "high",
+          "frequency": 39,
+          "category": "pain_points"
+        },
+        {
+          "finding": "Users report: issue",
+          "confidence": "high",
+          "frequency": 18,
+          "category": "pain_points"
+        },
+        {
+          "finding": "Users report: can't",
+          "confidence": "high",
+          "frequency": 13,
+          "category": "pain_points"
+        },
+        {
+          "finding": "Users report: waste",
+          "confidence": "high",
+          "frequency": 10,
+          "category": "pain_points"
+        }
+      ],
+      "evidence_breakdown": {
+        "recurring_questions": 26,
+        "pain_points": 4
+      },
+      "fact_summary": [
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "How to handle information overload in affiliate marketing?",
+          "verified_answer": "Community reports indicate: How to handle information overload in affiliate marketing?",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        },
+        {
+          "claim": "Free traffic for affiliate marketing without relying on one platform",
+          "verified_answer": "Community reports indicate: Free traffic for affiliate marketing without relying on one platform",
+          "confidence": "medium",
+          "source_count": 4,
+          "reliability_note": "Self-reported community evidence \u2014 not independently verified"
+        }
+      ],
+      "knowledge_gaps": [],
+      "recommended_citations": [
+        {
+          "source_id": "SRC-001",
+          "url": "https://www.reddit.com/r/passive_income/comments/1t5l19x/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-002",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1t5l4ag/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-003",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1t5l4xe/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-004",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t5l2ab/how_to_handle_information_overload_in_affiliate/",
+          "type": "Community_thread",
+          "claim": "How to handle information overload in affiliate marketing?"
+        },
+        {
+          "source_id": "SRC-021",
+          "url": "https://www.reddit.com/r/passive_income/comments/1uj33gz/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-022",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1uj35tf/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-023",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1uj34v0/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-024",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1uj37zl/free_traffic_for_affiliate_marketing_without/",
+          "type": "Community_thread",
+          "claim": "Free traffic for affiliate marketing without relying on one platform"
+        },
+        {
+          "source_id": "SRC-041",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tdx58h/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-042",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tdx3mh/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-043",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tdx33y/why_youre_getting_traffic_but_no_sales_in/",
+          "type": "Community_thread",
+          "claim": "Why you\u2019re getting traffic but no sales in affiliate marketing: 5 checks to run"
+        },
+        {
+          "source_id": "SRC-056",
+          "url": "https://www.reddit.com/r/AffiliateMarket/comments/1tjx5gi/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-057",
+          "url": "https://www.reddit.com/r/Entrepreneurs/comments/1tjx60y/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-058",
+          "url": "https://www.reddit.com/r/passive_income/comments/1tjx8ny/thinking_about_solo_ads_because_your_traffic_is/",
+          "type": "Community_thread",
+          "claim": "Thinking about solo ads because your traffic is flat?"
+        },
+        {
+          "source_id": "SRC-074",
+          "url": "https://www.reddit.com/r/SideHustleGold/comments/1t95yia/how_to_build_an_email_list_when_you_have_almost/",
+          "type": "Community_thread",
+          "claim": "How to build an email list when you have almost no traffic"
+        }
+      ]
+    }
+  ]
+}

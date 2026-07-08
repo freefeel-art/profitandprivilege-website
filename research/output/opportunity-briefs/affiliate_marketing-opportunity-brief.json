@@ -1,0 +1,445 @@
+{
+  "ob_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_ei_report": "affiliate_marketing-community-intelligence-report.json",
+    "generated_at": "2026-07-08T06:51:03Z",
+    "generator_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "total_opportunities": 11,
+    "top_priority": "Complete Guide to Traffic & Audience Building for Affiliate Marketers"
+  },
+  "opportunity_briefs": [
+    {
+      "working_title": "Complete Guide to Traffic & Audience Building for Affiliate Marketers",
+      "primary_question": "How do I drive traffic to my affiliate links as a beginner?",
+      "root_problem": "Community discussions reveal 209 signals related to traffic & audience building",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 1,
+      "signal_strength": 209,
+      "confidence_score": 0.9,
+      "intensity": "low",
+      "estimated_effort": "Medium",
+      "source_cluster": "Traffic & Audience Building",
+      "source_cluster_id": "CLU-002",
+      "related_questions": [
+        "How do I drive traffic to my affiliate links as a beginner?",
+        "Is traffic & audience building worth the investment?",
+        "What are common traffic & audience building mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-001"
+    },
+    {
+      "working_title": "Complete Guide to Getting Started & Beginner Struggles for Affiliate Marketers",
+      "primary_question": "How do I start affiliate marketing with no experience or budget?",
+      "root_problem": "Community discussions reveal 205 signals related to getting started & beginner struggles",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 2,
+      "signal_strength": 205,
+      "confidence_score": 1.1,
+      "intensity": "medium",
+      "estimated_effort": "Medium",
+      "source_cluster": "Getting Started & Beginner Struggles",
+      "source_cluster_id": "CLU-001",
+      "related_questions": [
+        "How do I start affiliate marketing with no experience or budget?",
+        "Is getting started & beginner struggles worth the investment?",
+        "What are common getting started & beginner struggles mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-002"
+    },
+    {
+      "working_title": "Complete Guide to Tool Selection & Evaluation for Affiliate Marketers",
+      "primary_question": "Which affiliate marketing tools do I actually need as a beginner?",
+      "root_problem": "Community discussions reveal 181 signals related to tool selection & evaluation",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Comparison",
+      "pipeline_type": "Heavy",
+      "priority_score": 3,
+      "signal_strength": 181,
+      "confidence_score": 1.2,
+      "intensity": "medium",
+      "estimated_effort": "High",
+      "source_cluster": "Tool Selection & Evaluation",
+      "source_cluster_id": "CLU-004",
+      "related_questions": [
+        "Which affiliate marketing tools do I actually need as a beginner?",
+        "Is tool selection & evaluation worth the investment?",
+        "What are common tool selection & evaluation mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-003"
+    },
+    {
+      "working_title": "Complete Guide to Email & List Building for Affiliate Marketers",
+      "primary_question": "How do I build an email list for affiliate marketing without a website?",
+      "root_problem": "Community discussions reveal 103 signals related to email & list building",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 4,
+      "signal_strength": 103,
+      "confidence_score": 0.6,
+      "intensity": "low",
+      "estimated_effort": "Medium",
+      "source_cluster": "Email & List Building",
+      "source_cluster_id": "CLU-003",
+      "related_questions": [
+        "How do I build an email list for affiliate marketing without a website?",
+        "Is email & list building worth the investment?",
+        "What are common email & list building mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-004"
+    },
+    {
+      "working_title": "Complete Guide to Income & Monetization for Affiliate Marketers",
+      "primary_question": "How much can I earn from affiliate marketing in the first 6 months?",
+      "root_problem": "Community discussions reveal 79 signals related to income & monetization",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Evidence-based",
+      "pipeline_type": "Heavy",
+      "priority_score": 5,
+      "signal_strength": 79,
+      "confidence_score": 2.5,
+      "intensity": "high",
+      "estimated_effort": "High",
+      "source_cluster": "Income & Monetization",
+      "source_cluster_id": "CLU-006",
+      "related_questions": [
+        "How much can I earn from affiliate marketing in the first 6 months?",
+        "Is income & monetization worth the investment?",
+        "What are common income & monetization mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-005"
+    },
+    {
+      "working_title": "Complete Guide to Content Creation & Strategy for Affiliate Marketers",
+      "primary_question": "How do I create content that ranks for affiliate marketing?",
+      "root_problem": "Community discussions reveal 50 signals related to content creation & strategy",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 6,
+      "signal_strength": 50,
+      "confidence_score": 0.5,
+      "intensity": "low",
+      "estimated_effort": "Medium",
+      "source_cluster": "Content Creation & Strategy",
+      "source_cluster_id": "CLU-007",
+      "related_questions": [
+        "How do I create content that ranks for affiliate marketing?",
+        "Is content creation & strategy worth the investment?",
+        "What are common content creation & strategy mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-006"
+    },
+    {
+      "working_title": "Complete Guide to Competitor & Program Comparisons for Affiliate Marketers",
+      "primary_question": "Which affiliate program is best for beginners?",
+      "root_problem": "Community discussions reveal 29 signals related to competitor & program comparisons",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Comparison",
+      "pipeline_type": "Heavy",
+      "priority_score": 7,
+      "signal_strength": 29,
+      "confidence_score": 1.3,
+      "intensity": "medium",
+      "estimated_effort": "High",
+      "source_cluster": "Competitor & Program Comparisons",
+      "source_cluster_id": "CLU-008",
+      "related_questions": [
+        "Which affiliate program is best for beginners?",
+        "Is competitor & program comparisons worth the investment?",
+        "What are common competitor & program comparisons mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-007"
+    },
+    {
+      "working_title": "Complete Guide to Trust & Credibility Concerns for Affiliate Marketers",
+      "primary_question": "Is affiliate marketing still worth it in 2026?",
+      "root_problem": "Community discussions reveal 22 signals related to trust & credibility concerns",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Myth-busting",
+      "pipeline_type": "Light",
+      "priority_score": 8,
+      "signal_strength": 22,
+      "confidence_score": 2.5,
+      "intensity": "high",
+      "estimated_effort": "Low",
+      "source_cluster": "Trust & Credibility Concerns",
+      "source_cluster_id": "CLU-005",
+      "related_questions": [
+        "Is affiliate marketing still worth it in 2026?",
+        "Is trust & credibility concerns worth the investment?",
+        "What are common trust & credibility concerns mistakes?"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {
+        "community_beliefs": [
+          "Misconception/skepticism: is it worth",
+          "Misconception/skepticism: too late"
+        ],
+        "community_fears": [
+          "Negative/warning: template",
+          "Negative/warning: waste"
+        ],
+        "community_desires": [
+          "Desired outcome: grow",
+          "Desired outcome: target"
+        ]
+      },
+      "brief_id": "OPP-008"
+    },
+    {
+      "working_title": "Create a structured comparison article",
+      "primary_question": "How do I direct competitor comparison?",
+      "root_problem": "Community mentions 3 competitors but most discussions are fragmented across separate threads",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 9,
+      "signal_strength": 9,
+      "confidence_score": 1.0,
+      "intensity": "medium",
+      "estimated_effort": "Medium",
+      "source_cluster": "thematic_gap",
+      "source_cluster_id": "GAP",
+      "related_questions": [
+        "Direct competitor comparison"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {},
+      "brief_id": "OPP-009"
+    },
+    {
+      "working_title": "Create troubleshooting guides for top frustrations",
+      "primary_question": "How do I step-by-step troubleshooting for recurring problems?",
+      "root_problem": "Community expresses 17 distinct frustrations without clear resolution paths",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 10,
+      "signal_strength": 34,
+      "confidence_score": 1.0,
+      "intensity": "medium",
+      "estimated_effort": "Medium",
+      "source_cluster": "thematic_gap",
+      "source_cluster_id": "GAP",
+      "related_questions": [
+        "Step-by-step troubleshooting for recurring problems"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {},
+      "brief_id": "OPP-010"
+    },
+    {
+      "working_title": "Create 'what not to do' guide for beginners",
+      "primary_question": "How do I beginner mistake prevention?",
+      "root_problem": "Community reports 10 distinct beginner mistake patterns (total frequency: 47)",
+      "target_audience": "Affiliate marketers \u2014 beginners to intermediate",
+      "recommended_format": "Guide",
+      "pipeline_type": "Light",
+      "priority_score": 11,
+      "signal_strength": 47,
+      "confidence_score": 1.0,
+      "intensity": "medium",
+      "estimated_effort": "Medium",
+      "source_cluster": "thematic_gap",
+      "source_cluster_id": "GAP",
+      "related_questions": [
+        "Beginner mistake prevention"
+      ],
+      "candidate_affiliate_products": [
+        "OLSP Academy",
+        "Wealthy Affiliate"
+      ],
+      "internal_linking_candidates": [
+        "/reviews/olsp-academy",
+        "/blog/affiliate-marketing-for-beginners"
+      ],
+      "narrative_context": {},
+      "brief_id": "OPP-011"
+    }
+  ]
+}

@@ -26,6 +26,9 @@ pnpm-debug.log*
 # Local Netlify folder
 .netlify
 
+# Python bytecode
+__pycache__/
+
 # generated static assets (copied by scripts/prebuild.mjs)
 /public/docs/
 /public/ops/

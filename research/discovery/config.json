@@ -1,0 +1,6 @@
+{
+  "provider": "scrape_creators",
+  "pillar_slug": "affiliate_marketing",
+  "limit": 20,
+  "output_dir": "research/output/discovery"
+}

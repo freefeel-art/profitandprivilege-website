@@ -1,0 +1,211 @@
+{
+  "publish_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_content": "affiliate_marketing-content.json",
+    "source_qa": "affiliate_marketing-qa-report.json",
+    "generated_at": "2026-07-08T06:52:48Z",
+    "packager_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "total_articles_packaged": 3,
+    "total_estimated_words": 6300,
+    "qa_approved": true
+  },
+  "publishing_packages": [
+    {
+      "brief_id": "OPP-001",
+      "working_title": "Complete Guide to Traffic & Audience Building for Affiliate Marketers",
+      "format": "Guide",
+      "article_slug": "complete-guide-to-traffic-&-audience-building-for-",
+      "gold_master_template": "GOLD-MASTER-SPEC.md",
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "word_count_estimate": 150
+        }
+      ],
+      "estimated_word_count": 2100,
+      "citations_available": 15,
+      "knowledge_gaps": 0,
+      "qa_status": "PASSED",
+      "qa_check_count": 6,
+      "internal_links_required": true,
+      "affiliate_disclosure_required": true,
+      "indexing_priority": "standard",
+      "pre_flight_checks": {
+        "gold_master_available": true,
+        "research_complete": true,
+        "qa_approved": true,
+        "sections_structured": true,
+        "evidence_available": true
+      }
+    },
+    {
+      "brief_id": "OPP-002",
+      "working_title": "Complete Guide to Getting Started & Beginner Struggles for Affiliate Marketers",
+      "format": "Guide",
+      "article_slug": "complete-guide-to-getting-started-&-beginner-strug",
+      "gold_master_template": "GOLD-MASTER-SPEC.md",
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "word_count_estimate": 150
+        }
+      ],
+      "estimated_word_count": 2100,
+      "citations_available": 15,
+      "knowledge_gaps": 0,
+      "qa_status": "PASSED",
+      "qa_check_count": 6,
+      "internal_links_required": true,
+      "affiliate_disclosure_required": true,
+      "indexing_priority": "standard",
+      "pre_flight_checks": {
+        "gold_master_available": true,
+        "research_complete": true,
+        "qa_approved": true,
+        "sections_structured": true,
+        "evidence_available": true
+      }
+    },
+    {
+      "brief_id": "OPP-003",
+      "working_title": "Complete Guide to Tool Selection & Evaluation for Affiliate Marketers",
+      "format": "Guide",
+      "article_slug": "complete-guide-to-tool-selection-&-evaluation-for-",
+      "gold_master_template": "GOLD-MASTER-SPEC.md",
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "word_count_estimate": 150
+        }
+      ],
+      "estimated_word_count": 2100,
+      "citations_available": 15,
+      "knowledge_gaps": 0,
+      "qa_status": "PASSED",
+      "qa_check_count": 6,
+      "internal_links_required": true,
+      "affiliate_disclosure_required": true,
+      "indexing_priority": "standard",
+      "pre_flight_checks": {
+        "gold_master_available": true,
+        "research_complete": true,
+        "qa_approved": true,
+        "sections_structured": true,
+        "evidence_available": true
+      }
+    }
+  ]
+}

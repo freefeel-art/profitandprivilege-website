@@ -1,0 +1,197 @@
+{
+  "content_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_research_report": "affiliate_marketing-research-report.json",
+    "generated_at": "2026-07-08T06:51:54Z",
+    "producer_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "articles_produced": 3,
+    "total_estimated_words": 6300
+  },
+  "articles": [
+    {
+      "brief_id": "OPP-001",
+      "working_title": "Complete Guide to Traffic & Audience Building for Affiliate Marketers",
+      "format": "Guide",
+      "estimated_word_count": 2100,
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "evidence_supporting": [],
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "evidence_supporting": [],
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "evidence_supporting": [],
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        }
+      ],
+      "citations_available": 15,
+      "knowledge_gaps": 0
+    },
+    {
+      "brief_id": "OPP-002",
+      "working_title": "Complete Guide to Getting Started & Beginner Struggles for Affiliate Marketers",
+      "format": "Guide",
+      "estimated_word_count": 2100,
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "evidence_supporting": [],
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "evidence_supporting": [],
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "evidence_supporting": [],
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        }
+      ],
+      "citations_available": 15,
+      "knowledge_gaps": 0
+    },
+    {
+      "brief_id": "OPP-003",
+      "working_title": "Complete Guide to Tool Selection & Evaluation for Affiliate Marketers",
+      "format": "Guide",
+      "estimated_word_count": 2100,
+      "sections": [
+        {
+          "section_id": "introduction",
+          "heading": "Introduction",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        },
+        {
+          "section_id": "what_is_this",
+          "heading": "What Is This",
+          "evidence_supporting": [
+            {
+              "claim": "Users report: issue",
+              "confidence": "high",
+              "source_count": 18
+            }
+          ],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "why_it_matters",
+          "heading": "Why It Matters",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "step_by_step_guide",
+          "heading": "Step By Step Guide",
+          "evidence_supporting": [],
+          "word_count_estimate": 500
+        },
+        {
+          "section_id": "common_mistakes_to_avoid",
+          "heading": "Common Mistakes To Avoid",
+          "evidence_supporting": [],
+          "word_count_estimate": 300
+        },
+        {
+          "section_id": "tips_for_success",
+          "heading": "Tips For Success",
+          "evidence_supporting": [],
+          "word_count_estimate": 200
+        },
+        {
+          "section_id": "faq",
+          "heading": "Faq",
+          "evidence_supporting": [],
+          "word_count_estimate": 400
+        },
+        {
+          "section_id": "conclusion",
+          "heading": "Conclusion",
+          "evidence_supporting": [],
+          "word_count_estimate": 150
+        }
+      ],
+      "citations_available": 15,
+      "knowledge_gaps": 0
+    }
+  ]
+}

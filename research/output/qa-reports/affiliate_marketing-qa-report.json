@@ -1,0 +1,133 @@
+{
+  "qa_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_content": "affiliate_marketing-content.json",
+    "source_research": "affiliate_marketing-research-report.json",
+    "generated_at": "2026-07-08T06:52:33Z",
+    "qa_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "articles_checked": 3,
+    "articles_passed": 3,
+    "articles_failed": 0
+  },
+  "qa_results": [
+    {
+      "brief_id": "OPP-001",
+      "working_title": "Complete Guide to Traffic & Audience Building for Affiliate Marketers",
+      "format": "Guide",
+      "all_checks_passed": true,
+      "checks": [
+        {
+          "check": "Gold Master structure completeness",
+          "status": "PASS",
+          "details": "All 4 required sections present"
+        },
+        {
+          "check": "Evidence support per section",
+          "status": "WARN",
+          "details": "Sections without evidence references: ['introduction', 'what_is_this', 'why_it_matters', 'step_by_step_guide', 'common_mistakes_to_avoid', 'tips_for_success', 'faq', 'conclusion']"
+        },
+        {
+          "check": "Internal consistency \u2014 no duplicate sections",
+          "status": "PASS",
+          "details": "All section IDs unique"
+        },
+        {
+          "check": "Citations available",
+          "status": "PASS",
+          "details": "15 citations available"
+        },
+        {
+          "check": "Knowledge gaps documented",
+          "status": "PASS",
+          "details": "0 knowledge gaps logged"
+        },
+        {
+          "check": "Word count viability",
+          "status": "PASS",
+          "details": "Estimated 2100 words"
+        }
+      ]
+    },
+    {
+      "brief_id": "OPP-002",
+      "working_title": "Complete Guide to Getting Started & Beginner Struggles for Affiliate Marketers",
+      "format": "Guide",
+      "all_checks_passed": true,
+      "checks": [
+        {
+          "check": "Gold Master structure completeness",
+          "status": "PASS",
+          "details": "All 4 required sections present"
+        },
+        {
+          "check": "Evidence support per section",
+          "status": "WARN",
+          "details": "Sections without evidence references: ['introduction', 'what_is_this', 'why_it_matters', 'step_by_step_guide', 'common_mistakes_to_avoid', 'tips_for_success', 'faq', 'conclusion']"
+        },
+        {
+          "check": "Internal consistency \u2014 no duplicate sections",
+          "status": "PASS",
+          "details": "All section IDs unique"
+        },
+        {
+          "check": "Citations available",
+          "status": "PASS",
+          "details": "15 citations available"
+        },
+        {
+          "check": "Knowledge gaps documented",
+          "status": "PASS",
+          "details": "0 knowledge gaps logged"
+        },
+        {
+          "check": "Word count viability",
+          "status": "PASS",
+          "details": "Estimated 2100 words"
+        }
+      ]
+    },
+    {
+      "brief_id": "OPP-003",
+      "working_title": "Complete Guide to Tool Selection & Evaluation for Affiliate Marketers",
+      "format": "Guide",
+      "all_checks_passed": true,
+      "checks": [
+        {
+          "check": "Gold Master structure completeness",
+          "status": "PASS",
+          "details": "All 4 required sections present"
+        },
+        {
+          "check": "Evidence support per section",
+          "status": "WARN",
+          "details": "Sections without evidence references: ['introduction', 'why_it_matters', 'step_by_step_guide', 'common_mistakes_to_avoid', 'tips_for_success', 'faq', 'conclusion']"
+        },
+        {
+          "check": "Internal consistency \u2014 no duplicate sections",
+          "status": "PASS",
+          "details": "All section IDs unique"
+        },
+        {
+          "check": "Citations available",
+          "status": "PASS",
+          "details": "15 citations available"
+        },
+        {
+          "check": "Knowledge gaps documented",
+          "status": "PASS",
+          "details": "0 knowledge gaps logged"
+        },
+        {
+          "check": "Word count viability",
+          "status": "PASS",
+          "details": "Estimated 2100 words"
+        }
+      ]
+    }
+  ]
+}

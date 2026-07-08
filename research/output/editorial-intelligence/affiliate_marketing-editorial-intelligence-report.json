@@ -1,0 +1,657 @@
+{
+  "ei_metadata": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "source_ci_report": "affiliate_marketing-community-intelligence-report.json",
+    "generated_at": "2026-07-08T06:50:42Z",
+    "processor_version": "1.0.0"
+  },
+  "executive_summary": {
+    "pillar_name": "Affiliate Marketing",
+    "pillar_slug": "affiliate_marketing",
+    "posts_analyzed": 178,
+    "communities_analyzed": 63,
+    "total_finding_entries": 954,
+    "clusters_identified": 8,
+    "article_concepts_generated": 8,
+    "thematic_gaps_identified": 3
+  },
+  "clusters": [
+    {
+      "cluster_id": "CLU-002",
+      "name": "Traffic & Audience Building",
+      "source_categories": [
+        "pain_points",
+        "recurring_questions"
+      ],
+      "matched_findings_count": 157,
+      "total_signal_frequency": 209,
+      "unique_posts_contributing": 44,
+      "confidence_score": 0.9,
+      "intensity": "low",
+      "keywords": [
+        "traffic",
+        "audience",
+        "followers",
+        "visitors",
+        "clicks",
+        "views",
+        "promote",
+        "reach",
+        "exposure",
+        "discover"
+      ],
+      "sample_findings": [
+        {
+          "finding": "Users report: no traffic",
+          "frequency": 6,
+          "confidence": "high"
+        },
+        {
+          "finding": "Users report: no audience",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Free traffic for affiliate marketing without relying on one platform",
+          "frequency": 4,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Free traffic for affiliate marketing without relying on one platform",
+          "frequency": 4,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Free traffic for affiliate marketing without relying on one platform",
+          "frequency": 4,
+          "confidence": "medium"
+        }
+      ],
+      "priority_rank": 1
+    },
+    {
+      "cluster_id": "CLU-001",
+      "name": "Getting Started & Beginner Struggles",
+      "source_categories": [
+        "common_beginner_mistakes",
+        "pain_points",
+        "recurring_questions"
+      ],
+      "matched_findings_count": 154,
+      "total_signal_frequency": 205,
+      "unique_posts_contributing": 68,
+      "confidence_score": 1.1,
+      "intensity": "medium",
+      "keywords": [
+        "beginner",
+        "start",
+        "no experience",
+        "no money",
+        "no audience",
+        "overwhelmed",
+        "confused",
+        "where to",
+        "first",
+        "new to"
+      ],
+      "sample_findings": [
+        {
+          "finding": "How to get started with affiliate marketing without wasting your first 30 days",
+          "frequency": 2,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to get started with affiliate marketing without wasting your first 30 days",
+          "frequency": 2,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to get started with affiliate marketing without wasting your first 30 days",
+          "frequency": 2,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Solo founders who've gotten their first paying customers with $0 ad budget. What actually worked?",
+          "frequency": 2,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Solo founders who've gotten their first paying customers with $0 ad budget. What actually worked?",
+          "frequency": 2,
+          "confidence": "medium"
+        }
+      ],
+      "priority_rank": 2
+    },
+    {
+      "cluster_id": "CLU-004",
+      "name": "Tool Selection & Evaluation",
+      "source_categories": [
+        "frequently_mentioned_tools",
+        "recurring_questions"
+      ],
+      "matched_findings_count": 122,
+      "total_signal_frequency": 181,
+      "unique_posts_contributing": 51,
+      "confidence_score": 1.2,
+      "intensity": "medium",
+      "keywords": [
+        "tool",
+        "software",
+        "platform",
+        "best",
+        "compare",
+        "vs",
+        "review",
+        "which",
+        "recommend",
+        "worth"
+      ],
+      "sample_findings": [
+        {
+          "finding": "Tool mentioned: Canva",
+          "frequency": 8,
+          "confidence": "high"
+        },
+        {
+          "finding": "Tool mentioned: Impact",
+          "frequency": 6,
+          "confidence": "high"
+        },
+        {
+          "finding": "Tool mentioned: ChatGPT",
+          "frequency": 5,
+          "confidence": "high"
+        },
+        {
+          "finding": "Tool mentioned: ClickBank",
+          "frequency": 5,
+          "confidence": "high"
+        },
+        {
+          "finding": "Tool mentioned: WordPress",
+          "frequency": 5,
+          "confidence": "high"
+        }
+      ],
+      "priority_rank": 3
+    },
+    {
+      "cluster_id": "CLU-003",
+      "name": "Email & List Building",
+      "source_categories": [
+        "recurring_questions"
+      ],
+      "matched_findings_count": 93,
+      "total_signal_frequency": 103,
+      "unique_posts_contributing": 26,
+      "confidence_score": 0.6,
+      "intensity": "low",
+      "keywords": [
+        "email",
+        "list",
+        "subscriber",
+        "open rate",
+        "sequence",
+        "newsletter",
+        "autoresponder",
+        "drip"
+      ],
+      "sample_findings": [
+        {
+          "finding": "How to build an email list when you have almost no traffic",
+          "frequency": 3,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to build an email list when you have almost no traffic",
+          "frequency": 3,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to build an email list when you have almost no traffic",
+          "frequency": 3,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to build an email list when you have almost no traffic",
+          "frequency": 3,
+          "confidence": "medium"
+        },
+        {
+          "finding": "How to build an email list when you have almost no traffic",
+          "frequency": 3,
+          "confidence": "medium"
+        }
+      ],
+      "priority_rank": 4
+    },
+    {
+      "cluster_id": "CLU-006",
+      "name": "Income & Monetization",
+      "source_categories": [
+        "desired_outcomes",
+        "positive_signals",
+        "supporting_evidence"
+      ],
+      "matched_findings_count": 22,
+      "total_signal_frequency": 79,
+      "unique_posts_contributing": 46,
+      "confidence_score": 2.5,
+      "intensity": "high",
+      "keywords": [
+        "income",
+        "money",
+        "earn",
+        "make",
+        "profit",
+        "revenue",
+        "passive",
+        "full time",
+        "side hustle",
+        "financial",
+        "dollars",
+        "month"
+      ],
+      "sample_findings": [
+        {
+          "finding": "Desired outcome: passive income",
+          "frequency": 6,
+          "confidence": "high"
+        },
+        {
+          "finding": "Desired outcome: side income",
+          "frequency": 4,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Desired outcome: full time",
+          "frequency": 2,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Desired outcome: extra income",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Desired outcome: replace income",
+          "frequency": 1,
+          "confidence": "low"
+        }
+      ],
+      "priority_rank": 5
+    },
+    {
+      "cluster_id": "CLU-007",
+      "name": "Content Creation & Strategy",
+      "source_categories": [
+        "recurring_questions"
+      ],
+      "matched_findings_count": 50,
+      "total_signal_frequency": 50,
+      "unique_posts_contributing": 14,
+      "confidence_score": 0.5,
+      "intensity": "low",
+      "keywords": [
+        "content",
+        "write",
+        "blog",
+        "post",
+        "article",
+        "video",
+        "social media",
+        "strategy",
+        "niche",
+        "topic",
+        "keyword"
+      ],
+      "sample_findings": [
+        {
+          "finding": "I stopped choosing affiliate programs based on commission. It improved my content.",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "I stopped choosing affiliate programs based on commission. It improved my content.",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "I stopped choosing affiliate programs based on commission. It improved my content.",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Completely lost as a beginner, freelancing, social media, reselling, affiliate marketing in the tech niche. Where do I even start?",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Completely lost as a beginner, freelancing, social media, reselling, affiliate marketing in the tech niche. Where do I even start?",
+          "frequency": 1,
+          "confidence": "low"
+        }
+      ],
+      "priority_rank": 6
+    },
+    {
+      "cluster_id": "CLU-008",
+      "name": "Competitor & Program Comparisons",
+      "source_categories": [
+        "frequently_mentioned_competitors",
+        "recurring_questions"
+      ],
+      "matched_findings_count": 19,
+      "total_signal_frequency": 29,
+      "unique_posts_contributing": 16,
+      "confidence_score": 1.3,
+      "intensity": "medium",
+      "keywords": [
+        "vs",
+        "alternative",
+        "better",
+        "compare",
+        "competitor",
+        "choice",
+        "switch",
+        "migrate",
+        "instead"
+      ],
+      "sample_findings": [
+        {
+          "finding": "Competitor mentioned: Solo ads",
+          "frequency": 8,
+          "confidence": "high"
+        },
+        {
+          "finding": "Competitor mentioned: Wealthy Affiliate",
+          "frequency": 4,
+          "confidence": "medium"
+        },
+        {
+          "finding": "Competitor mentioned: Affiliate Bootcamp",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "I think I understand affiliate marketing a bit better now\u2026 but I\u2019m still confused",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "I think I understand affiliate marketing a bit better now\u2026 but I\u2019m still confused",
+          "frequency": 1,
+          "confidence": "low"
+        }
+      ],
+      "priority_rank": 7
+    },
+    {
+      "cluster_id": "CLU-005",
+      "name": "Trust & Credibility Concerns",
+      "source_categories": [
+        "frustrations",
+        "misconceptions",
+        "negative_signals"
+      ],
+      "matched_findings_count": 7,
+      "total_signal_frequency": 22,
+      "unique_posts_contributing": 16,
+      "confidence_score": 2.5,
+      "intensity": "high",
+      "keywords": [
+        "scam",
+        "legit",
+        "trust",
+        "honest",
+        "fake",
+        "shady",
+        "fraud",
+        "too good",
+        "skeptical",
+        "doubt",
+        "worth it",
+        "overrated"
+      ],
+      "sample_findings": [
+        {
+          "finding": "Misconception/skepticism: legitimate",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Misconception/skepticism: is it legit",
+          "frequency": 1,
+          "confidence": "low"
+        },
+        {
+          "finding": "Negative/warning: fake",
+          "frequency": 6,
+          "confidence": "high"
+        },
+        {
+          "finding": "Negative/warning: scam",
+          "frequency": 5,
+          "confidence": "high"
+        },
+        {
+          "finding": "Negative/warning: shady",
+          "frequency": 3,
+          "confidence": "medium"
+        }
+      ],
+      "priority_rank": 8
+    }
+  ],
+  "article_concepts": [
+    {
+      "concept_id": "CON-001",
+      "cluster_id": "CLU-002",
+      "cluster_name": "Traffic & Audience Building",
+      "recommended_format": "Guide",
+      "estimated_effort": "Medium",
+      "priority_rank": 1,
+      "intensity": "low",
+      "signal_strength": 209,
+      "confidence_score": 0.9,
+      "unique_posts_supporting": 44
+    },
+    {
+      "concept_id": "CON-002",
+      "cluster_id": "CLU-001",
+      "cluster_name": "Getting Started & Beginner Struggles",
+      "recommended_format": "Guide",
+      "estimated_effort": "Medium",
+      "priority_rank": 2,
+      "intensity": "medium",
+      "signal_strength": 205,
+      "confidence_score": 1.1,
+      "unique_posts_supporting": 68
+    },
+    {
+      "concept_id": "CON-003",
+      "cluster_id": "CLU-004",
+      "cluster_name": "Tool Selection & Evaluation",
+      "recommended_format": "Comparison",
+      "estimated_effort": "High",
+      "priority_rank": 3,
+      "intensity": "medium",
+      "signal_strength": 181,
+      "confidence_score": 1.2,
+      "unique_posts_supporting": 51
+    },
+    {
+      "concept_id": "CON-004",
+      "cluster_id": "CLU-003",
+      "cluster_name": "Email & List Building",
+      "recommended_format": "Guide",
+      "estimated_effort": "Medium",
+      "priority_rank": 4,
+      "intensity": "low",
+      "signal_strength": 103,
+      "confidence_score": 0.6,
+      "unique_posts_supporting": 26
+    },
+    {
+      "concept_id": "CON-005",
+      "cluster_id": "CLU-006",
+      "cluster_name": "Income & Monetization",
+      "recommended_format": "Evidence-based",
+      "estimated_effort": "High",
+      "priority_rank": 5,
+      "intensity": "high",
+      "signal_strength": 79,
+      "confidence_score": 2.5,
+      "unique_posts_supporting": 46
+    },
+    {
+      "concept_id": "CON-006",
+      "cluster_id": "CLU-007",
+      "cluster_name": "Content Creation & Strategy",
+      "recommended_format": "Guide",
+      "estimated_effort": "Medium",
+      "priority_rank": 6,
+      "intensity": "low",
+      "signal_strength": 50,
+      "confidence_score": 0.5,
+      "unique_posts_supporting": 14
+    },
+    {
+      "concept_id": "CON-007",
+      "cluster_id": "CLU-008",
+      "cluster_name": "Competitor & Program Comparisons",
+      "recommended_format": "Comparison",
+      "estimated_effort": "High",
+      "priority_rank": 7,
+      "intensity": "medium",
+      "signal_strength": 29,
+      "confidence_score": 1.3,
+      "unique_posts_supporting": 16
+    },
+    {
+      "concept_id": "CON-008",
+      "cluster_id": "CLU-005",
+      "cluster_name": "Trust & Credibility Concerns",
+      "recommended_format": "Myth-busting",
+      "estimated_effort": "Low",
+      "priority_rank": 8,
+      "intensity": "high",
+      "signal_strength": 22,
+      "confidence_score": 2.5,
+      "unique_posts_supporting": 16
+    }
+  ],
+  "narrative_analysis": {
+    "community_beliefs": [
+      {
+        "signal": "Misconception/skepticism: is it worth",
+        "frequency": 5
+      },
+      {
+        "signal": "Misconception/skepticism: too late",
+        "frequency": 4
+      },
+      {
+        "signal": "Misconception/skepticism: saturated",
+        "frequency": 3
+      },
+      {
+        "signal": "Misconception/skepticism: actually worth",
+        "frequency": 3
+      },
+      {
+        "signal": "Misconception/skepticism: people say",
+        "frequency": 2
+      }
+    ],
+    "community_fears": [
+      {
+        "signal": "Negative/warning: template",
+        "frequency": 10
+      },
+      {
+        "signal": "Negative/warning: waste",
+        "frequency": 10
+      },
+      {
+        "signal": "Negative/warning: avoid",
+        "frequency": 9
+      },
+      {
+        "signal": "Negative/warning: failed",
+        "frequency": 7
+      },
+      {
+        "signal": "Negative/warning: fake",
+        "frequency": 6
+      }
+    ],
+    "community_desires": [
+      {
+        "signal": "Desired outcome: grow",
+        "frequency": 31
+      },
+      {
+        "signal": "Desired outcome: target",
+        "frequency": 19
+      },
+      {
+        "signal": "Desired outcome: goal",
+        "frequency": 13
+      },
+      {
+        "signal": "Desired outcome: aim",
+        "frequency": 8
+      },
+      {
+        "signal": "Desired outcome: scale",
+        "frequency": 7
+      }
+    ],
+    "community_frustrations": [
+      {
+        "signal": "Frustration: failure",
+        "frequency": 9
+      },
+      {
+        "signal": "Frustration: failed",
+        "frequency": 7
+      },
+      {
+        "signal": "Frustration: quit",
+        "frequency": 6
+      },
+      {
+        "signal": "Frustration: scam",
+        "frequency": 5
+      },
+      {
+        "signal": "Frustration: frustrating",
+        "frequency": 5
+      }
+    ],
+    "dominant_emotion": "Optimistic \u2014 community expressing more hope than pain"
+  },
+  "thematic_gaps": [
+    {
+      "gap": "Direct competitor comparison",
+      "evidence": "Community mentions 3 competitors but most discussions are fragmented across separate threads",
+      "opportunity": "Create a structured comparison article",
+      "signal_strength": 9
+    },
+    {
+      "gap": "Step-by-step troubleshooting for recurring problems",
+      "evidence": "Community expresses 17 distinct frustrations without clear resolution paths",
+      "opportunity": "Create troubleshooting guides for top frustrations",
+      "signal_strength": 34
+    },
+    {
+      "gap": "Beginner mistake prevention",
+      "evidence": "Community reports 10 distinct beginner mistake patterns (total frequency: 47)",
+      "opportunity": "Create 'what not to do' guide for beginners",
+      "signal_strength": 47
+    }
+  ]
+}
