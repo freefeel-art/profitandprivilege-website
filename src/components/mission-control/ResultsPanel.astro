@@ -31,12 +31,15 @@ const placeholders = [
     for (const [key, val] of Object.entries(s.results)) {
       const el = valMap[key];
       if (!el) continue;
-      if (val && val.url) {
+      const check = s.verification?.[key];
+      const isVerified = val && check?.exists;
+
+      if (isVerified && val.url) {
         el.innerHTML = `<a href="${val.url}" target="_blank" rel="noopener noreferrer" class="result-link">${val.title || val.url}</a>`;
         el.className = 'result-value result-populated';
       } else if (val && val.title) {
         el.textContent = val.title;
-        el.className = 'result-value result-populated';
+        el.className = 'result-value result-unverified';
       } else {
         el.textContent = '—';
         el.className = 'result-value';
@@ -72,6 +75,7 @@ const placeholders = [
     margin-top: .15rem;
   }
   .result-populated { color: var(--accent); }
+  .result-unverified { color: var(--ink-light); font-style: italic; }
   .result-link { color: var(--accent); text-decoration: none; }
   .result-link:hover { text-decoration: underline; }
 </style>

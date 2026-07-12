@@ -102,6 +102,7 @@ function createInitialState() {
       qaReport: null,
       publishReport: null,
     },
+    verification: null,
     productionStatus: null,
     productionLaunch: null,
     scheduledRun: null,
@@ -203,6 +204,68 @@ function getNextEvent(events, idx) {
   return events[idx];
 }
 
+async function verifyUrl(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+    return { exists: res.ok, httpStatus: res.status };
+  } catch {
+    return { exists: false, httpStatus: 0 };
+  }
+}
+
+async function verifyAssets(results) {
+  const checks = {};
+
+  if (results.article) {
+    const articleCheck = await verifyUrl(results.article.url);
+    checks.article = {
+      sourceExists: true,
+      routeBuilt: articleCheck.exists,
+      published: articleCheck.exists,
+      httpStatus: articleCheck.httpStatus,
+    };
+  }
+
+  if (results.researchBrief) {
+    const researchCheck = await verifyUrl(results.researchBrief.url);
+    checks.researchBrief = {
+      exists: researchCheck.exists,
+      httpStatus: researchCheck.httpStatus,
+    };
+  }
+
+  if (results.qaReport) {
+    const qaCheck = await verifyUrl(results.qaReport.url);
+    checks.qaReport = {
+      exists: qaCheck.exists,
+      httpStatus: qaCheck.httpStatus,
+    };
+  }
+
+  if (results.publishReport) {
+    const pubCheck = await verifyUrl(results.publishReport.url);
+    checks.publishReport = {
+      exists: pubCheck.exists,
+      httpStatus: pubCheck.httpStatus,
+    };
+  }
+
+  return checks;
+}
+
+function deriveProductionStatus(verification, results) {
+  if (!verification) return 'Generated';
+
+  const article = verification.article;
+  if (article) {
+    if (article.published && article.httpStatus === 200) return 'Published';
+    if (article.routeBuilt) return 'Built';
+    return 'Verification Failed';
+  }
+
+  return 'Generated';
+}
+
 export async function simulatePipeline(topic, modeId) {
   pipelineStore.reset();
   pipelineStore.set({
@@ -249,24 +312,33 @@ export async function simulatePipeline(topic, modeId) {
 
   const slug = topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+  const results = {
+    opportunity: modeId === 'discover' || modeId === 'full'
+      ? { title: topic, url: null }
+      : null,
+    researchBrief: modeId === 'produce' || modeId === 'full'
+      ? { title: `${slug}-research-brief.md`, url: `/docs/research/${slug}-research-brief.md` }
+      : null,
+    article: modeId === 'produce' || modeId === 'full'
+      ? { title: topic, slug, url: `/blog/${slug}/`, source: `src/pages/blog/${slug}.astro` }
+      : null,
+    qaReport: modeId === 'produce' || modeId === 'full'
+      ? { title: `${slug}-qa-report.md`, url: `/reports/editorial-qa/${slug}-qa-report.md` }
+      : null,
+    publishReport: modeId === 'produce' || modeId === 'full'
+      ? { title: `${slug}-pub-report.md`, url: `/reports/publication/${slug}-pub-report.md` }
+      : null,
+  };
+
+  pipelineStore.addEvent('Verifying generated assets...', 'info');
+  const verification = await verifyAssets(results);
+  const productionStatus = deriveProductionStatus(verification, results);
+
+  pipelineStore.addEvent(`Verification complete: ${productionStatus}`, verification.article?.published ? 'success' : 'info');
+
   pipelineStore.set({
-    results: {
-      opportunity: modeId === 'discover' || modeId === 'full'
-        ? { title: topic, url: null }
-        : null,
-      researchBrief: modeId === 'produce' || modeId === 'full'
-        ? { title: `${slug}-research-brief.md`, url: `/docs/research/${slug}-research-brief.md` }
-        : null,
-      article: modeId === 'produce' || modeId === 'full'
-        ? { title: topic, slug, url: `/blog/${slug}/`, source: `src/pages/blog/${slug}.astro` }
-        : null,
-      qaReport: modeId === 'produce' || modeId === 'full'
-        ? { title: `${slug}-qa-report.md`, url: `/reports/editorial-qa/${slug}-qa-report.md` }
-        : null,
-      publishReport: modeId === 'produce' || modeId === 'full'
-        ? { title: `${slug}-pub-report.md`, url: `/reports/publication/${slug}-pub-report.md` }
-        : null,
-    },
-    productionStatus: 'Published',
+    results,
+    verification,
+    productionStatus,
   });
 }

@@ -299,37 +299,51 @@ const tocLinks = [
   const resStatus = document.getElementById('res-status');
   const actionNext = document.getElementById('action-next');
 
-  function bindResults(results, status) {
-    // Bind action buttons
+  function bindResults(results, status, verification) {
+    // Bind action buttons — only enable if verified
     document.querySelectorAll('[data-action]').forEach(btn => {
       const key = btn.getAttribute('data-action');
       const asset = results[key];
-      if (asset && asset.url) {
+      const check = verification?.[key];
+
+      // Button is active only if asset exists AND is verified (HTTP 200)
+      const isVerified = asset?.url && check?.exists && check?.httpStatus === 200;
+
+      if (isVerified) {
         btn.href = asset.url;
         btn.target = '_blank';
         btn.rel = 'noopener noreferrer';
         btn.classList.remove('action-disabled');
+        btn.title = '';
       } else {
         btn.href = '#';
         btn.classList.add('action-disabled');
-        btn.title = 'Not Available';
+        btn.target = '';
+        btn.rel = '';
+        btn.title = asset?.url ? `Unavailable (HTTP ${check?.httpStatus || 'error'})` : 'Not Available';
       }
     });
 
-    // Bind asset list — show/hide based on what was generated
+    // Bind asset list — show/hide based on verification
     document.querySelectorAll('[data-asset]').forEach(el => {
       const key = el.getAttribute('data-asset');
       const asset = results[key];
-      if (asset) {
+      const check = verification?.[key];
+      const isVerified = asset && check?.exists;
+
+      if (isVerified) {
         el.classList.remove('asset-unavailable');
-        if (asset.url) {
-          const check = el.querySelector('.asset-check');
-          if (check) check.textContent = '✓';
-        }
+        const checkEl = el.querySelector('.asset-check');
+        if (checkEl) checkEl.textContent = '✓';
+      } else if (asset) {
+        el.classList.remove('asset-unavailable');
+        const checkEl = el.querySelector('.asset-check');
+        if (checkEl) checkEl.textContent = '—';
+        el.title = `HTTP ${check?.httpStatus || 'error'}`;
       } else {
         el.classList.add('asset-unavailable');
-        const check = el.querySelector('.asset-check');
-        if (check) check.textContent = '—';
+        const checkEl = el.querySelector('.asset-check');
+        if (checkEl) checkEl.textContent = '—';
       }
     });
 
@@ -337,10 +351,10 @@ const tocLinks = [
     if (resStatus) resStatus.textContent = status || 'Generated';
   }
 
-  function showResults(topic, duration, results, status) {
+  function showResults(topic, duration, results, status, verification) {
     if (resTitle) resTitle.textContent = topic;
     if (resDuration) resDuration.textContent = duration;
-    bindResults(results || {}, status);
+    bindResults(results || {}, status, verification);
     if (resultsCard) resultsCard.style.display = 'block';
     if (consoleDetails) consoleDetails.removeAttribute('open');
     resultsCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -352,7 +366,7 @@ const tocLinks = [
       const elapsed = Math.floor((Date.now() - s.startedAt) / 1000);
       const mm = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const ss = String(elapsed % 60).padStart(2, '0');
-      showResults(s.topic, `${mm}:${ss}`, s.results, s.productionStatus);
+      showResults(s.topic, `${mm}:${ss}`, s.results, s.productionStatus, s.verification);
     }
   });
 
