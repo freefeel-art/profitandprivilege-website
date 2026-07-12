@@ -103,6 +103,10 @@ const tocLinks = [
       <span class="results-meta-label">Status</span>
       <span class="results-meta-value results-status" id="res-status">—</span>
     </div>
+    <div class="results-meta-item">
+      <span class="results-meta-label">Deployment</span>
+      <span class="results-meta-value" id="res-deployment">—</span>
+    </div>
   </div>
 
   <h3>Generated Assets</h3>
@@ -297,49 +301,70 @@ const tocLinks = [
   const resTitle = document.getElementById('res-title');
   const resDuration = document.getElementById('res-duration');
   const resStatus = document.getElementById('res-status');
+  const resDeployment = document.getElementById('res-deployment');
   const actionNext = document.getElementById('action-next');
 
-  function bindResults(results, status, verification) {
-    // Bind action buttons — only enable if verified
+  function bindResults(results, status, deploymentStatus, verification) {
+    // Bind action buttons — enabled whenever asset exists
+    // Only "View Article" (public URL) depends on HTTP 200
     document.querySelectorAll('[data-action]').forEach(btn => {
       const key = btn.getAttribute('data-action');
       const asset = results[key];
       const check = verification?.[key];
 
-      // Button is active only if asset exists AND is verified (HTTP 200)
-      const isVerified = asset?.url && check?.exists && check?.httpStatus === 200;
-
-      if (isVerified) {
-        btn.href = asset.url;
-        btn.target = '_blank';
-        btn.rel = 'noopener noreferrer';
-        btn.classList.remove('action-disabled');
-        btn.title = '';
-      } else {
+      if (!asset) {
+        // Asset was never generated
         btn.href = '#';
         btn.classList.add('action-disabled');
         btn.target = '';
         btn.rel = '';
-        btn.title = asset?.url ? `Unavailable (HTTP ${check?.httpStatus || 'error'})` : 'Not Available';
+        btn.title = 'Not Available';
+        return;
       }
+
+      // "article" button opens public URL — needs HTTP 200
+      if (key === 'article') {
+        const isDeployed = check?.exists && check?.httpStatus === 200;
+        if (isDeployed) {
+          btn.href = asset.url;
+          btn.target = '_blank';
+          btn.rel = 'noopener noreferrer';
+          btn.classList.remove('action-disabled');
+          btn.title = '';
+        } else {
+          btn.href = '#';
+          btn.classList.add('action-disabled');
+          btn.target = '';
+          btn.rel = '';
+          btn.title = check?.httpStatus ? `Not deployed (HTTP ${check.httpStatus})` : 'Awaiting deployment';
+        }
+        return;
+      }
+
+      // All other buttons — enabled if asset exists (source files, local artifacts)
+      btn.href = asset.url;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.classList.remove('action-disabled');
+      btn.title = '';
     });
 
-    // Bind asset list — show/hide based on verification
+    // Bind asset list — show based on generation, not deployment
     document.querySelectorAll('[data-asset]').forEach(el => {
       const key = el.getAttribute('data-asset');
       const asset = results[key];
       const check = verification?.[key];
-      const isVerified = asset && check?.exists;
 
-      if (isVerified) {
+      if (asset) {
         el.classList.remove('asset-unavailable');
         const checkEl = el.querySelector('.asset-check');
         if (checkEl) checkEl.textContent = '✓';
-      } else if (asset) {
-        el.classList.remove('asset-unavailable');
-        const checkEl = el.querySelector('.asset-check');
-        if (checkEl) checkEl.textContent = '—';
-        el.title = `HTTP ${check?.httpStatus || 'error'}`;
+        // Show deployment indicator on the asset itself
+        if (check && !check.exists) {
+          el.title = 'Generated but not yet deployed';
+        } else {
+          el.title = '';
+        }
       } else {
         el.classList.add('asset-unavailable');
         const checkEl = el.querySelector('.asset-check');
@@ -347,14 +372,22 @@ const tocLinks = [
       }
     });
 
-    // Bind status
+    // Bind production status (always from pipeline, not verification)
     if (resStatus) resStatus.textContent = status || 'Generated';
+
+    // Bind deployment status (from HTTP verification)
+    if (resDeployment) {
+      resDeployment.textContent = deploymentStatus || 'Pending';
+      resDeployment.className = deploymentStatus === 'Deployed'
+        ? 'results-meta-value results-deployed'
+        : 'results-meta-value';
+    }
   }
 
-  function showResults(topic, duration, results, status, verification) {
+  function showResults(topic, duration, results, status, deploymentStatus, verification) {
     if (resTitle) resTitle.textContent = topic;
     if (resDuration) resDuration.textContent = duration;
-    bindResults(results || {}, status, verification);
+    bindResults(results || {}, status, deploymentStatus, verification);
     if (resultsCard) resultsCard.style.display = 'block';
     if (consoleDetails) consoleDetails.removeAttribute('open');
     resultsCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -366,7 +399,18 @@ const tocLinks = [
       const elapsed = Math.floor((Date.now() - s.startedAt) / 1000);
       const mm = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const ss = String(elapsed % 60).padStart(2, '0');
-      showResults(s.topic, `${mm}:${ss}`, s.results, s.productionStatus, s.verification);
+      showResults(s.topic, `${mm}:${ss}`, s.results, s.productionStatus, s.deploymentStatus, s.verification);
+    }
+    // Also update when deployment status changes
+    if (s.deploymentStatus && s.verification && s.topic) {
+      if (resDeployment) {
+        resDeployment.textContent = s.deploymentStatus;
+        resDeployment.className = s.deploymentStatus === 'Deployed'
+          ? 'results-meta-value results-deployed'
+          : 'results-meta-value';
+      }
+      // Re-bind buttons with updated verification
+      bindResults(s.results || {}, s.productionStatus, s.deploymentStatus, s.verification);
     }
   });
 
@@ -486,6 +530,7 @@ const tocLinks = [
   .results-meta-label { font-size: .72rem; color: var(--ink-light); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
   .results-meta-value { font-size: .9rem; color: var(--ink); font-weight: 600; }
   .results-status { color: var(--good); }
+  .results-deployed { color: var(--good); font-weight: 700; }
   .production-results h3 { font-size: .9rem; margin: 1rem 0 .5rem; color: var(--ink); }
   .results-assets { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .5rem; }
   .asset-item { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ink); }

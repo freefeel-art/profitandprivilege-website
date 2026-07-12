@@ -104,6 +104,7 @@ function createInitialState() {
     },
     verification: null,
     productionStatus: null,
+    deploymentStatus: null,
     productionLaunch: null,
     scheduledRun: null,
     dailyGoal: null,
@@ -253,19 +254,6 @@ async function verifyAssets(results) {
   return checks;
 }
 
-function deriveProductionStatus(verification, results) {
-  if (!verification) return 'Generated';
-
-  const article = verification.article;
-  if (article) {
-    if (article.published && article.httpStatus === 200) return 'Published';
-    if (article.routeBuilt) return 'Built';
-    return 'Verification Failed';
-  }
-
-  return 'Generated';
-}
-
 export async function simulatePipeline(topic, modeId) {
   pipelineStore.reset();
   pipelineStore.set({
@@ -330,15 +318,27 @@ export async function simulatePipeline(topic, modeId) {
       : null,
   };
 
-  pipelineStore.addEvent('Verifying generated assets...', 'info');
-  const verification = await verifyAssets(results);
-  const productionStatus = deriveProductionStatus(verification, results);
-
-  pipelineStore.addEvent(`Verification complete: ${productionStatus}`, verification.article?.published ? 'success' : 'info');
-
+  // Production is complete — assets are generated
   pipelineStore.set({
     results,
+    productionStatus: 'Generated',
+    deploymentStatus: 'Pending',
+  });
+
+  // Verify deployment (async — does not block production status)
+  pipelineStore.addEvent('Checking deployment status...', 'info');
+  const verification = await verifyAssets(results);
+
+  const allDeployed = verification.article?.exists
+    && verification.researchBrief?.exists
+    && verification.qaReport?.exists;
+
+  const deploymentStatus = allDeployed ? 'Deployed' : 'Partially Deployed';
+
+  pipelineStore.addEvent(`Deployment: ${deploymentStatus}`, allDeployed ? 'success' : 'info');
+
+  pipelineStore.set({
     verification,
-    productionStatus,
+    deploymentStatus,
   });
 }
