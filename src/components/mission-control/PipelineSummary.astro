@@ -61,7 +61,7 @@ const modeLabels = {
     sumMode.textContent = modeLabels[s.mode] || '—';
     sumTopic.textContent = s.topic || '—';
     sumStatus.textContent = statusLabel(s.status);
-    sumStage.textContent = s.currentStage || 'Waiting for Pipeline Runner';
+    sumStage.textContent = s.status === 'completed' ? 'All stages complete' : (s.currentStage || 'Ready for production');
 
     const dotColors = {
       idle: 'var(--good)', queued: 'var(--ink-light)', starting: 'var(--accent)',
@@ -92,11 +92,11 @@ const modeLabels = {
 
   function statusLabel(st) {
     const labels = {
-      idle: 'Pipeline Operational', queued: 'Pipeline Queued',
+      idle: 'Ready for production', queued: 'Pipeline Queued',
       starting: 'Pipeline Starting', running: 'Pipeline Busy',
-      completed: 'Pipeline Complete', failed: 'Pipeline Error',
+      completed: 'Production Complete', failed: 'Pipeline Error',
     };
-    return labels[st] || 'Waiting for Pipeline Runner';
+    return labels[st] || 'Ready for production';
   }
 
   function formatTime(s) {

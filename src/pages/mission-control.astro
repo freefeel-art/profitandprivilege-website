@@ -79,9 +79,71 @@ const tocLinks = [
 
 <PipelineHealth />
 
+<!-- Production Results Card (hidden until pipeline completes) -->
+<div id="production-results" class="production-results" style="display:none;">
+  <div class="results-header">
+    <span class="results-icon">✅</span>
+    <h2>Production Complete</h2>
+  </div>
+
+  <div class="results-meta">
+    <div class="results-meta-item">
+      <span class="results-meta-label">Article Title</span>
+      <span class="results-meta-value" id="res-title">—</span>
+    </div>
+    <div class="results-meta-item">
+      <span class="results-meta-label">Article Type</span>
+      <span class="results-meta-value" id="res-type">Information Article</span>
+    </div>
+    <div class="results-meta-item">
+      <span class="results-meta-label">Pipeline Duration</span>
+      <span class="results-meta-value" id="res-duration">—</span>
+    </div>
+    <div class="results-meta-item">
+      <span class="results-meta-label">Status</span>
+      <span class="results-meta-value results-status">Published</span>
+    </div>
+  </div>
+
+  <h3>Generated Assets</h3>
+  <div class="results-assets">
+    <div class="asset-item"><span class="asset-check">✓</span> Opportunity Brief</div>
+    <div class="asset-item"><span class="asset-check">✓</span> Research Brief</div>
+    <div class="asset-item"><span class="asset-check">✓</span> Astro Article</div>
+    <div class="asset-item"><span class="asset-check">✓</span> QA Report</div>
+    <div class="asset-item"><span class="asset-check">✓</span> Publication Report</div>
+  </div>
+
+  <h3>Production Timeline</h3>
+  <div class="results-timeline">
+    <div class="timeline-item"><span class="timeline-check">✓</span> Community Intelligence</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Editorial Intelligence</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Opportunity Brief</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Research Factory</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Content Production</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Editorial QA</div>
+    <div class="timeline-item"><span class="timeline-check">✓</span> Publishing</div>
+  </div>
+
+  <h3>Primary Actions</h3>
+  <div class="results-actions">
+    <a href="#" class="action-btn" id="action-article">View Article</a>
+    <a href="#" class="action-btn" id="action-research">Open Research Brief</a>
+    <a href="#" class="action-btn" id="action-qa">View QA Report</a>
+    <button type="button" class="action-btn action-btn-primary" id="action-next">Produce Next Article</button>
+  </div>
+</div>
+
+<!-- Pipeline Console (secondary, collapsed by default after completion) -->
+<details id="console-details" class="console-details">
+  <summary>Pipeline Console</summary>
+  <div class="console-details-inner">
+    <PipelineConsole />
+  </div>
+</details>
+
 <div class="v2-grid">
   <div class="v2-main">
-    <PipelineConsole />
     <PipelineProgress />
     <div class="v2-row">
       <ResultsPanel />
@@ -230,10 +292,47 @@ const tocLinks = [
 <script>
   import { pipelineStore, simulatePipeline } from '../scripts/pipeline-runner.js';
 
+  const resultsCard = document.getElementById('production-results');
+  const consoleDetails = document.getElementById('console-details');
+  const resTitle = document.getElementById('res-title');
+  const resDuration = document.getElementById('res-duration');
+  const actionNext = document.getElementById('action-next');
+
+  function showResults(topic, duration) {
+    if (resTitle) resTitle.textContent = topic;
+    if (resDuration) resDuration.textContent = duration;
+    if (resultsCard) resultsCard.style.display = 'block';
+    if (consoleDetails) consoleDetails.removeAttribute('open');
+    resultsCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Listen for pipeline completion
+  pipelineStore.subscribe(s => {
+    if (s.status === 'completed' && s.startedAt && s.topic) {
+      const elapsed = Math.floor((Date.now() - s.startedAt) / 1000);
+      const mm = String(Math.floor(elapsed / 60)).padStart(2, '0');
+      const ss = String(elapsed % 60).padStart(2, '0');
+      showResults(s.topic, `${mm}:${ss}`);
+    }
+  });
+
+  // Produce Next Article button — scroll back to problems list
+  if (actionNext) {
+    actionNext.addEventListener('click', () => {
+      if (resultsCard) resultsCard.style.display = 'none';
+      pipelineStore.reset();
+      const problemsEl = document.getElementById('problems');
+      if (problemsEl) problemsEl.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
   document.querySelectorAll('.problem-produce-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const topic = btn.getAttribute('data-topic');
       if (!topic) return;
+
+      // Hide previous results
+      if (resultsCard) resultsCard.style.display = 'none';
 
       // Set up the pipeline for this topic
       pipelineStore.reset();
@@ -245,9 +344,9 @@ const tocLinks = [
         operatingMode: 'assisted',
       });
 
-      // Scroll to pipeline console and show launch
-      const consoleEl = document.getElementById('panel-console');
-      if (consoleEl) consoleEl.scrollIntoView({ behavior: 'smooth' });
+      // Scroll to pipeline progress
+      const progressEl = document.getElementById('panel-progress');
+      if (progressEl) progressEl.scrollIntoView({ behavior: 'smooth' });
 
       // Mark this row as active
       document.querySelectorAll('.problem-row').forEach(r => r.classList.remove('active'));
@@ -305,6 +404,53 @@ const tocLinks = [
   .problem-produce-btn:hover { opacity: .85; }
   .problem-row.active { background: var(--accent-soft); border-color: var(--accent); }
   .problem-row.active .problem-question { color: var(--accent); }
+
+  /* Production Results Card */
+  .production-results {
+    border: 2px solid var(--good);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: var(--bg);
+    margin-bottom: 1.5rem;
+  }
+  .results-header { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
+  .results-header h2 { margin: 0; color: var(--good); }
+  .results-icon { font-size: 1.4rem; }
+  .results-meta { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .6rem; margin-bottom: 1.2rem; }
+  .results-meta-item {
+    display: flex; flex-direction: column; padding: .6rem .8rem;
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); gap: .15rem;
+  }
+  .results-meta-label { font-size: .72rem; color: var(--ink-light); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  .results-meta-value { font-size: .9rem; color: var(--ink); font-weight: 600; }
+  .results-status { color: var(--good); }
+  .production-results h3 { font-size: .9rem; margin: 1rem 0 .5rem; color: var(--ink); }
+  .results-assets { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .5rem; }
+  .asset-item { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ink); }
+  .asset-check { color: var(--good); font-weight: 700; }
+  .results-timeline { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .5rem; }
+  .timeline-item { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ink); }
+  .timeline-check { color: var(--good); font-weight: 700; }
+  .results-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .action-btn {
+    padding: .5rem 1.2rem; font-size: .85rem; font-weight: 600;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--bg); color: var(--ink); cursor: pointer;
+    text-decoration: none; transition: border-color .15s, background .15s;
+  }
+  .action-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .action-btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .action-btn-primary:hover { opacity: .85; background: var(--accent); }
+
+  /* Console Details (collapsed by default after completion) */
+  .console-details { margin-bottom: 1.5rem; }
+  .console-details summary {
+    font-size: .95rem; font-weight: 600; color: var(--ink-light); cursor: pointer;
+    padding: .5rem 0; list-style: none;
+  }
+  .console-details summary::before { content: '▶ '; font-size: .75rem; }
+  .console-details[open] summary::before { content: '▼ '; }
+  .console-details-inner { margin-top: .5rem; }
 
   .pipeline-flow { max-width: 440px; }
   .stage-row { display: flex; flex-direction: column; align-items: flex-start; }
