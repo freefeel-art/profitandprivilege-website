@@ -26,6 +26,8 @@ Every roundup must:
 - avoid fabricated testimonials or case studies
 - remain objective and evidence-based
 - link to primary sources whenever practical
+- solve the reader's problem first; introduce the OLSP ecosystem naturally as the logical next step
+- never become a sales page
 
 ---
 
@@ -142,12 +144,11 @@ Include the `.pill-list` CSS in the article's `<style>` block. The disclaimer pa
 
 ## 10. Call To Action
 
-Include three identical `.cta-card` components (see Gold Master Spec Section 8.13) placed at:
-1. After the introduction section
-2. Mid-article (before the comparison / decision guide area)
-3. Immediately before the Sources section
+Include two identical `.cta-card` components (see Gold Master Spec Section 8.13) placed at:
+1. CTA #1: After the introduction section — in the upper visible part of the article
+2. CTA #2: Near the conclusion before the Sources section
 
-The CTA card promotes the recommended product from the roundup with a heading, body copy, button link (`target="_blank" rel="noopener noreferrer sponsored"` pointing to `https://olspacademy.com/megalive/1006001`), and affiliate disclosure. All three cards are identical. Include the `.cta-card` and `.cta-btn` CSS in the article's `<style>` block.
+The CTA card promotes the recommended product from the roundup with a heading, body copy, button link (`target="_blank" rel="noopener noreferrer sponsored"` pointing to `https://olspacademy.com/megalive/1006001`), and affiliate disclosure. Both cards are identical. Include the `.cta-card` and `.cta-btn` CSS in the article's `<style>` block.
 
 ---
 
@@ -220,16 +221,16 @@ The roundup quiz uses per-question matching, not a cumulative score threshold:
 - Complete comparison table
 - Individual sections for every platform covered
 - Author Box present before Sources section (sourced from `src/pages/authors/jarmo-halonen.astro`)
-- Three `.cta-card` components present: post-intro, mid-article, before Sources — all identical
+- Two `.cta-card` components present: CTA #1 post-intro, CTA #2 before Sources — both identical
 - CTA card uses `.cta-btn` with `target="_blank" rel="noopener noreferrer sponsored"` pointing to `https://olspacademy.com/megalive/1006001` and affiliate disclosure
 - Sources section uses `<ul class="pill-list">` with pill-shaped source links
 - Site footer (`<footer class="site-footer">`) present inside `<main>` after Sources
 - `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS included in `<style>` block
-- Internal links verified
+- Internal links verified — at least one contextual link to an OLSP pillar article
 - FAQ included (minimum four questions)
 - Sources section uses Trustpilot links for competing platforms plus any supplied affiliate/official links
 - All external links include `target="_blank"`; affiliate links use `target="_blank" rel="noopener noreferrer sponsored"`; non-affiliate external links use `target="_blank" rel="noopener noreferrer"`
-- Editorial neutrality maintained
+- Editorial neutrality maintained — article solves reader's problem first, OLSP introduced naturally
 - `<script is:inline>` directive present
 - Build successful (`npm run build`)
 - Ready for Playwright QA

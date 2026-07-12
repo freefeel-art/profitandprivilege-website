@@ -138,17 +138,17 @@ export function getProductionMetrics() {
   const pubReports = dirListing('reports/publication/').length;
   const queueCandidates = oppCount;
 
-  return {
-    opportunities: queueCandidates,
-    opportunityBriefs: briefCount,
-    researchBriefs: researchCount,
-    articlesGenerated: totalArticles,
-    reviewArticles: reviewCount,
-    blogArticles: blogCount,
-    articlesPublished: countPublishedPages(),
-    qaReports,
-    pubReports,
-  };
+return {
+      opportunities: queueCandidates,
+      opportunityBriefs: briefCount,
+      researchBriefs: researchCount,
+      articlesGenerated: totalArticles,
+      reviewArticles: reviewCount,
+      blogArticles: blogCount,
+      articlesPublished: countPublishedPages(),
+      qaReports,
+      pubReports
+    };
 }
 
 function countOpportunities() {
@@ -228,6 +228,175 @@ export function getRepoStatus() {
     phase: 'Production',
     lastRun: state?.lastRun || null,
     architectureFreeze: true,
+  };
+}
+
+function getDetailBlock(candidateId, oppContent) {
+  if (!oppContent) return null;
+  const escapedId = candidateId.replace(/[.*+?^${}()|[\]]/g, '\\$&');
+  const blockMatch = oppContent.match(
+    new RegExp('###\\s+\\d+\\.\\s*' + escapedId + '\\s*\\n\\n([\\s\\S]*?)(?=\\n---\\n\\n###|\\n---\\n\\n$)', 'i')
+  );
+  if (!blockMatch) return null;
+
+  // Extract the full detail block
+  const fullBlock = blockMatch[1];
+
+  // Extract Solution Strategy
+  const solutionStrategyMatch = fullBlock.match(/\*\*Solution Strategy\*\*\s*\|\s*(.+?)(?=\\n\|---|\n\*\*Recommended Resources|$)/s);
+
+  // Extract Recommended Resources
+  const recommendedResourcesMatch = fullBlock.match(/\*\*Recommended Resources\*\*\s*\|\s*(.+?)(?=\\n\|---|\n\*\*Why These Resources Help|$)/s);
+
+  // Extract Why These Resources Help
+  const whyResourcesHelpMatch = fullBlock.match(/\*\*Why These Resources Help\*\*\s*\|\s*(.+?)(?=\\n\|---|$)/s);
+
+  return {
+    block: blockMatch[1],
+    solutionStrategy: solutionStrategyMatch ? solutionStrategyMatch[1].trim() : null,
+    recommendedResources: recommendedResourcesMatch ? recommendedResourcesMatch[1].trim() : null,
+    whyResourcesHelp: whyResourcesHelpMatch ? whyResourcesHelpMatch[1].trim() : null
+  };
+}
+
+function passesEditorialRelevance(candidateId, oppContent) {
+  const block = getDetailBlock(candidateId, oppContent);
+  if (!block || !block.block) return false;
+
+  const rationaleMatch = block.block.match(/\*\*Rationale\*\*\s*\|\s*(.+)/);
+  if (!rationaleMatch) return false;
+  const rationale = rationaleMatch[1].trim();
+  if (rationale.length < 30) return false;
+
+  const linksMatch = block.block.match(/\*\*Internal link potential\*\*\s*\|\s*(.+)/);
+  if (!linksMatch) return false;
+  const linkTargets = linksMatch[1].split(',').map(s => s.trim()).filter(Boolean);
+  const hasPillarTarget = linkTargets.length >= 1 && linkTargets.some(t => t.length > 3);
+
+  return hasPillarTarget;
+}
+
+function extractProblem(candidateId, oppContent) {
+  const block = getDetailBlock(candidateId, oppContent);
+  if (!block) return null;
+
+  // Prefer the User Problem field (v0.8+ queue format)
+  const userProblemMatch = block.match(/\*\*User Problem\*\*\s*\|\s*(.+)/);
+  if (userProblemMatch) {
+    let problem = userProblemMatch[1].trim();
+    if (problem.length > 120) problem = problem.substring(0, 117) + '...';
+    return problem;
+  }
+
+  // Fallback to Rationale field (legacy queue format)
+  const rationaleMatch = block.match(/\*\*Rationale\*\*\s*\|\s*(.+)/);
+  if (!rationaleMatch) return null;
+
+  let rationale = rationaleMatch[1].trim();
+  rationale = rationale.replace(/\s*\([^)]*\)/g, '');
+  const firstSentence = rationale.match(/^(.+?)(?:\.\s|:\s|;|\n)/);
+  let problem = firstSentence ? firstSentence[1].trim() : rationale;
+
+  if (problem.length > 120) problem = problem.substring(0, 117) + '...';
+
+  return problem || null;
+}
+
+export function getCurrentProductionState() {
+  const stages = getStageStatus();
+  const pipelineState = getPipelineState();
+
+  const oppContent = readFile('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md');
+  const briefs = dirListing('agents/opportunity-research-agent/briefs/');
+  const latestBrief = briefs.sort().reverse()[0] || null;
+  const qaReports = dirListing('reports/editorial-qa/').sort().reverse();
+  const latestQa = qaReports[0] || null;
+  const pubReports = dirListing('reports/publication/').sort().reverse();
+  const latestPub = pubReports[0] || null;
+
+  const firstNonComplete = stages.find(s => s.status !== 'complete');
+  const currentStage = firstNonComplete || stages[stages.length - 1];
+
+  const oppLines = oppContent ? oppContent.split('\n') : [];
+  let nextTopic = null;
+  let nextTopicId = null;
+  let nextProblem = null;
+  let firstIncomplete = null;
+  let currentProblem = null;
+  const rejectedCandidates = [];
+  for (const line of oppLines) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|') || trimmed.startsWith('|---')) continue;
+    const parts = trimmed.split('|').map(p => p.trim());
+    if (parts.length >= 4 && /^\d+$/.test(parts[1])) {
+      const candidateId = parts[2];
+      const candidateName = parts[2].replace(/-/g, ' ');
+      const statusTags = (parts[parts.length - 2] || '') + (parts[parts.length - 1] || '');
+      if (!statusTags.includes('done') && !statusTags.includes('published')) {
+        if (!passesEditorialRelevance(candidateId, oppContent)) {
+          rejectedCandidates.push(candidateId);
+          continue;
+        }
+        const problem = extractProblem(candidateId, oppContent) || candidateName.charAt(0).toUpperCase() + candidateName.slice(1);
+        if (!firstIncomplete) {
+          firstIncomplete = candidateName.charAt(0).toUpperCase() + candidateName.slice(1);
+          currentProblem = problem;
+        }
+        if (!nextTopic) {
+          nextTopic = candidateName.charAt(0).toUpperCase() + candidateName.slice(1);
+          nextTopicId = candidateId;
+          nextProblem = problem;
+          break;
+        }
+      }
+    }
+  }
+
+  const blogArticles = dirListing('src/pages/blog/').filter(f => f.endsWith('.astro')).sort().reverse();
+  const reviewArticles = dirListing('src/pages/reviews/').filter(f => f.endsWith('.astro')).sort().reverse();
+  const latestArticle = [...reviewArticles, ...blogArticles].sort().reverse()[0] || null;
+
+  const lastRun = run('git log -1 --format="%h %s (%ar)"');
+  const lastCommitSubject = run('git log -1 --format="%s"');
+
+  const researchBriefs = dirListing('docs/research/').sort().reverse();
+  const currentResearch = researchBriefs[0] || null;
+
+  const pubReportContent = latestPub ? readFile(`reports/publication/${latestPub}`) : null;
+  let lastPublished = null;
+  if (pubReportContent) {
+    const titleMatch = pubReportContent.match(/^#\s+(.+)/m);
+    lastPublished = titleMatch ? titleMatch[1].trim() : latestPub.replace('.md', '');
+  }
+
+  const operatingMode = pipelineState?.operatingMode || 'assisted';
+  const scheduledRun = pipelineState?.scheduledRun || null;
+  const dailyGoal = currentProblem
+    ? currentProblem
+    : 'Identify the next user problem to solve';
+
+  return {
+    currentStageName: currentStage.name,
+    currentStageId: currentStage.id,
+    currentStageStatus: currentStage.status,
+    latestBrief,
+    latestQa,
+    latestPub,
+    latestArticle,
+    lastRun,
+    lastCommitSubject,
+    nextTopic: nextTopic || 'Not Available',
+    nextTopicId: nextTopicId || null,
+    nextProblem: nextProblem ? extractProblem(nextProblem, oppContent) : 'Not Available',
+    currentProblem: currentProblem ? extractProblem(currentProblem, oppContent) : 'Not Available',
+    stages,
+    hasPipelineState: !!pipelineState,
+    operatingMode,
+    scheduledRun,
+    dailyGoal,
+    currentOpportunity: firstIncomplete || 'None',
+    currentResearch,
+    lastPublished,
   };
 }
 

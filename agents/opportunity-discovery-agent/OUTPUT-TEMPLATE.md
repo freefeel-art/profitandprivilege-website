@@ -1,12 +1,24 @@
 # Opportunity Queue — [PILLAR or "All Pillars"]
 
-**Schema version:** 0.6
+**Schema version:** 0.8 — question-first: every candidate starts with a real user question, not a keyword
 **Last updated:** [YYYY-MM-DD]
 **Last run:** [pillar(s) run, e.g. "Online Income for Beginners"]
 
 This file is the live, ranked backlog produced by the Opportunity Discovery Agent. It is updated, not replaced, on every run — new candidates are appended, existing rows have their `status` updated in place. Every field is required; unavailable data is recorded explicitly as `Unavailable`, never left blank.
 
-Every candidate carries **four separate fields** — they are never averaged or collapsed into one another:
+Every candidate starts with a **real user question** gathered from Community Intelligence — never a keyword or product name. A keyword may support the opportunity but may never define it.
+
+Every candidate carries **five required output fields** at the top of its detail block:
+
+| Field | Purpose |
+|---|---|
+| **User Question** | The exact question a real person asked on Reddit, Quora, Google, or a forum. This is the origin of the opportunity. |
+| **User Problem** | The underlying user problem the question reveals — what they're trying to accomplish, avoid, or understand. |
+| **Evidence** | Where this question was found, how often it appears, the community context (source, frequency, thread engagement). |
+| **Recommended Article** | What the article should be about — a description of the solution, never a product name. |
+| **Natural Solution** | How the article solves the user problem and what makes it authoritative. Never a product pitch. A tool, platform, or training may be mentioned as part of the solution but is never the subject. |
+
+Additionally, every candidate carries **four separate scoring fields** — they are never averaged or collapsed into one another:
 - **Opportunity Score (preliminary)** — is this a good opportunity, on its own merits? (Trend / Community / Gap, rescaled to 0–100 — Demand/DataForSEO is optional and never scored; see Evidence below)
 - **Priority Score** — should it be produced *now*, given the rest of the portfolio? (Opportunity Quality / Pillar Coverage & Balance / Authority Cluster & Internal-Linking Fit / Strategic Priority Fit)
 - **Authority Value** — *editorial planning only, see SPEC.md § 5a* — if produced, how much would it strengthen the site's long-term topical authority and internal-linking structure (⭐ to ⭐⭐⭐⭐⭐)? Never a scored input to either number above.
@@ -34,10 +46,15 @@ One block per candidate in the summary table above, in the same rank order. `can
 ### [candidate_id]
 
 | Field | Value |
-|---|---|
+|---|---|---|
+| User Question | [the exact question a real person asked — quoted from the community source] |
+| User Problem | [the underlying problem this question reveals — what the user is trying to accomplish, avoid, or understand] |
+| Evidence | [where this was found: source, frequency, context, thread engagement — e.g. "Reddit r/affiliatemarketing, 3+ threads/month, 200+ comments each"] |
+| Recommended Article | [what the article should be about — a solution description, never a product name] |
+| Natural Solution | [how the article solves the problem — tools, training, or platforms may be mentioned as part of the solution but are never the subject] |
 | Pillar | [OLSP Ecosystem / Affiliate Traffic & List Building / Lead Generation / Online Income for Beginners] |
-| Opportunity summary | [1–2 sentence description of the angle/gap/question — not just a keyword] |
-| Candidate keyword | [the exact keyword/phrase to hand to ORA if promoted] |
+| Opportunity summary | [1–2 sentence description of the angle — derived from the User Question, not from a keyword] |
+| Candidate keyword | [optional keyword/phrase to hand to ORA if promoted — may support the opportunity, never defines it] |
 | Authority Value | [⭐ / ⭐⭐ / ⭐⭐⭐ / ⭐⭐⭐⭐ / ⭐⭐⭐⭐⭐ — [1-line rationale, see SPEC.md § 5a; never affects Opportunity or Priority Score] |
 | Pipeline Type | [Heavy / Light — 1-line rationale, see SPEC.md § 5b; never affects Opportunity or Priority Score] |
 | Status | [unclaimed / promoted / rejected / stale / published] |

@@ -98,10 +98,12 @@ Link naturally where relevant.
 Produce a production-ready Astro page.
 
 Preserve the Gold Master structure. Include:
-- Three identical `.cta-card` components (post-intro, mid-article, before Sources) — see Gold Master Spec Section 8.13
+- Two identical `.cta-card` components (CTA #1 post-intro, CTA #2 before Sources) — see Gold Master Spec Section 8.13
 - Sources section as `<ul class="pill-list">` — see Gold Master Spec Section 8.12
 - `<footer class="site-footer">` inside `<main>` after Sources — see Gold Master Spec Section 8.14
 - `.cta-card`, `.cta-btn`, `.pill-list`, `.site-footer` CSS in the `<style>` block
+- At least one contextual internal link to an OLSP pillar article
+- Editorial principle: solve reader's problem first, introduce OLSP naturally
 
 ---
 
@@ -122,7 +124,7 @@ The article must:
 Before completion confirm:
 
 - Gold Master architecture preserved
-- Three `.cta-card` components present (post-intro, mid-article, before Sources) — all identical
+- Two `.cta-card` components present (CTA #1 post-intro, CTA #2 before Sources) — both identical
 - Sources section uses `<ul class="pill-list">`
 - Author Box present immediately before Sources section (sourced from `src/pages/authors/jarmo-halonen.astro`)
 - `<footer class="site-footer">` present inside `<main>` after Sources

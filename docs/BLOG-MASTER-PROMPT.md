@@ -59,8 +59,8 @@ Before producing any output, read the blog structural reference and `docs/BLOG-M
 - Which elements are structural (must be copied verbatim from the Gold Master CSS/JS)
 - Which components blog articles use vs. omit (no Methodology Block, Score Bars, Quiz, SVG Diagram, or Video Embed; no repeated `.cta-card` — see below)
 - The required OG + JSON-LD metadata block
-- The three-QuoteBanner placement rule (`docs/BLOG-MASTER-SPEC.md` § 3a) — post-intro, mid-article, pre-FAQ, borderless brand-signature styling
-- The single Standard CTA placement rule (`docs/BLOG-MASTER-SPEC.md` § 3b) — post-FAQ, pre-author
+- The QuoteBanner frequency rule (`docs/BLOG-MASTER-SPEC.md` § 3a) — 2–3 short articles, 4–5 longer articles; borderless brand-signature styling
+- The two Standard CTA placement rule (`docs/BLOG-MASTER-SPEC.md` § 3b) — CTA #1 post-intro/QuoteBanner, CTA #2 post-FAQ/pre-author
 
 ### Step 2 — Plan the content sections
 
@@ -69,9 +69,9 @@ Using the research package, plan 3–7 numbered body sections that answer the ta
 - The verdict box's "Best for" / "Not ideal for" framing
 - Whether a data table or pros/cons grid is warranted by the content (both optional — use only if the research supports it)
 - 6–8 FAQ questions drawn from the research
-- At least one internal link to a review and, where relevant, to sibling blog articles
-- The three QuoteBanner placements (fixed content — no planning needed, see `docs/BLOG-MASTER-SPEC.md` § 3a)
-- The single Standard CTA (`docs/BLOG-MASTER-SPEC.md` § 3b) — fixed button text and link, but adapt the heading to this article's topic (a heading literally about "email list" would not make sense on an unrelated topic)
+- At least one internal link to an OLSP pillar article (e.g. `/reviews/olsp-academy/`) and, where relevant, to sibling blog articles
+- The QuoteBanner frequency (2–3 short, 4–5 long; fixed content — see `docs/BLOG-MASTER-SPEC.md` § 3a)
+- The two Standard CTAs (`docs/BLOG-MASTER-SPEC.md` § 3b) — CTA #1 post-intro/QuoteBanner, CTA #2 post-FAQ/pre-author; fixed button text and link, adapt each heading to the article's topic
 
 ### Step 3 — Generate the file
 
@@ -100,7 +100,7 @@ These rules are non-negotiable. Violating any of them produces a file that fails
 
 **Components to omit**
 - Do not add a Methodology Block, Score Bars, Self-Check Quiz, SVG Diagram, or Video Embed. These are review-only components (`docs/BLOG-MASTER-SPEC.md` Section 4).
-- Do not add three `.cta-card` instances with sales copy. Blog articles use QuoteBanner three times (`docs/BLOG-MASTER-SPEC.md` § 3a) plus exactly one Standard CTA (§ 3b), as of 2026-07-04.
+- Do not add `.cta-card` instances with sales copy. Blog articles use QuoteBanner (2–5×, see `docs/BLOG-MASTER-SPEC.md` § 3a) plus exactly two Standard CTAs (§ 3b — CTA #1 post-intro/QuoteBanner, CTA #2 post-FAQ/pre-author).
 
 **SEO and metadata**
 - `<title>` and `<meta name="description">` are hardcoded, not interpolated. Both must contain the target keyword.
@@ -144,13 +144,14 @@ Same source-fidelity, epistemic-labelling, income-claims, no-first-hand-testing,
 
 **Author Box:** Use the same markup and source as `docs/ROUNDUP-GOLD-MASTER-SPEC.md` Section 8a — sourced from `src/pages/authors/jarmo-halonen.astro`, includes photo, name, role, bio, and profile link.
 
-**QuoteBanner:** Insert three identical `.quote-banner` components (`docs/BLOG-MASTER-SPEC.md` § 3a):
-1. Immediately after the `intro` section.
-2. Mid-article, roughly at the midpoint of the numbered body sections.
-3. Immediately before the `#faq` section (not after it).
-All three are byte-for-byte identical — fixed quote text, fixed link, borderless brand-signature styling (bold italic, brand blue, no box), no per-article customization. Include `.quote-banner` CSS in the article's `<style>` block alongside the `.cta-card`/`.cta-btn` rules copied from the structural reference (reused by Standard CTA below — per § 4, unused CSS is never trimmed).
+**QuoteBanner:** Insert `.quote-banner` components (`docs/BLOG-MASTER-SPEC.md` § 3a), distributed naturally:
+- Short articles: 2–3 occurrences
+- Longer pillar-style articles: 4–5 occurrences
+Place the first immediately after `#intro`, the last immediately before `#faq`. Never group them together. All are byte-for-byte identical — fixed quote text, fixed link, borderless brand-signature styling (bold italic, brand blue, no box), no per-article customization. Include `.quote-banner` CSS in the article's `<style>` block alongside the `.cta-card`/`.cta-btn` rules copied from the structural reference (reused by Standard CTA below — per § 4, unused CSS is never trimmed).
 
-**Standard CTA:** Insert exactly one `.cta-card.standard-cta` component (`docs/BLOG-MASTER-SPEC.md` § 3b), immediately after `#faq` and immediately before `#author`:
+**Standard CTA:** Insert exactly two `.cta-card.standard-cta` components (`docs/BLOG-MASTER-SPEC.md` § 3b):
+1. CTA #1: Immediately after `#intro` and the first QuoteBanner — in the upper visible part of the article.
+2. CTA #2: Immediately after `#faq` and immediately before `#author`.
 ```html
 <div class="cta-card standard-cta">
   <h3>{Short heading tailored to this article's topic}</h3>
@@ -163,7 +164,7 @@ Heading only — no `<p>` sales paragraph. Button text and link are fixed (curre
 
 **Site footer:** End every article with `<footer class="site-footer">` inside `<main>`, after Sources. Left span reads "Profit and Privilege — independent research since 2025". Right link text reads `olsp.profitandprivilege.com` but currently points to a temporary external destination (`docs/BLOG-MASTER-SPEC.md` § 8a) — `https://olspacademy.com/get-megalink?olsp=1006001`, with `target="_blank" rel="noopener noreferrer sponsored"` — until the new homepage is ready. Do not point it back to `https://olsp.profitandprivilege.com` without checking § 8a first.
 
-**Internal links:** Weave supplied internal links naturally into body copy. Include at least one link to a review page. Do not create a separate "related articles" block.
+**Internal links:** Weave supplied internal links naturally into body copy. Include at least one contextual link to an existing OLSP pillar article (e.g. `/reviews/olsp-academy/`). Links must be editorially relevant — never forced. Do not create a separate "related articles" block.
 
 ---
 

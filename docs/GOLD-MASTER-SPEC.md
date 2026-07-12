@@ -1,6 +1,6 @@
 # Gold Master Specification — OLSP Standard
 
-**Version:** 2.1 — Production Ready  
+**Version:** 2.2 — Production Standard (2026-07-12 consolidation)  
 **Validated by:** `src/pages/reviews/olsp-mineeme.astro`, `src/pages/reviews/seo-writing-ai-review.astro`  
 **Components directory:** `src/components/olsp-standard/` (12 shared components + OlspLayout)  
 **Purpose:** This document defines the production standard for every OLSP review article on this site. The Gold Master is a reusable component system — not a single file to copy. Structure, CSS tokens, JS behavior, SEO metadata, and CTA architecture are shared across all articles through OlspLayout and 10 Gold Master components. Editorial content, product metadata (CTA props, sources, pricing tables), and section body text vary per article.
@@ -293,10 +293,12 @@ Wraps the three radio-group fieldsets with the standard quiz box container, disc
 ```
 A lightweight editorial pull-quote with fixed text and URL across all articles. No props. Renders a hyperlinked quote with no card, no button, no sales copy. Uses `target="_blank" rel="noopener noreferrer"`.
 
-**Placement rules (exactly 3, same order every article):**
-1. After the intro section, before the first ProductCta
-2. After the UX section, before the comparison section
-3. After the author section, before the sources section
+**Placement rules (frequency based on article length):**
+- Short articles: 2–3 occurrences
+- Long-form reviews and pillar articles: 4–5 occurrences
+Distribute the Quote sentence naturally across the article. Never group them together.
+
+The Quote sentence is NOT a CTA block. It is an editorial trust signal — part of the OLSP editorial identity.
 
 ### 5.7 FaqItem
 ```astro
@@ -334,26 +336,28 @@ Renders the brand footer with "Profit and Privilege — independent research sin
 | Position | `id` | Heading | Notes |
 |----------|------|---------|-------|
 | 1 | `intro` | *(no h2)* | Contains HeroTag, h1, opening paragraph, VerdictBox, h3, Methodology |
-| — | *(GoldMasterQuote)* | — | First trust quote placement |
-| — | *(ProductCta)* | — | First product CTA placement |
+| — | *(GoldMasterQuote)* | — | Quote sentence placement (2–5× depending on length) |
+| — | *(ProductCta)* | — | CTA #1: first product CTA placement |
 | 2 | `overview` | Overview & Pricing | Pricing tables, feature lists, Callout blocks |
 | 3 | `design` | Platform & Build Quality | Technology architecture, data flow |
 | 4 | `performance` | Features & Performance | SVG diagram, key features, hands-on validation notes |
 | 5 | `ux` | User Experience | Setup, daily usage, learning curve |
-| — | *(GoldMasterQuote)* | — | Second trust quote placement |
+| — | *(GoldMasterQuote)* | — | Quote sentence placement (2–5× depending on length) |
 | 6 | `comparison` | How It Compares | Comparison table with 4-6 rows |
 | 7 | `proscons` | Pros & Cons | Two-column grid with good/bad cards |
 | 8 | `history` | History & Updates | Company background, market presence |
 | 9 | `recommend` | Who Should Use It | Best For / Skip If / Alternatives |
 | 10 | `buy` | Where to Get It | Sign-up links, pricing verification |
 | 11 | `verdict` | Final Assessment | Score bars, editorial summary |
-| — | *(ProductCta)* | — | Second product CTA placement (may omit description) |
+| — | *(ProductCta)* | — | CTA #2: second product CTA placement (may omit description) |
 | — | `faq` | Frequently Asked Questions | FaqItem accordions |
 | — | `author` | About the Author | AuthorBox |
-| — | *(GoldMasterQuote)* | — | Third trust quote placement |
+| — | *(GoldMasterQuote)* | — | Quote sentence placement (2–5× depending on length) |
 | 12 | `sources` | Sources & References | PillList, disclaimer, SiteFooter |
 
 The `intro` section never has an `<h2>` — it opens directly with `<HeroTag>` and the `<h1>`. Every other section opens with an `<h2>`.
+
+The Quote sentence (GoldMasterQuote) positions are illustrative above — the actual number and placement vary by article length as described in §5.6. ProductCta appears exactly twice as CTA #1 and CTA #2.
 
 ---
 
@@ -395,15 +399,15 @@ The `intro` section never has an `<h2>` — it opens directly with `<HeroTag>` a
 | `HeroTag` placement (before `<h1>`, inside `#intro`) | Visual pattern |
 | `VerdictBox` placement (after intro paragraph, before first `<h3>`) | Editorial structure |
 | `Methodology` block in `#intro` | Credibility signal |
-| Three `GoldMasterQuote` placements | Brand signature pattern; same component, same position |
-| First `ProductCta` placement (after intro, after first GoldMasterQuote) | Product conversion point |
-| Second `ProductCta` placement (near verdict, before FAQ) | Second conversion point |
 | `GoldMasterQuote` fixed text and URL | Fixed — never customized per article |
-| `ProductCta` uses `sponsored` rel | Compliance |
 | `GoldMasterQuote` uses plain `noopener noreferrer` | Editorial — not sponsored |
+| Two `ProductCta` placements (CTA #1 post-intro, CTA #2 near conclusion) | Product conversion points |
+| `ProductCta` uses `sponsored` rel | Compliance |
 | Component imports (all 11) | Every article uses the same component set |
 | `SiteFooter` at end of `#sources` | Brand presence on every page |
 | `prerender = true` | Static generation |
+| Internal linking: contextual links to relevant OLSP pillar articles | Editorial ecosystem integration |
+| Editorial principle: solve reader's problem first, introduce OLSP naturally | Article must not become a sales page |
 
 ---
 
@@ -458,6 +462,15 @@ Both wrappers include an Organization node and optional `datePublished` / `dateM
 | Affiliate / sponsored | `target="_blank" rel="noopener noreferrer sponsored"` |
 | Non-affiliate external | `target="_blank" rel="noopener noreferrer"` |
 | Internal (starts with `/`) | No target or rel attributes |
+
+### 10.1 Internal Linking (Editorial Ecosystem)
+
+Every production article must include contextual links to relevant existing OLSP pillar articles.
+
+Requirements:
+- Links must be editorially relevant — they solve the reader's problem and OLSP is the logical next step.
+- Never force unrelated links. If no natural connection exists, do not add a link.
+- Link placement should feel organic within the body copy — not relegated to a separate "related articles" block.
 
 ---
 
@@ -547,9 +560,9 @@ The `.video-frame` wrapper uses `padding-top: 56.25%` for 16:9 responsive contai
 
 7. **The `intro` section must contain in order:** `<HeroTag>`, `<h1>`, opening paragraph, `<VerdictBox>`, first `<h3>`, `<Methodology>`.
 
-8. **Three `GoldMasterQuote` placements are fixed.** Post-intro (before first ProductCta), mid-article (after UX, before comparison), and near-end (after author, before sources). The component has no props — fixed text and URL.
+8. **GoldMasterQuote frequency depends on article length.** Short articles: 2–3 occurrences. Long-form reviews and pillar articles: 4–5 occurrences. Distribute naturally across the article — never group them together. The component has no props — fixed text and URL.
 
-9. **ProductCta appears 1–2 times.** First after the first GoldMasterQuote (post-intro), second near Final Verdict before FAQ. The second may omit `description` to use the default.
+9. **ProductCta appears exactly twice (CTA #1 and CTA #2).** CTA #1 after the intro section and first major GoldMasterQuote placement (post-intro). CTA #2 near the conclusion before the final closing section (e.g. before FAQ or before sources). The second may omit `description` to use the default.
 
 10. **The `<title>` and `<h1>` must be different.** `<title>` is for search engines; `<h1>` is for readers.
 
@@ -572,6 +585,10 @@ The `.video-frame` wrapper uses `padding-top: 56.25%` for 16:9 responsive contai
 19. **SEO metadata is generated by OlspLayout, not article pages.** Do not add `<meta>`, OG, Twitter, or schema tags to individual article files. All such tags live in OlspLayout and are controlled via its props.
 
 20. **Do not modify the validated reference articles** (`olsp-mineeme.astro`, `seo-writing-ai-review.astro`). They are canonical references for the component-based architecture.
+
+21. **Internal linking to OLSP pillar articles is required.** Every article must include at least one contextual link to a relevant existing OLSP pillar article (e.g. `/reviews/olsp-academy/`). Links must be editorially relevant — never forced.
+
+22. **Editorial principle: solve the reader's problem first.** The article always addresses the reader's needs before introducing the OLSP ecosystem. OLSP is positioned as the logical next step, not the primary focus. Articles must never become sales pages.
 
 ---
 

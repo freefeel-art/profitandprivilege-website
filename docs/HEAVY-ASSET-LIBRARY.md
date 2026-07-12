@@ -17,10 +17,11 @@ This is a **documentation-only seed**: the 3 rows below are the site's existing 
 ## Registry
 
 | Asset Name | Subject Type | Research Brief Path | Status | Reused By | Last Updated |
-|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | OLSP Ecosystem Complete Guide Hub | Pillar Page | `docs/research/olsp-ecosystem-complete-guide-hub.md` | Active | `/blog/olsp-academy-complete-guide/` | 2026-07-04 |
 | Megalink Traffic Rotator | Product | `docs/research/megalink-traffic-rotator-research.md` | Active | `/reviews/megalink-traffic-rotator-review/` | 2026-07-03 |
 | Best Affiliate Marketing Training Platforms 2026 | Major Comparison | `docs/research/best-affiliate-marketing-training-platforms-2026.md` | Active | `/roundups/best-affiliate-marketing-training-platforms-2026/` | 2026-07-03 |
+| Semrush | Product | `docs/research/semrush-research.md` | Active | — (not yet built) | 2026-07-12 |
 
 **Note on OLSP Academy coverage:** OLSP Academy itself is covered as a subject across two existing assets above (as one compared platform in the Training Platforms comparison, and as part of the ecosystem hub's per-product synthesis) rather than as its own standalone Product brief. The Research Compiler should treat this as adequate existing coverage, not a gap, unless a future Heavy opportunity specifically requires OLSP-Academy-only depth beyond what these two already provide.
 

@@ -85,6 +85,8 @@ const EVENT_TEMPLATES = {
 
 function createInitialState() {
   return {
+    demoMode: false,
+    operatingMode: 'assisted',
     mode: null,
     topic: '',
     status: 'idle',
@@ -100,6 +102,9 @@ function createInitialState() {
       qaReport: null,
       publishReport: null,
     },
+    productionLaunch: null,
+    scheduledRun: null,
+    dailyGoal: null,
   };
 }
 
@@ -155,6 +160,31 @@ class PipelineStore {
     this.timers = [];
     this.state = createInitialState();
     this.notify();
+  }
+
+  setProductionLaunch(launch) {
+    this.set({ productionLaunch: launch });
+  }
+
+  clearProductionLaunch() {
+    this.set({ productionLaunch: null });
+  }
+
+  setOperatingMode(mode) {
+    if (!['manual', 'assisted', 'autonomous'].includes(mode)) return;
+    this.set({ operatingMode: mode });
+  }
+
+  setScheduledRun(time) {
+    this.set({ scheduledRun: time });
+  }
+
+  clearScheduledRun() {
+    this.set({ scheduledRun: null });
+  }
+
+  setDailyGoal(goal) {
+    this.set({ dailyGoal: goal });
   }
 }
 

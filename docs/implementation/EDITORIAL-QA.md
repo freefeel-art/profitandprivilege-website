@@ -1,7 +1,7 @@
 # Editorial QA — Implementation
 
-**Date:** 2026-07-08
-**Status:** Implemented
+**Date:** 2026-07-12
+**Status:** Implemented (v2)
 
 Validates produced content against editorial rules before packaging.
 
@@ -18,6 +18,10 @@ Validates produced content against editorial rules before packaging.
 | Citations available | PASS/WARN | At least one citation exists |
 | Knowledge gaps | PASS | Gaps documented (info only) |
 | Word count viability | PASS/WARN | Minimum 500 words |
+| Internal linking | PASS/FAIL | At least one contextual link to an OLSP pillar article exists (reviews, blogs, roundups) |
+| Quote sentence distribution | PASS/FAIL | GoldMasterQuote (reviews) or QuoteBanner (blogs) distributed appropriately for article length — 2–3 short, 4–5 long-form; never grouped |
+| CTA placement | PASS/FAIL | CTA #1 in upper visible part of article (post-intro); CTA #2 near conclusion before final closing section |
+| Editorial principle | PASS/FAIL | Article solves reader's problem first; OLSP introduced naturally as logical next step; not a sales page |
 
 ## Usage
 

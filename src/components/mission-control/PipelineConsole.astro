@@ -12,7 +12,7 @@ const stageStatuses = [
 ---
 
 <section class="panel" id="panel-console">
-  <h3>Live Pipeline Console</h3>
+  <h3>Pipeline Console</h3>
   <div class="console-log" id="console-log">
     <div class="console-waiting">No active pipeline run. Enter a topic and run the pipeline above.</div>
   </div>
@@ -48,12 +48,27 @@ const stageStatuses = [
     failed:    { c: 'var(--bad)', bg: 'var(--bad-bg)', label: 'failed' },
   };
 
+  const modeLabels = { manual: 'Manual', assisted: 'Assisted', autonomous: 'Autonomous' };
+
+  function getWaitingMessage(s) {
+    if (s.productionLaunch) {
+      return `<div class="console-waiting">Production prepared for <strong>${esc(s.productionLaunch.topic)}</strong> (${modeLabels[s.operatingMode] || 'Assisted'}). Execute the steps above.</div>`;
+    }
+    const opLabel = modeLabels[s.operatingMode] || 'Assisted';
+    const msg = s.operatingMode === 'manual'
+      ? `No active pipeline run. Select a topic and mode, then prepare recommendations.`
+      : s.operatingMode === 'autonomous'
+        ? `Autonomous mode is not yet enabled. Switch to Assisted mode to produce articles.`
+        : `No active pipeline run. Enter a topic and start assisted production.`;
+    return `<div class="console-waiting">${msg} <strong>Mode: ${opLabel}</strong></div>`;
+  }
+
   pipelineStore.subscribe(s => {
     log.innerHTML = s.events.length
       ? s.events.map(e =>
           `<div class="console-entry console-${e.type}"><span class="console-time">${e.time}</span><span class="console-msg">${esc(e.msg)}</span></div>`
         ).join('')
-      : '<div class="console-waiting">No active pipeline run. Enter a topic and run the pipeline above.</div>';
+      : getWaitingMessage(s);
     log.scrollTop = log.scrollHeight;
 
     for (const [id, stage] of Object.entries(s.stages)) {

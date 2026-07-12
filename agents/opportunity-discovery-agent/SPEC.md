@@ -1,7 +1,7 @@
 # Opportunity Discovery Agent — Functional Specification
 
-**Version:** 0.6
-**Status:** Approved — implemented; DataForSEO demoted to optional enrichment (see § 3, § 5); Authority Value editorial field added (see § 5a); Pipeline Type classification added (see § 5b)
+**Version:** 0.8
+**Status:** Question-first — every opportunity starts with a real user question from Community Intelligence, never a keyword or product name (see § 1, § 4 D0, § 7); 5-field output requirement added (see § 7)
 
 ---
 
@@ -9,7 +9,9 @@
 
 ### What problem does it solve?
 
-Today, the editorial pipeline is **keyword-first**: a human manually picks a keyword, and only then does the Opportunity Research Agent (ORA) validate whether it's worth writing. That manual step has three costs:
+This site exists to solve real user problems in the affiliate marketing and online income space — not to promote products. Every article starts with a question someone asked on Reddit, Quora, a forum, or Google. OLSP is never the topic. It is the natural next step only when it genuinely helps solve the user's problem. A keyword may support an opportunity but may never define it.
+
+Today, the editorial pipeline is **keyword-first**: a human manually picks a keyword, and only then does the Opportunity Research Agent (ORA) validate whether it's worth writing. This specification converts it to **question-first**: Community Intelligence provides the raw user questions; the agent derives problems, then opportunities, from those questions. That manual step has three costs:
 
 1. **It doesn't scale.** Every candidate topic depends on an operator happening to think of it.
 2. **It's not evidence-based until after the fact.** ORA proves a keyword was a good pick; nothing proves it was the *best available* pick, or even a *reasonable* one, before an ORA run is spent on it.
@@ -19,14 +21,14 @@ There is a fourth cost this version adds explicit scope for: **individual opport
 
 ### Why it exists
 
-To make opportunity *generation* as systematic and evidence-based as ORA already makes opportunity *validation* — and to make opportunity *sequencing* a first-class, evidence-based decision in its own right, not an implicit side effect of scoring quality alone.
+To convert the pipeline from **keyword-first** → **opportunity-first** → **problem-first**. A candidate is not worth pursuing because a keyword has search volume. It is worth pursuing because it solves a real user problem, and the evidence shows people are actively looking for that solution.
 
 This agent produces two distinct outputs per candidate, deliberately kept separate (see Section 5):
 
 - **Opportunity Score** — how good is this opportunity, on its own merits (trend, community signal, competitive gap; demand data included only when DataForSEO happens to be configured, and only as an evidence note, never as a scored dimension — see Section 5).
 - **Priority Score** — should it be produced *now*, given everything else already published, in progress, or strategically prioritized across the whole site.
 
-It converts the pipeline from **keyword-first** to **opportunity-first**, without changing anything about how a keyword, once chosen, is researched, written, validated, or published. That system already works (confirmed by direct inspection of ORA's current implementation) and is left untouched.
+Every candidate is evaluated against the same standard: does this solve a real problem people are asking about, and can the resulting article strengthen the site's content network by linking to existing solutions? Products and tools are never the subject — they are supporting evidence for a solution.
 
 ---
 
@@ -86,27 +88,37 @@ Six stages, executed in strict sequence. Stages D1–D4 process many candidates 
 ```
 Pillar (+ optional constraints)
     ↓
-Stage D0: Seed Generation
+Stage D0: Community-Driven Seed Generation  → gather real user questions from COMMUNITY_INTELLIGENCE;
+                                                derive seed questions from community signals, not
+                                                from keywords or pillar names alone
     ↓
-Stage D1: Multi-Source Exploration
+Stage D1: Multi-Source Exploration           → for each seed question, invoke TREND_INTELLIGENCE,
+                                                COMPETITOR_GAP; cluster into named candidates
     ↓
-Stage D2: Bulk Content-Coverage Check ──── match found ──→ DROP candidate, do not score or queue
+Stage D2: Bulk Content-Coverage Check ────── match found ──→ DROP candidate, do not score or queue
     ↓ survivors only
-Stage D3: Opportunity Scoring              (quality of the opportunity, in isolation)
+Stage D2b: Editorial Relevance Filter ─────── fails check ──→ REJECT candidate, skip recommendation
+    ↓ passes only
+Stage D3: Opportunity Scoring                (quality of the opportunity, in isolation)
     ↓
-Stage D4: Portfolio-Aware Priority Scoring  (should it be produced now, given everything else)
+Stage D4: Portfolio-Aware Priority Scoring   (should it be produced now, given everything else)
     ↓
-Stage D5: Opportunity Queue Write
+Stage D5: Opportunity Queue Write            → every candidate must include all 5 required fields:
+                                                User Question, User Problem, Evidence,
+                                                Recommended Article, Natural Solution
 ```
 
-### Stage D0 — Seed Generation
-Read the pillar's stated primary subject and existing pages from `docs/CONTENT-REGISTRY.md`. Merge with any operator-supplied `seed_topics`. Produce 5–15 seed topics broad enough to explore — not pre-narrowed to a single keyword (e.g. "OLSP Academy alternatives," not "olsp academy vs xyz review").
+### Stage D0 — Community-Driven Seed Generation
+Invoke `COMMUNITY_INTELLIGENCE` (sources 2/3) to gather real user questions from Reddit, Quora, forums, and Google Discussions. For each question, identify the underlying user problem — what is the user trying to accomplish, avoid, or understand? Derive 5–15 seed questions from these community signals. Read the pillar's stated primary subject and existing pages from `docs/CONTENT-REGISTRY.md` for context, but never generate a seed from a keyword, pillar name, or product name alone. Merge with any operator-supplied `seed_topics`. A seed question describes a user problem (e.g. "How do I avoid common affiliate marketing mistakes as a beginner?"), not a keyword or product name.
 
 ### Stage D1 — Multi-Source Exploration
 For each seed topic, invoke `TREND_INTELLIGENCE` and `COMMUNITY_INTELLIGENCE` (sources 1–3). Cluster raw results into named **candidates** — a candidate is a specific, nameable angle, not a bare seed. For each candidate, invoke `COMPETITOR_GAP` (source 4) to confirm a real gap exists. If DataForSEO (source 7) is configured, `SEARCH_DEMAND` is also attempted per seed and its result attached as an optional evidence line — its presence or absence never changes which candidates are clustered or how they proceed to Stage D2. Every candidate carries its supporting evidence forward — which source produced or confirmed it, and what it said.
 
 ### Stage D2 — Bulk Content-Coverage Check
 Run `CONTENT_COVERAGE` (source 5) against every candidate from D1, before any candidate is scored. Full rules in Section 6. Candidates with no match proceed; clear matches are dropped; ambiguous matches are set aside for human judgement rather than resolved automatically in either direction.
+
+### Stage D2b — Editorial Relevance Filter
+Apply the Editorial Relevance Filter (Section 6a) to every surviving candidate. Candidates that fail either check are rejected for recommendation purposes but remain in the queue with their scores intact — the filter is a recommendation gate, not a deletion. Never stop evaluating the next candidate because one fails. Full rules in Section 6a.
 
 ### Stage D3 — Opportunity Scoring
 Score each surviving candidate across three equally-weighted sub-scores (25 pts each, mandatory sources only): **Trend** (source 1), **Community** (sources 2/3), **Gap** (source 4). Sum the three (max 75) and rescale to 0–100 by multiplying by 4/3, rounding to the nearest integer. This produces the **Opportunity Score** — a measure of the candidate's quality in isolation, independent of what else exists on the site, computed identically whether or not DataForSEO happens to be configured. It is a cheap triage score, not a substitute for ORA's own (deeper, post-research) Opportunity Score — see the naming note in Section 5.
@@ -250,12 +262,73 @@ The agent must never suggest, and never queue, a topic that is already published
 
 ---
 
+## 6a. Editorial Relevance Filter
+
+**Added in v0.7.** A mandatory pre-scoring check applied to every candidate that survives Stage D2. The filter ensures the Opportunity Queue only contains topics that belong on OLSP.PROFITANDPRIVILEGE.COM — topics that solve real problems and strengthen the existing content network.
+
+### Checks
+
+Every candidate must pass BOTH checks before entering Stage D3:
+
+**Check 1 — Real Problem Evidence:**
+Does the topic solve a real problem that people are actively discussing? At least one of these sources must provide evidence:
+- Reddit (recurring questions, pain points, confusion)
+- Quora (posted questions with engagement)
+- Forums and community discussions
+- Google search demand
+- Verified social/community signals
+
+Evidence is drawn from the candidate's `Rationale` field, which must cite at least one real-world signal source. Topics surfaced only by trend data or competitive gap analysis, without community evidence, do not pass this check.
+
+**Check 2 — Content Network Strength:**
+Can the finished article naturally strengthen the existing OLSP content network? The candidate's `Internal link potential` field must reference at least one specific existing page or content cluster on the site. Candidates with no clear internal-linking path do not pass this check.
+
+### Behaviour on failure
+
+- If either check fails, the candidate is **rejected** for the purpose of the "next recommended" selection.
+- The rejected candidate remains in the queue (its scores are still valid — the filter is a recommendation gate, not a deletion).
+- The next candidate is evaluated automatically.
+- **Never stop production because one opportunity fails.** Continue evaluating the next opportunity.
+
+### Relationship to other stages
+
+| Stage | Relationship |
+|---|---|
+| Stage D2 (Duplicate Prevention) | Runs first — removes duplicates. Survivors enter this filter. |
+| Stage D2b (Editorial Relevance Filter) | Applies the two checks above. Pass → continue to scoring. Fail → mark as rejected, do not advance. |
+| Stage D3 (Opportunity Scoring) | Receives only candidates that passed both checks. |
+| Stage D4 (Priority Scoring) | Receives only candidates that passed all prior stages. |
+| Stage D5 (Queue Write) | Writes all surviving candidates. Rejected candidates remain in the queue with a note but are skipped by the "next recommended" selector. |
+
+### Distinction from the existing OLSP product filter
+
+This filter is NOT an OLSP product filter. It does not require that a candidate directly promote OLSP. The test is whether the topic:
+
+1. Solves a real user problem (evidence-based)
+2. Creates natural internal-linking value for the existing content network
+
+OLSP becomes the natural next step where appropriate — not a requirement.
+
+---
+
 ## 7. Outputs
 
-### Opportunity Queue (new — owned entirely by this agent)
+### Opportunity Queue (owned entirely by this agent)
 
 **File:** `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`
 One file, updated (not replaced) on every run, all pillars together, ranked by **Priority Score** within each pillar.
+
+**Every candidate detail block must include all five required output fields:**
+
+| Field | Type | Description |
+|---|---|---|
+| **User Question** | string | The exact question a real person asked — quoted from the community source. This is the origin of the opportunity. |
+| **User Problem** | string | The underlying problem the question reveals — what the user is trying to accomplish, avoid, or understand. |
+| **Evidence** | string | Where this question was found: source, frequency, context, thread engagement. |
+| **Recommended Article** | string | What the article should be about — a solution description, never a product name. A keyword may appear as supporting detail but may never be the defining field. |
+| **Natural Solution** | string | How the article solves the problem and what makes it authoritative. Tools, platforms, or training may be mentioned as part of the solution but are never the subject. |
+
+A keyword may support the opportunity but may never define it. The User Question field is the primary identifier of the opportunity — not the Candidate ID, not a keyword, not a product name.
 
 ```
 pillar:                    [pillar name]

@@ -38,7 +38,14 @@ const modes = [
 ---
 
 <section id="run" class="run-pipeline">
-  <h2>Run Pipeline</h2>
+  <div class="run-header">
+    <h2>Production Launch Center</h2>
+    <div class="op-mode-group" id="op-mode-group">
+      <button type="button" class="op-mode-btn" data-opmode="manual">Manual</button>
+      <button type="button" class="op-mode-btn active" data-opmode="assisted">Assisted</button>
+      <button type="button" class="op-mode-btn" data-opmode="autonomous">Autonomous</button>
+    </div>
+  </div>
 
   <div class="run-input-wrap">
     <label for="research-topic" class="run-label">What do you want to research?</label>
@@ -71,31 +78,95 @@ const modes = [
   </div>
 
   <div class="run-actions">
-    <button type="button" class="run-btn" disabled id="run-btn">Run Pipeline</button>
+    <button type="button" class="run-btn" disabled id="run-btn">Start Production</button>
     <div id="run-status" class="run-status"></div>
+  </div>
+
+  <div class="launch-panel" id="launch-panel" style="display:none;">
+    <div class="launch-header">
+      <span class="launch-icon" id="launch-icon">&#9654;</span>
+      <span class="launch-title" id="launch-title">Production Launch Prepared</span>
+    </div>
+    <div class="launch-details" id="launch-details"></div>
+    <div class="launch-command">
+      <div class="launch-command-label">Terminal Command</div>
+      <code class="launch-command-text" id="launch-command"></code>
+      <button type="button" class="launch-copy-btn" id="launch-copy">Copy Command</button>
+    </div>
+    <div class="launch-steps">
+      <div class="launch-step"><span class="launch-step-num">1</span> Select topic and mode above</div>
+      <div class="launch-step"><span class="launch-step-num">2</span> Run the command in your terminal</div>
+      <div class="launch-step"><span class="launch-step-num">3</span> Pipeline stages execute in order: Discovery → Research → Builder → QA → Publish</div>
+      <div class="launch-step"><span class="launch-step-num">4</span> Return to Mission Control to review the publication report</div>
+    </div>
+    <button type="button" class="launch-back-btn" id="launch-back">Start a New Production Run</button>
   </div>
 </section>
 
 <script>
-  import { simulatePipeline } from '../../scripts/pipeline-runner.js';
+  import { pipelineStore, simulatePipeline } from '../../scripts/pipeline-runner.js';
   const topicInput = document.getElementById("research-topic");
   const runBtn = document.getElementById("run-btn");
   const runStatus = document.getElementById("run-status");
   const modeCards = document.querySelectorAll(".mode-card");
   const exampleChips = document.querySelectorAll(".example-chip");
+  const launchPanel = document.getElementById("launch-panel");
+  const launchDetails = document.getElementById("launch-details");
+  const launchTitle = document.getElementById("launch-title");
+  const launchIcon = document.getElementById("launch-icon");
+  const launchCommand = document.getElementById("launch-command");
+  const launchCopy = document.getElementById("launch-copy");
+  const launchBack = document.getElementById("launch-back");
+  const opModeBtns = document.querySelectorAll(".op-mode-btn");
+  const runSection = document.getElementById("run");
+  const launchSteps = document.querySelectorAll(".launch-step");
 
   let selectedMode = null;
   let validated = false;
+  let operatingMode = 'assisted';
+
+  function setOperatingMode(mode) {
+    operatingMode = mode;
+    opModeBtns.forEach(b => b.classList.toggle('active', b.dataset.opmode === mode));
+    runSection.className = `run-pipeline op-${mode}`;
+    pipelineStore.setOperatingMode(mode);
+    updateButtonLabel();
+    if (validated) updateStatus();
+  }
+
+  function getButtonLabel() {
+    switch (operatingMode) {
+      case 'manual': return 'Prepare Recommendations';
+      case 'assisted': return 'Start Assisted Production';
+      case 'autonomous': return 'Configure Autonomous Mode';
+      default: return 'Start Production';
+    }
+  }
+
+  function updateButtonLabel() {
+    runBtn.textContent = getButtonLabel();
+  }
+
+  opModeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      setOperatingMode(btn.dataset.opmode);
+    });
+  });
 
   function validate() {
     const topic = topicInput.value.trim();
     const ready = topic.length >= 2 && selectedMode !== null;
     validated = ready;
-    runBtn.disabled = !ready;
+    runBtn.disabled = operatingMode === 'autonomous' ? true : !ready;
+    if (launchPanel.style.display !== 'none') {
+      launchPanel.style.display = 'none';
+      runSection.classList.remove('launched');
+    }
     updateStatus();
   }
 
   function updateStatus() {
+    if (launchPanel.style.display !== 'none') return;
     if (!validated) {
       const topic = topicInput.value.trim();
       if (topic && topic.length < 2) {
@@ -113,8 +184,11 @@ const modes = [
     const mode = modeCards.find(c => c.dataset.mode === selectedMode);
     const modeLabel = mode ? mode.querySelector(".mode-label").textContent : selectedMode;
     const stages = mode ? Array.from(mode.querySelectorAll(".mode-stage-name")).map(s => s.textContent) : [];
+    let statusLabel = 'Ready to Launch';
+    if (operatingMode === 'manual') statusLabel = 'Recommendations Ready';
+    else if (operatingMode === 'assisted') statusLabel = 'Ready for Assisted Run';
     runStatus.innerHTML =
-      `<span class="status-ready">Ready to Run</span>` +
+      `<span class="status-ready">${statusLabel}</span>` +
       `<span class="status-topic">Topic: <strong>${escapeHtml(topicInput.value.trim())}</strong></span>` +
       `<span class="status-mode">Pipeline: <strong>${modeLabel}</strong></span>` +
       `<span class="status-stages">${stages.join(" → ")}</span>`;
@@ -147,13 +221,88 @@ const modes = [
 
   runBtn.addEventListener("click", async () => {
     if (!validated) return;
-    runStatus.innerHTML = `<span class="status-ready">Pipeline queued for: ${escapeHtml(topicInput.value.trim())}</span>`;
-    runBtn.disabled = true;
-    runBtn.textContent = "Running...";
-    await simulatePipeline(topicInput.value.trim(), selectedMode);
-    runBtn.textContent = "Run Pipeline";
-    runBtn.disabled = false;
-    runStatus.innerHTML = '<span class="status-ready">Pipeline complete</span>';
+
+    if (operatingMode === 'autonomous') {
+      runStatus.innerHTML = '<span class="status-ready" style="color:var(--bad);background:var(--bad-bg)">Autonomous mode is not yet enabled</span>';
+      return;
+    }
+
+    if (operatingMode === 'manual') {
+      runStatus.innerHTML = `<span class="status-ready">Preparing recommendations for: ${escapeHtml(topicInput.value.trim())}</span>`;
+      runBtn.disabled = true;
+      runBtn.textContent = "Preparing...";
+      await simulatePipeline(topicInput.value.trim(), selectedMode);
+      runBtn.textContent = "Prepare Recommendations";
+      runBtn.disabled = false;
+      runStatus.innerHTML = '<span class="status-ready">Recommendations ready — execute steps manually</span>';
+      return;
+    }
+
+    const mode = modeCards.find(c => c.dataset.mode === selectedMode);
+    const modeLabel = mode ? mode.querySelector(".mode-label").textContent : selectedMode;
+    const stages = mode ? Array.from(mode.querySelectorAll(".mode-stage-name")).map(s => s.textContent) : [];
+    const topic = topicInput.value.trim();
+
+    const command = `./pipeline/run.sh "${topic}"`;
+
+    launchTitle.textContent = 'Assisted Production Prepared';
+    launchIcon.innerHTML = '&#9654;';
+
+    launchDetails.innerHTML =
+      `<div class="launch-row"><span class="launch-row-label">Topic</span><span class="launch-row-value">${escapeHtml(topic)}</span></div>` +
+      `<div class="launch-row"><span class="launch-row-label">Mode</span><span class="launch-row-value">Assisted — ${modeLabel}</span></div>` +
+      `<div class="launch-row"><span class="launch-row-label">Stages</span><span class="launch-row-value">${stages.join(' → ')}</span></div>`;
+
+    launchCommand.textContent = command;
+    launchCopy.style.display = '';
+
+    const stepsHtml =
+      `<div class="launch-step"><span class="launch-step-num">1</span> Mission Control auto-runs: Discovery → Research → Brief → Writer → QA → Build</div>` +
+      `<div class="launch-step"><span class="launch-step-num">2</span> Article is produced and QA'd automatically</div>` +
+      `<div class="launch-step"><span class="launch-step-num">3</span> Review the article and approve for publication</div>` +
+      `<div class="launch-step"><span class="launch-step-num">4</span> Run the publish step manually when ready</div>`;
+    document.querySelector('.launch-steps').innerHTML = stepsHtml;
+
+    runBtn.style.display = 'none';
+    runStatus.style.display = 'none';
+    document.querySelector('.run-modes').style.display = 'none';
+    document.querySelector('.run-input-wrap').style.display = 'none';
+    launchPanel.style.display = 'block';
+    runSection.classList.add('launched');
+
+    pipelineStore.setProductionLaunch({
+      topic,
+      mode: selectedMode,
+      modeLabel,
+      stages,
+      command,
+      operatingMode,
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  launchCopy.addEventListener("click", () => {
+    navigator.clipboard.writeText(launchCommand.textContent).catch(() => {});
+    launchCopy.textContent = "Copied!";
+    setTimeout(() => { launchCopy.textContent = "Copy Command"; }, 2000);
+  });
+
+  launchBack.addEventListener("click", () => {
+    launchPanel.style.display = 'none';
+    runBtn.style.display = '';
+    runStatus.style.display = '';
+    document.querySelector('.run-modes').style.display = '';
+    document.querySelector('.run-input-wrap').style.display = '';
+    document.querySelector('.launch-steps').innerHTML =
+      `<div class="launch-step"><span class="launch-step-num">1</span> Select topic and mode above</div>` +
+      `<div class="launch-step"><span class="launch-step-num">2</span> Run the command in your terminal</div>` +
+      `<div class="launch-step"><span class="launch-step-num">3</span> Pipeline stages execute in order: Discovery → Research → Builder → QA → Publish</div>` +
+      `<div class="launch-step"><span class="launch-step-num">4</span> Return to Mission Control to review the publication report</div>`;
+    runSection.classList.remove('launched');
+    runBtn.disabled = operatingMode === 'autonomous' ? true : !validated;
+    runStatus.textContent = '';
+    pipelineStore.clearProductionLaunch();
+    validate();
   });
 </script>
 
@@ -309,4 +458,163 @@ const modes = [
     border-radius: 4px;
     font-family: 'SF Mono', 'Fira Code', monospace;
   }
+
+  .run-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .run-header h2 { margin: 0; }
+  .op-mode-group {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .op-mode-btn {
+    font-size: .72rem;
+    font-weight: 600;
+    padding: .35rem .7rem;
+    border: none;
+    border-right: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .op-mode-btn:last-child { border-right: none; }
+  .op-mode-btn:hover { background: var(--bg-soft); color: var(--ink); }
+  .op-mode-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  .run-pipeline.op-autonomous .op-mode-btn[data-opmode="autonomous"].active {
+    background: #f59e0b;
+  }
+  .run-pipeline.op-manual { border-left: 3px solid var(--ink-light); }
+  .run-pipeline.op-assisted { border-left: 3px solid var(--accent); }
+  .run-pipeline.op-autonomous { border-left: 3px solid #f59e0b; }
+  .run-pipeline.launched {
+    border-color: var(--good);
+    background: var(--good-bg);
+    border-left-color: var(--good);
+  }
+
+  .launch-panel {
+    margin-top: 1rem;
+    padding: 1.2rem;
+    border: 1px solid var(--good);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+  .launch-header {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .8rem;
+  }
+  .launch-icon {
+    font-size: .9rem;
+    color: var(--good);
+  }
+  .launch-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--good);
+  }
+  .launch-details {
+    margin-bottom: 1rem;
+  }
+  .launch-row {
+    display: flex;
+    gap: .5rem;
+    padding: .3rem 0;
+    font-size: .88rem;
+  }
+  .launch-row-label {
+    font-weight: 600;
+    color: var(--ink-light);
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+  .launch-row-value {
+    color: var(--ink);
+  }
+  .launch-command {
+    background: #0d1117;
+    border-radius: 6px;
+    padding: .7rem .9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    flex-wrap: wrap;
+  }
+  .launch-command-label {
+    font-size: .68rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+    flex: 1 1 100%;
+    margin-bottom: .2rem;
+  }
+  .launch-command-text {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: .82rem;
+    color: #c9d1d9;
+    flex: 1;
+    word-break: break-all;
+  }
+  .launch-copy-btn {
+    font-size: .72rem;
+    padding: .25rem .65rem;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background: #21262d;
+    color: #c9d1d9;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .launch-copy-btn:hover { background: #30363d; }
+  .launch-steps {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-bottom: 1rem;
+  }
+  .launch-step {
+    font-size: .82rem;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .launch-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: .68rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .launch-back-btn {
+    font-size: .8rem;
+    padding: .4rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--ink-light);
+    cursor: pointer;
+  }
+  .launch-back-btn:hover { border-color: var(--accent); color: var(--accent); }
 </style>

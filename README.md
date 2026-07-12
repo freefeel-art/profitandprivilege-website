@@ -1,10 +1,10 @@
 # OLSP.PROFITANDPRIVILEGE.COM — Editorial Operating System
 
-Independent research and reviews in the affiliate marketing / online income niche, monetized through the OLSP Academy affiliate program. The site is built with [Astro](https://astro.build) and generated as a fully static site — no database, no backend, no runtime AI.
+We solve real user problems in the affiliate marketing and online income space. Every article starts with a question someone is asking, a frustration they're hitting, or a goal they're trying to reach. We produce research-backed answers, not product pages. OLSP is never the topic — it's the natural next step only when it genuinely helps solve the user's problem. The site is built with [Astro](https://astro.build) and generated as a fully static site — no database, no backend, no runtime AI.
 
 ## Project Mission
 
-Surface and research content opportunities in the affiliate marketing and online income space. Produce authoritative, research-backed articles. Publish via a reproducible editorial pipeline. Every output is version-controlled, reviewed, and statically deployed.
+Identify real user problems in the affiliate marketing and online income space. Produce authoritative, research-backed solutions. Always start with the problem — never with a product or promotion. Publish via a reproducible editorial pipeline. Every output is version-controlled, reviewed, and statically deployed.
 
 ## Editorial Operating System
 

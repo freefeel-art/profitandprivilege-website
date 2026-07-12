@@ -9,12 +9,13 @@ const stateLabels = {
 };
 ---
 
-<div class="health-bar">
-  <div class="health-indicator" id="pipeline-health">
-    <span class="health-dot" id="health-dot"></span>
-    <span class="health-label" id="health-label">Pipeline Operational</span>
+  <div class="health-bar">
+    <div class="health-indicator" id="pipeline-health">
+      <span class="health-dot" id="health-dot"></span>
+      <span class="health-label" id="health-label">Pipeline Operational</span>
+      <span class="health-mode" id="health-mode"></span>
+    </div>
   </div>
-</div>
 
 <script>
   import { pipelineStore } from '../../scripts/pipeline-runner.js';
@@ -30,11 +31,21 @@ const stateLabels = {
 
   const dot = document.getElementById('health-dot');
   const label = document.getElementById('health-label');
+  const modeEl = document.getElementById('health-mode');
+
+  const modeLabels = { manual: 'Manual', assisted: 'Assisted', autonomous: 'Autonomous' };
 
   pipelineStore.subscribe(s => {
     const cfg = labels[s.status] || labels.idle;
     label.textContent = cfg.label;
     dot.style.background = cfg.color;
+
+    const opLabel = modeLabels[s.operatingMode] || 'Assisted';
+    const opClass = s.operatingMode === 'autonomous' ? 'mode-autonomous-badge'
+      : s.operatingMode === 'manual' ? 'mode-manual-badge'
+      : 'mode-assisted-badge';
+    modeEl.textContent = opLabel;
+    modeEl.className = `health-mode ${opClass}`;
   });
 </script>
 
@@ -62,5 +73,26 @@ const stateLabels = {
     border-radius: 50%;
     background: var(--good);
     flex-shrink: 0;
+  }
+  .health-mode {
+    font-size: .68rem;
+    margin-left: .3rem;
+    padding: .1rem .5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 700;
+  }
+  .health-mode.mode-assisted-badge {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .health-mode.mode-manual-badge {
+    color: var(--ink-light);
+    background: var(--bg-soft);
+  }
+  .health-mode.mode-autonomous-badge {
+    color: #92400e;
+    background: #fef3c7;
   }
 </style>

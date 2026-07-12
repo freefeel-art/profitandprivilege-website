@@ -20,6 +20,7 @@ import {
   getReports,
   getRepoStatus,
   getQuickLinks,
+  getCurrentProductionState,
 } from "../data/mission-control";
 
 const stages = getStageStatus();
@@ -28,10 +29,12 @@ const activity = getRecentActivity();
 const reports = getReports();
 const repo = getRepoStatus();
 const links = getQuickLinks();
+const prodState = getCurrentProductionState();
 
 const tocLinks = [
-  { href: "#run", label: "Run Pipeline" },
-  { href: "#panel-console", label: "Live Pipeline Console" },
+  { href: "#production-status", label: "Production Status" },
+  { href: "#run", label: "Production Launch Center" },
+  { href: "#panel-console", label: "Pipeline Console" },
   { href: "#panel-progress", label: "Pipeline Progress" },
   { href: "#panel-summary", label: "Pipeline Summary" },
   { href: "#panel-results", label: "Results" },
@@ -49,6 +52,65 @@ const tocLinks = [
   description="Editorial Operating System dashboard for OLSP.PROFITANDPRIVILEGE.COM"
   canonical="https://olsp.profitandprivilege.com/mission-control/"
   tocLinks={tocLinks}>
+
+<section id="production-status" class="prod-status">
+  <div class="prod-status-header">
+    <h2>Today's Production Dashboard</h2>
+    <span class="prod-mode-badge mode-{prodState.operatingMode}">{prodState.operatingMode.charAt(0).toUpperCase() + prodState.operatingMode.slice(1)} Mode</span>
+  </div>
+  <div class="prod-daily-goal">
+    <span class="prod-goal-label">Problem We're Solving Today</span>
+    <span class="prod-goal-value">{prodState.dailyGoal}</span>
+  </div>
+  <div class="prod-status-grid">
+    <div class="prod-card">
+      <span class="prod-label">Today's User Problem</span>
+      <span class="prod-value">{prodState.currentProblem}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">User Question</span>
+      <span class="prod-value">{prodState.dailyGoal}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Evidence Summary</span>
+      <span class="prod-value">{prodState.currentResearch ? prodState.currentResearch.replace('.md', '').replace('Evidence: ', '') : 'None'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Recommended Article</span>
+      <span class="prod-value">{prodState.latestArticle ? prodState.latestArticle.replace('.astro', '') : 'None'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Solution Strategy</span>
+      <span class="prod-value">{prodState.solutionStrategy || 'Not Available'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Recommended Resources</span>
+      <span class="prod-value">{prodState.recommendedResources || 'Not Available'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Why These Resources Help</span>
+      <span class="prod-value">{prodState.whyResourcesHelp || 'Not Available'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Pipeline Status</span>
+      <span class="prod-value">{prodState.currentStageName}</span>
+      <span class="prod-tag status-{prodState.currentStageStatus}">{prodState.currentStageStatus}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Last Published</span>
+      <span class="prod-value">{prodState.lastPublished || 'None'}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Operating Mode</span>
+      <span class="prod-value">{prodState.operatingMode.charAt(0).toUpperCase() + prodState.operatingMode.slice(1)}</span>
+    </div>
+    <div class="prod-card">
+      <span class="prod-label">Next Scheduled Run</span>
+      <span class="prod-value">{prodState.scheduledRun || '07:00 (default)'}</span>
+      <span class="prod-tag status-waiting">Pending</span>
+    </div>
+  </div>
+</section>
 
 <RunPipeline />
 
@@ -203,6 +265,98 @@ const tocLinks = [
 </OlspLayout>
 
 <style is:inline>
+  .prod-status { margin-bottom: 2rem; }
+  .prod-status h2 { margin: 0; }
+  .prod-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .8rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .prod-mode-badge {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: .2rem .6rem;
+    border-radius: 99px;
+  }
+  .prod-mode-badge.mode-assisted {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .prod-mode-badge.mode-manual {
+    color: var(--ink-light);
+    background: var(--bg-soft);
+  }
+  .prod-mode-badge.mode-autonomous {
+    color: #92400e;
+    background: #fef3c7;
+  }
+  .prod-daily-goal {
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: .6rem .9rem;
+    background: var(--accent-soft);
+    margin-bottom: .7rem;
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+  }
+  .prod-goal-label {
+    font-size: .65rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .prod-goal-value {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .prod-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .6rem;
+  }
+  .prod-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: .7rem .9rem;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+  }
+  .prod-label {
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .prod-value {
+    font-size: .88rem;
+    color: var(--ink);
+    font-weight: 600;
+    word-break: break-all;
+  }
+  .prod-tag {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: .1rem .4rem;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .prod-tag.status-complete { color: var(--good); background: var(--good-bg); }
+  .prod-tag.status-running { color: var(--accent); background: var(--accent-soft); }
+  .prod-tag.status-waiting { color: var(--ink-light); background: var(--bg-soft); }
+
   .pipeline-flow { max-width: 440px; }
   .stage-row { display: flex; flex-direction: column; align-items: flex-start; }
   .stage-col { display: flex; align-items: center; gap: 1rem; width: 100%; padding: .7rem 0; }

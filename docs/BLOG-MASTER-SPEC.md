@@ -1,14 +1,16 @@
 # Blog / Informational Article — Master Specification
 
 **Status:** Production
-**Scope:** Article type `blog` only (the Light Pipeline's output — see `docs/PIPELINE-ARCHITECTURE.md`). Reviews and roundups have their own specs — see `docs/GOLD-MASTER-SPEC.md` and `docs/ROUNDUP-GOLD-MASTER-SPEC.md`; their CTA card standard is unchanged by this document.
+**Scope:** Article type `blog` only (the Light Pipeline's output — see `docs/PIPELINE-ARCHITECTURE.md`). Reviews and roundups have their own specs — see `docs/GOLD-MASTER-SPEC.md` and `docs/ROUNDUP-GOLD-MASTER-SPEC.md`; their CTA standard is defined in those documents.
 
-This document codifies the standard already established across the published blog articles, with two exceptions noted below, both dated 2026-07-04: blog articles use the **QuoteBanner** component (§ 3a) instead of `.cta-card` for three brand-signature touchpoints through the body, plus a single **Standard CTA** (§ 3b) — one real call-to-action, near the end of the article. These are deliberate, current changes to the standard, not a description of legacy practice. Existing published blog articles built before this date used `.cta-card` three times and are not retroactively rewritten by this spec change. (The QuoteBanner styling itself was also revised same-day, from a bordered/boxed treatment to a borderless brand-signature line — see § 3a.)
+Blog articles use the **QuoteBanner** component (§ 3a) as a brand-signature line (2–5× depending on article length, never grouped) plus exactly two **Standard CTA** components (§ 3b — CTA #1 post-intro, CTA #2 post-FAQ/pre-author). The Gold Master layout, CSS tokens, responsive grid, and TOC/scroll-spy JS apply unchanged (see `docs/GOLD-MASTER-SPEC.md` §§ 4, 10, 15).
 
 **Canonical reference (structure/CSS/JS):** `src/pages/blog/part-time-jobs-near-me-no-experience.astro`
 **Canonical reference (metadata: OG tags + JSON-LD):** `src/pages/blog/make-money-online-for-beginners.astro`
 
 No single existing file demonstrates every rule below at once — the structure/CSS/JS reference predates the OG+JSON-LD standard being applied consistently. New blog articles must combine both: the layout from the structure reference, the metadata block from the metadata reference.
+
+**Editorial principle (applies to all blog articles):** Every article solves the reader's problem first. The OLSP ecosystem is introduced naturally as the logical next step. Articles must never become sales pages.
 
 ---
 
@@ -34,22 +36,23 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 
 1. `#intro` — no `<h2>` (contains the `<h1>` instead), opens with a hero tag and lead paragraph(s), a `.verdict-box` summarizing who the content is/isn't for
 2. A **QuoteBanner** (`.quote-banner`, see § 3a) immediately after `#intro`
-3. Numbered body sections (3–7 typically), each opening with `<h2>`. Section `id` values are either descriptive-slug (`#types`, `#earnings`) or generic (`#section-1`, `#section-2`) — either is acceptable, but must be consistent within one article and must match the TOC anchors exactly
-4. A second QuoteBanner roughly at the midpoint of the body sections
-5. A third QuoteBanner immediately before `#faq` (not after it — this differs from the pre-2026-07-04 CTA card pattern, which placed the third promotional element after FAQ)
-6. `#faq` — 6–8 `<details>` FAQ items (minimum 4, per Gold Master Section 8.11)
-7. A single **Standard CTA** (`.standard-cta`, see § 3b) immediately after `#faq`, before the Author section
-8. `#author` — Author Box
-9. `#sources` — Sources & References, `<ul class="pill-list">`
-10. `<footer class="site-footer">`
+3. A **Standard CTA** (`.standard-cta`, see § 3b) — CTA #1, placed in the upper visible part of the article after the intro and QuoteBanner
+4. Numbered body sections (3–7 typically), each opening with `<h2>`. Section `id` values are either descriptive-slug (`#types`, `#earnings`) or generic (`#section-1`, `#section-2`) — either is acceptable, but must be consistent within one article and must match the TOC anchors exactly
+5. A second QuoteBanner roughly at the midpoint of the body sections (or additional QuoteBanners distributed naturally for longer articles)
+6. A third QuoteBanner immediately before `#faq` (not after it — this differs from the pre-2026-07-04 CTA card pattern, which placed the third promotional element after FAQ)
+7. `#faq` — 6–8 `<details>` FAQ items (minimum 4, per Gold Master Section 8.11)
+8. A second **Standard CTA** (`.standard-cta`, see § 3b) — CTA #2, immediately after `#faq`, before the Author section
+9. `#author` — Author Box
+10. `#sources` — Sources & References, `<ul class="pill-list">`
+11. `<footer class="site-footer">`
 
-**Exactly three QuoteBanner components per article**, identical in content, placed post-intro / mid-article / pre-FAQ — plus **exactly one Standard CTA**, post-FAQ / pre-author. Blog articles no longer use `.cta-card` in its original three-times, sales-copy form (see § 3a/§ 3b for why). This is a blog-specific change — `docs/GOLD-MASTER-SPEC.md` Section 8.13 and `docs/ROUNDUP-MASTER-PROMPT.md`'s CTA card rule for reviews and roundups are unaffected.
+**QuoteBanner frequency:** 2–3 occurrences for short articles, 4–5 for longer pillar-style articles. Identical in content. Distribute naturally — never group them together. Plus **exactly two Standard CTA components** (CTA #1 post-intro/QuoteBanner, CTA #2 post-FAQ/pre-author). Blog articles no longer use `.cta-card` in its original three-times, sales-copy form (see § 3a/§ 3b for why). This is a blog-specific change — `docs/GOLD-MASTER-SPEC.md` Section 8.13 and `docs/ROUNDUP-MASTER-PROMPT.md`'s CTA card rule for reviews and roundups are unaffected.
 
 ---
 
 ## 3a. QuoteBanner Component (brand signature, revised 2026-07-04)
 
-**Why:** QuoteBanner is a **brand signature, not an information box or a CTA** — a quiet, recurring editorial line that appears three times per article, carrying no button and no sales copy. It was first introduced as a bordered/boxed element on 2026-07-04, then revised same-day to remove the box entirely once it was clear the boxed treatment still read as "a CTA in disguise." The current version has no border, no background, no padding-box — just centered, bold-italic brand-blue text with generous vertical whitespace, functioning like a pull-quote rather than a callout.
+**Why:** QuoteBanner is a **brand signature, not an information box or a CTA** — a quiet, recurring editorial line that carries no button and no sales copy. Frequency: short blog articles typically use 2–3 occurrences; longer pillar-style blog articles use 4–5. Distribute naturally — never group them together. The Quote sentence is part of the OLSP editorial identity. It was first introduced as a bordered/boxed element on 2026-07-04, then revised same-day to remove the box entirely once it was clear the boxed treatment still read as "a CTA in disguise." The current version has no border, no background, no padding-box — just centered, bold-italic brand-blue text with generous vertical whitespace, functioning like a pull-quote rather than a callout.
 
 **Fixed content — identical in every blog article, never rewritten per article:**
 
@@ -86,9 +89,9 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 
 ---
 
-## 3b. Standard CTA Component (added 2026-07-04, destination updated 2026-07-04)
+## 3b. Standard CTA Component
 
-**Why:** With QuoteBanner now carrying no button and appearing three times as a brand signature, articles need exactly one real, unambiguous call-to-action — placed once, near the end, after the reader has finished the content and the FAQ. This is intentionally short: a heading and a button, nothing else. No sales paragraph.
+**Why:** The Standard CTA is the article's unambiguous call-to-action — a heading and a button, nothing else, no sales paragraph. Every blog article includes exactly two: CTA #1 in the upper visible portion (after intro and QuoteBanner), CTA #2 near the conclusion (after FAQ, before Author).
 
 **Fixed content — identical in every blog article, never rewritten per article:**
 
@@ -99,9 +102,10 @@ Blog articles use a free-form section count and naming — unlike reviews, there
 </div>
 ```
 
-- Reuses the existing `.cta-card` / `.cta-btn` CSS (already present in every article's `<style>` block per § 3a) — no new CSS class needed beyond the `.standard-cta` modifier below, which only removes the bottom margin so it sits flush before the Author section.
+- Reuses the existing `.cta-card` / `.cta-btn` CSS (already present in every article's `<style>` block per § 3a) — no new CSS class needed beyond the `.standard-cta` modifier below.
 - No `<p>` sales paragraph. Heading + button only.
-- Placement: immediately after `#faq`, immediately before `#author`. Exactly one per article — this is not repeated like QuoteBanner.
+- CTA #1: after `#intro` and the first QuoteBanner, in the upper visible part of the article.
+- CTA #2: after `#faq`, immediately before `#author`.
 - `target="_blank" rel="noopener noreferrer sponsored"` — external, monetized link.
 
 ```css
@@ -122,7 +126,7 @@ Blog articles use a **subset** of the Gold Master component inventory (Section 8
 - Hero Tag (8.1)
 - Verdict Box (8.2)
 - Callouts (8.4)
-- QuoteBanner (§ 3a) — exactly three, replaces CTA Card (8.13) in blog articles as of 2026-07-04
+- QuoteBanner (§ 3a) — 2–3 for short articles, 4–5 for longer pillar-style articles; replaces CTA Card (8.13) in blog articles as of 2026-07-04
 - FAQ Accordion (8.11)
 - Author Box (author box CSS class `.author-box`, same markup pattern as Section 8a of `docs/ROUNDUP-GOLD-MASTER-SPEC.md`)
 - Sources Section / Pill-List (8.12)
@@ -209,7 +213,7 @@ Same requirement and markup pattern as `docs/ROUNDUP-GOLD-MASTER-SPEC.md` Sectio
 
 ## 7. Internal Linking
 
-Blog articles are the primary internal-linking hub type on the site (see `docs/CONTENT-REGISTRY.md`). Weave links to related reviews and other blog articles naturally into body content — do not restrict links to the sources section. Every blog article should link to at least one review (typically `/reviews/olsp-academy/`) and, where topically relevant, to sibling blog articles in the same content pillar.
+Blog articles are the primary internal-linking hub type on the site (see `docs/CONTENT-REGISTRY.md`). Weave links to related reviews and other blog articles naturally into body content — do not restrict links to the sources section. Every blog article must include at least one contextual internal link to an existing OLSP pillar article (e.g. `/reviews/olsp-academy/`). Links must be editorially relevant — never forced. Where topically relevant, also link to sibling blog articles in the same content pillar.
 
 ---
 
@@ -244,8 +248,8 @@ Before delivering a blog article, verify:
 - [ ] OG tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:site_name`) present and matching `<title>`/description
 - [ ] Twitter Card tags (`twitter:card`, `twitter:title`, `twitter:description`) present
 - [ ] JSON-LD `@graph` present with `Article` + `FAQPage` types; `FAQPage` questions match the `#faq` section exactly
-- [ ] Exactly three identical `.quote-banner` QuoteBanner components (§ 3a) — borderless, centered, bold italic, brand blue — placed post-intro / mid-article / pre-FAQ
-- [ ] Exactly one Standard CTA (§ 3b), post-FAQ / pre-author — heading + button only, no sales paragraph
+- [ ] QuoteBanner components distributed naturally — 2–3 for short articles, 4–5 for longer articles — borderless, centered, bold italic, brand blue, never grouped
+- [ ] Exactly two Standard CTA components: CTA #1 post-intro/QuoteBanner, CTA #2 post-FAQ/pre-author — heading + button only, no sales paragraph
 - [ ] `.verdict-box` present in `#intro`
 - [ ] FAQ has at least four `<details>` items (typically 6–8)
 - [ ] Author Box present in `#author`, sourced from the author profile page
@@ -254,4 +258,6 @@ Before delivering a blog article, verify:
 - [ ] No Methodology Block, Score Bars, Quiz, SVG Diagram, or Video Embed (review-only components)
 - [ ] All external links use `target="_blank" rel="noopener noreferrer"` (or `...sponsored` for affiliate/CTA links) — check QuoteBanner, Standard CTA, footer link, and every source citation individually; no exceptions
 - [ ] TOC has a link for every section, anchors match section `id`s exactly
+- [ ] At least one contextual internal link to an OLSP pillar article (§ 7)
+- [ ] Article solves reader's problem first; OLSP introduced naturally as logical next step
 - [ ] `astro build` passes on first attempt
