@@ -423,3 +423,70 @@ export function getQuickLinks() {
     exists: l.src ? fileExists(`public/${l.src}`) || fileExists(l.src) : true,
   }));
 }
+
+export function getTopUserProblems() {
+  const oppContent = readFile('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md');
+  if (!oppContent) return [];
+
+  const lines = oppContent.split('\n');
+  const candidates = [];
+
+  // Parse the summary table for rank, ID, category, priority, notes
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|') || trimmed.startsWith('|---') || trimmed.startsWith('| #')) continue;
+    const parts = trimmed.split('|').map(p => p.trim());
+    if (parts.length >= 5 && /^\d+$/.test(parts[1])) {
+      const rank = parseInt(parts[1]);
+      const id = parts[2];
+      const category = parts[3];
+      const priority = parts[4];
+      const notes = parts[7] || '';
+      candidates.push({ rank, id, category, priority, notes });
+    }
+  }
+
+  // Enrich with detail block data
+  const enriched = candidates.map(c => {
+    const block = getDetailBlock(c.id, oppContent);
+    let userQuestion = '';
+    let userProblem = '';
+    let sources = [];
+
+    if (block && block.block) {
+      const qMatch = block.block.match(/\*\*User Question\*\*\s*\|\s*(.+)/);
+      if (qMatch) userQuestion = qMatch[1].trim();
+
+      const pMatch = block.block.match(/\*\*User Problem\*\*\s*\|\s*(.+)/);
+      if (pMatch) userProblem = pMatch[1].trim();
+
+      // Extract source names from evidence
+      const evMatch = block.block.match(/\*\*Evidence\*\*\s*\|\s*([\s\S]*?)(?=\n\s*\*\*|\n---|\n\|)/);
+      if (evMatch) {
+        const evText = evMatch[1];
+        if (/reddit/i.test(evText)) sources.push('Reddit');
+        if (/google|paa|people also ask/i.test(evText)) sources.push('Google');
+        if (/answerthepublic/i.test(evText)) sources.push('AnswerThePublic');
+        if (/tiktok/i.test(evText)) sources.push('TikTok');
+        if (/ftc/i.test(evText)) sources.push('FTC');
+        if (/twitter|x\.com/i.test(evText)) sources.push('Twitter');
+        if (/survey|poll/i.test(evText)) sources.push('Surveys');
+        if (/discord/i.test(evText)) sources.push('Discord');
+      }
+    }
+
+    return {
+      rank: c.rank,
+      id: c.id,
+      category: c.category,
+      priority: c.priority,
+      notes: c.notes,
+      userQuestion: userQuestion || c.notes,
+      userProblem,
+      sources: sources.length ? sources : [c.category],
+      stars: c.priority === 'High' ? 5 : c.priority === 'Medium' ? 3 : 2,
+    };
+  });
+
+  return enriched;
+}
