@@ -1,0 +1,13 @@
+---
+interface Props {
+  heading: string;
+}
+const { heading } = Astro.props;
+---
+<div class="quiz-box" id="quizBox">
+  <h3 style="margin-top:0;">{heading}</h3>
+  <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+  <slot />
+  <button type="button" onclick="evaluateQuiz()">See My Result</button>
+  <div id="quiz-result"></div>
+</div>

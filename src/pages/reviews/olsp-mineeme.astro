@@ -12,6 +12,8 @@ import FaqItem from "../../components/olsp-standard/FaqItem.astro";
 import PillList from "../../components/olsp-standard/PillList.astro";
 import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
 import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+import ScoreBar from "../../components/olsp-standard/ScoreBar.astro";
+import QuizBox from "../../components/olsp-standard/QuizBox.astro";
 
 const pageTitle = "OLSP MineeMe Review: AI Facebook Engagement Chrome Extension — Independent Analysis";
 const pageDescription =
@@ -278,18 +280,16 @@ const tocLinks = [
 
   <section id="verdict">
     <h2>Final Verdict</h2>
-    <div class="score-row"><div class="score-label">Ease of Setup</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-    <div class="score-row"><div class="score-label">AI Comment Quality</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-    <div class="score-row"><div class="score-label">Platform Safety Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
-    <div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:40%"></div></div><div class="score-num">2/5</div></div>
-    <div class="score-row"><div class="score-label">Value at $27/Month</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
+<ScoreBar label="Ease of Setup" score={4} />
+<ScoreBar label="AI Comment Quality" score={3} />
+<ScoreBar label="Platform Safety Transparency" score={2} />
+<ScoreBar label="Income Claim Transparency" score={2} />
+<ScoreBar label="Value at $27/Month" score={3} />
     <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
 
     <p>OLSP MineeMe occupies a legitimate niche: Facebook-focused marketers who want automated engagement without living on the platform all day are a real audience with a real problem. Using the user's own OpenAI API key rather than pre-written templates is a meaningful technical choice that raises the ceiling on comment quality. At $27/month it sits at an accessible price point for the category. The honest limitation is the one the vendor cannot resolve through marketing copy: Facebook does not approve of automated engagement, and no independent party has tested whether MineeMe's warm-up/cool-down approach reliably avoids account action. That risk is unverified and unquantified. If you use Facebook for business and understand that any automation tool in this category carries that risk, MineeMe is worth evaluating on its own merits. If account safety is a non-negotiable, no automation tool in this category — MineeMe or otherwise — can credibly offer that assurance.</p>
 
-    <div class="quiz-box" id="quizBox">
-      <h3 style="margin-top:0;">Quick Self-Check: Is MineeMe the Right Tool for You?</h3>
-      <p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+    <QuizBox heading="Quick Self-Check: Is MineeMe the Right Tool for You?">
       <fieldset>
         <legend>Is Facebook organic engagement a current, active part of your marketing strategy — not something you're planning to start from scratch?</legend>
         <label><input type="radio" name="q1" value="2"> Yes — I'm already active on Facebook and posting regularly</label>
@@ -305,9 +305,7 @@ const tocLinks = [
         <label><input type="radio" name="q3" value="2"> Yes — I treat it as a time-saving tool, not an income guarantee</label>
         <label><input type="radio" name="q3" value="0"> I'm hoping it will generate significant results passively on its own</label>
       </fieldset>
-      <button type="button" onclick="evaluateQuiz()">See My Result</button>
-      <div id="quiz-result"></div>
-    </div>
+    </QuizBox>
   </section>
 
   <ProductCta title="Automate your Facebook engagement with MineeMe" description="Visit the official product page to see current pricing, features, updates, and purchase options." buttonText="Try MineeMe" href="https://products.olspsystem.com/mineeme-268398?olsp=1006001" />

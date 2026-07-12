@@ -12,6 +12,8 @@ import FaqItem from "../../components/olsp-standard/FaqItem.astro";
 import PillList from "../../components/olsp-standard/PillList.astro";
 import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
 import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+import ScoreBar from "../../components/olsp-standard/ScoreBar.astro";
+import QuizBox from "../../components/olsp-standard/QuizBox.astro";
 
 const pageTitle = "What Is OLSP Academy? An Independent, Research-Based Review";
 const pageDescription =
@@ -241,17 +243,15 @@ const tocLinks = [
 
 <section id="verdict">
 <h2>Final Verdict</h2>
-<div class="score-row"><div class="score-label">Beginner Accessibility</div><div class="score-track"><div class="score-fill" style="width:80%"></div></div><div class="score-num">4/5</div></div>
-<div class="score-row"><div class="score-label">Training Structure</div><div class="score-track"><div class="score-fill" style="width:60%"></div></div><div class="score-num">3/5</div></div>
-<div class="score-row"><div class="score-label">Income Claim Transparency</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
-<div class="score-row"><div class="score-label">Independent Verifiability</div><div class="score-track"><div class="score-fill" style="width:30%"></div></div><div class="score-num">1.5/5</div></div>
+<ScoreBar label="Beginner Accessibility" score={4} />
+<ScoreBar label="Training Structure" score={3} />
+<ScoreBar label="Income Claim Transparency" score={1.5} />
+<ScoreBar label="Independent Verifiability" score={1.5} />
 <p style="font-size:.82rem;color:var(--ink-light);margin-top:-.3rem;">Editorial scores reflect our own assessment based on the research described in this article — not a certification, lab test, or audited rating.</p>
 
 <p>OLSP Academy offers a genuinely low-friction entry point into affiliate marketing, with structured training and an active community. The honest caveat is that it is, at its core, a recruitment-driven commission system: most realistic earnings come from referrals upgrading inside the ecosystem, not from selling outside products. Treat any income figures you see — including the ones cited in this article — as unverified self-reports, not evidence of typical results. If you join, do so as a low-cost experiment in learning affiliate marketing, not as a guaranteed income source.</p>
 
-<div class="quiz-box" id="quizBox">
-<h3 style="margin-top:0;">Quick Self-Check: Is This Worth Exploring for You?</h3>
-<p style="font-size:.85rem;color:var(--ink-light);">This is a simple self-reflection tool, not financial advice or a personalized recommendation.</p>
+<QuizBox heading="Quick Self-Check: Is This Worth Exploring for You?">
 <fieldset>
 <legend>Are you comfortable earning primarily when others you refer choose to upgrade?</legend>
 <label><input type="radio" name="q1" value="2"> Yes, that's fine with me</label>
@@ -267,9 +267,7 @@ const tocLinks = [
 <label><input type="radio" name="q3" value="2"> Yes</label>
 <label><input type="radio" name="q3" value="0"> No, I'll just trust the sales page</label>
 </fieldset>
-<button type="button" onclick="evaluateQuiz()">See My Result</button>
-<div id="quiz-result"></div>
-</div>
+</QuizBox>
 </section>
 
 <section id="faq">

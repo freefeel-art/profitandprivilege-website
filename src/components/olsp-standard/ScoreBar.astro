@@ -1,0 +1,15 @@
+---
+export interface Props {
+  label: string;
+  score: number;
+  max?: number;
+  width?: number;
+}
+const { label, score, max = 5, width: explicitWidth } = Astro.props;
+const pct = explicitWidth ?? (score / max) * 100;
+---
+<div class="score-row">
+  <div class="score-label">{label}</div>
+  <div class="score-track"><div class="score-fill" style={`width:${pct}%`}></div></div>
+  <div class="score-num">{score}/{max}</div>
+</div>

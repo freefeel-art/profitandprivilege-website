@@ -2,14 +2,14 @@
 
 **Version:** 2.1 — Production Ready  
 **Validated by:** `src/pages/reviews/olsp-mineeme.astro`, `src/pages/reviews/seo-writing-ai-review.astro`  
-**Components directory:** `src/components/olsp-standard/` (10 shared components + OlspLayout)  
+**Components directory:** `src/components/olsp-standard/` (12 shared components + OlspLayout)  
 **Purpose:** This document defines the production standard for every OLSP review article on this site. The Gold Master is a reusable component system — not a single file to copy. Structure, CSS tokens, JS behavior, SEO metadata, and CTA architecture are shared across all articles through OlspLayout and 10 Gold Master components. Editorial content, product metadata (CTA props, sources, pricing tables), and section body text vary per article.
 
 ---
 
 ## 1. Architecture Overview
 
-Every review article is an `.astro` file that imports OlspLayout and 11 Gold Master components. The layout, CSS tokens, TOC, and JavaScript live in OlspLayout, not in the article file. The article file contains only frontmatter metadata and editorial content wrapped in `<OlspLayout>` tags.
+Every review article is an `.astro` file that imports OlspLayout and 13 Gold Master components. The layout, CSS tokens, TOC, and JavaScript live in OlspLayout, not in the article file. The article file contains only frontmatter metadata and editorial content wrapped in `<OlspLayout>` tags.
 
 ```
 src/pages/reviews/
@@ -27,8 +27,10 @@ src/components/olsp-standard/
   GoldMasterQuote.astro              ← fixed editorial trust quote
   FaqItem.astro                      ← accordion FAQ item
   PillList.astro                     ← source link pills
-  AuthorBox.astro                    ← author bio
+  AuthorBox.astro                   ← author bio
   SiteFooter.astro                   ← brand footer
+  ScoreBar.astro                     ← individual score row with fill bar
+  QuizBox.astro                      ← self-check quiz wrapper with heading + button
 ```
 
 The same component system renders every review article. Only editorial content and product metadata change between articles.
@@ -54,6 +56,8 @@ import FaqItem from "../../components/olsp-standard/FaqItem.astro";
 import PillList from "../../components/olsp-standard/PillList.astro";
 import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
 import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+import ScoreBar from "../../components/olsp-standard/ScoreBar.astro";
+import QuizBox from "../../components/olsp-standard/QuizBox.astro";
 
 const pageTitle = "...";
 const pageDescription = "...";
@@ -79,9 +83,16 @@ const tocLinks = [
 
   <ProductCta title="..." description="..." buttonText="..." href="..." />
 
+  <!-- Score bars (final verdict section): ScoreBar components -->
+  <ScoreBar label="Category Name" score={4} />
+
   <!-- Body sections: overview, design, performance, ux, comparison, proscons, history, recommend, buy, verdict -->
 
   <ProductCta title="..." buttonText="..." href="..." />
+
+  <QuizBox heading="Quick Self-Check: Is This Worth Exploring for You?">
+    <!-- Exactly three fieldset elements with radio inputs named q1, q2, q3 -->
+  </QuizBox>
 
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
@@ -238,6 +249,38 @@ Used inline within sections. `warn` uses amber tokens. `info` uses blue tokens.
 | `href` | string | Yes | — |
 
 The component renders an editorial CTA card with heading, description, button, and affiliate disclosure. The button uses `target="_blank" rel="noopener noreferrer sponsored"`. The affiliate disclosure paragraph is hardcoded in the component — article pages do not add it.
+
+### 5.11 ScoreBar
+```astro
+<ScoreBar label="Category Name" score={4} />
+<ScoreBar label="Category Name" score={3.5} width={70} />
+```
+**Props:**
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `label` | string | Yes | — | Category label displayed in the score row |
+| `score` | number | Yes | — | Numerator of the score fraction (e.g. 4 for 4/5) |
+| `max` | number | No | `5` | Denominator of the score fraction |
+| `width` | number | No | calculated from `(score/max)*100` | Explicit width percentage override if calculated value does not match the existing visual output |
+
+Renders a single score row with label, fill track, and fraction. Width percentage and fraction must match per § 11 rules. Use `width` prop only when preserving an existing visual that diverges from the standard calculation.
+
+### 5.12 QuizBox
+```astro
+<QuizBox heading="Quick Self-Check: Is This Worth Exploring for You?">
+  <fieldset>...</fieldset>
+  <fieldset>...</fieldset>
+  <fieldset>...</fieldset>
+</QuizBox>
+```
+**Props:**
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `heading` | string | Yes | — | Heading for the quiz box (product-specific) |
+
+Wraps the three radio-group fieldsets with the standard quiz box container, disclaimer text, submit button, and result div. The `evaluateQuiz()` function lives in OlspLayout. Exactly three fieldsets with `q1`, `q2`, `q3` radio inputs must be provided as slot content.
 
 **Placement rules:**
 - **First placement:** After the intro section, after the first `GoldMasterQuote`
@@ -420,18 +463,39 @@ Both wrappers include an Organization node and optional `datePublished` / `dateM
 
 ## 11. Score Bars
 
-```html
-<div class="score-row">
-  <div class="score-label">Category Name</div>
-  <div class="score-track"><div class="score-fill" style="width:80%"></div></div>
-  <div class="score-num">4/5</div>
-</div>
+Score bars must use the `<ScoreBar>` component:
+
+```astro
+<ScoreBar label="Category Name" score={4} />
 ```
-Width percentage and display fraction must match: 5/5 = 100%, 4/5 = 80%, 3/5 = 60%, 2/5 = 40%, 1.5/5 = 30%, 1/5 = 20%.
+
+Width percentage (calculated from `score/max`) and display fraction must match: 5/5 = 100%, 4/5 = 80%, 3/5 = 60%, 2/5 = 40%, 1.5/5 = 30%, 1/5 = 20%. Use the `width` prop only when preserving existing visual output that diverges from the standard calculation.
 
 ---
 
 ## 12. Self-Check Quiz
+
+The quiz must use the `<QuizBox>` component:
+
+```astro
+<QuizBox heading="Quick Self-Check: Is This Product Right for You?">
+  <fieldset>
+    <legend>Question 1...</legend>
+    <label><input type="radio" name="q1" value="2"> Yes...</label>
+    <label><input type="radio" name="q1" value="0"> No...</label>
+  </fieldset>
+  <fieldset>
+    <legend>Question 2...</legend>
+    <label><input type="radio" name="q2" value="2"> Yes...</label>
+    <label><input type="radio" name="q2" value="0"> No...</label>
+  </fieldset>
+  <fieldset>
+    <legend>Question 3...</legend>
+    <label><input type="radio" name="q3" value="2"> Yes...</label>
+    <label><input type="radio" name="q3" value="0"> No...</label>
+  </fieldset>
+</QuizBox>
+```
 
 Exactly three questions using radio groups `q1`, `q2`, `q3`. Values: `2` (aligned) or `0` (misaligned). Score thresholds: `≥ 5` = good fit, `≥ 3` = mixed fit, `< 3` = poor fit. The `evaluateQuiz()` function lives in OlspLayout.
 
@@ -469,7 +533,7 @@ The `.video-frame` wrapper uses `padding-top: 56.25%` for 16:9 responsive contai
 
 ## 16. Production Rules
 
-1. **Component imports are mandatory.** Every article must import all 11 Gold Standard components. Do not omit imports.
+1. **Component imports are mandatory.** Every article must import all 13 Gold Standard components. Do not omit imports.
 
 2. **`prerender = true` is mandatory.** Every article page must be statically generated.
 
@@ -526,3 +590,5 @@ The `.video-frame` wrapper uses `padding-top: 56.25%` for 16:9 responsive contai
 | PillList | `src/components/olsp-standard/PillList.astro` | Source link pills |
 | AuthorBox | `src/components/olsp-standard/AuthorBox.astro` | Author bio |
 | SiteFooter | `src/components/olsp-standard/SiteFooter.astro` | Brand footer |
+| ScoreBar | `src/components/olsp-standard/ScoreBar.astro` | Individual score row with fill bar |
+| QuizBox | `src/components/olsp-standard/QuizBox.astro` | Self-check quiz wrapper |
