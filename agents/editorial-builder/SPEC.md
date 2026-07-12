@@ -1,141 +1,117 @@
-# Editorial Builder Agent — Specification
+# Editorial Builder — Output Specification
 
-## 1. Purpose
-
-This document specifies the operational requirements for the Editorial Builder Agent V1. It defines inputs, outputs, workflow, constraints, and quality standards.
-
-The agent operates as Stage 3 of the two-track pipeline (PIPELINE-ARCHITECTURE.md) and Stage 7 of the AI Editorial Operating System (Content Production). Its sole function is to transform an approved Research Brief (Heavy pipeline) or Opportunity Brief (Light pipeline) into a complete, publication-ready article file.
-
-It does not conduct research, validate facts, or make editorial decisions.
-
----
-
-## 2. Authority
+## File Format
 
 ```
-docs/WHY.md
-docs/AI-EDITORIAL-OPERATING-SYSTEM.md
-docs/AGENT-CONTRACT.md
-docs/EDITORIAL-OBJECT-MODEL.md
-    ↓
-docs/GOLD-MASTER-SPEC.md           (all article types — layout, CSS tokens, JS, components)
-docs/ROUNDUP-GOLD-MASTER-SPEC.md    (for roundup-type articles)
-docs/BLOG-MASTER-SPEC.md            (for informational/blog articles)
-    ↓
-agents/editorial-builder/SPEC.md   ← this document
-    ↓
-agents/editorial-builder/PROMPT.md
-    ↓
-Runtime execution
+---
+export const prerender = true;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{article title}</title>
+  <meta name="description" content="{meta description}" />
+  <link rel="canonical" href="https://olsp.profitandprivilege.com/{type}/{slug}/" />
+  <!-- per-type head additions (OG tags, JSON-LD) -->
+</head>
+<body>
+  <!-- article content -->
+  <style is:inline>/* full CSS block */</style>
+  <script is:inline>/* full JS block */</script>
+</body>
+</html>
 ```
 
-If any conflict arises, the higher document wins.
+`export const prerender = true;` is the **only** frontmatter entry. No imports, no other exports, no additional constants.
 
----
+## Component Inventory
 
-## 3. Inputs
+All components are defined in `docs/GOLD-MASTER-SPEC.md` sections 8.1–8.14 (and `docs/BLOG-MASTER-SPEC.md` sections 3a–3b for blog-specific components).
 
-The Editorial Builder Agent may receive input from two possible upstream paths:
+| # | Component | Review | Blog | Roundup |
+|---|---|---|---|---|
+| 8.1 | Hero Tag | ✅ | ✅ | ✅ |
+| 8.2 | Verdict Box | ✅ | ✅ | ✅ |
+| 8.3 | Methodology Block | ✅ | ❌ | ❌ |
+| 8.4 | Callouts | ✅ | ✅ | ✅ |
+| 8.5 | Tables | ✅ | optional | ✅ |
+| 8.6 | Pros & Cons Grid | ✅ | optional | ✅ |
+| 8.7 | Score Bars | ✅ | ❌ | ❌ |
+| 8.8 | Self-Check Quiz | ✅ | ❌ | ❌ |
+| 8.9 | SVG Diagram | ✅ | ❌ | ❌ |
+| 8.10 | Video Embed | ✅ | ❌ | ❌ |
+| 8.11 | FAQ Accordion | ✅ | ✅ | ✅ |
+| 8.12 | Sources / Pill-List | ✅ | ✅ | ✅ |
+| 8.13 | CTA Card (×3) | ✅ | ❌ | ✅ |
+| 8.14 | Site Footer | ✅ | ✅ | ✅ |
+| § 3a | QuoteBanner (×3) | ❌ | ✅ | ❌ |
+| § 3b | Standard CTA (×1) | ❌ | ✅ | ❌ |
+| — | Author Box | ❌ | ✅ | ✅ |
 
-### Light Pipeline — Opportunity Brief
+## CSS Block
 
-| Input | Format | Required | Description |
-|-------|--------|----------|-------------|
-| Opportunity Brief | Markdown document | Yes | Keyword scoring, editorial decision, section structure from ORA |
-| Seed keyword | String | Yes | Original keyword that generated this opportunity |
-| Content type | Enum | Yes | informational, how-to, guide, listicle, comparison |
+The `<style is:inline>` block must contain the CSS for **every** component listed in `docs/GOLD-MASTER-SPEC.md` sections 8.1–8.14, copied verbatim — regardless of which components the article actually uses. Do not trim unused CSS.
 
-### Heavy Pipeline — Knowledge Asset Citation
+For blog articles, additionally include the `.quote-banner` and `.standard-cta` CSS from `docs/BLOG-MASTER-SPEC.md` sections 3a–3b.
 
-| Input | Format | Required | Description |
-|-------|--------|----------|-------------|
-| Research Brief | Markdown document | Yes | Complete research package from Research Compiler |
-| Knowledge Asset entry | Registry reference | Yes | Entry from `docs/HEAVY-ASSET-LIBRARY.md` |
-| Content type | Enum | Yes | review, roundup, pillar, comparison |
+## JavaScript Block
 
-### Common Inputs
+The `<script is:inline>` block must contain:
 
-| Input | Format | Required | Description |
-|-------|--------|----------|-------------|
-| Gold Master Spec | GOLD-MASTER-SPEC.md | Required | Layout, CSS tokens, JS, components |
-| Reference Article | `.astro` file | Required | `src/pages/reviews/olsp-academy.astro` for CSS/JS verbatim copy |
+1. Mobile TOC toggle (`#tocToggle` click → toggle `.open` on `#tocWrap`)
+2. Scroll-spy (`IntersectionObserver` watching `main section` elements, `rootMargin: '-20% 0px -70% 0px'`)
+3. TOC link-close on mobile (each TOC `<a>` removes `.open` from `#tocWrap` at `width <= 900`)
+4. Quiz evaluation (`evaluateQuiz` global function) — included conditionally:
+   - **Reviews:** always included (quiz is a required component)
+   - **Blogs:** included only if the blog spec adds quiz logic (currently unused, include stub or omit)
+   - **Roundups:** included with per-question matching logic (not cumulative threshold)
 
----
+The `is:inline` directive is required — do not use a bare `<script>` tag.
 
-## 4. Output
+## Head Section Per Type
 
-| Output | Format | Location | Description |
-|--------|--------|----------|-------------|
-| Complete article file | `.astro` | `src/pages/{section}/{slug}.astro` | Standalone, publication-ready page |
+### Review
+```
+<title>{title}</title>
+<meta name="description" content="{~155 char summary}" />
+<link rel="canonical" href="https://olsp.profitandprivilege.com/reviews/{slug}/" />
+```
+No OG tags, no Twitter Card tags, no JSON-LD.
 
-### File location by content type
+### Blog
+```
+<title>{title}</title>
+<meta name="description" content="{~155 char summary}" />
+<link rel="canonical" href="https://olsp.profitandprivilege.com/blog/{slug}/" />
+<meta property="og:title" content="{same as <title>}" />
+<meta property="og:description" content="{same as meta description}" />
+<meta property="og:url" content="{same as canonical}" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Profit and Privilege" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{same as <title>}" />
+<meta name="twitter:description" content="{same as meta description}" />
+<script type="application/ld+json">
+{/* Article + FAQPage */}</script>
+```
+OG and Twitter tags must exactly match `<title>` and `<meta name="description">`. JSON-LD `FAQPage` `mainEntity` must match FAQ questions exactly.
 
-| Content Type | Location |
-|---|---|
-| Review | `src/pages/reviews/{slug}.astro` |
-| Blog / informational | `src/pages/blog/{slug}.astro` |
-| Roundup | `src/pages/roundups/{slug}.astro` |
-| Investigation | `src/pages/{slug}.astro` |
+### Roundup
+```
+<title>{title}</title>
+<meta name="description" content="{~155 char summary}" />
+<link rel="canonical" href="https://olsp.profitandprivilege.com/roundups/{slug}/" />
+```
+No OG tags, no Twitter Card tags, no JSON-LD (same as reviews).
 
----
+## External Links Standard
 
-## 5. Workflow
+| Link Type | `target` | `rel` |
+|---|---|---|
+| Internal (`/...`) | (none) | (none) |
+| External, non-affiliate | `_blank` | `noopener noreferrer` |
+| External, affiliate/CTA/sponsored | `_blank` | `noopener noreferrer sponsored` |
 
-### Step 1: Validate inputs
-Verify required inputs are present. If not, stop and report.
-
-### Step 2: Determine article structure
-- Reviews: fixed section order from GOLD-MASTER-SPEC.md
-- Blog/informational: section structure from template or brief
-- Roundups: section order from ROUNDUP-GOLD-MASTER-SPEC.md
-
-### Step 3: Map evidence to sections
-Identify which claims from the brief are relevant to each section.
-
-### Step 4: Write each section
-Use only evidence from the brief. No invention. Label claims by reliability.
-
-### Step 5: Assemble complete file
-- Add Astro frontmatter with `export const prerender = true`
-- Copy CSS verbatim from Gold Master reference article
-- Copy JS verbatim from Gold Master reference article
-- Include all required Gold Master components
-- No layout imports, no component imports, no shared CSS
-
-### Step 6: Self-review
-Verify every factual claim traces to the brief. Verify knowledge gaps treated per instructions.
-
----
-
-## 6. Gold Master Compliance (all article types)
-
-| Element | Requirement |
-|---|---|
-| Astro frontmatter | `export const prerender = true`, `pageTitle`, `pageDescription` |
-| CSS | Copy entire `<style>` block verbatim from `src/pages/reviews/olsp-academy.astro` |
-| JS | Copy entire `<script is:inline>` tag verbatim from reference article |
-| Canonical URL | Absolute with trailing slash |
-| External links | Non-affiliate: `target="_blank" rel="noopener noreferrer"`. Affiliate/sponsored: `rel="noopener noreferrer sponsored"`. Internal: no target/rel |
-| Sources | `<ul class="pill-list">` with pill-shaped source links |
-
----
-
-## 7. Constraints
-
-1. Never conduct additional research. The brief is the sole source of facts.
-2. Never invent facts, statistics, quotes, or data.
-3. Never fill a knowledge gap with an assumption.
-4. Never modify the brief.
-5. Never perform Editorial QA — produce a draft, not an approved article.
-6. Respect the section structure from the brief or template.
-
----
-
-## 8. Next Stage
-
-**Stage:** Editorial QA (Stage 4)
-
-**Handoff includes:**
-- Complete article file
-- Brief (for QA cross-reference)
-- Any open questions for QA
+Applied to every `<a>` tag in the article body, navigation, and footer.
