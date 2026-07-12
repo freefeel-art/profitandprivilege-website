@@ -111,9 +111,11 @@ function createInitialState() {
   };
 }
 
+const STORAGE_KEY = 'pipeline-state';
+
 class PipelineStore {
   constructor() {
-    this.state = createInitialState();
+    this.state = this.loadFromStorage() || createInitialState();
     this.subs = new Set();
     this.timers = [];
   }
@@ -122,12 +124,43 @@ class PipelineStore {
 
   set(partial) {
     this.state = { ...this.state, ...partial };
+    this.persist();
     this.notify();
   }
 
   update(fn) {
     this.state = fn(this.state);
+    this.persist();
     this.notify();
+  }
+
+  persist() {
+    try {
+      const serializable = {
+        status: this.state.status,
+        topic: this.state.topic,
+        mode: this.state.mode,
+        operatingMode: this.state.operatingMode,
+        startedAt: this.state.startedAt,
+        stages: this.state.stages,
+        events: this.state.events.slice(-50),
+        results: this.state.results,
+        verification: this.state.verification,
+        productionStatus: this.state.productionStatus,
+        deploymentStatus: this.state.deploymentStatus,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serializable));
+    } catch { /* localStorage may be unavailable */ }
+  }
+
+  loadFromStorage() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      const saved = JSON.parse(raw);
+      if (!saved || !saved.status) return null;
+      return { ...createInitialState(), ...saved };
+    } catch { return null; }
   }
 
   subscribe(fn) {
@@ -162,6 +195,7 @@ class PipelineStore {
     this.timers.forEach(clearTimeout);
     this.timers = [];
     this.state = createInitialState();
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
     this.notify();
   }
 

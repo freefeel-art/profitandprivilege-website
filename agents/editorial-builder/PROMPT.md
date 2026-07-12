@@ -37,6 +37,20 @@ const tocLinks = [...];
 </OlspLayout>
 ```
 
+## Inputs
+
+The Editorial Builder requires the following inputs. If any are missing, list what is absent and wait.
+
+| Input | Format | Required | Notes |
+|-------|--------|----------|-------|
+| **Topic / Seed Keyword** | Plain text | Yes | The article's primary topic and SEO target |
+| **Article Type** | `blog`, `review`, or `roundup` | Yes | Determines component set and section structure |
+| **Research Brief** | Path to `.md` file | No | If provided, read it for evidence, sources, and editorial angles |
+| **Target Slug** | Kebab-case string | Yes | Determines output path: `src/pages/{type}/{slug}.astro` |
+| **Canonical URL** | Full URL with trailing slash | Yes | Format: `https://olsp.profitandprivilege.com/{type}/{slug}/` |
+
+If a Research Brief is provided, read it before generating. Use its evidence, sources, and recommended angles as the content foundation. If no brief is provided, generate from the topic alone using publicly available knowledge.
+
 ## Before Generating
 
 1. Read `docs/GOLD-MASTER-SPEC.md` (structural + CSS + JS standard for all article types)

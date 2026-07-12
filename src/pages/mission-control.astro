@@ -294,7 +294,7 @@ const tocLinks = [
 </OlspLayout>
 
 <script>
-  import { pipelineStore, simulatePipeline } from '../scripts/pipeline-runner.js';
+  import { pipelineStore } from '../scripts/pipeline-runner.js';
 
   const resultsCard = document.getElementById('production-results');
   const consoleDetails = document.getElementById('console-details');
@@ -450,27 +450,47 @@ const tocLinks = [
         operatingMode: 'assisted',
       });
 
-      // Scroll to pipeline progress
-      const progressEl = document.getElementById('panel-progress');
-      if (progressEl) progressEl.scrollIntoView({ behavior: 'smooth' });
-
       // Mark this row as active
       document.querySelectorAll('.problem-row').forEach(r => r.classList.remove('active'));
       const row = btn.closest('.problem-row');
       if (row) row.classList.add('active');
 
-      // Update button state
-      btn.textContent = 'Running...';
+      // Generate the real pipeline command
+      const slug = topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const pipelineCmd = `./pipeline/run.sh "${topic}"`;
+      const bridgeCmd = `./pipeline/bridge-to-builder.sh research/output/publishing-packages/affiliate_marketing-publishing-package.json`;
+
+      // Show the launch panel with real commands
+      btn.textContent = 'Prepared';
       btn.disabled = true;
 
-      // Run the produce simulation
-      simulatePipeline(topic, 'produce').then(() => {
-        btn.textContent = 'Done';
-        setTimeout(() => {
-          btn.textContent = 'Produce';
-          btn.disabled = false;
-        }, 3000);
-      });
+      // Update the console to show the real pipeline command
+      const consoleLog = document.getElementById('console-log');
+      if (consoleLog) {
+        consoleLog.innerHTML = `
+          <div class="console-waiting">
+            <strong>Pipeline prepared for:</strong> ${topic}<br><br>
+            <strong>Step 1 — Run the pipeline:</strong><br>
+            <code style="background:#1a1a2e;color:#c9d1d9;padding:.3rem .5rem;border-radius:4px;display:block;margin:.3rem 0;">${pipelineCmd}</code><br>
+            <strong>Step 2 — Bridge to Editorial Builder:</strong><br>
+            <code style="background:#1a1a2e;color:#c9d1d9;padding:.3rem .5rem;border-radius:4px;display:block;margin:.3rem 0;">${bridgeCmd}</code><br>
+            <span style="color:#8b949e;font-size:.82rem;">Run these commands in your terminal. The pipeline will generate the article, QA report, and publication report.</span>
+          </div>`;
+      }
+
+      // Show the results card with pending status
+      if (resTitle) resTitle.textContent = topic;
+      if (resDuration) resDuration.textContent = 'Pending';
+      if (resStatus) resStatus.textContent = 'Awaiting Pipeline Execution';
+      if (resDeployment) resDeployment.textContent = 'Not Started';
+      if (resultsCard) resultsCard.style.display = 'block';
+
+      // Bind buttons as disabled until pipeline runs
+      bindResults({}, 'Awaiting Pipeline Execution', 'Not Started', null);
+
+      // Scroll to console
+      const consoleEl = document.getElementById('panel-console');
+      if (consoleEl) consoleEl.scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>
