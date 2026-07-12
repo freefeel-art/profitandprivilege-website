@@ -1,198 +1,198 @@
 # Editorial Builder — Output Template
 
-A self-contained `.astro` file follows this structure. The full CSS/JS blocks are copied verbatim from the canonical Gold Master reference (`src/pages/reviews/olsp-academy.astro` or `docs/GOLD-MASTER-SPEC.md` sections 8.1–8.14).
+Articles import `OlspLayout` and Gold Master components from `src/components/olsp-standard/`. The layout provides all CSS, JS, TOC, and document structure. Articles contain only frontmatter metadata and editorial content.
 
-## Structure
+## Blog Article Template
 
 ```astro
 ---
 export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const pageTitle = "Article Title for SEO";
+const pageDescription = "~155 char meta description for search results";
+
+const tocLinks = [
+  { href: "#intro", label: "Introduction" },
+  { href: "#section-1", label: "1. First Section" },
+  { href: "#section-2", label: "2. Second Section" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{article title}</title>
-  <meta name="description" content="{meta description}" />
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://olsp.profitandprivilege.com/{type}/{slug}/" />
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/blog/{slug}/" tocLinks={tocLinks}>
 
-  <!-- Per-type additions (blog: OG tags + JSON-LD; review/roundup: none) -->
-</head>
-<body itemscope itemtype="https://schema.org/Article">
-
-  <nav id="toc" aria-label="Table of Contents">
-    <button id="tocToggle" aria-label="Toggle table of contents">☰ Table of Contents</button>
-    <div id="tocWrap">
-      <ol>
-        <li><a href="#intro">Introduction</a></li>
-        <!-- one <li> per section -->
-      </ol>
+  <section id="intro">
+    <span class="hero-tag">Category · Updated Month Year</span>
+    <h1>Human-Facing Article Title</h1>
+    <p><strong>Opening paragraph with key insight.</strong> Supporting context.</p>
+    <div class="verdict-box">
+      <p><strong>Best for:</strong> ...</p>
+      <p><strong>Not ideal for:</strong> ...</p>
     </div>
-  </nav>
+    <h3>What This Guide Covers</h3>
+    <p>Brief overview of content.</p>
+  </section>
 
-  <main>
-    <!-- SECTIONS -->
+  <!-- QuoteBanner #1 -->
+  <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+    <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+  </a>
 
-    <!-- 0. CTA Card (review/roundup: post-intro only) or QuoteBanner (blog: first) -->
-    <!-- 1. Intro -->
-    <section id="intro">
-      <!-- Hero Tag (8.1) -->
-      <!-- Verdict Box (8.2) -->
-      <!-- Callouts (8.4) -->
-    </section>
+  <!-- Standard CTA #1 -->
+  <div class="cta-card standard-cta">
+    <h3>Ready to [topic-relevant action]?</h3>
+    <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
+  </div>
 
-    <!-- 2..N Content sections -->
-    <section id="{section-slug}">
-      <!-- section content -->
-    </section>
+  <section id="section-1">
+    <h2>1. Section Title</h2>
+    <p>Content...</p>
+    <Callout type="info">
+      <strong>Key insight:</strong> Supporting detail.
+    </Callout>
+  </section>
 
-    <!-- CTA Card (review/roundup: mid-article) or QuoteBanner (blog: second) -->
+  <!-- QuoteBanner #2 (mid-article) -->
+  <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+    <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+  </a>
 
-    <!-- More content sections -->
+  <section id="section-2">
+    <h2>2. Section Title</h2>
+    <p>Content...</p>
+  </section>
 
-    <!-- Review-only: Methodology Block (8.3), Score Bars (8.7), Quiz (8.8), Diagram (8.9), Video (8.10) -->
+  <!-- More body sections... -->
 
-    <!-- CTA Card (review/roundup: before Sources) or QuoteBanner (blog: third) -->
+  <!-- QuoteBanner #3 (pre-FAQ) -->
+  <a href="https://olspacademy.com/c/profitandprivilege" class="quote-banner" target="_blank" rel="noopener noreferrer sponsored">
+    <p>&ldquo;Discover the tools and training that can open the next chapter in your online marketing journey.&rdquo;</p>
+  </a>
 
-    <!-- Roundup only: Comparison section, Best Choice, Decision Guide -->
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <FaqItem question="Question 1?"><p>Answer 1.</p></FaqItem>
+    <FaqItem question="Question 2?"><p>Answer 2.</p></FaqItem>
+    <FaqItem question="Question 3?"><p>Answer 3.</p></FaqItem>
+    <FaqItem question="Question 4?"><p>Answer 4.</p></FaqItem>
+    <FaqItem question="Question 5?"><p>Answer 5.</p></FaqItem>
+    <FaqItem question="Question 6?"><p>Answer 6.</p></FaqItem>
+    <FaqItem question="Question 7?"><p>Answer 7.</p></FaqItem>
+  </section>
 
-    <!-- FAQ (8.11) -->
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>Question text</summary>
-        <p>Answer text</p>
-      </details>
-      <!-- additional questions -->
-    </section>
+  <!-- Standard CTA #2 -->
+  <div class="cta-card standard-cta">
+    <h3>Ready to [topic-relevant action]?</h3>
+    <a href="https://olspfunnels.com/megalink-2-front-end?olsp=1006001" class="cta-btn" target="_blank" rel="noopener noreferrer sponsored">Start with the $7 Megalink &rarr;</a>
+  </div>
 
-    <!-- Blog only: Standard CTA (post-FAQ, pre-author) -->
+  <section id="author">
+    <h2>About the Author</h2>
+    <AuthorBox />
+  </section>
 
-    <!-- Blog/Roundup only: Author Box -->
-    <section id="author">
-      <h2>About the Author</h2>
-      <div class="author-box">
-        <img src="/assets/authors/jarmo-halonen-author.png" alt="Jarmo Halonen" width="80" height="80" />
-        <div>
-          <strong>Jarmo Halonen</strong><br />
-          <span>{role}</span>
-          <p>{biography}</p>
-          <a href="/authors/jarmo-halonen/">Read full bio →</a>
-        </div>
-      </div>
-    </section>
+  <section id="sources">
+    <h2>Sources &amp; References</h2>
+    <ul class="pill-list">
+      <li><a href="https://example.com/source" target="_blank" rel="noopener noreferrer">Source Name</a></li>
+      <li><a href="/internal-page/">Internal Link</a></li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--ink-light);">Disclaimer text.</p>
+  </section>
 
-    <!-- Sources (8.12) -->
-    <section id="sources">
-      <h2>Sources &amp; References</h2>
-      <ul class="pill-list">
-        <li><a href="..." target="_blank" rel="noopener noreferrer">Source</a></li>
-      </ul>
-      <p style="font-size:.82rem;color:var(--ink-light);">Disclaimer text.</p>
-    </section>
-
-    <!-- Site Footer (8.14) -->
-    <footer class="site-footer">
-      <span>Profit and Privilege — independent research since 2025</span>
-      <span><a href="{footer-link}" {target/rel attributes}>olsp.profitandprivilege.com</a></span>
-    </footer>
-  </main>
-
-  <style is:inline>
-    /* :root design tokens */
-    :root{--accent:#2563eb;--ink:#1e293b;--ink-light:#64748b;--line:#e2e8f0;--bg-soft:#f1f5f9;--radius:12px;}
-
-    /* Reset + base */
-    /* Layout grid */
-    /* TOC */
-    /* Hero Tag (8.1) */
-    /* Verdict Box (8.2) */
-    /* Methodology Block (8.3) */
-    /* Callouts (8.4) */
-    /* Tables (8.5) */
-    /* Pros & Cons Grid (8.6) */
-    /* Score Bars (8.7) */
-    /* Quiz (8.8) */
-    /* SVG Diagram (8.9) */
-    /* Video Embed (8.10) */
-    /* FAQ Accordion (8.11) */
-    /* Pill-List (8.12) */
-    /* CTA Card (8.13) */
-    /* Site Footer (8.14) */
-    /* Blog-only: QuoteBanner (§ 3a), Standard CTA (§ 3b) */
-    /* Blog-only: Author Box */
-    /* Responsive: breakpoints */
-  </style>
-
-  <script is:inline>
-    /* Mobile TOC toggle */
-    /* Scroll-spy with IntersectionObserver */
-    /* TOC link-close on mobile */
-    /* Quiz evaluation (conditional) */
-  </script>
-</body>
-</html>
+  <SiteFooter />
+</OlspLayout>
 ```
 
-## Section ID Convention
+## Review Article Template
 
+```astro
+---
+export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+import ScoreBar from "../../components/olsp-standard/ScoreBar.astro";
+import QuizBox from "../../components/olsp-standard/QuizBox.astro";
+
+const pageTitle = "Product Review Title";
+const pageDescription = "Review description";
+
+const tocLinks = [
+  { href: "#intro", label: "1. First Impressions" },
+  { href: "#overview", label: "2. Overview & Pricing" },
+  { href: "#features", label: "3. Key Features" },
+  { href: "#performance", label: "4. Performance" },
+  { href: "#ux", label: "5. User Experience" },
+  { href: "#comparison", label: "6. Comparison" },
+  { href: "#proscons", label: "7. Pros & Cons" },
+  { href: "#verdict", label: "8. Final Verdict" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#author", label: "About the Author" },
+  { href: "#sources", label: "Sources" },
+];
+---
+
+<OlspLayout title={pageTitle} description={pageDescription} canonical="https://olsp.profitandprivilege.com/reviews/{slug}/" tocLinks={tocLinks} articleType="Review" productName="Product Name">
+
+  <section id="intro">
+    <HeroTag text="Independent Review · Updated Month Year" />
+    <h1>Product Review Title</h1>
+    <p>Opening paragraph...</p>
+    <VerdictBox>
+      <p><strong>Best for:</strong> ...</p>
+      <p><strong>Not ideal for:</strong> ...</p>
+    </VerdictBox>
+    <h3>What Is Product?</h3>
+    <p>Description...</p>
+    <Methodology>
+      <p><strong>Who wrote this:</strong> ...</p>
+      <p><strong>How this review was built:</strong> ...</p>
+    </Methodology>
+  </section>
+
+  <GoldMasterQuote />
+
+  <ProductCta title="Try Product Free" description="..." buttonText="Start Free Trial" href="https://..." />
+
+  <!-- Body sections... -->
+
+  <ScoreBar label="Category" score={4} />
+
+  <!-- FAQ, Author, Sources... -->
+
+</OlspLayout>
 ```
-id="intro"       — Introduction
-id="{topic}"     — Content sections (kebab-case, descriptive)
-id="faq"         — Frequently Asked Questions
-id="author"      — About the Author (blog/roundup only)
-id="sources"     — Sources & References
-```
 
-Every section must have an `id` that matches its corresponding TOC entry.
+## Checklist
 
-## TOC
+After generating any article:
 
-Each `<section>` gets a corresponding `<li><a href="#{section-id}">` in the TOC `<ol>`. Section IDs and TOC anchor hrefs must match exactly. Order must match the article's content order.
-
-## Per-Article-Type Section Order
-
-### Review
-1. CTA (post-intro)
-2. `#intro` — Hero Tag, Verdict Box, Callouts
-3. Content sections
-4. Methodology Block (optional)
-5. CTA (mid-article)
-6. Score Bars, Quiz, Diagram, Video (as needed)
-7. Content sections continued
-8. CTA (pre-Sources)
-9. `#faq`
-10. `#sources`
-11. Site Footer
-
-### Blog
-1. `#intro` — Hero Tag, Verdict Box, Callouts
-2. QuoteBanner (first)
-3. Content sections
-4. QuoteBanner (second)
-5. Content sections continued
-6. QuoteBanner (third)
-7. `#faq`
-8. Standard CTA
-9. `#author`
-10. `#sources`
-11. Site Footer
-
-### Roundup
-1. CTA (post-intro)
-2. `#intro` — Hero Tag, Verdict Box, Callouts
-3. Quick Comparison Table
-4. Individual Product Sections
-5. CTA (mid-article)
-6. Comparison Section
-7. Best Choice By Scenario
-8. Alternatives
-9. Decision Guide
-10. CTA (pre-Sources)
-11. `#faq`
-12. `#author`
-13. `#sources`
-14. Site Footer
+1. ✓ All external links have `target="_blank"` and correct `rel` attributes
+2. ✓ Blog articles include OG tags, Twitter Card tags, JSON-LD
+3. ✓ Blog articles have exactly 2 Standard CTA components
+4. ✓ Blog articles have 2-3 QuoteBanner components (short) or 4-5 (long)
+5. ✓ Review articles have no OG/JSON-LD
+6. ✓ Review articles have 3 CTA Card components
+7. ✓ FAQ has minimum 4 items (blog) or 6 items (review)
+8. ✓ Internal links point to existing pages (check CONTENT-REGISTRY.md)
+9. ✓ `astro build` passes
+10. ✓ Dev server returns HTTP 200
