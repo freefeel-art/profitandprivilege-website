@@ -31,8 +31,16 @@ const placeholders = [
     for (const [key, val] of Object.entries(s.results)) {
       const el = valMap[key];
       if (!el) continue;
-      el.textContent = val || '—';
-      el.className = `result-value${val ? ' result-populated' : ''}`;
+      if (val && val.url) {
+        el.innerHTML = `<a href="${val.url}" target="_blank" rel="noopener noreferrer" class="result-link">${val.title || val.url}</a>`;
+        el.className = 'result-value result-populated';
+      } else if (val && val.title) {
+        el.textContent = val.title;
+        el.className = 'result-value result-populated';
+      } else {
+        el.textContent = '—';
+        el.className = 'result-value';
+      }
     }
   });
 </script>
@@ -64,4 +72,6 @@ const placeholders = [
     margin-top: .15rem;
   }
   .result-populated { color: var(--accent); }
+  .result-link { color: var(--accent); text-decoration: none; }
+  .result-link:hover { text-decoration: underline; }
 </style>

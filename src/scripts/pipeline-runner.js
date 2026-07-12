@@ -102,6 +102,7 @@ function createInitialState() {
       qaReport: null,
       publishReport: null,
     },
+    productionStatus: null,
     productionLaunch: null,
     scheduledRun: null,
     dailyGoal: null,
@@ -246,13 +247,26 @@ export async function simulatePipeline(topic, modeId) {
   await delay(300);
   pipelineStore.addEvent(`Total time: ${Math.floor(elapsed / 1000)}s`, 'info');
 
+  const slug = topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
   pipelineStore.set({
     results: {
-      opportunity: modeId === 'discover' || modeId === 'full' ? topic : null,
-      researchBrief: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-research-brief.md` : null,
-      article: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-article.astro` : null,
-      qaReport: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-qa-report.md` : null,
-      publishReport: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-pub-report.md` : null,
+      opportunity: modeId === 'discover' || modeId === 'full'
+        ? { title: topic, url: null }
+        : null,
+      researchBrief: modeId === 'produce' || modeId === 'full'
+        ? { title: `${slug}-research-brief.md`, url: `/docs/research/${slug}-research-brief.md` }
+        : null,
+      article: modeId === 'produce' || modeId === 'full'
+        ? { title: topic, slug, url: `/blog/${slug}/`, source: `src/pages/blog/${slug}.astro` }
+        : null,
+      qaReport: modeId === 'produce' || modeId === 'full'
+        ? { title: `${slug}-qa-report.md`, url: `/reports/editorial-qa/${slug}-qa-report.md` }
+        : null,
+      publishReport: modeId === 'produce' || modeId === 'full'
+        ? { title: `${slug}-pub-report.md`, url: `/reports/publication/${slug}-pub-report.md` }
+        : null,
     },
+    productionStatus: 'Published',
   });
 }

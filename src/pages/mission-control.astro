@@ -101,17 +101,16 @@ const tocLinks = [
     </div>
     <div class="results-meta-item">
       <span class="results-meta-label">Status</span>
-      <span class="results-meta-value results-status">Published</span>
+      <span class="results-meta-value results-status" id="res-status">—</span>
     </div>
   </div>
 
   <h3>Generated Assets</h3>
-  <div class="results-assets">
-    <div class="asset-item"><span class="asset-check">✓</span> Opportunity Brief</div>
-    <div class="asset-item"><span class="asset-check">✓</span> Research Brief</div>
-    <div class="asset-item"><span class="asset-check">✓</span> Astro Article</div>
-    <div class="asset-item"><span class="asset-check">✓</span> QA Report</div>
-    <div class="asset-item"><span class="asset-check">✓</span> Publication Report</div>
+  <div class="results-assets" id="results-assets">
+    <div class="asset-item" data-asset="researchBrief"><span class="asset-check">✓</span> Research Brief</div>
+    <div class="asset-item" data-asset="article"><span class="asset-check">✓</span> Astro Article</div>
+    <div class="asset-item" data-asset="qaReport"><span class="asset-check">✓</span> QA Report</div>
+    <div class="asset-item" data-asset="publishReport"><span class="asset-check">✓</span> Publication Report</div>
   </div>
 
   <h3>Production Timeline</h3>
@@ -126,10 +125,11 @@ const tocLinks = [
   </div>
 
   <h3>Primary Actions</h3>
-  <div class="results-actions">
-    <a href="#" class="action-btn" id="action-article">View Article</a>
-    <a href="#" class="action-btn" id="action-research">Open Research Brief</a>
-    <a href="#" class="action-btn" id="action-qa">View QA Report</a>
+  <div class="results-actions" id="results-actions">
+    <a href="#" class="action-btn action-disabled" id="action-article" data-action="article">View Article</a>
+    <a href="#" class="action-btn action-disabled" id="action-research" data-action="researchBrief">Open Research Brief</a>
+    <a href="#" class="action-btn action-disabled" id="action-qa" data-action="qaReport">View QA Report</a>
+    <a href="#" class="action-btn action-disabled" id="action-pub" data-action="publishReport">View Publication Report</a>
     <button type="button" class="action-btn action-btn-primary" id="action-next">Produce Next Article</button>
   </div>
 </div>
@@ -296,11 +296,51 @@ const tocLinks = [
   const consoleDetails = document.getElementById('console-details');
   const resTitle = document.getElementById('res-title');
   const resDuration = document.getElementById('res-duration');
+  const resStatus = document.getElementById('res-status');
   const actionNext = document.getElementById('action-next');
 
-  function showResults(topic, duration) {
+  function bindResults(results, status) {
+    // Bind action buttons
+    document.querySelectorAll('[data-action]').forEach(btn => {
+      const key = btn.getAttribute('data-action');
+      const asset = results[key];
+      if (asset && asset.url) {
+        btn.href = asset.url;
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+        btn.classList.remove('action-disabled');
+      } else {
+        btn.href = '#';
+        btn.classList.add('action-disabled');
+        btn.title = 'Not Available';
+      }
+    });
+
+    // Bind asset list — show/hide based on what was generated
+    document.querySelectorAll('[data-asset]').forEach(el => {
+      const key = el.getAttribute('data-asset');
+      const asset = results[key];
+      if (asset) {
+        el.classList.remove('asset-unavailable');
+        if (asset.url) {
+          const check = el.querySelector('.asset-check');
+          if (check) check.textContent = '✓';
+        }
+      } else {
+        el.classList.add('asset-unavailable');
+        const check = el.querySelector('.asset-check');
+        if (check) check.textContent = '—';
+      }
+    });
+
+    // Bind status
+    if (resStatus) resStatus.textContent = status || 'Generated';
+  }
+
+  function showResults(topic, duration, results, status) {
     if (resTitle) resTitle.textContent = topic;
     if (resDuration) resDuration.textContent = duration;
+    bindResults(results || {}, status);
     if (resultsCard) resultsCard.style.display = 'block';
     if (consoleDetails) consoleDetails.removeAttribute('open');
     resultsCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -312,7 +352,7 @@ const tocLinks = [
       const elapsed = Math.floor((Date.now() - s.startedAt) / 1000);
       const mm = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const ss = String(elapsed % 60).padStart(2, '0');
-      showResults(s.topic, `${mm}:${ss}`);
+      showResults(s.topic, `${mm}:${ss}`, s.results, s.productionStatus);
     }
   });
 
@@ -333,6 +373,14 @@ const tocLinks = [
 
       // Hide previous results
       if (resultsCard) resultsCard.style.display = 'none';
+
+      // Reset action buttons to disabled
+      document.querySelectorAll('[data-action]').forEach(b => {
+        b.href = '#';
+        b.classList.add('action-disabled');
+        b.removeAttribute('target');
+        b.removeAttribute('rel');
+      });
 
       // Set up the pipeline for this topic
       pipelineStore.reset();
@@ -428,6 +476,8 @@ const tocLinks = [
   .results-assets { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .5rem; }
   .asset-item { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ink); }
   .asset-check { color: var(--good); font-weight: 700; }
+  .asset-unavailable { opacity: .4; }
+  .asset-unavailable .asset-check { color: var(--ink-light); }
   .results-timeline { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .5rem; }
   .timeline-item { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ink); }
   .timeline-check { color: var(--good); font-weight: 700; }
@@ -441,6 +491,10 @@ const tocLinks = [
   .action-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
   .action-btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .action-btn-primary:hover { opacity: .85; background: var(--accent); }
+  .action-disabled {
+    opacity: .4; cursor: not-allowed; pointer-events: none;
+    border-style: dashed; color: var(--ink-light);
+  }
 
   /* Console Details (collapsed by default after completion) */
   .console-details { margin-bottom: 1.5rem; }
