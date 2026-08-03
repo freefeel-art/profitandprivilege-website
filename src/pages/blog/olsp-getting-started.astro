@@ -1,0 +1,180 @@
+---
+export const prerender = true;
+
+import OlspLayout from "../../components/olsp-standard/OlspLayout.astro";
+import HeroTag from "../../components/olsp-standard/HeroTag.astro";
+import VerdictBox from "../../components/olsp-standard/VerdictBox.astro";
+import Methodology from "../../components/olsp-standard/Methodology.astro";
+import Callout from "../../components/olsp-standard/Callout.astro";
+import ProductCta from "../../components/olsp-standard/ProductCta.astro";
+import GoldMasterQuote from "../../components/olsp-standard/GoldMasterQuote.astro";
+import FaqItem from "../../components/olsp-standard/FaqItem.astro";
+import PillList from "../../components/olsp-standard/PillList.astro";
+import AuthorBox from "../../components/olsp-standard/AuthorBox.astro";
+import SiteFooter from "../../components/olsp-standard/SiteFooter.astro";
+
+const pageTitle = "Getting Started with OLSP Academy: What You Learn in the First 8 Minutes";
+const pageDescription =
+  "A realistic walkthrough of the first training every new OLSP member should watch. No hype - just what you actually learn, how long it takes, and whether it's worth your time.";
+
+const tocLinks = [
+  { href: "#intro", label: "1. Why the First Training Matters" },
+  { href: "#what-it-is", label: "2. What Getting Started Actually Covers" },
+  { href: "#key-lessons", label: "3. The Key Lessons" },
+  { href: "#time-investment", label: "4. Time Investment and What Comes Next" },
+  { href: "#who-benefits", label: "5. Who Gets the Most Out of This" },
+  { href: "#verdict", label: "6. Verdict: Worth 8 Minutes?" },
+  { href: "#faq", label: "7. FAQ" },
+  { href: "#next", label: "8. What to Do Next" },
+];
+---
+
+<OlspLayout title={pageTitle} description={pageDescription}
+canonical="https://olsp.profitandprivilege.com/blog/olsp-getting-started/"
+tocLinks={tocLinks}
+articleType="Blog"
+productName="OLSP Academy"
+datePublished="2026-08-03"
+dateModified="2026-08-03">
+
+<section id="intro">
+  <HeroTag text="Training Walkthrough · August 2026" />
+  <h1>Getting Started with OLSP Academy: What You Learn in the First 8 Minutes</h1>
+
+  <p>You just signed up for OLSP Academy. You paid your $7. You're staring at a dashboard full of links, levels, courses, and numbers. <strong>What do you actually do first?</strong></p>
+
+  <p>The answer is one eight-minute video. It's called Getting Started, and the platform itself labels it "Step 1." But nobody tells you what's inside before you click play. This article fixes that.</p>
+</section>
+
+<section id="what-it-is">
+  <h2>What Getting Started Actually Covers</h2>
+
+  <p>The Getting Started course is the shortest training in OLSP's Skill Center — just under eight minutes. It lives under the Megalink level, which means it's available to every single member the moment they join. No upgrade required.</p>
+
+  <p>According to OLSP's own description, the course teaches <strong>"how to make the most out of the system and your mega link."</strong> That's the official promise. Here's what that actually means, broken down:</p>
+
+  <Callout title="What you learn in 8 minutes">
+    <ul>
+      <li>Where everything is inside the dashboard — the navigation, the affiliate section, the training library</li>
+      <li>What the Mega Link actually is and where to find yours</li>
+      <li>How to share your link and what happens when someone clicks it</li>
+      <li>The basic structure of the commission system — what you earn and when</li>
+      <li>What to do immediately after finishing the video</li>
+    </ul>
+  </Callout>
+
+  <p>It is not a deep dive. It does not teach you Facebook ads, list building, or advanced traffic strategies. It is exactly what the title says: getting started. An orientation.</p>
+</section>
+
+<section id="key-lessons">
+  <h2>The Key Lessons</h2>
+
+  <h3>1. The Mega Link is your only tool — and that's the point</h3>
+
+  <p>Every affiliate program gives you a link. OLSP gives you one link and builds the entire system around it. You don't need multiple links for multiple products. You don't need to track which link goes where. One link handles everything — and the training shows you exactly where to find it and how it works.</p>
+
+  <p>This simplicity is intentional. Beginners drown in options. OLSP removes the options.</p>
+
+  <h3>2. The dashboard is simpler than it looks</h3>
+
+  <p>First-time login is overwhelming. There are menus for events, community, chat rooms, skill center, bonus vault, leaderboard, products, inbox, and support — plus a separate affiliate section with promotion links, leads, customers, transactions, withdrawals, and integrations.</p>
+
+  <p>The Getting Started video walks you through the three things that actually matter on day one: your link, the training library, and the affiliate dashboard. Everything else can wait.</p>
+
+  <h3>3. Your first task is not selling — it's watching</h3>
+
+  <p>The training explicitly tells you not to rush out and start sharing your link. Your first real task is the next course: Getting Started with the Megalink (43 minutes). The 8-minute version gets you oriented. The 43-minute version teaches you how to actually earn.</p>
+
+  <GoldMasterQuote text="The first hour inside OLSP is not about making money. It's about understanding the machine. The people who skip this step are the ones who earn nothing." />
+</section>
+
+<section id="time-investment">
+  <h2>Time Investment and What Comes Next</h2>
+
+  <p>Here's the full beginner path, based on OLSP's Skill Center structure:</p>
+
+  <table>
+    <tr><th>Course</th><th>Duration</th><th>Level</th><th>When to Take It</th></tr>
+    <tr><td>Getting Started</td><td>07:56</td><td>Megalink</td><td>Immediately</td></tr>
+    <tr><td>Getting Started with the Megalink</td><td>42:52</td><td>Megalink</td><td>Same day</td></tr>
+    <tr><td>Facebook 101</td><td>2:31:37</td><td>Megalink</td><td>Week 1</td></tr>
+    <tr><td>30 Day Challenge</td><td>25:58:41</td><td>Megalink</td><td>Month 1</td></tr>
+    <tr><td>Live sessions (Tue/Thu/Sat)</td><td>60 min each</td><td>All levels</td><td>Ongoing</td></tr>
+  </table>
+
+  <p>The full beginner curriculum at the Megalink level — entirely available for the $7 entry fee — adds up to about 30 hours of training across seven courses. That's before you touch a single advanced strategy.</p>
+
+  <p>But the key insight: <strong>you don't need all 30 hours to start earning.</strong> You need the first 51 minutes — Getting Started plus the Megalink deep-dive. After that, you understand the system well enough to share your link intelligently, not blindly.</p>
+</section>
+
+<section id="who-benefits">
+  <h2>Who Gets the Most Out of This</h2>
+
+  <p>The Getting Started course works best for three types of people:</p>
+
+  <PillList items={[
+    "Complete beginners who have never used an affiliate platform before",
+    "People who joined through someone else's link and feel lost",
+    "Members who upgraded past the free level and want to make sure they haven't missed anything fundamental"
+  ]} />
+
+  <p>It works least for experienced affiliate marketers who already know how tracking links and commission dashboards work. If you've used ClickBank, WarriorPlus, or similar platforms, you can probably skip this one and go straight to the 43-minute Megalink deep-dive.</p>
+</section>
+
+<section id="verdict">
+  <h2>Verdict: Worth 8 Minutes?</h2>
+
+  <VerdictBox title="Yes. It's the orientation you need.">
+    <p>The Getting Started course is not revolutionary. It won't teach you a growth hack or a traffic secret. But it solves the single biggest problem new OLSP members face: <strong>not knowing where to click first.</strong></p>
+    <p>Eight minutes to understand the dashboard, find your link, and know what to do next is a fair trade. Skipping it means spending your first hour clicking randomly through menus and eventually giving up — which is exactly what happens to the majority of members who never earn anything.</p>
+  </VerdictBox>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+
+  <FaqItem question="Do I need to have purchased the Mega Link to access Getting Started?">
+    <p>Yes. The Getting Started course is under the Megalink level in the Skill Center, which requires the one-time $7 Mega Link purchase. Free-level members have limited access to training.</p>
+  </FaqItem>
+
+  <FaqItem question="Can I watch it on mobile?">
+    <p>Yes. OLSP Academy's dashboard is responsive, and all training videos play on mobile browsers.</p>
+  </FaqItem>
+
+  <FaqItem question="What if I finish Getting Started and still feel lost?">
+    <p>That's normal. The next step is the 43-minute Getting Started with the Megalink course, which goes significantly deeper. And the live coaching sessions (Tuesday, Thursday, Saturday) are interactive — you can ask questions in real time.</p>
+  </FaqItem>
+
+  <FaqItem question="Is there a test or quiz?">
+    <p>No. The training is purely video-based. Your progress is tracked in the Skill Center dashboard as "In Progress" or "Completed."</p>
+  </FaqItem>
+</section>
+
+<section id="next">
+  <h2>What to Do Next</h2>
+
+  <p>The Getting Started course is exactly what it claims to be: step one. Here's your realistic first week inside OLSP Academy:</p>
+
+  <ol>
+    <li><strong>Day 1:</strong> Getting Started (8 min) + Getting Started with the Megalink (43 min)</li>
+    <li><strong>Day 2:</strong> Attend your first live coaching session (Tue/Thu/Sat, 60 min)</li>
+    <li><strong>Day 3:</strong> Start sharing your Mega Link — social media, conversations, anywhere relevant</li>
+    <li><strong>Day 4-7:</strong> Begin Facebook 101 (2.5 hours, spread across the week)</li>
+    <li><strong>Week 2+:</strong> Start the 30 Day Challenge — a structured day-by-day program</li>
+  </ol>
+
+  <p>The people who earn in OLSP are not the smartest. They're the ones who follow the path.</p>
+
+  <ProductCta
+    emoji="&#x1F4DA;"
+    headline="Ready to start the training?"
+    description="The Getting Started course and the full Megalink-level curriculum are available immediately after your $7 purchase."
+    linkText="Join OLSP Academy for $7"
+    linkUrl="https://offers.olspsystem.com/get_megalink?olsp=1006001"
+    affiliateNote={true}
+  />
+</section>
+
+<AuthorBox />
+
+</OlspLayout>
