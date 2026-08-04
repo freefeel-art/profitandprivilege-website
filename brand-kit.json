@@ -1,0 +1,64 @@
+{
+  "project_id": "profit-and-privilege",
+  "name": "Profit & Privilege",
+  "language": "en",
+  "logo": "",
+  "website": "https://profitandprivilege.com",
+  "colors": [
+    { "name": "primary", "hex": "#B8862B" },
+    { "name": "ink", "hex": "#1D2433" },
+    { "name": "background", "hex": "#F8F8F6" },
+    { "name": "card", "hex": "#FFFFFF" }
+  ],
+  "fonts": [
+    { "role": "headline", "family": "DejaVuSans-Bold", "weight": "bold" },
+    { "role": "body", "family": "DejaVuSans", "weight": "normal" },
+    { "role": "caption", "family": "DejaVuSans", "weight": "normal" }
+  ],
+  "intro": {
+    "lines": ["Profit & Privilege"],
+    "duration_seconds": 2,
+    "logo_visible": false
+  },
+  "outro": {
+    "lines": [
+      "Profit & Privilege",
+      "Evidence-based OLSP Academy review.",
+      "ProfitAndPrivilege.com"
+    ],
+    "url": "https://profitandprivilege.com",
+    "duration_seconds": 3
+  },
+  "watermark": {
+    "text": "ProfitAndPrivilege.com",
+    "position": "bottom-right",
+    "opacity": 0.35
+  },
+  "narration": {
+    "voice": "CwhRBWXzGAHq8TQ4Fs17",
+    "words_per_minute": 144,
+    "language": "en",
+    "pacing": "conversational"
+  },
+  "subtitles": {
+    "enabled": true,
+    "font_size": 34,
+    "position": "lower-third",
+    "max_lines": 3,
+    "color": "#FFFFFF"
+  },
+  "aspect_ratios": ["9:16", "1:1", "16:9"],
+  "platforms": [
+    { "platform": "facebook", "aspect_ratio": "9:16", "watermark_enabled": true },
+    { "platform": "youtube", "aspect_ratio": "9:16", "watermark_enabled": true },
+    { "platform": "instagram", "aspect_ratio": "9:16", "watermark_enabled": true },
+    { "platform": "tiktok", "aspect_ratio": "9:16", "watermark_enabled": true },
+    { "platform": "pinterest", "aspect_ratio": "1:1", "watermark_enabled": true }
+  ],
+  "transitions": ["fade"],
+  "branding": {
+    "intro_image": "",
+    "outro_image": "public/assets/branding/profit-and-privilege-founder.png"
+  },
+  "cta": "Read the full evidence-based review at ProfitAndPrivilege.com"
+}

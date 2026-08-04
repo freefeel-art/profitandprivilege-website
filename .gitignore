@@ -35,3 +35,23 @@ __pycache__/
 /public/pipeline/
 /public/reports/
 OpenMontage/
+
+# Commander operational state and reports
+runtime/
+tmp/
+pipeline/runtime/
+.mimocode/.cron-lock
+.wrangler/
+config/gohighlevel_session.json
+
+# Undelivered local media and capture workspaces
+public/assets/videos/
+assets/screenshots/dashboard/
+assets/screenshots/
+assets/branding/
+assets/brand-assets/
+assets/index.json
+
+# Superseded local recovery material
+.commander-migration-archive/
+recovery-backup/

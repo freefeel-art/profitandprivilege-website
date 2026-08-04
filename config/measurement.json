@@ -1,0 +1,13 @@
+{
+  "conversion_source": {
+    "id": "olsp-back-office",
+    "name": "OLSP Back Office",
+    "authority": "owner-confirmed-and-browser-observed",
+    "collection_method": "authenticated-read-only-browser-snapshot",
+    "currency": "USD",
+    "measured_values": ["leads", "customers", "transactions", "current_available_balance", "lifetime_balance"],
+    "target_values": ["signups", "sales", "revenue"],
+    "daily_deltas_available": false,
+    "sale_value": 7
+  }
+}
