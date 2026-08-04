@@ -1,10 +1,370 @@
 ---
-import Layout from '../layouts/Layout.astro';
+export const prerender = true;
+
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
+import { getPublishedArticles } from "../data/production-home.js";
+
+const published = getPublishedArticles().slice(0, 6);
+
+const pillars = [
+  {
+    name: "OLSP Ecosystem",
+    description: "In-depth reviews of every OLSP product, from Academy to Solo Ads",
+    url: "/reviews/",
+    count: 8,
+  },
+  {
+    name: "Lead Generation",
+    description: "What it is, how it works, and which tools actually deliver leads",
+    url: "/blog/what-is-lead-generation/",
+    count: 11,
+  },
+  {
+    name: "Online Income for Beginners",
+    description: "Realistic methods for earning online — no experience required",
+    url: "/blog/make-money-online-for-beginners/",
+    count: 8,
+    startHere: true,
+  },
+  {
+    name: "Traffic & List Building",
+    description: "Free traffic sources, email list building, and the tools that help",
+    url: "/blog/best-free-traffic-sources-affiliate-marketing/",
+    count: 4,
+  },
+  {
+    name: "AI Tools for Marketers",
+    description: "Independent reviews of AI writing, SEO, video, and chatbot tools",
+    url: "/reviews/seo-writing-ai-review/",
+    count: 6,
+  },
+];
+
+const siteUrl = "https://olsp.profitandprivilege.com";
+const pageTitle = "Profit & Privilege — Independent Research on Affiliate Marketing & Online Income";
+const pageDescription = "Independent, research-backed reviews and guides on affiliate marketing, lead generation, and online income. Every article puts evidence before opinion — no hype, no shortcuts.";
 ---
 
-<Layout>
-  <main>
-    <h1>Profit & Privilege</h1>
-    <p>Website under active development.</p>
-  </main>
-</Layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription}>
+<link rel="canonical" href={`${siteUrl}/`} />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content="Research-backed reviews and guides on affiliate marketing, lead generation, and online income." />
+<meta property="og:url" content={`${siteUrl}/`} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Profit and Privilege" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content="Research-backed reviews and guides on affiliate marketing, lead generation, and online income." />
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Profit and Privilege",
+      "url": siteUrl,
+      "description": "Independent, research-backed reviews and guides on affiliate marketing, lead generation, and online income.",
+      "author": {
+        "@type": "Person",
+        "name": "Jarmo Halonen",
+        "url": `${siteUrl}/authors/jarmo-halonen`
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Profit and Privilege",
+      "url": siteUrl
+    }
+  ]
+})} />
+<style>
+  :root {
+    --ink: #1e293b;
+    --ink-light: #475569;
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --line: #e2e8f0;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    margin: 0 0 1.2rem;
+    padding-bottom: .4rem;
+    border-bottom: 3px solid var(--accent-soft);
+  }
+
+  /* Hero */
+  #hero {
+    text-align: center;
+    padding: 4rem 0 2.5rem;
+  }
+  #hero h1 {
+    font-size: 2.4rem;
+    margin: 0 0 .8rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  #hero .tagline {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Pillars */
+  #pillars {
+    margin: 0 0 3rem;
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .pillar-card {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+    background: var(--bg-soft);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .pillar-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .pillar-card.pillar-start {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .pillar-card .start-badge {
+    display: block;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .pillar-card h2 {
+    font-size: 1.1rem;
+    margin: 0 0 .4rem;
+    color: var(--accent);
+  }
+  .pillar-card p {
+    font-size: .9rem;
+    color: var(--ink-light);
+    margin: 0 0 .6rem;
+  }
+  .pillar-count {
+    font-size: .78rem;
+    color: var(--ink-light);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* Latest */
+  #latest {
+    margin: 0 0 3rem;
+  }
+  .latest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .latest-item {
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .latest-type {
+    flex-shrink: 0;
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink-light);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .15rem .45rem;
+  }
+  .latest-item a {
+    flex: 1;
+    font-size: .92rem;
+    color: var(--accent);
+    text-decoration: none;
+    min-width: 200px;
+  }
+  .latest-item a:hover { text-decoration: underline; }
+  .latest-item time {
+    flex-shrink: 0;
+    font-size: .78rem;
+    color: var(--ink-light);
+  }
+  .browse-all {
+    margin-top: 1rem;
+    font-size: .88rem;
+  }
+
+  /* Trust */
+  #trust {
+    margin: 0 0 3rem;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .trust-item {
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+  .trust-item h3 {
+    font-size: .95rem;
+    color: var(--accent);
+    margin: 0 0 .4rem;
+  }
+  .trust-item p {
+    font-size: .85rem;
+    color: var(--ink-light);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .goldmaster-quote {
+    display: block;
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .goldmaster-quote:hover { color: var(--accent); text-decoration: none; }
+  .author-link {
+    text-align: center;
+    font-size: .9rem;
+    color: var(--ink-light);
+  }
+
+  @media (max-width: 900px) {
+    main { padding: 1.5rem 1.2rem 3rem; }
+    #hero h1 { font-size: 2rem; }
+    #hero { padding: 2.5rem 0 2rem; }
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    #hero h1 { font-size: 1.8rem; }
+    #hero .tagline { font-size: .95rem; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.15rem; }
+    .pillar-card { padding: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <section id="hero">
+    <h1>Profit &amp; Privilege</h1>
+    <p class="tagline">Research-backed guides on affiliate marketing, lead generation, and online income — built from real community questions, not keyword tools. No hype, no shortcuts.</p>
+  </section>
+
+  <section id="pillars">
+    <h2 class="section-title">Explore by Topic</h2>
+    <div class="pillar-grid">
+      {pillars.map(p => (
+        <a href={p.url} class={`pillar-card${p.startHere ? ' pillar-start' : ''}`}>
+          {p.startHere && <span class="start-badge">&starf; Best place to start</span>}
+          <h2>{p.name}</h2>
+          <p>{p.description}</p>
+          <span class="pillar-count">{p.count}+ articles</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="latest">
+    <h2 class="section-title">Latest Articles</h2>
+    <ol class="latest-list">
+      {published.map(a => (
+        <li class="latest-item">
+          <span class="latest-type">{a.type}</span>
+          <a href={a.url}>{a.title}</a>
+          {a.lastModified && <time datetime={a.lastModified}>{new Date(a.lastModified + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>}
+        </li>
+      ))}
+    </ol>
+    <p class="browse-all">
+      <a href="/blog/">Browse all articles &rarr;</a> &nbsp;&middot;&nbsp; <a href="/reviews/">All reviews &rarr;</a>
+    </p>
+  </section>
+
+  <section id="trust">
+    <h2 class="section-title">Why Trust This Site</h2>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <h3>Research, Not Assumptions</h3>
+        <p>Every claim is verified. Vendor claims, self-reported figures, and confirmed facts are clearly distinguished.</p>
+      </div>
+      <div class="trust-item">
+        <h3>Community-Driven Topics</h3>
+        <p>We start where real people discuss their problems — Reddit, Quora, forums — not in a keyword tool.</p>
+      </div>
+      <div class="trust-item">
+        <h3>Independent &amp; Honest</h3>
+        <p>We earn affiliate commissions, but editorial decisions are never driven by them. We tell you what's wrong, not just what's right.</p>
+      </div>
+    </div>
+
+    <a href="https://olspacademy.com/megalive/1006001" class="goldmaster-quote" target="_blank" rel="noopener noreferrer">&ldquo;Brand New Live Training &mdash; Limited Spaces&rdquo;</a>
+
+    <p class="author-link">
+      All articles are written by <a href="/authors/jarmo-halonen/">Jarmo Halonen</a>, founder of Profit and Privilege.
+    </p>
+  </section>
+
+  <SiteFooter />
+
+</main>
+
+</body>
+</html>

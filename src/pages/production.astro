@@ -1,0 +1,186 @@
+---
+export const prerender = true;
+
+import { getPublishedArticles, getDraftArticles, getProductionStats } from "../data/production-home.js";
+
+const stats = getProductionStats();
+const published = getPublishedArticles();
+const drafts = getDraftArticles();
+
+const siteUrl = "https://olsp.profitandprivilege.com";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Production — Profit and Privilege</title>
+<meta name="description" content="Content production overview for Profit and Privilege.">
+<link rel="canonical" href={`${siteUrl}/production/`} />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<style>
+  :root {
+    --ink: #1e293b;
+    --ink-light: #475569;
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --line: #e2e8f0;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --good: #166534;
+    --good-bg: #f0fdf4;
+    --warn: #92400e;
+    --warn-bg: #fef3c7;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  h1 { font-size: 1.9rem; margin: 0 0 .5rem; }
+  h2 { font-size: 1.3rem; margin: 0 0 1rem; border-bottom: 3px solid var(--accent-soft); padding-bottom: .4rem; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+    background: var(--bg-soft);
+    text-align: center;
+  }
+  .stat-card .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .stat-label {
+    font-size: .85rem;
+    color: var(--ink-light);
+    margin-top: .3rem;
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  .article-list li {
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    padding: .45rem 0;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    font-size: .9rem;
+  }
+  .article-list .art-type {
+    flex-shrink: 0;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--ink-light);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .1rem .4rem;
+  }
+  .article-list a {
+    flex: 1;
+    min-width: 200px;
+  }
+  .article-list .art-date {
+    flex-shrink: 0;
+    font-size: .78rem;
+    color: var(--ink-light);
+  }
+
+  .draft-warn {
+    background: var(--warn-bg);
+    border: 1px solid #fcd34d;
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--warn);
+    font-size: .9rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+    font-size: .88rem;
+  }
+
+  @media (max-width: 900px) {
+    main { padding: 1.5rem 1.2rem 3rem; }
+    .stats-row { grid-template-columns: 1fr; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <h1>Content Production</h1>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">{stats.published}</div>
+      <div class="stat-label">Published Articles</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">{stats.drafts}</div>
+      <div class="stat-label">Drafts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">{published.length + drafts.length}</div>
+      <div class="stat-label">Total</div>
+    </div>
+  </div>
+
+  {drafts.length > 0 && (
+    <div class="draft-warn">
+      <strong>{drafts.length} draft{drafts.length !== 1 ? 's' : ''}</strong> not yet committed.
+    </div>
+  )}
+
+  <section>
+    <h2>Published Articles</h2>
+    <ul class="article-list">
+      {published.map(a => (
+        <li>
+          <span class="art-type">{a.type}</span>
+          <a href={a.url}>{a.title}</a>
+          <span class="art-date">{a.lastModified}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="back-link">
+    <a href="/">← Back to Home</a> &nbsp;·&nbsp; <a href="/mission-control/">Mission Control →</a>
+  </p>
+</main>
+
+</body>
+</html>

@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-06 (added How to Start Affiliate Marketing)  
-Total pages built: 32  
-Editorial article pages: 30  
+Last updated: 2026-07-25 (added AI Tools pillar hub + Semrush review registry entry)
+Total pages built: 39
+Editorial article pages: 37
 Infrastructure pages: 2
 
 ---
@@ -14,11 +14,11 @@ Infrastructure pages: 2
 | Metric | Count |
 |---|---|
 | Total published pages | 31 |
-| Reviews | 14 |
-| Blog articles | 14 |
+| Reviews | 16 |
+| Blog articles | 19 |
 | Roundups | 1 |
 | Investigations | 1 |
-| Infrastructure (home, author) | 2 |
+| Infrastructure (home, author, production) | 3 |
 | Gold Master V1 compliant | 28 of 28 editorial pages |
 
 ---
@@ -31,7 +31,7 @@ Infrastructure pages: 2
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
 | 4. Online Income for Beginners | 4 | Informational / commercial investigation |
-| 5. AI Tools | 6 | Independent reviews of AI software platforms and SaaS tools |
+| 5. AI Tools | 12 | Independent reviews of AI software platforms, supporting how-to guides, and pillar hub |
 | Infrastructure | 2 | Navigation and author credibility |
 
 ---
@@ -914,6 +914,132 @@ Primary subject: Independent reviews of AI-powered software tools, platforms, an
 | **Workflow Status** | Published |
 | **Editorial Priority** | Low |
 | **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/chatbase-research.md`). Snapshot-based research. No hands-on testing. |
+
+---
+
+### Semrush
+
+| Field | Value |
+|---|---|
+| **Title** | Semrush Review: An Independent, Research-Based Analysis |
+| **URL** | https://olsp.profitandprivilege.com/reviews/semrush-review/ |
+| **Article Type** | Review |
+| **Primary Keyword** | Semrush review |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-12 |
+| **Last Modified** | 2026-07-12 |
+| **Internal Links Out** | None in body copy |
+| **Internal Links In** | `/blog/how-to-write-seo-content-with-ai/`, `/blog/ai-tools-for-affiliate-marketers-complete-guide/` |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Low |
+| **Source pipeline** | AI Tool Review Lite (Research Brief v1.0, `docs/research/semrush-research.md`). Registered in HEAVY-ASSET-LIBRARY. |
+
+---
+
+### AI Tools for Affiliate Marketers — Complete Guide (Pillar Hub)
+
+| Field | Value |
+|---|---|
+| **Title** | AI Tools for Affiliate Marketers: The Complete Guide to Every Tool We Review |
+| **URL** | https://olsp.profitandprivilege.com/blog/ai-tools-for-affiliate-marketers-complete-guide/ |
+| **Article Type** | Blog — Pillar / Hub |
+| **Primary Keyword** | AI tools for affiliate marketers |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-25 |
+| **Last Modified** | 2026-07-25 |
+| **Internal Links Out** | Links to all 11 AI Tools pillar articles (7 reviews + 4 how-to guides) |
+| **Internal Links In** | None yet (newly published) |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | High |
+| **Source pipeline** | Manual/assisted — pillar hub per OPPORTUNITY-QUEUE candidate #4. |
+
+---
+
+### How to Write SEO Content With AI
+
+| Field | Value |
+|---|---|
+| **Title** | How to Write SEO Content With AI: A Practical Guide for 2026 |
+| **URL** | https://olsp.profitandprivilege.com/blog/how-to-write-seo-content-with-ai/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | how to write SEO content with AI |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-25 |
+| **Last Modified** | 2026-07-25 |
+| **Internal Links Out** | `/reviews/seo-writing-ai-review/`, `/reviews/surfer-seo-review/`, `/reviews/semrush-review/` |
+| **Internal Links In** | None yet |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Medium |
+| **Source pipeline** | Manual/assisted — supporting cluster article for AI Tools pillar, per AI-TOOLS-EDITORIAL-ROADMAP. |
+
+---
+
+### How to Use Canva AI for Affiliate Marketing Visuals
+
+| Field | Value |
+|---|---|
+| **Title** | How to Use Canva AI for Affiliate Marketing Visuals |
+| **URL** | https://olsp.profitandprivilege.com/blog/how-to-use-canva-ai-for-affiliate-marketing-visuals/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | how to use Canva AI for affiliate marketing |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-25 |
+| **Last Modified** | 2026-07-25 |
+| **Internal Links Out** | `/reviews/canva-ai-review/`, `/blog/how-to-write-seo-content-with-ai/` |
+| **Internal Links In** | `/blog/ai-video-marketing-for-beginners/` |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Medium |
+| **Source pipeline** | Manual/assisted — supporting cluster article for AI Tools pillar. |
+
+---
+
+### AI Video Marketing for Beginners
+
+| Field | Value |
+|---|---|
+| **Title** | AI Video Marketing for Beginners: A Practical Guide for 2026 |
+| **URL** | https://olsp.profitandprivilege.com/blog/ai-video-marketing-for-beginners/ |
+| **Article Type** | Blog — Practical Guide |
+| **Primary Keyword** | AI video marketing for beginners |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-25 |
+| **Last Modified** | 2026-07-25 |
+| **Internal Links Out** | `/reviews/heygen-review/`, `/blog/how-to-write-seo-content-with-ai/`, `/blog/how-to-use-canva-ai-for-affiliate-marketing-visuals/` |
+| **Internal Links In** | None yet |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Medium |
+| **Source pipeline** | Manual/assisted — supporting cluster article for AI Tools pillar. |
+
+---
+
+### Free vs Paid AI Chatbots for Your Website
+
+| Field | Value |
+|---|---|
+| **Title** | Free vs Paid AI Chatbots for Your Website: When to Upgrade |
+| **URL** | https://olsp.profitandprivilege.com/blog/free-vs-paid-ai-chatbots-for-your-website/ |
+| **Article Type** | Blog — Comparison Guide |
+| **Primary Keyword** | free vs paid AI chatbots |
+| **Content Pillar** | AI Tools |
+| **Gold Master Status** | ✓ Gold Master V1 |
+| **Published** | 2026-07-25 |
+| **Last Modified** | 2026-07-25 |
+| **Internal Links Out** | `/reviews/fastbots-ai-review/`, `/reviews/chatbase-review/`, `/blog/how-to-write-seo-content-with-ai/` |
+| **Internal Links In** | None yet |
+| **Publication Status** | Live |
+| **Workflow Status** | Published |
+| **Editorial Priority** | Medium |
+| **Source pipeline** | Manual/assisted — supporting cluster article for AI Tools pillar. |
 
 ---
 

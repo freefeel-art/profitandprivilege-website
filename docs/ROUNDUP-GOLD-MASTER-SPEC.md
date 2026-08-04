@@ -119,7 +119,7 @@ Use `src/pages/authors/jarmo-halonen.astro` as the single source of truth. Do no
 
 The Author Box must include:
 
-- Author photo (`/assets/authors/jarmo-halonen-author.png`)
+- Author photo (`/assets/branding/profit-and-privilege-founder.png`)
 - Author name
 - Role / title
 - Short biography (2–4 sentences drawn from the author profile)

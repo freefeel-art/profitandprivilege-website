@@ -73,7 +73,7 @@ function parseQADecision(qaPath) {
     return { decision: 'FILE_NOT_FOUND', detail: `QA report not found: ${qaPath}` };
   }
   const content = readFile(qaPath);
-  const match = content.match(/\*\*Decision:\*\*\s*(READY FOR PUBLICATION|PUBLICATION BLOCKED|REQUIRES MINOR REVISIONS)/);
+  const match = content.match(/\*{0,2}Decision:\*{0,2}\s*(READY FOR PUBLICATION|PUBLICATION BLOCKED|REQUIRES MINOR REVISIONS)/);
   if (!match) {
     return { decision: 'PARSE_FAILED', detail: 'Could not parse QA decision from report' };
   }
@@ -264,13 +264,13 @@ async function stage3() {
 }
 
 async function stage4() {
-  log('STAGE-4', 'Deploying via git push (Netlify auto-deploy)');
+  log('STAGE-4', 'Deploying via git push (Cloudflare Pages auto-deploy)');
 
   try {
     exec('git push origin main', { timeout: 120000 });
-    log('STAGE-4', 'Push successful — Netlify auto-deploy triggered');
+    log('STAGE-4', 'Push successful — Cloudflare Pages auto-deploy triggered');
 
-    const deployUrl = 'https://profitandprivilege-website.netlify.app';
+    const deployUrl = 'https://olsp.profitandprivilege.com';
     log('STAGE-4', `Production URL: ${deployUrl}`);
 
     return { passed: true, url: deployUrl };
