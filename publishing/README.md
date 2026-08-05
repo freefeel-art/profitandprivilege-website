@@ -31,7 +31,7 @@ node publishing/publish.js --all
 1. **Publication Validation** — verify QA report, file existence, build, metadata, slug uniqueness
 2. **Git** — commit publication changes to the repository
 3. **Build** — production `astro build`, abort on errors
-4. **Deploy** — push `main`; the existing Git-to-Cloudflare Worker deployment updates production
+4. **Deploy** — upload a new version to the existing Cloudflare Worker `profitandprivilege-website`; the repository does not yet contain the verified invoker
 5. **Post-Deployment Validation** — verify HTTP 200, metadata, canonical, sitemap
 6. **Search Engine Submission** — prepare sitemap ping, note indexing is not immediate
 7. **Publication Report** — generate comprehensive markdown report

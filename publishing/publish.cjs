@@ -264,11 +264,11 @@ async function stage3() {
 }
 
 async function stage4() {
-  log('STAGE-4', 'Deploying via git push (Cloudflare Worker auto-deploy)');
+  log('STAGE-4', 'Deployment source unresolved: Cloudflare Worker version_upload invoker is not present in the repository');
 
   try {
     exec('git push origin main', { timeout: 120000 });
-    log('STAGE-4', 'Push successful — Cloudflare Worker auto-deploy triggered');
+    log('STAGE-4', 'Git push completed, but Worker deployment requires separate verified version_upload evidence');
 
     const deployUrl = 'https://olsp.profitandprivilege.com';
     log('STAGE-4', `Production URL: ${deployUrl}`);

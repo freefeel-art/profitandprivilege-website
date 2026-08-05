@@ -133,7 +133,7 @@ Each agent has PROMPT.md, SPEC.md, README.md, and OUTPUT-TEMPLATE/SCHEMA — 4 f
 
 ### 1. CI/CD Pipeline
 
-No `.github/workflows/`, no automated tests, no build validation on push. Deployment is manual `git push` triggering the Cloudflare Worker `profitandprivilege-website` deployment.
+No `.github/workflows/`, no automated tests, no build validation on push. The production Worker exists, but its Cloudflare deployment is recorded as `version_upload`; the repository does not contain the invoking workflow.
 
 ### 2. Automated Testing
 

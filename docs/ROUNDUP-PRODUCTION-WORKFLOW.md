@@ -21,7 +21,7 @@ git commit
         ↓
 git push
         ↓
-Cloudflare Worker `profitandprivilege-website` (updated by the existing Git push deployment)
+Cloudflare Worker `profitandprivilege-website` (updated by a Cloudflare `version_upload`; invoker not present in repository)
         ↓
 Google Search Console
 

@@ -76,7 +76,7 @@ If any input is missing or invalid, the engine must stop with `PUBLICATION BLOCK
 
 | Action | Command | Notes |
 |--------|---------|-------|
-| Deploy to production | `git push origin main` | Existing Git-to-Cloudflare Worker deployment for `profitandprivilege-website` |
+| Deploy to production | Cloudflare Worker `version_upload` | Exact invoking command/workflow is not present in the repository; do not infer Git push as the trigger |
 | Capture deploy URL | Parse deploy output | Used for post-deployment validation |
 
 ### Stage 5 — Post-Deployment Validation

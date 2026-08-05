@@ -33,7 +33,7 @@
 ┌─────────────────────────────────────────────────────────────┐
 │  Stage 4: Deploy                                            │
 │  ┌──────────────────────────────┐                           │
-│  │ git push origin main        │                           │
+│  │ Cloudflare version upload   │                           │
 │  │ --dir=dist                  │                           │
 │  └──────────────────────────────┘                           │
 └──────────────────────────┬──────────────────────────────────┘
@@ -81,7 +81,7 @@ node publishing/publish.js <slug-1> <slug-2> <slug-3>
 
 ### Required environment
 - Current directory must be project root
-- GitHub remote access must be authenticated (`git push --dry-run origin main` should succeed)
+- Cloudflare Worker version-upload access must be authenticated
 - Git must be configured with user.name and user.email
 
 ## Article Slug Mapping
@@ -98,7 +98,7 @@ If a publication needs to be rolled back:
 
 ```bash
 git revert <commit-hash>
-git push origin main
+Cloudflare Worker version upload (invoking command not yet present in repository)
 ```
 
 This reverts both the git state and the live site.
