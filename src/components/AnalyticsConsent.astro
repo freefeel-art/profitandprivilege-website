@@ -1,5 +1,8 @@
 ---
-const configuredMeasurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
+// The Measurement ID is public by design. Keep the build operational even if
+// the external Cloudflare build-variable configuration is absent; the
+// environment value still takes precedence when the pipeline supplies it.
+const configuredMeasurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "G-Y48SQTN764";
 
 if (configuredMeasurementId && !/^G-[A-Z0-9]+$/.test(configuredMeasurementId)) {
   throw new Error("PUBLIC_GA4_MEASUREMENT_ID must be a GA4 Measurement ID such as G-XXXXXXXXXX");
