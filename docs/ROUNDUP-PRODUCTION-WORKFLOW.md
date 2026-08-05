@@ -21,7 +21,7 @@ git commit
         ↓
 git push
         ↓
-Cloudflare Pages
+Cloudflare Worker `profitandprivilege-website` (updated by the existing Git push deployment)
         ↓
 Google Search Console
 

@@ -97,7 +97,7 @@ The Python pipeline produces structured metadata (JSON outlines, briefs, researc
 
 ### 5. Post-Deploy Validation — INCOMPLETE
 
-`publish.cjs` Stage 5 hardcodes `https://profitandprivilege-website.netlify.app` while articles reference `https://olsp.profitandprivilege.com`. Stage 6 prepares a Google ping URL but never sends it.
+`publish.cjs` Stage 5 validates `https://olsp.profitandprivilege.com` after the Cloudflare Worker deployment. Stage 6 prepares a Google ping URL but never sends it.
 
 ### 6. Legacy Content — ORPHANED
 
@@ -133,7 +133,7 @@ Each agent has PROMPT.md, SPEC.md, README.md, and OUTPUT-TEMPLATE/SCHEMA — 4 f
 
 ### 1. CI/CD Pipeline
 
-No `.github/workflows/`, no automated tests, no build validation on push. Deployment is manual `git push` triggering Netlify auto-deploy.
+No `.github/workflows/`, no automated tests, no build validation on push. Deployment is manual `git push` triggering the Cloudflare Worker `profitandprivilege-website` deployment.
 
 ### 2. Automated Testing
 

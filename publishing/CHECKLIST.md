@@ -5,8 +5,7 @@ Use this checklist before running any publication to verify the environment is r
 ## Environment
 
 - [ ] Node.js >= 22.12.0 (`node --version`)
-- [ ] Netlify CLI installed (`which netlify`)
-- [ ] Netlify authenticated (`netlify status`)
+- [ ] GitHub remote access available (`git push --dry-run origin main`)
 - [ ] Git configured (`git config user.name` and `git config user.email`)
 - [ ] Project root directory (verify `astro.config.mjs` and `package.json` present)
 
@@ -32,8 +31,8 @@ Use this checklist before running any publication to verify the environment is r
 
 ## Deployment
 
-- [ ] Netlify site linked (`.netlify/state.json` present with siteId)
-- [ ] Netlify deploy dry run: `netlify deploy --build --dir=dist --dry-run`
+- [ ] Cloudflare Worker `profitandprivilege-website` exists and serves the production route
+- [ ] Production build succeeds before `git push origin main`
 
 ## Post-Deployment
 

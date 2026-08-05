@@ -76,7 +76,7 @@ If any input is missing or invalid, the engine must stop with `PUBLICATION BLOCK
 
 | Action | Command | Notes |
 |--------|---------|-------|
-| Deploy to production | `netlify deploy --prod --dir=dist` | Uses existing Netlify site configuration |
+| Deploy to production | `git push origin main` | Existing Git-to-Cloudflare Worker deployment for `profitandprivilege-website` |
 | Capture deploy URL | Parse deploy output | Used for post-deployment validation |
 
 ### Stage 5 — Post-Deployment Validation
@@ -161,5 +161,5 @@ PUBLISHED / PUBLICATION BLOCKED
 
 - Never deploy without QA approval
 - Only stage intended files in git commits
-- Use existing deployment credentials (Netlify), never embed secrets in scripts
+- Use existing GitHub and Cloudflare Worker deployment credentials, never embed secrets in scripts
 - Publication reports are generated locally, not pushed to any external service

@@ -264,11 +264,11 @@ async function stage3() {
 }
 
 async function stage4() {
-  log('STAGE-4', 'Deploying via git push (Cloudflare Pages auto-deploy)');
+  log('STAGE-4', 'Deploying via git push (Cloudflare Worker auto-deploy)');
 
   try {
     exec('git push origin main', { timeout: 120000 });
-    log('STAGE-4', 'Push successful — Cloudflare Pages auto-deploy triggered');
+    log('STAGE-4', 'Push successful — Cloudflare Worker auto-deploy triggered');
 
     const deployUrl = 'https://olsp.profitandprivilege.com';
     log('STAGE-4', `Production URL: ${deployUrl}`);

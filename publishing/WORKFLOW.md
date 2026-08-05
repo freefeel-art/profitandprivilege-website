@@ -33,7 +33,7 @@
 ┌─────────────────────────────────────────────────────────────┐
 │  Stage 4: Deploy                                            │
 │  ┌──────────────────────────────┐                           │
-│  │ netlify deploy --prod       │                           │
+│  │ git push origin main        │                           │
 │  │ --dir=dist                  │                           │
 │  └──────────────────────────────┘                           │
 └──────────────────────────┬──────────────────────────────────┘
@@ -81,7 +81,7 @@ node publishing/publish.js <slug-1> <slug-2> <slug-3>
 
 ### Required environment
 - Current directory must be project root
-- Netlify CLI must be authenticated (`netlify status` should succeed)
+- GitHub remote access must be authenticated (`git push --dry-run origin main` should succeed)
 - Git must be configured with user.name and user.email
 
 ## Article Slug Mapping
@@ -99,7 +99,6 @@ If a publication needs to be rolled back:
 ```bash
 git revert <commit-hash>
 git push origin main
-netlify deploy --prod --dir=dist
 ```
 
 This reverts both the git state and the live site.

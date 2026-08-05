@@ -31,7 +31,7 @@ node publishing/publish.js --all
 1. **Publication Validation** — verify QA report, file existence, build, metadata, slug uniqueness
 2. **Git** — commit publication changes to the repository
 3. **Build** — production `astro build`, abort on errors
-4. **Deploy** — deploy via Netlify CLI
+4. **Deploy** — push `main`; the existing Git-to-Cloudflare Worker deployment updates production
 5. **Post-Deployment Validation** — verify HTTP 200, metadata, canonical, sitemap
 6. **Search Engine Submission** — prepare sitemap ping, note indexing is not immediate
 7. **Publication Report** — generate comprehensive markdown report
@@ -43,7 +43,7 @@ Publication Reports are written to `reports/publication/`.
 ## Dependencies
 
 - Node.js >= 22.12.0
-- Netlify CLI (`netlify`)
+- GitHub remote access and the existing Cloudflare Worker deployment integration
 - Astro (`astro`)
 - Git
 
