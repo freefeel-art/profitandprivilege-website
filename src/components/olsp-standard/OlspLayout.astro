@@ -464,6 +464,16 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
     result.style.display = 'block';
     result.textContent = message;
   }
+
+  // External and absolute production links open in a separate tab. Preserve
+  // existing sponsored rel values while guaranteeing opener protection.
+  document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
+    link.target = '_blank';
+    const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    rel.add('noopener');
+    rel.add('noreferrer');
+    link.setAttribute('rel', [...rel].join(' '));
+  });
 </script>
 
 </body>

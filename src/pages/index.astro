@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
+import AnalyticsConsent from "../components/AnalyticsConsent.astro";
 import { getPublishedArticles } from "../data/production-home.js";
 
 const published = getPublishedArticles().slice(0, 6);
@@ -300,6 +301,7 @@ const pageDescription = "Independent, research-backed reviews and guides on affi
 </style>
 </head>
 <body>
+<AnalyticsConsent />
 
 <main>
 
@@ -362,9 +364,19 @@ const pageDescription = "Independent, research-backed reviews and guides on affi
     </p>
   </section>
 
-  <SiteFooter />
+<SiteFooter />
 
 </main>
+
+<script is:inline>
+  document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
+    link.target = '_blank';
+    const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    rel.add('noopener');
+    rel.add('noreferrer');
+    link.setAttribute('rel', [...rel].join(' '));
+  });
+</script>
 
 </body>
 </html>
