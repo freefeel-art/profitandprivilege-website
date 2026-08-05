@@ -1,0 +1,66 @@
+---
+export const prerender = true;
+
+import OlspLayout from "../components/olsp-standard/OlspLayout.astro";
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
+
+const destination = "https://olspacademy.com/c/livebinar";
+---
+
+<OlspLayout
+  title="OLSP Live Training — What to Check Before You Join"
+  description="A short, independent checkpoint before continuing to OLSP's live training page."
+  canonical="https://olsp.profitandprivilege.com/olsp-livebinar/"
+  tocLinks={[
+    { href: "#before-you-continue", label: "Before you continue" },
+    { href: "#what-to-check", label: "What to check" },
+    { href: "#continue", label: "Continue to OLSP" },
+  ]}
+>
+  <section id="before-you-continue">
+    <span class="hero-tag">Independent checkpoint</span>
+    <h1>Before You Join the OLSP Live Training</h1>
+    <p>
+      The live training is part of OLSP's own funnel. This independent page gives
+      you one clear checkpoint before you leave Profit and Privilege: treat the
+      presentation as marketing, verify every cost and commission condition for
+      yourself, and do not rely on income examples as a promise of results.
+    </p>
+    <div class="callout info">
+      <strong>Why this page exists:</strong> it lets us measure a campaign visit
+      and the decision to continue as separate steps. Google Analytics is used
+      only after you explicitly accept analytics.
+    </div>
+  </section>
+
+  <section id="what-to-check">
+    <h2>What to Check During the Training</h2>
+    <ul>
+      <li>Which parts are included at the advertised entry price.</li>
+      <li>Which results depend on paid upgrades, an existing audience, or additional traffic.</li>
+      <li>How referrals, attribution, refunds, and commission eligibility are defined.</li>
+      <li>Whether the required daily work fits your available time and risk tolerance.</li>
+    </ul>
+    <p>
+      If you want the longer independent assessment first, read
+      <a href="/is-olsp-academy-an-mlm/">our evidence-based OLSP Academy investigation</a>.
+    </p>
+  </section>
+
+  <section id="continue">
+    <h2>Continue to OLSP</h2>
+    <p>
+      The button below opens OLSP's external training page. If you continue and
+      later buy through an affiliate path, we may earn a commission at no extra
+      cost to you.
+    </p>
+    <a
+      href={destination}
+      class="cta-btn"
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+    >Continue to the OLSP live training</a>
+  </section>
+
+  <SiteFooter />
+</OlspLayout>

@@ -1,0 +1,73 @@
+---
+export const prerender = true;
+
+import OlspLayout from "../components/olsp-standard/OlspLayout.astro";
+import SiteFooter from "../components/olsp-standard/SiteFooter.astro";
+---
+
+<OlspLayout
+  title="Privacy Notice — Profit and Privilege"
+  description="How Profit and Privilege handles analytics choices and campaign measurement."
+  canonical="https://olsp.profitandprivilege.com/privacy/"
+  tocLinks={[
+    { href: "#analytics", label: "Analytics" },
+    { href: "#campaign-data", label: "Campaign data" },
+    { href: "#choices", label: "Your choices" },
+    { href: "#external-sites", label: "External sites" },
+  ]}
+>
+  <section id="analytics">
+    <span class="hero-tag">Privacy notice</span>
+    <h1>Analytics and Privacy Choices</h1>
+    <p>
+      Profit and Privilege uses Google Analytics 4 to understand aggregate site
+      visits and outbound clicks only after a visitor accepts analytics. Before
+      acceptance, the Google Analytics tag is not loaded and analytics storage
+      remains denied. Advertising storage, advertising user data, and advertising
+      personalisation remain denied even when analytics is accepted.
+    </p>
+    <p>
+      The choice is stored in your browser under the local-storage key
+      <code>pp_analytics_consent_v1</code>. It contains only <code>granted</code>
+      or <code>denied</code>.
+    </p>
+  </section>
+
+  <section id="campaign-data">
+    <h2>Campaign Data We Measure</h2>
+    <p>
+      Campaign links may include standard UTM values such as source, medium,
+      campaign, campaign ID, and content variant. When analytics is accepted,
+      these values let us compare a campaign visit with an outbound click. We do
+      not intentionally send names, email addresses, phone numbers, or OLSP
+      account details to Google Analytics.
+    </p>
+  </section>
+
+  <section id="choices">
+    <h2>Your Choices</h2>
+    <p>
+      You can accept analytics or continue with necessary site functionality
+      only. You can reopen the choice at any time using the button below.
+    </p>
+    <button type="button" class="cta-btn privacy-choice" data-analytics-settings>
+      Change analytics choice
+    </button>
+  </section>
+
+  <section id="external-sites">
+    <h2>External Sites</h2>
+    <p>
+      Links to OLSP and other external services leave this website. Those sites
+      apply their own privacy and tracking practices. Google describes its own
+      data practices in
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
+    </p>
+  </section>
+
+  <SiteFooter />
+</OlspLayout>
+
+<style>
+  .privacy-choice { border: 0; cursor: pointer; padding: .65rem 1rem; }
+</style>

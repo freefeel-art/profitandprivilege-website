@@ -1,4 +1,6 @@
 ---
+import AnalyticsConsent from "../components/AnalyticsConsent.astro";
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -14,6 +16,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<title>Profit and Privilege</title>
 	</head>
 	<body>
+		<AnalyticsConsent />
 		<slot />
 	</body>
 </html>

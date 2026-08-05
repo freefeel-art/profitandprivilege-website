@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 
+import AnalyticsConsent from "../AnalyticsConsent.astro";
+
 interface TocLink {
   href: string;
   label: string;
@@ -384,6 +386,8 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
 </style>
 </head>
 <body>
+
+<AnalyticsConsent />
 
 <div class="layout">
 

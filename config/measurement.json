@@ -5,9 +5,35 @@
     "authority": "owner-confirmed-and-browser-observed",
     "collection_method": "authenticated-read-only-browser-snapshot",
     "currency": "USD",
-    "measured_values": ["leads", "customers", "transactions", "current_available_balance", "lifetime_balance"],
+    "measured_values": ["leads", "customers", "transactions", "current_available_balance", "lifetime_balance", "daily_signups", "daily_sales", "daily_revenue"],
     "target_values": ["signups", "sales", "revenue"],
-    "daily_deltas_available": false,
+    "daily_deltas_available": true,
     "sale_value": 7
+  },
+  "acquisition_measurement": {
+    "provider": "google-analytics-4",
+    "mode": "consent-gated",
+    "owned_campaign_destination": "https://olsp.profitandprivilege.com/olsp-livebinar/",
+    "required_environment": [
+      "PUBLIC_GA4_MEASUREMENT_ID",
+      "GA4_PROPERTY_ID",
+      "GOOGLE_APPLICATION_CREDENTIALS"
+    ],
+    "campaign_identity_parameter": "utm_id",
+    "campaign_parameters": [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_id",
+      "utm_content"
+    ],
+    "outbound_event": "olsp_outbound_click",
+    "privacy_contract": {
+      "analytics_storage_default": "denied",
+      "advertising_storage": "denied",
+      "advertising_user_data": "denied",
+      "advertising_personalization": "denied"
+    },
+    "attribution_limit": "OLSP conversions remain authoritative daily aggregates until OLSP exposes a verified action identifier."
   }
 }
