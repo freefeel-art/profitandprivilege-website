@@ -144,6 +144,26 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
     color:var(--ink-light);
     margin:0 0 .75rem;
   }
+  .toc-home{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    margin:0 0 1rem;
+    padding:.45rem .7rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:#fff;
+    color:var(--ink);
+    font-size:.86rem;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .toc-home:hover{
+    background:var(--accent-soft);
+    border-color:#bfdbfe;
+    color:var(--accent);
+    text-decoration:none;
+  }
   .toc-wrap nav a{
     display:block;
     font-size:.9rem;
@@ -418,6 +438,7 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
   <button class="mobile-toc-btn" id="tocToggle">☰ Table of Contents</button>
   <aside class="toc-wrap" id="tocWrap">
     <h4>On This Page</h4>
+    <a href="/" class="toc-home">← Home</a>
     <nav id="tocNav">
       {tocLinks.map(link => (
         <a href={link.href}>{link.label}</a>
