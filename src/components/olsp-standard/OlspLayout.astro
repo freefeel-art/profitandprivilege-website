@@ -305,14 +305,38 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
     display:block;
     text-align:center;
     margin:3rem 0;
-    font-size:1.15rem;
+    padding:1.15rem 1.35rem;
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:var(--radius);
+    background:var(--accent-soft);
+    font-size:1.08rem;
     font-weight:600;
     font-style:italic;
-    line-height:1.6;
+    line-height:1.55;
     color:var(--ink);
     text-decoration:none;
+    transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
   }
-  .goldmaster-quote:hover{color:var(--accent); text-decoration:none;}
+  .goldmaster-quote:hover{color:var(--ink); text-decoration:none; border-color:var(--accent); box-shadow:0 5px 18px rgba(15,23,42,.10); transform:translateY(-1px);}
+  .goldmaster-quote-text{display:block;}
+  .goldmaster-quote-action{display:block; margin-top:.45rem; color:var(--accent); font-size:.82rem; font-style:normal; font-weight:700; letter-spacing:.01em;}
+
+  .quote-banner{
+    display:block;
+    margin:2.5rem 0;
+    padding:1rem 1.2rem;
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:var(--radius);
+    background:var(--accent-soft);
+    color:var(--ink);
+    text-decoration:none;
+    transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .quote-banner p{margin:0; font-size:1.02rem; font-style:italic; line-height:1.55;}
+  .quote-banner::after{content:"Explore the Live Webinar →"; display:block; margin-top:.45rem; color:var(--accent); font-size:.82rem; font-style:normal; font-weight:700;}
+  .quote-banner:hover{color:var(--ink); text-decoration:none; border-color:var(--accent); box-shadow:0 5px 18px rgba(15,23,42,.10); transform:translateY(-1px);}
 
   .cta-card{
     border-radius:var(--radius);
