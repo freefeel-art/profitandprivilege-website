@@ -35,7 +35,7 @@ REQUIRED_SECTIONS = {
 }
 
 
-def validate(content_path: str, research_path: str) -> str:
+def validate(content_path: str, research_path: str, output_path: str | None = None) -> str:
     with open(content_path) as f:
         content = json.load(f)
     with open(research_path) as f:
@@ -147,9 +147,13 @@ def validate(content_path: str, research_path: str) -> str:
         "qa_results": all_results,
     }
 
-    output_dir = os.path.join(os.getcwd(), "research/output/qa-reports")
-    os.makedirs(output_dir, exist_ok=True)
-    out_path = os.path.join(output_dir, f"{pillar_slug}-qa-report.json")
+    if output_path:
+        out_path = output_path
+        os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+    else:
+        output_dir = os.path.join(os.getcwd(), "research/output/qa-reports")
+        os.makedirs(output_dir, exist_ok=True)
+        out_path = os.path.join(output_dir, f"{pillar_slug}-qa-report.json")
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2, default=str)
 

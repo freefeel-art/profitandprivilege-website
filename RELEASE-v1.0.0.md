@@ -15,7 +15,7 @@ Dedicated QA agent (`agents/editorial-qa/`) that validates every article against
 CLI-based publishing system (`publishing/publish.cjs`) supporting single-slug and full-site builds. Validates QA reports, runs Astro build, and writes publication reports to `reports/publication/`. Usage: `publish.cjs <slug> --qa <qa-report-path>`.
 
 ### Pipeline Integration
-Eight-stage editorial pipeline with agent prompts, output templates, and handoff specifications. State persisted in `pipeline/state.json`. Handoffs follow `docs/PIPELINE-HANDOFF-STANDARD.md`. Stages: Community Intelligence → Editorial Intelligence → Opportunity Discovery → Opportunity Research → Research Factory → Content Production → Editorial QA → Publishing.
+Eight-stage editorial pipeline with agent prompts, output templates, and handoff specifications. At release time state was persisted in `pipeline/state.json`; current mutable state lives under `runtime/editorial-pipeline/`. Handoffs follow `docs/PIPELINE-HANDOFF-STANDARD.md`. Stages: Community Intelligence → Editorial Intelligence → Opportunity Discovery → Opportunity Research → Research Factory → Content Production → Editorial QA → Publishing.
 
 ### Production Readiness
 Two comprehensive reports completed:

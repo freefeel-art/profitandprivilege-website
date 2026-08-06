@@ -50,7 +50,7 @@ Examples:
 - `how to make money online with no experience`
 - `leadsminer pro review`
 
-**Optional:** an `opportunity_name` — an internal identifier for the opportunity (e.g. a candidate_id promoted from `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`). If omitted, the agent derives one from its own research. See `PROMPT.md` for the full input list (`intent_hint`, `affiliate_product`, `opportunity_name`).
+**Optional:** an `opportunity_name` — an internal identifier for the opportunity (e.g. a candidate_id promoted from `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`). If omitted, the agent derives one from its own research. See `PROMPT.md` for the full input list (`intent_hint`, `affiliate_product`, `opportunity_name`).
 
 ---
 

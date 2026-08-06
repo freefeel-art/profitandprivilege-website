@@ -45,11 +45,14 @@ The Editorial Builder requires the following inputs. If any are missing, list wh
 |-------|--------|----------|-------|
 | **Topic / Seed Keyword** | Plain text | Yes | The article's primary topic and SEO target |
 | **Article Type** | `blog`, `review`, or `roundup` | Yes | Determines component set and section structure |
-| **Research Brief** | Path to `.md` file | No | If provided, read it for evidence, sources, and editorial angles |
+| **Scribe Handoff** | Path to `READY_FOR_BUILDER` JSON | Yes | Canonical handoff produced by `commander/scribe.py` |
+| **Content Package** | Path to validated JSON | Yes | Evidence-mapped sections from Scribe; this is the sole content input |
 | **Target Slug** | Kebab-case string | Yes | Determines output path: `src/pages/{type}/{slug}.astro` |
 | **Canonical URL** | Full URL with trailing slash | Yes | Format: `https://olsp.profitandprivilege.com/{type}/{slug}/` |
 
-If a Research Brief is provided, read it before generating. Use its evidence, sources, and recommended angles as the content foundation. If no brief is provided, generate from the topic alone using publicly available knowledge.
+The Scribe Handoff and Content Package are mandatory. If either is missing,
+invalid, or not `READY_FOR_BUILDER`, stop. Do not generate from the topic alone
+and do not conduct new research.
 
 ## Before Generating
 
@@ -99,3 +102,5 @@ Every external link (any `href` that does not begin with `/`) must include `targ
 2. Verify per-type checklist from the relevant spec
 3. Run `astro build` and fix any errors
 4. Start `astro dev --background` and verify the page returns HTTP 200
+5. Run `python -m commander.builder src/pages/{type}/{slug}.astro <scribe-handoff.json> <brief-id>`
+   and stop unless it produces a `READY_FOR_QA` handoff.

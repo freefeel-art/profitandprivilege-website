@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import { getPublishedArticles, getDraftArticles, getProductionStats } from "../data/production-home.js";
+import AnalyticsConsent from "../components/AnalyticsConsent.astro";
 
 const stats = getProductionStats();
 const published = getPublishedArticles();
@@ -139,6 +140,7 @@ const siteUrl = "https://olsp.profitandprivilege.com";
 </style>
 </head>
 <body>
+<AnalyticsConsent />
 
 <main>
   <h1>Content Production</h1>

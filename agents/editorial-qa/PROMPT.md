@@ -19,7 +19,7 @@ You have read and comply with AGENT-CONTRACT.md. Key rules for this execution:
 2. Research Brief (BRF-NNN) — claims, sources, gaps, vendor claims, editorial notes
 3. Opportunity Brief (OPP-NNN) — section structure, related questions, internal linking candidates
 4. Community Intelligence Report — finding IDs, traceability
-5. Content Production Handoff — self-review checklist, evidence mapping
+5. Builder QA Handoff (`READY_FOR_QA`) — Builder artifact, Scribe handoff reference, and static validation results
 
 ## Task
 
@@ -33,6 +33,10 @@ Perform 8 validation checks against the article:
 6. **Citation Integrity** — all factual claims have reliability labels; sources section complete; disclaimer present
 7. **Internal Linking** — OPP brief's internal links present; CTA placement natural; links resolve correctly
 8. **Astro Validation** — build succeeds; prerender=true; canonical URL; OlspLayout wrapper used; no inline `<style>` or `<script>` blocks
+
+Before issuing a decision, run `python -m commander.qa` with the
+`READY_FOR_QA` Builder handoff, the Scribe content package, and the Research
+Report. The QA handoff's single decision is authoritative for the next stage.
 
 ## Issue Classification
 

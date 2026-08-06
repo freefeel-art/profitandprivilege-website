@@ -35,7 +35,7 @@ function run(cmd) {
 }
 
 export function getPipelineState() {
-  const raw = readFile('pipeline/state.json');
+  const raw = readFile('runtime/editorial-pipeline/state.json');
   if (!raw) return null;
   try {
     return JSON.parse(raw);
@@ -152,7 +152,7 @@ return {
 }
 
 function countOpportunities() {
-  const content = readFile('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md');
+  const content = readFile('runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md');
   if (!content) return 0;
   const matches = content.match(/^\| \d+ \|/gm);
   return matches ? matches.length : 0;
@@ -306,7 +306,7 @@ export function getCurrentProductionState() {
   const stages = getStageStatus();
   const pipelineState = getPipelineState();
 
-  const oppContent = readFile('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md');
+  const oppContent = readFile('runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md');
   const briefs = dirListing('agents/opportunity-research-agent/briefs/');
   const latestBrief = briefs.sort().reverse()[0] || null;
   const qaReports = dirListing('reports/editorial-qa/').sort().reverse();
@@ -402,7 +402,7 @@ export function getCurrentProductionState() {
 
 export function getQuickLinks() {
   const links = [
-    { label: 'Opportunity Queue', path: '/ops/opportunity-queue.md', desc: '30 scored candidates', src: 'agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md' },
+    { label: 'Opportunity Queue', path: '/ops/opportunity-queue.md', desc: 'Current unresolved candidates', src: 'runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md' },
     { label: 'Opportunity Briefs', path: '/ops/briefs/index.html', desc: '18 completed briefs', src: 'agents/opportunity-research-agent/briefs' },
     { label: 'Research Briefs', path: '/docs/research/index.html', desc: '9 research briefs', src: 'docs/research' },
     { label: 'Review Articles', path: '/reviews/', desc: '14 published reviews', src: null },
@@ -415,7 +415,7 @@ export function getQuickLinks() {
     { label: 'Community Intel Reports', path: '/reports/community-intelligence/index.html', desc: 'CI research', src: 'reports/community-intelligence' },
     { label: 'Editorial Intel Reports', path: '/reports/editorial-intelligence/index.html', desc: 'EI reports', src: 'reports/editorial-intelligence' },
     { label: 'Asset Library', path: '/docs/HEAVY-ASSET-LIBRARY.md', desc: 'Research asset index', src: 'docs/HEAVY-ASSET-LIBRARY.md' },
-    { label: 'Pipeline State', path: '/pipeline/state.json', desc: 'JSON state snapshot', src: 'pipeline/state.json' },
+    { label: 'Pipeline State', path: '/pipeline/state.json', desc: 'JSON state snapshot', src: 'runtime/editorial-pipeline/state.json' },
   ];
 
   return links.map(l => ({
@@ -425,7 +425,7 @@ export function getQuickLinks() {
 }
 
 export function getTopUserProblems() {
-  const oppContent = readFile('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md');
+  const oppContent = readFile('runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md');
   if (!oppContent) return [];
 
   const lines = oppContent.split('\n');

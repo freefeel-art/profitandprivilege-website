@@ -63,7 +63,7 @@ Nothing else in this specification changes as a result of this scoping. ORA's si
 **Optional context:**
 - `intent_hint` (string) — caller's hypothesis about search intent (e.g. "review", "how-to", "comparison")
 - `affiliate_product` (string) — the affiliate product to evaluate for fit (defaults to OLSP Academy if not specified)
-- `opportunity_name` (string) — an internal identifier describing the opportunity itself (e.g. "OLSP Ecosystem Complete Guide Hub"), as distinct from the keyword. If the keyword originated from a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, the caller may pass that row's `candidate_id` here. If omitted, the agent derives one at Stage 6 from its own research findings — describing the angle of the opportunity, never simply restating the keyword.
+- `opportunity_name` (string) — an internal identifier describing the opportunity itself (e.g. "OLSP Ecosystem Complete Guide Hub"), as distinct from the keyword. If the keyword originated from a row in `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`, the caller may pass that row's `candidate_id` here. If omitted, the agent derives one at Stage 6 from its own research findings — describing the angle of the opportunity, never simply restating the keyword.
 
 The keyword is the only hard requirement. All other inputs are advisory.
 
@@ -294,7 +294,7 @@ Proxy scores are noted in the brief's scoring rationale and Data Quality section
 Before compiling the brief, the agent performs two additional pieces of internal reasoning — neither requires a new capability or external tool; both read `docs/CONTENT-REGISTRY.md`, which the agent already reads for Alignment scoring (Stage 5) and Internal Link Targets:
 
 1. **Business Value assessment** (Section 6 of the brief) — evaluates monetization path, Primary/Secondary CTA, and internal products supported, independently of the Stage 5 Opportunity Score. Never added into the 0–100 total.
-2. **Strategic Fit assessment** (Section 7 of the brief) — reads `docs/CONTENT-REGISTRY.md` § Content Pillars, § Internal Link Map, and § Content Gaps & Planning Notes to determine target pillar, authority cluster fit, internal-linking impact, and portfolio impact. If the `opportunity_name` input traces to a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, cite that row's Priority Score in the Priority Rationale field. This section provides context for one candidate; it does not re-rank candidates against each other — that remains the Opportunity Discovery Agent's job (see `agents/opportunity-discovery-agent/SPEC.md` § 5).
+2. **Strategic Fit assessment** (Section 7 of the brief) — reads `docs/CONTENT-REGISTRY.md` § Content Pillars, § Internal Link Map, and § Content Gaps & Planning Notes to determine target pillar, authority cluster fit, internal-linking impact, and portfolio impact. If the `opportunity_name` input traces to a row in `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`, cite that row's Priority Score in the Priority Rationale field. This section provides context for one candidate; it does not re-rank candidates against each other — that remains the Opportunity Discovery Agent's job (see `agents/opportunity-discovery-agent/SPEC.md` § 5).
 
 If `opportunity_name` was not supplied as an input, the agent derives one now — a short, descriptive internal identifier for the opportunity's angle (not a restatement of the keyword) — informed by everything gathered in Stages 1–5.
 

@@ -35,7 +35,8 @@ Mission Control automatically executes the full content production workflow up t
 
 **What remains manual:**
 - Publishing
-- Final approval before publication
+- Final evidence and safety verification before autonomous publication; Owner
+  action only at a genuine authority boundary
 
 **Daily automation trigger (future):**
 - 07:00 — Mission Control starts the assisted workflow automatically

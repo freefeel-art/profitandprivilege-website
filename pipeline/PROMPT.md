@@ -15,7 +15,7 @@ Each stage below is a self-contained unit. Complete ALL steps in a stage before 
 ## Pipeline Stages (in order)
 
 ```
-Stage 0: Discovery   → ODA               → OPPORTUNITY-QUEUE.md
+Stage 0: Discovery   → ODA               → runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md
 Stage 1: Research    → ORA               → Brief file
 Stage 2: Builder     → Editorial Builder → .astro article
 Stage 3: QA          → Editorial QA      → Validated article
@@ -51,7 +51,7 @@ Stage 4: Publish     → Publisher         → Published + report
 1. Read `agents/opportunity-discovery-agent/PROMPT.md` using the Read tool.
 2. Follow the ODA's instructions in that file to produce the opportunity queue.
 3. Use your tools (Read, Write, WebSearch) as directed by the PROMPT.md.
-4. Validate: `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` exists and contains scored rows.
+4. Validate: `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md` exists and contains scored rows.
 5. Write a Stage Handoff block with the top candidate and suggested next stage.
 
 **STOP. Do not proceed to Stage 1 until Step 4 passes.**

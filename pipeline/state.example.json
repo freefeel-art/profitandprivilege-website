@@ -1,0 +1,15 @@
+{
+  "pipeline": "OLSP.PROFITANDPRIVILEGE.COM",
+  "version": "2.0",
+  "lastRun": null,
+  "stages": {
+    "0-discovery": {"status": "ready", "agent": "opportunity-discovery-agent"},
+    "1-research": {"status": "ready", "agent": "opportunity-research-agent"},
+    "2-builder": {"status": "ready", "agent": "editorial-builder"},
+    "3-qa": {"status": "ready", "agent": "editorial-qa"},
+    "4-publish": {"status": "ready", "agent": "publisher"}
+  },
+  "runs": [],
+  "currentRun": null,
+  "currentSeed": null
+}

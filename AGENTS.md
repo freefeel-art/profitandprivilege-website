@@ -23,7 +23,7 @@ After generating or updating any article, always complete this sequence before r
 
 ## Registry Maintenance
 
-- `docs/CONTENT-REGISTRY.md` is the single source of truth for published pages and internal link mapping. Cross-reference it before adding new content or internal links, and update it after publishing.
+- `docs/CONTENT-REGISTRY.md` is the curated editorial catalog and internal-link planning reference. Route existence and counts are derived from `src/pages/`; verified publication receipts live under `runtime/`. Cross-reference the catalog before adding content or internal links.
 
 ## Development
 

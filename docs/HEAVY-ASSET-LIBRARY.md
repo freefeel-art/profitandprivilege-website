@@ -1,6 +1,9 @@
 # Heavy Asset Library — Profit and Privilege
 
-**Single source of truth for reusable Knowledge Assets produced by the Heavy Pipeline.**
+**Curated registry for reusable Knowledge Assets produced by the Heavy Pipeline.**
+
+This registry records editorial decisions. File existence is verified from
+`docs/research/`; changing pipeline work status belongs in runtime state.
 
 Last updated: 2026-07-25
 

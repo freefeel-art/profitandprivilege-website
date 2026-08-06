@@ -4,7 +4,7 @@
 
 This document specifies the operational requirements for the Content Production Agent V1. It defines inputs, outputs, workflow, constraints, and quality standards.
 
-The agent operates as the seventh stage of the AI Editorial Operating System. Its sole function is to transform a completed Research Brief into a complete, publication-ready article file. It does not conduct research, validate facts, or make editorial decisions.
+The agent operates as the Scribe content-package stage of the AI Editorial Operating System. Its sole function is to transform a completed Research Report into a validated structured content package for Editorial Builder. It does not conduct research, validate facts, or make editorial decisions.
 
 ---
 
@@ -38,8 +38,8 @@ The Content Production Agent requires the following inputs before it may begin w
 
 | Input | Format | Required | Description |
 |-------|--------|----------|-------------|
-| Research Brief | Markdown document | Yes | The complete research package: evidence library, source list, fact summary, knowledge gap log, vendor claims, editorial notes |
-| Opportunity Brief | Markdown document | Yes | The article's working title, primary question, root problem, target audience, section structure, related questions |
+| Research Report | JSON document | Yes | The verified research report consumed by `research/content_production/producer.py` |
+| Opportunity Brief | JSON or Markdown document | Yes | The article's working title, primary question, root problem, target audience, section structure, related questions |
 | Content type | Enum | Yes | Review, Roundup, Evidence-based_resolution, Educational, Guide, Comparison, Troubleshooting |
 | Gold Master (all types) | GOLD-MASTER-SPEC.md | Required | Layout, CSS tokens, JS, components — required for every article. Non-review types define own sections but use identical CSS/JS/component set. |
 | Roundup Gold Master (for roundups) | ROUNDUP-GOLD-MASTER-SPEC.md | Conditional | Required only for roundup-specific structural rules |
@@ -50,7 +50,7 @@ The Content Production Agent requires the following inputs before it may begin w
 
 The agent must verify before starting:
 
-1. The Research Brief state is `Complete`
+1. The Research Report exists and contains the required evidence fields
 2. Every claim the article needs to address has a source reference
 3. Knowledge gaps have recommended treatment instructions
 4. The Opportunity Brief has a defined section structure
@@ -63,16 +63,15 @@ If any required input is missing or incomplete, the agent must stop and report w
 
 | Output | Format | Description |
 |--------|--------|-------------|
-| Complete article file | `.astro` file | Standalone, publication-ready page in `src/pages/` |
-| Handoff log | Structured text | Notes for Editorial QA: what was done, what needs review, any open questions |
+| Structured content package | JSON file | Evidence-mapped article sections for Editorial Builder |
+| Builder handoff | JSON file | `READY_FOR_BUILDER` status, artifact path, section metadata, and explicit next stage |
 
 ### File location
 
 | Content Type | Location |
 |---|---|
-| Review | `src/pages/reviews/{slug}.astro` |
-| Evidence-based resolution | `src/pages/{section}/{slug}.astro` |
-| Roundup | `src/pages/roundups/{slug}.astro` |
+| All content types | `research/output/content/{pillar}-content.json` |
+| Builder handoff | `research/output/content/{pillar}-content-scribe-handoff.json` |
 
 ---
 
@@ -90,7 +89,7 @@ Verify all required inputs are present and complete. If not, stop and report mis
 
 ### Step 3: Map evidence to sections
 
-For each section, identify which claims from the Research Brief's Evidence Library are relevant. Ensure every factual claim in the section traces to a source. Identify which knowledge gaps affect each section and how they should be treated.
+For each section, identify which claims from the Research Report evidence are relevant. Ensure every factual claim in the package traces to a source. Identify which knowledge gaps affect each section and how they should be treated.
 
 ### Step 4: Write each section
 
@@ -105,28 +104,24 @@ Write each section in order. For each factual claim:
 
 Use community language, verbatim quotes (from CI report), and emotional framing from the Editorial Intelligence Report. Humanise the article. Do not let it read like a research paper.
 
-### Step 6: Assemble the complete file
+### Step 6: Assemble the structured content package
 
-For standalone `.astro` files:
-
-- Add Astro frontmatter with `export const prerender = true`
-- Copy the entire `<style>` block verbatim from the Gold Master reference article (`src/pages/reviews/olsp-academy.astro`). Do not add new CSS classes, remove existing ones, or change token values.
-- Copy the entire `<script is:inline>` tag verbatim from the Gold Master reference article. Do not add new JS functions or modify existing ones.
-- Include all required Gold Master components: `.hero-tag`, `.verdict-box`, `.methodology`, `.cta-card` (×3), `.site-footer`, `.pill-list` for sources
-- Structure the HTML with: `.mobile-toc-btn`, `<aside class="toc-wrap">` (sticky TOC), `<main>` with sequential `<section>` elements
-- No layout imports, no component imports, no shared CSS
+The Scribe output is a structured JSON content package. It must include
+`content_metadata`, an `articles` list, and evidence-mapped `sections` for each
+article. The downstream Editorial Builder owns Astro frontmatter, components,
+CSS, JavaScript, and page assembly.
 
 ### Step 7: Self-review
 
 Before submitting, the agent must verify:
 
-1. Every factual claim in the article traces to the Research Brief's Evidence Library
+1. Every factual claim in the content package traces to the Research Report evidence
 2. Source reliability labels are applied correctly (Verified, Vendor claim, Third-party reported, Self-reported, Unverified)
 3. Knowledge gaps are treated per their instructions (not filled with assumptions)
-4. All sections from the Opportunity Brief structure are present and populated
+4. All sections from the Opportunity Brief structure are present and represented
 5. No new research was conducted
 6. No facts were invented
-7. The article answers the primary question from the Opportunity Brief
+7. The content package supports the primary question from the Opportunity Brief
 
 ---
 
@@ -157,6 +152,10 @@ If a single claim has sources with different reliability labels, present the hig
 ---
 
 ## 8. Structural Requirements (all article types)
+
+This section is a downstream Editorial Builder contract. It is not an output
+requirement for Scribe. Scribe validates the content package and emits the
+Builder handoff; Builder owns Astro layout, CSS, JavaScript, and page assembly.
 
 The Gold Master (`docs/GOLD-MASTER-SPEC.md`) is the single source of truth for all non-content elements. Every article page must match the Gold Master on layout, CSS tokens, components, and JavaScript. Only section content and section IDs change.
 
@@ -221,10 +220,10 @@ Copy the entire `<script is:inline>` tag verbatim from the Gold Master reference
 
 ## 10. Constraints
 
-1. The agent must never conduct additional research. The Research Brief is the sole source of facts.
+1. The agent must never conduct additional research. The Research Report is the sole source of facts.
 2. The agent must never invent facts, statistics, quotes, testimonials, or data.
 3. The agent must never fill a knowledge gap with an assumption or plausible-sounding replacement.
-4. The agent must never modify the Research Brief, Evidence Library, Source List, or Knowledge Gap Log.
+4. The agent must never modify the Research Report, Evidence Library, Source List, or Knowledge Gap Log.
 5. The agent must never perform Editorial QA — it produces a draft, not a final approved article.
 6. The agent may rearrange evidence into an appropriate narrative structure but may not alter the meaning or confidence level of any claim.
 7. The agent must respect the section structure defined by the Opportunity Brief or relevant template.
@@ -248,22 +247,23 @@ Copy the entire `<script is:inline>` tag verbatim from the Gold Master reference
 
 The Content Production Agent's work is complete when:
 
-1. A complete article file exists at the correct path
-2. Every factual claim traces to the Research Brief's Evidence Library
+1. A structured content package exists at the configured output path
+2. Every factual claim in the package traces to the Research Report evidence
 3. Knowledge gaps are treated per their instructions
-4. All sections from the relevant structure template are present and populated
+4. All sections from the relevant structure template are represented
 5. Source reliability labels are applied consistently
-6. The article answers the primary question from the Opportunity Brief
-7. The file passes a structural self-review (no missing elements)
-8. A handoff log is produced for Editorial QA
+6. The package supports the primary question from the Opportunity Brief
+7. The package passes `commander/scribe.py` validation
+8. A `READY_FOR_BUILDER` handoff is produced
 
 ---
 
 ## 13. Next Stage
 
-**Stage:** Editorial QA (Stage 8)
+**Stage:** Editorial Builder
 
 **Handoff includes:**
-- Complete article file at `src/pages/{section}/{slug}.astro`
-- Research Brief (for QA cross-reference)
-- Handoff log documenting: what was produced, which evidence sections were used, which gaps were treated, any open questions for QA, any section structure deviations
+- Structured content package JSON
+- `READY_FOR_BUILDER` handoff JSON
+- Research Report reference and evidence mapping
+- Open questions, gap treatments, and any section structure deviations

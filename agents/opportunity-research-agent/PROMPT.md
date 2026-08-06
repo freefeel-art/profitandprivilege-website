@@ -209,7 +209,7 @@ Fill:
   internal_linking_impact   — 1–2 sentences: orphaned pages resolved, isolated clusters connected, etc.
   portfolio_impact          — 1–2 sentences: is the target pillar thin, balanced, or saturated?
   priority_rationale        — 1–2 sentences: if this keyword traces to a row in
-                               agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md, cite that
+                               runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md, cite that
                                row's Priority Score and label here. Otherwise write "No Opportunity
                                Queue record — researched directly, not portfolio-ranked against
                                other candidates."
@@ -318,7 +318,7 @@ Keyword: [KEYWORD]
 Intent hint (optional): [INTENT_HINT or omit]
 Affiliate product (optional): [AFFILIATE_PRODUCT or "OLSP Academy (default)"]
 Opportunity name (optional): [OPPORTUNITY_NAME or omit — if this keyword came from a row in
-  agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md, that row's candidate_id may be passed
+  runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md, that row's candidate_id may be passed
   here; otherwise the agent derives a descriptive internal name at Stage 6]
 
 Run all six stages of the Opportunity Research workflow as defined in your system prompt. Complete each stage before beginning the next. Save the completed Opportunity Brief to agents/opportunity-research-agent/briefs/[slug].md when done, where [slug] is derived from the Opportunity Name.

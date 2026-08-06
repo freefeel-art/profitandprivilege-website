@@ -71,7 +71,7 @@ Everything from stage 1 onward is the existing production pipeline, now split in
 A single **Opportunity Queue**, updated (not replaced) on every run:
 
 ```
-agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md
+runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md
 ```
 
 Each queued candidate carries: a topic/summary, a candidate keyword (the exact string to hand downstream if promoted), supporting evidence from every source that surfaced or confirmed it, and **two separate scores** — an **Opportunity Score (preliminary)** measuring the candidate's quality in isolation (Trend/Community/Gap — DataForSEO/Demand is never part of this score; see below), and a **Priority Score** measuring whether it should be produced now relative to the rest of the portfolio (Opportunity Quality/Pillar Coverage & Balance/Authority Cluster & Internal-Linking Fit/Strategic Priority Fit) — plus a third, editorial-only **Authority Value** rating (⭐ to ⭐⭐⭐⭐⭐, SPEC.md § 5a) estimating how much publishing the page would strengthen the site's long-term topical authority and internal-linking structure, and a fourth, editorial-only **Pipeline Type** field (Heavy / Light, SPEC.md § 5b) determining which of the two downstream production pipelines the candidate enters if promoted (see `docs/PIPELINE-ARCHITECTURE.md`), and the result of its content-coverage check and a status (`unclaimed` / `promoted` / `rejected` / `stale` / `published`). None of these four are ever averaged or collapsed into one another — Authority Value and Pipeline Type in particular never feed the Opportunity Score or Priority Score formulas.
@@ -88,7 +88,7 @@ See `OUTPUT-TEMPLATE.md` for the full structure.
 | `SPEC.md` | Full specification: mission, workflow, capability reuse, scoring, schema |
 | `PROMPT.md` | The agent system prompt and user prompt template |
 | `OUTPUT-TEMPLATE.md` | The blank Opportunity Queue structure the agent fills in |
-| `OPPORTUNITY-QUEUE.md` | Output — the live, ranked backlog (created on first run) |
+| `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md` | Output — the live, ranked backlog (created on first run) |
 
 ---
 
@@ -127,5 +127,5 @@ Every source here is one ORA already uses. This agent adds no new provider — o
 - Require DataForSEO credentials, or treat their absence/failure as a run failure
 - Score Demand as a weighted dimension, even when DataForSEO happens to be available
 - Automatically invoke ORA (queue write is the last step of this agent's run)
-- Modify any file outside `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`
+- Modify any file outside `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`
 - Modify anything in `agents/opportunity-research-agent/`

@@ -142,6 +142,7 @@ def load_state():
 
 def save_state(state):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    state["updated_at"] = _now_iso()
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
 

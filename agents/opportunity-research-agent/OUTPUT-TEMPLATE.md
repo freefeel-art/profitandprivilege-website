@@ -20,7 +20,7 @@
 - **SERP gap:** [one-line description of the competitive gap found in the top 10]
 - **Existing content gap:** [one-line — confirms no Profit and Privilege page already covers this, per Section 0]
 - **Internal linking opportunity:** [one-line — which existing pages this would link to/from; see Section 7 for detail]
-- **Portfolio priority:** [one-line — resolves a gap named in docs/CONTENT-REGISTRY.md? matches a Priority Score from agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md if this candidate originated there? or "N/A — researched directly, not sourced from the Opportunity Queue"]
+- **Portfolio priority:** [one-line — resolves a gap named in docs/CONTENT-REGISTRY.md? matches a Priority Score from runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md if this candidate originated there? or "N/A — researched directly, not sourced from the Opportunity Queue"]
 
 ---
 
@@ -229,7 +229,7 @@ Business Value guidance:
 | Authority cluster | [which existing cluster this joins, and in what role — e.g. "becomes the pillar/hub page of the OLSP Ecosystem cluster"] |
 | Internal linking impact | [1–2 sentences — net effect on the site's link graph: orphaned pages resolved, isolated clusters connected, etc.] |
 | Portfolio impact | [1–2 sentences — how this affects the target pillar's coverage/balance per `docs/CONTENT-REGISTRY.md` § Content Pillars: thin, balanced, or saturated] |
-| Priority rationale | [1–2 sentences. If this keyword came from a row in `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`, cite its Priority Score and label here. Otherwise: "No Opportunity Queue record — researched directly, not portfolio-ranked against other candidates."] |
+| Priority rationale | [1–2 sentences. If this keyword came from a row in `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`, cite its Priority Score and label here. Otherwise: "No Opportunity Queue record — researched directly, not portfolio-ranked against other candidates."] |
 
 ---
 

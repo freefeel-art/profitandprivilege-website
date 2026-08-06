@@ -26,7 +26,7 @@ Understand how ChatGPT should behave in this repository.
 
 Read:
 
-02-PROJECT-STATE.md
+../STATE.md
 
 Purpose:
 

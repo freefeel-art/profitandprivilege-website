@@ -8,20 +8,22 @@ Identify real user problems in the affiliate marketing and online income space. 
 
 ## Editorial Operating System
 
-The repository contains a structured editorial pipeline with eight stages, each backed by an agent prompt, output template, and handoff specification:
+The repository defines a structured editorial pipeline with eight stages, each backed by an agent prompt, output template, and handoff specification. Runtime readiness and execution status are not maintained in this table:
 
-| Stage | Agent | Status |
-|---|---|---|
-| Community Intelligence | `agents/community-intelligence/` | Complete |
-| Editorial Intelligence | `agents/editorial-intelligence/` (via CI) | Complete |
-| Opportunity Discovery | `agents/opportunity-discovery-agent/` | Complete |
-| Opportunity Research | `agents/opportunity-research-agent/` | Complete |
-| Research Factory | `agents/research-factory/` | Complete |
-| Content Production | `agents/editorial-builder/` | Complete |
-| Editorial QA | `agents/editorial-qa/` | Operational |
-| Publishing | `publishing/publish.cjs` | Operational |
+| Stage | Definition |
+|---|---|
+| Community Intelligence | `agents/community-intelligence/` |
+| Editorial Intelligence | `agents/editorial-intelligence/` (via CI) |
+| Opportunity Discovery | `agents/opportunity-discovery-agent/` |
+| Opportunity Research | `agents/opportunity-research-agent/` |
+| Research Factory | `agents/research-factory/` |
+| Content Production | `agents/editorial-builder/` |
+| Editorial QA | `agents/editorial-qa/` |
+| Publishing | `publishing/publish.cjs` |
 
-Pipeline state is tracked in `pipeline/state.json`. Handoffs between stages follow `docs/PIPELINE-HANDOFF-STANDARD.md`.
+Pipeline definitions remain in `pipeline/`; mutable run state is tracked in
+`runtime/editorial-pipeline/state.json`. Handoffs between stages follow
+`docs/PIPELINE-HANDOFF-STANDARD.md`.
 
 ## Mission Control
 
@@ -33,22 +35,21 @@ The operational dashboard lives at `/mission-control/` — a single-page control
 - **Pipeline Summary** — mode, topic, status, elapsed time, current stage
 - **Results Panel** — output artifacts that populate after a pipeline run
 - **Pipeline Health** — overall system status indicator
-- **Pipeline Status** — live stage states from `pipeline/state.json`
+- **Pipeline Status** — live stage states from `runtime/editorial-pipeline/state.json`
 - **Production Overview** — metrics dashboard (opportunities, briefs, articles, reports)
 - **Quick Access** — links to all pipeline artifacts and documentation
 
 Mission Control is the front door for all editorial operations. See `src/pages/mission-control.astro` and `src/components/mission-control/`.
 
-## Current Implementation Status
+## Architecture Capabilities
 
-- **Production site**: live at [olsp.profitandprivilege.com](https://olsp.profitandprivilege.com) — 44 static pages (14 reviews, 25 blog, 1 roundup, 3 root informational, 1 author)
-- **OLSP Standard**: shared component system (`src/components/olsp-standard/`) with 11 reusable Astro components — layout, TOC, SEO metadata, author box, FAQ, callouts, product CTAs, verdict box
-- **All production pages**: use `OlspLayout` — ~12,500 lines of duplicated CSS and JS eliminated
+- **Production site**: [olsp.profitandprivilege.com](https://olsp.profitandprivilege.com); source routes are defined under `src/pages/`
+- **OLSP Standard**: shared component system under `src/components/olsp-standard/`
+- **Page architecture**: editorial pages use the shared layout contract where their article standard requires it
 - **Editorial QA**: validates every article against OlspLayout compliance, SEO metadata, internal linking, and schema.org markup; generates structured QA reports
 - **Publishing Engine**: `publishing/publish.cjs` — validates QA report, runs Astro build, writes publication report; supports both single-slug and full-site builds
-- **Pipeline Integration**: handoff chain from opportunity queue through research, production, QA, and publishing; state persisted in `pipeline/state.json`
+- **Pipeline Integration**: handoff chain from opportunity queue through research, production, QA, and publishing; mutable state stays under `runtime/`
 - **Production Reports**: pipeline readiness audit and production readiness verification completed — documented in `docs/reports/`
-- **Git**: 110+ commits across 23 files, main branch
 
 ## Repository Structure
 
@@ -102,7 +103,7 @@ Mission Control is the front door for all editorial operations. See `src/pages/m
 │   └── scripts/
 │       └── pipeline-runner.js     # Pipeline state store + simulation engine
 ├── pipeline/
-│   └── state.json                 # Pipeline orchestration state
+│   └── state.example.json         # Runtime-state schema example
 ├── astro.config.mjs
 └── package.json
 ```

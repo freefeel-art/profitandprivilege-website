@@ -254,7 +254,7 @@ The agent must never suggest, and never queue, a topic that is already published
 | **Already covered by manually written content** | Same check as "published" — the check is content-based, not authorship-based. A manually written page is caught exactly the same way an AI-produced one is, because both live in the same registry and page tree. No separate "manual content" path exists or is needed. | `docs/CONTENT-REGISTRY.md` + `src/pages/**` |
 | **Duplicate Opportunity Brief** | Match against slug or `Primary keyword` field | `agents/opportunity-research-agent/briefs/` |
 | **Duplicate Research Brief** | Match against topic | `docs/research/` |
-| **Already in the Opportunity Queue** *(new — no ORA equivalent, since the queue is new)* | Match against existing `unclaimed`/`promoted`/`published` rows; `rejected`/`stale` rows do not block a re-surface | `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md` |
+| **Already in the Opportunity Queue** *(new — no ORA equivalent, since the queue is new)* | Match against existing `unclaimed`/`promoted`/`published` rows; `rejected`/`stale` rows do not block a re-surface | `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md` |
 
 **Judgement standard:** a trivial variant — singular/plural, reordered words, "best X" vs. "top X" for the same topic — counts as already covered. This is the same standard already defined and approved in ORA's Stage 0. When genuinely uncertain whether a candidate is a new angle or a duplicate, the candidate is neither dropped nor queued — it is reported separately as needing human judgement.
 
@@ -315,7 +315,7 @@ OLSP becomes the natural next step where appropriate — not a requirement.
 
 ### Opportunity Queue (owned entirely by this agent)
 
-**File:** `agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md`
+**File:** `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md`
 One file, updated (not replaced) on every run, all pillars together, ranked by **Priority Score** within each pillar.
 
 **Every candidate detail block must include all five required output fields:**
@@ -431,7 +431,7 @@ agents/
     SPEC.md                       ← this document
     PROMPT.md                     ← system prompt and user prompt template
     OUTPUT-TEMPLATE.md            ← blank Opportunity Queue structure
-    OPPORTUNITY-QUEUE.md          ← output — created on first run
+    runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md ← output — created on first run
   opportunity-research-agent/      ← UNCHANGED
     README.md
     SPEC.md
@@ -444,7 +444,7 @@ agents/
 **Rationale:**
 - **Mirrors ORA's own convention** (`README`/`SPEC`/`PROMPT`/`OUTPUT-TEMPLATE` + one write-target subfolder), so anyone who already understands ORA's layout understands this agent's layout for free.
 - **No shared code exists to factor out.** Both agents are prompt-driven specifications, not a shared library — there is nothing to place in a common parent beyond the `agents/` folder they already share.
-- **Isolates the write target.** Exactly as `briefs/` is ORA's only write target, `OPPORTUNITY-QUEUE.md` is this agent's only write target. Neither agent's folder is ever written to by the other.
+- **Isolates the write target.** Exactly as `briefs/` is ORA's only write target, `runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md` is this agent's only write target. Neither agent's folder is ever written to by the other.
 - **No changes required inside `opportunity-research-agent/`.** Placing the new agent as a sibling, rather than nesting it under or inside ORA's folder, keeps that guarantee structurally obvious rather than just documented.
 
 One follow-up noted but explicitly not actioned in this spec: the duplicate-check rules in Section 6 are substantively identical to ORA's Stage 0. Extracting them into one shared reference doc (e.g. `docs/DUPLICATE-CHECK-STANDARD.md`) that both `SPEC.md` files point to would prevent drift, but is a mechanical follow-up, not a precondition for approving this specification. A second, related follow-up: formalizing `strategic_priorities` (Section 5) as a standing Product-Owner-maintained document rather than a per-run operator input, once the informal version proves useful.

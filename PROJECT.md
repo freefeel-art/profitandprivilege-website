@@ -1,8 +1,8 @@
 # OLSP
 
-Status: Active
-
 Type: Never-ending production project
+
+Operational status: see `STATE.md`
 
 Target: olsp.profitandprivilege.com
 

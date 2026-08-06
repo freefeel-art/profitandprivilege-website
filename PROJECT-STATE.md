@@ -1,9 +1,6 @@
-# Project State
+# Superseded Project State
 
-## Production Recovery Complete (2026-07-12)
+Current verified operational state is defined by `STATE.md`.
 
-- Cloudflare deployment restored.
-- Static prerender pipeline operational.
-- Mission Control operational.
-- Production publishing resumed.
-- Future development driven only by production bottlenecks.
+The 2026-07-12 recovery snapshot is archived at
+`docs/archive/project-state/PROJECT-STATE-2026-07-12.md`.

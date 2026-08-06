@@ -12,6 +12,7 @@ import os
 import re
 from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from typing import Any
 
@@ -28,7 +29,7 @@ DRAFT_DIR = SOCIAL_PLAN_DIR / "drafts"
 
 ARTICLE_URL = "https://olsp.profitandprivilege.com/is-olsp-academy-an-mlm/"
 MEGA_LINK_URL = "https://offers.olspsystem.com/get_megalink?olsp=1006001"
-LIVEBINAR_URL = "https://olspacademy.com/c/livebinar"
+LIVEBINAR_URL = "https://olsp.profitandprivilege.com/olsp-livebinar/"
 
 DAILY_PLAN_PATH = SOCIAL_PLAN_DIR / "daily-plan.json"
 MANAGEMENT_REVIEW_PATH = RUNTIME_ROOT / "management-review/latest.json"
@@ -269,6 +270,8 @@ def _ensure_dirs() -> None:
 def _used_hooks(published_entries: list[dict[str, Any]], section_id: str) -> set[int]:
     used: set[int] = set()
     for entry in published_entries:
+        if entry.get("verification_status") == "UNVERIFIED_NOT_IN_META":
+            continue
         if entry.get("section_id") == section_id:
             hook_idx = entry.get("hook_index")
             if hook_idx is not None:
@@ -425,6 +428,7 @@ def build_daily_plan(article_path: Path) -> dict[str, Any]:
     article_text = article_path.read_text(encoding="utf-8") if article_path.is_file() else ""
     published_log = _load_published()
     published_entries = published_log.get("published", [])
+    livebinar_entries = published_log.get("livebinar_published", [])
     review = _load_management_review()
 
     platform = "facebook"
@@ -439,7 +443,7 @@ def build_daily_plan(article_path: Path) -> dict[str, Any]:
         review_learnings["new_hypothesis"] = review.get("new_hypothesis")
 
     # ── Slot 1: Webinar promotion (recurring live cycle) ──
-    angle, hook_idx, hook = _next_angle_and_hook(published_entries, LIVEBINAR_ANGLES)
+    angle, hook_idx, hook = _next_angle_and_hook(livebinar_entries, LIVEBINAR_ANGLES)
     webinar_ready = angle is not None and hook is not None
     if webinar_ready:
         webinar_plan = {
@@ -616,7 +620,49 @@ def build_daily_plan(article_path: Path) -> dict[str, Any]:
     return daily_plan
 
 
-def record_publication(plan: dict[str, Any], platform: str, published_path: Path | None = None) -> dict[str, Any]:
+def _tracking_action_id(plan: dict[str, Any]) -> str:
+    """Return the stable action identity shared by publication and GA4."""
+    raw_date = str(plan.get("date") or plan.get("planned_at") or "undated")[:10]
+    parts = (
+        "fb",
+        raw_date,
+        plan.get("content_type", "article"),
+        plan.get("section_id", "unknown"),
+        plan.get("hook_type", "unknown"),
+        plan.get("hook_index", "unknown"),
+    )
+    return "-".join(
+        re.sub(r"[^a-z0-9]+", "-", str(value).casefold()).strip("-") or "unknown"
+        for value in parts
+    )
+
+
+def _tracking_url(target_url: str, plan: dict[str, Any]) -> str:
+    """Return a stable campaign URL for future destination attribution."""
+    parsed = urlsplit(target_url)
+    query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    query.update({
+        "utm_source": "facebook",
+        "utm_medium": "social",
+        "utm_campaign": "olsp_daily",
+        "utm_id": _tracking_action_id(plan),
+        "utm_content": "-".join(str(value) for value in (
+            plan.get("content_type", "article"),
+            plan.get("section_id", "unknown"),
+            plan.get("hook_type", "unknown"),
+        )),
+    })
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, urlencode(query), parsed.fragment))
+
+
+def record_publication(
+    plan: dict[str, Any],
+    platform: str,
+    published_path: Path | None = None,
+    *,
+    permalink: str | None = None,
+    tracking_url: str | None = None,
+) -> dict[str, Any]:
     published_log = _load_published()
     content_type = plan.get("content_type", "article")
 
@@ -628,6 +674,7 @@ def record_publication(plan: dict[str, Any], platform: str, published_path: Path
         platform_key = "last_platform"
 
     entry = {
+        "action_id": _tracking_action_id(plan),
         "section_id": plan.get("section_id"),
         "angle": plan.get("angle"),
         "hook_index": plan.get("hook_index"),
@@ -636,6 +683,10 @@ def record_publication(plan: dict[str, Any], platform: str, published_path: Path
         "content_type": content_type,
         "target_type": plan.get("target_type", "article"),
         "published_at": _now(),
+        "target_url": plan.get("target_url") or plan.get("article_url"),
+        "tracking_url": tracking_url,
+        "permalink": permalink,
+        "verification_status": "PERMALINK_CONFIRMED" if permalink else "UNVERIFIED",
     }
     published_log[published_key] = published_log.get(published_key, []) + [entry]
     published_log[platform_key] = platform
@@ -650,15 +701,23 @@ def social_status() -> dict[str, Any]:
     published = _load_published()
     total_hooks = sum(len(a.get("hooks", [])) for a in SECTION_ANGLES)
     livebinar_hooks = sum(len(a.get("hooks", [])) for a in LIVEBINAR_ANGLES)
-    remaining = total_hooks - len(published.get("published", []))
-    livebinar_remaining = livebinar_hooks - len(published.get("livebinar_published", []))
+    verified_articles = [
+        item for item in published.get("published", [])
+        if item.get("verification_status") != "UNVERIFIED_NOT_IN_META"
+    ]
+    verified_livebinars = [
+        item for item in published.get("livebinar_published", [])
+        if item.get("verification_status") != "UNVERIFIED_NOT_IN_META"
+    ]
+    remaining = total_hooks - len(verified_articles)
+    livebinar_remaining = livebinar_hooks - len(verified_livebinars)
     return {
         "total_article_angles": len(SECTION_ANGLES),
         "total_article_hooks": total_hooks,
         "total_livebinar_angles": len(LIVEBINAR_ANGLES),
         "total_livebinar_hooks": livebinar_hooks,
-        "published_article": len(published.get("published", [])),
-        "published_livebinar": len(published.get("livebinar_published", [])),
+        "published_article": len(verified_articles),
+        "published_livebinar": len(verified_livebinars),
         "remaining_article": max(0, remaining),
         "remaining_livebinar": max(0, livebinar_remaining),
         "remaining": max(0, remaining),
@@ -675,15 +734,9 @@ def _is_duplicate_publication(plan: dict[str, Any]) -> bool:
     must be unique — the same hook must never be published twice. Per SOUL.md §15:
     publishing the same post multiple times is never multiple experiments.
 
-    For recurring events (livebinar): the livebinar runs every Tue/Thu/Sat — each
-    occurrence is a distinct business event. Facebook (the external platform)
-    allows reposting the same content. The internal identifier tuple must not
-    prevent promoting a new occurrence of the same recurring event. A livebinar
-    repost is treated as a duplicate only if the previous publication with the
-    same (section_id, hook_index, platform) happened on the SAME calendar day.
-
-    Business results are authoritative. Internal identifiers serve the business,
-    not the other way around.
+    Recurring events may be promoted again only with a different hook or another
+    materially different mechanism. Repeating identical copy on another day is
+    still an equivalent publication under SOUL.md §15.
     """
     section_id = plan.get("section_id")
     hook_index = plan.get("hook_index")
@@ -696,18 +749,14 @@ def _is_duplicate_publication(plan: dict[str, Any]) -> bool:
         key = published_log.get("livebinar_published", [])
 
     for entry in key:
+        if entry.get("verification_status") == "UNVERIFIED_NOT_IN_META":
+            continue
         if (
             entry.get("section_id") == section_id
             and entry.get("hook_index") == hook_index
             and entry.get("platform") == platform
             and entry.get("content_type", entry.get("target_type", "")) == content_type
         ):
-            # ── Recurring-event rule: allow repost on a different calendar day ──
-            if content_type == "livebinar":
-                prev_date = (entry.get("published_at") or "")[:10]
-                today = _today()
-                if prev_date and today and prev_date != today:
-                    continue  # Different day — new event occurrence, not a duplicate
             return True
     return False
 
@@ -780,6 +829,7 @@ def publish_social_post(plan: dict[str, Any] | None = None) -> dict[str, Any]:
     platform = plan.get("platform", "")
     section_id = plan.get("section_id", "")
     target_url = plan.get("target_url") or plan.get("article_url", "")
+    tracking_url = _tracking_url(target_url, plan)
     content_type = plan.get("content_type", "article")
 
     if platform == "facebook":
@@ -794,9 +844,9 @@ def publish_social_post(plan: dict[str, Any] | None = None) -> dict[str, Any]:
         if cta:
             parts.append(cta)
         if content_type == "livebinar":
-            parts.append(f"Join tonight's livebinar: {target_url}")
+            parts.append(f"Join tonight's livebinar: {tracking_url}")
         else:
-            parts.append(f"Read the full article: {target_url}")
+            parts.append(f"Read the full article: {tracking_url}")
         full_message = "\n\n".join(parts)
 
         page_id = os.getenv("FACEBOOK_PAGE_ID", "")
@@ -810,7 +860,12 @@ def publish_social_post(plan: dict[str, Any] | None = None) -> dict[str, Any]:
             result = publisher.publish_post(message=full_message)
 
         if result.success:
-            record_publication(plan, platform)
+            record_publication(
+                plan,
+                platform,
+                permalink=result.permalink,
+                tracking_url=tracking_url,
+            )
             return {
                 "status": "PUBLISHED",
                 "platform": platform,

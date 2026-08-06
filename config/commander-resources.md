@@ -17,8 +17,8 @@
 | **Training** | Kaikki markkinointimateriaali, koulutusvideot, valmiit mainospohjat | Kultakaivos — kaikki mitä tarvitaan sisällöntuotantoon |
 | **Affiliate → Leads** | Leadit ja asiakkaat, joihin voi olla yhteydessä | Seuranta ja suora yhteydenotto |
 | **Affiliate → Customers** | Maksaneet asiakkaat | Tunnista uudet signupit, seuraa konversioita |
-| **Promote Center** | 12 aktiivista affiliate-tarjousta, MegaLink, bannerit | Kaikki myytävä sisältö |
-| **Traffic Balance** | Liikennesaldo ($55), Tier 1 -liikenteen osto | Ilmaista liikennettä MegaLinkille |
+| **Promote Center** | Affiliate-tarjoukset, MegaLink, bannerit | Kaikki myytävä sisältö; nykyinen määrä tarkistetaan runtime-havainnosta |
+| **Traffic Balance** | Tier 1 -liikenteen saldo ja ostotoiminnot | Nykyinen saldo tarkistetaan runtime-havainnosta |
 | **Special Tasks** | Päivittäiset erikoistehtävät, leaderboard-pisteet | Lisäpalkkiot ja näkyvyys |
 
 ### Uuden asiakkaan vastaanotto

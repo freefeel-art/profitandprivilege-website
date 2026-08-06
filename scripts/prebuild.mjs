@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { generateContentInventory } from './generate-content-inventory.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLIC = path.join(ROOT, 'public');
@@ -68,8 +69,10 @@ function formatSize(bytes) {
 
 // === Copy operations ===
 
+generateContentInventory(ROOT);
+
 // Opportunity Queue
-copyIfExists('agents/opportunity-discovery-agent/OPPORTUNITY-QUEUE.md', 'ops/opportunity-queue.md');
+copyIfExists('runtime/editorial-pipeline/OPPORTUNITY-QUEUE.md', 'ops/opportunity-queue.md');
 
 // Opportunity Briefs
 copyIfExists('agents/opportunity-research-agent/briefs', 'ops/briefs');
@@ -94,7 +97,7 @@ copyIfExists('docs/GOLD-MASTER-SPEC.md', 'docs/GOLD-MASTER-SPEC.md');
 copyIfExists('docs/CONTENT-REGISTRY.md', 'docs/CONTENT-REGISTRY.md');
 
 // Pipeline state
-copyIfExists('pipeline/state.json', 'pipeline/state.json');
+copyIfExists('runtime/editorial-pipeline/state.json', 'pipeline/state.json');
 
 // Generate directory indexes
 writeDirIndex('ops/briefs', 'Opportunity Briefs');

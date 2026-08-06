@@ -1,3 +1,8 @@
+# Historical AI Project State
+
+> Archived on 2026-08-04. This document is not current operational authority.
+> Use `/STATE.md`, `/ROADMAP.md`, and their referenced runtime evidence.
+
 # Project State
 
 ## Purpose

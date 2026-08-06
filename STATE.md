@@ -33,10 +33,48 @@
     "id": "olsp-minimum-daily-production-system",
     "status": "planned"
   },
+  "evidence_sources": {
+    "campaigns": {
+      "observed_at": "2026-08-04T16:51:50+00:00",
+      "source_path": "runtime/commander/campaign-evaluation.json",
+      "verification_status": "PARTIAL — ledger-derived; livebinar last_index/sent gap remains"
+    },
+    "content_inventory": {
+      "observed_at": "2026-08-04T16:53:55.288+00:00",
+      "source_path": "runtime/content-inventory.json",
+      "verification_status": "repository source inventory; not proof of external publication"
+    },
+    "facebook": {
+      "observed_at": "2026-08-04T16:12:31.320534+00:00",
+      "source_path": "runtime/facebook/metrics-latest.json",
+      "verification_status": "PARTIALLY_VERIFIED_CONTRADICTORY"
+    },
+    "funnel": {
+      "observed_at": "2026-08-04T15:58:18+00:00",
+      "source_path": "runtime/commander/reality.json",
+      "verification_status": "local structural verification"
+    },
+    "olsp": {
+      "observed_at": "2026-08-05T00:57:12+00:00",
+      "source_path": "runtime/intelligence/olsp-dashboard/latest.json",
+      "verification_status": "PARTIAL — 9/11 fields found; daily outcomes verified for 2026-08-05 Europe/Stockholm"
+    },
+    "social_publications": {
+      "observed_at": "2026-08-04T10:14:45+00:00",
+      "source_path": "runtime/social/published.json",
+      "verification_status": "receipt ledger"
+    }
+  },
   "execution": {
-    "last_execution_id": "exec-8f2dd941123b0f0a1a2b",
-    "last_verified_at": "2026-08-04T13:53:58+00:00",
+    "last_execution_id": "exec-87a1d8a276d00a78e829",
+    "last_verified_at": "2026-08-06T03:15:16+00:00",
     "steps": {
+      "commander-active-blocker-repair": {
+        "execution_id": "exec-8f2dd941123b0f0a1a2b",
+        "external_effects": "none",
+        "verification": "passed",
+        "verified_at": "2026-08-04T13:53:58+00:00"
+      },
       "olsp-baseline-access": {
         "execution_id": "exec-b14ff0865f6c0e032d23",
         "measurement_source": "blocked",
@@ -66,18 +104,12 @@
         "verified_at": "2026-07-27T20:05:30+00:00"
       },
       "olsp-minimum-daily-production-system": {
-        "execution_id": "exec-32cb26c21ec3fffe5d36",
-        "local_aggregate_observation_available": false,
+        "execution_id": "exec-87a1d8a276d00a78e829",
+        "last_cycle_date": "2026-08-06",
         "last_cycle_status": "succeeded",
-        "last_cycle_date": "2026-08-04",
+        "local_aggregate_observation_available": true,
         "repeatable": true,
-        "verified_at": "2026-08-04T13:23:53+00:00"
-      },
-      "commander-active-blocker-repair": {
-        "execution_id": "exec-8f2dd941123b0f0a1a2b",
-        "verification": "passed",
-        "external_effects": "none",
-        "verified_at": "2026-08-04T13:53:58+00:00"
+        "verified_at": "2026-08-06T03:15:16+00:00"
       }
     }
   },
@@ -87,6 +119,6 @@
   "phase": "olsp-baseline-verified",
   "project": "profit-and-privilege",
   "status": "active",
-  "updated": "2026-08-04T14:03:24+00:00",
+  "updated": "2026-08-06T03:15:16+00:00",
   "version": 1
 }

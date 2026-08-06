@@ -1,38 +1,26 @@
 # Content Registry — Profit and Privilege
 
-**Single source of truth for all published content and future content planning.**
+**Curated editorial catalog and internal-link planning reference.**
 
-Last updated: 2026-07-25 (added AI Tools pillar hub + Semrush review registry entry)
-Total pages built: 39
-Editorial article pages: 37
-Infrastructure pages: 2
+This document is not operational state. Route existence and page counts are
+derived from `src/pages/`; publication claims require runtime publication
+receipts. Per-entry statuses below are historical editorial annotations unless
+backed by such evidence.
 
----
-
-## Site Overview
-
-| Metric | Count |
-|---|---|
-| Total published pages | 31 |
-| Reviews | 16 |
-| Blog articles | 19 |
-| Roundups | 1 |
-| Investigations | 1 |
-| Infrastructure (home, author, production) | 3 |
-| Gold Master V1 compliant | 28 of 28 editorial pages |
+Catalog snapshot: 2026-07-25
 
 ---
 
 ## Content Pillars
 
-| Pillar | Pages | Primary intent |
-|---|---|---|
-| 1. OLSP Ecosystem | 8 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide + MLM investigation |
-| 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
-| 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
-| 4. Online Income for Beginners | 4 | Informational / commercial investigation |
-| 5. AI Tools | 12 | Independent reviews of AI software platforms, supporting how-to guides, and pillar hub |
-| Infrastructure | 2 | Navigation and author credibility |
+| Pillar | Primary intent |
+|---|---|
+| 1. OLSP Ecosystem | Reviews of OLSP products + affiliate training roundup + cross-product hub guide + MLM investigation |
+| 2. Affiliate Traffic & List Building | Reviews of third-party traffic/lead tools |
+| 3. Lead Generation | Informational + commercial investigation + strategies cluster |
+| 4. Online Income for Beginners | Informational / commercial investigation |
+| 5. AI Tools | Independent reviews of AI software platforms, supporting how-to guides, and pillar hub |
+| Infrastructure | Navigation and author credibility |
 
 ---
 

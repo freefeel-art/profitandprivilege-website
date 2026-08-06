@@ -86,7 +86,9 @@ git push
 ## 6. Constraints
 
 1. Never push without a successful build.
-2. Never push without operator confirmation (human approval required).
+2. Never push without a successful build, safety verification, and available
+   credentials; operator confirmation is required only at a genuine authority
+   boundary.
 3. Never modify article content after QA approval.
 4. Never publish pages that have not passed QA.
 5. The commit message must follow the standardized format.

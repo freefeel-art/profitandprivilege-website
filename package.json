@@ -10,7 +10,8 @@
     "prebuild": "node scripts/prebuild.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "inventory": "node scripts/generate-content-inventory.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.2",

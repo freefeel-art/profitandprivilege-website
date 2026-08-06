@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 
 PROJECT_ID = "profit-and-privilege"
@@ -24,13 +26,13 @@ BRAND_NAME = "Profit & Privilege"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_ROOT = PROJECT_ROOT / "runtime"
-OLSP_ARTIFACT_PATH = RUNTIME_ROOT / "intelligence/olsp/latest.json"
+OLSP_ARTIFACT_PATH = RUNTIME_ROOT / "intelligence/olsp-dashboard/latest.json"
 SOCIAL_PLAN_PATH = RUNTIME_ROOT / "social/plan.json"
 SOCIAL_PUBLISHED_PATH = RUNTIME_ROOT / "social/published.json"
 REALITY_PATH = RUNTIME_ROOT / "commander/reality.json"
 ARTICLE_PATH = PROJECT_ROOT / "src/pages/is-olsp-academy-an-mlm.astro"
 
-# All 8 OLSP fields verified as available via CDP browser automation:
+# OLSP fields verified as available via CDP browser automation:
 # source: app/providers/olsp_dashboard.py APPROVED_FIELDS
 OLSP_VERIFIED_FIELDS = (
     "current_available_balance",  # $ amount — current affiliate balance
@@ -41,12 +43,14 @@ OLSP_VERIFIED_FIELDS = (
     "leads",                      # integer — total leads (all time)
     "customers",                  # integer — total customers (all time)
     "transactions",               # integer — total transactions (all time)
+    "daily_signups",              # integer — explicit project-local calendar day
+    "daily_sales",                # integer — explicit project-local calendar day
+    "daily_revenue",              # USD — explicit project-local calendar day
 )
 
-# Fields NOT available: daily signups, daily sales, daily revenue, total orders,
-# conversion rate, attributed traffic, campaign performance, operational status.
-# OLSP Back Office provides aggregate lifetime totals only. Daily deltas are
-# not exposed.
+# Fields still unavailable: conversion rate, attributed traffic, campaign
+# performance, and operational status. Source attribution remains separate from
+# verified daily OLSP outcome collection.
 
 
 @dataclass
@@ -115,6 +119,32 @@ def _field_float(fields: dict[str, Any], key: str) -> float | None:
         return None
 
 
+def _daily_field_int(
+    fields: dict[str, Any], key: str, expected_period: str,
+) -> int | None:
+    field_value = fields.get(key)
+    if (
+        not isinstance(field_value, dict)
+        or field_value.get("status") != "FOUND"
+        or field_value.get("period") != expected_period
+    ):
+        return None
+    return _field_int(fields, key)
+
+
+def _daily_field_float(
+    fields: dict[str, Any], key: str, expected_period: str,
+) -> float | None:
+    field_value = fields.get(key)
+    if (
+        not isinstance(field_value, dict)
+        or field_value.get("status") != "FOUND"
+        or field_value.get("period") != expected_period
+    ):
+        return None
+    return _field_float(fields, key)
+
+
 def _social_status() -> dict[str, Any]:
     plan = {}
     published: list[dict[str, Any]] = []
@@ -125,7 +155,8 @@ def _social_status() -> dict[str, Any]:
             pass
     if SOCIAL_PUBLISHED_PATH.is_file():
         try:
-            published = json.loads(SOCIAL_PUBLISHED_PATH.read_text(encoding="utf-8"))
+            value = json.loads(SOCIAL_PUBLISHED_PATH.read_text(encoding="utf-8"))
+            published = value.get("published", []) if isinstance(value, dict) else value
             if not isinstance(published, list):
                 published = []
         except Exception:
@@ -140,6 +171,7 @@ def _social_status() -> dict[str, Any]:
             if isinstance(p, dict) and p.get("date") == plan.get("date")
         ]) if plan else 0,
         "total_published": len(published),
+        "remaining_article": max(0, 30 - len(published)),
     }
 
 
@@ -291,6 +323,13 @@ def build_goal_execution_plan(
     balance = _field_float(fields, "current_available_balance")  # $
     lifetime = _field_float(fields, "lifetime_balance")  # $
     points = _field_int(fields, "olsp_points")
+    observation_day = datetime.now(ZoneInfo("Europe/Stockholm")).date().isoformat()
+    daily_signups = _daily_field_int(fields, "daily_signups", observation_day)
+    daily_sales = _daily_field_int(fields, "daily_sales", observation_day)
+    daily_revenue = _daily_field_float(fields, "daily_revenue", observation_day)
+    daily_measurement_available = all(
+        value is not None for value in (daily_signups, daily_sales, daily_revenue)
+    )
 
     social = _social_status()
     funnel = _diagnose_funnel()
@@ -321,14 +360,18 @@ def build_goal_execution_plan(
         "current_balance": balance,
         "lifetime_balance": lifetime,
         "olsp_points": points,
-        "daily_signups_measurable": False,
-        "daily_sales_measurable": False,
-        "daily_revenue_measurable": False,
+        "daily_signups": daily_signups,
+        "daily_sales": daily_sales,
+        "daily_revenue": daily_revenue,
+        "daily_signups_measurable": daily_signups is not None,
+        "daily_sales_measurable": daily_sales is not None,
+        "daily_revenue_measurable": daily_revenue is not None,
         "measurement_note": (
-            "OLSP Back Office provides aggregate lifetime totals only. "
-            "Daily signups, daily sales, and daily revenue are NOT measurable "
-            "from the current interface. Goal progress is estimated from "
-            "aggregate data."
+            f"Verified OLSP calendar-day outcomes for {observation_day} "
+            "Europe/Stockholm."
+            if daily_measurement_available else
+            "Verified daily OLSP outcome fields are incomplete for the current "
+            "Europe/Stockholm calendar day."
         ),
         "funnel_status": funnel["status"],
         "funnel_health_pct": funnel["health_pct"],
@@ -339,27 +382,39 @@ def build_goal_execution_plan(
         "video_pipeline_available": True,
         "email_campaigns": campaign_summary or "no campaigns evaluated",
         "previous_execution": previous.get("checked_at", "never"),
-        "previous_olsp_signups": previous.get("olsp_signups"),
+        "previous_daily_signups": previous.get("daily_signups"),
         "previous_funnel_health": previous.get("funnel_health"),
     }
 
     # ── Gap ──
-    # Since daily deltas are not measurable, gap is estimated from aggregate data.
-    # A customer value > 0 means someone signed up at some point.
-    # We CANNOT confirm whether signups happened TODAY.
     target_signups = 5
     target_sales = 1
     gap = {
-        "signups_needed_estimate": max(0, target_signups - (customers or 0)) if customers is not None else None,
-        "sales_needed_estimate": target_sales,  # no per-day sales counter available
-        "goal_measurable": False,  # daily deltas not available
-        "goal_met_estimable": False,
-        "measurement_type": "aggregate_lifetime_only",
+        "signups_needed_estimate": (
+            max(0, target_signups - daily_signups)
+            if daily_signups is not None else None
+        ),
+        "sales_needed_estimate": (
+            max(0, target_sales - daily_sales)
+            if daily_sales is not None else None
+        ),
+        "goal_measurable": daily_measurement_available,
+        "goal_met_estimable": (
+            daily_signups >= target_signups
+            and daily_sales >= target_sales
+            and daily_revenue >= 7
+            if daily_measurement_available else None
+        ),
+        "measurement_type": (
+            "verified_calendar_day"
+            if daily_measurement_available else "incomplete_daily_observation"
+        ),
         "note": (
-            "OLSP data is aggregate lifetime (not daily). "
-            "Commander cannot confirm whether the daily goal is met. "
-            "Goal evaluation uses aggregate totals as a directional signal only. "
-            "The only confirmed fact: 1 customer and 17 transactions exist lifetime."
+            f"OLSP daily outcomes are verified for {observation_day} "
+            "Europe/Stockholm. Source attribution is evaluated separately."
+            if daily_measurement_available else
+            "Commander cannot confirm the daily objective until every daily "
+            "OLSP field is verified for the current observation period."
         ),
     }
 
@@ -409,11 +464,14 @@ def build_goal_execution_plan(
         supporting_evidence=(
             "Social plan is READY with selected angle and hook. "
             "Facebook browser automation is operational (Playwright + saved session). "
-            "26 article angles remain available. "
+            f"{social['remaining_article']} article hooks remain available. "
             "No verified evidence links Facebook posts to OLSP signups — attribution data unavailable."
         ),
         expected_improvement="One additional traffic source active today. Incremental increase in article visibility.",
-        failure_evidence="No measurable change in OLSP aggregate data (customers, leads) within 24 hours of publication.",
+        failure_evidence=(
+            "No verified destination traffic, daily signup, or daily sale evidence "
+            "appears within the defined observation window."
+        ),
         next_if_failed="If no measurable change after 3 consecutive Facebook posts: (1) re-evaluate article CTA placement, (2) consider paid traffic if available, (3) report diminishing returns to Owner.",
     ))
 
@@ -437,10 +495,10 @@ def build_goal_execution_plan(
         label="Generate social content plan",
         available=True,
         expected_benefit="Creates the next Facebook post from 10 angles and 30 hook variants.",
-        expected_limitation="Planning alone does not reach any audience. Publication requires Owner approval.",
+        expected_limitation="Planning alone does not reach any audience. Publication runs autonomously when the approved strategy and required access are available; genuine authority boundaries stop execution.",
         estimated_confidence="HIGH",
         why_it_helps="Content planning is the prerequisite for content publishing, the engine for traffic generation.",
-        supporting_evidence="26 of 30 article hooks available. 10 angles defined. Social planner operational. No evidence that planning alone produces signups.",
+        supporting_evidence=f"{social['remaining_article']} of 30 article hooks remain. 10 angles are defined. Planning alone does not produce signups.",
         expected_improvement="One ready-to-publish post available.",
         failure_evidence="No remaining angles — all 30 hooks published without a measurable outcome.",
         next_if_failed="Report angle exhaustion to Owner. Propose new content angles or alternative distribution.",
@@ -478,15 +536,20 @@ def build_goal_execution_plan(
         action_id="collect_olsp_data",
         label="Collect OLSP dashboard data",
         available=True,
-        expected_benefit="Pulls current OLSP Back Office aggregate data (customers, leads, revenue, commissions).",
+        expected_benefit=(
+            "Pulls current OLSP Back Office daily outcomes and separately labeled "
+            "lifetime totals."
+        ),
         expected_limitation="Aggregate lifetime totals only — cannot detect daily changes. May require fresh browser login.",
         estimated_confidence="HIGH" if olsp_available else "MEDIUM (may need re-auth)",
         why_it_helps="OLSP Back Office is the only source of truth for signup and sales progress.",
         supporting_evidence=(
-            f"8 verified fields available via CDP: {', '.join(OLSP_VERIFIED_FIELDS[:4])}... "
-            "Previously collected: 1 customer, 669 leads, 17 transactions, $1,224.50 lifetime."
+            f"Observed fields available via the authenticated dashboard: {', '.join(k for k in OLSP_VERIFIED_FIELDS if k in fields)}."
         ) if olsp_available else "No verified evidence — OLSP artifact not available. Run 'hermes collect olsp' first.",
-        expected_improvement="Updated OLSP aggregate data for goal evaluation. Delta between collections is the best available proxy for daily progress.",
+        expected_improvement=(
+            "Updated, explicitly period-scoped daily signup, sale, and revenue "
+            "evidence for objective verification."
+        ),
         failure_evidence="Collection fails or returns stale data (same values as previous collection).",
         next_if_failed="Report collection failure to Owner. May require fresh browser login or OLSP session refresh.",
     ))
@@ -515,7 +578,7 @@ def build_goal_execution_plan(
         expected_benefit="Unblocks gated actions requiring Owner authorization.",
         expected_limitation="Passive — no progress until Owner responds.",
         estimated_confidence="N/A",
-        why_it_helps="Some actions cannot proceed without Owner approval per SOUL.md §6.",
+        why_it_helps="Some actions cannot proceed without Owner authority, identity, credentials, legal responsibility, explicit financial commitment, or a new strategic decision per SOUL.md §7.",
         supporting_evidence="No pending Owner approvals in registry.",
         expected_improvement="Approval gate cleared for pending action.",
         failure_evidence="Owner does not respond within operating day.",
@@ -583,7 +646,9 @@ def build_goal_execution_plan(
     evidence_classes["article_available"] = "VERIFIED" if ARTICLE_PATH.is_file() else "MISSING"
     evidence_classes["social_plan"] = "VERIFIED" if social.get("plan_exists") else "MISSING"
     evidence_classes["funnel_assessment"] = "VERIFIED" if funnel["status"] in ("HEALTHY", "DEGRADED", "BROKEN") else "UNKNOWN"
-    evidence_classes["daily_goal_measurable"] = "UNVERIFIABLE"  # OLSP provides aggregate only
+    evidence_classes["daily_goal_measurable"] = (
+        "VERIFIED" if daily_measurement_available else "UNVERIFIABLE"
+    )
     evidence_classes["strategy_confidence"] = "ESTIMATED"  # Commander estimates, not verified
     evidence_classes["publication_today"] = "VERIFIED" if social.get("plan_exists") else "UNKNOWN"
     if funnel["status"] != "HEALTHY" and not funnel.get("issues"):
@@ -630,7 +695,14 @@ def render_plan(plan: GoalExecutionPlan) -> str:
         lines.append(f"  Current balance:   ${bal:.2f}" if bal is not None else f"  Current balance:   unknown")
         life = cs.get("lifetime_balance")
         lines.append(f"  Lifetime balance:  ${life:.2f}" if life is not None else f"  Lifetime balance:  unknown")
-    lines.append(f"  Daily measurement:  {'NOT AVAILABLE' if not cs.get('daily_signups_measurable') else 'active'}")
+    if cs.get("daily_signups_measurable"):
+        lines.append(
+            "  Daily measurement:  active — "
+            f"signups {cs.get('daily_signups')}, sales {cs.get('daily_sales')}, "
+            f"revenue ${cs.get('daily_revenue', 0):.2f}"
+        )
+    else:
+        lines.append("  Daily measurement:  NOT AVAILABLE")
     lines.append(f"  Funnel:            {cs.get('funnel_status', '?')} ({cs.get('funnel_health_pct', 0)}/100)")
     lines.append(f"  Social plan:       {'ready' if cs.get('social_plan_ready') else 'not ready'}")
     lines.append(f"  Publications today: {cs.get('social_publications_today', 0)}")
@@ -663,7 +735,11 @@ def render_plan(plan: GoalExecutionPlan) -> str:
         lines.append(f"  Signups gap (est): {signups_gap}")
     else:
         lines.append(f"  Signups gap (est): unknown — no customer data")
-    lines.append(f"  Sales gap:        unknown — no daily sales counter")
+    sales_gap = g.get("sales_needed_estimate")
+    if sales_gap is not None:
+        lines.append(f"  Sales gap:        {sales_gap}")
+    else:
+        lines.append("  Sales gap:        unknown — no verified daily sales value")
     if g.get("note"):
         lines.append(f"  Note:             {g['note'][:100]}")
 

@@ -40,7 +40,10 @@ UTM_MEDIUM = "livebinar"
 UTM_CAMPAIGN = "olsp_launch"
 OLSP_ID = "1006001"
 
-LIVEBINAR_URL = "https://olspacademy.com/c/livebinar"
+# Route campaign traffic through the owned, instrumented project landing page
+# before the official OLSP webinar destination. This creates a measurable
+# email -> landing-page -> webinar handoff.
+LIVEBINAR_URL = "https://olsp.profitandprivilege.com/olsp-livebinar/"
 MEGA_LINK_URL = "https://offers.olspsystem.com/get_megalink"
 
 HTML = f"""<!DOCTYPE html>
@@ -192,6 +195,7 @@ def load_state() -> dict:
 
 def save_state(state: dict):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    state["updated_at"] = _now_iso()
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
 
