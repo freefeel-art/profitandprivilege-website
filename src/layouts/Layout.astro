@@ -18,6 +18,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	<body>
 		<AnalyticsConsent />
 		<slot />
+		<script is:inline>
+			document.querySelectorAll('a[href]').forEach((link) => {
+				const href = link.getAttribute('href') || '';
+				if (href.startsWith('#') || href.startsWith('javascript:')) return;
+				link.target = '_blank';
+				const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+				rel.add('noopener');
+				rel.add('noreferrer');
+				link.setAttribute('rel', [...rel].join(' '));
+			});
+		</script>
 	</body>
 </html>
 

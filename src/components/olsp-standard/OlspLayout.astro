@@ -489,9 +489,12 @@ schemaOrg["@graph"].push({ "@type": "Organization", ...defaultPublisher });
     result.textContent = message;
   }
 
-  // External and absolute production links open in a separate tab. Preserve
-  // existing sponsored rel values while guaranteeing opener protection.
-  document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
+  // Production links open in a separate tab. Preserve existing sponsored rel
+  // values while guaranteeing opener protection. Hash links remain in-page
+  // navigation so the table of contents stays usable.
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('#') || href.startsWith('javascript:')) return;
     link.target = '_blank';
     const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
     rel.add('noopener');
