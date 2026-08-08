@@ -716,6 +716,7 @@ def social_status() -> dict[str, Any]:
         "total_article_hooks": total_hooks,
         "total_livebinar_angles": len(LIVEBINAR_ANGLES),
         "total_livebinar_hooks": livebinar_hooks,
+        "total_angles": len(SECTION_ANGLES) + len(LIVEBINAR_ANGLES),
         "published_article": len(verified_articles),
         "published_livebinar": len(verified_livebinars),
         "remaining_article": max(0, remaining),
