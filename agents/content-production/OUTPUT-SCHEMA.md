@@ -11,14 +11,17 @@ All article files are standalone `.astro` files. No layout imports, no component
 ### Naming Convention
 
 | Content Type | Naming | Example |
-|---|---|---|
+|---|---|---|---|
 | Review | `src/pages/reviews/{slug}.astro` | `src/pages/reviews/olsp-academy.astro` |
+| Blog / informational | `src/pages/blog/{slug}.astro` | `src/pages/blog/affiliate-marketing-vs-mlm.astro` |
 | Evidence-based resolution | `src/pages/{slug}.astro` or subdirectory | `src/pages/is-olsp-academy-an-mlm.astro` |
 | Roundup | `src/pages/roundups/{slug}.astro` | `src/pages/roundups/best-affiliate-marketing-training-platforms-2026.astro` |
 
 ---
 
 ## 2. Astro Frontmatter
+
+### Review / Roundup / Investigation articles
 
 ```astro
 ---
@@ -32,6 +35,17 @@ const pageDescription = "...";
 - `pageTitle`: Human-facing title for editorial reference
 - `pageDescription`: SEO meta description (under 160 characters)
 
+### Blog / Informational articles (exception per BLOG-MASTER-SPEC §1)
+
+```astro
+---
+export const prerender = true;
+---
+```
+
+- Only `export const prerender = true` — no other variables, no imports
+- `<title>` and `<meta name="description">` are hardcoded strings in `<head>`, not interpolated from frontmatter constants
+
 ---
 
 ## 3. HTML Document Structure
@@ -44,7 +58,7 @@ const pageDescription = "...";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>...</title>
     <meta name="description" content="...">
-    <link rel="canonical" href="https://profitandprivilege.com/.../" />
+    <link rel="canonical" href="https://olsp.profitandprivilege.com/.../" />
     <style>
       /* All CSS inline — no external files */
     </style>

@@ -19,6 +19,7 @@ docs/AGENT-CONTRACT.md
 docs/EDITORIAL-OBJECT-MODEL.md
     ↓
 docs/GOLD-MASTER-SPEC.md                  (all article types — layout, CSS tokens, JS, components)
+docs/BLOG-MASTER-SPEC.md                   (for informational/blog articles)
 docs/ROUNDUP-GOLD-MASTER-SPEC.md           (for roundup-type articles)
     ↓
 agents/content-production/SPEC.md          ← this document

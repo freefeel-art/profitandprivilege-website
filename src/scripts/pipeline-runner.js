@@ -24,63 +24,98 @@ const MODE_STAGES = {
   ],
 };
 
-const EVENT_TEMPLATES = {
-  ci: [
-    { msg: 'Community Intelligence starting', t: 'info' },
-    { msg: 'Reddit scan started', t: 'info' },
-    { msg: 'Discussions discovered', t: 'success' },
-    { msg: 'Sentiment analysis complete', t: 'success' },
-    { msg: 'Community Intelligence complete', t: 'success' },
-  ],
-  ei: [
-    { msg: 'Editorial Intelligence starting', t: 'info' },
-    { msg: 'SERP analysis started', t: 'info' },
-    { msg: 'Content gap identified', t: 'success' },
-    { msg: 'Keyword opportunities scored', t: 'success' },
-    { msg: 'Editorial Intelligence complete', t: 'success' },
-  ],
-  oq: [
-    { msg: 'Opportunity Queue started', t: 'info' },
-    { msg: 'Scoring candidates', t: 'info' },
-    { msg: 'Opportunities prioritized', t: 'success' },
-    { msg: 'Top candidates selected', t: 'success' },
-    { msg: 'Opportunity Queue complete', t: 'success' },
-  ],
-  ob: [
-    { msg: 'Opportunity Brief started', t: 'info' },
-    { msg: 'Researching opportunity', t: 'info' },
-    { msg: 'Brief drafted', t: 'success' },
-    { msg: 'Sources validated', t: 'success' },
-    { msg: 'Opportunity Brief complete', t: 'success' },
-  ],
-  rf: [
-    { msg: 'Research Factory started', t: 'info' },
-    { msg: 'Heavy research in progress', t: 'info' },
-    { msg: 'Source library compiled', t: 'success' },
-    { msg: 'Research brief generated', t: 'success' },
-    { msg: 'Research Factory complete', t: 'success' },
-  ],
-  cp: [
-    { msg: 'Content Production started', t: 'info' },
-    { msg: 'Drafting article', t: 'info' },
-    { msg: 'Internal linking added', t: 'info' },
-    { msg: 'SEO optimization applied', t: 'success' },
-    { msg: 'Content Production complete', t: 'success' },
-  ],
-  eq: [
-    { msg: 'Editorial QA started', t: 'info' },
-    { msg: 'Validating against OlspLayout', t: 'info' },
-    { msg: 'Checking schema compliance', t: 'info' },
-    { msg: 'QA report generated', t: 'success' },
-    { msg: 'Editorial QA complete', t: 'success' },
-  ],
-  pub: [
-    { msg: 'Publishing started', t: 'info' },
-    { msg: 'Static build initiated', t: 'info' },
-    { msg: 'Build validation passed', t: 'success' },
-    { msg: 'Publication report written', t: 'success' },
-    { msg: 'Publishing complete', t: 'success' },
-  ],
+const STAGE_DETAILS = {
+  ci: {
+    label: 'Community Intelligence',
+    events: [
+      { msg: 'Reading agent prompt: agents/community-intelligence/PROMPT.md', t: 'info' },
+      { msg: 'Reddit scan started for topic', t: 'info' },
+      { msg: 'Discussions discovered and analyzed', t: 'success' },
+      { msg: 'Sentiment analysis complete', t: 'success' },
+      { msg: 'CI report written to reports/community-intelligence/', t: 'success' },
+    ],
+    output: 'reports/community-intelligence/',
+  },
+  ei: {
+    label: 'Editorial Intelligence',
+    events: [
+      { msg: 'Loading CI report from previous stage', t: 'info' },
+      { msg: 'SERP analysis started', t: 'info' },
+      { msg: 'Content gaps identified', t: 'success' },
+      { msg: 'Keyword opportunities scored', t: 'success' },
+      { msg: 'EI report written to reports/editorial-intelligence/', t: 'success' },
+    ],
+    output: 'reports/editorial-intelligence/',
+  },
+  oq: {
+    label: 'Opportunity Queue',
+    events: [
+      { msg: 'Scoring candidate opportunities', t: 'info' },
+      { msg: 'Evaluating against pipeline criteria', t: 'info' },
+      { msg: 'Top candidates promoted to research queue', t: 'success' },
+      { msg: 'OPPORTUNITY-QUEUE.md updated', t: 'success' },
+      { msg: 'Handoff written to reports/handoff/', t: 'success' },
+    ],
+    output: null,
+  },
+  ob: {
+    label: 'Opportunity Briefs',
+    events: [
+      { msg: 'Reading opportunity from queue', t: 'info' },
+      { msg: 'Researching opportunity landscape', t: 'info' },
+      { msg: 'Brief drafted with key findings', t: 'success' },
+      { msg: 'Sources validated and cited', t: 'success' },
+      { msg: 'Brief saved to briefs/', t: 'success' },
+    ],
+    output: 'agents/opportunity-research-agent/briefs/',
+  },
+  rf: {
+    label: 'Research Factory',
+    events: [
+      { msg: 'Loading opportunity brief', t: 'info' },
+      { msg: 'Heavy research in progress', t: 'info' },
+      { msg: 'Source library compiled', t: 'success' },
+      { msg: 'Research brief generated', t: 'success' },
+      { msg: 'Brief registered in docs/research/', t: 'success' },
+    ],
+    output: 'docs/research/',
+  },
+  cp: {
+    label: 'Content Production',
+    events: [
+      { msg: 'Loading research brief', t: 'info' },
+      { msg: 'Applying GOLD-MASTER-SPEC standards', t: 'info' },
+      { msg: 'Drafting article from brief', t: 'info' },
+      { msg: 'Internal linking added', t: 'info' },
+      { msg: 'SEO metadata applied', t: 'success' },
+      { msg: 'Article written to src/pages/', t: 'success' },
+    ],
+    output: null,
+  },
+  eq: {
+    label: 'Editorial QA',
+    events: [
+      { msg: 'Loading article for validation', t: 'info' },
+      { msg: 'Checking OlspLayout compliance', t: 'info' },
+      { msg: 'Validating SEO metadata', t: 'info' },
+      { msg: 'Checking schema.org markup', t: 'info' },
+      { msg: 'Internal linking audit complete', t: 'success' },
+      { msg: 'QA report written to reports/editorial-qa/', t: 'success' },
+    ],
+    output: 'reports/editorial-qa/',
+  },
+  pub: {
+    label: 'Publishing',
+    events: [
+      { msg: 'Loading QA report for gate check', t: 'info' },
+      { msg: 'Calling publishing/publish.cjs', t: 'info' },
+      { msg: 'Static build initiated', t: 'info' },
+      { msg: 'Build validation passed', t: 'success' },
+      { msg: 'Publication report written', t: 'success' },
+      { msg: 'pipeline/state.json updated', t: 'success' },
+    ],
+    output: 'reports/publication/',
+  },
 };
 
 function createInitialState() {
@@ -160,16 +195,27 @@ class PipelineStore {
 
 export const pipelineStore = new PipelineStore();
 
+async function fetchPipelineState() {
+  try {
+    const res = await fetch('/pipeline/state.json');
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+export async function getLastRunState() {
+  const state = await fetchPipelineState();
+  if (!state || !state.runs || state.runs.length === 0) return null;
+  return state;
+}
+
 function delay(ms) {
   return new Promise(r => {
     const t = setTimeout(r, ms);
     pipelineStore.timers.push(t);
   });
-}
-
-function getNextEvent(events, idx) {
-  if (idx >= events.length) return null;
-  return events[idx];
 }
 
 export async function simulatePipeline(topic, modeId) {
@@ -181,8 +227,10 @@ export async function simulatePipeline(topic, modeId) {
     startedAt: Date.now(),
   });
 
-  await delay(800);
+  await delay(600);
   pipelineStore.addEvent(`Pipeline queued for "${topic}"`, 'info');
+  pipelineStore.addEvent(`Mode: ${modeId}`, 'info');
+  pipelineStore.addEvent('Pipeline Runner interface ready', 'info');
   pipelineStore.set({ status: 'starting' });
 
   const stages = MODE_STAGES[modeId];
@@ -190,19 +238,25 @@ export async function simulatePipeline(topic, modeId) {
 
   for (let si = 0; si < stages.length; si++) {
     const stage = stages[si];
+    const detail = STAGE_DETAILS[stage.id];
+
     pipelineStore.set({ currentStage: stage.label, currentStageId: stage.id });
     pipelineStore.setStageStatus(stage.id, 'starting');
     pipelineStore.set({ status: 'running' });
 
-    await delay(600);
-    pipelineStore.addEvent(`${stage.label} starting`, 'info');
+    await delay(500);
+    pipelineStore.addEvent(`Context prepared for ${stage.label}`, 'info');
     pipelineStore.setStageStatus(stage.id, 'running');
 
-    const events = EVENT_TEMPLATES[stage.id] || [];
+    const events = detail ? detail.events : [];
     for (let ei = 0; ei < events.length; ei++) {
       const ev = events[ei];
-      await delay(800 + Math.random() * 600);
+      await delay(600 + Math.random() * 500);
       pipelineStore.addEvent(ev.msg, ev.t);
+    }
+
+    if (detail && detail.output) {
+      pipelineStore.addEvent(`Output: ${detail.output}`, 'success');
     }
 
     pipelineStore.addEvent(`${stage.label} complete`, 'success');
@@ -214,15 +268,18 @@ export async function simulatePipeline(topic, modeId) {
 
   const elapsed = Date.now() - pipelineStore.state.startedAt;
   await delay(300);
-  pipelineStore.addEvent(`Total time: ${Math.floor(elapsed / 1000)}s`, 'info');
+  pipelineStore.addEvent(`Elapsed: ${Math.floor(elapsed / 1000)}s`, 'info');
+  pipelineStore.addEvent('State written to pipeline/state.json', 'success');
+
+  const slug = topic.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
   pipelineStore.set({
     results: {
-      opportunity: modeId === 'discover' || modeId === 'full' ? topic : null,
-      researchBrief: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-research-brief.md` : null,
-      article: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-article.astro` : null,
-      qaReport: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-qa-report.md` : null,
-      publishReport: modeId === 'produce' || modeId === 'full' ? `${topic.toLowerCase().replace(/\s+/g, '-')}-pub-report.md` : null,
+      opportunity: modeId === 'discover' || modeId === 'full' ? slug : null,
+      researchBrief: modeId === 'produce' || modeId === 'full' ? `${slug}-research-brief.md` : null,
+      article: modeId === 'produce' || modeId === 'full' ? `${slug}.astro` : null,
+      qaReport: modeId === 'produce' || modeId === 'full' ? `OPP-NEW-EQA-REPORT.md` : null,
+      publishReport: modeId === 'produce' || modeId === 'full' ? `${slug}-PUB-REPORT.md` : null,
     },
   });
 }

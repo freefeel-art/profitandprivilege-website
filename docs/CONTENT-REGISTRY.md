@@ -2,9 +2,9 @@
 
 **Single source of truth for all published content and future content planning.**
 
-Last updated: 2026-07-06 (added How to Start Affiliate Marketing)  
-Total pages built: 32  
-Editorial article pages: 30  
+Last updated: 2026-07-08 (added Affiliate Marketing vs MLM)  
+Total pages built: 48  
+Editorial article pages: 46  
 Infrastructure pages: 2
 
 ---
@@ -13,13 +13,13 @@ Infrastructure pages: 2
 
 | Metric | Count |
 |---|---|
-| Total published pages | 31 |
+| Total published pages | 48 |
 | Reviews | 14 |
-| Blog articles | 14 |
+| Blog articles | 15 |
 | Roundups | 1 |
 | Investigations | 1 |
 | Infrastructure (home, author) | 2 |
-| Gold Master V1 compliant | 28 of 28 editorial pages |
+| Gold Master V1 compliant | 29 of 29 editorial pages |
 
 ---
 
@@ -30,7 +30,7 @@ Infrastructure pages: 2
 | 1. OLSP Ecosystem | 8 | Reviews of OLSP products + affiliate training roundup + cross-product hub guide + MLM investigation |
 | 2. Affiliate Traffic & List Building | 3 | Reviews of third-party traffic/lead tools |
 | 3. Lead Generation | 9 | Informational + commercial investigation + strategies cluster |
-| 4. Online Income for Beginners | 4 | Informational / commercial investigation |
+| 4. Online Income for Beginners | 5 | Informational / commercial investigation |
 | 5. AI Tools | 6 | Independent reviews of AI software platforms and SaaS tools |
 | Infrastructure | 2 | Navigation and author credibility |
 
@@ -782,6 +782,50 @@ Produced via the Light Pipeline: Opportunity Discovery (seed `how to start affil
 | **Editorial Priority** | Medium |
 
 Produced via the Light Pipeline: Opportunity Discovery Agent (candidate `affiliate-marketing-mistakes-beginners`, Priority High) → ORA (Score 70/100, WRITE NOW) → Editorial Builder → Editorial QA → Publisher. Article addresses the 8 most common affiliate marketing mistakes beginners make in the 2026 landscape (AI Overviews, Google HCU, SaaS recurring commissions) with actionable fixes and OLSP Academy as the recommended training path. See `agents/opportunity-research-agent/briefs/affiliate-marketing-mistakes-beginners.md` for the full brief.
+
+---
+
+### Affiliate Marketing vs MLM
+
+| Field | Value |
+|---|---|
+| **Title** | Affiliate Marketing vs MLM: 7 Critical Differences Every Beginner Must Know |
+| **URL** | https://olsp.profitandprivilege.com/blog/affiliate-marketing-vs-mlm/ |
+| **Article Type** | Blog — Informational Comparison Guide |
+| **Primary Keyword** | affiliate marketing vs mlm |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ Blog spec compatible |
+| **Built** | 2026-07-08 |
+| **Last Modified** | 2026-07-08 |
+| **Internal Links Out** | `/is-olsp-academy-an-mlm/`, `/how-to-start-affiliate-marketing/`, `/reviews/olsp-academy/`, `/blog/make-money-online-for-beginners/` |
+| **Internal Links In** | None |
+| **Publication Status** | Staged |
+| **Workflow Status** | Pipeline complete, deploy pending |
+| **Editorial Priority** | High |
+
+Produced via the Full Pipeline: Discovery (reused queue candidate #5) → CI → EI → ORA (Score 72/100, WRITE NOW) → Research Factory (BRF-001, 12 sources) → Editorial Builder → Editorial QA → Publishing Package. Article differentiates affiliate marketing from MLM across 7 dimensions with FTC regulatory data, income disclosure evidence, and a decision framework. See `agents/opportunity-research-agent/briefs/affiliate-marketing-vs-mlm.md` for the full brief.
+
+---
+
+### Reddit Affiliate Marketing Strategy Guide
+
+| Field | Value |
+|---|---|
+| **Title** | Reddit Affiliate Marketing Strategy: How to Drive Traffic Without Getting Banned (2026) |
+| **URL** | https://olsp.profitandprivilege.com/blog/reddit-affiliate-marketing-strategy-guide/ |
+| **Article Type** | Blog — Informational Strategy Guide |
+| **Primary Keyword** | reddit affiliate marketing strategy |
+| **Content Pillar** | Online Income for Beginners |
+| **Gold Master Status** | ✓ BLOG-MASTER-SPEC compliant |
+| **Built** | 2026-07-08 |
+| **Last Modified** | 2026-07-08 |
+| **Internal Links Out** | `/reviews/olsp-academy/` |
+| **Internal Links In** | None |
+| **Publication Status** | Staged |
+| **Workflow Status** | Pipeline complete, deploy pending |
+| **Editorial Priority** | High |
+
+Produced via the Full Pipeline: Discovery (reused queue candidate #9) → Community Intelligence (web + Reddit research) → Editorial Intelligence → Opportunity Brief → Content Production (using corrected BLOG-MASTER-SPEC chain) → Editorial QA → Publishing Package. Article covers Reddit affiliate strategy across 8 sections with karma-building guidance, value-first promotion model, subreddit selection, and a 12-month timeline.
 
 ---
 

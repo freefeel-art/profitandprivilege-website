@@ -1,13 +1,30 @@
 {
   "pipeline": "OLSP.PROFITANDPRIVILEGE.COM",
   "version": "2.0",
-  "lastRun": null,
+  "lastRun": "2026-07-08T10:08:00.000Z",
+  "currentMode": "full",
+  "currentTopic": "affiliate-marketing-vs-mlm",
+  "currentRun": "RUN-20260708-1008",
+  "status": "completed",
+  "currentStage": "publishing-package",
   "stages": {
-    "0-discovery": { "status": "ready", "agent": "opportunity-discovery-agent" },
-    "1-research": { "status": "ready", "agent": "opportunity-research-agent" },
-    "2-builder": { "status": "ready", "agent": "editorial-builder" },
-    "3-qa": { "status": "ready", "agent": "editorial-qa" },
-    "4-publish": { "status": "ready", "agent": "publisher" }
+    "0-discovery": { "id": "discovery", "name": "Discovery", "status": "completed", "startedAt": "2026-07-08T09:10:00.000Z", "completedAt": "2026-07-08T09:12:00.000Z" },
+    "1-ci": { "id": "ci", "name": "Community Intelligence", "status": "completed", "startedAt": "2026-07-08T09:12:00.000Z", "completedAt": "2026-07-08T09:20:00.000Z" },
+    "2-ei": { "id": "ei", "name": "Editorial Intelligence", "status": "completed", "startedAt": "2026-07-08T09:20:00.000Z", "completedAt": "2026-07-08T09:28:00.000Z" },
+    "3-ora": { "id": "ora", "name": "Opportunity Brief", "status": "completed", "startedAt": "2026-07-08T09:28:00.000Z", "completedAt": "2026-07-08T09:36:00.000Z" },
+    "4-research": { "id": "research", "name": "Research Factory", "status": "completed", "startedAt": "2026-07-08T09:36:00.000Z", "completedAt": "2026-07-08T09:48:00.000Z" },
+    "5-production": { "id": "production", "name": "Content Production", "status": "completed", "startedAt": "2026-07-08T09:48:00.000Z", "completedAt": "2026-07-08T09:56:00.000Z" },
+    "6-qa": { "id": "qa", "name": "Editorial QA", "status": "completed", "startedAt": "2026-07-08T09:56:00.000Z", "completedAt": "2026-07-08T10:02:00.000Z" },
+    "7-publishing": { "id": "publishing", "name": "Publishing Package", "status": "completed", "startedAt": "2026-07-08T10:02:00.000Z", "completedAt": "2026-07-08T10:08:00.000Z" }
   },
+  "results": {
+    "qaDecision": "READY FOR PUBLICATION",
+    "deployStatus": "SKIPPED (policy)"
+  },
+  "handoffs": [
+    "reports/handoff/affiliate-marketing-vs-mlm-discovery-handoff-2026-07-08.md",
+    "reports/handoff/affiliate-marketing-vs-mlm-ci-handoff-2026-07-08.md",
+    "reports/handoff/affiliate-marketing-vs-mlm-ei-handoff-2026-07-08.md"
+  ],
   "runs": []
 }

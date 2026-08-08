@@ -19,6 +19,7 @@ docs/AGENT-CONTRACT.md
 docs/EDITORIAL-OBJECT-MODEL.md
     ↓
 docs/GOLD-MASTER-SPEC.md                      (for review-type articles)
+docs/BLOG-MASTER-SPEC.md                       (for informational/blog articles)
 docs/ROUNDUP-GOLD-MASTER-SPEC.md               (for roundup-type articles)
     ↓
 agents/editorial-qa/SPEC.md                    ← this document
@@ -126,6 +127,21 @@ Community (COM-NNN)
 | Tone | Assess whether the article is evidence-based, neutral, and not promotional | Neutral, evidence-based tone |
 | Readability | Assess structure, paragraph length, use of headings, tables, callouts | Appropriate for target audience |
 | Decision framework | Verify the decision framework section (if specified) is present and actionable | Present with actionable questions |
+| Article type compliance | Identify article type from Opportunity Brief; validate against the correct spec | Review → GOLD-MASTER-SPEC; Blog → BLOG-MASTER-SPEC; Roundup → ROUNDUP-GOLD-MASTER-SPEC |
+
+#### Blog-specific editorial checks (per BLOG-MASTER-SPEC)
+
+| Check | Method | Pass Condition |
+|-------|--------|----------------|
+| QuoteBanner (×3) | Verify exactly three `.quote-banner` components: post-intro, mid-article, pre-FAQ | Three identical, borderless, centered, bold italic brand blue, fixed quote text with affiliate link |
+| Standard CTA (×1) | Verify exactly one `.standard-cta` after `#faq` and before `#author` | Heading + button only, no sales paragraph |
+| Blog-only components | Verify review-only components are absent | No `.methodology`, score bars, quiz, SVG diagram, or video embed |
+| OG tags | Scan `<head>` for Open Graph tags | `og:title`, `og:description`, `og:url`, `og:type`, `og:site_name` all present and matching `<title>`/description |
+| Twitter Card | Scan `<head>` for Twitter Card tags | `twitter:card`, `twitter:title`, `twitter:description` present |
+| JSON-LD | Check `<script type="application/ld+json">` | `Article` + `FAQPage` schema types present; FAQ questions match `#faq` section exactly |
+| Frontmatter | Verify Astro frontmatter | Only `export const prerender = true` — no other consts, no imports |
+| Footer link | Check `<footer class="site-footer">` link attributes | Temporary affiliate override per BLOG-MASTER-SPEC §8a with `target="_blank" rel="noopener noreferrer sponsored"` |
+| Author section | Verify `#author` section with Author Box | Present with photo, name, role, bio, link to `/authors/jarmo-halonen/` |
 
 ### 5.6 Citation Integrity
 
@@ -148,10 +164,11 @@ Community (COM-NNN)
 | Check | Method | Pass Condition |
 |-------|--------|----------------|
 | Build | Run `astro build` | Build succeeds |
-| Frontmatter | Verify `export const prerender = true` and metadata variables | Present |
-| Canonical URL | Verify absolute URL with trailing slash | Present and correct format |
-| OlspLayout wrapper | Verify OlspLayout is imported and wraps the content | OlspLayout is the page shell |
-| No inline style/script | Verify no inline `<style>` or `<script is:inline>` blocks exist | Presentation comes from OlspLayout |
+| Frontmatter | Verify `export const prerender = true` | Present |
+| Canonical URL | Verify absolute URL with trailing slash | Present and correct format matching article type (review → /reviews/{slug}/, blog → /blog/{slug}/, roundup → /roundups/{slug}/) |
+| Inline CSS | Verify `<style>` block is present and contains Gold Master design tokens | CSS copied verbatim from reference article; no new classes added; no token values changed |
+| Inline JS | Verify `<script is:inline>` block is present | JS copied verbatim from reference article; quiz function omitted for non-review types |
+| Self-contained | Verify no layout imports, no component imports, no shared CSS files | Standalone `.astro` file as specified by Content Production schema |
 
 ---
 
