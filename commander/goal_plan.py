@@ -533,9 +533,26 @@ def build_goal_execution_plan(
     ))
 
     actions.append(ActionAssessment(
+        action_id="collect_facebook_metrics",
+        label="Investigate Facebook performance",
+        available=True,
+        expected_benefit="Collects read-only Facebook metrics and joins the publication ledger to live evidence.",
+        expected_limitation="Requires the Facebook metrics collector to reach the authenticated Meta evidence source.",
+        estimated_confidence="HIGH",
+        why_it_helps="Facebook investigation is independent from OLSP dashboard authentication and can continue while OLSP data is unavailable.",
+        supporting_evidence=(
+            f"{business.facebook_posts_published} published Facebook post(s) exist for read-only inspection."
+        ) if social["total_published"] > 0 else "No published Facebook posts exist yet; the collector can still verify that absence.",
+        expected_improvement="A timestamped Facebook metrics artifact is written for the current publication set.",
+        failure_evidence="The collector returns PARTIAL or FAILED evidence because Meta rows remain unavailable.",
+        next_if_failed="Escalate the missing Meta evidence separately; do not stop unrelated production work.",
+        blocked_reason="",
+    ))
+
+    actions.append(ActionAssessment(
         action_id="collect_olsp_data",
         label="Collect OLSP dashboard data",
-        available=True,
+        available=olsp_available,
         expected_benefit=(
             "Pulls current OLSP Back Office daily outcomes and separately labeled "
             "lifetime totals."
@@ -545,19 +562,20 @@ def build_goal_execution_plan(
         why_it_helps="OLSP Back Office is the only source of truth for signup and sales progress.",
         supporting_evidence=(
             f"Observed fields available via the authenticated dashboard: {', '.join(k for k in OLSP_VERIFIED_FIELDS if k in fields)}."
-        ) if olsp_available else "No verified evidence — OLSP artifact not available. Run 'hermes collect olsp' first.",
+        ) if olsp_available else "No verified evidence — OLSP artifact not available. This task is blocked until the authenticated session is restored.",
         expected_improvement=(
             "Updated, explicitly period-scoped daily signup, sale, and revenue "
             "evidence for objective verification."
         ),
         failure_evidence="Collection fails or returns stale data (same values as previous collection).",
-        next_if_failed="Report collection failure to Owner. May require fresh browser login or OLSP session refresh.",
+        next_if_failed="Report collection failure to Commander. This task remains blocked until the authenticated OLSP session is restored.",
+        blocked_reason="" if olsp_available else "OLSP dashboard authentication unavailable.",
     ))
 
     actions.append(ActionAssessment(
         action_id="evaluate_campaigns",
         label="Evaluate email campaign performance",
-        available=bool(campaign_snapshots),
+        available=True,
         expected_benefit="Tracks campaign delivery, engagement, and conversion metrics. Feeds evidence into future campaign optimization.",
         expected_limitation="Current campaigns do not track opens, clicks, bounces, or conversions. Only sent count is available.",
         estimated_confidence="HIGH (sent count) / LOW (engagement metrics)",
@@ -601,12 +619,17 @@ def build_goal_execution_plan(
         if funnel_issues:
             reasoning_parts.append(f"Issue: {funnel_issues[0]['detail']}")
 
-    # Rule 2: OLSP data unavailable → collect it
-    if not olsp_available and "collect_olsp_data" not in recommended:
-        recommended.append("collect_olsp_data")
+    # Rule 2: OLSP data unavailable blocks only OLSP-dependent work. Continue
+    # independent investigation and planning paths.
+    if not olsp_available:
+        if "review_funnel" not in recommended and ARTICLE_PATH.is_file():
+            recommended.append("review_funnel")
+        if "collect_facebook_metrics" not in recommended:
+            recommended.append("collect_facebook_metrics")
+        if "evaluate_campaigns" not in recommended:
+            recommended.append("evaluate_campaigns")
         reasoning_parts.append(
-            "No OLSP Back Office data available. Collecting data is the "
-            "prerequisite for any goal evaluation."
+            "OLSP dashboard authentication is unavailable, so OLSP-dependent measurement is blocked while independent investigation continues."
         )
 
     # Rule 3: Funnel healthy + social plan exists → publish
