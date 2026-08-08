@@ -1,14 +1,153 @@
 {
   "project": "profit-and-privilege",
   "version": 1,
-  "conversion_model":{"type":"content_funnel","steps":["article","primary_cta","mega_link","external_landing_page","signup","sale"],"owned_steps":["article","primary_cta","mega_link"]},
+  "conversion_model": {
+    "type": "content_funnel",
+    "steps": [
+      "article",
+      "primary_cta",
+      "mega_link",
+      "external_landing_page",
+      "signup",
+      "sale"
+    ],
+    "owned_steps": [
+      "article",
+      "primary_cta",
+      "mega_link"
+    ]
+  },
   "steps": [
-    {"id":"olsp-baseline-access","description":"Verify the OLSP repository, traffic sources, and aggregate measurement evidence. Authoritative source configuration: config/measurement.json.","depends_on":[],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"olsp-baseline-access","executor_id":"olsp-baseline-access","execution_inputs":{"repository_path":"/home/yampa/projects/active/profitandprivilege-website","measurement_provider":"olsp-authenticated-browser","measurement_scope":"aggregate-only","measurement_source_path":"/home/yampa/projects/active/profitandprivilege-website/runtime/intelligence/olsp-dashboard/latest.json","measurement_report_path":"/home/yampa/projects/active/profitandprivilege-website/runtime/intelligence/olsp-dashboard/latest.json"}},
-    {"id":"olsp-content-funnel-review","description":"Review the Owner-controlled article, Primary CTA, and Mega Link path before increasing traffic.","depends_on":["olsp-baseline-access"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"content-funnel-review","executor_id":"content-funnel-review","execution_inputs":{"article_path":"/home/yampa/projects/active/profitandprivilege-website/src/pages/is-olsp-academy-an-mlm.astro","mega_link_prefix":"https://offers.olspsystem.com/get_megalink"}},
-    {"id":"olsp-content-improvement-plan","description":"Produce one read-only, evidence-based content improvement proposal.","depends_on":["olsp-content-funnel-review"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"olsp-content-improvement-plan","executor_id":"olsp-content-improvement-plan","execution_inputs":{"article_path":"/home/yampa/projects/active/profitandprivilege-website/src/pages/is-olsp-academy-an-mlm.astro","mega_link_prefix":"https://offers.olspsystem.com/get_megalink"}},
-    {"id":"olsp-evidence-review","description":"Inventory configured, observed, verified, and missing evidence before any content edit.","depends_on":["olsp-content-improvement-plan"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"olsp-evidence-review","executor_id":"olsp-evidence-review","execution_inputs":{"article_path":"/home/yampa/projects/active/profitandprivilege-website/src/pages/is-olsp-academy-an-mlm.astro","measurement_report_path":"/home/yampa/projects/active/profitandprivilege-website/runtime/intelligence/olsp-dashboard/latest.json"}},
-    {"id":"olsp-minimum-daily-production-system","description":"Follow DAILY-PRODUCTION.md: run the smallest truthful daily OLSP operating cycle.","depends_on":["olsp-evidence-review"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"olsp-minimum-daily-production-system","executor_id":"olsp-minimum-daily-production-system","execution_inputs":{"procedure_path":"/home/yampa/projects/active/profitandprivilege-website/DAILY-PRODUCTION.md"}},
-    {"id":"social-production","description":"Select the next social media angle from the OLSP article and write the social plan. Publication is autonomous when covered by the approved strategy and available credentials; Owner action is required only at a genuine authority boundary.","depends_on":["olsp-minimum-daily-production-system"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"social-production","executor_id":"social-production","execution_inputs":{}},
-    {"id":"video-production","description":"Video remains excluded by the active strategy; no video production is selected.","depends_on":["social-production"],"supports_mission":true,"requires_approval":false,"objective_ids":["daily-olsp-sales","daily-olsp-signups"],"task_type":"video-production","executor_id":"video-production","execution_inputs":{"article_path":"/home/yampa/projects/active/profitandprivilege-website/src/pages/is-olsp-academy-an-mlm.astro","brand_kit_path":"/home/yampa/projects/active/profitandprivilege-website/brand-kit.json"}}
+    {
+      "id": "olsp-baseline-access",
+      "description": "Verify the OLSP repository, traffic sources, and aggregate measurement evidence. Authoritative source configuration: config/measurement.json.",
+      "depends_on": [],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "olsp-baseline-access",
+      "executor_id": "olsp-baseline-access",
+      "execution_inputs": {
+        "repository_path": ".",
+        "measurement_provider": "olsp-authenticated-browser",
+        "measurement_scope": "aggregate-only",
+        "measurement_source_path": "runtime/intelligence/olsp-dashboard/latest.json",
+        "measurement_report_path": "runtime/intelligence/olsp-dashboard/latest.json"
+      }
+    },
+    {
+      "id": "olsp-content-funnel-review",
+      "description": "Review the Owner-controlled article, Primary CTA, and Mega Link path before increasing traffic.",
+      "depends_on": [
+        "olsp-baseline-access"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "content-funnel-review",
+      "executor_id": "content-funnel-review",
+      "execution_inputs": {
+        "article_path": "src/pages/is-olsp-academy-an-mlm.astro",
+        "mega_link_prefix": "https://offers.olspsystem.com/get_megalink"
+      }
+    },
+    {
+      "id": "olsp-content-improvement-plan",
+      "description": "Produce one read-only, evidence-based content improvement proposal.",
+      "depends_on": [
+        "olsp-content-funnel-review"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "olsp-content-improvement-plan",
+      "executor_id": "olsp-content-improvement-plan",
+      "execution_inputs": {
+        "article_path": "src/pages/is-olsp-academy-an-mlm.astro",
+        "mega_link_prefix": "https://offers.olspsystem.com/get_megalink"
+      }
+    },
+    {
+      "id": "olsp-evidence-review",
+      "description": "Inventory configured, observed, verified, and missing evidence before any content edit.",
+      "depends_on": [
+        "olsp-content-improvement-plan"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "olsp-evidence-review",
+      "executor_id": "olsp-evidence-review",
+      "execution_inputs": {
+        "article_path": "src/pages/is-olsp-academy-an-mlm.astro",
+        "measurement_report_path": "runtime/intelligence/olsp-dashboard/latest.json"
+      }
+    },
+    {
+      "id": "olsp-minimum-daily-production-system",
+      "description": "Follow DAILY-PRODUCTION.md: run the smallest truthful daily OLSP operating cycle.",
+      "depends_on": [
+        "olsp-evidence-review"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "olsp-minimum-daily-production-system",
+      "executor_id": "olsp-minimum-daily-production-system",
+      "execution_inputs": {
+        "procedure_path": "DAILY-PRODUCTION.md"
+      },
+      "status": "completed"
+    },
+    {
+      "id": "social-production",
+      "description": "Select the next social media angle from the OLSP article and write the social plan. Publication is autonomous when covered by the approved strategy and available credentials; Owner action is required only at a genuine authority boundary.",
+      "depends_on": [
+        "olsp-minimum-daily-production-system"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "social-production",
+      "executor_id": "social-production",
+      "execution_inputs": {}
+    },
+    {
+      "id": "video-production",
+      "description": "Produce YouTube Shorts when the active strategy and business evidence indicate video is the best traffic tool for today's objective.",
+      "depends_on": [
+        "social-production"
+      ],
+      "supports_mission": true,
+      "requires_approval": false,
+      "objective_ids": [
+        "daily-olsp-sales",
+        "daily-olsp-signups"
+      ],
+      "task_type": "video-production",
+      "executor_id": "video-production",
+      "execution_inputs": {
+        "article_path": "src/pages/is-olsp-academy-an-mlm.astro",
+        "brand_kit_path": "brand-kit.json"
+      }
+    }
   ]
 }

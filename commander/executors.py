@@ -66,6 +66,17 @@ OLSP_PLAN_PATH = RUNTIME_ROOT / "intelligence/olsp-dashboard/plan.json"
 ARTICLE_PATH = PROJECT_ROOT / "src/pages/is-olsp-academy-an-mlm.astro"
 
 
+def _project_path(value: str | Path) -> Path:
+    """Resolve project-control paths relative to this repository.
+
+    Absolute paths remain valid for legitimate external machine-local inputs;
+    project-control files use relative paths so the repository works on every
+    machine.
+    """
+    path = Path(value)
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
 def _daily_goal(olsp_artifact: dict[str, Any]) -> dict[str, Any]:
     """Extract goal-relevant signals from the OLSP artifact.
 
@@ -135,7 +146,7 @@ def execute_olsp_baseline_access(request: ExecutionRequest) -> ExecutionResult:
     project_ok = active_project_id() == OLSP_PROJECT_ID and request.project_id == OLSP_PROJECT_ID
     checks.append(_check("active_project", "SUCCEEDED" if project_ok else "FAILED", "active project matches OLSP", project=active_project_id()))
 
-    repository = Path(request.declared_inputs["repository_path"])
+    repository = _project_path(request.declared_inputs["repository_path"])
     exists = repository.is_dir()
     checks.append(_check("repository_exists", "SUCCEEDED" if exists else "BLOCKED", "repository directory exists" if exists else "repository directory is missing", path=str(repository)))
     readable = exists and os.access(repository, os.R_OK | os.X_OK)
@@ -164,11 +175,11 @@ def execute_olsp_baseline_access(request: ExecutionRequest) -> ExecutionResult:
     documents_ok = bool(project_directory) and all((project_directory / name).is_file() and os.access(project_directory / name, os.R_OK) for name in REQUIRED_PROJECT_DOCS)
     checks.append(_check("project_documents", "SUCCEEDED" if documents_ok else "FAILED", "required project documents are readable" if documents_ok else "required project documents are unavailable", documents=list(REQUIRED_PROJECT_DOCS)))
 
-    measurement_path = Path(request.declared_inputs["measurement_report_path"])
+    measurement_path = _project_path(request.declared_inputs["measurement_report_path"])
     try:
         config = load_measurement_config(active_project_directory())
         if request.declared_inputs.get("measurement_scope") == "aggregate-only":
-            aggregate_path = Path(request.declared_inputs["measurement_source_path"])
+            aggregate_path = _project_path(request.declared_inputs["measurement_source_path"])
             aggregate = _safe_read_json(aggregate_path)
             fields = aggregate.get("fields", {}) if aggregate else {}
             measurement_status = "SUCCEEDED" if fields else "BLOCKED"
@@ -220,20 +231,20 @@ def execute_olsp_baseline_access(request: ExecutionRequest) -> ExecutionResult:
 
 def execute_content_funnel_review(request: ExecutionRequest) -> ExecutionResult:
     started_at = utc_now_iso()
-    status, review, evidence = review_content_funnel(Path(request.declared_inputs["article_path"]), request.declared_inputs["mega_link_prefix"])
+    status, review, evidence = review_content_funnel(_project_path(request.declared_inputs["article_path"]), request.declared_inputs["mega_link_prefix"])
     return ExecutionResult(request.execution_id, status, CONTENT_FUNNEL_EXECUTOR_ID, started_at, utc_now_iso(), "Content funnel review completed." if status == "SUCCEEDED" else "Content funnel review found a blocking Owner-controlled issue.", {"content_funnel_review": review}, evidence, (), None if status == "SUCCEEDED" else "CONTENT_FUNNEL_INCOMPLETE", status != "SUCCEEDED")
 
 
 def execute_content_improvement_plan(request: ExecutionRequest) -> ExecutionResult:
     started_at = utc_now_iso()
-    status, proposal = build_improvement_proposal(Path(request.declared_inputs["article_path"]), request.declared_inputs["mega_link_prefix"])
+    status, proposal = build_improvement_proposal(_project_path(request.declared_inputs["article_path"]), request.declared_inputs["mega_link_prefix"])
     evidence = tuple(_check(item, "SUCCEEDED" if status == "SUCCEEDED" else "FAILED", "structural review reused for improvement planning") for item in ("article", "primary_cta", "mega_link", "conversion_path", "technical_quality", "seo_basics"))
     return ExecutionResult(request.execution_id, status, CONTENT_IMPROVEMENT_EXECUTOR_ID, started_at, utc_now_iso(), "One content improvement proposal produced." if status == "SUCCEEDED" else "Improvement proposal blocked by structural evidence.", {"improvement_proposal": proposal}, evidence, (), None if status == "SUCCEEDED" else "CONTENT_FUNNEL_INCOMPLETE", status != "SUCCEEDED")
 
 
 def execute_evidence_review(request: ExecutionRequest) -> ExecutionResult:
     started_at = utc_now_iso()
-    _, report = review_evidence(Path(request.declared_inputs["article_path"]), Path(request.declared_inputs["measurement_report_path"]) if "measurement_report_path" in request.declared_inputs else None)
+    _, report = review_evidence(_project_path(request.declared_inputs["article_path"]), _project_path(request.declared_inputs["measurement_report_path"]) if "measurement_report_path" in request.declared_inputs else None)
     evidence = tuple(_check(item, "SUCCEEDED", "evidence inventory completed") for item in ("article", "primary_cta", "mega_link", "conversion_path", "technical_quality", "seo_basics"))
     return ExecutionResult(request.execution_id, "SUCCEEDED", EVIDENCE_REVIEW_EXECUTOR_ID, started_at, utc_now_iso(), "Objective evidence inventory produced.", {"evidence_review": report}, evidence, (), None, False)
 
@@ -261,7 +272,7 @@ def execute_daily_production_procedure(request: ExecutionRequest) -> ExecutionRe
         (project_directory / name).is_file() and os.access(project_directory / name, os.R_OK)
         for name in REQUIRED_PROJECT_DOCS
     )
-    procedure_path = Path(request.declared_inputs["procedure_path"])
+    procedure_path = _project_path(request.declared_inputs["procedure_path"])
     procedure_ok = procedure_path.is_file() and os.access(procedure_path, os.R_OK)
 
     runtime_directory = project_directory / "runtime" if project_directory else Path()
@@ -609,7 +620,7 @@ def execute_content_plan(request: ExecutionRequest) -> ExecutionResult:
         ("query_page_review", "query_page_review_path"),
         ("search_evidence_review", "search_evidence_review_path"),
     ):
-        path = Path(request.declared_inputs[input_name])
+        path = _project_path(request.declared_inputs[input_name])
         readable = path.is_file() and os.access(path, os.R_OK)
         checks.append(_check(check_id, "SUCCEEDED" if readable else "FAILED", "artifact is readable" if readable else "artifact is unavailable", path=str(path)))
     succeeded = all(check["status"] == "SUCCEEDED" for check in checks)
