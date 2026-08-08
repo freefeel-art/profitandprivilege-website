@@ -26,11 +26,16 @@
       "id": "commander-active-blocker-repair",
       "note": "Replaced the removed OLSP control-root article path in the scheduled daily workflow with the canonical active-project resolver. Shell syntax, canonical file resolution, decision-gate clearance, and targeted tests passed.",
       "verified_at": "2026-08-04T13:53:58+00:00"
+    },
+    {
+      "execution_id": "exec-32f6fc5bf5066adbe7c9",
+      "id": "social-production",
+      "verified_at": "2026-08-08T06:25:31+00:00"
     }
   ],
   "current_step": {
-    "description": "Run the smallest truthful daily OLSP operating cycle.",
-    "id": "olsp-minimum-daily-production-system",
+    "description": "Produce YouTube Shorts when the active strategy and business evidence indicate video is the best traffic tool for today's objective.",
+    "id": "video-production",
     "status": "planned"
   },
   "evidence_sources": {
@@ -66,8 +71,8 @@
     }
   },
   "execution": {
-    "last_execution_id": "exec-87a1d8a276d00a78e829",
-    "last_verified_at": "2026-08-06T03:15:16+00:00",
+    "last_execution_id": "exec-32f6fc5bf5066adbe7c9",
+    "last_verified_at": "2026-08-08T06:25:31+00:00",
     "steps": {
       "commander-active-blocker-repair": {
         "execution_id": "exec-8f2dd941123b0f0a1a2b",
@@ -110,15 +115,22 @@
         "local_aggregate_observation_available": true,
         "repeatable": true,
         "verified_at": "2026-08-06T03:15:16+00:00"
+      },
+      "social-production": {
+        "execution_id": "exec-32f6fc5bf5066adbe7c9",
+        "measurement_source": "not_applicable",
+        "repository_access": "not_applicable",
+        "verification": "passed",
+        "verified_at": "2026-08-08T06:25:31+00:00"
       }
     }
   },
   "next_steps": [
-    "olsp-minimum-daily-production-system"
+    "video-production"
   ],
   "phase": "olsp-baseline-verified",
   "project": "profit-and-privilege",
   "status": "active",
-  "updated": "2026-08-06T03:15:16+00:00",
+  "updated": "2026-08-08T06:25:31+00:00",
   "version": 1
 }

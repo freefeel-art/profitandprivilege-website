@@ -111,8 +111,7 @@
       "executor_id": "olsp-minimum-daily-production-system",
       "execution_inputs": {
         "procedure_path": "DAILY-PRODUCTION.md"
-      },
-      "status": "completed"
+      }
     },
     {
       "id": "social-production",
