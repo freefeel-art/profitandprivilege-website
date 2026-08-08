@@ -168,6 +168,19 @@ def _action_is_open(action_id: str) -> bool:
     return str(receipt.get("status", "NOT_STARTED")).upper() in {"NOT_STARTED", "READY"}
 
 
+def _action_blocked_reason(action_id: str, default_reason: str) -> str:
+    receipt = _action_receipt(action_id)
+    if receipt:
+        status = str(receipt.get("status", "")).upper()
+        if status == "EXECUTING":
+            return "Autonomous work already has an execution receipt; wait for its terminal result."
+        if status == "VERIFIED":
+            return "A verified receipt already exists for this action."
+        if status in {"FAILED", "BLOCKED"}:
+            return f"Terminal receipt already exists ({status.lower()}); rearm required before rerun."
+    return default_reason
+
+
 def _social_status() -> dict[str, Any]:
     plan = {}
     published: list[dict[str, Any]] = []
@@ -530,7 +543,10 @@ def build_goal_execution_plan(
         expected_improvement="Additional distribution channel active.",
         failure_evidence="Video receives zero views within 7 days of upload.",
         next_if_failed="Review video title, description, and thumbnail. Consider different content format.",
-        blocked_reason="No finished video uploaded to YouTube. Requires hermes video, then OAuth upload.",
+        blocked_reason=_action_blocked_reason(
+            "publish_youtube_short",
+            "No finished video uploaded to YouTube. Requires hermes video, then OAuth upload.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -545,6 +561,10 @@ def build_goal_execution_plan(
         expected_improvement="One ready-to-publish post available.",
         failure_evidence="No remaining angles — all 30 hooks published without a measurable outcome.",
         next_if_failed="Report angle exhaustion to Owner. Propose new content angles or alternative distribution.",
+        blocked_reason=_action_blocked_reason(
+            "generate_social_plan",
+            "A ready social plan already exists; no new plan is required.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -559,6 +579,10 @@ def build_goal_execution_plan(
         expected_improvement="One finished video artifact available for distribution.",
         failure_evidence="Video renders but receives zero views or engagement on any platform.",
         next_if_failed="Integrate TTS voiceover (edge-tts). Add Pexels stock images. Improve scene selection for readability.",
+        blocked_reason=_action_blocked_reason(
+            "generate_video",
+            "No finished video uploaded to YouTube. Requires hermes video, then OAuth upload.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -573,6 +597,10 @@ def build_goal_execution_plan(
         expected_improvement="Confirmation of funnel health before spending traffic-driving actions.",
         failure_evidence="Funnel review shows FAILED or DEGRADED status — CTA missing or mega link broken.",
         next_if_failed="Block all traffic-driving actions until funnel is repaired. Report specific issue to Owner.",
+        blocked_reason=_action_blocked_reason(
+            "review_funnel",
+            "Funnel is already structurally healthy; a new review receipt is not required.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -589,7 +617,10 @@ def build_goal_execution_plan(
         expected_improvement="A timestamped Facebook metrics artifact is written for the current publication set.",
         failure_evidence="The collector returns PARTIAL or FAILED evidence because Meta rows remain unavailable.",
         next_if_failed="Escalate the missing Meta evidence separately; do not stop unrelated production work.",
-        blocked_reason="",
+        blocked_reason=_action_blocked_reason(
+            "collect_facebook_metrics",
+            "Facebook performance investigation is already satisfied by the latest evidence.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -612,7 +643,10 @@ def build_goal_execution_plan(
         ),
         failure_evidence="Collection fails or returns stale data (same values as previous collection).",
         next_if_failed="Report collection failure to Commander. This task remains blocked until the authenticated OLSP session is restored.",
-        blocked_reason="" if olsp_available else "OLSP dashboard authentication unavailable.",
+        blocked_reason=_action_blocked_reason(
+            "collect_olsp_data",
+            "OLSP dashboard authentication unavailable." if not olsp_available else "OLSP dashboard data is already available from the latest observation.",
+        ),
     ))
 
     actions.append(ActionAssessment(
@@ -630,6 +664,10 @@ def build_goal_execution_plan(
         expected_improvement="Measurable campaign performance metrics for optimization decisions.",
         failure_evidence="All campaigns show zero engagement or delivery metrics are unavailable.",
         next_if_failed="Implement open/click tracking on future campaigns. Consider dedicated email service provider with built-in analytics.",
+        blocked_reason=_action_blocked_reason(
+            "evaluate_campaigns",
+            "Campaign evaluation is already reflected in the latest evidence.",
+        ),
     ))
 
     actions.append(ActionAssessment(
