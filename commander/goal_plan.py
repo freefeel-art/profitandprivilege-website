@@ -30,6 +30,7 @@ OLSP_ARTIFACT_PATH = RUNTIME_ROOT / "intelligence/olsp-dashboard/latest.json"
 SOCIAL_PLAN_PATH = RUNTIME_ROOT / "social/plan.json"
 SOCIAL_PUBLISHED_PATH = RUNTIME_ROOT / "social/published.json"
 REALITY_PATH = RUNTIME_ROOT / "commander/reality.json"
+ACTION_RECEIPTS_PATH = RUNTIME_ROOT / "commander/action-receipts.json"
 ARTICLE_PATH = PROJECT_ROOT / "src/pages/is-olsp-academy-an-mlm.astro"
 
 # OLSP fields verified as available via CDP browser automation:
@@ -145,6 +146,28 @@ def _daily_field_float(
     return _field_float(fields, key)
 
 
+def _load_action_receipts() -> dict[str, dict[str, Any]]:
+    if not ACTION_RECEIPTS_PATH.is_file():
+        return {}
+    try:
+        payload = json.loads(ACTION_RECEIPTS_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    actions = payload.get("actions", {}) if isinstance(payload, dict) else {}
+    return actions if isinstance(actions, dict) else {}
+
+
+def _action_receipt(action_id: str) -> dict[str, Any] | None:
+    return _load_action_receipts().get(action_id)
+
+
+def _action_is_open(action_id: str) -> bool:
+    receipt = _action_receipt(action_id)
+    if not receipt:
+        return True
+    return str(receipt.get("status", "NOT_STARTED")).upper() in {"NOT_STARTED", "READY"}
+
+
 def _social_status() -> dict[str, Any]:
     plan = {}
     published: list[dict[str, Any]] = []
@@ -156,20 +179,34 @@ def _social_status() -> dict[str, Any]:
     if SOCIAL_PUBLISHED_PATH.is_file():
         try:
             value = json.loads(SOCIAL_PUBLISHED_PATH.read_text(encoding="utf-8"))
-            published = value.get("published", []) if isinstance(value, dict) else value
-            if not isinstance(published, list):
-                published = []
+            if isinstance(value, dict):
+                for key in ("published", "livebinar_published"):
+                    items = value.get(key, [])
+                    if isinstance(items, list):
+                        published.extend(item for item in items if isinstance(item, dict))
+            elif isinstance(value, list):
+                published = [item for item in value if isinstance(item, dict)]
         except Exception:
             pass
+    today = datetime.now(ZoneInfo("Europe/Stockholm")).date().isoformat()
+
+    def published_day(entry: dict[str, Any]) -> str:
+        value = str(entry.get("published_at", ""))
+        if len(value) >= 10:
+            return value[:10]
+        fallback = str(entry.get("date", ""))
+        return fallback[:10] if len(fallback) >= 10 else fallback
+
+    publications_today = sum(
+        1 for p in published
+        if published_day(p) == today or published_day(p) == str(plan.get("date", ""))
+    )
     return {
         "plan_exists": bool(plan),
         "plan_status": plan.get("status", "NONE"),
         "platform": plan.get("platform", ""),
         "angle": plan.get("angle", ""),
-        "publications_today": len([
-            p for p in published
-            if isinstance(p, dict) and p.get("date") == plan.get("date")
-        ]) if plan else 0,
+        "publications_today": publications_today,
         "total_published": len(published),
         "remaining_article": max(0, 30 - len(published)),
     }
@@ -456,7 +493,13 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="publish_facebook",
         label="Publish Facebook post",
-        available=social["plan_exists"] and social["plan_status"] == "READY" and social["platform"] == "facebook",
+        available=(
+            _action_is_open("publish_facebook")
+            and social["plan_exists"]
+            and social["plan_status"] == "READY"
+            and social["platform"] == "facebook"
+            and social["publications_today"] == 0
+        ),
         expected_benefit="Drives traffic from OLSP Page (61592596862104) to the article conversion path.",
         expected_limitation="Facebook organic reach is unpredictable. Post-to-signup attribution is not trackable with current OLSP interface.",
         estimated_confidence="MEDIUM",
@@ -493,7 +536,7 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="generate_social_plan",
         label="Generate social content plan",
-        available=True,
+        available=_action_is_open("generate_social_plan") and not (social["plan_exists"] and social["plan_status"] == "READY"),
         expected_benefit="Creates the next Facebook post from 10 angles and 30 hook variants.",
         expected_limitation="Planning alone does not reach any audience. Publication runs autonomously when the approved strategy and required access are available; genuine authority boundaries stop execution.",
         estimated_confidence="HIGH",
@@ -507,7 +550,7 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="generate_video",
         label="Generate video from article",
-        available=ARTICLE_PATH.is_file(),
+        available=_action_is_open("generate_video") and ARTICLE_PATH.is_file() and not (RUNTIME_ROOT / "video/preview.json").is_file(),
         expected_benefit="Produces a 9:16 vertical MP4 from article text + brand kit. Can be uploaded to YouTube Shorts.",
         expected_limitation="Video is silent (no TTS), uses colored backgrounds (no Pexels key).",
         estimated_confidence="HIGH (generation) / LOW (audience impact)",
@@ -521,7 +564,7 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="review_funnel",
         label="Review content funnel health",
-        available=ARTICLE_PATH.is_file(),
+        available=_action_is_open("review_funnel") and ARTICLE_PATH.is_file() and not (RUNTIME_ROOT / "commander/funnel-review.json").is_file(),
         expected_benefit="Verifies article, CTA buttons, and mega links are intact before traffic-driving.",
         expected_limitation="Detects structural issues only — cannot assess content persuasiveness.",
         estimated_confidence="HIGH",
@@ -535,13 +578,13 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="collect_facebook_metrics",
         label="Investigate Facebook performance",
-        available=True,
+        available=_action_is_open("collect_facebook_metrics"),
         expected_benefit="Collects read-only Facebook metrics and joins the publication ledger to live evidence.",
         expected_limitation="Requires the Facebook metrics collector to reach the authenticated Meta evidence source.",
         estimated_confidence="HIGH",
         why_it_helps="Facebook investigation is independent from OLSP dashboard authentication and can continue while OLSP data is unavailable.",
         supporting_evidence=(
-            f"{business.facebook_posts_published} published Facebook post(s) exist for read-only inspection."
+            f"{social["total_published"]} published Facebook post(s) exist for read-only inspection."
         ) if social["total_published"] > 0 else "No published Facebook posts exist yet; the collector can still verify that absence.",
         expected_improvement="A timestamped Facebook metrics artifact is written for the current publication set.",
         failure_evidence="The collector returns PARTIAL or FAILED evidence because Meta rows remain unavailable.",
@@ -552,7 +595,7 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="collect_olsp_data",
         label="Collect OLSP dashboard data",
-        available=olsp_available,
+        available=_action_is_open("collect_olsp_data") and olsp_available,
         expected_benefit=(
             "Pulls current OLSP Back Office daily outcomes and separately labeled "
             "lifetime totals."
@@ -575,7 +618,7 @@ def build_goal_execution_plan(
     actions.append(ActionAssessment(
         action_id="evaluate_campaigns",
         label="Evaluate email campaign performance",
-        available=True,
+        available=_action_is_open("evaluate_campaigns"),
         expected_benefit="Tracks campaign delivery, engagement, and conversion metrics. Feeds evidence into future campaign optimization.",
         expected_limitation="Current campaigns do not track opens, clicks, bounces, or conversions. Only sent count is available.",
         estimated_confidence="HIGH (sent count) / LOW (engagement metrics)",
